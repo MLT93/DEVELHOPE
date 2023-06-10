@@ -7,7 +7,8 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <title>HTML Lesson</title>
+    <link rel="icon" href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico" type="image/x-icon" />
+    <title>5-Form</title>
     <style>
       label {
         display: block;
@@ -15,5 +16,62 @@
     </style>
   </head>
 
-  <body></body>
+  <body>
+    <header>
+      <nav></nav>
+    </header>
+    <article>
+      <section>
+        <form action="ejemplo.js" method="get">
+          <fieldset>
+            <legend><b>Datos personales</b></legend>
+          <label for="01">Email:</label>
+            <input type="email" name="" id="01" autofocus size="30" required>          
+          <label for="02">password:</label>
+            <input type="password" name="" id="02" maxlength="10" minlength="4" required>        
+          <label for="03">Nombre:</label>
+            <input type="text" name="Nombre" id="03" maxlength="40" required>
+          <label for="04">Apellidos:</label>
+            <input type="text" name="Apellido" id="04" maxlength="80" required>
+          <label for="05">Fecha de nacimiento:</label>
+            <input type="date" name="Fecha de nacimiento" id="05" required>
+          <label for="06">Número de teléfono:</label>
+            <input type="tel" name="Telefono" id="06" required>
+          </fieldset>
+          <br>
+          <fieldset>
+            <legend><b>Plan a elegir</b></legend>
+              <label for="07"><small>Low</small></label>
+              <input type="radio" name="Boton Plan" id="07" value="9,90" required> $9,90
+              <br><br>
+              <label for="08"><small>Medium</small></label> 
+              <input type="radio" name="Boton Plan" value="29,90" required> $29,90
+              <br><br>
+              <label for="09"><small>Pro</small></label> 
+              <input type="radio" name="Boton Plan" value="59,90" required> $59,90 
+          </fieldset>
+          <br>
+          <!-- <fieldset>
+            <legend><b>Elige tu plan</b></legend>
+              <select name="Plans" id="Plans">
+                <option value="Plan Low $9,90">Plan Low $9,90</option> 
+                <option value="Plan Medium $29,90">Plan Medium $29,90</option> 
+                <option value="Plan Pro $59,90">Plan Pro $59,90</option> 
+              </select>
+          </fieldset>
+          <br>
+          <br>
+           -->
+          <fieldset>
+            <legend><b>Pago con tarjeta</b></legend>
+
+          </fieldset>
+          <br>
+        </form>
+      </section>
+    </article>
+    <aside></aside>
+    <footer></footer>
+    
+  </body>
 </html>
