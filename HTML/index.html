@@ -32,40 +32,56 @@
 <!--El atributo lang (y a veces también el atributo xml:lang) especifica el idioma natural del contenido de una página web-->
 <html lang="es_ES">
   <!--Esta parte contiene el encabezado <head> (lo que no mostramos a las personas)-->
-  <head>		
+  <head>
     <!--El elemento meta con atributo charset en un documento HTML está destinado a indicar la codificación de caracteres utilizada (charset).
 			En HTML5 tiene la sintaxis: <meta charset="identificador-juego-de-caracteres">
 		Se utiliza la codificación UTF-8 por default en HTML5 porque es reconocida por la RFC 3629 de la Internet Engineering Task Force (IETF) y una de las tres posibilidades de codificación reconocidas por Unicode
 			En HTML4 la sintaxis era diferente: <meta http-equiv="content-type" content="text/html; utf-8">-->
     <meta charset="UTF-8" />
-		<!--En el elemento meta encontramos dos atributos que tienen que que ver con la compatibilidades del navegador donde se esta consultando la página web. El primero es (http-equiv=”X-UA-Compatible”), y después tenemos el atributo (content="IE=edge"). El primero se refiere al viejo navegador Internet Explorer, el cual ya no es tan usado, mientras que el segundo indica utilizar el estándar de Edge como navegador de Microsoft-->
+    <!--En el elemento meta encontramos dos atributos que tienen que que ver con la compatibilidades del navegador donde se esta consultando la página web. El primero es (http-equiv=”X-UA-Compatible”), y después tenemos el atributo (content="IE=edge"). El primero se refiere al viejo navegador Internet Explorer, el cual ya no es tan usado, mientras que el segundo indica utilizar el estándar de Edge como navegador de Microsoft-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<!--El siguiente elemento meta/tag hay dos atributos importantes para el diseño responsivo, ya que queremos que nuestro sitio web se vea bien en diferentes tipos de pantallas como lo son: Escritorio, Laptop, Smartphone, Tablet, iPad, y demás modelos. Normalmente se trabja el diseño responsivo en CSS pero este elemento <meta> con sus atributos <name> y <content> para que hagan posible dicho diseño-->
+    <!--El siguiente elemento meta/tag hay dos atributos importantes para el diseño responsivo, ya que queremos que nuestro sitio web se vea bien en diferentes tipos de pantallas como lo son: Escritorio, Laptop, Smartphone, Tablet, iPad, y demás modelos. Normalmente se trabja el diseño responsivo en CSS pero este elemento <meta> con sus atributos <name> y <content> para que hagan posible dicho diseño-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--El elemento/tag <title> es el nombre que aparece dentro de la pestaña cuando accedemos a la pagina web y en la búsqueda relacionada a dicha pagina-->
-    <title>Lessons & Explanations index.html</title>
-		<!--También los meta tags/etiquetas pueden estar relacionados con las busquedas y ayudar al posicionamiento SEO (Search Engine Optimization). Meta Descripcion representa la descripcion del contenido dentro de la pagina-->
-		<meta name=”description” content="Pagina destinada al aprendizaje de codigo HTML">
-		<!--Meta Keywords representa las palabras clave de busqueda, de la pagina. Hoy para SEO no es tan esencial como antes. Describe el contenido de la pagina. Se recomienda usar entre 8 y 12 palabras-->
-		<meta name=”keywords” content="Explicaciones sobre HTML, Web course, curso de desarrollo web">
-		<!--Si no deseamos aparecer en los buscadores (acá hablamos de todo lo relacionado con el SEO, Search Engine Optimization) como Google, Yahoo, etc. Este es el meta tag a utilizar para no indexar o, no poner nuestra pagina en el indice de busqueda de los motores de busqueda. Por lo contrario, si deseamos estar en esas listas de busqueda, pondremos content="INDEX, FOLLOW" -->
-		<meta name=”robots” content="NOINDEX, NOFOLLOW">
-		<!--Nombre del autor de la pagina web-->
-		<meta name="author" content="Marcos Lambir Torres">
-		<!--Copyright nos dice quien es el dueño o la empresa posesora de los derechos de la pagina-->
-		<meta name="--Copyright" content="MLT Inc.">
- 	<!---->
-	<link rel="icon" href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico" type="image/x-icon" />
+    <title>index.html</title>
+    <!--También los meta tags/etiquetas pueden estar relacionados con las busquedas y ayudar al posicionamiento SEO (Search Engine Optimization). Meta Descripcion representa la descripcion del contenido dentro de la pagina-->
+    <meta
+      name="”description”"
+      content="Pagina destinada al aprendizaje de codigo HTML"
+    />
+    <!--Meta Keywords representa las palabras clave de busqueda, de la pagina. Hoy para SEO no es tan esencial como antes. Describe el contenido de la pagina. Se recomienda usar entre 8 y 12 palabras-->
+    <meta
+      name="”keywords”"
+      content="Explicaciones sobre HTML, Web course, curso de desarrollo web"
+    />
+    <!--Si no deseamos aparecer en los buscadores (acá hablamos de todo lo relacionado con el SEO, Search Engine Optimization) como Google, Yahoo, etc. Este es el meta tag a utilizar para no indexar o, no poner nuestra pagina en el indice de busqueda de los motores de busqueda. Por lo contrario, si deseamos estar en esas listas de busqueda, pondremos content="INDEX, FOLLOW" -->
+    <meta name="”robots”" content="NOINDEX, NOFOLLOW" />
+    <!--Nombre del autor de la pagina web-->
+    <meta name="author" content="Marcos Lambir Torres" />
+    <!--Copyright nos dice quien es el dueño o la empresa posesora de los derechos de la pagina-->
+    <meta name="--Copyright" content="MLT Inc." />
+    <!---->
+    <link
+      rel="icon"
+      href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico"
+      type="image/x-icon"
+    />
   </head>
   <!--Esta es la caja principal. Aca albergaremos todo lo que vamos a mostrar a las personas cuando accedan a la pagina web-->
-  <body>		
+  <body>
     <!--Todos los <h> (Titulos) completan la linea de escritura dentro de la caja que los contenga, ya sea la principal o no. Por lo tanto hacen un salto de pagina automatico-->
-    <h1>Titulo 1</h1><!--Se usa solo una vez-->
-    <h2>Titulo 2</h2><!--Se usa solo una vez-->    
-    <h3>Titulo 3</h3><!--Se puede usar más de dos veces-->    
-    <h4>Titulo 4</h4><!--Se puede usar más de dos veces-->    
-    <h5>Titulo 5</h5><!--Uso infinito-->    
-    <h6>Titulo 6</h6><!--Uso infinito-->    
+    <h1>Titulo 1</h1>
+    <!--Se usa solo una vez-->
+    <h2>Titulo 2</h2>
+    <!--Se usa solo una vez-->
+    <h3>Titulo 3</h3>
+    <!--Se puede usar más de dos veces-->
+    <h4>Titulo 4</h4>
+    <!--Se puede usar más de dos veces-->
+    <h5>Titulo 5</h5>
+    <!--Uso infinito-->
+    <h6>Titulo 6</h6>
+    <!--Uso infinito-->
     <!--Todos los <p> completan la linea de escritura dentro de la caja que los contenga-->
     <p>Parrafo de texto</p>
     <!--Todos los modificadores de texto, enlaces y demás se adaptan al texto correspondiente sin completar la linea de escritura dentro de su caja. Por lo tanto, hace falta un salto de pagina <br>-->
@@ -77,51 +93,66 @@
     <srike>Texto tachado</srike>
     <br />
     <small>Texto mas pequeño</small>
-		<br />
-		<br />
+    <br />
+    <br />
     <!--El <div> crea una division, añadiendo una caja dentro de la caja principal. Se utiliza para segmentar la pagina web-->
     <div>Divide la pagina creando una cajita, dentro de la caja principal</div>
-		<br />
-    <!--La etiqueta <a> hace la funcion de redirigirnos a otra página tramite el atributo <href="enlace"> donde pondremos una Ruta Local (archivo guardado localmente) o una Ruta Externa (http "Hyper Text Transfer Protocol" // https "Hyper Text Transfer Protocol Secure") de referencia (entre las comillas) para que nos lleve hasta ella. Las palabras escritas después hacen referencia al nombre que le daremos al boton del enlace >click here<-->
-    <a href="https://3con14.biz/html/" target="_blank">Click con ejemplo de ruta externa</a> <!--El atributo target target="_blank" nos abre el enlace en otra pestaña del navegador en vez de abrirlo directamente en la misma pestaña donde estamos-->
     <br />
-    <a href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\start.html">Click con ejemplo de ruta local a start.html 1-Head</a> <!--En este ejemplo accedo a un link de una pagina situada localmente en mis archivos (la pagina start.html). En esta misma pagina creamos otro link para volver a la pagina inicial, siempre localmente, pero en ese mismo  link para volver, no nos hace falta agregar todo el directorio de archivos, simplemente agregando <\..> antes de la pagina (tantas veces como nos haga falta), volveremos al directorio precedente, ejemplo: <a href="..\index.html">Volver</a> -->
-	<br />
-	<a href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\2-HTML-Tags\start.html">Click con ejemplo de ruta local a start.html 2-HTML-Tags</a>
-		<br>
-	<a href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\3-Attributes\start.html">Click con ejemplo de ruta local a start.html 3-Attributes</a>
-		<br>
-		<br>
-		<!--La <ul> es una lista desordenada (Unordered List)-->
-		<ul>
-			<!-- <li> son los elementos que componen la lista-->
-			<li>Pan</li>
-			<li>Leche</li>
-			<li>Galletas</li>
-		</ul>
-		<!--La <ol> es la lista ordenada (Ordered List)-->
-		<ol>
-			<!--Elementos de la lista ordenada (igual que arriba)-->
-			<li>Jamón</li>
-			<li>Queso</li>
-			<li>Mayonesa</li>
-		</ol>
-		<br><br>
-		<!--El tag <img> nos ayuda a agregar imagenes a nuestra pagina web
+    <!--La etiqueta <a> hace la funcion de redirigirnos a otra página tramite el atributo <href="enlace"> donde pondremos una Ruta Local (archivo guardado localmente) o una Ruta Externa (http "Hyper Text Transfer Protocol" // https "Hyper Text Transfer Protocol Secure") de referencia (entre las comillas) para que nos lleve hasta ella. Las palabras escritas después hacen referencia al nombre que le daremos al boton del enlace >click here<-->
+    <a href="https://3con14.biz/html/" target="_blank"
+      >Click con ejemplo de ruta externa</a
+    >
+    <!--El atributo target target="_blank" nos abre el enlace en otra pestaña del navegador en vez de abrirlo directamente en la misma pestaña donde estamos-->
+    <br />
+    <a
+      href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\start.html"
+      >Click con ejemplo de ruta local a start.html 1-Head</a
+    >
+    <!--En este ejemplo accedo a un link de una pagina situada localmente en mis archivos (la pagina start.html). En esta misma pagina creamos otro link para volver a la pagina inicial, siempre localmente, pero en ese mismo  link para volver, no nos hace falta agregar todo el directorio de archivos, simplemente agregando <\..> antes de la pagina (tantas veces como nos haga falta), volveremos al directorio precedente, ejemplo: <a href="..\index.html">Volver</a> -->
+    <br />
+    <a
+      href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\2-HTML-Tags\start.html"
+      >Click con ejemplo de ruta local a start.html 2-HTML-Tags</a
+    >
+    <br />
+    <a
+      href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\3-Attributes\start.html"
+      >Click con ejemplo de ruta local a start.html 3-Attributes</a
+    >
+    <br />
+    <br />
+    <!--La <ul> es una lista desordenada (Unordered List)-->
+    <ul>
+      <!-- <li> son los elementos que componen la lista-->
+      <li>Pan</li>
+      <li>Leche</li>
+      <li>Galletas</li>
+    </ul>
+    <!--La <ol> es la lista ordenada (Ordered List)-->
+    <ol>
+      <!--Elementos de la lista ordenada (igual que arriba)-->
+      <li>Jamón</li>
+      <li>Queso</li>
+      <li>Mayonesa</li>
+    </ol>
+    <br /><br />
+    <!--El tag <img> nos ayuda a agregar imagenes a nuestra pagina web
 		El atributo <src=""> (source) es donde pondremos la ruta del archivo que deseemos agregar, ya sea externa o local
 		El atributo <width=""> (ancho) & el atributo <height=""> (largo) nos sirven para redimensionar las imagenes Las dimensiones de las imagenes se regulan escribiendo numeros + px (pixeles) o tambien usando + % (porcentaje utilizado de la caja donde se pondra la imagen).
 			El consejo es utilizar unicamente una de los dos atributos (o mejor ninguno) para que se conserve la resolución de la imagen original, a no ser que deseemos darle dimensiones especificas a costa de conservar una imagen desproporcionada, como se muestra intencionalmente en la linea 109 del codigo escrito en este archivo. Tambien se puede poner width="numero +px/%" height="auto". El "auto" adapta directamente la imagen a la cantidad establecida dentro del width, conservando las proporciones originales
 				Arriba entre parentesis se especifica "(o mejor ninguno)" porque la dimension de las imagenes se la modificaremos utilizando CSS y, si ya la cambiamos con los atributos de html, despues no podremos cambiarlas en CSS, porque dichos atributos tienen una propiedad primaria y no se sobreescriben. 
 		El atributo <alt=""> se utiliza para describir detalladamente una imagen para los motores de busqueda-->
-		<p><b>Imagen (img) en la cual usaamos Width y Height:</b></p>
-		<img 
-		src="C:\Users\marko\OneDrive\Pictures\Raccolta Samsung\DCIM\Camera\20230501_091624.jpg"
-		width="500px" height="200px"
-		alt="Cara de gato gris con ojos amarillos con pelo largo de raza persa sobre mesa de madera">
-		<br>
-		<small>Como se puede notar, la imagen está desproporcionada</small>
-		<br><br><br><br>
-		<!--El tag <video> nos sirve para agregar videos a nuestra pagina web
+    <p><b>Imagen (img) en la cual usaamos Width y Height:</b></p>
+    <img
+      src="C:\Users\marko\OneDrive\Pictures\Raccolta Samsung\DCIM\Camera\20230501_091624.jpg"
+      width="500px"
+      height="200px"
+      alt="Cara de gato gris con ojos amarillos con pelo largo de raza persa sobre mesa de madera"
+    />
+    <br />
+    <small>Como se puede notar, la imagen está desproporcionada</small>
+    <br /><br /><br /><br />
+    <!--El tag <video> nos sirve para agregar videos a nuestra pagina web
 		El atributo <autoplay> especifica que el vídeo comience a reproducirse automáticamente
 		El atributo <controls> nos da los instrumentos para dar play, stop, volumen, etc...
 		El atributo <loop> especifica que la reproduccion del video vuelve a empezar una vez que acaba
@@ -135,64 +166,188 @@
 		— preload = “metadata” -> Solo se cargan los metadatos del vídeo (dimensiones, primer frame, duración…).
 		— preload = “auto” -> El vídeo se descarga independientemente de la ejecución del play
 		El atributo <src=""> (source) es donde pondremos la ruta del archivo que deseemos agregar, siempre con un formato de video (.mp4, .webm, .avi, .mov, .wmv, .mkv, etc...) de forma local-->
-		<p><b>Video con ruta local:</b></p>
-		<video
-			preload="auto"
-			width="500px" height="300px"
-			controls
-			autoplay
-			loop
-			poster=""
-			muted
-			mediagroup=""
-			src="C:\Users\marko\Videos\190301_1_25_11.mp4" type="video/mp4"></video>
-		<br>		
-		<small>Leonas Caminando Juntas</small>
-		<br><br><br><br>
-		<!--El atributo <iframe> representa un contexto de navegacion anidad, el cual permite incrustar otra pagina html en la pagina actual-->	
-		<p><b>Acceso al video tramite (iframe):</b></p>
-		<iframe
-			name="iframe_leonas"
-			src="https://www.videvo.net/es/video/pareja-de-leonas-caminando-juntas/463057/"
-			width="500px" height="250px"
-			id=""
-			longdesc=""
-			frameborder="1"
-			marginwidth="20"
-			marginheight="20"
-			scrolling="yes"></iframe>
-			<br>
-		<small>Iframe sirve para que nos abra la entera pagina donde encontramos el video de las leonas, directamente dentro de la nuestra</small>
-		<br><br><br><br>
-  	<p><b>Video realizado en dos partes:
-			<br>
-			Primero ->	creamos el bloque donde se albergará el video
-			<br>
-			Segundo ->	creamos el enlace
-		</b></p>
-		<!---->	
-		<video 
-		preload="none"
-		class="absolute inset-0 z-10 w-full h-full object-cover focus:outline-none"
-		style="width: 53.5%; height: auto; border: double;"
-		poster="https://joy1.videvo.net/videvo_files/video/free/2019-11/thumbnails/190301_1_25_11_small.jpg"
-		controls=""
-		autoplay="0"
-		muted=""></video>
-		<source src="https://joy1.videvo.net/videvo_files/video/free/2019-11/large_watermarked/190301_1_25_11_preview.mp4" type="video/mp4">
-		<br>
-		<small>Video de leonas hecho con </small> <b>HTML</b> <small>y </small><b>CSS</b>
-		<br><br><br><br>
-		<!--El elemento/tag <audio> sirve para reproducir audio en la web. No soporta atributos <width/height>, ni el atributo <poster> porque no hay componentes visuales-->
-		<p><b>Audio con ruta https:</b></p>
-		<audio 
-			src="C:\Users\marko\Music\LionGrowlAngryGene PE931903.wav" type="audio\wav"
-			controls="" 
-			autoplay=""
-			muted="">
-			Audio de leonas ruguiendo
-		</audio>
-		<br>
-		<small>Audio del rugido de una leona</small>
+    <p><b>Video con ruta local:</b></p>
+    <video
+      preload="auto"
+      width="500px"
+      height="300px"
+      controls
+      autoplay
+      loop
+      poster=""
+      muted
+      mediagroup=""
+      src="C:\Users\marko\Videos\190301_1_25_11.mp4"
+      type="video/mp4"
+    ></video>
+    <br />
+    <small>Leonas Caminando Juntas</small>
+    <br /><br /><br /><br />
+    <!--El atributo <iframe> representa un contexto de navegacion anidad, el cual permite incrustar otra pagina html en la pagina actual-->
+    <p><b>Acceso al video tramite (iframe):</b></p>
+    <iframe
+      name="iframe_leonas"
+      src="https://www.videvo.net/es/video/pareja-de-leonas-caminando-juntas/463057/"
+      width="500px"
+      height="250px"
+      id=""
+      longdesc=""
+      frameborder="1"
+      marginwidth="20"
+      marginheight="20"
+      scrolling="yes"
+    ></iframe>
+    <br />
+    <small
+      >Iframe sirve para que nos abra la entera pagina donde encontramos el
+      video de las leonas, directamente dentro de la nuestra</small
+    >
+    <br /><br /><br /><br />
+    <p>
+      <b
+        >Video realizado en dos partes:
+        <br />
+        Primero -> creamos el bloque donde se albergará el video
+        <br />
+        Segundo -> creamos el enlace
+      </b>
+    </p>
+    <!---->
+    <video
+      preload="none"
+      class="absolute inset-0 z-10 w-full h-full object-cover focus:outline-none"
+      style="width: 53.5%; height: auto; border: double"
+      poster="https://joy1.videvo.net/videvo_files/video/free/2019-11/thumbnails/190301_1_25_11_small.jpg"
+      controls=""
+      autoplay="0"
+      muted=""
+    ></video>
+    <source
+      src="https://joy1.videvo.net/videvo_files/video/free/2019-11/large_watermarked/190301_1_25_11_preview.mp4"
+      type="video/mp4"
+    />
+    <br />
+    <small>Video de leonas hecho con </small> <b>HTML</b> <small>y </small
+    ><b>CSS</b> <br /><br /><br /><br />
+    <!--El elemento/tag <audio> sirve para reproducir audio en la web. No soporta atributos <width/height>, ni el atributo <poster> porque no hay componentes visuales-->
+    <p><b>Audio con ruta https:</b></p>
+    <audio
+      src="C:\Users\marko\Music\LionGrowlAngryGene PE931903.wav"
+      type="audio\wav"
+      controls=""
+      autoplay=""
+      muted=""
+    >
+      Audio de leonas ruguiendo
+    </audio>
+    <br />
+    <small>Audio del rugido de una leona</small>
+    <!--  -->
+    <form action="ejemplo.js" method="get">
+      <!--  -->
+      <label for="">Nombre:</label>
+      <input type="text" name="nombre" value="Escribe tu nombre" id="01" />
+      <br />
+      <!--  -->
+      <label for="">Contraseña:</label>
+      <input
+        type="password"
+        name="contraseña"
+        value="Valor que aparece ya escrito"
+        id="02"
+      />
+      <br />
+      <!--  -->
+      <label for="03"
+        >Ingresa un numero entre el -1 y el 1. Decimales admitidos:</label
+      >
+      <input
+        type="number"
+        name="numero"
+        value="10"
+        id="03"
+        step="2"
+        min="-1"
+        max="1"
+      />
+      <br />
+      <!--  -->
+      <label for="04">Email:</label>
+      <input
+        type="email"
+        name="correo electronico"
+        value="Escribe tu email"
+        id="04"
+      />
+      <br />
+      <!--  -->
+      <label for="05">Elije un color:</label
+      ><input type="color" name="color" value="Elije un color" id="05" />
+      <br />
+      <!--  -->
+      <label for="06">0-100:</label>
+      <input
+        type="range"
+        name="rango"
+        min="0"
+        max="100"
+        value="Elije un valor entre 0 y 100"
+        id="06"
+      />
+      <br />
+      <!--  -->
+      <label for="07">Fecha de nacimiento:</label>
+      <input
+        type="date"
+        name="fecha de nacimiento"
+        value="Pon tu fecha de nacimiento"
+        id="07"
+      />
+      <br />
+      <!--  -->
+      <label for="08">Horario:</label>
+      <input
+        type="time"
+        name="horario"
+        value="Agrega tu horario local"
+        id="08"
+      />
+      <br />
+      <!--  -->
+      <label for="09">Boton deshabilitado:</label>
+      <input
+        type="button"
+        name="boton"
+        value="NombreDelBoton"
+        disabled
+        id="09"
+      />
+      <br />
+      <!--  -->
+      <label for="10">Area de texto:</label><br />
+      <textarea name="" cols="25" rows="5" id="10" placeholder="Ingresa aquí tu texto"></textarea>
+      <br />
+      <!--  -->
+      <label for="11">Busqueda:</label>
+      <input type="search" name="busqueda" value="Buscar" id="11" />
+      <br />
+      <!--  -->
+      <label for="12">Envía el formulario:</label>
+      <input type="submit" name="mandar datos al servidor" id="12" />
+      <br />
+      <!--  -->
+      <label for="13">Casilla:</label>
+      <input type="checkbox" name="Casilla de verificación" id="13" checked />
+    </form>
+    <footer>
+      <section>
+        <h3>Este es el pie de pagina</h3>
+        <h4>Copyright & agradecimientos</h4>
+        <small>Síguenos:</small><br />
+        <a href="https://Facebook.com">Facebook</a>
+        <a href="https://Instagram.com">Instagram</a>
+        <a href="https://Twitter.com">Twitter</a>
+      </section>
+    </footer>
   </body>
 </html>

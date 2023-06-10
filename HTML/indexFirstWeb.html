@@ -1,57 +1,118 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0"/>
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0"
+    />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="icon" href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico" type="image/x-icon" />
+    <link
+      rel="icon"
+      href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico"
+      type="image/x-icon"
+    />
     <link name="author" href="Marcos Lambir Torres" />
-    <link name="Descripcion" content="Escritura del codigo del esqueleto basico para crear una pagina web cualquiera" />
-    <meta property="og:site_name" content="Estructura de una pagina web basica" />
+    <link
+      name="Descripcion"
+      content="Escritura del codigo del esqueleto basico para crear una pagina web cualquiera"
+    />
+    <meta
+      property="og:site_name"
+      content="Estructura de una pagina web basica"
+    />
     <meta property="og:title" content="web page" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\start.html" />
-    <meta property="og:image" content="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico" />
+    <meta
+      property="og:url"
+      content="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\start.html"
+    />
+    <meta
+      property="og:image"
+      content="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico"
+    />
     <meta property="og:author" content="Marcos Lambir Torres" />
-    <meta property="og:description" content="Esta página habla sobre las propiedades Meta y las propiedades Open Graph, las cuales nos ayudan a dar información detallada en las redes sociales, información para los motores de  búsqueda ayudándonos del SEO (Search Engine Optimization) y, en general, sobre el contenido de nuestra página.
+    <meta
+      property="og:description"
+      content="Esta página habla sobre las propiedades Meta y las propiedades Open Graph, las cuales nos ayudan a dar información detallada en las redes sociales, información para los motores de  búsqueda ayudándonos del SEO (Search Engine Optimization) y, en general, sobre el contenido de nuestra página.
     ¿Sabes cómo ven los usuarios tu página web cuando lo comparten en sus perfiles sociales? Las Open Graph serán las encargadas de mostrar toda la información.
-    En este enlace encontrarás más información sobre la estructura básica de una página web: https://platform.develhope.co/students/classes/NU6vdtsqyxBNihi44nq8/exercises/wBWyNCGR5QqghRdXB0ZP/832df450-d96a-4d83-95d1-7200a35cffa5" />
-    <title>Estructura de una pagina web basica</title>
-</head>
-<body>
+    En este enlace encontrarás más información sobre la estructura básica de una página web: https://platform.develhope.co/students/classes/NU6vdtsqyxBNihi44nq8/exercises/wBWyNCGR5QqghRdXB0ZP/832df450-d96a-4d83-95d1-7200a35cffa5"
+    />
+    <title>Index First Web</title>
+  </head>
+  <body>
     <header>
-        <p>Encabezado de la pagina</p>
-        <nav>
-            <small>Navegador de la pagina:</small>
-            <ul>
-                <li><a href=""></a>Inicio</li>
-                <li><a href=""></a>Contenido</li>
-                <li><a href=""></a>Contactos</li>
-            </ul>
-        </nav>
+      <p>Encabezado de la pagina</p>
+      <nav>
+        <small>Navegador de la pagina:</small>
+        <ul>
+          <li><a href=""></a>Inicio</li>
+          <li><a href=""></a>Contenido</li>
+          <li><a href=""></a>Contactos</li>
+        </ul>
+      </nav>
     </header>
     <article>
-        <h1>Titulo h1 principal</h1>
-        <section>
-            <h2>Subtitulo h2 principal</h2>
-        </section>
-        <section>
-            <h3>Titulo h3 (contenido)</h3>
-            <p>Contenido: <br>                
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique repellat recusandae pariatur at assumenda nam porro expedita minima deleniti corrupti harum tempora tenetur ut dolor quisquam eos, ea hic quis.</p>
-        </section>
+      <h1>Titulo h1 principal</h1>
+      <section>
+        <h2>Subtitulo h2 principal</h2>
+      </section>
+      <section>
+        <h3>Titulo h3 (contenido)</h3>
+        <p>
+          Contenido: <br />
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique
+          repellat recusandae pariatur at assumenda nam porro expedita minima
+          deleniti corrupti harum tempora tenetur ut dolor quisquam eos, ea hic
+          quis.
+        </p>
+      </section>
+      <section>
+        <form action="ejemplo.js" method="get">
+          <label for="09">Boton deshabilitado:</label>
+          <input
+            type="button"
+            id="09"
+            name="boton"
+            value="NombreDelBoton"
+            disabled
+          />
+          <br /><br />
+          <label for="rangeInput">Entrada de numeros 0-100:</label>
+          <input
+            type="number"
+            id="rangeInput"
+            name="rangeInput"
+            min="0"
+            max="100"
+            step="2"
+            autofocus
+          />
+          <br /><br />
+          <label for="checkboxInput">Casilla verificada:</label>
+          <input
+            type="checkbox"
+            id="checkboxInput"
+            name="checkboxInput"
+            checked
+          />
+          <br /><br />
+          <label for="dateInput">Fecha:</label>
+          <input type="date" id="dateInput" name="dateInput" />
+        </form>
+      </section>
     </article>
     <aside>
-        <h3>Contenido extra</h3>
-        <h4>Especificaciones</h4>
+      <h3>Contenido extra</h3>
+      <h4>Especificaciones</h4>
     </aside>
     <footer>
-        <h3>Este es el pie de pagina</h3>
-        <h4>Copyright & agradecimientos</h4>
-        <small>Síguenos:</small><br>
-        <a href="https://Facebook.com">Facebook</a>
-        <a href="https://Instagram.com">Instagram</a>
-        <a href="https://Twitter.com">Twitter</a>
+      <h3>Este es el pie de pagina</h3>
+      <h4>Copyright & agradecimientos</h4>
+      <small>Síguenos:</small><br />
+      <a href="https://Facebook.com">Facebook</a>
+      <a href="https://Instagram.com">Instagram</a>
+      <a href="https://Twitter.com">Twitter</a>
     </footer>
-</body>
+  </body>
 </html>
