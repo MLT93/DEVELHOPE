@@ -7,7 +7,11 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <link rel="icon" href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico" type="image/x-icon" />
+    <link
+      rel="icon"
+      href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico"
+      type="image/x-icon"
+    />
     <title>5-Form</title>
     <style>
       label {
@@ -25,32 +29,106 @@
         <form action="ejemplo.js" method="get">
           <fieldset>
             <legend><b>Datos personales</b></legend>
-          <label for="01">Email:</label>
-            <input type="email" name="" id="01" autofocus size="30" required>          
-          <label for="02">password:</label>
-            <input type="password" name="" id="02" maxlength="10" minlength="4" required>        
-          <label for="03">Nombre:</label>
-            <input type="text" name="Nombre" id="03" maxlength="40" required>
-          <label for="04">Apellidos:</label>
-            <input type="text" name="Apellido" id="04" maxlength="80" required>
-          <label for="05">Fecha de nacimiento:</label>
-            <input type="date" name="Fecha de nacimiento" id="05" required>
-          <label for="06">Número de teléfono:</label>
-            <input type="tel" name="Telefono" id="06" required>
+            <br />
+            <label for="01"><small>Email:</small></label>
+            <input
+              type="email"
+              name=""
+              id="01"
+              autofocus
+              size="30"
+              placeholder="giovanotti.arcangelo@gmail.com"
+              required
+            />
+            <br />
+            <br />
+            <label for="02"><small>Password:</small></label>
+            <input
+              type="password"
+              name=""
+              id="02"
+              maxlength="10"
+              minlength="4"
+              placeholder="****"
+              required
+            />
+            <br />
+            <br />
+            <label for="03"><small>Nombre:</small></label>
+            <input
+              type="text"
+              name="Nombre"
+              id="03"
+              maxlength="40"
+              placeholder="Luca"
+              required
+            />
+            <br />
+            <br />
+            <label for="04"><small>Apellidos:</small></label>
+            <input
+              type="text"
+              name="Apellido"
+              id="04"
+              maxlength="80"
+              placeholder="Ramirez"
+              required
+            />
+            <br />
+            <br />
+            <label for="05"><small>Fecha de nacimiento:</small></label>
+            <input type="date" name="Fecha de nacimiento" id="05" required />
+            <br />
+            <br />
+            <label for="06"><small>Número de teléfono:</small></label>
+            <input
+              type="tel"
+              name="Telefono"
+              id="06"
+              maxlength="9"
+              placeholder="600 123 123"
+              size="11"
+              required
+            />
+            <br />
+            <br />
           </fieldset>
-          <br>
+          <br />
           <fieldset>
             <legend><b>Plan a elegir</b></legend>
-              <label for="07"><small>Low</small></label>
-              <input type="radio" name="Boton Plan" id="07" value="9,90" required> $9,90
-              <br><br>
-              <label for="08"><small>Medium</small></label> 
-              <input type="radio" name="Boton Plan" value="29,90" required> $29,90
-              <br><br>
-              <label for="09"><small>Pro</small></label> 
-              <input type="radio" name="Boton Plan" value="59,90" required> $59,90 
+            <br />
+            <label for="07"><small>Low</small></label>
+            <input
+              type="radio"
+              name="Boton Plan"
+              id="07"
+              value="9,90"
+              required
+            />
+            $9,90 <br />
+            <br />
+            <label for="08"><small>Medium</small></label>
+            <input
+              type="radio"
+              name="Boton Plan"
+              id="08"
+              value="29,90"
+              required
+            />
+            $29,90 <br />
+            <br />
+            <label for="09"><small>Pro</small></label>
+            <input
+              type="radio"
+              name="Boton Plan"
+              id="09"
+              value="59,90"
+              required
+            />
+            $59,90 <br />
+            <br />
           </fieldset>
-          <br>
+          <br />
           <!-- <fieldset>
             <legend><b>Elige tu plan</b></legend>
               <select name="Plans" id="Plans">
@@ -63,15 +141,251 @@
           <br>
            -->
           <fieldset>
+            <br />
             <legend><b>Pago con tarjeta</b></legend>
-
+            <label for="10" for="11" for="12" for="13" for="14"
+              ><small> Tarjeta de crédito/débito: </small>
+              <input
+                type="text"
+                name="Tarjeta de pago"
+                id="10"
+                placeholder="Ingrese el número de su tarjeta"
+                size="30"
+                required />
+              <small> CVV: </small>
+              <input
+                type="text"
+                name="Codigo de seguridad de la tarjeta"
+                id="11"
+                placeholder="***"
+                size="5"
+                required />
+              <small> Fecha de caducidad: </small>
+              <input
+                type="date"
+                name="Fecha de caducidad de la tarjeta"
+                id="12"
+                required />
+              <br />
+              <br />
+              <small>Propietario:</small>
+              <input
+                type="text"
+                name="Nombre del dueño de la tarjeta"
+                id="13"
+                placeholder="Ingrese el nombre asociado a la tarjeta"
+                size="30"
+                required />
+              <small>Dirección de facturación:</small>
+              <input
+                type="text"
+                name="Dirección de envío para las facturas"
+                id="14"
+                placeholder="Ingrese"
+                size="34"
+                required
+            /></label>
+            <br />
+            <br />
           </fieldset>
-          <br>
+          <br />
         </form>
       </section>
     </article>
-    <aside></aside>
-    <footer></footer>
-    
+    <aside>
+
+    </aside>
+    <footer>
+
+    </footer>
   </body>
 </html>
+
+<!-- 
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link
+      rel="icon"
+      href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico"
+      type="image/x-icon"
+    />
+    <title>5-Formulario de Registro</title>
+    <style>
+      label {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav></nav>
+    </header>
+    <article>
+      <section>
+        <form action="ejemplo.js" method="get">
+          <fieldset>
+            <legend><b>Datos personales</b></legend>
+            <br />
+            <label for="email"><small>Email:</small></label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              autofocus
+              size="30"
+              placeholder="giovanotti.arcangelo@gmail.com"
+              required
+            />
+            <br />
+            <br />
+            <label for="password"><small>Contraseña:</small></label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              maxlength="10"
+              minlength="4"
+              placeholder="****"
+              required
+            />
+            <br />
+            <br />
+            <label for="name"><small>Nombre:</small></label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              maxlength="40"
+              placeholder="Luca"
+              required
+            />
+            <br />
+            <br />
+            <label for="lastname"><small>Apellidos:</small></label>
+            <input
+              type="text"
+              name="lastname"
+              id="lastname"
+              maxlength="80"
+              placeholder="Ramirez"
+              required
+            />
+            <br />
+            <br />
+            <label for="dob"><small>Fecha de nacimiento:</small></label>
+            <input type="date" name="dob" id="dob" required />
+            <br />
+            <br />
+            <label for="telephone"><small>Número de teléfono:</small></label>
+            <input
+              type="tel"
+              name="telephone"
+              id="telephone"
+              maxlength="9"
+              placeholder="600 123 123"
+              size="11"
+              required
+            />
+            <br />
+            <br />
+          </fieldset>
+          <br />
+          <fieldset>
+            <legend><b>Plan a elegir</b></legend>
+            <br />
+            <label for="plan1"><small>Low</small></label>
+            <input
+              type="radio"
+              name="plan"
+              id="plan1"
+              value="9,90"
+              required
+            />
+            $9,90 <br />
+            <br />
+            <label for="plan2"><small>Medium</small></label>
+            <input
+              type="radio"
+              name="plan"
+              id="plan2"
+              value="29,90"
+              required
+            />
+            $29,90 <br />
+            <br />
+            <label for="plan3"><small>Pro</small></label>
+            <input
+              type="radio"
+              name="plan"
+              id="plan3"
+              value="59,90"
+              required
+            />
+            $59,90 <br />
+            <br />
+          </fieldset>
+          <br />
+          <fieldset>
+            <br />
+            <legend><b>Pago con tarjeta</b></legend>
+            <label for="creditCard"><small>Tarjeta de crédito/débito:</small></label>
+            <input
+              type="text"
+              name="creditCard"
+              id="creditCard"
+              placeholder="Ingrese el número de su tarjeta"
+              size="30"
+              required />
+            <br />
+            <br />
+            <label for="cvc"><small>CVV:</small></label>
+            <input
+              type="text"
+              name="cvc"
+              id="cvc"
+              placeholder="..."
+              size="5"
+              required />
+            <br />
+            <br />
+            <label for="expiration"><small>Fecha de caducidad:</small></label>
+            <input
+              type="date"
+              name="expiration"
+              id="expiration"
+              required />
+            <br />
+            <br />
+            <label for="billingAddress"><small>Dirección de facturación:</small></label>
+            <input
+              type="text"
+              name="billingAddress"
+              id="billingAddress"
+              placeholder="Ingrese su dirección de facturación"
+              size="34"
+              required
+            />
+            <br />
+            <br />
+          </fieldset>
+          <br />
+        </form>
+      </section>
+    </article>
+    <aside>
+
+    </aside>
+    <footer>
+
+    </footer>
+  </body>
+</html>
+ -->
