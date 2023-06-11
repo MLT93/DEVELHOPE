@@ -20,20 +20,108 @@
     </style>
   </head>
   <body>
+    <header>
+      <nav>
+        <table>
+          <thead>
+            <ul>
+              <tr>
+                <th><b>NavBar</b></th>
+                <th>
+                  <a
+                    href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\index.html"
+                    >Home</a
+                  >
+                </th>
+                <th><a href="http://google.com">Link</a></th>
+                <th><label for="Dropdown">Dropdown</label></th>
+                <th>
+                  <select
+                    name="Dropdown"
+                    id="Dropdown"
+                    value="Dropdown"
+                    onchange="document.location.href=this.value"
+                  >
+                    <option selected disabled></option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\start.html"
+                    >
+                      Exercise 1-Head
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\2-HTML-Tags\start.html"
+                    >
+                      Exercise 2-HTML-Tags
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\3-Attributes\start.html"
+                    >
+                      Exercise 3-Attributes
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\4-Table\start.html"
+                    >
+                      Exercise 4-Table
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\5-Form\start.html"
+                    >
+                      Exercise 5-Form
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\6-Validation\start.html"
+                    >
+                      Exercise 6-Validation
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\7-NavBar\start.html"
+                    >
+                      Exercise 7-NavBar
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\8-Card\start.html"
+                    >
+                      Exercise 8-Card
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\start.html"
+                    >
+                      Exercise 9-Create an HTML blog page
+                    </option>
+                  </select>
+                </th>
+                <th>
+                  <label for="search"></label>
+                  <input
+                    type="search"
+                    name="search"
+                    id="serarch"
+                    placeholder="Search"
+                  />
+                  <button type="submit">Search</button>
+                </th>
+              </tr>
+            </ul>
+          </thead>
+          <tbody></tbody>
+          <tfoot></tfoot>
+        </table>
+      </nav>
+    </header>
     <form action="#">
       <div>
         <label for="form-email">Email</label>
-        <input type="email" id="form-email" name="email" required/>
+        <input type="email" id="form-email" name="email" required />
         <label for="form-pass">Password</label>
-        <input type="password" id="form-pass" name="pass" required/>
+        <input type="password" id="form-pass" name="pass" required />
       </div>
       <div>
         <label for="form-name">Name and surname</label>
         <input type="text" id="form-name" name="name" required />
         <label for="form-dob">Date of birth</label>
-        <input type="date" id="form-dob" name="dob" required/>
+        <input type="date" id="form-dob" name="dob" required />
         <label for="form-tel">Phone number</label>
-        <input type="tel" id="form-tel" name="tel" required/>
+        <input type="tel" id="form-tel" name="tel" required />
       </div>
       <div>
         <label for="form-plan">Plans</label>
@@ -46,15 +134,29 @@
           </optgroup>
         </select>
         <label for="form-pro">PRO plan</label>
-        <input id="form-pro" name="pro" type="checkbox" required/>
+        <input id="form-pro" name="pro" type="checkbox" required />
       </div>
       <div>
         <label for="form-cc">Credit card number</label>
-        <input id="form-cc" name="cc" type="text" maxlength="16" minlength="16" required />
+        <input
+          id="form-cc"
+          name="cc"
+          type="text"
+          maxlength="16"
+          minlength="16"
+          required
+        />
         <label for="form-cvc">CVC</label>
-        <input id="form-cvc" name="cvc" type="text" maxlength="3" minlength="3" required/>
+        <input
+          id="form-cvc"
+          name="cvc"
+          type="text"
+          maxlength="3"
+          minlength="3"
+          required
+        />
         <label for="form-exp">Expiration date</label>
-        <input id="form-exp" name="exp" type="date" minlength="8" required/>
+        <input id="form-exp" name="exp" type="date" minlength="8" required />
         <label for="form-address">Address</label>
         <input type="text" id="form-address" name="address" required />
       </div>

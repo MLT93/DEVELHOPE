@@ -3,8 +3,15 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <link rel="icon" href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico" type="image/x-icon" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link
+      rel="icon"
+      href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico"
+      type="image/x-icon"
+    />
     <title>2-HTML-Tags</title>
 
     <style>
@@ -28,16 +35,114 @@
 
   <body>
     <header>
+      <nav>
+        <table>
+          <thead>
+            <ul>
+              <tr>
+                <th><b>NavBar</b></th>
+                <th>
+                  <a
+                    href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\index.html"
+                    >Home</a
+                  >
+                </th>
+                <th><a href="http://google.com">Link</a></th>
+                <th><label for="Dropdown">Dropdown</label></th>
+                <th>
+                  <select
+                    name="Dropdown"
+                    id="Dropdown"
+                    value="Dropdown"
+                    onchange="document.location.href=this.value"
+                  >
+                    <option selected disabled></option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\start.html"
+                    >
+                      Exercise 1-Head
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\2-HTML-Tags\start.html"
+                    >
+                      Exercise 2-HTML-Tags
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\3-Attributes\start.html"
+                    >
+                      Exercise 3-Attributes
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\4-Table\start.html"
+                    >
+                      Exercise 4-Table
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\5-Form\start.html"
+                    >
+                      Exercise 5-Form
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\6-Validation\start.html"
+                    >
+                      Exercise 6-Validation
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\7-NavBar\start.html"
+                    >
+                      Exercise 7-NavBar
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\8-Card\start.html"
+                    >
+                      Exercise 8-Card
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\start.html"
+                    >
+                      Exercise 9-Create an HTML blog page
+                    </option>
+                  </select>
+                </th>
+                <th>
+                  <label for="search"></label>
+                  <input
+                    type="search"
+                    name="search"
+                    id="serarch"
+                    placeholder="Search"
+                  />
+                  <button type="submit">Search</button>
+                </th>
+              </tr>
+            </ul>
+          </thead>
+          <tbody></tbody>
+          <tfoot></tfoot>
+        </table>
+      </nav>
       <h1>This is the main title.</h1>
       <h2>And along with the second title, they are in the header tag.</h2>
     </header>
 
-    <aside>Tag usually used for the sidebar of a website. However, in order to make it as a real sidebar, we need to apply CSS properties. This is an unordered list of links.
+    <aside>
+      Tag usually used for the sidebar of a website. However, in order to make
+      it as a real sidebar, we need to apply CSS properties. This is an
+      unordered list of links.
       <ul>
         <a href="..\index.html"><li>Index</li></a>
-        <a href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\start.html"><li>1-Head</li></a>
-        <a href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\2-HTML-Tags\start.html"><li>2-HTML-Tags</li></a>
-        <a href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\3-Attributes\start.html"><li>3-Attributes</li></a>
+        <a
+          href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\start.html"
+          ><li>1-Head</li></a
+        >
+        <a
+          href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\2-HTML-Tags\start.html"
+          ><li>2-HTML-Tags</li></a
+        >
+        <a
+          href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\3-Attributes\start.html"
+          ><li>3-Attributes</li></a
+        >
         <a href="..\index.html"><li>Link 4</li></a>
         <a href="..\index.html"><li>Link 5</li></a>
         <a href="..\index.html"><li>Link 6</li></a>
@@ -48,17 +153,15 @@
     </aside>
 
     <main>
-      This is the main content of the page      
+      This is the main content of the page
       <section>
-        <br>
+        <br />
         <b>Inside the body there are some sections.</b>
-        <br>
-        <br>
+        <br />
+        <br />
       </section>
 
-      <section>
-      This is a quotation: <q>Hello world.</q>
-      </section>
+      <section>This is a quotation: <q>Hello world.</q></section>
 
       <section>
         <!--  -->
@@ -69,27 +172,24 @@
       </section>
 
       <section>
-        This is a blockquote text: <blockquote>text</blockquote>
+        This is a blockquote text:
+        <blockquote>text</blockquote>
       </section>
 
-      <section>
-        This is an idiomatic or italica text: <i>text</i>
-      </section>
+      <section>This is an idiomatic or italica text: <i>text</i></section>
 
-      <section>
-        This is a marked text: <mark>text</mark>
-      </section>
+      <section>This is a marked text: <mark>text</mark></section>
 
       <section>
         <!--  -->
         This is an emphasized text: <em>text</em>
-        <br>
+        <br />
         This is a bold text: <b>text</b>
       </section>
     </main>
 
     <footer>
-      <br>
+      <br />
       This is the end of the page
       <p>This a paragraph.</p>
     </footer>

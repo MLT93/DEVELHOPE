@@ -2,29 +2,139 @@
 <html lang="es_ES">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0"/>
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0"
+    />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>1-Head</title>
-    <link rel="icon" href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico" type="image/x-icon" />
+    <link
+      rel="icon"
+      href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico"
+      type="image/x-icon"
+    />
     <link name="author" href="Marcos Lambir Torres" />
-    <link name="Descripcion" content="Página sobre la primera lección del curso full stack web con la plataforma Develhope.
-    La primera lección nos habla de los elementos Meta y los atributos para la descripción de la página web, a demás del posicionamiento con respecto a los motores de búsqueda (SEO) y las redes sociales (Open Graph)" />
+    <link
+      name="Descripcion"
+      content="Página sobre la primera lección del curso full stack web con la plataforma Develhope.
+    La primera lección nos habla de los elementos Meta y los atributos para la descripción de la página web, a demás del posicionamiento con respecto a los motores de búsqueda (SEO) y las redes sociales (Open Graph)"
+    />
     <meta property="og:site_name" content="Start.html" />
     <meta property="og:title" content="HTML Open Graph & Meta lesson" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\start.html" />
-    <meta property="og:image" content="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico" />
+    <meta
+      property="og:url"
+      content="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\start.html"
+    />
+    <meta
+      property="og:image"
+      content="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico"
+    />
     <meta property="og:author" content="Marcos Lambir Torres" />
-    <meta property="og:description" content="Esta página habla sobre las propiedades Meta y las propiedades Open Graph, las cuales nos ayudan a dar información detallada en las redes sociales, información para los motores de  búsqueda ayudándonos del SEO (Search Engine Optimization) y, en general, sobre el contenido de nuestra página.
+    <meta
+      property="og:description"
+      content="Esta página habla sobre las propiedades Meta y las propiedades Open Graph, las cuales nos ayudan a dar información detallada en las redes sociales, información para los motores de  búsqueda ayudándonos del SEO (Search Engine Optimization) y, en general, sobre el contenido de nuestra página.
     ¿Sabes cómo ven los usuarios tu página web cuando lo comparten en sus perfiles sociales? Las Open Graph serán las encargadas de mostrar toda la información.
-    En este enlace encontrarás más información sobre la estructura básica de una página web: https://platform.develhope.co/students/classes/NU6vdtsqyxBNihi44nq8/exercises/wBWyNCGR5QqghRdXB0ZP/832df450-d96a-4d83-95d1-7200a35cffa5" />
+    En este enlace encontrarás más información sobre la estructura básica de una página web: https://platform.develhope.co/students/classes/NU6vdtsqyxBNihi44nq8/exercises/wBWyNCGR5QqghRdXB0ZP/832df450-d96a-4d83-95d1-7200a35cffa5"
+    />
   </head>
   <body>
+    <header>
+      <nav>
+        <table>
+          <thead>
+            <ul>
+              <tr>
+                <th><b>NavBar</b></th>
+                <th>
+                  <a
+                    href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\index.html"
+                    >Home</a
+                  >
+                </th>
+                <th><a href="http://google.com">Link</a></th>
+                <th><label for="Dropdown">Dropdown</label></th>
+                <th>
+                  <select
+                    name="Dropdown"
+                    id="Dropdown"
+                    value="Dropdown"
+                    onchange="document.location.href=this.value"
+                  >
+                    <option selected disabled></option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\start.html"
+                    >
+                      Exercise 1-Head
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\2-HTML-Tags\start.html"
+                    >
+                      Exercise 2-HTML-Tags
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\3-Attributes\start.html"
+                    >
+                      Exercise 3-Attributes
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\4-Table\start.html"
+                    >
+                      Exercise 4-Table
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\5-Form\start.html"
+                    >
+                      Exercise 5-Form
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\6-Validation\start.html"
+                    >
+                      Exercise 6-Validation
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\7-NavBar\start.html"
+                    >
+                      Exercise 7-NavBar
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\8-Card\start.html"
+                    >
+                      Exercise 8-Card
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\start.html"
+                    >
+                      Exercise 9-Create an HTML blog page
+                    </option>
+                  </select>
+                </th>
+                <th>
+                  <label for="search"></label>
+                  <input
+                    type="search"
+                    name="search"
+                    id="serarch"
+                    placeholder="Search"
+                  />
+                  <button type="submit">Search</button>
+                </th>
+              </tr>
+            </ul>
+          </thead>
+          <tbody></tbody>
+          <tfoot></tfoot>
+        </table>
+      </nav>
+    </header>
     <h1>My first lesson of <mark>Meta</mark> and <mark>Open Graph</mark></h1>
-    <br>
-    <br>
-    <small>Cómo podemos volver a la página principal de <b>index.html</b>? Acá abajo hay un enlace:</small>
-    <br>
+    <br />
+    <br />
+    <small
+      >Cómo podemos volver a la página principal de <b>index.html</b>? Acá abajo
+      hay un enlace:</small
+    >
+    <br />
     <a href="..\index.html"><b>Click aqui</b></a>
   </body>
 </html>
