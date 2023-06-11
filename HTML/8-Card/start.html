@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="eng">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link
+      rel="icon"
+      href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico"
+      type="image/x-icon"
+    />
+    <title>7-NavBar</title>
+    <style>
+      label {
+        display: block;
+      }
+    </style>
+    <script lang="javascript">
+      function nav(value) {
+        if (value != "") {
+          location.href = value;
+        }
+        return location.href;
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <table>
+          <thead>
+            <ul>
+              <tr>
+                <th><b>NavBar</b></th>
+                <th>
+                  <a
+                    href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\index.html"
+                    >Home</a
+                  >
+                </th>
+                <th><a href="http://google.com">Link</a></th>
+                <th><label for="Dropdown">Dropdown</label></th>
+                <th>
+                  <select
+                    name="Dropdown"
+                    id="Dropdown"
+                    value="Dropdown"
+                    onchange="document.location.href=this.value"
+                  >
+                    <option selected disabled></option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\start.html"
+                    >
+                      Exercise 1-Head
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\2-HTML-Tags\start.html"
+                    >
+                      Exercise 2-HTML-Tags
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\3-Attributes\start.html"
+                    >
+                      Exercise 3-Attributes
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\4-Table\start.html"
+                    >
+                      Exercise 4-Table
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\5-Form\start.html"
+                    >
+                      Exercise 5-Form
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\6-Validation\start.html"
+                    >
+                      Exercise 6-Validation
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\7-NavBar\start.html"
+                    >
+                      Exercise 7-NavBar
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\8-Card\start.html"
+                    >
+                      Exercise 8-Card
+                    </option>
+                    <option
+                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\start.html"
+                    >
+                      Exercise 9-Create an HTML blog page
+                    </option>
+                  </select>
+                </th>
+                <th>
+                  <button href="..." disabled>Disabled</button>
+                </th>
+                <th>
+                  <label for="search"></label>
+                  <input
+                    type="search"
+                    name="search"
+                    id="serarch"
+                    placeholder="Search"
+                  />
+                  <button type="submit">Search</button>
+                </th>
+              </tr>
+            </ul>
+          </thead>
+          <tbody></tbody>
+          <tfoot></tfoot>
+        </table>
+      </nav>
+    </header>
+    <br />
+    <article>
+      <section style="background-color: darkgrey">
+        <fieldset>
+          <h1>
+            <img src="" alt="" /> <center style="color: aliceblue;">Image cap</center>
+          </h1>
+        </fieldset>
+      </section>
+      <section>
+        <fieldset>
+          <h2>Card title</h2>
+          <p>
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+        </fieldset>
+      </section>
+      <section>
+        <fieldset>
+          <h4>An item</h4>
+        </fieldset>
+      </section>
+      <section>
+        <fieldset>
+          <h4>A second item</h4>
+        </fieldset>
+      </section>
+      <section>
+        <fieldset>
+          <h4>A third item</h4>
+        </fieldset>
+      </section>
+      <section>
+        <fieldset>
+          <br>
+          <a href="...">Card link</a> <a href="...">Another link</a>
+          <br> <br>
+        </fieldset>
+      </section>
+    </article>
+    <aside></aside>
+    <footer></footer>
+  </body>
+</html>
