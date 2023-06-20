@@ -1,44 +1,17 @@
 <!DOCTYPE html>
-<html lang="en-ES">
+<html lang="es-ES">
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <link
-      rel="icon"
-      href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico"
-      type="image/x-icon"
-    />
-    <link name="author" href="Marcos Lambir Torres" />
-    <link
-      name="Descripcion"
-      content="Ejercicio de desarrollo de una página web con un artículo inherente a los ordenadores gaming del 2023, con sus pros y contras a demás de precios y detalles de sus componentes"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta property="og:site_name" content="start.html" />
     <meta property="og:title" content="HTML article of pc gaming" />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\start.html"
-    />
-    <meta
-      property="og:image"
-      content="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico"
-    />
+    <meta property="og:url" content="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\start.html" />
+    <meta property="og:image" content="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico" />
     <meta property="og:author" content="Marcos Lambir Torres" />
-    <meta
-      property="og:description"
-      content="Esta página redacta un artículo sobre electrónica e intereses de ordenadores de juego, sus ventajas, desventajas, precios y análisis"
-    />
-    <title>9-Create an HTML blog page</title>
-    <style>
-      label {
-        display: block;
-      }
-    </style>
+    <meta property="og:description" content="Esta página redacta un artículo sobre electrónica e intereses de ordenadores de juego, sus ventajas, desventajas, precios y análisis" />
+
     <script lang="javascript">
       function nav(value) {
         if (value != "") {
@@ -48,133 +21,39 @@
       }
     </script>
 
-    <link rel="stylesheet" href="styles.css">
-
+    <link rel="icon" href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\favicon.ico" type="image/x-icon" />
+    <link name="author" href="Marcos Lambir Torres" />
+    <link name="Descripcion" content="Ejercicio de desarrollo de una página web con un artículo inherente a los ordenadores gaming del 2023, con sus pros y contras a demás de precios y detalles de sus componentes" />
+    <link rel="stylesheet" href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\styles.css" />
+    
+    <title>9-Create an HTML blog page</title>    
   </head>
+
   <body>
     <header>
-      <nav>
-            <div>
-              <tr>
-                <th
-                  style="
-                    color: #000000ab;
-                    width: 100px;
-                    height: auto;
-                    font-size: large;
-                    font-family: 'Courier New', Courier, monospace; background-color: darkgoldenrod; margin-left: 20px;"
-                >
-                  <b>NavBar</b>
-                </th>
-                <th>
-                  <a
-                    style="
-                      color: aliceblue;
-                      font-size: large;
-                      font-family: 'Courier New', Courier, monospace; margin-left: 20px;"
-                    href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\index.html"
-                    >Home</a
-                  >
-                </th>
-                <th>
-                  <a
-                    style="
-                      color: aliceblue;
-                      font-size: large;
-                      font-family: 'Courier New', Courier, monospace; margin-left: 20px;"
-                    href="http://google.com"
-                    >Link</a
-                  >
-                </th>
-                <th>
-                  <label
-                    for="Dropdown"
-                    style="
-                      color: #151515a3;
-                      font-size: large;
-                      font-family: 'Courier New', Courier, monospace; margin-left: 20px;"
-                    >Dropdown</label
-                  >
-                </th>
-                <th>
-                  <select
-                    style="display: flexbox; border-radius: 10px; margin-left: 20px;"
-                    name="Dropdown"
-                    id="Dropdown"
-                    value="Dropdown"
-                    onchange="document.location.href=this.value"
-                  >
-                    <option selected disabled></option>
-                    <option
-                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\indexFirstWeb.html"
-                    >
-                      IndexFirstWeb
-                    </option>
-                    <option
-                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\start.html"
-                    >
-                      Exercise 1-Head
-                    </option>
-                    <option
-                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\2-HTML-Tags\start.html"
-                    >
-                      Exercise 2-HTML-Tags
-                    </option>
-                    <option
-                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\3-Attributes\start.html"
-                    >
-                      Exercise 3-Attributes
-                    </option>
-                    <option
-                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\4-Table\start.html"
-                    >
-                      Exercise 4-Table
-                    </option>
-                    <option
-                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\5-Form\start.html"
-                    >
-                      Exercise 5-Form
-                    </option>
-                    <option
-                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\6-Validation\start.html"
-                    >
-                      Exercise 6-Validation
-                    </option>
-                    <option
-                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\7-NavBar\start.html"
-                    >
-                      Exercise 7-NavBar
-                    </option>
-                    <option
-                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\8-Card\start.html"
-                    >
-                      Exercise 8-Card
-                    </option>
-                    <option
-                      value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\start.html"
-                    >
-                      Exercise 9-Create an HTML blog page
-                    </option>
-                  </select>
-                </th>
-                <th>
-                  <label for="search"></label>
-                  <input
-                    style="display: flexbox; border-radius: 40px 10px 40px 10px; border-bottom: unset; border-top: unset; font-family: 'Courier New', Courier, monospace; margin-left: 20px;"
-                    type="search"
-                    name="search"
-                    id="serarch"
-                    placeholder=" Search"                    
-                  />
-                  <button
-                    style="border-radius: 40px 10px 40px 10px; font-family: 'Courier New', Courier, monospace; margin-left: -5px;"
-                    type="submit"
-                  >
-                    Search
-                  </button>
-                </th>
-              </tr>
-            </div>
+      <nav id="barra-de-navegación">
+        <div class="NavBar"><b>NavBar</b></div>
+        <div class="Home" href="..\index.html">Home</div> 
+        <div class="Link" href="http://google.com">Link</div>
+        <label class="Dropdown"for="Dropdown">Dropdown</label>
+        <select class="Selección" name="Dropdown" id="Dropdown" value="Dropdown" onchange="document.location.href=this.value">
+          <option selected disabled></option>
+          <option value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\indexFirstWeb.html">IndexFirstWeb</option>
+          <option value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\1-Head\start.html">Exercise 1-Head</option>
+          <option value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\2-HTML-Tags\start.html">Exercise 2-HTML-Tags</option>
+          <option value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\3-Attributes\start.html">Exercise 3-Attributes</option>
+          <option value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\4-Table\start.html">Exercise 4-Table</option>
+          <option value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\5-Form\start.html">Exercise 5-Form</option>
+          <option value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\6-Validation\start.html">Exercise 6-Validation</option>
+          <option value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\7-NavBar\start.html">Exercise 7-NavBar</option>
+          <option value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\8-Card\start.html">Exercise 8-Card</option>
+          <option value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\start.html">Exercise 9-Create an HTML blog page</option>
+          </select>
+          <label for="search"></label>
+            <input style="display: flexbox; border-radius: 40px 10px 40px 10px; border-bottom: unset; font-family: 'Courier New', Courier, monospace; " type="search" name="search" id="serarch" placeholder=" Search" />
+            <button style="border-radius: 40px 10px 40px 10px; font-family: 'Courier New', Courier, monospace; margin-left: -5px;" type="submit">Search
+            </button>
+          </div>
       </nav>
       <h1>This is the main title.</h1>
       <h2>And along with the second title, they are in the header tag.</h2>
@@ -248,7 +127,9 @@
           <table>
             <thead>
               <tr>
-                <th>Especificaciones:</th>
+                <th>
+                  Especificaciones:
+                </th>
                 <th>
                   <mark> <b>MSI MEG Aegis Ti5</b> </mark>
                 </th>
@@ -256,10 +137,10 @@
                   Las mejores ofertas de hoy:
                 </th>
                 <th>                  
-                <td>
-                  <img src="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\assets\MSI MEG aEGIS Ti5.webp" alt="ordenador gaming, juegos, pc" type="image/webp" style="width: 220px;">
-                </td>
-                </th>
+                  <td>
+                    <img src="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\assets\MSI MEG aEGIS Ti5.webp" alt="ordenador gaming, juegos, pc" type="image/webp" style="width: 220px;">
+                  </td>
+                </th>                
               </tr>
             </thead>
             <tbody>
@@ -362,9 +243,9 @@
                   Las mejores ofertas de hoy:
                 </th>
                 <th>                  
-                <td>
-                  <img src="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\assets\Alienware Aurora Ryzen Edition.webp" alt="ordenador gaming, juegos, pc" type="image/webp" style="width: 220px;">
-                </td>
+                  <td>
+                    <img src="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\assets\Alienware Aurora Ryzen Edition.webp" alt="ordenador gaming, juegos, pc" type="image/webp" style="width: 220px;">
+                  </td>
                 </th>
               </tr>
               <tr>
