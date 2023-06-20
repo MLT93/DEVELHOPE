@@ -1,0 +1,91 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+  background-color: aliceblue;
+  padding: 0 20px;
+}
+
+.container {
+  max-width: 800px;
+  height: 150px auto;
+
+  background-color: red;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-input-box {
+  width: 100%;
+  background-color: rgb(40, 40, 40);
+  border-radius: 10px;
+  position: relative;
+  color: aliceblue;
+  box-shadow: 0 1px 5px 3px black;
+}
+
+.search-input-box input {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  height: 55px;
+}
+
+label {
+  display: block;
+}
+
+header {
+  border: 2px solid darkgoldenrod;
+}
+
+nav {
+  background-color: rgba(52, 52, 52, 0.535);
+}
+
+main {
+  border: 2px solid grey;
+}
+
+section {
+  border: 1px solid grey;
+}
+
+footer {
+  border: 2px solid darkgoldenrod;
+}
+
+input {
+  text-align: left;
+}
+
+.icon {
+    position: absolute;
+
+}
+
+.Dropdown {
+    background-color: grey;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: italic;
+    font-size-adjust: initial;
+    color: aliceblue;
+}
+
+div {
+    padding: 12px;
+    background-color: darkgoldenrod;
+    align-content: space-between;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
