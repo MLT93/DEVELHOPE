@@ -5,16 +5,13 @@
 }
 
 body {
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-inline-end: 10px;
-  font-family: "Courier New", Courier, monospace;
+  flex-wrap: wrap;
   background-color: aliceblue;
   justify-content: space-evenly;
   width: 100%;
   height: 90%;
   display: flex;
-  flex-wrap: wrap;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .container {
@@ -32,24 +29,7 @@ body {
   justify-content: center;
   background-size: contain;
   background-size: cover;
-
-}
-
-.search-input-box {
-  width: 100%;
-  background-color: rgb(40, 40, 40);
-  border-radius: 10px;
-  position: relative;
-  color: aliceblue;
-  box-shadow: 0 1px 5px 3px black;
-}
-
-.search-input-box input {
-  width: 100%;
-  border: none;
-  outline: none;
-  border-radius: 10px;
-  height: 55px;
+  font-size: large;
 }
 
 label {
@@ -62,32 +42,48 @@ header {
   border: 2px solid darkgoldenrod;
 }
 
-#barra-de-navegación {
-  padding: 10px;
-  background-color: rgba(52, 52, 52, 0.692);
-  align-content: center;
-  flex-wrap: wrap;
-  display: flex;
+option {
   font-size: large;
-  justify-content: space-evenly;
-  flex-direction: row;
-  font-weight: bold;
-  text-align: center;
-  color: black;
-  align-items: center;
-  position: fixed;
-  width: 100%;
-  height: auto;
-  min-width: 400px;
-  margin-block: auto;
-  background-size: cover;
 }
+
 
 main {
   border: 2px solid grey;
 }
 
-section {
+input {
+  width: 200px;
+  height: 27.3px;
+  border: none;
+  outline: none;
+  text-align: left;
+  background-color: rgb(60, 60, 60);
+  border-radius: 10px;
+  position: relative;
+  color: aliceblue;
+  box-shadow: 0 1px 1px 2px rgb(60, 60, 60);
+  font-size: 18px;
+  margin-right: 5px;
+  margin-left: 10px;
+}
+
+.Home {
+  color: aliceblue;
+  flex-wrap: wrap;
+  padding: 12px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: space-between;
+  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  font-weight: bold;
+  margin-left: 10px;
+  width: 100px;
+  height: auto;
+  font-size: x-large;
+}
+
+section {  
   border: 1px solid grey;
 }
 
@@ -95,108 +91,79 @@ footer {
   border: 2px solid darkgoldenrod;
 }
 
-input {
-  text-align: left;
-}
-
-#Dropdown {
-  background-color: rgb(209, 209, 209);
-  font-family: "Courier New", Courier, monospace;
-  font-style: italic; 
-  font-size: small;
-  font-weight: bold;
-  color: #000000ab;
-  padding: 12px;
-  justify-content: space-between;
-}
-
-.NavBar {
-  padding: 15px;
-  background-color: darkgoldenrod;
-  align-content: space-between;
-  flex-wrap: wrap;
+#barra-de-navegación {
+  padding: 10px;
+  position: fixed;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  font-family: "Courier New", Courier, monospace;
-  font-size: large;
-  font-weight: bold;
-  color: black;
-  width: 150px;
-  height: auto;
-  align-items: stretch;
-}
-
-.Home {
-  padding: 11px;
-  background-color: none;
-  align-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  font-family: "Courier New", Courier, monospace;
-  font-size: large;
-  font-weight: bold;
-  color: aliceblue;
-  width: 100px;
+  width: 70%;
   height: auto;
-  margin-left: 10px;
-  align-items: stretch;
+  background-color: rgba(52, 52, 52, 0.692);
 }
 
 .Link {
-  padding: 11px;
-  background-color: none;
+  padding: 12px;
   align-content: space-between;
   flex-wrap: wrap;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   font-family: "Courier New", Courier, monospace;
-  font-size: large;
-  font-weight: bold;
-  color: aliceblue;
+  font-size: x-large;
   margin-left: 10px;
+  font-weight: bold;
   width: 100px;
   height: auto;
-  align-items: stretch;
+  color: aliceblue;
 }
 
+.Imagen-del-navbar {
+  margin-right: 50px;
+  margin-left: unset;
+  width: 135px;
+  height: auto;
+  background-color: grey;
+  mix-blend-mode: darken;
+  opacity: 0.90;
+}
+
+
 .Dropdown {
-  padding: 11px;
-  background-color: none;
+  padding: 12px;
   align-content: space-between;
   flex-wrap: wrap;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  font-family: "Courier New", Courier, monospace;
-  font-size: large;
+  font-size: x-large;
   font-weight: bold;
   color: aliceblue;
-  margin-left: 10px;
-  width: 100px;
-  height: auto;
-  align-items: stretch;
+  font-family: "Courier New", Courier, monospace;
+  justify-content: flex-start;
+  margin-right: 0px;
+}
+
+select {
+  text-align: center;
+  font-weight: bold;
+  font-size: large;  
+  box-shadow: 0 1px 2px 2px rgb(60, 60, 60);
 }
 
 .Selección {
-  align-items: stretch;
-  align-content: space-between;
-  flex-wrap: wrap;
-  display: flex;
-  flex-direction: row;
-  margin-left: 10px;
-  width: 100px;
-  height: auto;
-  border-style: outset;
+  border-radius: 30px 10px;
   border: solid;
-  border-radius: 20px 10px;
+  background-color: aliceblue;
+  font-family: "Courier New";
+  color: rgb(60, 60, 60);  
+  width: 200px;
+  height: 30px;
+  margin-right: 90px;
+  margin-left: 0px;
 }
 
 .Encabezado {
-  padding: 10px;
+  padding: 12px;
   flex-wrap: wrap;
   display: flex;
   font-size: large;
@@ -213,8 +180,10 @@ input {
 }
 
 .Icono-de-lupa {
-  height: 12px;
+  height: 21.5px;
   width: auto;
+  color: aliceblue;
+  /* box-shadow: 0 1px 5px 3px black; */
 }
 
 .Foto-MSI-MEG {
@@ -231,4 +200,51 @@ input {
 
 .Foto-Alienware-Aurora-Ryzen {
   width: 220px;
+}
+
+.Barra-de-busqueda {
+  display: flex;
+  justify-content: flex-start;
+  font-family: "Courier New", Courier, monospace;
+  font-size: x-large;
+  font-weight: bold;
+  color: aliceblue;
+  margin-right: 70px;
+  margin-left: unset;
+  width: 200px;
+  height: auto;
+  align-items: stretch;
+}
+
+.NavBar {
+  padding: 12px;
+  background-color: darkgoldenrod;
+  text-align: center;
+  font-size: 21px;
+  width: 150px;
+  height: auto;
+  opacity: 0.75;
+  box-shadow: 0 1px 5px 9px rgb(60, 60, 60);
+}
+
+/* input#search {
+  font-size: 12px;
+  margin-right: 2px;
+  margin-left: 10px;
+  width: 200px;
+  height: 27.3px;
+  color: rgb(60, 60, 60);
+  background-color: aliceblue;
+} */
+
+button {
+  border-radius: 10px;
+  /* box-shadow: 0 1px 5px 9px rgb(60, 60, 60); */
+  color: aliceblue;
+  padding: 2px;
+  height: 30px;
+  width: auto;
+  margin-right: 5px;
+  margin-left: 3px;
+  display: inline;
 }
