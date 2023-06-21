@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimum-scale=1.0," />
     <meta property="og:site_name" content="start.html" />
     <meta property="og:title" content="HTML article of pc gaming" />
     <meta property="og:type" content="website" />
@@ -30,9 +30,9 @@
   </head>
 
   <body>
-    <header>
+    
       <nav id="barra-de-navegación">
-        <div class="NavBar"><b>NavBar</b></div>
+        <div class="NavBar"><b>MLT <br> Gaming Club</b></div>
         <div class="Home" href="..\index.html">Home</div> 
         <div class="Link" href="http://google.com">Link</div>
         <label class="Dropdown"for="Dropdown">Dropdown</label>
@@ -49,21 +49,33 @@
           <option value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\8-Card\start.html">Exercise 8-Card</option>
           <option value="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\start.html">Exercise 9-Create an HTML blog page</option>
           </select>
-          <label for="search"></label>
-            <input style="display: flexbox; border-radius: 40px 10px 40px 10px; border-bottom: unset; font-family: 'Courier New', Courier, monospace; " type="search" name="search" id="serarch" placeholder=" Search" />
-            <button style="border-radius: 40px 10px 40px 10px; font-family: 'Courier New', Courier, monospace; margin-left: -5px;" type="submit">Search
+          <div>
+            <label for="search"></label>
+            <input type="search" name="Buscador" id="search" placeholder=" Search" />
+            <button type="submit">
+              <img
+              src="C:\Users\marko\OneDrive\Desktop\Development\git-lesson\Icono de lupa.png"
+              alt="Icono de lupa"
+              style="height: 12px; width: auto"
+            />
             </button>
           </div>
-      </nav>
+    </nav>
+
+    <header class="Encabezado">
       <h1>This is the main title.</h1>
       <h2>And along with the second title, they are in the header tag.</h2>
     </header>
+
     <br />
     <br>
     <h1>PARA LOS MAESTROS DEL TECLADO Y EL MOUSE</h1>
     <br>
-    <img src="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\assets\laptop.png" alt="Ordenador, gaming, 2023, manos, typing" type="image/png" title="Laptop gaming">
-    <img src="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\assets\foto ordenador tower.webp" alt="ordenador, tower, gaming, luces led, fondo naranja" type="image/webp" style="width: 473px;" title="Ordenador gaming">
+    <br>
+    <div class="Imagen-Encabezado">
+      <img src="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\assets\laptop.png" alt="Ordenador, gaming, 2023, manos, typing" type="image/png" title="Laptop gaming">
+      <img src="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\assets\foto ordenador tower.webp" alt="ordenador, tower, gaming, luces led, fondo naranja" type="image/webp" title="Ordenador gaming">
+    </div>
     <br>
     <article>
       <div>
@@ -327,6 +339,7 @@
           title="Campo obligatorio"
           maxlength="40"
           required
+          autocomplete="email"
         />
         <button type="submit" name="Submit">Enviar</button>
       </div>
