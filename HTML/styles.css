@@ -211,3 +211,24 @@ input {
 .Imagen-Encabezado {
   display: flex;
 }
+
+.Icono-de-lupa {
+  height: 12px;
+  width: auto;
+}
+
+.Foto-MSI-MEG {
+  width: 220px;
+}
+
+.Foto-hands {
+  width: 45%;
+}
+
+.Foto-Acer-predator {
+  width: 220px;
+}
+
+.Foto-Alienware-Aurora-Ryzen {
+  width: 220px;
+}
