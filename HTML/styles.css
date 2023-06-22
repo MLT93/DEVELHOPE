@@ -120,11 +120,11 @@ footer {
 .Imagen-del-navbar {
   margin-right: unset;
   margin-left: unset;
-  width: 150px;
+  width: 155px;
   height: auto;
   background-color: grey;
   mix-blend-mode: darken;
-  opacity: 0.90;
+  opacity: 0.95;
 }
 
 
