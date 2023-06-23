@@ -8,10 +8,10 @@ body {
   flex-wrap: wrap;
   background-color: aliceblue;
   justify-content: space-evenly;
-  width: 70.70%;
+  width: 70.7%;
   height: 90%;
   display: flex;
-  font-family:'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
   font-size: 120%;
   line-height: 220%;
 }
@@ -43,13 +43,16 @@ header {
   border: 3px solid darkgoldenrod;
 }
 
+main {
+  border: 2px solid grey;
+}
 option {
   font-size: large;
 }
 
 
-main {
-  border: 2px solid grey;
+section {
+  border: 1px solid grey;
 }
 
 input {
@@ -68,38 +71,34 @@ input {
   margin-left: 10px;
 }
 
-.Home {
-  color: aliceblue;
-  flex-wrap: wrap;
-  padding: 12px;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-content: space-between;
-  font-family: "Courier New", Courier, monospace;
-  display: flex;
-  font-weight: bold;
-  margin-left: 10px;
-  width: 100px;
-  height: auto;
-  font-size: x-large;
-}
-
-section {  
-  border: 1px solid grey;
-}
 
 footer {
   border: 2px solid darkgoldenrod;
 }
 
-#barra-de-navegación {
+.Dropdown {
+  align-content: space-between;
   padding: 12px;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  font-size: x-large;
+  font-weight: bold;
+  color: aliceblue;
+  font-family: "Courier New", Courier, monospace;
+  justify-content: flex-start;
+  margin-right: 0px;
+}
+
+#barra-de-navegación {
+  padding: 15px;
   position: fixed;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  width: 70.70%;
+  width: 70.7%;
   height: 110px;
+  border-radius: 0px 0px 10px 10px;
   background-color: rgba(52, 52, 52, 0.692);
 }
 
@@ -117,36 +116,22 @@ footer {
   justify-content: flex-start;
 }
 
-.Imagen-del-navbar {
-  margin-right: unset;
-  margin-left: unset;
-  width: 155px;
-  height: auto;
-  background-color: grey;
-  mix-blend-mode: darken;
-  opacity: 0.95;
-}
-
-
-.Dropdown {
-  padding: 12px;
-  align-content: space-between;
-  flex-wrap: wrap;
-  display: flex;
-  flex-direction: row;
-  font-size: x-large;
-  font-weight: bold;
-  color: aliceblue;
-  font-family: "Courier New", Courier, monospace;
-  justify-content: flex-start;
-  margin-right: 0px;
-}
-
 select {
   text-align: center;
   font-weight: bold;
-  font-size: large;  
+  font-size: large;
   box-shadow: 0 1px 2px 2px rgb(60, 60, 60);
+}
+
+.Imagen-del-navbar {
+  margin-right: unset;
+  margin-left: unset;
+  width: 200px;
+  height: 110px;
+  background-color: none;
+  /* mix-blend-mode: darken; */
+  opacity: 0.95;
+  margin-top: 0px;
 }
 
 .Selección {
@@ -154,7 +139,7 @@ select {
   border: solid;
   background-color: aliceblue;
   font-family: "Courier New";
-  color: rgb(60, 60, 60);  
+  color: rgb(60, 60, 60);
   width: 200px;
   height: 30px;
   margin-right: 48px;
@@ -216,6 +201,15 @@ select {
 }
 
 .NavBar {
+  color: rgb(60, 60, 60);
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: space-between;
+  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  font-weight: bold;
+  margin-top: -10px;
   padding: 12px;
   background-color: darkgoldenrod;
   text-align: center;
@@ -224,28 +218,11 @@ select {
   height: auto;
   opacity: 0.75;
   box-shadow: 0px 0px 7px 9px rgb(60, 60, 60);
+  border-radius: 50px 10px 50px 10px;
 }
 
-/* input#search {
-  font-size: 12px;
-  margin-right: 2px;
-  margin-left: 10px;
-  width: 200px;
-  height: 27.3px;
-  color: rgb(60, 60, 60);
-  background-color: aliceblue;
-} */
-
-button {
-  border-radius: 10px;
-  /* box-shadow: 0 1px 5px 9px rgb(60, 60, 60); */
-  color: aliceblue;
-  padding: 2px;
-  height: 30px;
-  width: auto;
-  margin-right: 5px;
-  margin-left: 3px;
-  display: inline;
+.divisorio-segundo-titulo {
+  margin-top: 20px;
 }
 
 h1 {
@@ -257,15 +234,23 @@ h1 {
 h2 {
   font-weight: 900;
   display: block;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
-}
-
-.divisorio-segundo-titulo {
-  margin-top: 20px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 a {
   color: aliceblue;
+}
+
+button {
+  border-radius: 10px;
+  /* box-shadow: 0 1px 5px 9px rgb(60, 60, 60); */
+  color: aliceblue;
+  padding: 2px;
+  height: 30px;
+  width: auto;
+  margin-right: 5px;
+  margin-left: 3px;
+  display: inline;
 }
 
 a:hover {
