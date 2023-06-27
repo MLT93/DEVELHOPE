@@ -5,7 +5,7 @@ You can click the Preview link to take a look at your changes.
 
 ## 👋 Hi, I’m @MLT93
 
-## 👀 These is a right form to do your first step with Git Bash on GitHub:
+## 👀 This is a correct command to take your first step with Git Bash on GitHub:
 - [Iniciar un repositorio local creando el archivo oculto .git]
 
         git init
