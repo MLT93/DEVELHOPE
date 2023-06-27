@@ -71,7 +71,6 @@ input {
   margin-left: 10px;
 }
 
-
 footer {
   border: 2px solid darkgoldenrod;
 }
@@ -263,4 +262,12 @@ a:active {
 
 a:link {
   text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  #barra-de-navegación{
+    background-color: rgb(167, 184, 11);
+    display: flex;
+    flex-direction: column;
+  }
 }
