@@ -23,7 +23,7 @@
       property="og:description"
       content="Esta página redacta un artículo sobre electrónica e intereses de ordenadores de juego, sus ventajas, desventajas, precios y análisis"
     />
-    
+
     <script lang="javascript" src="suggestiones.js"></script>
     <script lang="javascript" src="main.js"></script>
 
@@ -39,7 +39,7 @@
     />
     <link
       rel="stylesheet"
-      href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\styles.css"
+      href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\styles.css"
     />
 
     <title>9-Create an HTML blog page</title>
@@ -47,28 +47,22 @@
 
   <body>
     <header class="Encabezado"></header>
-    <nav id="barra-de-navegación">
-      <div>
-        <a
-          href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\start.html"
-          target="_parent"
-          ><b
-            >MLT <br />
-            Gaming Club</b
-          ></a
-        >
-      </div>
-      <div>
+    <nav id="nav">
+      <a
+        href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\start.html"
+        target="_parent"
+      >
         <img
-          src="C:\Users\marko\OneDrive\Desktop\Development\git-lesson\asdw.png"
-          alt="letras de teclado gaming W A S D"
+          class="img-nav"
+          src="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\assets\asdw.png"
+          alt="letras de teclado gaming W-A-S-D"
         />
-      </div>
-      <div><a href="https://google.com" target="_blank">Link</a></div>
+      </a>
+      <a href="https://google.com" target="_blank">Link</a>
       <label for="Dropdown">Dropdown</label>
       <select
         name="Dropdown"
-        id="Dropdown"
+        id="dropdown"
         value="Dropdown"
         onchange="document.location.href=this.value"
       >
@@ -124,25 +118,39 @@
           Exercise 9-Create an HTML blog page
         </option>
       </select>
-      <div>
-        <label for="search"></label>
+      <button type="submit">
+        <img
+          class="icono-lupa"
+          src="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\HTML\9-Create an HTML blog page\assets\icono-de-lupa.png"
+          alt="Icono de lupa"
+        />
         <input
           type="search"
           name="Buscador"
-          id="search"
+          class="input-search"
           placeholder=" Search"
         />
-        <button type="submit">
-          <img
-            src="C:\Users\marko\OneDrive\Desktop\Development\git-lesson\Icono de lupa.png"
-            alt="Icono de lupa"
-          />
-        </button>
-      </div>
+      </button>
     </nav>
 
+    <main>
+      <article>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque
+          natus, dolor veniam, numquam quam in fugiat ratione, porro illo
+          eveniet dolorem? Inventore, officiis libero alias quae laudantium
+          accusamus consectetur fugiat.
+          <br />
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque
+          numquam voluptas, natus quasi ut, dignissimos architecto cum iusto at
+          provident quis, accusamus consectetur neque! Adipisci qui cum nostrum
+          molestias eligendi.
+        </p>
+      </article>
+    </main>
+
     <footer>
-      <h4> &copy; Marcos Lambir Torres</h4>
+      <h4>&reg; &copy; MLT Gaming Club</h4>
       <small>Síguenos en:</small><br />
       <a href="https://Facebook.com">Facebook</a>
       <a href="https://Instagram.com">Instagram</a>
