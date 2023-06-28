@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es_ES">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -7,7 +7,55 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>CSS Lessons</title>
+    <link
+      rel="stylesheet"
+      href="C:\Users\marko\OneDrive\Desktop\Development\DEVELHOPE\CSS\1-Card\start\style.css"
+    />
+    <title>1-Card-CSS</title>
   </head>
-  <body></body>
+  <body>
+    <!-- Encabezado del Cuerpo -->
+    <header>
+      <img src="..." alt="" />
+      <h1>Image cap</h1>
+    </header>
+    <!-- Parte importante del cuerpo creada con <main> -->
+    <main>
+      <!-- Dentro del main podremos utilizar: <article> y <section> o <div> -->
+      <h2>Card title</h2>
+      <!-- El article nos sirve para hacer una entrada de texto -->
+      <article>
+        <!-- Esta sería una sección de la parte importante, hecha con <section> para dividir el contendido de la parte importante del <article>. Es buena práctica ponerle siempre un encabezado <header> -->
+        <section>
+          <header>
+            <h3 class="explanation-h3">
+              Some quick example text to build <br> 
+              on the card title and make up the <br>
+              bulk of the card's content.
+            </h3>
+          </header>
+        </section>
+        <!-- Otra subsección siempre realizada con <section>-->
+        <section>
+          <!-- Lista desordenada <ul> -->
+          <ul>
+            <!-- Elementos de la lista siempre con <li> -->
+            <li class="lista">An item</li>
+            <li class="lista">A second item</li>
+            <li class="lista">A third item</li>
+          </ul>
+        </section>
+      </article>
+    </main>
+    <!-- Esta es la parte de los pies del cuerpo de nuestra pagina web. Acá pondremos links, Copyright y las últimas cosas relacionadas con la página -->
+    <footer>
+      <!-- Normalmente usaremos <div> y dentro de ellos los <a> -->
+      <div>
+        <a href="">Card link</a>
+      </div>
+      <div>
+        <a href="">Another link</a>
+      </div>
+    </footer>
+  </body>
 </html>
