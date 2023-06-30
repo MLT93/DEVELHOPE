@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es_ES">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -7,7 +7,69 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
     <title>CSS Lessons</title>
   </head>
-  <body></body>
+
+  <body>
+    <header>
+      <nav>
+        <div>Logo</div>
+        <ul>
+          <li>Home</li>
+          <li>Link</li>
+          <li>
+            <label for="Dropdown">Dropdown</label>
+            <select
+              name="Dropdown"
+              id="dropdown"
+              value="Dropdown"
+              onchange="document.location.href=this.value"
+            >
+              <option selected disabled></option>
+              <option
+                value="https://github.com/MLT93/DEVELHOPE"
+              >
+                Repository Main Develhope 
+              </option>
+              <option
+                value="https://github.com/MLT93/Equipo-3/tree/development"
+              >
+                Repository Development Equipo-3
+              </option>
+              <option
+                value="https://github.com/MLT93/nintendo-proyect/tree/development"
+              >
+                Repository Development Nintendo
+              </option>
+            </select>
+          </li>
+          <li>Disabled</li>
+        </ul>
+        <div>
+          <!-- <form action="../../form-result.php" method="post" target="_blank">
+            <input
+            type="search"
+            name="buscar en la web"
+            pattern="[A-Za-z0-9]{8,20}"
+            title="Ingresa los datos que deseas buscar aqui"
+            required
+            />
+            <input type="submit" value="Buscar" />
+          </form> -->
+          <form id="search-form" action="">
+            <input
+              type="text"
+              id="search-input"
+              class="buscador"
+              placeholder="Search"
+              required
+            />
+            <button type="submit" id="search-button">Search</button>
+            <script lang="javascript" src="main.js"></script>
+          </form>
+        </div>
+      </nav>
+    </header>
+  </body>
 </html>

@@ -1,0 +1,29 @@
+body {
+    background-color: grey;
+    margin: unset;
+}
+
+/* .page{
+	display: flex;
+    flex-direction: column;
+    
+    overflow: hidden;
+} */
+
+header {
+    > nav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+        overflow: hidden;
+        flex-direction: row;
+        background-color: aqua;
+        width: 100%;
+    }
+
+    > div {
+        
+    }
+}
