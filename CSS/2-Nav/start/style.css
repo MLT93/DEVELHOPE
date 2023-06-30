@@ -1,5 +1,5 @@
 body {
-  background-color: grey;
+  background-color: black;
   margin: unset;
   > header {
     background-color: aqua;
@@ -9,32 +9,105 @@ body {
 }
 
 nav {
-  background-color: blueviolet;
+  background-color: rgb(38, 38, 44);
   width: 100%;
+  height: 7vh;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 15px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Verdana, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  border-bottom: solid;
+  border-color: aliceblue;
+  border-width: 1px;
 }
 
 div {
   display: flex;
-  gap: 15px;
-  padding: 15px;
+  gap: 0px;
+  padding: 10px;
 }
 
-div.logo {
-    background-color: aliceblue;
+div.navbar {
+  color: aliceblue;
+  font-size: 18px;
 }
 
-div.div-li {
-    background-color: aquamarine;
+div.home {
+  color: aliceblue;
 }
 
-/* li {
-    display: flex;
-  } */
+div.link {
+  color: rgb(170, 170, 170);
+}
 
-form {
+div.disabled {
+  color: rgba(170, 170, 170, 0.5);
+}
+
+select#dropdown {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Verdana, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  width: 100px;
+  color: rgb(150, 150, 150);
+  background-color: unset;
+  border: unset;
+  /* margin: 5px; */
+  /* padding: 30px;
+    height: 30px; */
+  /* transition: .3s ease all */
+  /* appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("https://www.pngfind.com/pngs/m/468-4684514_file-arrowright-gray-svg-gray-arrow-right-hd.png");
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 20px; */
+}
+
+option.list {
   display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin: 10px;
+  background-color: rgb(38, 38, 44);
+  color: rgb(150, 150, 150);
+}
+
+input#search-input {
+  width: 18vw;
+  height: 22px;
+  border: unset;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+form#search-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  gap: 7px;
+  box-sizing: border-box;
+}
+
+button#search-button {
+  padding: 10px;
+  width: 70px;
+  height: 45px;
+  color: rgba(44, 168, 25, 0.61);
+  text-overflow: clip;
+  background-color: transparent;
+  border: solid;
+  border-width: 1px;
+  border-color: rgba(44, 168, 25, 0.61);
+  border-radius: 5px;
+  transition: 0.3s all;
 }

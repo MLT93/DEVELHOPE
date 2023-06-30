@@ -14,30 +14,28 @@
   <body>
     <header>
       <nav>
-        <div class="logo">Logo</div>
+        <div class="navbar">Navbar</div>
 
-        <div class="div-li">Home</div>
+        <div class="home">Home</div>
 
-        <div class="div-li">Link</div>
-
-        <div class="div-li">Disabled</div>
+        <div class="link">Link</div>
 
         <div>
-          <label for="Dropdown">Dropdown</label>
+          <!-- <label for="Dropdown" class="dropdown"></label> -->
           <select
             name="Dropdown"
             id="dropdown"
             value="Dropdown"
             onclick="nav(this.value)"
           >
-            <option value="" selected></option>
-            <option value="https://github.com/MLT93/DEVELHOPE">
+            <option value="" selected hidden>Dropdown</option>
+            <option class="list" value="https://github.com/MLT93/DEVELHOPE">
               Repository Main Develhope
             </option>
-            <option value="https://github.com/MLT93/Equipo-3/tree/development">
+            <option class="list" value="https://github.com/MLT93/Equipo-3/tree/development">
               Repository Development Equipo-3
             </option>
-            <option
+            <option class="list"
               value="https://github.com/MLT93/nintendo-proyect/tree/development"
             >
               Repository Development Nintendo
@@ -45,7 +43,9 @@
           </select>
         </div>
 
-        <div>
+        <div class="disabled">Disabled</div>
+
+        <div class="search">
           <label for="search-form"></label>
           <form
             id="search-form"
@@ -54,9 +54,9 @@
             <input
               type="text"
               id="search-input"
-              class="buscador"
+
               placeholder="Search"
-              required
+              required              
             />
             <button type="submit" id="search-button">Search</button>
             <script lang="javascript" src="main.js"></script>
