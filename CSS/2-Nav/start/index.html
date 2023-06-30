@@ -24,9 +24,9 @@
               name="Dropdown"
               id="dropdown"
               value="Dropdown"
-              onchange="document.location.href=this.value"
+              onclick="nav(this.value)"
             >
-              <option selected disabled></option>
+              <option value="" selected></option>
               <option
                 value="https://github.com/MLT93/DEVELHOPE"
               >
@@ -47,17 +47,8 @@
           <li>Disabled</li>
         </ul>
         <div>
-          <!-- <form action="../../form-result.php" method="post" target="_blank">
-            <input
-            type="search"
-            name="buscar en la web"
-            pattern="[A-Za-z0-9]{8,20}"
-            title="Ingresa los datos que deseas buscar aqui"
-            required
-            />
-            <input type="submit" value="Buscar" />
-          </form> -->
-          <form id="search-form" action="">
+          
+          <form id="search-form" action="especifica la URL ala que se enviarán los datos del formulario cuando se envíe">
             <input
               type="text"
               id="search-input"
