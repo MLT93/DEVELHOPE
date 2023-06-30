@@ -17,13 +17,15 @@ header {
         flex-wrap: wrap;
         justify-content: space-evenly;
         align-items: center;
+
         overflow: hidden;
-        flex-direction: row;
+
         background-color: aqua;
+
         width: 100%;
     }
 
     > div {
-        
+        background-color: blueviolet;
     }
 }
