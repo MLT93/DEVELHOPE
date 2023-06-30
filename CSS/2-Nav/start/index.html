@@ -14,41 +14,43 @@
   <body>
     <header>
       <nav>
-        <div>Logo</div>
-        <ul>
-          <li>Home</li>
-          <li>Link</li>
-          <li>
-            <label for="Dropdown">Dropdown</label>
-            <select
-              name="Dropdown"
-              id="dropdown"
-              value="Dropdown"
-              onclick="nav(this.value)"
-            >
-              <option value="" selected></option>
-              <option
-                value="https://github.com/MLT93/DEVELHOPE"
-              >
-                Repository Main Develhope 
-              </option>
-              <option
-                value="https://github.com/MLT93/Equipo-3/tree/development"
-              >
-                Repository Development Equipo-3
-              </option>
-              <option
-                value="https://github.com/MLT93/nintendo-proyect/tree/development"
-              >
-                Repository Development Nintendo
-              </option>
-            </select>
-          </li>
-          <li>Disabled</li>
-        </ul>
+        <div class="logo">Logo</div>
+
+        <div class="div-li">Home</div>
+
+        <div class="div-li">Link</div>
+
+        <div class="div-li">Disabled</div>
+
         <div>
-          
-          <form id="search-form" action="especifica la URL ala que se enviarán los datos del formulario cuando se envíe">
+          <label for="Dropdown">Dropdown</label>
+          <select
+            name="Dropdown"
+            id="dropdown"
+            value="Dropdown"
+            onclick="nav(this.value)"
+          >
+            <option value="" selected></option>
+            <option value="https://github.com/MLT93/DEVELHOPE">
+              Repository Main Develhope
+            </option>
+            <option value="https://github.com/MLT93/Equipo-3/tree/development">
+              Repository Development Equipo-3
+            </option>
+            <option
+              value="https://github.com/MLT93/nintendo-proyect/tree/development"
+            >
+              Repository Development Nintendo
+            </option>
+          </select>
+        </div>
+
+        <div>
+          <label for="search-form"></label>
+          <form
+            id="search-form"
+            action="especifica la URL ala que se enviarán los datos del formulario cuando se envíe"
+          >
             <input
               type="text"
               id="search-input"
