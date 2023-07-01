@@ -152,6 +152,15 @@ let teamMembers = [
     };
   };
   petAtribute(teamMembers);
+  /* Las ĺineas de codigo desde la linea #135 hasta la linea #154 pueden ser reemplazadas por algo mas simple: 
+  
+      teamMembers.forEach((member) => {
+        if(member.petName){
+            console.log(`La mascota de ${member.name} es: ${member.petName}`)
+            }
+        })
+        
+  */
   
   /* Creo una función para saber si hay nombre repetidos en el array */
   function hayNombresRepetidosEnElArray(array) {
