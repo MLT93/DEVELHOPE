@@ -1,4 +1,4 @@
-body {
+/* body {
     background-color: #011212;
 }
 
@@ -7,4 +7,24 @@ body {
     height: 100px;
     background-color: #ff8800;
     border-radius: 50px;
-}
+} */
+
+:root {
+    --background-color: #011212;
+    --ball-width: 100px;
+    --ball-height: 100px;
+    --ball-color: #c27e30;
+    --ball-border-radius: 50px;
+  }
+  
+  body {
+    background-color: var(--background-color);
+  }
+  
+  .ball {
+    width: var(--ball-width);
+    height: var(--ball-height);
+    background-color: var(--ball-color);
+    border-radius: var(--ball-border-radius);
+  }
+  
