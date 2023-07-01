@@ -152,15 +152,15 @@ let teamMembers = [
     };
   };
   petAtribute(teamMembers);
-  /* Las ĺineas de codigo desde la linea #135 hasta la linea #154 pueden ser reemplazadas por algo mas simple: 
+  /** Las ĺineas de codigo desde la linea #135 hasta la linea #154 pueden ser reemplazadas por algo mas simple: 
   
-      teamMembers.forEach((member) => {
+   * teamMembers.forEach((member) => {
         if(member.petName){
             console.log(`La mascota de ${member.name} es: ${member.petName}`)
             }
         })
-        
-  */
+
+   */
   
   /* Creo una función para saber si hay nombre repetidos en el array */
   function hayNombresRepetidosEnElArray(array) {
@@ -187,3 +187,39 @@ let teamMembers = [
     return nombresRepetidos;
   };
   hayNombresRepetidosEnElArray(teamMembers);
+
+
+/** Otra forma de encontrar los nombres repetidos:
+ * Funcion para encontrar nombres repetidos entre los miembros del equipo
+ * 
+ * @param {teamMembers} array - array de miembros del equipo
+ */
+function hayNombresRepetidosEnElArray(array) {
+    
+    let nombresRepetidos = [];
+    /**
+     * Recorro el array
+     */
+    for (let primerIndex = 0; primerIndex < array.length; primerIndex++) {
+      /**
+       * Segundo bucle para comparar el proximo miembro del equipo
+       */
+      for (
+        let segundoIndex = primerIndex + 1;
+        segundoIndex < array.length;
+        segundoIndex++
+      ) {
+        /**
+         * Si los nombres son iguales, lo guardo en el array
+         */
+        if (array[primerIndex].name === array[segundoIndex].name) {
+          nombresRepetidos.push(array[primerIndex].name);
+        }
+      }
+    }
+    if (nombresRepetidos.length > 0)
+      console.log("Los nombres que se repiten son:", nombresRepetidos);
+    else console.log("No hay nombres repetidos");
+  }
+  hayNombresRepetidosEnElArray(teamMembers);
+  
