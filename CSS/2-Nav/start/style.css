@@ -87,7 +87,7 @@ input#search-input {
   border: unset;
   border-radius: 5px;
   padding: 3px;
-  font-size: 14px;
+  font-size: 1em;
 }
 
 form#search-form {
