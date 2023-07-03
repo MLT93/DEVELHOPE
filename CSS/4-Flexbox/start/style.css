@@ -1,0 +1,100 @@
+body {
+  margin: unset;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 1vh;
+  background-color: rgb(202, 202, 202);
+}
+
+main {
+  display: flex;
+  background-color: rgb(179, 255, 0);
+}
+
+article {
+  /* padding: 35px; */
+  margin: 35px;
+  flex: 1;
+}
+
+nav.navbar-principal {
+  display: flex;
+  /* width: 100vw; */
+  height: 10vh;
+  background-color: grey;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  gap: 60px;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.navbar-principal-logo {
+  background-color: aqua;
+  padding: 1vh;
+}
+
+.barra-lateral {
+  width: 200px;
+  height: 115.1vh;
+  gap: 15px;
+  /* margin: unset; */
+  background-color: #ffae00;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  padding: 35px;
+  background-color: aqua;
+  margin-top: 10px;
+}
+
+.navigator {
+  /* flex: 1 0 70%; */
+  /* flex: 0 0 20%; */
+  flex: 1;
+}
+
+.unordered-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+.usuario {
+  display: flex;
+  margin-bottom: 25px;
+  align-items: center;
+}
+
+.avatar {
+  width: 50px;
+}
+
+.username {
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+  color: #2b2b2b;
+  transition: all 0.3s;
+}
+
+a:hover {
+  color: #2b2bb2;
+}
