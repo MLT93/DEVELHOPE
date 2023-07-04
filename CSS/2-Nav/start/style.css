@@ -1,6 +1,7 @@
 body {
   background-color: black;
   margin: unset;
+  
   > header {
     background-color: aqua;
 

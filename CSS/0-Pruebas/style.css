@@ -5,6 +5,7 @@ body {
   margin: unset;
   padding: unset;
   border: unset;
+  
   box-sizing: border-box;
 }
 
@@ -22,7 +23,7 @@ header.ancho-del-nav-principal {
   width: 100%;
 }
 
-.navegador {
+.nav-papi-box {
   border: 5px solid rgba(77, 77, 77, 0.4);
 
   display: flex;
