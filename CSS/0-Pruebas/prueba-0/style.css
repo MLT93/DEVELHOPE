@@ -37,7 +37,7 @@ li {
 a {
   text-decoration: none;
 }
-.videosfiltros{
+.videos-filtros{
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -113,3 +113,14 @@ button#search-button {
   border-radius: 5px;
   transition: 0.3s all;
 }
+
+button#search-button:hover{
+  color: rgb(34, 255, 0);
+  cursor: pointer;
+  width: 72px;
+  height: 27px;
+}
+
+button#search-button {
+  transition: all 1s 
+}
