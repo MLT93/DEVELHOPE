@@ -1,3 +1,4 @@
+/* Caja general sin margenes, rellenos o bordes, box-sizing para tomar en cuenta el tamaño de las cajas a partir de los bordes y no del contenido, tamaño de la página, selección de fuentes y sus dimensiones */
 body {
   margin: unset;
   padding: unset;
@@ -15,7 +16,7 @@ body {
 
   background-color: rgb(211, 43, 226);
 }
-
+/* Dirección (utilizo de flex), espaciado en relación al main axis o cross axis, colores o bordes */
 header.container {
   border: 5px solid rgba(77, 77, 77, 0.5);
 
@@ -25,8 +26,8 @@ header.container {
 
   background-color: rgb(183, 37, 0);
 }
-
-nav.papi-box {
+/* Dirección(flex), tamaño item, centrado del item, detalles del item */
+.papi-box {
   border: 5px solid rgba(77, 77, 77, 0.5);
 
   width: 100%;
@@ -39,15 +40,15 @@ nav.papi-box {
 
   background-color: rgb(9, 255, 0);
 }
-
+/* Detalles particulares */
 ul {
-  list-style-type: none;
-  margin: 10px;
-  padding: unset;
-  border: unset;
-  gap: 40px;
-
   display: flex;
+
+  list-style-type: none;
+  gap: 40px;
+  border: unset;
+  padding: unset;
+  margin: 10px;
 }
 
 main.container {
