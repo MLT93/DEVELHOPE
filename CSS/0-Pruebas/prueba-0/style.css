@@ -61,8 +61,6 @@ a {
   border: 1px solid black;
 }
 @media (min-width: 768px) {
-  .pagina {
-    flex-basis: calc(100% / 3);
-  }
+ 
   
 }

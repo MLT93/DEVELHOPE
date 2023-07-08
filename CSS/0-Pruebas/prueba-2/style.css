@@ -1,0 +1,65 @@
+body{
+  margin: unset;
+  border: unset;
+  padding: unset;
+
+  box-sizing: border-box;
+}
+.encabezado{
+  display: flex;
+
+  background-color: aqua;
+}
+.nav-principal{
+  width: 100%;
+  
+  background-color: yellowgreen;
+}
+.formulario-search-nav-principal{
+  display: flex;
+  justify-content: space-between;
+}
+.ingreso-text-search-nav-principal{
+  display: flex;
+}
+.boton-del-search-nav-principal{
+  display: flex;
+}
+ul{
+  list-style-type: none;
+  margin: none;
+  padding: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+main{
+  width: 80%;
+  height: 125vh;
+
+  background-color: gray;
+
+  float: right;
+
+  display: flex;
+  flex-direction: column;
+}
+.filter{
+  display: flex;
+  /* flex-wrap: wrap; */
+
+  overflow: hidden;
+
+  float: inline-start;
+
+  scroll-margin: auto;
+
+  background-color: violet;
+}
+.contenido{
+  /* display: flex; */
+  flex-direction: column;
+
+  background-color: tomato;
+}
