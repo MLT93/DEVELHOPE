@@ -21,7 +21,8 @@ body {
   width: 300px;
   height: 300px;
   padding: 10px;
-  border-radius: 0;
+  border-radius: 5px;
+  gap: 2px;
 }
 input{
   grid-column: 1 / 5;
@@ -67,10 +68,12 @@ button:hover{
   color: tomato;
   font-weight: 700;
   font-size: larger;
+  border: solid 2px black;
 }
 
 button:hover.igual{
   color: aliceblue;
   font-weight: 700;
   font-size: larger;
+  border: solid 2px black;
 }
