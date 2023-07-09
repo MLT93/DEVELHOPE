@@ -1,36 +1,76 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+  background-color: #08081ac9;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
 .calculator {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 5px;
   width: 300px;
-}
-
-.display {
-  grid-column: 1 / -1;
-  background-color: #eee;
+  height: 300px;
   padding: 10px;
+  border-radius: 0;
 }
-
-.buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 5px;
-}
-
-.button {
-  background-color: #ccc;
-  padding: 10px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.equal {
-  grid-column: 1 / -1;
-  background-color: tomato;
+input{
+  grid-column: 1 / 5;
+  background-color: grey;
   color: white;
+  border-width: 1.5px;
+  border-radius: 0.1rem;
+  text-align: right;
+  box-shadow: 1px 1px 1px black;
+  cursor: help;
+  height: 40px;
+}
+.igual {
+  background-color: tomato;
+  grid-column: 4 / 4;
+  grid-row: 3 / 7;
+  border-width: 1.5px;
+  border-radius: 2px;
+  box-shadow: 1px 3px 5px black;
+  cursor: pointer;
+  font-size: larger;
+}
+.botones1 {
+  color: aliceblue;
+  background-color: #517fc9;
+  border-width: 1px;
+  padding: 5px;
+  border-radius: 2px;
+  box-shadow: 1px 3px 5px black;
+  cursor: pointer;
+  font-size: larger;
+}
+.botones {
+  background-color: aliceblue;
+  border-width: 1px;
+  padding: 5px;
+  border-radius: 2px;
+  box-shadow: 1px 3px 5px black;
+  cursor: pointer;
+  font-size: larger;
+}
+button:hover{
+  color: tomato;
+  font-weight: 700;
+  font-size: larger;
 }
 
-.clear {
-  background-color: #ccc;
-  grid-column: 1 / span 2;
+button:hover.igual{
+  color: aliceblue;
+  font-weight: 700;
+  font-size: larger;
 }
