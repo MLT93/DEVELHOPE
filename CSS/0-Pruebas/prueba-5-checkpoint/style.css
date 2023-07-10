@@ -1,0 +1,135 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  flex-flow: column wrap;
+  min-height: 100vh;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.content {
+  display: flex;
+  flex-flow: column wrap;
+  min-height: 100vh;
+  flex: 1;
+}
+.flex-container-cajita1 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: start;
+  flex: 1;
+  background-color: #00ff00;
+}
+.flex-container-cajita2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex: 1;
+  background-color: #00ff00;
+}
+.flex-container-cajita3 {
+  display: flex;
+  align-items: flex-end;
+  justify-content: end;
+  flex: 1;
+  background-color: #00ff00;
+}
+.cajita1 {
+  display: flex;
+  padding: 50px;
+  border: 1px solid rgb(66, 66, 66);
+  border-radius: 10px;
+  color: black;
+  background-color: tomato;
+}
+.cajita2 {
+  display: flex;
+  padding: 50px;
+  border: 1px solid rgb(66, 66, 66);
+  border-radius: 10px;
+  color: black;
+  background-color: greenyellow;
+}
+.cajita3 {
+  display: flex;
+  padding: 50px;
+  border: 1px solid rgb(66, 66, 66);
+  border-radius: 10px;
+  color: black;
+  background-color: lightskyblue;
+}
+.content-movil {
+  display: none;
+}
+.aside-movil {
+  display: none;
+}
+@media screen and (max-width: 600px) {
+  .content{
+    display: none;
+  }
+  .content-movil {
+    display: flex;
+    flex: 1;
+    flex-flow: row wrap;
+    align-items: center;
+    /* background-color: #00d9ff; */
+  }
+  .aside-movil {
+    display: flex;
+    flex-flow: column nowrap;
+    /* overflow-x: scroll; */
+    min-width: 400px;
+  }
+  .flex-container-cajita1 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex: 1;
+    background-color: var(#00d9ff);
+  }
+  .flex-container-cajita2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex: 1;
+    background-color: var(#00d9ff);
+  }
+  .flex-container-cajita3 {
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    flex: 1;
+    background-color: var(#00d9ff);
+  }
+  .cajita1 {
+    display: flex;
+    padding: 50px;
+    border: 1px solid rgb(66, 66, 66);
+    border-radius: 10px;
+    color: black;
+    background-color: tomato;
+  }
+  .cajita2 {
+    display: flex;
+    padding: 50px;
+    border: 1px solid rgb(66, 66, 66);
+    border-radius: 10px;
+    color: black;
+    background-color: greenyellow;
+  }
+  .cajita3 {
+    display: flex;
+    padding: 50px;
+    border: 1px solid rgb(66, 66, 66);
+    border-radius: 10px;
+    color: black;
+    background-color: lightskyblue;
+  }
+}
