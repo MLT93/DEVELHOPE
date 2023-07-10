@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es_ES">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -7,9 +7,71 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <title>CSS 2-Nav</title>
   </head>
+
   <body>
-    <div class="ball"></div>
+    <header>
+      <form action="especifica la URL ala que se enviarán los datos del formulario cuando se envíe">
+        <label for="check-inn"></label>
+        <input type="checkbox" id="check-inn">
+        
+      </form>
+      <nav>
+        <div class="navbar">Navbar</div>
+
+        <div class="home">Home</div>
+
+        <div class="link">Link</div>
+
+        <div>
+          <!-- No se dónde poner la flecha gris -->
+          <select
+            name="Dropdown"
+            id="dropdown"
+            value="Dropdown"
+            onclick="nav(this.value)"
+          >
+            <option value="" selected hidden>Dropdown</option>
+            <option class="list" value="https://github.com/MLT93/DEVELHOPE">
+              Repository Main Develhope
+            </option>
+            <option
+              class="list"
+              value="https://github.com/MLT93/Equipo-3/tree/development"
+            >
+              Repository Development Equipo-3
+            </option>
+            <option
+              class="list"
+              value="https://github.com/MLT93/nintendo-proyect/tree/development"
+            >
+              Repository Development Nintendo
+            </option>
+          </select>
+        </div>
+
+        <div class="disabled">Disabled</div>
+
+        <div class="search">
+          <label for="search-form"></label>
+          <form
+            id="search-form"
+            action="especifica la URL ala que se enviarán los datos del formulario cuando se envíe">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="  Search"
+              required
+            />
+            <button type="submit" id="search-button">
+              <!-- <img src="search.svg" alt="lupa" /> --> Search
+            </button>
+            <script lang="javascript" src="main.js"></script>
+          </form>
+        </div>
+      </nav>
+    </header>
   </body>
 </html>
