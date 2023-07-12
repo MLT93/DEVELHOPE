@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar</title>
+  <style>
+    body {
+      background-color: #fafbff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: #234567;
+      padding: 8px 16px;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .navbar a:hover {
+      background-color: #ff784d;
+    }
+
+    .sidebar {
+      background-color: #edefff;
+      width: 25%;
+      padding: 8px 16px;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 990px) {
+      .sidebar {
+        width: 100%;
+      }
+    }
+
+    .article-images img {
+      min-height: 300px;
+      width: 100%;
+    }
+
+    .footer {
+      background-color: #012345;
+      padding: 8px 16px;
+      color: #fff;
+    }
+
+    .subscription-form {
+      text-align: right;
+    }
+
+    .subscription-form input {
+      margin-right: 8px;
+    }
+
+    .subscription-form button {
+      background-color: #ff784d;
+      color: #fff;
+      transition: 0.4s;
+    }
+
+    .subscription-form button:hover {
+      background-color: #fff;
+      color: #ff784d;
+    }
+
+    .article,
+    .sidebar,
+    .footer {
+      margin: 8px;
+    }
+
+    @media (max-width: 990px) {
+      .sidebar {
+        padding-top: 16px;
+        padding-bottom: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <div class="sidebar">
+    <p>Sidebar content</p>
+  </div>
+
+  <div class="article">
+    <h2>Article Title</h2>
+    <p>Article content</p>
+    <div class="article-images">
+      <img src="image1.jpg" alt="Image 1">
+      <img src="image2.jpg" alt="Image 2">
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="subscription-form">
+      <input type="email" placeholder="Enter your email">
+      <button>Subscribe</button>
+    </div>
+    <p>Footer content</p>
+  </div>
+</body>
+</html>

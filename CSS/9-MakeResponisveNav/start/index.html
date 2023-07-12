@@ -8,16 +8,24 @@
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="style.css" />
+    <script lang="javascript" src="main.js"></script>
     <title>CSS 2-Nav</title>
   </head>
 
   <body>
     <header>
-      <form action="especifica la URL ala que se enviarán los datos del formulario cuando se envíe">
-        <label for="check-inn"></label>
-        <input type="checkbox" id="check-inn">
-        
-      </form>
+      <!-- menu phone -->
+      <input
+        class="check-menu-phone"
+        type="checkbox"
+        id="id-check-label-input-menu-phone"
+      />
+      <label class="menu-phone" for="id-check-label-input-menu-phone">
+        <span class="menu-abrir">&#9776;</span>
+        <span class="menu-cerrar">&timesb;</span>
+      </label>
+
+      <!-- menu desktop -->
       <nav>
         <div class="navbar">Navbar</div>
 
@@ -26,7 +34,6 @@
         <div class="link">Link</div>
 
         <div>
-          <!-- No se dónde poner la flecha gris -->
           <select
             name="Dropdown"
             id="dropdown"
@@ -52,23 +59,21 @@
           </select>
         </div>
 
-        <div class="disabled">Disabled</div>
+        <button class="disabled" disabled>Disabled</button>
 
         <div class="search">
           <label for="search-form"></label>
           <form
             id="search-form"
-            action="especifica la URL ala que se enviarán los datos del formulario cuando se envíe">
+            action="especifica la URL ala que se enviarán los datos del formulario cuando se envíe"
+          >
             <input
               type="text"
               id="search-input"
-              placeholder="  Search"
+              placeholder="Search"
               required
             />
-            <button type="submit" id="search-button">
-              <!-- <img src="search.svg" alt="lupa" /> --> Search
-            </button>
-            <script lang="javascript" src="main.js"></script>
+            <button type="submit" id="search-button">Search</button>
           </form>
         </div>
       </nav>
