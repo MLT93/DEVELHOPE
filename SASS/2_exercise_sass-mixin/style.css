@@ -38,11 +38,15 @@ body div.lienzo-y-border-red {
 body div.lienzo-y-border-red h1 {
   color: var(--letter-green);
   font-size: 28px;
+  -moz-text-decoration-color: gray;
+  -moz-text-decoration-line: underline;
+  -moz-text-decoration-style: solid 3px;
   text-decoration: underline gray solid 3px;
   text-decoration-thickness: 3px;
 }
 body div.lienzo-y-border-red section.article-container1 {
   display: flex;
+  -ms-flex-flow: row wrap;
   flex-flow: row wrap;
   align-items: flex-end;
   text-align: center;
@@ -53,6 +57,7 @@ body div.lienzo-y-border-red section.article-container1 {
 body div.lienzo-y-border-red section.article-container1 article.p-container1 {
   display: flex;
   flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
   justify-content: center;
   width: 25%;
   height: 85%;
@@ -68,6 +73,7 @@ body div.lienzo-y-border-red section.article-container1 article.p-container1 p {
 body div.lienzo-y-border-red section.article-container1 article.p-container2 {
   display: flex;
   flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
   justify-content: center;
   width: 25%;
   height: 85%;
@@ -83,6 +89,7 @@ body div.lienzo-y-border-red section.article-container1 article.p-container2 p {
 body div.lienzo-y-border-red section.article-container1 article.p-container3 {
   display: flex;
   flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
   justify-content: center;
   width: 25%;
   height: 85%;
@@ -98,6 +105,7 @@ body div.lienzo-y-border-red section.article-container1 article.p-container3 p {
 body div.lienzo-y-border-red section.article-container1 article.p-container4 {
   display: flex;
   flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
   justify-content: center;
   width: 25%;
   height: 85%;
@@ -123,7 +131,7 @@ body div.lienzo-y-border-red section.article-container2 article.p-container5 {
   justify-content: center;
   align-items: center;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 24px;
   height: 100%;
 }
 

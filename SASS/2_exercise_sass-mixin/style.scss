@@ -42,11 +42,15 @@
 @mixin h1 {
   color: var(--letter-green);
   font-size: 28px;
+  -moz-text-decoration-color: gray;
+  -moz-text-decoration-line: underline;
+  -moz-text-decoration-style: solid 3px;
   text-decoration: underline gray solid 3px;
   text-decoration-thickness: 3px;
 }
 @mixin article-container1 {
   display: flex;
+  -ms-flex-flow: row wrap;
   flex-flow: row wrap;
   align-items: flex-end;
   text-align: center;
@@ -61,6 +65,7 @@
 @mixin center-writing {
   display: flex;
   flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
   justify-content: center;
   width: 25%;
   height: 85%;
