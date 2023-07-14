@@ -60,8 +60,8 @@ body div.lienzo-y-border-red section.article-container1 article.p-container1 {
 body div.lienzo-y-border-red section.article-container1 article.p-container1 p {
   display: flex;
   align-items: center;
-  color: var(--letter-blue);
-  border: solid 3px var(--border-green);
+  color: red;
+  border: solid 3px green;
   padding: 10px;
   text-align: center;
 }
@@ -75,8 +75,8 @@ body div.lienzo-y-border-red section.article-container1 article.p-container2 {
 body div.lienzo-y-border-red section.article-container1 article.p-container2 p {
   display: flex;
   align-items: center;
-  color: var(--letter-red);
-  border: solid 3px var(--border-green);
+  color: blue;
+  border: solid 3px green;
   padding: 10px;
   text-align: center;
 }
@@ -90,8 +90,8 @@ body div.lienzo-y-border-red section.article-container1 article.p-container3 {
 body div.lienzo-y-border-red section.article-container1 article.p-container3 p {
   display: flex;
   align-items: center;
-  color: var(--letter-blue);
-  border: solid 3px var(--border-green);
+  color: red;
+  border: solid 3px green;
   padding: 10px;
   text-align: center;
 }
@@ -105,8 +105,8 @@ body div.lienzo-y-border-red section.article-container1 article.p-container4 {
 body div.lienzo-y-border-red section.article-container1 article.p-container4 p {
   display: flex;
   align-items: center;
-  color: var(--letter-red);
-  border: solid 3px var(--border-green);
+  color: blue;
+  border: solid 3px green;
   padding: 10px;
   text-align: center;
 }
@@ -116,8 +116,8 @@ body div.lienzo-y-border-red section.article-container2 {
 }
 body div.lienzo-y-border-red section.article-container2 article.p-container5 {
   display: flex;
-  color: var(--letter-green);
-  border: solid 3px var(--border-violet);
+  color: green;
+  border: solid 3px blueviolet;
   padding: 10px;
   text-align: center;
   justify-content: center;
