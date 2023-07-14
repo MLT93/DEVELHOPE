@@ -8,10 +8,12 @@
 body {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 0;
   width: 100vw;
   min-height: 100vh;
-  padding: 20px;
+  padding: 0px;
+  font-size: 1;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 body div.lienzo-y-border-red {
@@ -20,19 +22,22 @@ body div.lienzo-y-border-red {
   justify-content: center;
   align-items: center;
   width: 80%;
-  height: 30vh;
-  padding: 20px;
-  border: solid 3px red;
+  height: 50vh;
+  padding: 1.25;
+  border: solid 3px var(--border-red);
 }
 body div.lienzo-y-border-red h1 {
-  color: green;
-  font-size: 28px;
-  -webkit-text-decoration: underline gray solid 3px;
-          text-decoration: underline gray solid 3px;
+  color: var(--letter-green);
+  font-size: 1.75;
+  -moz-text-decoration-color: gray;
+  -moz-text-decoration-line: underline;
+  -moz-text-decoration-style: solid 3px;
+  text-decoration: underline gray solid 3px;
   text-decoration-thickness: 3px;
 }
 body div.lienzo-y-border-red section.article-container1 {
   display: flex;
+  -ms-flex-flow: row wrap;
   flex-flow: row wrap;
   align-items: flex-end;
   text-align: center;
@@ -43,57 +48,65 @@ body div.lienzo-y-border-red section.article-container1 {
 body div.lienzo-y-border-red section.article-container1 article.p-container1 {
   display: flex;
   flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
   justify-content: center;
   width: 25%;
   height: 85%;
 }
 body div.lienzo-y-border-red section.article-container1 article.p-container1 p {
   display: flex;
-  color: blue;
+  align-items: center;
+  color: red;
   border: solid 3px green;
-  padding: 20px;
+  padding: 0.625;
   text-align: center;
 }
 body div.lienzo-y-border-red section.article-container1 article.p-container2 {
   display: flex;
   flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
   justify-content: center;
   width: 25%;
   height: 85%;
 }
 body div.lienzo-y-border-red section.article-container1 article.p-container2 p {
   display: flex;
-  color: red;
+  align-items: center;
+  color: blue;
   border: solid 3px green;
-  padding: 20px;
+  padding: 0.625;
   text-align: center;
 }
 body div.lienzo-y-border-red section.article-container1 article.p-container3 {
   display: flex;
   flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
   justify-content: center;
   width: 25%;
   height: 85%;
 }
 body div.lienzo-y-border-red section.article-container1 article.p-container3 p {
   display: flex;
-  color: blue;
+  align-items: center;
+  color: red;
   border: solid 3px green;
-  padding: 20px;
+  padding: 0.625;
   text-align: center;
 }
 body div.lienzo-y-border-red section.article-container1 article.p-container4 {
   display: flex;
   flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
   justify-content: center;
   width: 25%;
   height: 85%;
 }
 body div.lienzo-y-border-red section.article-container1 article.p-container4 p {
   display: flex;
-  color: red;
+  align-items: center;
+  color: blue;
   border: solid 3px green;
-  padding: 20px;
+  padding: 0.625;
   text-align: center;
 }
 body div.lienzo-y-border-red section.article-container2 {
@@ -104,11 +117,13 @@ body div.lienzo-y-border-red section.article-container2 article.p-container5 {
   display: flex;
   color: green;
   border: solid 3px blueviolet;
-  padding: 20px;
+  padding: 0.625;
   text-align: center;
   justify-content: center;
   align-items: center;
-  font-weight: 700;
-  font-size: 1.7em;
+  font-weight: 400;
+  font-size: 24px;
   height: 100%;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
