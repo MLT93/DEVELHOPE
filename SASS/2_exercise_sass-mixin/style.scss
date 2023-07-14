@@ -73,7 +73,7 @@
   padding: 10px;
   text-align: center;
 }
-@mixin ultimo-box-grande ($color, $border-color) {
+@mixin ultimo-box-grande ($color, $border-color, $font-size) {
 display: flex;
 color: $color;
 border: solid 3px $border-color;
@@ -82,7 +82,7 @@ text-align: center;
 justify-content: center;
 align-items: center;
 font-weight: 400;
-font-size: 20px;
+font-size: $font-size;
 height: 100%;
 }
 body {
@@ -130,7 +130,7 @@ body {
       @include article-container2;
 
       article.p-container5 {
-        @include ultimo-box-grande(green, blueviolet)
+        @include ultimo-box-grande(green, blueviolet, 24px)
       }
     }
   }
