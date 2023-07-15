@@ -14,8 +14,9 @@ $valordeunrem16px: 16px;
 @function calculate-rem($cantidadpx, $valordeunrem16px) {
   // almaceno la division en la variable $result
   $result: $cantidadpx / $valordeunrem16px;
-  // el @debug muestra por terminal y el 
+  // el @debug más el inspect() nos muestra el resultado utilizando este código en la terminal: sass --watch <"input".scss:"output".css --trace> Esto mostrará mensajes de depuración, incluidos los valores de variables y otras salidas relacionadas en la consola mientras el archivo Sass se está compilando 
   @debug "El resultado es: #{inspect($result)}";
+  // nos devuelve la variable $result
   @return $result;
 }
 
