@@ -47,7 +47,7 @@ $valor-de-un-rem: 16px;
 }
 @mixin lienzo-principal() {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: center;
   width: 80%;
@@ -106,6 +106,7 @@ height: 100%;
 }
 body {
   @include body;
+  
   div.lienzo-y-border-red {
     @include lienzo-principal;
 
