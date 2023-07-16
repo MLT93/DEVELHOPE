@@ -38,7 +38,8 @@ body div.lienzo-y-border-red {
 body div.lienzo-y-border-red h1 {
   color: var(--letter-green);
   font-size: 28px;
-  text-decoration: underline gray solid 3px;
+  -webkit-text-decoration: underline gray solid 3px;
+          text-decoration: underline gray solid 3px;
   text-decoration-thickness: 3px;
 }
 body div.lienzo-y-border-red section.article-container1 {
@@ -125,6 +126,4 @@ body div.lienzo-y-border-red section.article-container2 article.p-container5 {
   font-weight: 400;
   font-size: 20px;
   height: 100%;
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
