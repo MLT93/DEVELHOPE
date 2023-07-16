@@ -137,7 +137,7 @@ $base-start-i: 1;
   // variable ($font) que albergará el resultado de la multiplicación del la variable "base" (base-start-i) por el indice ($i), lo que me dará el tamaño de la fuente // Cálculo del tamaño de fuente basado en el índice del bucle
   $font: index($fs-size, $i);
   // interpolo los números que encuentra el índice ($i) en su recorrido por la lista ($fs-size) con los nombres de cada class dentro del html y, si corresponden, entonces le cambia el font-size
-  .fs-#{$i}rem-1, .fs-#{$i}rem-2 {
+  .fs-#{$i}rem {
     // convierto mi font-size a la unidad de medida rem, multiplicándolo por 1 para que me de su valor básico y añadiendo la unidad de medida al final. Si como trabajo con una lista sin especificaciones de medida, entonces es más fácil darle una unidad de medida cualquiera
     font-size: calc($font * 1) + rem;
   }
@@ -147,39 +147,17 @@ $base-start-i: 1;
   // lista
   $list-colors: white, black;
   // redimensionar, si hace falta. En este caso si como jugamos con opacidades y necesitamos el redimensionamiento, le pondremos un valor alto para que vaya disminuyendo su opacidad
-  $opacidad-base: 0.5;
+  $opacidad-base: 5;
 
   @each $i-color in $list-colors {
-    $oscuridad: index($list-colors, $i-color) + 1;
+    $oscuridad: index($list-colors, $i-color) + 10.2;
 
-    .fs-#{$i}rem-#{i-color} {
+    .fs-#{$i}rem {
       background-color: lighten($i-color, $oscuridad * $opacidad-base);
       color: darken($i-color, $oscuridad * $opacidad-base);
     }
 
-    @debug "Clase generada: .fs-#{$i}rem-#{$i-color}"
-  }
-}
-
-$box-size: 45px; // Tamaño del cuadro en píxeles
-$rem-value: 2.8125rem; // Valor de conversión de píxeles a rem
-
-@for $i from 1 through 19 {
-  $size: $i % 3 + 1; // Tamaño de fuente (1, 2 o 3)
-  $color: if($i % 2 == 0, black, white); // Color de fondo y color de texto (alternando entre negro y blanco)
-
-  .fs-#{$size}rem-#{$i} {
-    width: $box-size * $size; // Ancho del cuadro en píxeles
-    height: $box-size * $size; // Altura del cuadro en píxeles
-    font-size: $size * $rem-value; // Tamaño de fuente en rem
-    background-color: $color;
-    color: if(lightness($color) > 50, darken($color, $size * 5), lighten($color, $size * 5)); // Ajuste del color de texto en función del color de fondo
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-
-    @debug "Clase generada: .fs-#{$size}rem-#{$i}";
+    @debug "El $oscuridad vale: .fs-#{$i}rem";
   }
 }
 

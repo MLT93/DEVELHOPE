@@ -24,255 +24,46 @@ body > div.lienzo-y-border-red h1 + h2 {
   padding: 1rem;
 }
 
-.fs-1rem-1, .fs-1rem-2 {
+.fs-1rem {
   font-size: 1rem;
 }
 
-.fs-1rem-i-color {
+.fs-1rem {
   background-color: white;
-  color: #fcfcfc;
+  color: #707070;
 }
 
-.fs-1rem-i-color {
-  background-color: #040404;
+.fs-1rem {
+  background-color: #9c9c9c;
   color: black;
 }
 
-.fs-2rem-1, .fs-2rem-2 {
+.fs-2rem {
   font-size: 2rem;
 }
 
-.fs-2rem-i-color {
+.fs-2rem {
   background-color: white;
-  color: #fcfcfc;
+  color: #707070;
 }
 
-.fs-2rem-i-color {
-  background-color: #040404;
+.fs-2rem {
+  background-color: #9c9c9c;
   color: black;
 }
 
-.fs-3rem-1, .fs-3rem-2 {
+.fs-3rem {
   font-size: 3rem;
 }
 
-.fs-3rem-i-color {
+.fs-3rem {
   background-color: white;
-  color: #fcfcfc;
+  color: #707070;
 }
 
-.fs-3rem-i-color {
-  background-color: #040404;
+.fs-3rem {
+  background-color: #9c9c9c;
   color: black;
-}
-
-.fs-2rem-1 {
-  width: 90px;
-  height: 90px;
-  font-size: 5.625rem;
-  background-color: white;
-  color: #e6e6e6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fs-3rem-2 {
-  width: 135px;
-  height: 135px;
-  font-size: 8.4375rem;
-  background-color: black;
-  color: #262626;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fs-1rem-3 {
-  width: 45px;
-  height: 45px;
-  font-size: 2.8125rem;
-  background-color: white;
-  color: #f2f2f2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fs-2rem-4 {
-  width: 90px;
-  height: 90px;
-  font-size: 5.625rem;
-  background-color: black;
-  color: #1a1a1a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fs-3rem-5 {
-  width: 135px;
-  height: 135px;
-  font-size: 8.4375rem;
-  background-color: white;
-  color: #d9d9d9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fs-1rem-6 {
-  width: 45px;
-  height: 45px;
-  font-size: 2.8125rem;
-  background-color: black;
-  color: #0d0d0d;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fs-2rem-7 {
-  width: 90px;
-  height: 90px;
-  font-size: 5.625rem;
-  background-color: white;
-  color: #e6e6e6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fs-3rem-8 {
-  width: 135px;
-  height: 135px;
-  font-size: 8.4375rem;
-  background-color: black;
-  color: #262626;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fs-1rem-9 {
-  width: 45px;
-  height: 45px;
-  font-size: 2.8125rem;
-  background-color: white;
-  color: #f2f2f2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fs-2rem-10 {
-  width: 90px;
-  height: 90px;
-  font-size: 5.625rem;
-  background-color: black;
-  color: #1a1a1a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fs-3rem-11 {
-  width: 135px;
-  height: 135px;
-  font-size: 8.4375rem;
-  background-color: white;
-  color: #d9d9d9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fs-1rem-12 {
-  width: 45px;
-  height: 45px;
-  font-size: 2.8125rem;
-  background-color: black;
-  color: #0d0d0d;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fs-2rem-13 {
-  width: 90px;
-  height: 90px;
-  font-size: 5.625rem;
-  background-color: white;
-  color: #e6e6e6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fs-3rem-14 {
-  width: 135px;
-  height: 135px;
-  font-size: 8.4375rem;
-  background-color: black;
-  color: #262626;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fs-1rem-15 {
-  width: 45px;
-  height: 45px;
-  font-size: 2.8125rem;
-  background-color: white;
-  color: #f2f2f2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fs-2rem-16 {
-  width: 90px;
-  height: 90px;
-  font-size: 5.625rem;
-  background-color: black;
-  color: #1a1a1a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fs-3rem-17 {
-  width: 135px;
-  height: 135px;
-  font-size: 8.4375rem;
-  background-color: white;
-  color: #d9d9d9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fs-1rem-18 {
-  width: 45px;
-  height: 45px;
-  font-size: 2.8125rem;
-  background-color: black;
-  color: #0d0d0d;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fs-2rem-19 {
-  width: 90px;
-  height: 90px;
-  font-size: 5.625rem;
-  background-color: white;
-  color: #e6e6e6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 body {
