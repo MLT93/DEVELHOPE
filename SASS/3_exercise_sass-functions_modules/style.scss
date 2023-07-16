@@ -5,16 +5,27 @@
   box-sizing: border-box;
   margin: 0;
 }
+:root {
+  // border color:
+  --border-red: red;
+  --border-green: green;
+  --border-violet: blueviolet;
+  // letter color:
+  --letter-blue: blue;
+  --letter-red: red;
+  --letter-green: green;
+  // underline color:
+  --underline-color: gray;
+}
 // @functions utils:
 
-
-// declaro una variable con el valor de 1rem en px
-$valordeunrem16px: 16px;
-// funcion para calcular el valor de píxeles en rem con dos parámetros, los px y el valor de un rem (que son 16px)
-@function calculate-rem($cantidadpx, $valordeunrem16px) {
-  // almaceno la division en la variable $result
-  $result: $cantidadpx / $valordeunrem16px;
-  // el @debug más el inspect() nos muestra el resultado utilizando este código en la terminal: sass --watch <"input".scss:"output".css --trace> Esto mostrará mensajes de depuración, incluidos los valores de variables y otras salidas relacionadas en la consola mientras el archivo Sass se está compilando 
+// declaro una variable con el valor de 1rem en px (16px)
+$valor-de-un-rem: 16px;
+// función para calcular el valor de píxeles en rem con dos parámetros, los px y el valor de un rem (que son 16px)
+@function calculate_rem($cantidad-px, $valor-de-un-rem) {
+  // almaceno la division en la variable [$result], utilizo la función [calc()] para hacer la división entre los dos parámetros [$cantidad-px / $valor-de-un-rem] y después le agrego el [+ rem] para que me añada al resultado numérico, la unidad de medida que deseo utilizar. De esta forma sea el scss y que el css interpretarán correctamente la medida que deseo utilizar porque la división me da unicamente resultado numérico sin su unidad de medida y scss o css no trabajan correctamente sin unidades de medida
+  $result: calc($cantidad-px / $valor-de-un-rem) + rem;
+  // el @debug más el inspect() nos muestra el resultado utilizando este código en la terminal: sass --watch <"input".scss:"output".css --trace> Esto mostrará mensajes de depuración, incluidos los valores de variables y otras salidas relacionadas en la consola mientras el archivo Sass se está compilando
   @debug "El resultado es: #{inspect($result)}";
   // nos devuelve la variable $result
   @return $result;
@@ -29,7 +40,7 @@ $valordeunrem16px: 16px;
   width: 100vw;
   min-height: 100vh;
   padding: 0px;
-  font-size: calculate-rem(16px, $valordeunrem16px ); // 1rem
+  font-size: calculate_rem(16px, $valor-de-un-rem ); // 1rem
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
     sans-serif;
@@ -41,17 +52,16 @@ $valordeunrem16px: 16px;
   align-items: center;
   width: 80%;
   height: 50vh;
-  padding: calculate-rem(20px, $valordeunrem16px ); // 1.25rem
+  padding: calculate_rem(20px, $valor-de-un-rem); // 1.25rem
   border: solid 3px var(--border-red);
 }
 @mixin h1 {
   color: var(--letter-green);
-  font-size: calculate-rem(28px, $valordeunrem16px ); // 1.75rem
-  -moz-text-decoration-color: gray;
+  font-size: 1.75rem; // calculate_rem(28px, $valor-de-un-rem )
+  -moz-text-decoration-color: var(--underline-color);
   -moz-text-decoration-line: underline;
   -moz-text-decoration-style: solid 3px;
-  text-decoration: underline gray solid 3px;
-  text-decoration-thickness: 3px;
+  text-decoration: underline var(--underline-color) solid 3px;
 }
 @mixin article-container1 {
   display: flex;
@@ -80,14 +90,13 @@ $valordeunrem16px: 16px;
   align-items: center;
   color: $color;
   border: solid 3px $border-color;
-  padding: calculate-rem(10px, $valordeunrem16px );
+  padding: calculate_rem(10px, $valor-de-un-rem ); // 0.625rem
   text-align: center;
 }
 @mixin ultimo-box-grande ($color, $border-color, $font-size) {
 display: flex;
 color: $color;
 border: solid 3px $border-color;
-padding: calculate-rem(10px, $valordeunrem16px ); // 0.625rem
 text-align: center;
 justify-content: center;
 align-items: center;
@@ -110,14 +119,14 @@ body {
         @include center-writing;
 
         p {
-          @include p(red, green);
+          @include p(var(--letter-red), var(--border-green));
         }
       }
       article.p-container2 {
         @include center-writing;
 
         p {
-          @include p(blue, green);
+          @include p(var(--letter-blue), var(--border-green));
         }
       }
 
@@ -125,14 +134,14 @@ body {
         @include center-writing;
 
         p {
-          @include p(red, green);
+          @include p(var(--letter-red), var(--border-green));
         }
       }
       article.p-container4 {
         @include center-writing;
 
         p {
-          @include p(blue, green);
+          @include p(var(--letter-blue), var(--border-green));
         }
       }
     }
@@ -140,7 +149,7 @@ body {
       @include article-container2;
 
       article.p-container5 {
-        @include ultimo-box-grande(green, blueviolet, 24px)
+        @include ultimo-box-grande(var(--letter-green), var(--border-violet), calculate_rem(24px, $valor-de-un-rem));
       }
     }
   }
