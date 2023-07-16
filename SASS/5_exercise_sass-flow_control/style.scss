@@ -1,0 +1,240 @@
+// SASS fourth exercise
+
+// **************** MANTENIMIENTO **************** //
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+:root {
+  // borders colors:
+  --border-red: red;
+  --border-green: green;
+  --border-violet: blueviolet;
+
+  // letters colors:
+  --letter-blue: blue;
+  --letter-red: red;
+  --letter-green: green;
+
+  // underlines colors:
+  --underline-color: gray;
+}
+
+// @functions utils:
+
+// declaro una variable con el valor de 1rem en px (16px)
+$valor-de-un-rem: 16px;
+// función para calcular el valor de píxeles en rem con dos parámetros, los px y el valor de un rem (que son 16px)
+@function calculate_rem($cantidad-px, $valor-de-un-rem) {
+  // almaceno la division en la variable [$result], utilizo la función [calc()] para hacer la división entre los dos parámetros [$cantidad-px / $valor-de-un-rem] y después le agrego el [+ rem] para que me añada al resultado numérico, la unidad de medida que deseo utilizar. De esta forma sea el scss y que el css interpretarán correctamente la medida que deseo utilizar porque la división me da unicamente resultado numérico sin su unidad de medida y scss o css no trabajan correctamente sin unidades de medida
+  $result: calc($cantidad-px / $valor-de-un-rem) + rem;
+  // el @debug más el inspect() nos muestra el resultado utilizando este código en la terminal: sass --watch <"input".scss:"output".css --trace> Esto mostrará mensajes de depuración, incluidos los valores de variables y otras salidas relacionadas en la consola mientras el archivo Sass se está compilando
+  @debug "El resultado es: #{inspect($result)}";
+  // nos devuelve la variable $result
+  @return $result;
+}
+
+// @mixins utils:
+
+@mixin body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 0px;
+  font-size: calculate_rem(16px, $valor-de-un-rem); // 1rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+@mixin lienzo-principal() {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 90%;
+  height: 50vh;
+  padding: calculate_rem(18px, $valor-de-un-rem); // 1.5rem;
+  border: solid 3px var(--border-red);
+}
+@mixin h1 {
+  color: var(--letter-green);
+  font-size: calculate_rem(28px, $valor-de-un-rem); // 1.75rem;
+  -moz-text-decoration-color: var(--underline-color);
+  -moz-text-decoration-line: underline;
+  -moz-text-decoration-style: solid 3px;
+  text-decoration: underline var(--underline-color) solid 3px;
+}
+@mixin article-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  height: auto;
+  width: 100%;
+}
+@mixin center-writing {
+  display: flex;
+  flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  justify-content: center;
+  width: 25%;
+  height: 100%;
+}
+@mixin p($color, $border-color) {
+  display: flex;
+  align-items: center;
+  color: $color;
+  border: solid 3px $border-color;
+  padding: calculate_rem(20px, $valor-de-un-rem); // 0.625rem;
+  text-align: center;
+}
+@mixin linea-de-cajitas {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  // padding: 0.5rem;
+  // background-origin: gray;
+  border: 1px black solid;
+  width: calculate_rem(45px, $valor-de-un-rem); // 2.8125rem
+  height: auto;
+}
+@mixin ultimo-box-grande($color, $border-color, $font-size) {
+  display: flex;
+  color: $color;
+  border: solid 3px $border-color;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  font-size: $font-size;
+  height: auto;
+}
+
+// selectors utils:
+
+%h2 {
+  color: var(--letter-green);
+  font-size: calculate_rem(28px, $valor-de-un-rem); // 1.75rem;
+  margin: calculate_rem(16px, $valor-de-un-rem); // 1rem;
+  text-decoration: underline var(--underline-color) solid 3px;
+  border: solid 3px var(--border-red);
+  padding: calculate_rem(16px, $valor-de-un-rem); // 1rem;
+}
+
+// loops utils:
+
+// creo una lista para recorrer los números de mis clases .fs-1rem, .fs-2rem, .fs-3rem Con esto crearé una lista de números con la cual puedo trabajar
+$fs-size: 1, 2, 3;
+// cero una variable con el valor que necesite para poder redimensionar los números que se encuentren en las iteraciones de la lista, por si fueran muy grandes, pequeños o simplemente por si necesito una escala específica
+$base-start-i: 1;
+// indice del bucle ($i), dentro de la lista ($fs-size)
+@each $i in $fs-size {
+  // variable ($font) que albergará el resultado de la multiplicación del la variable "base" (base-start-i) por el indice ($i), lo que me dará el tamaño de la fuente // Cálculo del tamaño de fuente basado en el índice del bucle
+  $font: index($fs-size, $i);
+  // interpolo los números que encuentra el índice ($i) en su recorrido por la lista ($fs-size) con los nombres de cada class dentro del html y, si corresponden, entonces le cambia el font-size
+  .fs-#{$i}rem-1, .fs-#{$i}rem-2 {
+    // convierto mi font-size a la unidad de medida rem, multiplicándolo por 1 para que me de su valor básico y añadiendo la unidad de medida al final. Si como trabajo con una lista sin especificaciones de medida, entonces es más fácil darle una unidad de medida cualquiera
+    font-size: calc($font * 1) + rem;
+  }
+  // esto me mostrará los valores de la lista que se asignan al font-size de las clases .fs-1rem, .fs-2rem, .fs-3rem
+  @debug "El $font vale: #{inspect($font)}";
+
+  // lista
+  $list-colors: white, black;
+  // redimensionar, si hace falta. En este caso si como jugamos con opacidades y necesitamos el redimensionamiento, le pondremos un valor alto para que vaya disminuyendo su opacidad
+  $opacidad-base: 0.5;
+
+  @each $i-color in $list-colors {
+    $oscuridad: index($list-colors, $i-color) + 1;
+
+    .fs-#{$i}rem-#{i-color} {
+      background-color: lighten($i-color, $oscuridad * $opacidad-base);
+      color: darken($i-color, $oscuridad * $opacidad-base);
+    }
+
+    @debug "Clase generada: .fs-#{$i}rem-#{$i-color}"
+  }
+}
+
+$box-size: 45px; // Tamaño del cuadro en píxeles
+$rem-value: 2.8125rem; // Valor de conversión de píxeles a rem
+
+@for $i from 1 through 19 {
+  $size: $i % 3 + 1; // Tamaño de fuente (1, 2 o 3)
+  $color: if($i % 2 == 0, black, white); // Color de fondo y color de texto (alternando entre negro y blanco)
+
+  .fs-#{$size}rem-#{$i} {
+    width: $box-size * $size; // Ancho del cuadro en píxeles
+    height: $box-size * $size; // Altura del cuadro en píxeles
+    font-size: $size * $rem-value; // Tamaño de fuente en rem
+    background-color: $color;
+    color: if(lightness($color) > 50, darken($color, $size * 5), lighten($color, $size * 5)); // Ajuste del color de texto en función del color de fondo
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    @debug "Clase generada: .fs-#{$size}rem-#{$i}";
+  }
+}
+
+// **************** PAGINA **************** //
+body {
+  @include body;
+
+  > div.lienzo-y-border-red {
+    @include lienzo-principal;
+
+    & h1 {
+      @include h1;
+      + h2 {
+        @extend %h2;
+      }
+    }
+
+    > section.article-container {
+      @include article-container;
+
+      > article.p {
+        @include center-writing;
+
+        > p.inside-mini-box1 {
+          @include p(var(--letter-red), var(--border-green));
+        }
+        > p.inside-mini-box2 {
+          @include p(var(--letter-blue), var(--border-green));
+        }
+        > p.inside-mini-box3 {
+          @include p(var(--letter-red), var(--border-green));
+        }
+        > p.inside-mini-box4 {
+          @include p(var(--letter-blue), var(--border-green));
+        }
+      }
+
+      + section.article-container {
+        @include article-container;
+        div {
+          @include linea-de-cajitas;
+        }
+      }
+
+      + section.article-container {
+        @include article-container;
+
+        article.p-ultimo-box {
+          @include ultimo-box-grande(
+            var(--letter-green),
+            var(--border-violet),
+            calculate_rem(24px, $valor-de-un-rem)
+          );
+        }
+      }
+    }
+  }
+}
