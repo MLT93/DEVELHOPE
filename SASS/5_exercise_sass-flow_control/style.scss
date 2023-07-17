@@ -141,28 +141,26 @@ $base-start-i: 0.78;
   // esto me mostrará los valores de la lista que se asignan al font-size de las clases .fs-1rem, .fs-2rem, .fs-3rem
   @debug "El $font vale: #{inspect($font)}";
 
-  // lista
-  $list-colors: white, black;
-  // redimensionar, si hace falta. En este caso si como jugamos con opacidades y necesitamos el redimensionamiento, le pondremos un valor alto para que vaya disminuyendo su opacidad
-  $opacidad-base: 5;
+  @for $var from 1 to 19 {
+    @if $var == 10 {
+      // lista
+      $list-colors: white, black;
+      // redimensionar, si hace falta. En este caso si como jugamos con opacidades y necesitamos el redimensionamiento, le pondremos un valor alto para que vaya disminuyendo su opacidad
+      $opacidad-base: 5;
+      @each $i-color in $list-colors {
+        $oscuridad: index($list-colors, $i-color) + 10.2;
 
-  @each $i-color in $list-colors {
-    $oscuridad: index($list-colors, $i-color) + 10.2;
+        .fs-#{$i}rem {
+          background-color: lighten($i-color, $oscuridad * $opacidad-base);
+          color: darken($i-color, $oscuridad * $opacidad-base);
+        }
 
-    .fs-#{$i}rem {
-      background-color: lighten($i-color, $oscuridad * $opacidad-base);
-      color: darken($i-color, $oscuridad * $opacidad-base);
-    }
-
-    @debug "El $oscuridad vale: .fs-#{$i}rem";
-  }
-}
-
-@for $var from 1 to 19 {
-  @if $var == 10 {
-    .fs-2rem {
-      background-color: blue;
-      color: red;
+        @debug "El $oscuridad vale: .fs-#{$i}rem";
+      }
+      .fs-2rem {
+        background-color: blue;
+        color: red;
+      }
     }
   }
 }
