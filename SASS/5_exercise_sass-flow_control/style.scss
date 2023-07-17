@@ -36,9 +36,9 @@ $valor-de-un-rem: 16px;
   @return $result;
 }
 
-// @mixins utils:
+// @extend utils (selectors -> classes and %text):
 
-@mixin body {
+.body {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,75 +48,23 @@ $valor-de-un-rem: 16px;
   padding: 0px;
   font-size: calculate_rem(16px, $valor-de-un-rem); // 1rem;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
-@mixin lienzo-principal() {
+.lienzo-principal {
   display: flex;
   flex-flow: column wrap;
   justify-content: space-evenly;
   align-items: center;
   width: 90%;
-  height: 50vh;
+  height: 60vh;
   padding: calculate_rem(18px, $valor-de-un-rem); // 1.5rem;
   border: solid 3px var(--border-red);
 }
-@mixin h1 {
+.h1 {
   color: var(--letter-green);
   font-size: calculate_rem(28px, $valor-de-un-rem); // 1.75rem;
-  -moz-text-decoration-color: var(--underline-color);
-  -moz-text-decoration-line: underline;
-  -moz-text-decoration-style: solid 3px;
   text-decoration: underline var(--underline-color) solid 3px;
 }
-@mixin article-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
-  align-items: center;
-  text-align: center;
-  height: auto;
-  width: 100%;
-}
-@mixin center-writing {
-  display: flex;
-  flex-flow: row wrap;
-  -ms-flex-flow: row wrap;
-  justify-content: center;
-  width: 25%;
-  height: 100%;
-}
-@mixin p($color, $border-color) {
-  display: flex;
-  align-items: center;
-  color: $color;
-  border: solid 3px $border-color;
-  padding: calculate_rem(20px, $valor-de-un-rem); // 0.625rem;
-  text-align: center;
-}
-@mixin linea-de-cajitas {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  // padding: 0.5rem;
-  // background-origin: gray;
-  border: 1px black solid;
-  width: calculate_rem(45px, $valor-de-un-rem); // 2.8125rem
-  height: auto;
-}
-@mixin ultimo-box-grande($color, $border-color, $font-size) {
-  display: flex;
-  color: $color;
-  border: solid 3px $border-color;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  font-weight: 400;
-  font-size: $font-size;
-  height: auto;
-}
-
-// selectors utils:
-
 %h2 {
   color: var(--letter-green);
   font-size: calculate_rem(28px, $valor-de-un-rem); // 1.75rem;
@@ -124,6 +72,55 @@ $valor-de-un-rem: 16px;
   text-decoration: underline var(--underline-color) solid 3px;
   border: solid 3px var(--border-red);
   padding: calculate_rem(16px, $valor-de-un-rem); // 1rem;
+}
+.article-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: auto;
+  width: 100%;
+}
+.center-writing {
+  display: flex;
+  flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  justify-content: center;
+  width: 25%;
+  height: 100%;
+}
+.linea-de-cajitas {
+  display: flex;
+  flex-flow: row wrap;
+  border: 1px red solid;
+  width: calculate_rem(45px, $valor-de-un-rem); // 2.8125rem;
+  height: calculate_rem(45px, $valor-de-un-rem); // 2.8125rem;
+}
+.ultimo-box-grande {
+  display: flex;
+  flex-flow: row wrap;
+  color: var(--letter-green);
+  border: solid 3px var(--border-violet);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  font-size: calculate_rem(24px, $valor-de-un-rem); // 1.5rem;
+  height: 100%;
+  width: 100%;
+  padding: calculate_rem(40px, $valor-de-un-rem); // 2.5rem;
+}
+
+//  @mixin utils:
+
+@mixin p($color, $border-color) {
+  display: flex;
+  align-items: center;
+  color: $color;
+  border: solid 3px $border-color;
+  padding: calculate_rem(20px, $valor-de-un-rem); // 0.625rem;
+  text-align: center;
 }
 
 // loops utils:
@@ -163,23 +160,23 @@ $base-start-i: 1;
 
 // **************** PAGINA **************** //
 body {
-  @include body;
+  @extend .body;
 
   > div.lienzo-y-border-red {
-    @include lienzo-principal;
+    @extend .lienzo-principal;
 
     & h1 {
-      @include h1;
+      @extend .h1;
       + h2 {
         @extend %h2;
       }
     }
 
     > section.article-container {
-      @include article-container;
+      @extend .article-container;
 
       > article.p {
-        @include center-writing;
+        @extend .center-writing;
 
         > p.inside-mini-box1 {
           @include p(var(--letter-red), var(--border-green));
@@ -196,21 +193,17 @@ body {
       }
 
       + section.article-container {
-        @include article-container;
+        @extend .article-container;
         div {
-          @include linea-de-cajitas;
+          @extend .linea-de-cajitas;
         }
       }
 
       + section.article-container {
-        @include article-container;
+        @extend .article-container;
 
         article.p-ultimo-box {
-          @include ultimo-box-grande(
-            var(--letter-green),
-            var(--border-violet),
-            calculate_rem(24px, $valor-de-un-rem)
-          );
+          @extend .ultimo-box-grande;
         }
       }
     }
