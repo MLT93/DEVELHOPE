@@ -48,17 +48,17 @@ $valor-de-un-rem: 16px;
   padding: 0px;
   font-size: calculate_rem(16px, $valor-de-un-rem); // 1rem;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-  Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 .lienzo-principal {
   display: flex;
-  flex-flow: column wrap;
-  justify-content: space-evenly;
+  flex-flow: column nowrap;
+  justify-content: space-between;
   align-items: center;
   width: 90%;
   height: 60vh;
   padding: calculate_rem(18px, $valor-de-un-rem); // 1.5rem;
-  border: solid 3px var(--border-red);
+  border: solid 2px var(--border-red);
 }
 .h1 {
   color: var(--letter-green);
@@ -70,7 +70,7 @@ $valor-de-un-rem: 16px;
   font-size: calculate_rem(28px, $valor-de-un-rem); // 1.75rem;
   margin: calculate_rem(16px, $valor-de-un-rem); // 1rem;
   text-decoration: underline var(--underline-color) solid 3px;
-  border: solid 3px var(--border-red);
+  border: solid 2px var(--border-red);
   padding: calculate_rem(16px, $valor-de-un-rem); // 1rem;
 }
 .article-container {
@@ -93,7 +93,7 @@ $valor-de-un-rem: 16px;
 .linea-de-cajitas {
   display: flex;
   flex-flow: row wrap;
-  border: 1px red solid;
+  border: 2px red solid;
   width: calculate_rem(45px, $valor-de-un-rem); // 2.8125rem;
   height: calculate_rem(45px, $valor-de-un-rem); // 2.8125rem;
 }
@@ -101,7 +101,7 @@ $valor-de-un-rem: 16px;
   display: flex;
   flex-flow: row wrap;
   color: var(--letter-green);
-  border: solid 3px var(--border-violet);
+  border: solid 2px var(--border-violet);
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -128,7 +128,7 @@ $valor-de-un-rem: 16px;
 // creo una lista para recorrer los números de mis clases .fs-1rem, .fs-2rem, .fs-3rem Con esto crearé una lista de números con la cual puedo trabajar
 $fs-size: 1, 2, 3;
 // cero una variable con el valor que necesite para poder redimensionar los números que se encuentren en las iteraciones de la lista, por si fueran muy grandes, pequeños o simplemente por si necesito una escala específica
-$base-start-i: 0.82;
+$base-start-i: 0.78;
 // indice del bucle ($i), dentro de la lista ($fs-size)
 @each $i in $fs-size {
   // variable ($font) que albergará el resultado de la multiplicación del la variable "base" (base-start-i) por el indice ($i), lo que me dará el tamaño de la fuente // Cálculo del tamaño de fuente basado en el índice del bucle
@@ -155,6 +155,15 @@ $base-start-i: 0.82;
     }
 
     @debug "El $oscuridad vale: .fs-#{$i}rem";
+  }
+}
+
+@for $var from 1 to 19 {
+  @if $var == 10 {
+    .fs-2rem {
+      background-color: blue;
+      color: red;
+    }
   }
 }
 
