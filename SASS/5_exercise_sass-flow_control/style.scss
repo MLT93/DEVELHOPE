@@ -128,7 +128,7 @@ $valor-de-un-rem: 16px;
 // creo una lista para recorrer los números de mis clases .fs-1rem, .fs-2rem, .fs-3rem Con esto crearé una lista de números con la cual puedo trabajar
 $fs-size: 1, 2, 3;
 // cero una variable con el valor que necesite para poder redimensionar los números que se encuentren en las iteraciones de la lista, por si fueran muy grandes, pequeños o simplemente por si necesito una escala específica
-$base-start-i: 1;
+$base-start-i: 0.82;
 // indice del bucle ($i), dentro de la lista ($fs-size)
 @each $i in $fs-size {
   // variable ($font) que albergará el resultado de la multiplicación del la variable "base" (base-start-i) por el indice ($i), lo que me dará el tamaño de la fuente // Cálculo del tamaño de fuente basado en el índice del bucle
@@ -136,7 +136,7 @@ $base-start-i: 1;
   // interpolo los números que encuentra el índice ($i) en su recorrido por la lista ($fs-size) con los nombres de cada class dentro del html y, si corresponden, entonces le cambia el font-size
   .fs-#{$i}rem {
     // convierto mi font-size a la unidad de medida rem, multiplicándolo por 1 para que me de su valor básico y añadiendo la unidad de medida al final. Si como trabajo con una lista sin especificaciones de medida, entonces es más fácil darle una unidad de medida cualquiera
-    font-size: calc($font * 1) + rem;
+    font-size: calc($font * $base-start-i) + rem;
   }
   // esto me mostrará los valores de la lista que se asignan al font-size de las clases .fs-1rem, .fs-2rem, .fs-3rem
   @debug "El $font vale: #{inspect($font)}";
