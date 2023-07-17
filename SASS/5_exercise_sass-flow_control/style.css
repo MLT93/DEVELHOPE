@@ -99,47 +99,627 @@ body > div.lienzo-y-border-red h1 + h2 {
   font-size: 0.78rem;
 }
 
-.fs-1rem {
+.box-0 {
   background-color: white;
-  color: #707070;
+  color: white;
 }
 
-.fs-1rem {
-  background-color: #9c9c9c;
+.box-0 {
+  background-color: black;
   color: black;
+}
+
+.box-1 {
+  background-color: #f2f2f2;
+  color: white;
+}
+
+.box-1 {
+  background-color: black;
+  color: #0d0d0d;
+}
+
+.box-2 {
+  background-color: #e6e6e6;
+  color: white;
+}
+
+.box-2 {
+  background-color: black;
+  color: #1a1a1a;
+}
+
+.box-3 {
+  background-color: #d9d9d9;
+  color: white;
+}
+
+.box-3 {
+  background-color: black;
+  color: #262626;
+}
+
+.box-4 {
+  background-color: #cccccc;
+  color: white;
+}
+
+.box-4 {
+  background-color: black;
+  color: #333333;
+}
+
+.box-5 {
+  background-color: #bfbfbf;
+  color: white;
+}
+
+.box-5 {
+  background-color: black;
+  color: #404040;
+}
+
+.box-6 {
+  background-color: #b3b3b3;
+  color: white;
+}
+
+.box-6 {
+  background-color: black;
+  color: #4d4d4d;
+}
+
+.box-7 {
+  background-color: #a6a6a6;
+  color: white;
+}
+
+.box-7 {
+  background-color: black;
+  color: #595959;
+}
+
+.box-8 {
+  background-color: #999999;
+  color: white;
+}
+
+.box-8 {
+  background-color: black;
+  color: #666666;
+}
+
+.box-9 {
+  background-color: #8c8c8c;
+  color: white;
+}
+
+.box-9 {
+  background-color: black;
+  color: #737373;
+}
+
+.box-10 {
+  background-color: gray;
+  color: white;
+}
+
+.box-10 {
+  background-color: black;
+  color: gray;
+}
+
+.fs-1rem.box-10 {
+  background-color: blue;
+  color: red;
+}
+
+.box-11 {
+  background-color: #737373;
+  color: white;
+}
+
+.box-11 {
+  background-color: black;
+  color: #8c8c8c;
+}
+
+.box-12 {
+  background-color: #666666;
+  color: white;
+}
+
+.box-12 {
+  background-color: black;
+  color: #999999;
+}
+
+.box-13 {
+  background-color: #595959;
+  color: white;
+}
+
+.box-13 {
+  background-color: black;
+  color: #a6a6a6;
+}
+
+.box-14 {
+  background-color: #4d4d4d;
+  color: white;
+}
+
+.box-14 {
+  background-color: black;
+  color: #b3b3b3;
+}
+
+.box-15 {
+  background-color: #404040;
+  color: white;
+}
+
+.box-15 {
+  background-color: black;
+  color: #bfbfbf;
+}
+
+.box-16 {
+  background-color: #333333;
+  color: white;
+}
+
+.box-16 {
+  background-color: black;
+  color: #cccccc;
+}
+
+.box-17 {
+  background-color: #262626;
+  color: white;
+}
+
+.box-17 {
+  background-color: black;
+  color: #d9d9d9;
+}
+
+.box-18 {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.box-18 {
+  background-color: black;
+  color: #e6e6e6;
+}
+
+.box-19 {
+  background-color: #0d0d0d;
+  color: white;
+}
+
+.box-19 {
+  background-color: black;
+  color: #f2f2f2;
 }
 
 .fs-2rem {
   font-size: 1.56rem;
 }
 
-.fs-2rem {
+.box-0 {
   background-color: white;
-  color: #707070;
+  color: white;
 }
 
-.fs-2rem {
-  background-color: #9c9c9c;
+.box-0 {
+  background-color: black;
   color: black;
+}
+
+.box-1 {
+  background-color: #f2f2f2;
+  color: white;
+}
+
+.box-1 {
+  background-color: black;
+  color: #0d0d0d;
+}
+
+.box-2 {
+  background-color: #e6e6e6;
+  color: white;
+}
+
+.box-2 {
+  background-color: black;
+  color: #1a1a1a;
+}
+
+.box-3 {
+  background-color: #d9d9d9;
+  color: white;
+}
+
+.box-3 {
+  background-color: black;
+  color: #262626;
+}
+
+.box-4 {
+  background-color: #cccccc;
+  color: white;
+}
+
+.box-4 {
+  background-color: black;
+  color: #333333;
+}
+
+.box-5 {
+  background-color: #bfbfbf;
+  color: white;
+}
+
+.box-5 {
+  background-color: black;
+  color: #404040;
+}
+
+.box-6 {
+  background-color: #b3b3b3;
+  color: white;
+}
+
+.box-6 {
+  background-color: black;
+  color: #4d4d4d;
+}
+
+.box-7 {
+  background-color: #a6a6a6;
+  color: white;
+}
+
+.box-7 {
+  background-color: black;
+  color: #595959;
+}
+
+.box-8 {
+  background-color: #999999;
+  color: white;
+}
+
+.box-8 {
+  background-color: black;
+  color: #666666;
+}
+
+.box-9 {
+  background-color: #8c8c8c;
+  color: white;
+}
+
+.box-9 {
+  background-color: black;
+  color: #737373;
+}
+
+.box-10 {
+  background-color: gray;
+  color: white;
+}
+
+.box-10 {
+  background-color: black;
+  color: gray;
+}
+
+.fs-2rem.box-10 {
+  background-color: blue;
+  color: red;
+}
+
+.box-11 {
+  background-color: #737373;
+  color: white;
+}
+
+.box-11 {
+  background-color: black;
+  color: #8c8c8c;
+}
+
+.box-12 {
+  background-color: #666666;
+  color: white;
+}
+
+.box-12 {
+  background-color: black;
+  color: #999999;
+}
+
+.box-13 {
+  background-color: #595959;
+  color: white;
+}
+
+.box-13 {
+  background-color: black;
+  color: #a6a6a6;
+}
+
+.box-14 {
+  background-color: #4d4d4d;
+  color: white;
+}
+
+.box-14 {
+  background-color: black;
+  color: #b3b3b3;
+}
+
+.box-15 {
+  background-color: #404040;
+  color: white;
+}
+
+.box-15 {
+  background-color: black;
+  color: #bfbfbf;
+}
+
+.box-16 {
+  background-color: #333333;
+  color: white;
+}
+
+.box-16 {
+  background-color: black;
+  color: #cccccc;
+}
+
+.box-17 {
+  background-color: #262626;
+  color: white;
+}
+
+.box-17 {
+  background-color: black;
+  color: #d9d9d9;
+}
+
+.box-18 {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.box-18 {
+  background-color: black;
+  color: #e6e6e6;
+}
+
+.box-19 {
+  background-color: #0d0d0d;
+  color: white;
+}
+
+.box-19 {
+  background-color: black;
+  color: #f2f2f2;
 }
 
 .fs-3rem {
   font-size: 2.34rem;
 }
 
-.fs-3rem {
+.box-0 {
   background-color: white;
-  color: #707070;
+  color: white;
 }
 
-.fs-3rem {
-  background-color: #9c9c9c;
+.box-0 {
+  background-color: black;
   color: black;
 }
 
-.fs-2rem {
+.box-1 {
+  background-color: #f2f2f2;
+  color: white;
+}
+
+.box-1 {
+  background-color: black;
+  color: #0d0d0d;
+}
+
+.box-2 {
+  background-color: #e6e6e6;
+  color: white;
+}
+
+.box-2 {
+  background-color: black;
+  color: #1a1a1a;
+}
+
+.box-3 {
+  background-color: #d9d9d9;
+  color: white;
+}
+
+.box-3 {
+  background-color: black;
+  color: #262626;
+}
+
+.box-4 {
+  background-color: #cccccc;
+  color: white;
+}
+
+.box-4 {
+  background-color: black;
+  color: #333333;
+}
+
+.box-5 {
+  background-color: #bfbfbf;
+  color: white;
+}
+
+.box-5 {
+  background-color: black;
+  color: #404040;
+}
+
+.box-6 {
+  background-color: #b3b3b3;
+  color: white;
+}
+
+.box-6 {
+  background-color: black;
+  color: #4d4d4d;
+}
+
+.box-7 {
+  background-color: #a6a6a6;
+  color: white;
+}
+
+.box-7 {
+  background-color: black;
+  color: #595959;
+}
+
+.box-8 {
+  background-color: #999999;
+  color: white;
+}
+
+.box-8 {
+  background-color: black;
+  color: #666666;
+}
+
+.box-9 {
+  background-color: #8c8c8c;
+  color: white;
+}
+
+.box-9 {
+  background-color: black;
+  color: #737373;
+}
+
+.box-10 {
+  background-color: gray;
+  color: white;
+}
+
+.box-10 {
+  background-color: black;
+  color: gray;
+}
+
+.fs-3rem.box-10 {
   background-color: blue;
   color: red;
+}
+
+.box-11 {
+  background-color: #737373;
+  color: white;
+}
+
+.box-11 {
+  background-color: black;
+  color: #8c8c8c;
+}
+
+.box-12 {
+  background-color: #666666;
+  color: white;
+}
+
+.box-12 {
+  background-color: black;
+  color: #999999;
+}
+
+.box-13 {
+  background-color: #595959;
+  color: white;
+}
+
+.box-13 {
+  background-color: black;
+  color: #a6a6a6;
+}
+
+.box-14 {
+  background-color: #4d4d4d;
+  color: white;
+}
+
+.box-14 {
+  background-color: black;
+  color: #b3b3b3;
+}
+
+.box-15 {
+  background-color: #404040;
+  color: white;
+}
+
+.box-15 {
+  background-color: black;
+  color: #bfbfbf;
+}
+
+.box-16 {
+  background-color: #333333;
+  color: white;
+}
+
+.box-16 {
+  background-color: black;
+  color: #cccccc;
+}
+
+.box-17 {
+  background-color: #262626;
+  color: white;
+}
+
+.box-17 {
+  background-color: black;
+  color: #d9d9d9;
+}
+
+.box-18 {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.box-18 {
+  background-color: black;
+  color: #e6e6e6;
+}
+
+.box-19 {
+  background-color: #0d0d0d;
+  color: white;
+}
+
+.box-19 {
+  background-color: black;
+  color: #f2f2f2;
 }
 
 body > div.lienzo-y-border-red > section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1, body > div.lienzo-y-border-red > section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container + section.article-container > article.p > p.inside-mini-box1 {
