@@ -1,0 +1,38 @@
+// @functions utils:
+
+// declaro una variable con el valor de 1rem, que son 16px
+$valor-de-un-rem: 16px;
+// función para calcular el valor de píxeles en rem con 1 parámetro, los px que calcularemos
+@function calculate_rem($cantidad-px) {
+  // almaceno la division en la variable [$result], utilizo la función [calc()] para hacer la división entre los dos parámetros [$cantidad-px / $valor-de-un-rem] y después le agrego el [+ rem] para que me añada al resultado numérico, la unidad de medida que deseo utilizar. De esta forma sea el scss y que el css interpretarán correctamente la medida que deseo utilizar porque la división me da unicamente resultado numérico sin su unidad de medida y scss o css no trabajan correctamente sin unidades de medida
+  $result: calc($cantidad-px / $valor-de-un-rem) + rem;
+  // el @debug más el inspect() nos muestra el resultado utilizando este código en la terminal: sass --watch <"input".scss:"output".css --trace> Esto mostrará mensajes de depuración, incluidos los valores de variables y otras salidas relacionadas en la consola mientras el archivo Sass se está compilando
+  @debug "El resultado es: #{inspect($result)}";
+  // nos devuelve la variable $result
+  @return $result;
+}
+
+// método antiguo
+// para importar las funciones en el archivo donde se deseen usar debemos poner @import seguido del nombre del archivo que deseamos importar. El archivo debe de estar en la misma carpeta que el archivo donde deseamos exportar las funciones:
+// @import [el nombre del archivo sin el guion "_" bajo ni la extensión ".scss"]
+// @import "function-utils";
+/* 
+
+.box {
+  padding: calculate_rem(12.4px);
+} 
+
+*/
+
+// método actual
+// para usar las funciones utilizando el nombre asignado específicamente debemos poner el @use arriba de cualquier otra declaración al interno del archivo en el cual deseamos exportar. De esta forma podremos utilizar el nombre específico para invocar las funciones presentes en este archivo seguido del nombre de la función a utilizar:
+// @use [nombre del archivo sin guion bajo ni extensión] as [nombre descriptivo para las funciones];
+// @use "function-utils" as f;
+/*
+
+.box {
+  padding: f.calculate_rem(12.4px);
+} 
+
+*/
+

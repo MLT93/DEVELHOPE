@@ -1,3 +1,17 @@
+/* 
+
+.box {
+  padding: calculate_rem(12.4px);
+} 
+
+*/
+/*
+
+.box {
+  padding: f.calculate_rem(12.4px);
+} 
+
+*/
 *,
 *::before,
 *::after {
@@ -28,7 +42,7 @@ body {
 }
 body div.lienzo-y-border-red {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: center;
   width: 80%;
