@@ -127,37 +127,63 @@ $valor-de-un-rem: 16px;
 
 // creo una lista para recorrer los números de mis clases .fs-1rem, .fs-2rem, .fs-3rem Con esto crearé una lista de números con la cual puedo trabajar
 $fs-size: 1, 2, 3;
-
 // cero una variable con el valor que necesite para poder redimensionar los números que se encuentren en las iteraciones de la lista, por si fueran muy grandes, pequeños o simplemente por si necesito una escala específica
 $base-start-i: 0.78;
-
 // indice del bucle ($i), dentro de la lista ($fs-size)
 @each $i in $fs-size {
   // La variable ($font) albergará el resultado de cada iteración dentro de la lista. En este caso, será 1, 2, 3
   $font: index($fs-size, $i);
-
+  // esto me mostrará los valores de la lista que se asignan al font-size de las clases .fs-1rem, .fs-2rem, .fs-3rem
+  @debug "$font = indice #{$font}";
   // Nueva variable donde interpolo los números que encuentra el índice [$i] en su recorrido por la lista [$fs-size] y se los asigno dentro como nombre de la class [.fs-1rem, .fs-2rem, .fs-3rem] en los elementos dentro del html. Cuando correspondan los nombres con el recorrido del bucle, cambiará el font-size
   .fs-#{$i}rem {
     // convierto mi font-size a la unidad de medida rem, multiplicándolo [$font] por mi redimensionador [$base-star-i] y añado la unidad de medida al final. Si como trabajo con una lista sin especificaciones de medida, entonces es más fácil darle una unidad de medida cualquiera
     font-size: calc($font * $base-start-i) + rem;
   }
 
-  // esto me mostrará los valores de la lista que se asignan al font-size de las clases .fs-1rem, .fs-2rem, .fs-3rem
-  @debug "El $font está en el indice #{$font} y equivale a: #{inspect($font)}";
+  // // bucle que se repite una X cantidad de veces. $var recibe cada numero desde el 1 hasta el 20 en cada iteración
+  // @for $var from 1 to 20 {
+  //   @debug "$var va en el recorrido: #{$var}";
+  //   // lista para iterar
+  //   $list-colors: black, white;
+  //   // redimensionardor
+  //   $redimensionador-color: 5;
+  //   // bucle que itera en listas. $i-colors recibe los valores de $list-colors en cada iteración
+  //   @each $i-colors in $list-colors {
+  //     @debug "$i-colors posee el color: #{$i-colors}";
+
+  //     // $oscuridad recibe el indice de mi bucle
+  //     $oscuridad: index($list-colors, $i-colors);
+  //     @debug "$oscuridad está por el indice: #{$oscuridad}";
+
+  //     // nueva class para agregar al html
+  //     .box-#{$var} {
+  //       background-color: darken($i-colors, $var * $redimensionador-color);
+  //       color: lighten($i-colors, $var * $redimensionador-color);
+  //     }
+  //   }
+  //   // @if aplica una condición que dice: Si $var es igual a 10, la class con la interpolación, recibe los cambios del fondo de color y el color de la letra
+  //   @if $var == 10 {
+  //     .box-#{$var} {
+  //       background-color: blue;
+  //       color: red;
+  //     }
+  //   }
+  // }
 }
-// bucle que se repite desde el 1 hasta el 19
-@for $var from 1 to 19 {
+// bucle que se repite desde el 1 hasta el 20
+@for $var from 1 to 20 {
   // variables con la selección de colores
   $color-black: black;
   $color-white: white;
 
   // creación de nueva class [.box-] con interpolación [#{$var}] para añadirla al html y que surta efecto el bucle
   .box-#{$var} {
-    // lighten(funciona igual que darken)
-    color: darken($color-white, $var * 5);
+    // darken([indice que itera dentro de una lista / color en particular], [un número en porcentaje o en cualquier otra medida / la iteración de un bucle @for])
+    background-color: darken($color-white, $var * 5);
 
-    // darken([indice que itera dentro de una lista / color en especial], [número en porcentaje o en cualquier medida / la iteración de un bucle @for])
-    background-color: lighten($color-black, $var * 5);
+    // lighten(funciona igual que darken)
+    color: lighten($color-black, $var * 5);
   }
   // condicional
   @if $var == 10 {
