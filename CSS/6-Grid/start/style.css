@@ -35,16 +35,6 @@ input{
   cursor: help;
   height: 40px;
 }
-.igual {
-  background-color: tomato;
-  grid-column: 4 / 5;
-  grid-row: 3 / 7;
-  border-width: 1.5px;
-  border-radius: 2px;
-  box-shadow: 1px 3px 5px black;
-  cursor: pointer;
-  font-size: larger;
-}
 .botones1 {
   color: aliceblue;
   background-color: #517fc9;
@@ -71,9 +61,21 @@ button:hover{
   border: solid 2px black;
 }
 
+.igual {
+  background-color: tomato;
+  grid-column: 4 / 5;
+  grid-row: 3 / 7;
+  border-width: 1.5px;
+  border-radius: 2px;
+  box-shadow: 1px 3px 5px black;
+  cursor: pointer;
+  font-size: larger;
+}
+
 button:hover.igual{
   color: aliceblue;
   font-weight: 700;
   font-size: larger;
   border: solid 2px black;
 }
+
