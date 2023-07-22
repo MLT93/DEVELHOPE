@@ -1,1 +1,3 @@
-Rewrite the exercise number 20, by using a Switch statement.
+# Exercise 22
+
+Rewrite the exercise 20, by using a Switch statement.
