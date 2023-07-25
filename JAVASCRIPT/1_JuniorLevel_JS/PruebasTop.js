@@ -94,7 +94,7 @@ Después de definir la función imprimirApellido, se utiliza el método forEach 
 Dentro de la función de devolución de llamada, también se llama a la función imprimirApellido, que se encarga de imprimir el apellido del objeto alumno actual.
 
 Por lo tanto, cuando se ejecuta este código, se imprimirá el nombre de cada alumno y su índice en el array, seguido de su apellido. */
- 
+
 //--------------------------------------------
 
 // ARRAY PARA LA DEMOSTRACION
@@ -120,33 +120,74 @@ for (let cadaNumero of misNumeros) {
   console.log(multiplicacion); // Imprime resultado de la multiplicación de cada numero del array por 2.
 }
 
-// Ejemplo con FOR...IN:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ------------------- ITERACIONES FOR...IN \ FOR IN \ FOR-IN: PARA OBJETO --------------------------------------
 let elObjeto = {
   a: 1,
   b: 2,
   c: 3,
 };
 
-for (let propiedadDeMiObjeto in elObjeto) {
-  console.log(propiedadDeMiObjeto); // Imprime: 'a', 'b', 'c'
-  console.log(elObjeto[propiedadDeMiObjeto]); // Imprime: 1, 2, 3
+for (let propiedadKeyDeMiObjeto in elObjeto) {
+  console.log(propiedadKeyDeMiObjeto); // Imprime: 'a', 'b', 'c'
+  console.log(elObjeto[propiedadKeyDeMiObjeto]); // Imprime: 1, 2, 3
 }
 
-// Ejemplo con FOR...OF:
+// Otra forma
+for (const key in elObjeto) {
+  if (elObjeto.hasOwnProperty(key)) {
+    const element = elObjeto[key];
+    console.log(key + ":");
+    console.log(element);
+  }
+};
+// Otra forma con a una función
+function iterarEnObjeto(object) {
+  for (const key in object) {
+    if (Object.hasOwnProperty.call(object, key)) {
+      const element = object[key];
+      console.log(element);
+    }
+  }
+};
+
+iterarEnObjeto(car);
+
+// ------------------- ITERACIONES FOR...OF \ FOR OF \ FOR-OF: PARA ARRAY --------------------------------------
 let array = [1, 2, 3];
 
 for (let elemento of array) {
   console.log(elemento); // Imprime: 1, 2, 3
+  console.log()
 }
 
-// En resumen, FOR...IN se utiliza para iterar sobre las propiedades de un objeto, mientras que FOR...OF se utiliza para iterar sobre los elementos de un array.
 
-//-------------------------------------
+
+
+//---------------- FORMAS DE USAR UN OBJETO CON FUNCIÓN AGREGADA, BUSCAR LAS PROPIEDADES Y LOS MODOS ---------------------
 
 let miObjeto = {
-  propieties: "value", // Sintaxis de la composición de mi objeto.
-  number: 2, // También se pueden escribir las propiedades sin las comillas. Propiedad con valor 2.
-  function: (argumento) => argumento * 2, // Arrow function que toma un parámetro y lo devuelve multiplicado por 2.
+  // Sintaxis de la composición de mi objeto.
+  proprieties: "value",
+  // También se pueden escribir las propiedades sin las comillas. Propiedad con valor 2.
+  number: 2,
+  // Arrow function que toma un parámetro y lo devuelve multiplicado por 2.
+  function: (argumento) => argumento * 2,
   objInside: {
     propiedadInside:
       "Éste valor, está dentro de un objeto que está adentro del objeto principal.",
@@ -154,17 +195,22 @@ let miObjeto = {
 };
 
 // Hay dos formas de llamar al valor de mis propiedades dentro de un objeto:
-console.log(miObjeto.propieties); // llamo a mi propiedad (propieties) para que me imprima su valor.
+console.log(miObjeto.proprieties); // llamo a mi propiedad (proprieties) para que me imprima su valor.
 console.log(miObjeto["number"]); // De ésta forma, siempre que llamamos nuestra propiedad, debe de ir entre comillas.
 
 miObjeto["newKey"] = 7; // Agregar una nueva propiedad a mi objeto (modificar los objetos directamente no es una buena práctica, porque le cambiamos los valores originales. Para eso, debería crear una copia/clon).
 
-console.log(miObjeto["newKey"]); // Llamo a la nueva propidedad.
-console.log(Object.keys(miObjeto)); // Forma de saber cuáles son todas las propiedades (Object.keys()) de mi objeto (miObjeto).
+// Llamo a la nueva propiedad.
+console.log(miObjeto["newKey"]); 
+// Forma de saber cuáles son todas las propiedades (Object.keys()) de mi objeto (miObjeto).
+console.log(Object.keys(miObjeto)); 
+// Llamo a la función (function()) que creé dentro de mi objeto y le asigno un valor (10) al parámetro (argumento) para que me ejecute el código que le metí dentro (argumento * 2).
+console.log(miObjeto.function(10)); 
 
-console.log(miObjeto.function(10)); // Llamo a la función (function()) que creé dentro de mi objeto y le asigno un valor (10) al parámetro (argumento) para que me ejecute el código que le metí dentro (argumento * 2).
 
-// ------- GUARDAR VARIAS VARIABLES DENTRO DE UN OBJETO  --------
+
+
+// ------- GUARDAR VARIAS VARIABLES DENTRO DE UNA FUNCIÓN E IMPRIMIRLAS TODAS JUNTAS  --------
 
 function ejercicio27() {
   let i = 1;
@@ -190,16 +236,22 @@ function ejercicio27() {
 
 let { pares, impares, nombreAusar, sumaImpares, sumaPares } = ejercicio27();
 
-console.log("La suma de los numeros pares es: " + sumaPares);
-console.log("La suma de los numeros impares es: " + sumaImpares);
+console.log("La suma de los números pares es: " + sumaPares);
+console.log("La suma de los números impares es: " + sumaImpares);
 
-// ---------------- CALLBACK ------------------------
+
+
+
+
+
+
+// ------------------- CALLBACK ------------------------
 
 function myBoton(label, disabled, onClick) {
   console.log("Mi label es: " + label);
-  console.log("El boton esta deshabilitado? " + disabled);
+  console.log("El botón esta deshabilitado? " + disabled);
 
-  console.log("Cada vez que hago click, se ejectura" + onClick());
+  console.log("Cada vez que hago click, se ejecuta" + onClick());
 }
 
 function siguientePagina() {
@@ -212,6 +264,9 @@ function abrirElMenu() {
 
 myBoton("Primario", true, siguientePagina);
 myBoton("Secundario", false, abrirElMenu);
+
+
+
 
 // ----------------- CONCATENAR STRINGS ----------------------
 let yearsCompleted = 2;
@@ -235,7 +290,16 @@ console.log(nuevoArray);
 
 /* El método .concat() puede ser útil cuando necesitas combinar arrays y/o strings (arrays de letras) existentes o agregar elementos adicionales a un array sin modificar los arrays originales. También puedes usarlo para crear copias de arrays existentes. */
 
-// ------------------ TODODS LOS MATH. ------------------
+
+
+
+
+
+
+
+
+
+// ------------------ TODOS LOS MATH. ------------------
 
 // MATH es un objeto incorporado en JavaScript que proporciona una serie de funciones matemáticas para realizar operaciones y cálculos matemáticos. Aquí están algunas de las características principales de Math:
 
@@ -257,7 +321,7 @@ let anguloInDegrees = 180;
 let anguloInRadians = (anguloInDegrees * Math.PI) / 180; // Fórmula para convertir los ángulos en grados a radianes
 console.log(Math.cos(anguloInRadians)); // Imprime -1.
 
-Math.tan(); // Siempre calcula en radianes. Por lo tanto, el dato déntro de las paréntesis es en raidanes. La conversión de radianes a grados sería:
+Math.tan(); // Siempre calcula en radianes. Por lo tanto, el dato dentro de las paréntesis es en raidanes. La conversión de radianes a grados sería:
 let anguloEnGrados = 210;
 let anguloEnRadianes = (anguloEnGrados * Math.PI) / 180; // Convierto mi ángulo escrito en radianes a grados.
 console.log(Math.tan(anguloEnRadianes)); // El resultado impreso en la consola será aprox 0.36397023426620234, que es la tangente de 210 grados (o 7π/6 radianes).
@@ -289,7 +353,14 @@ console.log(miNumeroAleatorio); // Podemos modificar el límite del rango cambia
 
 // Otras funciones matemáticas: Math también proporciona otras funciones matemáticas útiles, como Math.abs() para obtener el valor absoluto de un número, Math.max() y Math.min() para encontrar el valor máximo y mínimo entre varios números, y Math.sign() para obtener el signo de un número, entre otros.
 
-// Es importante tener en cuenta que Math es un objeto estático y todas sus funciones son estáticas, lo que significa que no es necesario crear una instancia de Math para utilizar sus funciones. Puedes acceder a las funciones de Math directamente utilizando la sintaxis Math.nombreDeLaFuncion(). Además, ten en cuenta que las funciones matemáticas en Math utilizan operaciones de punto flotante y pueden tener limitaciones en términos de precisión y rango, por lo que es importante comprender sus limitaciones y usarlas adecuadamente en tu código.
+// Es importante tener en cuenta que Math es un objeto estático y todas sus funciones son estáticas, lo que significa que no es necesario crear una instancia de Math para utilizar sus funciones. Puedes acceder a las funciones de Math directamente utilizando la sintaxis Math.nombreDeLaFunción(). Además, ten en cuenta que las funciones matemáticas en Math utilizan operaciones de punto flotante y pueden tener limitaciones en términos de precisión y rango, por lo que es importante comprender sus limitaciones y usarlas adecuadamente en tu código.
+
+
+
+
+
+
+
 
 // ----------------- ARRAY COMPLEJO ANIDADO ----------------
 
@@ -326,13 +397,22 @@ temperaturas = [
 1;
 // # Acceso a los datos del array
 // # Temperatura en el año 2, región 1, mes 3
-temperatura = temperaturas[1][0][2]; // Como se ve, el órden de llamada influye al interno de un array/matriz de arrays.
+temperatura = temperaturas[1][0][2]; // Como se ve, el orden de llamada influye al interno de un array/matriz de arrays.
 console.log("La temperatura en el año 2, región 1, mes 3 es:", temperatura);
 
-// ------------ EJERCICIO DE FUNCION CONTADORA -------------
+
+
+
+
+
+
+
+
+
+// ------------ EJERCICIO DE FUNCIÓN CONTADORA -------------
 
 // La entrada de este método es una matriz que contiene 10 números y como salida devuelve un número entero
-// Dada una matriz de enteros positivos y negativos cuente las ocurrencias del número 0 y devuelvalo a la salida
+// Dada una matriz de enteros positivos y negativos cuente las ocurrencias del número 0 y devuélvalo a la salida
 
 function contarOcurrenciasDeCero(delArray) {
   let contador = 0;
@@ -359,7 +439,7 @@ main(); // Imprime 5
 
 // -------------------------------------------------------
 
-// Escribe una función que usa como objeto un parámetro y devuelve un nuevo array con todos los nombres de las propiedades del objeto que tenga un valor string más largo de 5 caracteres. Imprime la funcion.
+// Escribe una función que usa como objeto un parámetro y devuelve un nuevo array con todos los nombres de las propiedades del objeto que tenga un valor string más largo de 5 caracteres. Imprime la función.
 
 function obtenerNombresPropiedades(objeto) {
   let nombresPropiedades = [];
@@ -629,14 +709,14 @@ function encontrarNumerosPrimos(arr) {
 const primosEncontrados = encontrarNumerosPrimos(numerillos);
 console.log("Los números primos con for loop:", primosEncontrados);
 
-// // TERCERA OPCION con while loop --------------
+// // TERCERA OPCIÓN con while loop --------------
 // let numeroz = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 // function refactorNumbersArray2(delArray) {
 //   let newArray3 = [];
 
 //   delArray.forEach((number) => {
-//     //Inizializo la varible isPrime como true
+//     //Inicializo la variable isPrime como true
 //     let isPrime = true;
 
 //     //Si le numero es igual o mayor a dos entro al if
