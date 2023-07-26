@@ -11,18 +11,18 @@
 
 let arrayStudents = [
     {
-        id: 001,
+        id: 1001,
         namee: "Marcos",
         surname: "Lambir",
         age: 30,
     },
     {
-        id: 002,
+        id: 1002,
         namee: "Alejandra",
         surname: "Ugarte",
         age: 41,
     },{
-        id: 003,
+        id: 1003,
         namee: "Mario",
         surname: "Narvaez",
         age: 66,

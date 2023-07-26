@@ -4,7 +4,7 @@ We have an object literal called `smartphone`. By using a specific method, we ca
 
 const smartphone = {
 brand: "Apple",
-name: "Iphone 13",
+name: "iPhone 13",
 price: 1300,
 };
 

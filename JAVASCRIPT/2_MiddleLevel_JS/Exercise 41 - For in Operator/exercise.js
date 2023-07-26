@@ -5,13 +5,13 @@ let car = {
 
 // for (const key in car) {
 //   if (car.hasOwnProperty(key)) {
-//     const element = car[key];
+//     const nuevoObjeto = car[key];
 //     console.log(key + ":");
-//     console.log(element);
+//     console.log(nuevoObjeto);
 //   }
 // };
 
-function iterarEnObjeto(object) {
+function copiarObjeto(object) {
   for (const key in object) {
     if (Object.hasOwnProperty.call(object, key)) {
       const element = object[key];
@@ -20,4 +20,4 @@ function iterarEnObjeto(object) {
   }
 };
 
-iterarEnObjeto(car);
+copiarObjeto(car);
