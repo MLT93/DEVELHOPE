@@ -1,6 +1,12 @@
-function uncompletedNotes(notes) {
-  // ...
-}
+function uncompletedNotes(array) {
+  const elementTodosFalse = [];
+  array.forEach((element) => {
+    const notCompleted = element.todos.filter((element2) => element2.done === false)
+    console.log(notCompleted);
+    elementTodosFalse.push(JSON.parse(JSON.stringify(notCompleted)));
+  });
+  return elementTodosFalse;
+};
 
 const notes = [
   {
@@ -51,5 +57,4 @@ const notes = [
     ],
   },
 ];
-
 uncompletedNotes(notes);

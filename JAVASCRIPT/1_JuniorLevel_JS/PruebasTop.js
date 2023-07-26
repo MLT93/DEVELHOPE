@@ -120,22 +120,6 @@ for (let cadaNumero of misNumeros) {
   console.log(multiplicacion); // Imprime resultado de la multiplicación de cada numero del array por 2.
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ------------------- ITERACIONES FOR...IN \ FOR IN \ FOR-IN: PARA OBJETO --------------------------------------
 let elObjeto = {
   a: 1,
@@ -155,7 +139,7 @@ for (const key in elObjeto) {
     console.log(key + ":");
     console.log(element);
   }
-};
+}
 // Otra forma con a una función
 function iterarEnObjeto(object) {
   for (const key in object) {
@@ -164,7 +148,7 @@ function iterarEnObjeto(object) {
       console.log(element);
     }
   }
-};
+}
 
 iterarEnObjeto(car);
 
@@ -173,11 +157,8 @@ let array = [1, 2, 3];
 
 for (let elemento of array) {
   console.log(elemento); // Imprime: 1, 2, 3
-  console.log()
+  console.log();
 }
-
-
-
 
 //---------------- FORMAS DE USAR UN OBJETO CON FUNCIÓN AGREGADA, BUSCAR LAS PROPIEDADES Y LOS MODOS ---------------------
 
@@ -201,14 +182,11 @@ console.log(miObjeto["number"]); // De ésta forma, siempre que llamamos nuestra
 miObjeto["newKey"] = 7; // Agregar una nueva propiedad a mi objeto (modificar los objetos directamente no es una buena práctica, porque le cambiamos los valores originales. Para eso, debería crear una copia/clon).
 
 // Llamo a la nueva propiedad.
-console.log(miObjeto["newKey"]); 
+console.log(miObjeto["newKey"]);
 // Forma de saber cuáles son todas las propiedades (Object.keys()) de mi objeto (miObjeto).
-console.log(Object.keys(miObjeto)); 
+console.log(Object.keys(miObjeto));
 // Llamo a la función (function()) que creé dentro de mi objeto y le asigno un valor (10) al parámetro (argumento) para que me ejecute el código que le metí dentro (argumento * 2).
-console.log(miObjeto.function(10)); 
-
-
-
+console.log(miObjeto.function(10));
 
 // ------- GUARDAR VARIAS VARIABLES DENTRO DE UNA FUNCIÓN E IMPRIMIRLAS TODAS JUNTAS  --------
 
@@ -239,12 +217,6 @@ let { pares, impares, nombreAusar, sumaImpares, sumaPares } = ejercicio27();
 console.log("La suma de los números pares es: " + sumaPares);
 console.log("La suma de los números impares es: " + sumaImpares);
 
-
-
-
-
-
-
 // ------------------- CALLBACK ------------------------
 
 function myBoton(label, disabled, onClick) {
@@ -264,9 +236,6 @@ function abrirElMenu() {
 
 myBoton("Primario", true, siguientePagina);
 myBoton("Secundario", false, abrirElMenu);
-
-
-
 
 // ----------------- CONCATENAR STRINGS ----------------------
 let yearsCompleted = 2;
@@ -289,15 +258,6 @@ let nuevoArray = array1.concat(array2, array3);
 console.log(nuevoArray);
 
 /* El método .concat() puede ser útil cuando necesitas combinar arrays y/o strings (arrays de letras) existentes o agregar elementos adicionales a un array sin modificar los arrays originales. También puedes usarlo para crear copias de arrays existentes. */
-
-
-
-
-
-
-
-
-
 
 // ------------------ TODOS LOS MATH. ------------------
 
@@ -355,13 +315,6 @@ console.log(miNumeroAleatorio); // Podemos modificar el límite del rango cambia
 
 // Es importante tener en cuenta que Math es un objeto estático y todas sus funciones son estáticas, lo que significa que no es necesario crear una instancia de Math para utilizar sus funciones. Puedes acceder a las funciones de Math directamente utilizando la sintaxis Math.nombreDeLaFunción(). Además, ten en cuenta que las funciones matemáticas en Math utilizan operaciones de punto flotante y pueden tener limitaciones en términos de precisión y rango, por lo que es importante comprender sus limitaciones y usarlas adecuadamente en tu código.
 
-
-
-
-
-
-
-
 // ----------------- ARRAY COMPLEJO ANIDADO ----------------
 
 // # Definición de un array tridimensional
@@ -399,15 +352,6 @@ temperaturas = [
 // # Temperatura en el año 2, región 1, mes 3
 temperatura = temperaturas[1][0][2]; // Como se ve, el orden de llamada influye al interno de un array/matriz de arrays.
 console.log("La temperatura en el año 2, región 1, mes 3 es:", temperatura);
-
-
-
-
-
-
-
-
-
 
 // ------------ EJERCICIO DE FUNCIÓN CONTADORA -------------
 
@@ -680,12 +624,16 @@ let numerillos = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 function encontrarNumerosPrimos(arr) {
   let numerosPrimos = []; // Creo una variable vacía para guardar mis resultados
 
-  for (let i = 0; i < arr.length; i++) { // Le digo a mi loop que recorra el array
+  for (let i = 0; i < arr.length; i++) {
+    // Le digo a mi loop que recorra el array
     let esPrimo = true; // Inicio una variable con un valor true, así puedo utilizarla después déntro de un IF, si encuentro algún número Primo
 
-    if (arr[i] > 1) { // Busco los números dentro del array que sean mayores que 1 (porque un número primo es un número entero mayor que 1 que solo es divisible por 1 y por sí mismo. Si un número es menor o igual a 1, no puede ser considerado primo porque tiene divisores adicionales aparte de 1 y él mismo. Por lo tanto, la condición > 1 se utiliza para excluir los números menores o iguales a 1 de la verificación de primos)
-      for (let j = 2; j < arr[i]; j++) { // Al comenzar desde 2 el segundo bucle, nos saltamos la división entre 1 y el número que estamos evaluando (), ya que todo número es divisible por 1. Iniciar en 2 es eficiente y suficiente para realizar la comprobación de divisibilidad adecuada. Establecer j = 2 nos permite iniciar la verificación de divisibilidad desde el número 2 y continuar hasta un número anterior al número que estamos evaluando (el número de j < arr[i]), evitando considerar la divisibilidad entre 1 y el número mismo.
-        if (arr[i] % j === 0) { // El operador de módulo % devuelve el resto de la división entre dos números. En este caso, arr[i] % j calcula el resto de dividir arr[i] entre j. Si el resultado es 0, significa que arr[i] es divisible de manera exacta por j, lo que implica que arr[i] no es un número primo, lo cual indica que arr[i] tiene un divisor distinto de 1 y de sí mismo, por lo tanto no sería un número primo.
+    if (arr[i] > 1) {
+      // Busco los números dentro del array que sean mayores que 1 (porque un número primo es un número entero mayor que 1 que solo es divisible por 1 y por sí mismo. Si un número es menor o igual a 1, no puede ser considerado primo porque tiene divisores adicionales aparte de 1 y él mismo. Por lo tanto, la condición > 1 se utiliza para excluir los números menores o iguales a 1 de la verificación de primos)
+      for (let j = 2; j < arr[i]; j++) {
+        // Al comenzar desde 2 el segundo bucle, nos saltamos la división entre 1 y el número que estamos evaluando (), ya que todo número es divisible por 1. Iniciar en 2 es eficiente y suficiente para realizar la comprobación de divisibilidad adecuada. Establecer j = 2 nos permite iniciar la verificación de divisibilidad desde el número 2 y continuar hasta un número anterior al número que estamos evaluando (el número de j < arr[i]), evitando considerar la divisibilidad entre 1 y el número mismo.
+        if (arr[i] % j === 0) {
+          // El operador de módulo % devuelve el resto de la división entre dos números. En este caso, arr[i] % j calcula el resto de dividir arr[i] entre j. Si el resultado es 0, significa que arr[i] es divisible de manera exacta por j, lo que implica que arr[i] no es un número primo, lo cual indica que arr[i] tiene un divisor distinto de 1 y de sí mismo, por lo tanto no sería un número primo.
           esPrimo = false; // Digo que mi variable esPrimo, es false
           break; // Paro el bucle
         }
@@ -694,12 +642,14 @@ function encontrarNumerosPrimos(arr) {
       esPrimo = false; // La función de esta parte del código es establecer la variable esPrimo en false cuando se encuentra un divisor para el número arr[i], lo cual indica que el número no es primo
     }
 
-    if (esPrimo === true) { // Si la condición se cumple, es decir, si esPrimo es true, significa que el número arr[i] es un número primo. En ese caso, se ejecuta el bloque de código dentro del if, que dice que agregue al final del array vacío numerosPrimos, el número primo encontrado en cada una de las vueltas del bucle for.
+    if (esPrimo === true) {
+      // Si la condición se cumple, es decir, si esPrimo es true, significa que el número arr[i] es un número primo. En ese caso, se ejecuta el bloque de código dentro del if, que dice que agregue al final del array vacío numerosPrimos, el número primo encontrado en cada una de las vueltas del bucle for.
       numerosPrimos.push(arr[i]);
     }
   }
 
-  if (numerosPrimos.length > 0) { // Si el arreglo numerosPrimos tiene una longitud mayor que 0, significa que se encontraron números primos en el arreglo. En ese caso, se devuelve el arreglo numerosPrimos que contiene los números primos encontrados mediante la instrucción return numerosPrimos. Si el arreglo numerosPrimos está vacío, es decir, no se encontraron números primos en el arreglo, se ejecuta el bloque else
+  if (numerosPrimos.length > 0) {
+    // Si el arreglo numerosPrimos tiene una longitud mayor que 0, significa que se encontraron números primos en el arreglo. En ese caso, se devuelve el arreglo numerosPrimos que contiene los números primos encontrados mediante la instrucción return numerosPrimos. Si el arreglo numerosPrimos está vacío, es decir, no se encontraron números primos en el arreglo, se ejecuta el bloque else
     return numerosPrimos;
   } else {
     return "No se encontraron números primos en el arreglo.";
@@ -752,10 +702,10 @@ const arrayNumeroso = [2, 23, 1, 55, 6, 1, 8];
 
 function buscarPosicion(array) {
   // Recorro el array,
-   for (var i = 0; i < array.length; i++) {
-    // si la variable i, mientras avanza por el array, encuentra una propiedad/elemento que es equivalente a 1, 
+  for (var i = 0; i < array.length; i++) {
+    // si la variable i, mientras avanza por el array, encuentra una propiedad/elemento que es equivalente a 1,
     if (array[i] === 1) {
-      // devuelvo el índice, del valor de la propiedad/elemento, donde se encuentra la variable i a medida que recorre el array. Pero recuerda que sólo devolverá el primer índice encontrado. 
+      // devuelvo el índice, del valor de la propiedad/elemento, donde se encuentra la variable i a medida que recorre el array. Pero recuerda que sólo devolverá el primer índice encontrado.
       return console.log("El índice dónde se encuentra el número 1 es:", i);
     }
   }
@@ -779,6 +729,6 @@ const namess = ["Luca", "Marco", "Vittorio", "Giovanni"];
 // **Suggestion**
 // Look at the official [documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) to find the right method.
 
-console.log("Array normal => ", namess)
-let namesSeparadoPorGuiones = namess.join("-"); // join() une todos los elementos del array por aquello que le escribamos en los argumentos (dentro de los paréntesis). No modifica el array original, devuelve una nueva cadena. Si deseas mantener el array original sin cambios, puedes asignar el resultado a una nueva variable e imprimir eso. 
+console.log("Array normal => ", namess);
+let namesSeparadoPorGuiones = namess.join("-"); // join() une todos los elementos del array por aquello que le escribamos en los argumentos (dentro de los paréntesis). No modifica el array original, devuelve una nueva cadena. Si deseas mantener el array original sin cambios, puedes asignar el resultado a una nueva variable e imprimir eso.
 console.log("El array con el .join => ", namesSeparadoPorGuiones);
