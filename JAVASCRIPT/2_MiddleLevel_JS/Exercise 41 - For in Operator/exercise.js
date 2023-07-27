@@ -1,6 +1,10 @@
 let car = {
   name: "Fiat",
   color: "red",
+  detalles: {
+    colorFavorito: "naranja",
+    autoFavorito: "Audi",
+  },
 };
 
 // for (const key in car) {
@@ -13,7 +17,7 @@ let car = {
 
 function copiarObjeto(object) {
   for (const key in object) {
-    if (Object.hasOwnProperty.call(object, key)) {
+  if (Object.hasOwnProperty.call(object, key)) {
       const element = object[key];
       console.log(element);
     }
