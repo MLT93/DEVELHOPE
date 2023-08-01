@@ -6,7 +6,7 @@ function nav(value) {
   }
 }
 
-// ------ funcion que permite acceder al buscador de Google
+// ------ función que permite acceder al buscador de Google
 
 document.addEventListener('DOMContentLoaded', function() {
   let searchForm = document.getElementById("search-form");
