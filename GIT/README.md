@@ -34,7 +34,7 @@ You can click the Preview link to take a look at your changes.
 
         git branch -M main
 
-- [Git remote administra los repositorios remotos con los cuales deseas trabajar e incluir las actualizaciones de tus cambios. Es una manera de crar una conexion entre la parte "local" y la parte "remota" (normalmente se usa <origin>) y después se escribe la URL del repositorio de destino]
+- [Git remote administra los repositorios remotos con los cuales deseas trabajar e incluir las actualizaciones de tus cambios. Es una manera de crear una conexión entre la parte "local" y la parte "remota" (normalmente se usa <origin>) y después se escribe la URL del repositorio de destino]
 
         git remote add origin "URL"
 
@@ -42,7 +42,7 @@ You can click the Preview link to take a look at your changes.
 
         git remote set-url origin "URL"
 
-- [Escribe el siguiente comando para enviar los cambios "locales" al repositorio "remoto" fijando el repositorio remoto como el principal, asi Git sabe que la rama local y la rama remota estan asociadas sin necesidad de especificarlo explícitamente (normalmente se usa <origin>) y escribe el nombre de la rama local que se esta usando para poder enlazarlas (normalmente se usa <main>) para establecerla como la rama de seguimiento predeterminada]
+- [Escribe el siguiente comando para enviar los cambios "locales" al repositorio "remoto" fijando el repositorio remoto como el principal, asi Git sabe que la rama local y la rama remota están asociadas sin necesidad de especificarlo explícitamente (normalmente se usa <origin>) y escribe el nombre de la rama local que se esta usando para poder enlazarlas (normalmente se usa <main>) para establecerla como la rama de seguimiento predeterminada]
 
         git push -u origin main 
 
