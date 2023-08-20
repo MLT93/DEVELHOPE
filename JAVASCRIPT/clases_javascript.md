@@ -584,10 +584,96 @@ const persona1 = new Persona(30);
 console.log(persona1.edad); // Acceder al valor a través del getter
 persona1.edad = 25; // Asignar un nuevo valor a través del setter
 ```
+Otro ejemplo:
 
-En resumen, los getters y setters en JavaScript proporcionan un mecanismo eficaz para controlar el acceso y la modificación de propiedades privadas de un objeto. Su uso mejora la encapsulación, protección y mantenimiento del código, al tiempo que permite implementar validaciones personalizadas y lógica específica cuando sea necesario.
+Vamos a analizar tanto el getter como el setter, y también cómo se usan en el siguiente código.
 
+```javascript
+class Person {
+  constructor(firstName, lastName, age) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+  }
 
+  // Getter para obtener el primer nombre
+  get nombre() {
+    return this.firstName;
+  }
+
+  // Getter para obtener el apellido
+  get apellido() {
+    return this.lastName;
+  }
+
+  // Getter para obtener la edad
+  get años() {
+    return this.age;
+  }
+  
+  // Getter para obtener el nombre completo
+  get fullName() {
+    return this.firstName + " " + this.lastName;
+  }
+
+  // Setter para cambiar el primer nombre
+  set nombre(nuevoNombre) {
+    this.firstName = nuevoNombre;
+  }
+
+  // Setter para cambiar el apellido
+  set apellido(nuevoApellido) {
+    this.lastName = nuevoApellido;
+  }
+
+  // Setter para cambiar la edad
+  set años(nuevaEdad) {
+    this.age = nuevaEdad;
+  }
+}
+
+// Crear una instancia de la clase Person
+const person = new Person("Mario", "Rossi", 25);
+
+// Obtener y mostrar el nombre completo utilizando el getter
+console.log(person.fullName); // Salida: "Mario Rossi"
+
+// Cambiar el primer nombre utilizando el setter
+person.nombre = "Maria";
+
+// Cambiar el apellido utilizando el setter
+person.apellido = "Verdi";
+
+// Obtener y mostrar el nuevo nombre completo utilizando el getter
+console.log(person.fullName); // Salida: "Maria Verdi"
+```
+
+Explicación paso a paso:
+
+Constructor:
+  La clase Person tiene un constructor que toma tres parámetros: firstName, lastName y age. Cuando creas una instancia de Person, estos valores se utilizan para inicializar las propiedades correspondientes.
+
+Getters:
+  Los getters son métodos que te permiten obtener el valor de propiedades privadas. En este caso, la clase Person tiene tres getters: nombre, apellido y años. Cada uno simplemente devuelve el valor de la propiedad correspondiente (firstName, lastName y age).
+
+Getter para el nombre completo:
+  El getter fullName concatena el primer nombre (firstName) y el apellido (lastName) para obtener el nombre completo.
+
+Setters:
+  Los setters son métodos que te permiten modificar el valor de propiedades privadas. En este caso, la clase Person tiene tres setters: nombre, apellido y años. Cada setter toma un parámetro y asigna ese valor a la propiedad correspondiente.
+
+Uso de getters y setters:
+  Después de crear una instancia de Person llamada person, podemos usar los getters para obtener valores y los setters para cambiarlos. Usamos person.fullName para obtener el nombre completo y lo mostramos en la consola. Luego, utilizamos los setters para cambiar el primer nombre y el apellido de la persona. Finalmente, usamos nuevamente el getter person.fullName para obtener y mostrar el nuevo nombre completo.
+
+En resumen, los getters permiten obtener valores de propiedades privadas, mientras que los setters permiten modificar esos valores. Esto facilita el acceso y la modificación controlada de los datos en una clase, mejorando la encapsulación, protección y mantenimiento del código, al tiempo que permite implementar validaciones personalizadas y lógica específica cuando sea necesario.
+
+En su mayoría, los getters y setters se utilizan para acceder y manipular propiedades privadas de una clase. Esto se debe a que los getters y setters proporcionan una forma controlada y encapsulada de interactuar con las propiedades internas de una clase, lo que promueve el principio de encapsulación en la programación orientada a objetos.
+
+Cuando hablamos de propiedades privadas, nos referimos a aquellas propiedades que no deberían ser accesibles ni modificables directamente desde fuera de la clase. Los getters y setters permiten mantener un nivel de control sobre cómo se acceden y modifican estos valores internos, lo que puede ser útil para garantizar la integridad de los datos y aplicar lógica adicional en el proceso.
+
+Es importante mencionar que JavaScript no tiene verdaderas propiedades privadas, ya que todas las propiedades de un objeto son accesibles en cierta medida. Sin embargo, se puede simular la privacidad utilizando convenciones de nomenclatura (como el uso de un guión bajo al principio) y mediante el uso de los getters y setters.
+
+Por lo tanto, si deseas exponer propiedades de una clase con un control adicional sobre su acceso y modificación, los getters y setters son una herramienta valiosa. Sin embargo, si una propiedad no necesita lógica adicional o control, simplemente puedes acceder y modificar directamente la propiedad pública sin necesidad de usar getters y setters.
 
 
 
