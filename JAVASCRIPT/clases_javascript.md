@@ -51,6 +51,12 @@ estudiante1.saludar(); // Imprime: Hola, soy Pedro y tengo 22 años.
 estudiante1.estudiar(); // Imprime: Pedro está estudiando Ingeniería.
 ```
 
+
+
+
+
+
+
 Classes in JavaScript: Una explicación detallada
 
 En JavaScript, las clases son un concepto fundamental introducido en ECMAScript 2015 (ES6) para permitir la programación orientada a objetos dentro del lenguaje. Las clases proporcionan un plano para crear objetos, permitiéndote definir la estructura y el comportamiento de un tipo de objeto. Vamos a desglosar los aspectos clave de las clases en JavaScript:
@@ -146,6 +152,12 @@ circulo.radio = 8; // Usando el setter
 
 En resumen, las clases en JavaScript proporcionan una forma de definir planos para crear objetos con propiedades y métodos compartidos. Mejoran la organización del código, promueven la reutilización y permiten modelar mejor conceptos del mundo real en tus aplicaciones. Al comprender y utilizar las clases, puedes escribir código JavaScript más estructurado y mantenible.
 
+
+
+
+
+
+
 Classes Inheritance: Una Explicación Detallada
 
 La herencia de clases es un concepto importante en la programación orientada a objetos que permite crear nuevas clases basadas en clases existentes. Esto permite compartir propiedades y métodos entre clases relacionadas, lo que ayuda a organizar y reutilizar el código de manera eficiente. Vamos a explorar los aspectos clave de la herencia de clases:
@@ -201,6 +213,12 @@ En este ejemplo, Perro hereda las propiedades y métodos de Animal, y también a
 
 En resumen, la herencia de clases permite crear nuevas clases basadas en clases existentes, compartiendo propiedades y métodos. Esto promueve la reutilización de código, la organización y la extensibilidad en la programación orientada a objetos.
 
+
+
+
+
+
+
 The Prototype Chain: Una Explicación Detallada
 
 La cadena de prototipos es un concepto fundamental en JavaScript que explica cómo los objetos se enlazan y heredan propiedades y métodos entre sí. Esto está relacionado con cómo JavaScript maneja la herencia y el acceso a propiedades en un entorno basado en prototipos. Vamos a explorar los aspectos clave de la cadena de prototipos:
@@ -209,7 +227,7 @@ La cadena de prototipos es un concepto fundamental en JavaScript que explica có
    En JavaScript, todos los objetos tienen un prototipo, que es un objeto del cual heredan propiedades y métodos. Los prototipos están conectados en una cadena llamada cadena de prototipos.
 
 2. Propiedad "proto":
-   Cada objeto en JavaScript tiene una propiedad especial llamada **proto**, que apunta al prototipo del objeto. Esto establece la conexión en la cadena de prototipos.
+   Cada objeto en JavaScript tiene una propiedad especial llamada __proto__, que apunta al prototipo del objeto. Esto establece la conexión en la cadena de prototipos.
 
 3. Herencia de Propiedades y Métodos:
    Cuando intentas acceder a una propiedad o método en un objeto, JavaScript primero busca en el objeto mismo. Si no lo encuentra, busca en su prototipo y continúa subiendo en la cadena de prototipos hasta encontrar la propiedad o hasta llegar al prototipo base (Object.prototype).
@@ -255,6 +273,12 @@ miAuto.encender(); // Hereda encender de Vehiculo
 ```
 
 En resumen, la cadena de prototipos es la base del sistema de herencia en JavaScript. Permite que los objetos hereden propiedades y métodos de otros objetos, lo que mejora la eficiencia y la flexibilidad en la programación orientada a objetos en JavaScript.
+
+
+
+
+
+
 
 Class Fields: Una Explicación Detallada
 
@@ -349,8 +373,7 @@ instancia.metodoPublico(); // Llamada al método público, que luego llama al m�
 En este ejemplo, #metodoPrivado() es un método privado que solo puede ser accedido desde dentro de la clase MiClase. No puede ser llamado directamente desde una instancia de la clase ni desde fuera de la clase.
 
 Es importante destacar que los métodos privados aún no son ampliamente compatibles en todos los navegadores y entornos de ejecución, ya que son una característica relativamente nueva. Por lo tanto, su uso puede requerir transpilación o el uso de herramientas como Babel para garantizar la compatibilidad con versiones anteriores.
-
-Si estás utilizando versiones más antiguas de JavaScript o si la compatibilidad con navegadores es un problema, aún puedes lograr la encapsulación de métodos privados utilizando convenciones de nomenclatura, como prefijar los métodos con un guión bajo (por ejemplo, \_metodoPrivado()), para indicar que son para uso interno en la clase. Sin embargo, esta convención no proporciona un nivel real de privacidad, ya que los métodos aún pueden ser llamados desde fuera de la clase si se conocen sus nombres.
+Si estás utilizando versiones más antiguas de JavaScript o si la compatibilidad con navegadores es un problema, aún puedes lograr la encapsulación de métodos privados utilizando convenciones de nomenclatura, como prefijar los métodos con un guión bajo (por ejemplo, _metodoPrivado()), para indicar que son para uso interno en la clase. Sin embargo, esta convención no proporciona un nivel real de privacidad, ya que los métodos aún pueden ser llamados desde fuera de la clase si se conocen sus nombres.
 
 Se puede acceder a campos privados, fuera de la clase, a través de un métodos privados?
 No, en JavaScript, los campos privados (definidos con la notación #) y los métodos privados solo son accesibles dentro de la misma clase en la que se definen. No es posible acceder a campos privados, incluso a través de métodos privados, desde fuera de la clase, independientemente de si están en la misma clase o en otra.
@@ -423,6 +446,12 @@ console.log(Calculadora.restar(8, 2)); // Llamada a método estático
 
 En resumen, las propiedades y métodos estáticos son elementos asociados directamente con la clase en sí, en lugar de con instancias individuales. Son útiles para funcionalidades globales o compartidas entre todas las instancias de una clase. El acceso a estas propiedades y métodos se realiza directamente desde la clase, sin necesidad de crear instancias.
 
+
+
+
+
+
+
 Private Properties and Methods: Una Explicación Detallada
 
 Las propiedades y métodos privados son una característica introducida en JavaScript que permite definir miembros en una clase que solo son accesibles desde dentro de la propia clase. Esto ayuda a encapsular y proteger la información interna de la clase de cualquier acceso no autorizado desde fuera. Vamos a explorar los aspectos clave de las propiedades y métodos privados:
@@ -473,13 +502,19 @@ instancia.metodoPublico(); // Llamada a método público que accede al método p
 
 En resumen, las propiedades y métodos privados en JavaScript permiten definir miembros en una clase que solo pueden ser accedidos desde dentro de la misma clase. Esto mejora la encapsulación, la seguridad y la calidad del código. Sin embargo, es importante tener en cuenta la compatibilidad con los navegadores y entornos antes de utilizarlos.
 
+
+
+
+
+
+
 Getters and Setters: Una Explicación Detallada
 
 1. Introducción a Getters y Setters:
    Los getters y setters en JavaScript son herramientas que permiten un control más preciso sobre cómo se accede y se modifica el valor de las propiedades de un objeto. Estas funciones especiales son particularmente útiles cuando se busca encapsular y proteger los datos de una clase, al mismo tiempo que se brinda una interfaz controlada para interactuar con ellos.
 
 2. Función de Getters (get):
-   Los getters son funciones que se utilizan para obtener el valor de una propiedad de un objeto. Se definen utilizando la palabra clave get, seguida del nombre de la propiedad (sin los paréntesis de función). Por ejemplo, si tenemos una propiedad privada \_nombre, podemos definir un getter para ella de la siguiente manera:
+   Los getters son funciones que se utilizan para obtener el valor de una propiedad de un objeto. Se definen utilizando la palabra clave get, seguida del nombre de la propiedad (sin los paréntesis de función). Por ejemplo, si tenemos una propiedad privada _nombre, podemos definir un getter para ella de la siguiente manera:
 
 ```javascript
 get nombre() {
@@ -487,10 +522,10 @@ get nombre() {
 }
 ```
 
-Este getter permitirá acceder al valor de \_nombre desde fuera de la clase utilizando la notación de punto: objeto.nombre.
+Este getter permitirá acceder al valor de _nombre desde fuera de la clase utilizando la notación de punto: objeto.nombre.
 
 3. Función de Setters (set):
-   Los setters son funciones que se utilizan para asignar un valor a una propiedad de un objeto. Se definen utilizando la palabra clave set, seguida del nombre de la propiedad (sin los paréntesis de función). Los setters son especialmente útiles para aplicar validaciones y lógica personalizada antes de asignar un valor a una propiedad. Por ejemplo, si tenemos una propiedad privada \_nombre, podemos definir un setter para ella con validación personalizada:
+   Los setters son funciones que se utilizan para asignar un valor a una propiedad de un objeto. Se definen utilizando la palabra clave set, seguida del nombre de la propiedad (sin los paréntesis de función). Los setters son especialmente útiles para aplicar validaciones y lógica personalizada antes de asignar un valor a una propiedad. Por ejemplo, si tenemos una propiedad privada _nombre, podemos definir un setter para ella con validación personalizada:
 
 ```javascript
 set nombre(nuevoNombre) {
@@ -502,21 +537,21 @@ set nombre(nuevoNombre) {
 }
 ```
 
-Este setter permitirá asignar un nuevo valor a \_nombre, pero solo si el valor es una cadena de caracteres.
+Este setter permitirá asignar un nuevo valor a _nombre, pero solo si el valor es una cadena de caracteres.
 
 4. Ventajas:
    Los getters y setters ofrecen diversas ventajas para el manejo de propiedades en JavaScript:
 
-·Control de Acceso: Permiten un control más granular sobre cómo se accede y se modifica el valor de una propiedad, lo que facilita la implementación de lógica de seguridad y validación.
-·Encapsulación Mejorada y Ventajas de la Encapsulación: Al ocultar los detalles internos de implementación y exponer solo una interfaz controlada, los getters y setters mejoran la encapsulación y evitan cambios no deseados en el estado del objeto. Además, al usar getters y setters para interactuar con propiedades privadas, garantizamos validaciones y protección de datos antes de cambiar el estado del objeto.
-·Flexibilidad de Mantenimiento: Si necesitas realizar cambios en la forma en que una propiedad es obtenida o asignada, solo necesitas modificar el getter o el setter correspondiente, sin afectar el resto del código que interactúa con la propiedad.
+   ·Control de Acceso: Permiten un control más granular sobre cómo se accede y se modifica el valor de una propiedad, lo que facilita la implementación de lógica de seguridad y validación.
+   ·Encapsulación Mejorada y Ventajas de la Encapsulación: Al ocultar los detalles internos de implementación y exponer solo una interfaz controlada, los getters y setters mejoran la encapsulación y evitan cambios no deseados en el estado del objeto. Además, al usar getters y setters para interactuar con propiedades privadas, garantizamos validaciones y protección de datos antes de cambiar el estado del objeto.
+   ·Flexibilidad de Mantenimiento: Si necesitas realizar cambios en la forma en que una propiedad es obtenida o asignada, solo necesitas modificar el getter o el setter correspondiente, sin afectar el resto del código que interactúa con la propiedad.
 
 5. Compatibilidad y Consideraciones:
    Es importante tener en cuenta que aunque los getters y setters son una característica estándar de ECMAScript 5 y son compatibles con la mayoría de los navegadores modernos, siempre es recomendable verificar la compatibilidad en el entorno en el que estás trabajando.
 
 Ejemplo de Getters y Setters:
 
-Supongamos que tenemos una clase Persona con una propiedad privada \_edad. Podemos definir un getter y un setter para \_edad como se muestra a continuación:
+Supongamos que tenemos una clase Persona con una propiedad privada _edad. Podemos definir un getter y un setter para _edad como se muestra a continuación:
 
 ```javascript
 class Persona {
@@ -609,20 +644,20 @@ console.log(person.fullName); // Salida: "Maria Verdi"
 
 Explicación paso a paso:
 
-Constructor:
-La clase Person tiene un constructor que toma tres parámetros: firstName, lastName y age. Cuando creas una instancia de Person, estos valores se utilizan para inicializar las propiedades correspondientes.
+1. Constructor:
+   La clase Person tiene un constructor que toma tres parámetros: firstName, lastName y age. Cuando creas una instancia de Person, estos valores se utilizan para inicializar las propiedades correspondientes.
 
-Getters:
-Los getters son métodos que te permiten obtener el valor de propiedades privadas. En este caso, la clase Person tiene tres getters: nombre, apellido y años. Cada uno simplemente devuelve el valor de la propiedad correspondiente (firstName, lastName y age).
+2. Getters:
+   Los getters son métodos que te permiten obtener el valor de propiedades privadas. En este caso, la clase Person tiene tres getters: nombre, apellido y años. Cada uno simplemente devuelve el valor de la propiedad correspondiente (firstName, lastName y age).
 
-Getter para el nombre completo:
-El getter fullName concatena el primer nombre (firstName) y el apellido (lastName) para obtener el nombre completo.
+3. Getter para el nombre completo:
+   El getter fullName concatena el primer nombre (firstName) y el apellido (lastName) para obtener el nombre completo.
 
-Setters:
-Los setters son métodos que te permiten modificar el valor de propiedades privadas. En este caso, la clase Person tiene tres setters: nombre, apellido y años. Cada setter toma un parámetro y asigna ese valor a la propiedad correspondiente.
+4. Setters:
+   Los setters son métodos que te permiten modificar el valor de propiedades privadas. En este caso, la clase Person tiene tres setters: nombre, apellido y años. Cada setter toma un parámetro y asigna ese valor a la propiedad correspondiente.
 
-Uso de getters y setters:
-Después de crear una instancia de Person llamada person, podemos usar los getters para obtener valores y los setters para cambiarlos. Usamos person.fullName para obtener el nombre completo y lo mostramos en la consola. Luego, utilizamos los setters para cambiar el primer nombre y el apellido de la persona. Finalmente, usamos nuevamente el getter person.fullName para obtener y mostrar el nuevo nombre completo.
+5. Uso de getters y setters:
+   Después de crear una instancia de Person llamada person, podemos usar los getters para obtener valores y los setters para cambiarlos. Usamos person.fullName para obtener el nombre completo y lo mostramos en la consola. Luego, utilizamos los setters para cambiar el primer nombre y el apellido de la persona. Finalmente, usamos nuevamente el getter person.fullName para obtener y mostrar el nuevo nombre completo.
 
 En resumen, los getters permiten obtener valores de propiedades privadas, mientras que los setters permiten modificar esos valores. Esto facilita el acceso y la modificación controlada de los datos en una clase, mejorando la encapsulación, protección y mantenimiento del código, al tiempo que permite implementar validaciones personalizadas y lógica específica cuando sea necesario.
 
@@ -633,6 +668,12 @@ Cuando hablamos de propiedades privadas, nos referimos a aquellas propiedades qu
 Es importante mencionar que JavaScript no tiene verdaderas propiedades privadas, ya que todas las propiedades de un objeto son accesibles en cierta medida. Sin embargo, se puede simular la privacidad utilizando convenciones de nomenclatura (como el uso de un guión bajo al principio) y mediante el uso de los getters y setters.
 
 Por lo tanto, si deseas exponer propiedades de una clase con un control adicional sobre su acceso y modificación, los getters y setters son una herramienta valiosa. Sin embargo, si una propiedad no necesita lógica adicional o control, simplemente puedes acceder y modificar directamente la propiedad pública sin necesidad de usar getters y setters.
+
+
+
+
+
+
 
 Extending Built-in Classes: Una Explicación Detallada
 
@@ -661,15 +702,15 @@ En este ejemplo, la clase MiArray hereda las propiedades y métodos de la clase 
 4. Consideraciones al Extender Clases:
    Al extender clases incorporadas, es importante tener en cuenta algunos aspectos:
 
-No debes sobrescribir métodos nativos existentes a menos que estés seguro de lo que estás haciendo, ya que podría afectar la funcionalidad en otras partes del código.
-Asegúrate de llamar al constructor de la clase padre (super()) en el constructor de la clase hija para heredar correctamente las propiedades y métodos.
+   ·No debes sobrescribir métodos nativos existentes a menos que estés seguro de lo que estás haciendo, ya que podría afectar la funcionalidad en otras partes del código.
+   ·Asegúrate de llamar al constructor de la clase padre (super()) en el constructor de la clase hija para heredar correctamente las propiedades y métodos.
 
 5. Ventajas de Extender Clases Incorporadas:
    La extensión de clases incorporadas ofrece varios beneficios:
 
-·Reutilización de Funcionalidad: Puedes aprovechar la funcionalidad existente de las clases incorporadas mientras agregas tus propios métodos y propiedades.
-·Personalización: Agregar métodos específicos puede mejorar la eficiencia y la claridad de tu código.
-·Legibilidad Mejorada: La extensión de clases permite que el código sea más legible al encapsular la lógica relacionada dentro de una sola clase.
+   ·Reutilización de Funcionalidad: Puedes aprovechar la funcionalidad existente de las clases incorporadas mientras agregas tus propios métodos y propiedades.
+   ·Personalización: Agregar métodos específicos puede mejorar la eficiencia y la claridad de tu código.
+   ·Legibilidad Mejorada: La extensión de clases permite que el código sea más legible al encapsular la lógica relacionada dentro de una sola clase.
 
 6. Compatibilidad y Consideraciones Finales:
    La capacidad de extender clases incorporadas es una característica admitida en la mayoría de los navegadores modernos y entornos de JavaScript. Sin embargo, siempre es recomendable verificar la compatibilidad en el entorno en el que estás trabajando antes de implementarla en un proyecto.
@@ -690,6 +731,12 @@ console.log(miTexto.invertir()); // Resultado: '!odnum ,aloH¡'
 ```
 
 En resumen, la extensión de clases incorporadas en JavaScript permite añadir funcionalidades personalizadas a las clases existentes, mejorando la organización y la claridad del código. Al hacerlo, puedes aprovechar la funcionalidad ya existente mientras añades métodos y propiedades específicos. Recuerda tener en cuenta las consideraciones y buenas prácticas al extender clases para un código más eficiente y legible.
+
+
+
+
+
+
 
 Operador instanceof: Una Explicación Detallada
 
@@ -734,13 +781,15 @@ if (miPerro instanceof Animal) {
 }
 ```
 
-4. Ventajas del Operador instanceof: El uso del operador instanceof ofrece varias ventajas:
+4. Ventajas del Operador instanceof:
+   El uso del operador instanceof ofrece varias ventajas:
 
-·Verificación de Tipo: Puedes verificar si un objeto es una instancia de una clase específica antes de realizar operaciones relacionadas con esa clase.
-·Herencia: También puedes verificar si un objeto es una instancia de una clase base o de una clase que hereda de ella.
-·Seguridad: Ayuda a prevenir errores de tipo y garantiza que las operaciones se realicen en objetos adecuados.
+   ·Verificación de Tipo: Puedes verificar si un objeto es una instancia de una clase específica antes de realizar operaciones relacionadas con esa clase.
+   ·Herencia: También puedes verificar si un objeto es una instancia de una clase base o de una clase que hereda de ella.
+   ·Seguridad: Ayuda a prevenir errores de tipo y garantiza que las operaciones se realicen en objetos adecuados.
 
-5. Compatibilidad y Consideraciones Finales: El operador instanceof es una característica estándar de JavaScript y es compatible con la mayoría de los navegadores modernos y entornos de desarrollo. Sin embargo, es una buena práctica verificar la compatibilidad en el entorno específico antes de implementarlo.
+5. Compatibilidad y Consideraciones Finales:
+   El operador instanceof es una característica estándar de JavaScript y es compatible con la mayoría de los navegadores modernos y entornos de desarrollo. Sin embargo, es una buena práctica verificar la compatibilidad en el entorno específico antes de implementarlo.
 
 Ejemplo de uso del Operador instanceof:
 
@@ -827,50 +876,39 @@ console.log(AreaCalculator.calculate(rectangle));
 console.log(AreaCalculator.calculate(circle));
 ```
 
-Definición de las Clases:
+Explicación paso a paso:
 
-1. Se definen tres clases: Square, Rectangle y Circle, cada una representando una figura geométrica con propiedades específicas (side para el cuadrado, width y height para el rectángulo, y radius para el círculo).
+1. Definición de las Clases:
+   Se definen tres clases: Square, Rectangle y Circle, cada una representando una figura geométrica con propiedades específicas (side para el cuadrado, width y height para el rectángulo, y radius para el círculo).
 
 2. Definición de la Clase AreaCalculator:
-
-Se define la clase AreaCalculator que contendrá el método estático calculate.
+   Se define la clase AreaCalculator que contendrá el método estático calculate.
 
 3. El Método calculate en AreaCalculator:
-
-El método calculate toma un parámetro llamado miFigura, que reflejará cualquier instancia de alguna de las clases Square, Rectangle o Circle.
-Así podremos hacer todos los cálculos correctamente.
+   El método calculate toma un parámetro llamado miFigura, que reflejará cualquier instancia de alguna de las clases Square, Rectangle o Circle.
+   Así podremos hacer todos los cálculos correctamente.
 
 4. Uso del Operador instanceof:
-
-Dentro del método calculate, se utilizan declaraciones if, seguidas del operador instanceof, para determinar qué tipo de figura se pasó como argumento y si es una herencia directa o de una instancia
+   Dentro del método calculate, se utilizan declaraciones if, seguidas del operador instanceof, para determinar qué tipo de figura se pasó como argumento y si es una herencia directa o de una instancia
 
 5. Calculando el Área:
-
-Si el argumento figure es una instancia de la clase Square, se calcula el área del cuadrado multiplicando miFigura.side por sí mismo.
-
-Si el argumento figure es una instancia de la clase Rectangle, se calcula el área del rectángulo multiplicando miFigura.width por miFigura.height.
-
-Si el argumento figure es una instancia de la clase Circle, se calcula el área del círculo usando la fórmula π \* radio^2, donde Math.PI es el valor de Pi y miFigura.radius es el radio del círculo.
+   ·Si el argumento figure es una instancia de la clase Square, se calcula el área del cuadrado multiplicando miFigura.side por sí mismo.
+   ·Si el argumento figure es una instancia de la clase Rectangle, se calcula el área del rectángulo multiplicando miFigura.width por miFigura.height.
+   ·Si el argumento figure es una instancia de la clase Circle, se calcula el área del círculo usando la fórmula π * radio^2, donde Math.PI es el valor de Pi y miFigura.radius es el radio del círculo.
 
 6. Retorno del Área:
-
-Después de calcular el área de acuerdo con el tipo de figura, el método calculate devuelve el área calculada.
+   Después de calcular el área de acuerdo con el tipo de figura, el método calculate devuelve el área calculada.
 
 7. Manejo de Tipos No Soportados:
-
-Si el argumento miFigura no es una instancia de ninguna de las clases esperadas (Square, Rectangle o Circle), se lanza un error indicando que el tipo de figura no es compatible.
+   Si el argumento miFigura no es una instancia de ninguna de las clases esperadas (Square, Rectangle o Circle), se lanza un error indicando que el tipo de figura no es compatible.
 
 8. Ejemplo de Uso:
-
-Luego se crean instancias de las clases Square, Rectangle y Circle.
-
-Se llama al método calculate de la clase AreaCalculator pasando cada una de estas instancias como argumento.
-
-El método calculate detecta el tipo de figura mediante el operador instanceof y realiza los cálculos apropiados según la figura.
+   Luego se crean instancias de las clases Square, Rectangle y Circle.
+   Se llama al método calculate de la clase AreaCalculator pasando cada una de estas instancias como argumento.
+   El método calculate detecta el tipo de figura mediante el operador instanceof y realiza los cálculos apropiados según la figura.
 
 9. Salida:
-
-Finalmente, se imprimen los resultados de los cálculos de área en la consola.
+   Finalmente, se imprimen los resultados de los cálculos de área en la consola.
 
 En resumen, el operador instanceof se utiliza en este código para determinar si un objeto es una instancia de una clase específica. Esto permite a la clase AreaCalculator calcular el área de diferentes figuras geométricas basándose en sus tipos. Cada tipo de figura se maneja de manera diferente según su clase correspondiente.
 El operador instanceof en JavaScript te permite verificar la pertenencia de un objeto a una clase o su herencia, lo que resulta útil para realizar comprobaciones de tipo y tomar decisiones basadas en la estructura de clases. Su uso contribuye a un código más seguro y mantenible al evitar operaciones inapropiadas en objetos no válidos.
