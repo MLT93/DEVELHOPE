@@ -344,7 +344,7 @@ En este ejemplo, aunque #nombre es un campo privado, se puede acceder indirectam
 
 Es importante mencionar que acceder a campos privados de esta manera contradice el principio de encapsulación y puede romper la abstracción de la clase. Por lo tanto, se recomienda utilizar campos privados de manera responsable y evitar acceder a ellos indirectamente si el diseño de la clase lo permite.
 
-A partir de ECMAScript 2022 (también conocido como ES12 o ES2022), JavaScript introduce la posibilidad de definir métodos privados en las clases utilizando la sintaxis del numeral (#). Esto permite crear métodos que solo pueden ser accedidos desde dentro de la misma clase y no desde fuera ni desde instancias de la clase.
+A partir de ECMAScript 2022 (también conocido como ES12 o ES2022), JavaScript introduce la posibilidad de definir métodos privados en las clases utilizando la sintaxis del numeral o símbolo hashtag [#]. Esto permite crear métodos que solo pueden ser accedidos desde dentro de la misma clase y no desde fuera ni desde instancias de la clase.
 
 Veamos un ejemplo:
 
