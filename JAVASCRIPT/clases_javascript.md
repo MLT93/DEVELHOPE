@@ -51,6 +51,12 @@ estudiante1.saludar(); // Imprime: Hola, soy Pedro y tengo 22 años.
 estudiante1.estudiar(); // Imprime: Pedro está estudiando Ingeniería.
 ```
 
+
+
+
+
+
+
 Classes in JavaScript: Una explicación detallada
 
 En JavaScript, las clases son un concepto fundamental introducido en ECMAScript 2015 (ES6) para permitir la programación orientada a objetos dentro del lenguaje. Las clases proporcionan un plano para crear objetos, permitiéndote definir la estructura y el comportamiento de un tipo de objeto. Vamos a desglosar los aspectos clave de las clases en JavaScript:
