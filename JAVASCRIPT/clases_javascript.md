@@ -403,6 +403,12 @@ En este ejemplo, el método privado #metodoPrivado() puede acceder al campo priv
 
 Esta limitación asegura que los campos y métodos privados cumplan su propósito de encapsulación y privacidad.
 
+
+
+
+
+
+
 Static Properties and Methods: Una Explicación Detallada
 
 Las propiedades y métodos estáticos son elementos de las clases en JavaScript que están asociados directamente con la clase en sí, en lugar de con las instancias individuales de la clase. Esto significa que no es necesario crear una instancia de la clase para acceder a estas propiedades y métodos. Vamos a explorar los aspectos clave de las propiedades y métodos estáticos:
