@@ -918,3 +918,122 @@ Explicación paso a paso:
 
 En resumen, el operador instanceof se utiliza en este código para determinar si un objeto es una instancia de una clase específica. Esto permite a la clase AreaCalculator calcular el área de diferentes figuras geométricas basándose en sus tipos. Cada tipo de figura se maneja de manera diferente según su clase correspondiente.
 El operador instanceof en JavaScript te permite verificar la pertenencia de un objeto a una clase o su herencia, lo que resulta útil para realizar comprobaciones de tipo y tomar decisiones basadas en la estructura de clases. Su uso contribuye a un código más seguro y mantenible al evitar operaciones inapropiadas en objetos no válidos.
+
+
+
+
+
+
+
+Destructuring Arrays: Una Explicación Detallada
+
+1. Introducción a Destructuring Arrays:
+   El "destructuring" de arrays en JavaScript es una característica que permite descomponer o extraer elementos de un array en variables individuales. Esto simplifica el proceso de asignar valores a variables a partir de los elementos de un array.
+
+2. Beneficios del Destructuring de Arrays:
+   El destructuring de arrays te permite asignar de manera más concisa y legible los valores de un array a variables. Esto puede mejorar la claridad del código y hacer que el acceso a elementos específicos del array sea más sencillo.
+
+3. Sintaxis del Destructuring de Arrays:
+   La sintaxis básica del destructuring de arrays implica colocar corchetes [] en el lado izquierdo de una asignación. Dentro de los corchetes, puedes listar las variables en las que deseas almacenar los elementos del array.
+
+```javascript
+const miArray = [1, 2, 3];
+const [a, b, c] = miArray;
+console.log(a); // Resultado: 1
+console.log(b); // Resultado: 2
+console.log(c); // Resultado: 3
+```
+
+4. Asignación Selectiva:
+   Puedes saltar elementos en el array si no te interesan asignarlos a variables particulares utilizando comas.
+
+```javascript
+const [primero, , tercero] = miArray;
+console.log(primero); // Resultado: 1
+console.log(tercero); // Resultado: 3
+```
+
+5. Asignación con Valores por Defecto:
+   Puedes proporcionar valores por defecto para las variables en caso de que el array no tenga suficientes elementos.
+
+```javascript
+const [x = 0, y = 0, z = 0] = [10, 20];
+console.log(x); // Resultado: 10
+console.log(y); // Resultado: 20
+console.log(z); // Resultado: 0
+```
+
+6. Swapping de Valores:
+   El destructuring de arrays también permite intercambiar valores entre variables de manera elegante sin necesidad de variables temporales adicionales.
+
+```javascript
+let num1 = 5;
+let num2 = 10;
+[num1, num2] = [num2, num1];
+console.log(num1); // Resultado: 10
+console.log(num2); // Resultado: 5
+```
+
+7. Compatibilidad y Consideraciones Finales:
+   El destructuring de arrays es una característica admitida en la mayoría de los navegadores modernos y entornos de JavaScript. Sin embargo, es aconsejable verificar la compatibilidad antes de implementarla en proyectos específicos.
+
+En resumen, el destructuring de arrays en JavaScript ofrece una forma concisa y legible de asignar elementos de arrays a variables individuales. Esta técnica puede mejorar la claridad y eficiencia del código al acceder a los valores del array de manera directa y conveniente.
+
+
+
+
+
+
+
+Destructuring Objects: Una Explicación Detallada
+
+1. Introducción al Destructuring de Objetos:
+   El "destructuring" de objetos en JavaScript es una técnica que nos permite extraer propiedades específicas de un objeto y asignarlas a variables independientes. Esta característica resulta muy útil para acceder a los valores de un objeto de manera más directa y eficiente.
+
+2. Beneficios del Destructuring de Objetos:
+   El destructuring de objetos facilita la asignación de propiedades de un objeto a variables individuales, lo que conduce a un código más claro y conciso. Esto elimina la necesidad de acceder a las propiedades del objeto mediante notación de punto o corchetes.
+
+3. Sintaxis del Destructuring de Objetos:
+   La sintaxis básica del destructuring de objetos consiste en colocar llaves {} a la izquierda de una declaración de asignación. Dentro de estas llaves, especificamos las propiedades del objeto que deseamos asignar a variables.
+
+```javascript
+const miObjeto = { x: 1, y: 2 };
+const { x, y } = miObjeto;
+console.log(x); // Resultado: 1
+console.log(y); // Resultado: 2
+```
+
+4. Alias de Propiedades:
+   Podemos asignar las propiedades del objeto a variables con nombres diferentes usando la sintaxis propiedad: variable.
+
+```javascript
+const { x: coordX, y: coordY } = miObjeto;
+console.log(coordX); // Resultado: 1
+console.log(coordY); // Resultado: 2
+```
+
+5. Valores por Defecto:
+   Es posible asignar valores por defecto a las variables en caso de que la propiedad del objeto no esté definida.
+
+```javascript
+const { a = 0, b = 0, c = 0 } = { a: 10, b: 20 };
+console.log(a); // Resultado: 10
+console.log(b); // Resultado: 20
+console.log(c); // Resultado: 0
+```
+
+6. Intercambio de Propiedades:
+   El destructuring de objetos también nos permite intercambiar valores entre propiedades sin necesidad de variables temporales.
+
+```javascript
+let num1 = 5;
+let num2 = 10;
+({ num1, num2 } = { num2, num1 });
+console.log(num1); // Resultado: 10
+console.log(num2); // Resultado: 5
+```
+
+7. Compatibilidad y Consideraciones Finales:
+   El destructuring de objetos es compatible con la mayoría de los navegadores modernos y entornos de JavaScript. Sin embargo, siempre es recomendable verificar la compatibilidad antes de utilizarlo en proyectos específicos.
+   
+En resumen, el destructuring de objetos en JavaScript es una técnica eficiente que nos permite extraer propiedades de un objeto y asignarlas a variables independientes. Esto mejora la legibilidad y eficiencia del código al evitar el uso repetitivo de notación de punto o corchetes para acceder a las propiedades del objeto.
