@@ -1035,5 +1035,67 @@ console.log(num2); // Resultado: 5
 
 7. Compatibilidad y Consideraciones Finales:
    El destructuring de objetos es compatible con la mayoría de los navegadores modernos y entornos de JavaScript. Sin embargo, siempre es recomendable verificar la compatibilidad antes de utilizarlo en proyectos específicos.
+
+
+Ejemplo de uso:
+
+Supongamos que tenemos el siguiente objeto person:
+
+```javascript
+const person = {
+  id: 1,
+  name: 'John',
+  surname: 'Doe',
+  old: 30
+};
+
+const { id, name, surname, old } = person;
+```
+
+Qué es, qué está haciendo esto `const { id, name, surname, old } = person;` al interno del código y para qué sirve?
+
+La línea de código `const { id, name, surname, old } = person;` está utilizando la destructuring assignment para extraer las propiedades id, name, surname y old del objeto person y asignar sus valores a variables correspondientes en el mismo ámbito. Permíteme explicarte más detalladamente:
+
+La destructuring assignment se utiliza para descomponer este objeto en partes más pequeñas y asignar sus valores a variables. En este caso, `const { id, name, surname, old } = person;` se está descomponiendo el objeto person y asignando los valores de las propiedades correspondientes a las variables id, name, surname y old.
+
+Después de esta línea de código, puedes utilizar esas variables en lugar de acceder directamente a las propiedades del objeto person. Aquí tienes un ejemplo de cómo podrías usar estas variables:
+
+```javascript
+console.log(id);      // Output: 1
+console.log(name);    // Output: John
+console.log(surname); // Output: Doe
+console.log(old);     // Output: 30
+```
+
+Esta técnica es útil cuando deseas trabajar con propiedades específicas de un objeto y prefieres tener esas propiedades disponibles como variables en tu código en lugar de acceder a ellas a través del objeto original.
+
+Y porqué en este código me da undefined?
+
+```javascript
+const person = {
+  id: 1,
+  firstName: 'Mario',
+  lastName: 'Rossi',
+  age: 25
+};
+
+const { id, name, surname, old } = person;
+
+console.log(id, name, surname, old);
+```
+
+El código te da undefined para las variables name, surname y old porque esas propiedades no existen en el objeto person. En el objeto person, las propiedades se llaman firstName, lastName y age, no name, surname y old.
+
+Cuando intentas hacer la destructuring con las variables name, surname y old, JavaScript no encuentra esas propiedades en el objeto person, por lo que asigna el valor undefined a esas variables.
+
+Si deseas hacer la destructuring correctamente, debes usar las propiedades reales del objeto:
+
+```javascript
+const { id, firstName, lastName, age } = person;
+
+console.log(id, firstName, lastName, age);
+```
+
+Con esto, obtendrás los valores correctos y no te dará undefined.
    
 En resumen, el destructuring de objetos en JavaScript es una técnica eficiente que nos permite extraer propiedades de un objeto y asignarlas a variables independientes. Esto mejora la legibilidad y eficiencia del código al evitar el uso repetitivo de notación de punto o corchetes para acceder a las propiedades del objeto.

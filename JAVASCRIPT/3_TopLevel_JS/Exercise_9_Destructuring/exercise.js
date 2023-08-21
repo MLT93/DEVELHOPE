@@ -6,4 +6,5 @@ const person = {
 };
 
 const { id, name, surname, old } = person;
-console.log(id, name, surname, old);
+
+console.log(person);
