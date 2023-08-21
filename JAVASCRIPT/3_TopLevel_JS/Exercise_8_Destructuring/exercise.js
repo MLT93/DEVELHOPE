@@ -9,4 +9,7 @@ const person = {
   age: 25
 };
 
-console.log(isAdult(person));
+const person2 = { ...person, age: 15 };
+
+console.log(isAdult(person2));
+
