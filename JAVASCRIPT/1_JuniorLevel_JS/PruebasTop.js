@@ -543,25 +543,32 @@ console.log(nombresPropiedades);
 // Este sistema de módulos nativo por fin nos permite cargar módulos externos con una sintaxis simple y de forma síncrona y asíncrona. Eso sí, con una pequeña pega que seguiremos sufriendo durante un tiempo: esperar que la industria vaya abandonando CommonJS a favor de ESM.
 // */
 
-// ----- FORMAS PARA AÑADIR O QUITAR COSAS DE UN ARRAY -----
+// ----- FORMAS PARA AÑADIR, QUITAR O AGRUPAR COSAS DE UN ARRAY -----
 
+// El .slice(inicio, fin) Se utiliza para extraer una porción de un array existente y devuelve un nuevo array con los elementos seleccionados. Permite especificar el inicio y el fin de la porción que se desea extraer array.slice(inicio, fin) y, si el inicio no se especifica, declara solo el fin. Después accede al array trámite los corchetes [..]
 let numbers = [1, 2, 3, 4, 5, 11, 12, 22, 0.7];
 
 console.log(
   "Accedo al último elemento utilizando el .slice:",
   numbers.slice(-1)[0]
-); // El .slice(inicio, fin) Se utiliza para extraer una porción de un array existente y devuelve un nuevo array con los elementos seleccionados. Permite especificar el inicio y el fin de la porción que se desea extraer array.slice(inicio, fin) y, si el inicio no se especifica, declara solo el fin. Después accede al array trámite los corchetes [..]
+);   
 // Array: El array original del cual se desea extraer una porción.
 // Inicio (opcional): El índice donde se iniciará la extracción. Si no se especifica, se asume un valor de 0, lo que significa que se comenzará desde el primer elemento del array.
 // Fin (opcional): El índice donde finalizará la extracción. El método .slice() extraerá los elementos hasta fin - 1. Si no se especifica, se extraerán todos los elementos hasta el final del array.
 
+
+
+
+// El método .splice(indice de inicio(inclusive), elementos a eliminar, item a añadir) permite modificar el contenido de un array eliminando, reemplazando o agregando elementos. Acepta varios argumentos. Puedes utilizarlo para quitar una parte del array especificando el índice de inicio (inclusive) y la cantidad de elementos a eliminar en elementos a eliminar.
+let numbers2 = [1, 2, 3, 4, 5, 11, 12, 22, 0.7];
+
 console.log(
   "Con .splice éstos son los números que quito: ",
-  numbers.splice(0, 5, 55)
-); // El método .splice(indice de inicio(inclusive), elementos a eliminar, item a añadir) permite modificar el contenido de un array eliminando, reemplazando o agregando elementos. Acepta varios argumentos. Puedes utilizarlo para quitar una parte del array especificando el índice de inicio (inclusive) y la cantidad de elementos a eliminar en elementos a eliminar.
-console.log("Este es mi array después de pasarle el .splice:", numbers);
+  numbers2.splice(0, 5, 55)
+); 
+console.log("Este es mi array después de pasarle el .splice:", numbers2);
 
-// Ejemplo1:
+// Sintaxis y explicación:
 array.splice(
   0 /*inicio*/,
   2 /*deleteCount*/,
@@ -572,8 +579,9 @@ array.splice(
 // deleteCount: Es el número de elementos a eliminar a partir del índice start. Si se establece en 0, no se eliminará ningún elemento.
 // añadirItem1, añadirItem2, .. : Son los elementos opcionales que se pueden agregar al array en el lugar donde se eliminaron los elementos.
 
-// Ejemplo2:
+// Otro Ejemplo:
 let numeritos = [1, 2, 3, 4, 5];
+
 let removedElements = numeritos.splice(
   2 /* inicio incluido */,
   2 /* elementos a eliminar */,
@@ -581,6 +589,36 @@ let removedElements = numeritos.splice(
 ); // Elimina 2 elementos a partir del índice 2
 console.log("Array modificado:", numeritos); // Resultado: [1, 2, 32, 5]
 console.log("Elementos eliminados:", removedElements); // Resultado: [3, 4]
+
+
+
+
+/* En JavaScript, el método .reduce() se utiliza para recorrer un arreglo y acumular sus elementos en un único valor. Se usa frecuentemente para realizar operaciones como sumar números, encontrar el valor máximo o mínimo, o cualquier otra operación que involucre combinar elementos del arreglo. */
+/* La sintaxis básica del método .reduce() es la siguiente: */
+array.reduce(callback, valorInicial);
+/* 
+1. array: El arreglo en el que deseas operar.
+2. callback: Una función que se ejecuta en cada elemento del arreglo. Tiene cuatro argumentos:
+    ·Acumulador: El valor que se está acumulando mientras la función recorre el arreglo.
+    ·Valor Actual: El elemento actual en el arreglo que está siendo procesado.
+    ·Índice Actual: El índice del elemento actual.
+    ·Arreglo Fuente: El arreglo original en el que se está operando.
+    ·valorInicial: Un valor inicial opcional para el acumulador. Si no se proporciona, se utilizará el primer elemento del arreglo como valor inicial del acumulador.
+*/
+
+/* Aquí tienes un ejemplo de cómo podrías usar .reduce() para encontrar la suma de un arreglo de números: */
+const numeros = [1, 2, 3, 4, 5];
+const suma = numeros.reduce((acumulador, valorActual) => acumulador + valorActual, 0);
+
+console.log(suma); // Salida: 15
+/* En este ejemplo, el acumulador comienza en 0, y por cada elemento en el arreglo numeros, se suma el valorActual al acumulador, resultando en la suma de todos los números. */
+
+/* También puedes usar .reduce() para operaciones más complejas, como encontrar el valor máximo en un arreglo: */
+const numerols = [8, 3, 11, 6, 4];
+const maximo = numerols.reduce((acumulador, valorActual) => Math.max(acumulador, valorActual), -Infinity);
+
+console.log(maximo); // Salida: 11
+/* Recuerda que .reduce() puede ser poderoso, pero otros métodos de arreglo como .map(), .filter() y .forEach() podrían ser más apropiados para ciertas tareas. Es importante elegir el método adecuado según la operación específica que deseas realizar. */
 
 // ---------- FUNCION ES PRIMO O NO ES PRIMO --------------
 
