@@ -1438,13 +1438,13 @@ function doSomething({sum = true, divide = false}, ...rest) {
 console.log(doSomething({"sum": true, "divide": false}, 2, 3, 4, 5, 2, 1));
 ```
 1. Clase Personalizada (MyArray):
-   En este fragmento de código, defines una clase llamada MyArray que hereda de la clase incorporada Array. La clase tiene una propiedad customName y un método sum().
+   En este fragmento de código, defines una clase llamada `MyArray` que hereda de la clase incorporada `Array`. La clase tiene una propiedad `customName`, un `constructor` y un método `sum()`.
 
 2. Constructor y Spread Operator:
-   El constructor de MyArray toma dos argumentos: customName y el operador rest ...rest. Luego, utiliza el Spread Operator (super(...rest)) para llamar al constructor de la clase base Array y pasar los elementos capturados en rest como elementos del nuevo array. Esto permite que los elementos pasados después de customName se agreguen como elementos al array que se está creando.
+   El `constructor` de `MyArray` toma dos argumentos: customName y el Rest Operator `(customName, ...rest)`. Luego, utiliza el Spread Operator `super(...rest)` para pasar los elementos del `array rest` (creado con super(...rest)) como argumentos individuales al constructor de la clase base Array, así creamos un nuevo array.
 
 3. Rest Operator:
-   En la declaración del constructor, el Rest Operator se utiliza para capturar los elementos restantes después del primer argumento customName. Esto significa que puedes pasar cualquier número de elementos después de customName, y todos esos elementos se capturarán en el array rest, que luego se pasa al constructor de la clase base Array.
+   En la declaración del constructor, el Rest Operator `(  ...rest)` se utiliza para capturar los elementos restantes después del primer argumento `(customName, )`. Esto significa que puedes pasar cualquier número de elementos después de `customName`, y todos esos elementos se capturarán en el `array rest`, que luego se pasa al constructor de la clase base `Array`.
 
 4. Método sum():
    El método sum() utiliza el método .reduce() para iterar a través del array y calcular la suma de todos sus elementos. La función pasada a .reduce() acumula los valores previos y los suma con el valor actual en cada iteración.
@@ -1459,7 +1459,7 @@ console.log(doSomething({"sum": true, "divide": false}, 2, 3, 4, 5, 2, 1));
    Puedes acceder y llamar al método sum() en la instancia arr2, que calculará y retornará la suma de todos los elementos en el array (1 + 2 + 3 + 4 + 5 = 15). El resultado, 15, se muestra en la consola.
 
 8. Función doSomething():
-   Esta función toma un objeto con propiedades opcionales sum y divide como primer argumento y utiliza el operador rest ...rest para capturar los argumentos restantes.
+   Esta función toma un objeto con propiedades opcionales `sum` y `divide` como primer argumento y utiliza el operador rest `...rest` para capturar los argumentos restantes.
 
 9. Cálculos basados en las Propiedades del Objeto:
    Dependiendo de los valores de las propiedades sum y divide en el objeto, la función calcula la suma o la división de los números en el operador rest.
