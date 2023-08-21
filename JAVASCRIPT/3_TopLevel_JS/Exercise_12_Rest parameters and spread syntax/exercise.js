@@ -12,8 +12,5 @@ var personInfo = {
   age: person.age
 }; */
 
-const info = { ...person,  id: 3 };
-console.log(info);
-
 var { id, ...personInfo } = person;
 console.log(id, personInfo);
