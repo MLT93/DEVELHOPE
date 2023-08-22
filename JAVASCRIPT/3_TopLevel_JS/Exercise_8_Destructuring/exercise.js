@@ -6,8 +6,7 @@ const person = {
   age: 25
 };
 
-
-
+/* Se accede a la propiedad "age" a través del objeto "person" al interno de la función "isAdult" y después gracias a la función vemos si es mayor o menor de edad pasándole como argumento, en el momento de la invocación, el objeto person por completo */
 function isAdult(person) {
   return person.age >= 18;
 }
