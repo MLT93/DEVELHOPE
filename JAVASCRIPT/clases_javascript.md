@@ -352,7 +352,7 @@ Es importante mencionar que acceder a campos privados de esta manera contradice 
 
 A partir de ECMAScript 2022 (también conocido como ES12 o ES2022), JavaScript introduce la posibilidad de definir métodos privados en las clases utilizando la sintaxis del numeral o símbolo hashtag [#]. Esto permite crear métodos que solo pueden ser accedidos desde dentro de la misma clase y no desde fuera ni desde instancias de la clase.
 
-Veamos un ejemplo:
+Ejemplo:
 
 ```javascript
 class MiClase {
@@ -597,37 +597,37 @@ class Person {
   }
 
   // Getter para obtener el primer nombre
-  get nombre() {
+  get getNombre() {
     return this.firstName;
   }
 
   // Getter para obtener el apellido
-  get apellido() {
+  get getApellido() {
     return this.lastName;
   }
 
   // Getter para obtener la edad
-  get años() {
+  get getAños() {
     return this.age;
   }
 
   // Getter para obtener el nombre completo
-  get fullName() {
+  get getFullName() {
     return this.firstName + " " + this.lastName;
   }
 
   // Setter para cambiar el primer nombre
-  set nombre(nuevoNombre) {
+  set setNombre(nuevoNombre) {
     this.firstName = nuevoNombre;
   }
 
   // Setter para cambiar el apellido
-  set apellido(nuevoApellido) {
+  set setApellido(nuevoApellido) {
     this.lastName = nuevoApellido;
   }
 
   // Setter para cambiar la edad
-  set años(nuevaEdad) {
+  set setAños(nuevaEdad) {
     this.age = nuevaEdad;
   }
 }
@@ -636,16 +636,16 @@ class Person {
 const person = new Person("Mario", "Rossi", 25);
 
 // Obtener y mostrar el nombre completo utilizando el getter
-console.log(person.fullName); // Salida: "Mario Rossi"
+console.log(person.getFullName); // Salida: "Mario Rossi"
 
 // Cambiar el primer nombre utilizando el setter
-person.nombre = "Maria";
+person.setNombre = "Maria";
 
 // Cambiar el apellido utilizando el setter
-person.apellido = "Verdi";
+person.setApellido = "Verdi";
 
 // Obtener y mostrar el nuevo nombre completo utilizando el getter
-console.log(person.fullName); // Salida: "Maria Verdi"
+console.log(person.getFullName); // Salida: "Maria Verdi"
 ```
 
 Explicación paso a paso:
@@ -654,16 +654,16 @@ Explicación paso a paso:
    La clase Person tiene un constructor que toma tres parámetros: firstName, lastName y age. Cuando creas una instancia de Person, estos valores se utilizan para inicializar las propiedades correspondientes.
 
 2. Getters:
-   Los getters son métodos que te permiten obtener el valor de propiedades privadas. En este caso, la clase Person tiene tres getters: nombre, apellido y años. Cada uno simplemente devuelve el valor de la propiedad correspondiente (firstName, lastName y age).
+   Los getters son métodos que te permiten obtener el valor de propiedades privadas. En este caso, la clase Person tiene tres getters: getNombre, getApellido y getAños. Cada uno simplemente devuelve el valor de la propiedad correspondiente (firstName, lastName y age).
 
 3. Getter para el nombre completo:
-   El getter fullName concatena el primer nombre (firstName) y el apellido (lastName) para obtener el nombre completo.
+   El getter getFullName concatena el primer nombre (firstName) y el apellido (lastName) para obtener el nombre completo.
 
 4. Setters:
-   Los setters son métodos que te permiten modificar el valor de propiedades privadas. En este caso, la clase Person tiene tres setters: nombre, apellido y años. Cada setter toma un parámetro y asigna ese valor a la propiedad correspondiente.
+   Los setters son métodos que te permiten modificar el valor de propiedades privadas. En este caso, la clase Person tiene tres setters: setNombre, setApellido y setAños. Cada setter toma un parámetro y asigna ese valor a la propiedad correspondiente.
 
 5. Uso de getters y setters:
-   Después de crear una instancia de Person llamada person, podemos usar los getters para obtener valores y los setters para cambiarlos. Usamos person.fullName para obtener el nombre completo y lo mostramos en la consola. Luego, utilizamos los setters para cambiar el primer nombre y el apellido de la persona. Finalmente, usamos nuevamente el getter person.fullName para obtener y mostrar el nuevo nombre completo.
+   Después de crear una instancia de Person llamada person, podemos usar los getters para obtener valores y los setters para cambiarlos. Usamos person.getFullName para obtener el nombre completo y lo mostramos en la consola. Luego, utilizamos los setters para cambiar el primer nombre y el apellido de la persona. Finalmente, usamos nuevamente el getter person.getFullName para obtener y mostrar el nuevo nombre completo.
 
 En resumen, los getters permiten obtener valores de propiedades privadas, mientras que los setters permiten modificar esos valores. Esto facilita el acceso y la modificación controlada de los datos en una clase, mejorando la encapsulación, protección y mantenimiento del código, al tiempo que permite implementar validaciones personalizadas y lógica específica cuando sea necesario.
 
@@ -1384,10 +1384,10 @@ class MyArray extends Array {
   
   sum() {
     /* .reduce itera el array y agrupa todos sus elementos */
-    return this.reduce((a, b) => a + b);
+    return this.reduce((a, b) => a + b, 0);
   }
 }
-
+/* creo una instancia para un nuevo array */
 let arr2 = new MyArray("something", 1, 2, 3, 4, 5);
 /* puedo acceder a cada elemento separadamente */
 console.log(arr2[0]);
