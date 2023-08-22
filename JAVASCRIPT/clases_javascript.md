@@ -1551,29 +1551,29 @@ function isAdult(person) {
 }
 console.log(isAdult(person));
 
-/* Creamos una copia del objeto person y le modificamos la propiedad "age" al nuevo objeto. De esta forma siempre tendremos que acceder primero al objeto y después a la propiedad, como argumento, cuando llamemos a la función isAdult porque dicha función solo accede al valor de age */
-const person2 = { ...person, age: 15 };
-
-function isAdult2(age) {
-  return age;
-}
-console.log(isAdult2(person2.age));
-
 /* Acá se hace la destructuración de la propiedad del objeto al que se desea acceder y a la función le pasamos como argumento, dicha variable (la que tiene el mismo nombre que la propiedad). Este método hace que tengamos que destructurar cada propiedad por separado y ponerle cada argumento a la función, cosa tediosa. Recuerda que si la función si tiene más de un valor para devolver, los guardamos en otro objeto o array para poder devolver varios valores contemporaneamente. */
 const { age } = person;
 const { id } = person;
 
-function isAdult3(age, id) {
+function isAdult2(age, id) {
   return { isAdult: age >= 18, id }; /* return [age >= 18, id]; */
 }
-console.log(isAdult3(age, id));
+console.log(isAdult2(age, id));
 
 /* Acá la destructuración se realiza directamente al interno de la función, lo cual permite pasarle cualquier objeto la función (siempre que tenga alguna de las propiedades destructuradas en su interno). Así solo necesitamos pasarle un solo argumento a la función, la cual nos devolverá otro objeto con los valores deseados (siempre que deba devolvernos más de un valor) */
-function isAdult4(person) {
+function isAdult3(person) {
   const { age, firstName } = person;
   return {isAdult: age >= 18, firstName}; /* return [age >= 18, firstName]; */
 };
-console.log(isAdult4(person));
+console.log(isAdult3(person));
+
+/* BUENA PRÁCTICA => Primero, creamos una copia del objeto person y le modificamos la propiedad age en el nuevo objeto resultante. Luego, al definir la función isAdult4, utilizamos la desestructuración en los parámetros para obtener directamente la propiedad age del objeto. Esto hace que la función sea más legible y comprensible en su uso. En el cuerpo de la función, ejecutamos el código necesario para determinar si la edad es mayor o igual a 18. Finalmente, llamamos a la función isAdult4 pasando como parámetro el objeto deseado y obtenemos el resultado esperado. */
+const person2 = { ...person, age: 66 };
+
+function isAdult4({age}) {
+  return age >= 18;
+}
+console.log(isAdult4(person2));
 ```
 
 En resumen, aunque ambas características utilizan la notación de tres puntos (...), el Spread Operator se enfoca en expandir elementos y se usa en lugares donde se esperan varios elementos, mientras que el Rest Operator se enfoca en capturar elementos variables en un solo lugar, utilizado principalmente en funciones y en el desglose de elementos en arrays.
