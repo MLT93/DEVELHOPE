@@ -13,7 +13,7 @@ function isAdult(person) {
 }
 console.log(isAdult(person));
 
-/* Creamos una copia del objeto person y le modificamos la propiedad "age" al nuevo objeto. De esta forma siempre tendremos que acceder primero al objeto y después a la propiedad como argumento, cuando llamemos a la función isAdult */
+/* Creamos una copia del objeto person y le modificamos la propiedad "age" al nuevo objeto. De esta forma siempre tendremos que acceder primero al objeto y después a la propiedad, como argumento, cuando llamemos a la función isAdult porque dicha función solo accede al valor de age */
 const person2 = { ...person, age: 15 };
 
 function isAdult2(age) {
