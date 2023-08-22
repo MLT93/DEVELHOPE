@@ -1334,7 +1334,7 @@ El Rest Operator en JavaScript es una característica esencial que te permite ca
 
 
 
-Diferencias entre Spread Operator y Rest Operator:
+Diferencias entre Spread Operator y Rest Operator con ejemplos:
 
 El Rest Operator y el Spread Operator en JavaScript se parecen en su sintaxis, ya que ambos utilizan tres puntos (...) en su notación. Sin embargo, cumplen propósitos diferentes y se utilizan en contextos distintos. Aquí te explico las diferencias clave:
 
