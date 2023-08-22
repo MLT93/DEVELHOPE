@@ -6,34 +6,34 @@ class Person {
   }
 
   // Getter para obtener el primer nombre
-  get nombre() {
+  get getNombre() {
     return this._firstName;
   }
 
-  get apellido() {
+  get getApellido() {
     return this._lastName;
   }
 
-  get años() {
+  get getAños() {
     return this._age;
   }
 
   // Getter para obtener el nombre completo
-  get fullName() {
+  get getFullName() {
     return `${this._firstName} ${this._lastName}`;
   }
 
   // Setter para modificar el primer nombre
-  set nombre(nuevoNombre) {
+  set setNombre(nuevoNombre) {
     this._firstName = nuevoNombre;
   }
 
-  set apellido(nuevoApellido) {
+  set setApellido(nuevoApellido) {
     this._lastName = nuevoApellido;
   }
 
   // Setter para modificar la edad
-  set años(nuevaEdad) {
+  set setAños(nuevaEdad) {
     this._age = nuevaEdad;
   }
 }
@@ -42,11 +42,11 @@ class Person {
 const person = new Person("Mario", "Rossi", 25);
 
 // Imprimo nombre completo con el getter
-console.log(person.fullName);
+console.log(person.getFullName);
 
 // Cambiar el primer nombre utilizando el setter
-person.nombre = "Maria";
+person.setNombre = "Maria";
 
-person.apellido = "Verdi";
+person.setApellido = "Verdi";
 
-console.log(person.fullName);
+console.log(person.getFullName);
