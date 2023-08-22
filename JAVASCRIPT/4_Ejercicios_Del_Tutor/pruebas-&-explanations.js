@@ -122,7 +122,11 @@ for (let cadaNumero of misNumeros) {
 
 // ------------------- ITERACIONES FOR...IN \ FOR IN \ FOR-IN: PARA OBJETO --------------------------------------
 
-/* Recuerda que: el ciclo `for in` itera sobre las `keys` */
+/* 
+    Recuerda que: el ciclo `for in` itera sobre las `keys`.
+    
+    Por este motivo se utilizan más para objects/objetos 
+*/
 
 let elObjeto = {
   a: 1,
@@ -157,7 +161,11 @@ iterarEnObjeto(car);
 
 // ------------------- ITERACIONES FOR...OF \ FOR OF \ FOR-OF: PARA ARRAY --------------------------------------
 
-/* Recuerda que: el ciclo `for of` itera sobre las `values` */
+/* 
+    Recuerda que: el ciclo `for of` itera sobre las `values`. 
+
+    Por esta razón se usan más para arrays/arreglos/matrices 
+*/
 
 
 let array = [1, 2, 3];
