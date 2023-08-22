@@ -121,6 +121,9 @@ for (let cadaNumero of misNumeros) {
 }
 
 // ------------------- ITERACIONES FOR...IN \ FOR IN \ FOR-IN: PARA OBJETO --------------------------------------
+
+/* Recuerda que: el ciclo `for in` itera sobre las `keys` */
+
 let elObjeto = {
   a: 1,
   b: 2,
@@ -153,6 +156,10 @@ function iterarEnObjeto(object) {
 iterarEnObjeto(car);
 
 // ------------------- ITERACIONES FOR...OF \ FOR OF \ FOR-OF: PARA ARRAY --------------------------------------
+
+/* Recuerda que: el ciclo `for of` itera sobre las `values` */
+
+
 let array = [1, 2, 3];
 
 for (let elemento of array) {
