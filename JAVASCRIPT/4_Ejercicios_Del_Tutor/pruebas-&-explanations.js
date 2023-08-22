@@ -97,7 +97,7 @@ Por lo tanto, cuando se ejecuta este código, se imprimirá el nombre de cada al
 
 //--------------------------------------------
 
-// ARRAY PARA LA DEMOSTRACION
+// ARRAY PARA LA DEMOSTRACIÓN
 let misNumeros = [1, 2, 3, 4, 5];
 
 // 1º FORMA DE ITERAR/RECORRER EL ARRAY
@@ -108,12 +108,12 @@ for (let i = 0; i < misNumeros.length; i++) {
 
 // 2ª FORMA DE ITERAR/RECORRER MI ARRAY
 misNumeros.forEach((argumentoNum) => {
-  // .forEach() quiere decir: .poraCada(lo que haya acá. En éste caso, un arrow function).
+  // .forEach() quiere decir: .porCada(lo que haya dentro de los paréntesis. En éste caso, un arrow function).
   let por2 = argumentoNum * 2;
   console.log(por2);
 });
 
-// 3ª FORMA DE ITERACION DEL MISMO ARRAY
+// 3ª FORMA DE ITERACIÓN DEL MISMO ARRAY
 for (let cadaNumero of misNumeros) {
   // El bucle FOR...OF (pertenece al ECMAScript 2015, ES6) se utiliza para iterar sobre arrays, strings (que es un array de letras), array de objetos y todo aquello que es iterable. Lo que hace, es pasar por cada elemento de un array (itera sobre de él) y trabaja el código que yo le introduzca.
   let multiplicacion = cadaNumero * 2; // Código introducido.
