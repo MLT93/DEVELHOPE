@@ -1594,7 +1594,7 @@ Los Métodos JSON brindan una poderosa suite de herramientas para trabajar con d
 3. Los Dos Pilares de los Métodos JSON:
 Los principales métodos involucrados son:
 
-- **JSON.parse()**: Esta función convierte una cadena JSON en un objeto JavaScript. Permite analizar y extraer información de datos JSON para que sean accesibles y utilizables en el entorno de JavaScript. Por ejemplo:
+- `JSON.parse()`: Esta función convierte una cadena JSON en un objeto JavaScript. Permite analizar y extraer información de datos JSON para que sean accesibles y utilizables en el entorno de JavaScript. Por ejemplo:
 
 ```javascript
 const jsonString = '{"nombre": "Ana", "edad": 28}';
@@ -1602,7 +1602,7 @@ const objeto = JSON.parse(jsonString);
 console.log(objeto.nombre); // Resultado: Ana
 ```
 
-- **JSON.stringify()**: Este método transforma un objeto JavaScript en una cadena JSON válida. Es esencial para enviar información estructurada a través de redes o para almacenarla en bases de datos. Ejemplo:
+- `JSON.stringify()`: Este método transforma un objeto JavaScript en una cadena JSON válida. Es esencial para enviar información estructurada a través de redes o para almacenarla en bases de datos. Ejemplo:
 
 ```javascript
 const objeto = { nombre: "Luis", edad: 35 };
@@ -1621,9 +1621,9 @@ const objetoClonado = JSON.parse(JSON.stringify(objetoOriginal));
 5. Aspectos Importantes y Buenas Prácticas:
 Al trabajar con los Métodos JSON, es fundamental tener en cuenta algunas consideraciones:
 
-- **Validación Rigurosa**: Al usar `JSON.parse()`, es necesario asegurarse de que la cadena JSON sea válida para evitar errores en tiempo de ejecución.
-- **Exclusión de Propiedades No Enumerables**: `JSON.stringify()` no incluirá propiedades no enumerables en el objeto resultante.
-- **Funciones y Valores Especiales**: Las funciones y los valores especiales como NaN o Infinity no se pueden serializar en JSON y pueden ser omitidos o reemplazados durante la conversión.
+- Validación Rigurosa: Al usar `JSON.parse()`, es necesario asegurarse de que la cadena JSON sea válida para evitar errores en tiempo de ejecución.
+- Exclusión de Propiedades No Enumerables: `JSON.stringify()` no incluirá propiedades no enumerables en el objeto resultante.
+- Funciones y Valores Especiales: Las funciones y los valores especiales como NaN o Infinity no se pueden serializar en JSON y pueden ser omitidos o reemplazados durante la conversión.
 
 6. Compatibilidad y Uso Generalizado:
 Los Métodos JSON son compatibles con prácticamente todos los navegadores modernos y entornos de ejecución de JavaScript. Su uso es esencial para la comunicación entre el frontend y el backend a través de APIs y servicios web.
