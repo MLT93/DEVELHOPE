@@ -1806,6 +1806,7 @@ const dataToSend = {
 
 ```javascript
 const jsonData = JSON.stringify(dataToSend);
+console.log("Serialized JSON data:", dataToSend); // Serialized JSON data: {"id":1,"date":"2023-08-24T12:30:45.000Z"}
 ```
 
 4. Deserialización utilizando `JSON.parse()` para obtener un objeto:
@@ -1824,7 +1825,14 @@ const receivedDate = new Date(parsedData.date);
 6. Ahora puedes trabajar con la fecha deserializada como un objeto `Date` en tu programa:
 
 ```javascript
-console.log(receivedDate); // Tue Aug 24 2023 08:30:45 GMT-0400 (Eastern Daylight Time)
+console.log("Deserialized Date:", receivedDate); // Deserialized Date: 2023-08-24T12:30:45.000Z
+```
+
+7. Por último formateamos la fecha según las preferencias regionales del usuario con `toLocaleString():`
+
+```javascript
+const localDate = receivedDate.toLocaleString(); // Muestra la fecha en formato localizado
+console.log("Local Date Zone:", localDate);
 ```
 
 Asegúrate de comprender y gestionar las zonas horarias cuando serialices y deserialices fechas. La cadena de fecha resultante de `toISOString()` incluirá la zona horaria UTC.
