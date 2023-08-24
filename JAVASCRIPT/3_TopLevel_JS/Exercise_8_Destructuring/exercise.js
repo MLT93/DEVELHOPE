@@ -28,7 +28,7 @@ function isAdult3(person) {
 };
 console.log(isAdult3(person));
 
-/* BUENA PRÁCTICA => Primero, creamos una copia del objeto person y le modificamos la propiedad age en el nuevo objeto resultante. Luego, al definir la función isAdult4, utilizamos la desestructuración en los parámetros para obtener directamente la propiedad age del objeto. Esto hace que la función sea más legible y comprensible en su uso. En el cuerpo de la función, ejecutamos el código necesario para determinar si la edad es mayor o igual a 18. Finalmente, llamamos a la función isAdult4 pasando como parámetro el objeto deseado y obtenemos el resultado esperado. */
+/* BUENA PRÁCTICA => Primero, creamos una copia del objeto person y le modificamos la propiedad age en el nuevo objeto resultante (recuerda que esta copia es a nivel superficial y no nos vale para objetos anidados). Luego, al definir la función isAdult4, utilizamos la desestructuración en los parámetros para obtener directamente la propiedad age del objeto. Esto hace que la función sea más legible y comprensible en su uso. En el cuerpo de la función, ejecutamos el código necesario para determinar si la edad es mayor o igual a 18. Finalmente, llamamos a la función isAdult4 pasando como parámetro el objeto deseado y obtenemos el resultado esperado. */
 const person2 = { ...person, age: 66 };
 
 function isAdult4({age}) {

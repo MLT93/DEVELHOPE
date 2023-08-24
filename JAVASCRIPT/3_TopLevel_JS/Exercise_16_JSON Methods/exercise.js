@@ -10,8 +10,9 @@ const person1 = {
   }
 };
 
-const person2 = { ...person1 };
-person2.address.city = 'Milan';
+
+
+const person2 = { ...person1, city: "Milan" };
 
 console.log(person1);
 console.log(person2);
