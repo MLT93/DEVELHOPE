@@ -1737,20 +1737,28 @@ Los Métodos JSON brindan una poderosa suite de herramientas para trabajar con d
 3. Los Dos Pilares de los Métodos JSON:
 Los principales métodos involucrados son:
 
-- `JSON.parse()`: Esta función convierte una cadena JSON en un objeto JavaScript. Permite analizar y extraer información de datos JSON para que sean accesibles y utilizables en el entorno de JavaScript. Por ejemplo:
+- `JSON.stringify()`: Este método transforma un objeto JavaScript en una cadena JSON válida. Es esencial para enviar información estructurada a través de redes o para almacenarla en bases de datos. A esto se le llama `Serializar`.
 
-```javascript
-const jsonString = '{"nombre": "Ana", "edad": 28}';
-const objeto = JSON.parse(jsonString);
-console.log(objeto.nombre); // Resultado: Ana
-```
+- `Serializar` es el proceso de convertir una estructura de datos, como un objeto o un conjunto de datos, en una forma de texto o binaria para que pueda ser almacenada o transmitida y luego reconstruida o recuperada para su uso posterior. La serialización es comúnmente utilizada para guardar datos en archivos, enviar datos a través de redes y comunicarse con otros sistemas.
 
-- `JSON.stringify()`: Este método transforma un objeto JavaScript en una cadena JSON válida. Es esencial para enviar información estructurada a través de redes o para almacenarla en bases de datos. Ejemplo:
+Ejemplo:
 
 ```javascript
 const objeto = { nombre: "Luis", edad: 35 };
 const jsonString = JSON.stringify(objeto);
 console.log(jsonString); // Resultado: {"nombre":"Luis","edad":35}
+```
+
+- `JSON.parse()`: Esta función convierte una cadena JSON en un objeto JavaScript. Permite analizar y extraer información de datos JSON para que sean accesibles y utilizables en el entorno de JavaScript. A esto se le llama `Deserializar`.
+
+- `Deserializar` es el proceso de convertir una representación de datos en un formato específico (como una cadena JSON) de vuelta a su estructura original en un lenguaje de programación. En otras palabras, se trata de tomar datos que fueron serializados previamente para su transmisión o almacenamiento y convertirlos nuevamente en objetos o estructuras que puedan ser manipulados y utilizados en el programa.
+
+Por ejemplo:
+
+```javascript
+const jsonString = '{"nombre": "Ana", "edad": 28}';
+const objeto = JSON.parse(jsonString);
+console.log(objeto.nombre); // Resultado: Ana
 ```
 
 4. Manipulación de Datos y Transformaciones JSON:
@@ -1770,5 +1778,57 @@ Al trabajar con los Métodos JSON, es fundamental tener en cuenta algunas consid
 
 6. Compatibilidad y Uso Generalizado:
 Los Métodos JSON son compatibles con prácticamente todos los navegadores modernos y entornos de ejecución de JavaScript. Su uso es esencial para la comunicación entre el frontend y el backend a través de APIs y servicios web.
+
+7. Las fechas en JSON:
+
+JSON (JavaScript Object Notation) es un formato de intercambio de datos ligero y legible por humanos. Aunque JSON no tiene un tipo de dato específico para fechas, se pueden representar fechas como cadenas de texto en un formato estandarizado para su serialización y deserialización de la siguiente manera:
+
+1. Convierte la fecha a una cadena de texto en formato estándar ISO 8601 usando `toISOString()`:
+
+```javascript
+/* currentDate toma la fecha actual del día en el momento que ejecutes la función constructora `Date` */
+const currentDate = new Date();
+/* Convierto la fecha tomada en un formato estándar ISO 8601 */
+const serializedDate = currentDate.toISOString();
+```
+
+2. Incorpora la cadena serializada en un objeto o array junto con otros datos:
+
+```javascript
+/* Creo un objeto con los datos tomados de la fecha y le asigno también una propiedad identificadora */
+const dataToSend = {
+  id: 1,
+  date: serializedDate
+};
+```
+
+3. Serialización del objeto o array a una cadena JSON utilizando `JSON.stringify()`:
+
+```javascript
+const jsonData = JSON.stringify(dataToSend);
+```
+
+4. Deserialización utilizando `JSON.parse()` para obtener un objeto:
+
+```javascript
+const receivedData = '{"id":1,"date":"2023-08-24T12:30:45.000Z"}';
+const parsedData = JSON.parse(receivedData);
+```
+
+5. Convertir la cadena de texto correspondiente a la propiedad .date (que ahora tiene un formato ISO 8601) en otro objeto de fecha utilizando la función constructora `Date` nuevamente:
+
+```javascript
+const receivedDate = new Date(parsedData.date);
+```
+
+6. Ahora puedes trabajar con la fecha deserializada como un objeto `Date` en tu programa:
+
+```javascript
+console.log(receivedDate); // Tue Aug 24 2023 08:30:45 GMT-0400 (Eastern Daylight Time)
+```
+
+Asegúrate de comprender y gestionar las zonas horarias cuando serialices y deserialices fechas. La cadena de fecha resultante de `toISOString()` incluirá la zona horaria UTC.
+
+Si necesitas un control más preciso sobre la serialización y deserialización de fechas, también puedes considerar el uso de bibliotecas como `date-fns`, `luxon` o `moment.js` para un manejo más avanzado de las zonas horarias (aunque se encuentra en proceso de desuso), o bibliotecas específicas para la manipulación de fechas y tiempo.
 
 En resumen, los Métodos JSON en JavaScript ofrecen herramientas fundamentales para el manejo de datos en formato JSON. Ya sea para analizar cadenas JSON y convertirlas en objetos JavaScript, o para convertir objetos en cadenas JSON estructuradas, estos métodos facilitan la transferencia, el almacenamiento y la manipulación de datos en aplicaciones web. Con el uso adecuado de estos métodos y la adhesión a las buenas prácticas, es posible lograr un flujo eficiente y confiable de datos en tu desarrollo.
