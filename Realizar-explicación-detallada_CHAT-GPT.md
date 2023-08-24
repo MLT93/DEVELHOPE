@@ -1,4 +1,4 @@
-Realiza una explicación igual a la que te expongo a continuación, explicando "..." de la misma manera:
+Realiza una explicación igual a la que te expongo a continuación, explicando "..." de la misma manera, pero más detallada aún:
 
 Extending Built-in Classes: Una Explicación Detallada
 
