@@ -5,6 +5,11 @@ const person = {
   age: 25,
 };
 
-const json = JSON.stringify(person);
+const newPerson = JSON.parse(JSON.stringify(person));
+console.log(newPerson.age);
 
-console.log(json); // Should return: { id: 1, age: 25 }
+const reducedKeys = { id: newPerson.id, age: newPerson.age };
+console.log(reducedKeys);
+
+const json = JSON.stringify(reducedKeys);
+console.log(json); // Should return: { "id": 1, "age": 25 }
