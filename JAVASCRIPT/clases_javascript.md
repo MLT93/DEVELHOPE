@@ -2128,18 +2128,18 @@ const printAsyncName = (otherFunction, text) => {
 
   let intervaloID = setInterval(() => {
     otherFunction();
-  }, 1000); /* Llama el callback después de 1 segundo y lo guarda en una variable */
+  }, 1000); /* Llama el callback después de 1 segundo, repite la acción y lo guarda en una variable */
 
   setTimeout(() => {
     console.log(text);
-  }, 2000); /* Imprime text después de 2 segundos */
+  }, 2000); /* Imprime text después de 2 segundos y no repite la acción */
 
   setTimeout(() => {
     clearInterval(
       intervaloID
-    ); /* Detiene la repetición de saludar() después de 3 segundos */
+    ); /* Detiene la repetición de saludar() después de 2 segundos */
     console.log("Repetición detenida");
-  }, 3000);
+  }, 2000);
 };
 
 /* Llamando a la función printAsyncName con el callback (saludar) y el texto (nombre) */
