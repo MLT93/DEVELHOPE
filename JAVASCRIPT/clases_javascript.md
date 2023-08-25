@@ -2116,8 +2116,10 @@ Aunque los callbacks son fundamentales, pueden llevar a un código confuso en ca
 ¡Por supuesto! Analicemos en detalle cada parte del código que proporcionaste:
 
 ```javascript
+/* Variable con string */
 const nombre = "Marquitos";
 
+/* Callback */
 const saludar = () => {
   console.log(`Hello`);
 };
@@ -2126,14 +2128,12 @@ const printAsyncName = (otherFunction, text) => {
 
   let intervaloID = setInterval(() => {
     otherFunction();
-  }, 1000);
+  }, 1000); /* Llama el callback después de 1 segundo y lo guarda en una variable */
 
   setTimeout(() => {
     console.log(text);
-  }, 2000);
+  }, 2000); /* Imprime text después de 2 segundos */
 
-  /* Encierro el clearInterval dentro de un setTimeout() para que no se active inmediatamente.
-  Si se llamara directamente, detendría la repetición antes de que el intervalo tenga la oportunidad de ejecutarse. */
   setTimeout(() => {
     clearInterval(
       intervaloID
