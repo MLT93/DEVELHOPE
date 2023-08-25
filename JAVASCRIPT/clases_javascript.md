@@ -1835,11 +1835,48 @@ const localDate = receivedDate.toLocaleString(); // Muestra la fecha en formato 
 console.log("Local Date Zone:", localDate);
 ```
 
-Asegúrate de comprender y gestionar las zonas horarias cuando serialices y deserialices fechas. La cadena de fecha resultante de `toISOString()` incluirá la zona horaria UTC.
+8. Formatear la fecha de manera más específica con `Intl.DateTimeFormat().format()`:
 
-Si necesitas un control más preciso sobre la serialización y deserialización de fechas, también puedes considerar el uso de bibliotecas como `date-fns`, `luxon` o `moment.js` para un manejo más avanzado de las zonas horarias (aunque se encuentra en proceso de desuso), o bibliotecas específicas para la manipulación de fechas y tiempo.
+```javascript
+// Especifique el formato de fecha y hora usando las opciones de "estilo" (es decir, completo, largo, medio, corto)
+console.log(
+  new Intl.DateTimeFormat('en-GB', { dateStyle: 'full', timeStyle: 'long', timeZone: 'Australia/Sydney' }).format(date)
+);
+// Salida esperada: "Domingo 20 de diciembre de 2020 a las 14:23:16 GMT+11"
+```
 
-En resumen, los Métodos JSON en JavaScript ofrecen herramientas fundamentales para el manejo de datos en formato JSON. Ya sea para analizar cadenas JSON y convertirlas en objetos JavaScript, o para convertir objetos en cadenas JSON estructuradas, estos métodos facilitan la transferencia, el almacenamiento y la manipulación de datos en aplicaciones web. Con el uso adecuado de estos métodos y la adhesión a las buenas prácticas, es posible lograr un flujo eficiente y confiable de datos en tu desarrollo.
+- Este código tiene como objetivo formatear y mostrar una fecha y hora específica en un formato legible utilizando opciones de estilo (full, long, medium, short) para todos los Style (dateStyle, timeStyle) y aplicando una zona horaria específica (timeZone).
+
+- El código utiliza el constructor `Intl.DateTimeFormat` para crear un objeto formateador de fecha y hora. Este constructor acepta dos argumentos: la configuración regional (como el idioma y el país) y las opciones de formato.
+
+- En este caso, la configuración regional `'en-GB'` se refiere al inglés del Reino Unido, lo que afecta el formato de idioma y las convenciones.
+
+- Las opciones de formato se definen como un objeto dentro de las llaves `{}`. Se utiliza `dateStyle` para especificar el estilo de formato de la fecha y `timeStyle` para especificar el estilo de formato de la hora. Aquí, `dateStyle: 'full'` indica que queremos una representación completa de la fecha, y `timeStyle: 'long'` indica que queremos una representación larga de la hora.
+
+- `timeZone: 'Australia/Sydney'` establece la zona horaria en "Australia/Sydney", lo que afectará la hora mostrada en función de esta zona horaria.
+
+- La función `format(date)` se llama en el objeto formateador, donde `date` es una variable que debe contener la fecha y hora que deseas formatear. Sin embargo, en el código proporcionado, no se muestra cómo se define la variable `date`.
+
+- Finalmente, el resultado formateado se pasa como argumento a la función `console.log()`, lo que imprime la fecha y hora en el formato especificado en la consola del navegador.
+
+- La salida esperada del código, como se indica en el comentario al final del código, es: "Sunday, 20 December 2020 at 14:23:16 GMT+11". Esto es lo que se imprimiría en la consola si se proporcionara la variable `date` con el valor adecuado.
+
+- La sintaxis básica de esta forma es la siguiente:
+
+```javascript
+const formattedDate = new Intl.DateTimeFormat("es-ES", {
+  dateStyle: "full",
+  timeStyle: "long",
+  timeZone: "Europe/Madrid",
+}).format(new Date());
+console.log(formattedDate); // Salida esperada: viernes, 25 de agosto de 2023, 9:43:05 CEST
+
+```
+`dateStyle`: Detalles de la hora => (full(representación completa); long(representación larga); medium(representación media); short(representación corta))
+`timeStyle`: Detalles de la fecha => (full; long; medium; short)
+`timeZone`: Zona horaria => (Etc/GMT; UTC; Europe/Madrid; Australia/Sydney; Asia/Shanghai; America/New_York)
+
+En resumen, los Métodos JSON en JavaScript ofrecen herramientas fundamentales para el manejo de datos en formato JSON. Ya sea para analizar cadenas JSON y convertirlas en objetos JavaScript, o para convertir objetos en cadenas JSON estructuradas, estos métodos facilitan la transferencia, el almacenamiento y la manipulación de datos en aplicaciones web. Con el uso adecuado de estos métodos y la adhesión a las buenas prácticas, es posible lograr un flujo eficiente y confiable de datos en tu desarrollo. Asegúrate de comprender y gestionar las zonas horarias cuando serialices y deserialices fechas. La cadena de fecha resultante de `toISOString()` incluirá la zona horaria UTC. Si necesitas un control más preciso sobre la serialización y deserialización de fechas, también puedes considerar el uso de bibliotecas como `date-fns`, `luxon` o `moment.js` para un manejo más avanzado de las zonas horarias (aunque se encuentra en proceso de desuso), o bibliotecas específicas para la manipulación de fechas y tiempo.
 
 
 
@@ -1905,3 +1942,97 @@ console.log(poema);
 Los Template Strings son compatibles con la mayoría de los navegadores modernos y entornos de JavaScript. Su uso es ampliamente recomendado debido a su claridad y facilidad de lectura.
 
 En resumen, los Template Strings en JavaScript son una herramienta valiosa para crear cadenas de texto más legibles y flexibles. Facilitan la interpolación de variables y expresiones, así como la creación de cadenas multilínea. Al aprovechar esta característica, puedes mejorar la calidad y la claridad del código en tus proyectos.
+
+
+
+
+
+
+
+**Métodos de la Consola: Una Explicación Detallada**
+
+1. Introducción a los Métodos de la Consola:
+Los métodos de la consola en JavaScript son funciones proporcionadas por el navegador o el entorno de ejecución para interactuar y mostrar información en la consola de desarrollo. Estas funciones son herramientas esenciales para depurar y monitorear el comportamiento de tu código, ya que te permiten imprimir mensajes, variables, objetos y más en la consola del navegador.
+
+2. Beneficios de los Métodos de la Consola:
+Los métodos de la consola ofrecen ventajas significativas al desarrollar y depurar aplicaciones:
+
+- `Depuración:` Puedes mostrar valores de variables y mensajes para comprender mejor el flujo de tu programa y detectar posibles errores.
+- `Seguimiento:` Con los métodos de la consola, puedes rastrear cómo se ejecuta tu código y verificar si se están cumpliendo ciertas condiciones.
+- `Inspección de Objetos:` Te permiten explorar la estructura y el contenido de objetos y matrices, lo que es especialmente útil para comprender datos complejos.
+- `Medición de Tiempo:` Puedes medir el tiempo de ejecución de porciones de código utilizando métodos de tiempo, lo que es útil para optimizar el rendimiento.
+
+3. Ejemplos de Métodos de la Consola:
+JavaScript ofrece varios métodos de consola, algunos de los más comunes son:
+
+- `console.log()`: Imprime mensajes y valores en la consola. Es muy útil para mostrar información relevante durante el desarrollo y la depuración.
+
+- `console.error()`: Muestra mensajes de error en la consola con una indicación visual distintiva. Se utiliza para señalar problemas y errores en el código.
+
+- `console.warn()`: Muestra advertencias en la consola. Es útil para resaltar situaciones potencialmente problemáticas.
+
+- `console.info()`: Muestra información en la consola. A menudo, se utiliza para proporcionar detalles adicionales que no son necesariamente errores o advertencias.
+
+- `console.table()`: Muestra una matriz de objetos como tabla en la consola. Es útil para visualizar datos tabulares y estructuras de objetos.
+
+- `console.group()` y `console.groupEnd()`: Permiten agrupar mensajes en un bloque desplegable para una mejor organización. Útil cuando deseas estructurar la salida en la consola.
+
+- `console.time()` y `console.timeEnd()`: Inician y detienen un temporizador para medir el tiempo de ejecución de un bloque de código. Ayuda a medir el rendimiento y la eficiencia del código.
+
+- `console.clear()`: Borra el contenido de la consola. Útil para limpiar la consola y mantenerla ordenada.
+
+- `console.count()`: Lleva un seguimiento de cuántas veces se ha llamado a este método con una etiqueta específica. Puede ser útil para el análisis y la optimización.
+
+- `console.assert()`: Evalúa una expresión y muestra un mensaje de error si la expresión es falsa. Ayuda en la detección temprana de problemas.
+
+- `console.dir()`: Muestra una representación detallada de un objeto en la consola. Útil para inspeccionar la estructura interna de los objetos.
+
+- `console.trace()`: Imprime una traza de seguimiento de la pila de llamadas en la consola. Puede ser útil para rastrear cómo se llegó a un punto en el código.
+
+- `console.alert()`: **Nota:** Este método no es estándar y puede no funcionar en todos los navegadores. Muestra un cuadro de alerta con un mensaje.
+
+- `console.prompt()`: **Nota:** Este método no es estándar y puede no funcionar en todos los navegadores. Muestra un cuadro de diálogo de entrada con un mensaje y un campo de entrada.
+
+4. Utilizando Métodos de la Consola:
+Aquí hay ejemplos de cómo podríamos usar algunos de los métodos de la consola:
+
+```javascript
+console.log("Esto es un mensaje de registro.");
+console.error("Esto es un mensaje de error.");
+console.warn("¡Cuidado! Esto es una advertencia.");
+console.info("Información adicional sobre algo.");
+
+const objeto = { nombre: "Juan", edad: 30 };
+console.table(objeto);
+
+console.group("Detalles de la Persona");
+console.log(`Nombre: ${objeto.nombre}`);
+console.log(`Edad: ${objeto.edad}`);
+console.groupEnd();
+
+console.time("Tiempo de Ejecución");
+for (let i = 0; i < 1000000; i++) {
+  // Código de ejemplo
+}
+console.timeEnd("Tiempo de Ejecución");
+
+console.assert(objeto.edad >= 18, "La persona debe ser mayor de edad");
+
+console.dir(objeto);
+
+console.trace();
+
+console.alert("¡Esto es una alerta!"); // Nota: No es estándar y puede no funcionar en todos los navegadores.
+const respuesta = console.prompt("Ingrese su nombre:"); // Nota: No es estándar y puede no funcionar en todos los navegadores.
+console.log(`Hola, ${respuesta}!`);
+```
+
+5. Ventajas de los Métodos de la Consola:
+Los métodos de la consola ofrecen varios beneficios:
+
+- `Depuración Eficiente:` Facilitan la identificación y resolución de problemas en el código.
+- `Comunicación:` Son útiles para comunicar información y estados internos durante el desarrollo.
+- `Seguimiento Complejo:` Ayudan a seguir el flujo de ejecución en escenarios complejos.
+
+6. Consideraciones Finales:
+Si bien los métodos de la consola son valiosos para la depuración y el desarrollo, es importante recordar que no deben dejarse en el código final de producción, ya que pueden afectar el rendimiento y la seguridad. Se recomienda eliminar o comentar los llamados a los métodos de la consola antes de implementar la aplicación en producción.
