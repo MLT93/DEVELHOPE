@@ -5,7 +5,6 @@ const saludar = () => {
 };
 
 const printAsyncName = (otherFunction, text) => {
-
   let intervaloID = setInterval(() => {
     otherFunction();
   }, 1000);
@@ -15,9 +14,7 @@ const printAsyncName = (otherFunction, text) => {
   }, 2000);
 
   setTimeout(() => {
-    clearInterval(
-      intervaloID
-    );
+    clearInterval(intervaloID);
     console.log("Repetición detenida");
   }, 2000);
 };

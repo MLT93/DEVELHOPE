@@ -2148,13 +2148,13 @@ printAsyncName(saludar, nombre);
 
 Explicación detallada paso a paso:
 
-1. Se define una variable llamada `nombre` con el valor "Marquitos".
+- Se define una variable llamada `nombre` con el valor "Marquitos".
 
-2. Se define una función anónima (que será nuestro callback) llamada `saludar`, que imprimirá "Hello" en la consola cuando sea llamada. 
+- Se define una función anónima (que será nuestro callback) llamada `saludar`, que imprimirá "Hello" en la consola cuando sea llamada. 
 
-3. Se define la función `printAsyncName`, que toma dos argumentos: `otherFunction` (una función de callback) y `text` (un texto). Esta es la función que llama al callback.
+- Se define la función `printAsyncName`, que toma dos argumentos: `otherFunction` (una función de callback) y `text` (un texto). Esta es la función que llama al callback.
 
-4. `printAsyncName()` toma como argumento un arrow function que realiza lo siguiente:
+- `printAsyncName()` toma como argumento un arrow function que realiza lo siguiente:
 
    - La función `setInterval()` toma como argumento un arrow function para repetir la ejecución de la función `otherFunction` (que es el callback `saludar`) cada segundo (1000 milisegundos). 
      Al usar `setInterval`, se obtiene un identificador único que permite hacer referencia a esa repetición en particular, por eso se almacena en la variable `intervaloID`, para poderla usar con `clearInterval` después.
@@ -2165,8 +2165,81 @@ Explicación detallada paso a paso:
 
    - Se usa otro `setTimeout` para detener la repetición programada por `setInterval` (si no se hiciera este pasaje, `clearInterval` se ejecutaría de inmediato y detendría la repetición antes de que el intervalo tenga la oportunidad de ejecutarse). Esto se hace pasando el identificador `intervaloID` a `clearInterval`. Además, se imprime un mensaje indicando que la repetición se detuvo.
 
-5. Finalmente, se llama a la función `printAsyncName`, pasando el callback `saludar` y el valor de la variable `nombre`.
+- Finalmente, se llama a la función `printAsyncName`, pasando el callback `saludar` y el valor de la variable `nombre`.
 
 Este código demuestra cómo trabajar con callbacks, programar tareas asíncronas y controlar el flujo de ejecución en JavaScript. Cada parte del código tiene un propósito específico para lograr el comportamiento deseado.
+
+9. Ahora Vamos a profundizar más en los conceptos relacionados con el uso de funciones flecha como callbacks:
+
+-  Contexto de `this`:
+   En JavaScript, el valor de `this` en una función puede variar dependiendo de cómo se llama la función. Esto puede ser confuso en algunas situaciones, especialmente cuando se utilizan funciones tradicionales como callbacks. Las funciones flecha abordan este problema al heredar el contexto de `this` del ámbito que las rodea. Esto significa que no tienen su propio contexto de `this`, lo que evita confusiones y errores comunes.
+
+Ejemplo con función tradicional como callback:
+```javascript
+function MiObjeto() {
+  this.valor = 42;
+  this.mostrarValor = function() {
+    console.log(this.valor);
+  };
+}
+
+const objeto = new MiObjeto();
+setTimeout(objeto.mostrarValor, 1000); // Aquí, "this" dentro de mostrarValor no apuntaría a objeto
+```
+
+Ejemplo con función flecha como callback:
+```javascript
+function MiObjeto() {
+  this.valor = 42;
+  this.mostrarValor = () => {
+    console.log(this.valor);
+  };
+}
+
+const objeto = new MiObjeto();
+setTimeout(objeto.mostrarValor, 1000); // En este caso, "this" dentro de mostrarValor se refiere a objeto
+```
+
+-  Sintaxis Concisa:
+   Las funciones flecha tienen una sintaxis más breve y limpia en comparación con las funciones tradicionales. Esto puede hacer que el código sea más legible, especialmente para funciones simples.
+
+Ejemplo de función tradicional:
+```javascript
+const numeros = [1, 2, 3, 4];
+const cuadrados = numeros.map(function(numero) {
+  return numero * numero;
+});
+```
+
+Ejemplo de función flecha:
+```javascript
+const numeros = [1, 2, 3, 4];
+const cuadrados = numeros.map(numero => numero * numero);
+```
+
+-  Compatibilidad con Closures:
+   Las funciones flecha heredan automáticamente las variables locales del ámbito que las rodea. Esto puede ser útil cuando deseas acceder a esas variables en tu función de callback.
+
+Ejemplo:
+```javascript
+function contador() {
+  let count = 0;
+  return () => {
+    count++;
+    console.log(count);
+  };
+}
+
+const incrementar = contador();
+setTimeout(incrementar, 1000); // Cada vez que se llama, aumenta el valor de count
+```
+
+-  Menos Palabras Clave:
+   Las funciones flecha no requieren la palabra clave function, lo que puede reducir la cantidad de escritura y hacer que el código sea más compacto.
+
+
+
+Sin embargo, las funciones flecha también tienen algunas limitaciones. Por ejemplo, no se pueden utilizar como constructores (no se pueden llamar con `new`), y no tienen su propio objeto `arguments`. Además, debido a que heredan el contexto de this, no son adecuadas para todas las situaciones, especialmente cuando necesitas controlar explícitamente el contexto de `this`.
+En última instancia, la elección entre usar una función flecha o una función tradicional como callback dependerá de las necesidades específicas de tu código y de cómo quieras manejar el contexto de `this`.
 
 En resumen, los callbacks, `setInterval` con `clearInterval` y `setTimeout` son herramientas esenciales en JavaScript para manejar operaciones asíncronas y programar tareas diferidas. Su comprensión y uso adecuado son fundamentales para escribir código efectivo en un entorno asíncrono.
