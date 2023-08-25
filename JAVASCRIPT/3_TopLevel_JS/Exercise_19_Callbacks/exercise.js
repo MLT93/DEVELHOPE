@@ -1,14 +1,25 @@
-const hello = "Hello";
+const nombre = "Marquitos";
 
-const variableString = "how are you?";
-
-let myInterval = setInterval(
-  (otherFunction = (variable) => {
-    console.log(variable);
-  }),
-  1000
-);
+const saludar = () => {
+  console.log(`Hello`);
+};
 
 const printAsyncName = (otherFunction, text) => {
-  setInterval;
+
+  let intervaloID = setInterval(() => {
+    otherFunction();
+  }, 1000);
+
+  setTimeout(() => {
+    console.log(text);
+  }, 2000);
+
+  setTimeout(() => {
+    clearInterval(
+      intervaloID
+    );
+    console.log("Repetición detenida");
+  }, 2000);
 };
+
+printAsyncName(saludar, nombre);

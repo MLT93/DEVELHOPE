@@ -5,3 +5,4 @@ Write a function called printAsyncName, which takes a callback and a string(whic
 Tips:
 
 - The `setInterval` method will be useful
+- The `setTimeout` method will be useful
