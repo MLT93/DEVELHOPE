@@ -2143,7 +2143,7 @@ operacionAsincrona(() => {
 8. `Encadenamiento de Callbacks - Callback Hell`:
    A medida que aumenta la complejidad de las tareas asíncronas, es posible que te encuentres en lo que se llama "Callback Hell". Esto sucede cuando anidas múltiples callbacks, lo que puede dificultar la lectura y el mantenimiento del código.
 
-9. `Solución a Callback Hell: Promesas`:
+9. `Solución a Callback Hell, las Promesas`:
    Para manejar de manera más efectiva la complejidad y la legibilidad en el código asíncrono, JavaScript introdujo las promesas. Una promesa es un objeto que representa un valor futuro, que puede estar disponible o no. Las promesas proporcionan métodos como `.then()` y `.catch()` que permiten manejar de manera más ordenada y estructurada las tareas asíncronas.
 
 10. `Conceptos y ejemplos relacionados con el uso de funciones flecha como callbacks`:
