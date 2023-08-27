@@ -1,4 +1,4 @@
-Realiza una explicación igual a la que te expongo a continuación, explicando `...` de la misma forma:
+Realiza una explicación igual a la que te expongo a continuación, explicando `Async Code - Pyramid of Doom` de la misma forma:
 
 **Async code - callbacks y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
 
