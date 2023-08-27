@@ -2068,7 +2068,7 @@ console.log(`Hola, ${respuesta}!`);
 
 
 
-**Callbacks y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
+**Async code - callbacks y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
 
 1. `Introducción a Callbacks`:
    Los callbacks son un concepto esencial en JavaScript que permite la ejecución de funciones después de que se complete una operación o evento específico. Estas funciones pasadas como argumentos permiten manejar tareas asíncronas y modularizar el código.
@@ -2077,22 +2077,21 @@ console.log(`Hola, ${respuesta}!`);
    En un entorno asíncrono como JavaScript, los callbacks son fundamentales para gestionar operaciones que pueden llevar tiempo, como solicitudes a servidores, interacciones del usuario o tareas programadas. Ayudan a mantener la fluidez del flujo de trabajo y a evitar bloqueos del hilo de ejecución.
 
 3. `Sintaxis y Ejecución de Callbacks`:
-   Los callbacks se definen como funciones que se pasan como argumentos a otras funciones. Se ejecutan después de que se complete la operación o evento esperado. Veamos un ejemplo de cómo usar un callback con `setTimeout`:
+   Los callbacks se definen como funciones que se pasan como argumentos a otras funciones. Se ejecutan después de que se complete la operación o evento esperado. Veamos un ejemplo:
 
 ```javascript
-function operacionAsincrona(callback) {
-  // Simulación de operación asíncrona
-  setTimeout(() => {
-    console.log("Operación asíncrona completada.");
-    callback(); // Ejecutar el callback
-  }, 1000);
+function tareaAsincrona(parametro, callback) {
+  // Realizar la tarea asíncrona
+  // Luego, llamar al callback cuando termine
+  callback(resultado);
 }
 
-function miCallback() {
-  console.log("Callback ejecutado.");
+function miCallback(resultado) {
+  // Hacer algo con el resultado
 }
 
-operacionAsincrona(miCallback); // Pasar el callback como argumento
+// Uso del callback
+tareaAsincrona(algunParametro, miCallback);
 ```
 
 4. `Funciones Asociadas: setInterval y clearInterval`:
@@ -2141,7 +2140,13 @@ operacionAsincrona(() => {
 7. `Consideraciones y Alternativas`:
    Aunque los callbacks son fundamentales, pueden llevar a un código confuso en casos de anidamiento excesivo. Las Promesas y async/await son enfoques más modernos que manejan operaciones asíncronas de manera más legible y estructurada.
 
-8. `Conceptos y ejemplos relacionados con el uso de funciones flecha como callbacks`:
+8. `Encadenamiento de Callbacks - Callback Hell`:
+   A medida que aumenta la complejidad de las tareas asíncronas, es posible que te encuentres en lo que se llama "Callback Hell". Esto sucede cuando anidas múltiples callbacks, lo que puede dificultar la lectura y el mantenimiento del código.
+
+9. `Solución a Callback Hell: Promesas`:
+   Para manejar de manera más efectiva la complejidad y la legibilidad en el código asíncrono, JavaScript introdujo las promesas. Una promesa es un objeto que representa un valor futuro, que puede estar disponible o no. Las promesas proporcionan métodos como `.then()` y `.catch()` que permiten manejar de manera más ordenada y estructurada las tareas asíncronas.
+
+10. `Conceptos y ejemplos relacionados con el uso de funciones flecha como callbacks`:
    Las funciones flecha son una característica introducida en ECMAScript 6 (ES6) que ofrece una sintaxis más concisa y clara para definir funciones en JavaScript. Son especialmente útiles cuando se utilizan como callbacks, que son funciones pasadas como argumentos a otras funciones para que se ejecuten en un momento posterior o en respuesta a ciertas condiciones.
 
    `Contexto de this`:
@@ -2220,7 +2225,7 @@ setTimeout(incrementar, 1000); // Cada vez que se llama, aumenta el valor de cou
    Por ejemplo, no se pueden utilizar como constructores (no se pueden llamar con `new`), y no tienen su propio objeto `arguments`. Además, debido a que heredan el contexto de this, no son adecuadas para todas las situaciones, especialmente cuando necesitas controlar explícitamente el contexto de `this`.
    En última instancia, la elección entre usar una función flecha o una función tradicional como callback dependerá de las necesidades específicas de tu código y de cómo quieras manejar el contexto de `this`.
 
-9. `Especificaciones sobre el contexto this`:
+11. `Especificaciones sobre el contexto this`:
    El contexto `this` es uno de los conceptos más importantes en JavaScript y se refiere al objeto al que hace referencia en un momento dado dentro de una función. El valor de `this` depende de cómo se llama una función y en qué contexto se ejecuta. Entender el contexto `this` es esencial para escribir código efectivo y evitar confusiones.
    El contexto `this` es fundamental para acceder a propiedades y métodos dentro de un objeto. Permite que una función acceda a las propiedades y métodos de un objeto en el que se encuentra. Además, en JavaScript, `this` se usa para diferentes propósitos en diferentes contextos:
 
@@ -2355,6 +2360,53 @@ printAsyncName(saludar, nombre);
    Le pasamos el callback `saludar` y el valor de la variable `nombre`.
 
 Este código demuestra cómo trabajar con callbacks, programar tareas asíncronas y controlar el flujo de ejecución en JavaScript. Cada parte del código tiene un propósito específico para lograr el comportamiento deseado.
+
+Ejemplo Complejo - Simulación de Carga y Procesamiento de Datos:
+
+Supongamos que estás desarrollando una aplicación que simula el proceso de descargar datos de un servidor y luego procesarlos. Utilizaremos callbacks para manejar este flujo.
+
+```javascript
+function descargarDesdeServidor(url, callback) {
+  console.log(`Descargando desde: ${url}`);
+  setTimeout(() => {
+    const datos = "Datos descargados";
+    callback(datos);
+  }, 2000);
+}
+
+function procesarDatos(datos, callback) {
+  console.log(`Procesando datos: ${datos}`);
+  setTimeout(() => {
+    const resultado = "Datos procesados";
+    callback(resultado);
+  }, 1500);
+}
+
+function mostrarResultado(resultado) {
+  console.log(`Resultado final: ${resultado}`);
+}
+
+// Iniciamos el flujo con el callback
+descargarDesdeServidor("https://ejemplo.com/datos", (datosDescargados) => {
+  procesarDatos(datosDescargados, (datosProcesados) => {
+    mostrarResultado(datosProcesados);
+  });
+});
+```
+
+Explicación del Ejemplo Paso a Paso:
+
+1. Definimos una función `descargarDesdeServidor` que simula la descarga de datos desde un servidor utilizando un temporizador. Acepta una URL y un callback como parámetros.
+
+2. Dentro de `descargarDesdeServidor`, simulamos la descarga real utilizando un temporizador de 2 segundos. Luego, llamamos al callback con los datos descargados.
+
+3. Definimos una función `procesarDatos` que simula el procesamiento de datos. Acepta los datos descargados y un callback como parámetros.
+
+4. Dentro de `procesarDatos`, simulamos el procesamiento utilizando un temporizador de 1.5 segundos. Luego, llamamos al callback con los datos procesados.
+
+5. Definimos una función `mostrarResultado` que simplemente muestra el resultado en la consola.
+
+6. Iniciamos el flujo llamando a `descargarDesdeServidor` y pasándole un callback. Dentro de este callback, llamamos a `procesarDatos`, y dentro del callback de `procesarDatos`, llamamos a `mostrarResultado`.
 
 En resumen, los callbacks, `setInterval` con `clearInterval` y `setTimeout` son herramientas esenciales en JavaScript para manejar operaciones asíncronas y programar tareas diferidas. Su comprensión y uso adecuado son fundamentales para escribir código efectivo en un entorno asíncrono.
 
