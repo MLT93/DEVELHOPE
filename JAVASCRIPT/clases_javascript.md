@@ -729,7 +729,7 @@ En este ejemplo, la clase `MiArray` hereda las propiedades y métodos de la clas
 6. `Compatibilidad y Consideraciones Finales`:
    La capacidad de extender clases incorporadas es una característica admitida en la mayoría de los navegadores modernos y entornos de JavaScript. Sin embargo, siempre es recomendable verificar la compatibilidad en el entorno en el que estás trabajando antes de implementarla en un proyecto.
 
-Ejemplo de Extensión de Clase Incorporada:
+Ejemplo de uso de la Extensión de Clase Incorporada:
 
 Aquí hay un ejemplo de cómo podríamos extender la clase String para agregar un método que invierte el contenido de una cadena:
 
@@ -2357,3 +2357,65 @@ printAsyncName(saludar, nombre);
 Este código demuestra cómo trabajar con callbacks, programar tareas asíncronas y controlar el flujo de ejecución en JavaScript. Cada parte del código tiene un propósito específico para lograr el comportamiento deseado.
 
 En resumen, los callbacks, `setInterval` con `clearInterval` y `setTimeout` son herramientas esenciales en JavaScript para manejar operaciones asíncronas y programar tareas diferidas. Su comprensión y uso adecuado son fundamentales para escribir código efectivo en un entorno asíncrono.
+
+
+
+
+
+
+
+
+**Sentencias Try Catch: Una Explicación Detallada**
+
+1. `Introducción a las Sentencias Try Catch`:
+Las sentencias `try` y `catch` en JavaScript son herramientas esenciales para manejar errores y excepciones en el código. Estas sentencias permiten controlar de manera controlada los errores que puedan surgir durante la ejecución de un programa, evitando que el flujo de ejecución se interrumpa abruptamente.
+
+2. `Propósito y Beneficios de las Sentencias Try Catch`:
+El propósito principal de las sentencias `try` y `catch` es detectar errores en el código y proporcionar una forma de manejarlos sin que el programa se detenga por completo. Esto es especialmente útil en situaciones en las que no puedes predecir con certeza si ocurrirá un error, pero deseas tener un plan para manejarlo si sucede.
+
+3. `Sintaxis y Uso de las Sentencias Try Catch`:
+La sintaxis básica de las sentencias `try` y `catch` es la siguiente:
+
+```javascript
+try {
+  // Bloque de código que podría generar un error
+} catch (error) {
+  // Manejo del error
+}
+```
+
+Dentro del bloque `try`, colocas el código que podría lanzar una excepción. Si ocurre un error en ese bloque, el control se transfiere automáticamente al bloque `catch`, donde puedes definir cómo deseas manejar el error. El objeto `error` captura la información sobre el error que ocurrió.
+
+Ejemplo de uso de try-catch:
+
+```javascript
+try {
+  const resultado = dividir(10, 0);
+  console.log(resultado);
+} catch (error) {
+  console.error("Ocurrió un error:", error.message);
+}
+```
+
+En este ejemplo, si la función `dividir` lanza una excepción debido a la división por cero, el control pasa al bloque `catch`, donde se muestra un mensaje de error.
+
+4. `Más Detalles sobre el Bloque Catch`:
+Dentro del bloque `catch`, puedes realizar varias acciones:
+
+- Acceder a las propiedades del objeto `error` para obtener información detallada sobre el error, como `error.message` para el mensaje del error.
+- Realizar acciones específicas de manejo de errores, como mostrar mensajes, registrar información, reintentar operaciones, etc.
+- Lanzar otra excepción si es necesario, lo que permite un manejo de errores en cascada.
+
+5. `Utilidad y Buenas Prácticas`:
+Las sentencias `try` y `catch` son útiles para:
+
+- Evitar que el programa se bloquee debido a un error inesperado.
+- Proporcionar mensajes de error claros y significativos para los usuarios o desarrolladores.
+- Registrar y diagnosticar problemas en el código en tiempo de ejecución.
+
+Es importante recordar que las sentencias `try` y `catch` no deben utilizarse para controlar flujos normales del programa, ya que pueden afectar el rendimiento y dificultar la depuración. Deben usarse de manera específica para manejar situaciones excepcionales.
+
+6. `Compatibilidad y Consideraciones Finales`:
+Las sentencias `try` y `catch` son una característica estándar de JavaScript y son compatibles en la mayoría de los navegadores y entornos de desarrollo modernos.
+
+En resumen, las sentencias `try` y `catch` son herramientas poderosas para manejar errores y excepciones en JavaScript. Te permiten mantener el control sobre el flujo de ejecución incluso cuando ocurren errores inesperados, lo que contribuye a un código más robusto y a una experiencia de usuario más confiable. Recuerda utilizar estas sentencias de manera apropiada y específica para situaciones de manejo de errores.
