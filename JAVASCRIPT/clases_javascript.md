@@ -2894,3 +2894,92 @@ Paso a paso:
 Este ejemplo simula la carga de información del usuario desde una API utilizando promesas. La aplicación real podría tener flujos más complejos y manejar más escenarios de error, pero este es un buen punto de partida para comprender cómo funcionan las promesas en situaciones prácticas.
 
 En resumen, las promesas son una forma poderosa y estructurada de trabajar con código asíncrono en JavaScript. Facilitan la legibilidad, el manejo de errores y la organización del flujo de trabajo. Las promesas junto con async/await son enfoques modernos que mejoran significativamente la claridad y eficiencia en el manejo de operaciones asíncronas.
+
+
+
+
+
+
+
+**Async code - Async / Await y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
+
+1. **Introducción a Async / Await:**
+   Async / Await es un enfoque moderno en JavaScript para manejar operaciones asíncronas de manera más legible y estructurada. Introduce palabras clave como `async` y `await` para simplificar la sintaxis y mejorar la legibilidad al tratar con código asincrónico.
+
+2. **Problemas con los Callbacks y Promesas:**
+   Aunque los callbacks y las promesas son herramientas útiles para el manejo de código asincrónico, pueden llevar a anidamientos complejos y a un código difícil de entender, lo que se conoce como "Callback Hell". Las promesas abordan en parte esta complejidad, pero aún pueden requerir una sintaxis que no siempre es intuitiva.
+
+3. **La Sintaxis Async / Await:**
+   Async / Await se basa en las funciones asíncronas (funciones que devuelven promesas) y las palabras clave `async` y `await`.
+
+   - `async`:
+     Al declarar una función con la palabra clave `async`, estamos indicando que esta función contendrá operaciones asincrónicas. La función devuelve automáticamente una promesa, lo que permite utilizar `await` dentro de ella.
+
+   - `await`:
+     La palabra clave `await` solo puede usarse dentro de una función declarada con `async`. Indica que la ejecución del código debe esperar hasta que la promesa que se está esperando se resuelva o se rechace. Esto permite que el flujo de ejecución se detenga sin bloquear el hilo y continúe cuando la promesa esté lista.
+
+4. **Uso de Async / Await con Promesas:**
+   Async / Await es especialmente útil al trabajar con funciones que devuelven promesas. Permite escribir código secuencial similar al código síncrono, lo que mejora la legibilidad y el mantenimiento.
+
+   Ejemplo:
+
+```javascript
+async function obtenerDatosDeUsuario(userID) {
+  try {
+    const usuario = await obtenerUsuarioPorID(userID);
+    const posts = await obtenerPostsDeUsuario(usuario);
+    return { usuario, posts };
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+```
+
+5. **Manejo de Errores con Try / Catch:**
+   Una característica importante de Async / Await es la capacidad de manejar errores de manera más similar al manejo de errores síncrono, utilizando bloques `try` y `catch`.
+
+   - `try`:
+     El bloque `try` contiene el código que puede generar una excepción. Si ocurre un error, la ejecución del código dentro del bloque se detendrá y se pasará al bloque `catch`.
+
+   - `catch`:
+     El bloque `catch` captura cualquier excepción lanzada en el bloque `try` y permite manejar el error de manera adecuada.
+
+6. **Promesas en Funciones Asíncronas:**
+   Async / Await no reemplaza las promesas, sino que se basa en ellas. Dentro de una función declarada con `async`, podemos usar el `await` para esperar una promesa. Esto facilita el uso de bibliotecas y APIs que devuelven promesas.
+
+7. **Ejemplo Completo de Uso de Async / Await:**
+   Supongamos que queremos mostrar el título y el contenido de varios artículos de un blog. Utilizando Async / Await, podríamos hacerlo de la siguiente manera:
+
+```javascript
+async function mostrarArticulos() {
+  try {
+    const listaArticulos = await obtenerListaDeArticulos();
+    
+    for (const articulo of listaArticulos) {
+      const titulo = await obtenerTitulo(articulo.id);
+      const contenido = await obtenerContenido(articulo.id);
+      
+      console.log(`Título: ${titulo}`);
+      console.log(`Contenido: ${contenido}`);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+mostrarArticulos();
+```
+
+8. **Async / Await vs. Promesas y Callbacks:**
+   Async / Await simplifica la sintaxis y el flujo de control en comparación con las promesas y los callbacks. Aunque todas estas herramientas son válidas y útiles, Async / Await ofrece una forma más clara y legible de trabajar con operaciones asincrónicas.
+
+9. **Consideraciones con Async / Await:**
+   - Solo se puede usar `await` dentro de una función declarada con `async`.
+   - Las funciones declaradas con `async` siempre devuelven una promesa.
+   - El uso excesivo de `await` puede reducir la eficiencia, ya que las operaciones se realizan secuencialmente en lugar de en paralelo.
+   - El manejo de errores con `try` y `catch` es más sencillo, pero aún es importante manejar adecuadamente los errores.
+
+10. **Compatibilidad y Uso:**
+   Async / Await es compatible con la mayoría de los navegadores modernos y entornos de Node.js. Puede utilizarse en proyectos nuevos o añadirse gradualmente a proyectos existentes.
+
+En resumen, Async / Await es una valiosa adición a JavaScript que simplifica significativamente el manejo de operaciones asincrónicas. Proporciona una sintaxis más limpia y legible, lo que mejora la calidad del código y la experiencia de desarrollo en general. Con Async / Await, los desarrolladores pueden escribir código asincrónico de manera similar al código síncrono, lo que facilita la comprensión y el mantenimiento del código.
