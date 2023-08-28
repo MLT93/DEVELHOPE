@@ -2901,15 +2901,15 @@ En resumen, las promesas son una forma poderosa y estructurada de trabajar con c
 
 
 
-**Async code - Async / Await y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
+**Async code - Async / Await / Finally y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
 
-1. **Introducción a Async / Await:**
+1. `Introducción a Async / Await`:
    Async / Await es un enfoque moderno en JavaScript para manejar operaciones asíncronas de manera más legible y estructurada. Introduce palabras clave como `async` y `await` para simplificar la sintaxis y mejorar la legibilidad al tratar con código asincrónico.
 
-2. **Problemas con los Callbacks y Promesas:**
+2. `Problemas con los Callbacks y Promesas`:
    Aunque los callbacks y las promesas son herramientas útiles para el manejo de código asincrónico, pueden llevar a anidamientos complejos y a un código difícil de entender, lo que se conoce como "Callback Hell". Las promesas abordan en parte esta complejidad, pero aún pueden requerir una sintaxis que no siempre es intuitiva.
 
-3. **La Sintaxis Async / Await:**
+3. `La Sintaxis Async / Await`:
    Async / Await se basa en las funciones asíncronas (funciones que devuelven promesas) y las palabras clave `async` y `await`.
 
    - `async`:
@@ -2918,7 +2918,7 @@ En resumen, las promesas son una forma poderosa y estructurada de trabajar con c
    - `await`:
      La palabra clave `await` solo puede usarse dentro de una función declarada con `async`. Indica que la ejecución del código debe esperar hasta que la promesa que se está esperando se resuelva o se rechace. Esto permite que el flujo de ejecución se detenga sin bloquear el hilo y continúe cuando la promesa esté lista.
 
-4. **Uso de Async / Await con Promesas:**
+4. `Uso de Async / Await con Promesas`:
    Async / Await es especialmente útil al trabajar con funciones que devuelven promesas. Permite escribir código secuencial similar al código síncrono, lo que mejora la legibilidad y el mantenimiento.
 
    Ejemplo:
@@ -2931,11 +2931,14 @@ async function obtenerDatosDeUsuario(userID) {
     return { usuario, posts };
   } catch (error) {
     console.error("Error:", error);
+  } finally {
+    console.log("Finalizando el proceso.");
+    // Código que se ejecutará sin importar si hubo un error o no
   }
 }
 ```
 
-5. **Manejo de Errores con Try / Catch:**
+5. `Manejo de Errores con Try / Catch y Finally`:
    Una característica importante de Async / Await es la capacidad de manejar errores de manera más similar al manejo de errores síncrono, utilizando bloques `try` y `catch`.
 
    - `try`:
@@ -2944,10 +2947,13 @@ async function obtenerDatosDeUsuario(userID) {
    - `catch`:
      El bloque `catch` captura cualquier excepción lanzada en el bloque `try` y permite manejar el error de manera adecuada.
 
-6. **Promesas en Funciones Asíncronas:**
+   - `finally`:
+     El bloque `finally` puede ser útil en situaciones donde deseas asegurarte de que ciertas acciones se realicen, independientemente de si ocurrió un error o no. Por ejemplo, si tienes recursos que deben liberarse o limpieza que debe realizarse.
+
+6. `Promesas en Funciones Asíncronas`:
    Async / Await no reemplaza las promesas, sino que se basa en ellas. Dentro de una función declarada con `async`, podemos usar el `await` para esperar una promesa. Esto facilita el uso de bibliotecas y APIs que devuelven promesas.
 
-7. **Ejemplo Completo de Uso de Async / Await:**
+7. `Ejemplo Completo de Uso de Async / Await`:
    Supongamos que queremos mostrar el título y el contenido de varios artículos de un blog. Utilizando Async / Await, podríamos hacerlo de la siguiente manera:
 
 ```javascript
@@ -2964,22 +2970,95 @@ async function mostrarArticulos() {
     }
   } catch (error) {
     console.error("Error:", error);
+  } finally {
+    console.log("Proceso completado");
   }
 }
 
 mostrarArticulos();
 ```
 
-8. **Async / Await vs. Promesas y Callbacks:**
+8. `Async / Await vs. Promesas y Callbacks`:
    Async / Await simplifica la sintaxis y el flujo de control en comparación con las promesas y los callbacks. Aunque todas estas herramientas son válidas y útiles, Async / Await ofrece una forma más clara y legible de trabajar con operaciones asincrónicas.
 
-9. **Consideraciones con Async / Await:**
+9. `Consideraciones con Async / Await`:
    - Solo se puede usar `await` dentro de una función declarada con `async`.
    - Las funciones declaradas con `async` siempre devuelven una promesa.
    - El uso excesivo de `await` puede reducir la eficiencia, ya que las operaciones se realizan secuencialmente en lugar de en paralelo.
    - El manejo de errores con `try` y `catch` es más sencillo, pero aún es importante manejar adecuadamente los errores.
 
-10. **Compatibilidad y Uso:**
+10. `Compatibilidad y Uso`:
    Async / Await es compatible con la mayoría de los navegadores modernos y entornos de Node.js. Puede utilizarse en proyectos nuevos o añadirse gradualmente a proyectos existentes.
+
+Ejemplo práctico que simula una situación real utilizando `Async / Await` y `Finally`:
+
+Imaginemos que estás construyendo una aplicación que realiza transacciones financieras en una base de datos. Quieres asegurarte de que, sin importar el resultado de la transacción, la base de datos siempre se cierre adecuadamente. Utilizaremos `Async / Await` para manejar operaciones asíncronas y la cláusula `finally` para asegurarnos de que la base de datos se cierre correctamente.
+
+Supongamos que tienes una función `realizarTransaccion` que simula la realización de una transacción financiera en una base de datos. Quieres utilizar `Async / Await` para manejar la transacción y, en el bloque `finally`, asegurarte de que la base de datos siempre se cierre correctamente, independientemente de si la transacción se completó con éxito o no.
+
+Paso a paso:
+
+1. Importa la biblioteca o módulo necesario para manejar la base de datos. En este caso, para simplificar, supongamos que estamos utilizando una biblioteca ficticia llamada `basededatos`:
+
+```javascript
+const basededatos = require('basededatos');
+```
+
+2. Define una función asincrónica llamada `realizarTransaccion` que acepte el monto de la transacción como parámetro:
+
+```javascript
+async function realizarTransaccion(monto) {
+  try {
+    await basededatos.abrirConexion(); // Abre la conexión a la base de datos
+    await basededatos.iniciarTransaccion(); // Inicia la transacción
+
+    // Simulamos una operación financiera
+    const resultado = await basededatos.registrarTransaccion(monto);
+
+    await basededatos.confirmarTransaccion(); // Confirma la transacción
+    return resultado;
+  } catch (error) {
+    console.error('Error durante la transacción:', error);
+    throw error; // Relanzamos el error para que pueda ser capturado por el exterior
+  } finally {
+    await basededatos.cerrarConexion(); // Cierra la conexión a la base de datos
+  }
+}
+```
+
+3. En el bloque `try`, realizamos las operaciones asincrónicas que simulan la transacción financiera utilizando `await`. Si algo sale mal, el control pasa al bloque `catch`.
+
+4. En el bloque `catch`, capturamos y manejamos cualquier error que pueda ocurrir durante la transacción.
+
+5. En el bloque `finally`, independientemente de si la transacción se realizó correctamente o no, aseguramos que la base de datos se cierre adecuadamente utilizando `await basededatos.cerrarConexion()`.
+
+6. Finalmente, llamamos a la función `realizarTransaccion` con el monto de la transacción y manejamos el resultado:
+
+```javascript
+const montoTransaccion = 1000;
+
+realizarTransaccion(montoTransaccion)
+  .then(resultado => {
+    console.log('Transacción completada. Resultado:', resultado);
+  })
+  .catch(error => {
+    console.error('Transacción fallida. Error:', error);
+  })
+  .finally(() => {
+    console.log("Proceso finalizado");
+  });
+```
+
+En este ejemplo:
+
+- La función `realizarTransaccion` realiza varias operaciones asincrónicas simuladas, como abrir la conexión a la base de datos, iniciar y confirmar la transacción, y registrar la transacción financiera.
+
+- En caso de que ocurra un error durante cualquier etapa de la transacción, se captura y se muestra en el bloque `catch`. Luego, el error se relanza para que pueda ser capturado por el exterior si es necesario.
+
+- El bloque `finally` asegura que la base de datos se cierre correctamente, independientemente de si la transacción se realizó con éxito o no.
+
+- Al final, llamamos a la función `realizarTransaccion` con un monto de transacción y manejamos el resultado utilizando `then` y `catch`.
+
+Este ejemplo ilustra cómo `Async / Await` y la cláusula `finally` pueden utilizarse en conjunto para manejar operaciones asíncronas, manejar errores y asegurarse de que se realicen acciones de limpieza o cierre, sin importar el resultado de la operación.
 
 En resumen, Async / Await es una valiosa adición a JavaScript que simplifica significativamente el manejo de operaciones asincrónicas. Proporciona una sintaxis más limpia y legible, lo que mejora la calidad del código y la experiencia de desarrollo en general. Con Async / Await, los desarrolladores pueden escribir código asincrónico de manera similar al código síncrono, lo que facilita la comprensión y el mantenimiento del código.
