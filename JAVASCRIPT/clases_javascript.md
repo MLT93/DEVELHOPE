@@ -2479,10 +2479,10 @@ En resumen, los callbacks, `setInterval` con `clearInterval` y `setTimeout` son 
 
 **Async Code - Pyramid of Doom: Una Explicación Detallada**
 
-1. **Introducción al Pyramid of Doom (Pirámide del Infierno):**
+1. `Introducción al Pyramid of Doom (Pirámide del Infierno)`:
    El término "Pyramid of Doom" (Pirámide del Infierno) se refiere a una estructura de código antiestética y difícil de mantener que se produce cuando anidamos múltiples callbacks en un código asíncrono. Esta estructura en forma de pirámide se forma cuando las tareas asincrónicas se encadenan una tras otra, creando un anidamiento profundo y visualmente poco claro. Esto puede dificultar la lectura y el mantenimiento del código a medida que aumenta la complejidad de las operaciones asíncronas.
 
-2. **Origen y Desafíos del Pyramid of Doom:**
+2. `Origen y Desafíos del Pyramid of Doom`:
    En el pasado, cuando JavaScript dependía en gran medida de callbacks para manejar operaciones asíncronas, el código a menudo se convertía en una pirámide del infierno. Esto se debía a que las operaciones asíncronas se anidaban una dentro de la otra, lo que dificultaba el seguimiento del flujo de ejecución. La pirámide del infierno puede conducir a problemas como:
    
    - Dificultad para rastrear el flujo de ejecución.
@@ -2490,7 +2490,7 @@ En resumen, los callbacks, `setInterval` con `clearInterval` y `setTimeout` son 
    - Mayor probabilidad de cometer errores.
    - Dificultad para mantener y refactorizar el código.
 
-3. **Ejemplo de Pyramid of Doom:**
+3. `Ejemplo de Pyramid of Doom`:
    Supongamos que tienes que realizar una serie de operaciones asíncronas secuenciales, como leer un archivo, realizar una solicitud a un servidor y luego mostrar los datos. Aquí hay un ejemplo simplificado que ilustra cómo podría verse una pirámide del infierno:
 
 ```javascript
@@ -2505,18 +2505,23 @@ leerArchivo("archivo.txt", (contenidoArchivo) => {
 });
 ```
 
-4. **Problemas y Desafíos del Pyramid of Doom:**
+4. `Problemas y Desafíos del Pyramid of Doom`:
    La pirámide del infierno presenta varios problemas:
 
-   - **Falta de Claridad:** Con cada nivel de anidamiento, la estructura del código se vuelve más difícil de entender, lo que dificulta la lectura y el mantenimiento.
-   - **Mayor Propensión a Errores:** A medida que aumenta la complejidad, es más probable que se cometan errores, como olvidar cerrar un paréntesis o pasando argumentos incorrectos.
-   - **Dificultad para Depurar:** Cuando surge un problema, puede ser complicado rastrear dónde ocurrió el error dentro de la pirámide.
-   - **Dificultad para Reutilización:** El código anidado es difícil de reutilizar en otros lugares, lo que dificulta la modularización.
+   - Falta de Claridad:
+   Con cada nivel de anidamiento, la estructura del código se vuelve más difícil de entender, lo que dificulta la lectura y el mantenimiento.
+   - Mayor Propensión a Errores:
+   A medida que aumenta la complejidad, es más probable que se cometan errores, como olvidar cerrar un paréntesis o pasando argumentos incorrectos.
+   - Dificultad para Depurar:
+   Cuando surge un problema, puede ser complicado rastrear dónde ocurrió el error dentro de la pirámide.
+   - Dificultad para Reutilización:
+   El código anidado es difícil de reutilizar en otros lugares, lo que dificulta la modularización.
 
-5. **Soluciones al Pyramid of Doom:**
+5. `Soluciones al Pyramid of Doom`:
    Afortunadamente, JavaScript ha evolucionado para abordar el problema del Pyramid of Doom mediante el uso de constructos más modernos como Promesas y async/await.
 
-   - **Promesas:** Las Promesas permiten estructurar el código asíncrono de manera más ordenada y eliminar la pirámide del infierno. Proporcionan métodos como `.then()` y `.catch()` para manejar operaciones asíncronas de manera más legible y estructurada.
+   - `Promesas`:
+   Las Promesas permiten estructurar el código asíncrono de manera más ordenada y eliminar la pirámide del infierno. Proporcionan métodos como `.then()` y `.catch()` para manejar operaciones asíncronas de manera más legible y estructurada.
 
    ```javascript
    leerArchivo("archivo.txt")
@@ -2534,7 +2539,8 @@ leerArchivo("archivo.txt", (contenidoArchivo) => {
      });
    ```
 
-   - **async/await:** La sintaxis async/await es una forma aún más moderna y legible de manejar el código asíncrono. Permite escribir código asincrónico de manera similar al código síncrono, lo que mejora significativamente la claridad y el flujo de ejecución.
+   - `async/await`:
+   La sintaxis async/await es una forma aún más moderna y legible de manejar el código asíncrono. Permite escribir código asincrónico de manera similar al código síncrono, lo que mejora significativamente la claridad y el flujo de ejecución.
 
    ```javascript
    async function procesarFlujo() {
@@ -2551,13 +2557,16 @@ leerArchivo("archivo.txt", (contenidoArchivo) => {
    procesarFlujo();
    ```
 
-6. **Ventajas de Promesas y async/await:**
-   - Mejor Claridad: El código es más legible y sigue un flujo lineal, lo que facilita su comprensión.
+6. `Ventajas de Promesas y async/await`:
+   - Mejor Claridad:
+   El código es más legible y sigue un flujo lineal, lo que facilita su comprensión.
    - Facilita el Mantenimiento: Los errores son más fáciles de encontrar y solucionar.
-   - Modularización: Las Promesas y async/await permiten separar las tareas en funciones reutilizables y modulares.
-   - Menos Anidamiento: La estructura del código no se convierte en una pirámide anidada.
+   - Modularización:
+   Las Promesas y async/await permiten separar las tareas en funciones reutilizables y modulares.
+   - Menos Anidamiento:
+   La estructura del código no se convierte en una pirámide anidada.
 
-7. **Conclusión:**
+7. `Conclusión`:
    El Pyramid of Doom es un patrón antiestético y desafiante que se produce cuando anidamos múltiples callbacks en el código asíncrono. A medida que JavaScript ha evolucionado, han surgido soluciones más modernas y legibles, como Promesas y async/await, que permiten manejar operaciones asíncronas de manera más efectiva y clara. Estas soluciones eliminan la pirámide del infierno y mejoran la organización y la legibilidad del código asincrónico.
 
 
@@ -2568,13 +2577,13 @@ leerArchivo("archivo.txt", (contenidoArchivo) => {
 
 **Async Code - Promise: Una Explicación Detallada**
 
-1. **Introducción a las Promesas**:
+1. `Introducción a las Promesas`:
    Las promesas son un concepto fundamental en JavaScript para manejar código asíncrono de manera más estructurada y legible. Proporcionan una forma más ordenada de manejar el flujo de trabajo cuando se tratan con operaciones que toman tiempo, como solicitudes a servidores o lecturas de archivos.
 
-2. **Importancia de las Promesas**:
+2. `Importancia de las Promesas`:
    En un entorno asíncrono, las promesas son esenciales para gestionar operaciones que no se completan de inmediato. Proporcionan una forma más intuitiva de manejar el flujo de trabajo y evitan el anidamiento excesivo de callbacks, lo que a menudo se conoce como "Callback Hell".
 
-3. **Sintaxis y Ejecución de las Promesas**:
+3. `Sintaxis y Ejecución de las Promesas`:
    Las promesas se crean utilizando la clase `Promise`. Una promesa representa un valor que puede estar disponible ahora o en el futuro. Tiene dos posibles estados: pendiente (cuando se está ejecutando) y resuelta (cuando se ha completado con éxito) o rechazada (cuando ha ocurrido un error).
 
    Ejemplo:
@@ -2598,7 +2607,7 @@ miPromesa
   });
 ```
 
-4. **Encadenamiento de Promesas**:
+4. `Encadenamiento de Promesas`:
    Una de las ventajas clave de las promesas es la capacidad de encadenar múltiples operaciones asíncronas de manera secuencial. Esto hace que el código sea más legible y fácil de seguir.
 
    Ejemplo:
@@ -2619,7 +2628,7 @@ realizarPrimeraOperacion()
   });
 ```
 
-5. **Promesas en Paralelo**:
+5. `Promesas en Paralelo`:
    Las promesas también se pueden utilizar para ejecutar múltiples operaciones asíncronas en paralelo y esperar a que todas se completen antes de continuar.
 
    Ejemplo:
@@ -2638,7 +2647,7 @@ Promise.all([promesa1, promesa2, promesa3])
   });
 ```
 
-6. **Async/Await - Simplificando el Uso de Promesas**:
+6. `Async/Await - Simplificando el Uso de Promesas`:
    La sintaxis async/await es una forma más moderna y legible de trabajar con promesas. Permite escribir código asíncrono de manera similar a las funciones síncronas.
 
    Ejemplo:
@@ -2655,16 +2664,16 @@ async function procesoAsincrono() {
 }
 ```
 
-7. **Uso de .then() para Manejar el Éxito**:
+7. `Uso de .then() para Manejar el Éxito`:
    El método `.then()` se utiliza para manejar el éxito de una promesa. Recibe una función que se ejecutará cuando la promesa se resuelva con éxito y se llamará con el valor resuelto como argumento.
 
-8. **Uso de .catch() para Manejar Errores**:
+8. `Uso de .catch() para Manejar Errores`:
    El método `.catch()` se utiliza para manejar errores que ocurran en cualquier punto de la cadena de promesas. Recibe una función que se ejecutará cuando la promesa se rechace y se llamará con el error como argumento.
 
-9. **Promesas vs. Callbacks**:
+9. `Promesas vs. Callbacks`:
    Aunque los callbacks son fundamentales, las promesas brindan una estructura más ordenada y legible para trabajar con código asíncrono. Las promesas permiten evitar el Callback Hell y facilitan el gestión de errores. Async/await es una mejora adicional que hace que el código sea aún más claro.
 
-10. **Async Code - Promesas: Ejemplo Completo**:
+10. `Async Code - Promesas: Ejemplo Completo`:
     Supongamos que estás desarrollando una aplicación que realiza una serie de operaciones asíncronas.
 
 Simulación de Descarga y Procesamiento de Datos usando Promesas:
@@ -2712,36 +2721,36 @@ descargarDatos("https://ejemplo.com/datos")
   });
 ```
 
-**Paso a Paso:**
+Explicación paso a paso:
 
-1. **Definición de Funciones**:
+1. Definición de Funciones:
    - `descargarDatos(url)`: Define una función que simula la descarga de datos desde una URL. Retorna una nueva promesa.
    - `procesarDatos(datos)`: Define una función que simula el procesamiento de datos. Retorna una nueva promesa.
    - `mostrarResultado(resultado)`: Define una función que muestra el resultado final.
 
-2. **Llamada a `descargarDatos`**:
+2. Llamada a `descargarDatos`:
    - Se inicia la cadena de promesas llamando a `descargarDatos("https://ejemplo.com/datos")`.
    - Dentro de `descargarDatos`, se muestra un mensaje de que se están descargando los datos y se establece un temporizador de 2 segundos para simular la descarga.
    - Una vez que la descarga se completa, se resuelve la primera promesa con los "Datos descargados".
 
-3. **`.then()` para Procesar Datos Descargados**:
+3. `.then()` para Procesar Datos Descargados:
    - El método `.then()` se encadena después de `descargarDatos`.
    - En el callback de `.then()`, se muestra el mensaje "Datos descargados:" junto con los datos descargados.
    - Se llama a la función `procesarDatos(datosDescargados)`, pasando los datos descargados como argumento.
    - Se retorna la promesa resultante de `procesarDatos`.
 
-4. **Llamada a `procesarDatos`**:
+4. Llamada a `procesarDatos`:
    - Dentro de `procesarDatos`, se muestra un mensaje de que se están procesando los datos y se establece un temporizador de 1.5 segundos para simular el procesamiento.
    - Una vez que el procesamiento se completa, se resuelve la segunda promesa con "Datos procesados".
 
-5. **`.then()` para Mostrar Resultado**:
+5. `.then()` para Mostrar Resultado:
    - El segundo `.then()` se encadena después de la resolución de la promesa de procesamiento.
    - En el callback de este `.then()`, se muestra el mensaje "Datos procesados:" junto con los datos procesados.
 
-6. **Llamada a `mostrarResultado`**:
+6. Llamada a `mostrarResultado`:
    - Finalmente, se llama a la función `mostrarResultado` para mostrar el resultado final.
 
-7. **`.catch()` para Manejar Errores**:
+7. `.catch()` para Manejar Errores:
    - Se utiliza el método `.catch()` al final de la cadena de promesas para manejar cualquier error que pueda ocurrir en cualquiera de las etapas.
    - Si se produce un error en cualquier lugar de la cadena de promesas, se captura en este `.catch()` y se muestra un mensaje de error.
 
