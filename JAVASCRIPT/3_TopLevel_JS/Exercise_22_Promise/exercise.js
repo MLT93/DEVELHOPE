@@ -9,7 +9,7 @@ const esMayorQue10 = (number) => {
       if (number > 10) {
         resolve(number);
       } else {
-        reject("El número es menor que 10");
+        reject("El número es menor que 10.");
       }
     }, 1500);
   });
@@ -21,10 +21,10 @@ esMayorQue10(number)
     console.log("Número correcto:", number);
   })
   .catch((error) => {
-    console.error("El número introducido no es correcto", error);
+    console.error("El número introducido no es correcto.", error);
   })
   .finally(() => {
-    console.log("Proceso de carga finalizado");
+    console.log("Proceso de carga finalizado.");
   });
 
 
