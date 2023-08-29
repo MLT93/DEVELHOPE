@@ -2720,17 +2720,30 @@ Promise.all([promesa1, promesa2, promesa3])
    Ejemplo:
 
 ```javascript
-async function procesoAsincrono() {
+async function obtenerDatos() {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const respuesta = await fetch('https://api-ejemplo.com/datos');
+      const datos = await respuesta.json();
+      resolve(datos);
+    } catch (error) {
+      reject(error);
+    } finally {
+      console.log("fin del proceso")
+    }
+  });
+}
+
+async function main() {
   try {
-    const resultado1 = await promesa1;
-    const resultado2 = await promesa2;
-    // El código que haya después de un await, siempre esperará al cumplimiento de la promesa
+    const datos = await obtenerDatos();
+    console.log(datos);
   } catch (error) {
-    // Manejar errores
-  } finally {
-    // Este código se ejecuta si o sí, o sea que no necesita esperar el await para ejecutarse.
+    console.error('Hubo un error:', error);
   }
 }
+
+main();
 ```
 
 7. `Uso de .then() para Manejar el Éxito`:
@@ -2982,20 +2995,42 @@ En resumen, las promesas son una forma poderosa y estructurada de trabajar con c
 
    Ejemplo:
 
+Aquí se ilustra cómo usar `async/await` para crear y manejar promesas en una situación similar.
+
 ```javascript
-async function obtenerDatosDeUsuario(userID) {
+function simularConsultaDataBase() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const exito = Math.random() < 0.8; // Simular un 80% de éxito
+      if (exito) {
+        resolve('Consulta exitosa');
+      } else {
+        reject('Error al consultar la base de datos');
+      }
+    }, 1000); // Simular un retardo de 1 segundo
+  });
+}
+
+async function realizarTarea() {
   try {
-    const usuario = await obtenerUsuarioPorID(userID);
-    const posts = await obtenerPostsDeUsuario(usuario);
-    return { usuario, posts };
+    console.log('Realizando tarea...');
+    const resultado = await simularConsultaDataBase();
+    console.log(resultado);
   } catch (error) {
-    console.error("Error:", error);
+    console.error('Hubo un error:', error);
   } finally {
-    console.log("Finalizando el proceso.");
-    // Código que se ejecutará sin importar si hubo un error o no
+    console.log('Proceso finalizado.')
   }
 }
+
+realizarTarea();
 ```
+
+En este ejemplo, la función `simularConsultaDB` devuelve una promesa que simula una consulta a una base de datos. Dependiendo de un valor aleatorio, la promesa se resuelve exitosamente o se rechaza para simular un error.
+
+La función `realizarTarea` utiliza `async/await` para consumir la promesa devuelta por `simularConsultaDB`. Si la consulta es exitosa, se muestra el mensaje de éxito. Si hay un error, se captura y maneja mediante el bloque `catch`, mostrando un mensaje de error.
+
+Este ejemplo ilustra cómo puedes crear y usar promesas con `async/await` para manejar operaciones asíncronas de manera más legible y estructurada.
 
 5. `Manejo de Errores con Try / Catch y Finally`:
    Una característica importante de Async / Await es la capacidad de manejar errores de manera más similar al manejo de errores síncrono, utilizando bloques `try` y `catch`.
@@ -3061,6 +3096,11 @@ Paso a paso:
 
 ```javascript
 const basededatos = require('basededatos');
+
+// Función para simular un retraso asincrónico
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 ```
 
 2. Define una función asincrónica llamada `realizarTransaccion` que acepte el monto de la transacción como parámetro:
@@ -3071,9 +3111,12 @@ async function realizarTransaccion(monto) {
     await basededatos.abrirConexion(); // Abre la conexión a la base de datos
     await basededatos.iniciarTransaccion(); // Inicia la transacción
 
-    // Simulamos una operación financiera
+    // Simulamos una operación financiera con retraso de 2 segundo hasta recibir respuesta
+    await delay(2000);
     const resultado = await basededatos.registrarTransaccion(monto);
 
+    // Simulamos una operación de confirmación con retraso de 2.5 segundos
+    await delay(2500);
     await basededatos.confirmarTransaccion(); // Confirma la transacción
     return resultado;
   } catch (error) {
