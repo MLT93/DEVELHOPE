@@ -323,7 +323,7 @@ console.log(Math.sqrt(9)); // calcula la raíz cuadrada del número. // Imprime 
 
 // Funciones de números aleatorios:
 Math.random(); // genera números pseudoaleatorios entre 0 y 1 y no acepta argumentos.
-let miNumeroAleatorio = Math.floor(Math.random() * 20); // Math.floor redondea hacia abajo, para que no me dé decimales.
+let miNumeroAleatorio = Math.floor(Math.random() * 20); // Math.floor redondea hacia abajo, para que no me dé decimales y sí acepta argumentos.
 console.log(miNumeroAleatorio); // Podemos modificar el límite del rango cambiando los valores de inicio o fin y así crear números pseudoaleatorios con un rango mayor. En éste caso en el rango va de [0, 1), pero lo multiplicamos por 20 y listo. El resultado será un número aleatorio entre el 0 y el 20 porque el 21 no lo cuenta a causa del Math.floor y sus decimales redondeados.
 
 // Otras funciones matemáticas: Math también proporciona otras funciones matemáticas útiles, como Math.abs() para obtener el valor absoluto de un número, Math.max() y Math.min() para encontrar el valor máximo y mínimo entre varios números, y Math.sign() para obtener el signo de un número, entre otros.

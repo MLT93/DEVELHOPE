@@ -2634,16 +2634,18 @@ leerArchivo("archivo.txt", (contenidoArchivo) => {
    Las promesas se crean utilizando la clase `Promise`. Una promesa representa un valor que puede estar disponible ahora o en el futuro. Tiene dos posibles estados: `resolve` (cuando se está ejecutando y cuando se ha completado con éxito) o `reject` (cuando ha ocurrido un error).
 
 ```javascript
-const miPromesa = new Promise((resolve, reject) => {
-  // Realizar operación asíncrona
-  if (operacionExitosa) {
-    resolve(resultado); // Resuelve la promesa
-  } else {
-    reject(error); // Rechaza la promesa
-  }
-});
+const miPromesa = () => {
+  return new Promise((resolve, reject) => {
+    // Realizar operación asíncrona
+    if (operacionExitosa) {
+      resolve(resultado); // Resuelve la promesa
+    } else {
+      reject(error); // Rechaza la promesa
+    }
+  });
+};
 
-miPromesa
+miPromesa()
   .then(resultado => {
     // Manejar resultado exitoso
   })
@@ -2651,6 +2653,38 @@ miPromesa
     // Manejar error
   });
 ```
+
+   En una promesa puedes utilizar más de una llamada a `resolve` y `reject`, pero por convención y diseño, normalmente se utiliza solo una llamada a cada uno en una promesa.
+
+   El propósito de una promesa es representar una operación asíncrona que puede resolverse o rechazarse una sola vez. Una vez que una promesa se resuelve o se rechaza, su estado se vuelve final y no puede cambiar. Por lo tanto, no tiene mucho sentido llamar a `resolve` o `reject` varias veces dentro de una misma promesa, ya que solo afectaría al resultado final.
+
+   Si tienes varios valores para resolver o errores para rechazar, generalmente se prefiere empaquetarlos en un objeto o array para transmitirlos de manera más estructurada.
+
+```javascript
+const promiseWithMultipleValues = () => {
+  return new Promise((resolve, reject) => {
+    const value1 = 42;
+    const value2 = "Hola";
+    const error = new Error("Hubo un problema");
+
+    resolve({ value1, value2 }); // Resuelve con un objeto que contiene múltiples valores
+    // O, si quieres rechazar
+    reject([error, "Otro error"]); // Rechaza con un array que contiene múltiples errores
+  });
+};
+
+promiseWithMultipleValues()
+  .then((result) => {
+    console.log("Resuelto:", result);
+  })
+  .catch((errors) => {
+    console.error("Errores:", errors);
+  });
+```
+
+   En este ejemplo, la promesa `promiseWithMultipleValues` resuelve con un objeto que contiene múltiples valores, y también podría rechazar con un array que contiene múltiples errores.
+
+   Recuerda que una buena práctica es mantener la semántica clara y sencilla en el uso de `resolve` y `reject`, y si necesitas transmitir múltiples valores o errores, agrúpalos de manera apropiada para que puedas manejarlos de manera efectiva en el `.then()` o `.catch()` correspondiente.
 
 4. `Encadenamiento de Promesas`:
    Una de las ventajas clave de las promesas es la capacidad de encadenar múltiples operaciones asíncronas de manera secuencial. Esto hace que el código sea más legible y fácil de seguir.
@@ -2692,7 +2726,7 @@ Promise.all([promesa1, promesa2, promesa3])
    La sintaxis async/await es una forma más moderna y legible de trabajar con promesas. Permite escribir código asíncrono de manera similar a las funciones síncronas.
 
 ```javascript
-async function obtenerDatos() {
+const obtenerDatos = async () => {
   return new Promise(async (resolve, reject) => {
     try {
       const respuesta = await fetch('https://api-ejemplo.com/datos');
@@ -2704,7 +2738,7 @@ async function obtenerDatos() {
       console.log("fin del proceso")
     }
   });
-}
+};
 
 async function main() {
   try {
