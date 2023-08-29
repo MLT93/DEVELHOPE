@@ -3131,7 +3131,7 @@ realizarTransaccion(montoTransaccion)
 
 Este ejemplo ilustra cómo `Async / Await` y la cláusula `finally` pueden utilizarse en conjunto para manejar operaciones asíncronas, manejar errores y asegurarse de que se realicen acciones de limpieza o cierre, sin importar el resultado de la operación.
 
-*Mismo ejemplo simulando el Callback Hell:*
+*Mismo ejemplo simulando el `Callback Hell:`*
 
 Utilizamos `await` dentro de funciones `setTimeout` para simular operaciones asincrónicas retardadas y crear un `Callback hell`:
 
