@@ -3189,3 +3189,42 @@ Ten en cuenta que las operaciones dentro de `setTimeout` siguen siendo asíncron
 Recuerda que este ejemplo está simplificado y utiliza `setTimeout` para simular operaciones asincrónicas con retraso. En una situación real, podrías estar trabajando con APIs, bases de datos reales u otras operaciones asíncronas.
 
 En resumen, Async / Await es una valiosa adición a JavaScript que simplifica significativamente el manejo de operaciones asincrónicas. Proporciona una sintaxis más limpia y legible, lo que mejora la calidad del código y la experiencia de desarrollo en general. Con Async / Await, los desarrolladores pueden escribir código asincrónico de manera similar al código síncrono, lo que facilita la comprensión y el mantenimiento del código.
+
+
+
+
+
+
+
+**Diferencias entre async/await y promise:**
+
+`async/await` y `Promise` son conceptos relacionados en JavaScript, y cada uno tiene sus propias ventajas y casos de uso. No necesariamente uno es mejor que el otro, sino que depende del contexto en el que se utilicen.
+
+`Ventajas de async/await`:
+
+1. Legibilidad mejorada:
+   El código con `async/await` tiende a ser más fácil de leer y entender, ya que se asemeja más al flujo de código síncrono.
+
+2. Sintaxis más limpia:
+   `async/await` elimina gran parte de la necesidad de anidación de `.then`, lo que hace que el código sea más limpio y menos propenso a errores.
+
+3. Manejo de errores directo:
+   Puedes usar bloques `try/catch` para capturar errores de manera más directa y localizada en el flujo del código.
+
+4. Menos propenso a "promesas olvidadas":
+   Las promesas pueden quedar sin manejar si no se manejan adecuadamente. `async/await` puede reducir la posibilidad de olvidar manejar promesas.
+
+`Ventajas de las promesas`:
+
+1. Compatibilidad más amplia:
+   Las promesas son compatibles con navegadores y entornos más antiguos que no admiten `async/await`.
+
+2. Mayor control en el flujo de ejecución:
+   Las promesas pueden ser más adecuadas para situaciones en las que se necesita un mayor control del flujo de ejecución y se desea manipular promesas individualmente.
+
+3. Encadenamiento avanzado:
+   Las promesas permiten un encadenamiento más complejo de operaciones asíncronas utilizando `.then`.
+
+En general, `async/await` es ampliamente preferido debido a su legibilidad y claridad en el código. Sin embargo, hay casos en los que `Promise` puede ser más apropiado, como cuando se necesita un control más detallado sobre el flujo de ejecución o cuando se trabaja en entornos más antiguos.
+
+En última instancia, la elección entre `async/await` y `Promise` depende de tus necesidades específicas y del contexto en el que estés trabajando. Ambos son útiles y válidos en diferentes situaciones.
