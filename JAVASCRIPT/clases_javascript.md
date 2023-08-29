@@ -2893,6 +2893,65 @@ Paso a paso:
 
 Este ejemplo simula la carga de información del usuario desde una API utilizando promesas. La aplicación real podría tener flujos más complejos y manejar más escenarios de error, pero este es un buen punto de partida para comprender cómo funcionan las promesas en situaciones prácticas.
 
+Ejemplo aplicado:
+
+Escribimos una promesa. Si la variable number es mayor que 10, devolveremos resolve, si no, el reject.
+Después manejaremos la promesa con .then, .catch y .finally.
+
+```javascript
+const numero = 15;
+
+/* Crear una función que devuelve una nueva Promesa con resolve y reject como argumentos.
+Dentro de ella, usar setTimeout con un retardo en milisegundos.
+Dentro de la función, usar una estructura if-else para verificar la condición.
+Si la condición es verdadera, devolver resolve; si no, devolver reject */
+const esMayorQue10 = (numero) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (numero > 10) {
+        resolve(numero);
+      } else {
+        reject("El número es menor que 10.");
+      }
+    }, 1500);
+  });
+};
+
+/* Llamar a la función y usar .then() para el resolve, .catch() para el reject y .finally() para indicar el final del proceso */
+esMayorQue10(numero)
+  .then((numero) => {
+    console.log("Número correcto:", numero);
+  })
+  .catch((error) => {
+    console.error("El número ingresado no es correcto.", error);
+  })
+  .finally(() => {
+    console.log("Proceso de carga finalizado.");
+  });
+```
+
+Explicación paso a paso:
+
+1. Primero, se define una variable llamada `numero` con un valor de 15. Esta variable representa el número con el que vamos a trabajar en la promesa.
+
+2. Luego, se define una función llamada `esMayorQue10` que acepta un parámetro llamado `numero`. Esta función se encargará de crear y retornar una nueva promesa. La promesa tiene dos argumentos: `resolve` y `reject`, que son funciones que permiten resolver o rechazar la promesa, respectivamente.
+
+3. Dentro de la función `esMayorQue10`, se utiliza `setTimeout` para simular un retardo de 1500 milisegundos (1.5 segundos). Este retardo es intencional y representa una operación asíncrona.
+
+4. Dentro del callback de `setTimeout`, se usa una estructura `if-else`. Si el valor de `numero` es mayor que 10, se llama a la función `resolve` con el valor de `numero` como argumento. Esto significa que la promesa se resolverá con éxito y pasará al estado `fulfilled` con el valor de `numero`.
+
+5. Si el valor de `numero` no es mayor que 10, se llama a la función `reject` con un mensaje de error que dice "El número es menor que 10.". Esto significa que la promesa se rechazará y pasará al estado `rejected` con el mensaje de error proporcionado.
+
+6. Luego, se llama a la función `esMayorQue10` pasándole el valor de `numero`. Aquí es donde comienza la ejecución de la promesa.
+
+7. Se encadenan métodos a la promesa usando `.then()`, `.catch()` y `.finally()`. Si la promesa se resuelve con éxito (es decir, el número es mayor que 10), se ejecutará la función pasada a `.then()`, que imprimirá "Número correcto:" seguido del valor de `numero`.
+
+8. Si la promesa es rechazada (el número no es mayor que 10), se ejecutará la función pasada a `.catch()`, que imprimirá "El número ingresado no es correcto." seguido del mensaje de error proporcionado.
+
+9. En ambos casos, después de ejecutar `.then()` o `.catch()`, la función pasada a `.finally()` se ejecutará, lo que imprimirá "Proceso de carga finalizado.".
+
+En este ejemplo el código crea una promesa que verifica si un número es mayor que 10 después de un retardo simulado. Dependiendo del resultado, se ejecutarán las funciones `.then()`, `.catch()` y `.finally()` para manejar el éxito, el error y el final del proceso respectivamente.
+
 En resumen, las promesas son una forma poderosa y estructurada de trabajar con código asíncrono en JavaScript. Facilitan la legibilidad, el manejo de errores y la organización del flujo de trabajo. Las promesas junto con async/await son enfoques modernos que mejoran significativamente la claridad y eficiencia en el manejo de operaciones asíncronas.
 
 
