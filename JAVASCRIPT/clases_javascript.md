@@ -9,7 +9,7 @@ Aquí te explico más sobre las clases, para qué sirven y cómo se utilizan en 
 Las clases en JavaScript sirven para encapsular datos y comportamientos relacionados en un objeto, lo que facilita la creación y el mantenimiento de código. Ayudan a organizar y estructurar programas, permitiendo la reutilización de código a través de la herencia.
 
 ¿Cómo se utilizan las clases en JavaScript?
-Para crear una clase en JavaScript, utilizamos la palabra clave "class" seguida del nombre de la clase. Dentro de la clase, definimos sus propiedades y métodos usando el constructor y otros métodos. Aquí tienes un ejemplo básico:
+Para crear una clase en JavaScript, utilizamos la palabra clave "class" seguida del nombre de la clase. Dentro de la clase, definimos sus propiedades y métodos usando el constructor y otros métodos.
 
 ```javascript
 class Persona {
@@ -65,8 +65,6 @@ En JavaScript, las clases son un concepto fundamental introducido en ECMAScript 
 
 1. `Declaración de Clase`:
    Puedes declarar una clase usando la palabra clave class, seguida del nombre de la clase.
-   
-   Por ejemplo:
 
 ```javascript
 class Persona {
@@ -88,7 +86,7 @@ class Persona {
    Los métodos son funciones definidas dentro de la clase. Se pueden llamar en las instancias de la clase para realizar acciones específicas. En el ejemplo de arriba, decirHola() es un método de clase.
 
 4. `Creación de Instancias`:
-   Para crear una instancia de una clase, se utiliza la palabra clave new, seguida del nombre de la clase y los argumentos requeridos para el constructor. Por ejemplo:
+   Para crear una instancia de una clase, se utiliza la palabra clave new, seguida del nombre de la clase y los argumentos requeridos para el constructor.
 
 ```javascript
 const persona1 = new Persona("Alice", 30);
@@ -186,7 +184,7 @@ La herencia de clases es un concepto importante en la programación orientada a 
    - Organización: Permite una estructura jerárquica para las clases, lo que facilita la comprensión y el mantenimiento del código.
    - Extensibilidad: Puedes agregar funcionalidades específicas en las clases hijas sin afectar a la clase padre o a otras clases.
 
-Ejemplo de Herencia:
+*Ejemplo de Herencia:*
 
 Supongamos que tenemos una clase Animal como clase padre y deseamos crear una clase hija Perro:
 
@@ -253,7 +251,7 @@ La cadena de prototipos es un concepto fundamental en JavaScript que explica có
    - Flexibilidad: Puedes modificar el comportamiento de múltiples objetos al actualizar el prototipo.
    - Herencia Dinámica: Los objetos pueden heredar propiedades y métodos en tiempo de ejecución.
 
-Ejemplo de Cadena de Prototipos:
+*Ejemplo de Cadena de Prototipos:*
 
 ```javascript
 function Vehiculo() {
@@ -304,7 +302,7 @@ Los campos de clase son una característica introducida en JavaScript que permit
 5. `Sintaxis de Campos Privados (Propuesta)`:
    Los campos privados se definen usando el prefijo `#` o también `_` (pero este último es una convención ampliamente aceptada para indicar que una propiedad no debe ser accedida directamente desde fuera de la clase). Esto asegura que solo puedan ser accedidos desde dentro de la clase.
 
-Ejemplo de Campos de Clase:
+*Ejemplo de Campos de Clase:*
 
 ```javascript
 class Persona {
@@ -333,7 +331,7 @@ En resumen, los campos de clase son una característica moderna de JavaScript qu
 
 Recuerda que aunque los `campos privados` definidos con la notación hashtag [#] están destinados a ser privados y no directamente accesibles fuera de la clase, `es posible acceder a ellos indirectamente a través de métodos públicos`. Esto se debe a que JavaScript no ofrece un nivel de privacidad real como en algunos otros lenguajes de programación. `Al menos con el código siguiente si se puede`.
 
-Veamos un ejemplo:
+*Veamos un ejemplo:*
 
 ```javascript
 class Persona {
@@ -358,7 +356,7 @@ Es importante mencionar que acceder a campos privados de esta manera contradice 
 
 A partir de ECMAScript 2022 (también conocido como ES12 o ES2022), JavaScript introduce la posibilidad de definir `métodos privados` en las clases utilizando la sintaxis del numeral o símbolo hashtag [#]. Esto permite crear métodos que solo pueden ser accedidos desde dentro de la misma clase y no desde fuera ni desde instancias de la clase.
 
-Ejemplo:
+*Ejemplo:*
 
 ```javascript
 class MiClase {
@@ -388,7 +386,7 @@ No, en JavaScript, los campos privados (definidos con la notación `#`) y los m�
 
 En otras palabras, un método privado dentro de una clase solo tiene acceso a los campos privados de esa misma clase y no puede acceder a los campos privados de ninguna otra clase, ni siquiera si esa clase también tiene métodos privados.
 
-Aquí hay un ejemplo que ilustra esto:
+*Aquí hay un ejemplo que ilustra esto:*
 
 ```javascript
 class MiClase {
@@ -438,7 +436,7 @@ Las propiedades y métodos estáticos son elementos de las clases en JavaScript 
    - Métodos Utilitarios: Puedes crear métodos que no requieran estado de instancia, como cálculos matemáticos.
    - Contadores: Las propiedades estáticas son útiles para mantener un seguimiento global, como contar la cantidad de instancias creadas de una clase.
 
-Ejemplo de Propiedades y Métodos Estáticos:
+*Ejemplo de Propiedades y Métodos Estáticos:*
 
 ```javascript
 class Calculadora {
@@ -563,7 +561,7 @@ Este setter permitirá asignar un nuevo valor a _nombre, pero solo si el valor e
 5. `Compatibilidad y Consideraciones`:
    Es importante tener en cuenta que aunque los getters y setters son una característica estándar de ECMAScript 5 y son compatibles con la mayoría de los navegadores modernos, siempre es recomendable verificar la compatibilidad en el entorno en el que estás trabajando.
 
-Ejemplo de Getters y Setters:
+*Ejemplo de Getters y Setters:*
 
 Supongamos que tenemos una clase Persona con una propiedad privada _edad. Podemos definir un getter y un setter para _edad como se muestra a continuación:
 
@@ -592,7 +590,7 @@ console.log(persona1.edad); // Acceder al valor a través del getter
 persona1.edad = 25; // Asignar un nuevo valor a través del setter
 ```
 
-Otro ejemplo:
+*Otro ejemplo:*
 
 Vamos a analizar tanto el getter como el setter, y también cómo se usan en el siguiente código.
 
@@ -729,7 +727,7 @@ En este ejemplo, la clase `MiArray` hereda las propiedades y métodos de la clas
 6. `Compatibilidad y Consideraciones Finales`:
    La capacidad de extender clases incorporadas es una característica admitida en la mayoría de los navegadores modernos y entornos de JavaScript. Sin embargo, siempre es recomendable verificar la compatibilidad en el entorno en el que estás trabajando antes de implementarla en un proyecto.
 
-Ejemplo de uso de la Extensión de Clase Incorporada:
+*Ejemplo de uso de la Extensión de Clase Incorporada:*
 
 Aquí hay un ejemplo de cómo podríamos extender la clase String para agregar un método que invierte el contenido de una cadena:
 
@@ -771,7 +769,7 @@ if (objeto instanceof Clase) {
 }
 ```
 
-Por ejemplo:
+*Por ejemplo:*
 
 ```javascript
 class Animal {
@@ -805,7 +803,7 @@ if (miPerro instanceof Animal) {
 5. `Compatibilidad y Consideraciones Finales`:
    El operador instanceof es una característica estándar de JavaScript y es compatible con la mayoría de los navegadores modernos y entornos de desarrollo. Sin embargo, es una buena práctica verificar la compatibilidad en el entorno específico antes de implementarlo.
 
-Ejemplo de uso del Operador instanceof:
+*Ejemplo de uso del Operador instanceof:*
 
 Imagina que tienes una jerarquía de clases que representan diferentes tipos de vehículos, como Vehiculo, Automóvil y Motocicleta. Puedes usar el operador instanceof para verificar la relación de herencia entre objetos:
 
@@ -843,7 +841,7 @@ if (miMotocicleta instanceof Vehiculo) {
 }
 ```
 
-Otro ejemplo:
+*Otro ejemplo:*
 
 ```javascript
 class Square {
@@ -950,7 +948,7 @@ El operador instanceof en JavaScript te permite verificar la pertenencia de un o
 3. `Sintaxis de la Destructuring Assignment`:
    La sintaxis para desestructurar objetos y arrays es la siguiente:
 
-Desestructuración de Objetos:
+   `Desestructuración de Objetos`:
 
 ```javascript
 const objeto = { propiedad1: 'valor1', propiedad2: 'valor2' };
@@ -958,7 +956,7 @@ const objeto = { propiedad1: 'valor1', propiedad2: 'valor2' };
 const { propiedad1, propiedad2 } = objeto;
 ```
 
-Desestructuración de Arrays:
+   `Desestructuración de Arrays`:
 
 ```javascript
 const array = [1, 2, 3];
@@ -969,7 +967,7 @@ const [elemento1, elemento2, elemento3] = array;
 4. `Destructuración con Alias en Objetos:`
    En la destructuración con alias, puedes asignar los valores de propiedades de un objeto a variables con nombres diferentes. Esto es útil cuando deseas mantener la estructura del objeto original pero trabajar con nombres de variables más adecuados para tu contexto. Aquí tienes un ejemplo:
 
-Supongamos que tienes el siguiente objeto:
+*Supongamos que tienes el siguiente objeto:*
 
 ```javascript
 const person = {
@@ -996,7 +994,7 @@ Aquí, estás creando nuevas variables (`personId`, `fName`, `lName`, `personAge
 5. `Destructuración con Cambio de Nombres de Propiedades en el Objeto:`
    En esta forma de desestructuración, cambias directamente los nombres de las propiedades del objeto para que coincidan con los nombres de las variables en la destructuración. Esto implica modificar las propiedades originales del objeto para adaptarlas a tus necesidades. Aquí tienes un ejemplo:
 
-Supongamos que tienes el siguiente objeto:
+*Supongamos que tienes el siguiente objeto:*
 
 ```javascript
 const person = {
@@ -1025,7 +1023,7 @@ Es importante entender que en la segunda forma estás alterando la estructura de
 6. `Desestructuración explicada en Arrays`:
    En la destructuración de arrays también puedes usar técnicas similares a la destructuración de objetos, como asignar alias o cambiar los nombres de las variables para los elementos del array.
 
-Destructuración de Arrays con Alias:
+   `Destructuración de Arrays con Alias`:
 
 Puedes asignar alias a los elementos de un array durante la destructuración, al igual que lo harías con objetos. Esto permite que los elementos del array se asignen a variables con nombres diferentes a los valores en el array original. Aquí tienes un ejemplo:
 
@@ -1039,7 +1037,7 @@ console.log(secondNum); // 2
 console.log(thirdNum);  // 3
 ```
 
-Destructuración con Cambio de Nombres de Elementos en el Array:
+   `Destructuración con Cambio de Nombres de Elementos en el Array`:
 
 Al igual que con los objetos, también puedes cambiar los nombres de los elementos del array durante la destructuración, renombrando los valores que extraes. Aquí tienes un ejemplo:
 
@@ -1062,7 +1060,7 @@ El cambio de nombre de elementos en la destructuración de arrays puede ser meno
 7. `Utilidades y Ejemplos`:
    La Destructuring Assignment es útil en diversas situaciones:
 
-Desestructuración de Objetos Anidados:
+   `Desestructuración de Objetos Anidados`:
 
 ```javascript
 const persona = {
@@ -1075,7 +1073,7 @@ const persona = {
 
 const { nombre, direccion: { ciudad, codigoPostal } } = persona;
 ```
-Desestructuración en Parámetros de Funciones:
+   `Desestructuración en Parámetros de Funciones`:
 
 ```javascript
 function imprimirPersona({ nombre, edad }) {
@@ -1086,7 +1084,7 @@ const persona = { nombre: 'Carlos', edad: 28 };
 imprimirPersona(persona);
 ```
 
-Ejemplo práctico y explicación comentada:
+*Ejemplo práctico y explicación comentada:*
 
 ```javascript
 /* La primera forma no funciona porque las variables asignadas a las propiedades no tienen el mismo nombre y, si al console.log() le paso person, me imprime el objeto, no las variables*/
@@ -1256,7 +1254,7 @@ console.log(num2); // Resultado: 5
 7. `Compatibilidad y Consideraciones Finales`:
    El destructuring de objetos es compatible con la mayoría de los navegadores modernos y entornos de JavaScript. Sin embargo, siempre es recomendable verificar la compatibilidad antes de utilizarlo en proyectos específicos.
 
-Ejemplo de uso:
+*Ejemplo de uso:*
 
 Supongamos que tenemos el siguiente objeto person:
 
@@ -1341,43 +1339,43 @@ En resumen, el destructuring de objetos en JavaScript es una técnica eficiente 
 3. `Sintaxis del Spread Operator`:
    La sintaxis del Spread Operator es simple y elegante. Utiliza tres puntos (...) seguidos del array u objeto que deseas expandir:
 
-Spread Operator para Arrays:
+   `Spread Operator para Arrays`:
 
 ```javascript
 const array1 = [1, 2, 3];
 const array2 = [...array1, 4, 5, 6];
 ```
 
-Spread Operator para Objetos:
+   `Spread Operator para Objetos`:
 
 ```javascript
 const objeto1 = { prop1: 'valor1', prop2: 'valor2' };
 const objeto2 = { ...objeto1, prop3: 'valor3', prop4: 'valor4' };
 ```
 
-Ejemplos de uso:
+*Ejemplos de uso:*
 
-Copia de Arrays y Objetos:
+   `Copia de Arrays y Objetos`:
 
 ```javascript
 const copiaArray = [...arrayOriginal];
 const copiaObjeto = { ...objetoOriginal };
 ```
 
-Combinación de Arrays:
+   `Combinación de Arrays`:
 
 ```javascript
 const arrayCombinado = [...array1, ...array2];
 ```
 
-Desglose de Arrays Anidados:
+   `Desglose de Arrays Anidados`:
 
 ```javascript
 const matriz = [[1, 2], [3, 4]];
 const elementos = [...matriz[0], ...matriz[1]];
 ```
 
-Pasando Argumentos a Funciones:
+   `Pasando Argumentos a Funciones`:
 
 ```javascript
 function suma(a, b, c) {
@@ -1418,7 +1416,7 @@ En Resumen, el Spread Operator es una característica esencial en JavaScript que
 3. `Sintaxis del Rest Operator`:
    La sintaxis del Rest Operator es simple pero poderosa. Utiliza tres puntos (...) seguidos por un nombre de variable donde deseas capturar los elementos restantes:
 
-Rest Operator para Parámetros de Función:
+   `Rest Operator para Parámetros de Función`:
 
 ```javascript
 function sumar(...numeros) {
@@ -1426,15 +1424,15 @@ function sumar(...numeros) {
 }
 ```
 
-Rest Operator para Arrays:
+   `Rest Operator para Arrays`:
 
 ```javascript
 const [primerElemento, segundoElemento, ...restoElementos] = array;
 ```
 
-Ejemplos de uso:
+*Ejemplos de uso:*
 
-Captura de Argumentos en Funciones:
+   `Captura de Argumentos en Funciones`:
 
 ```javascript
 function sumar(...numeros) {
@@ -1444,14 +1442,14 @@ function sumar(...numeros) {
 console.log(sumar(1, 2, 3, 4, 5)); // Salida: 15
 ```
 
-Captura de Elementos en Arrays:
+   `Captura de Elementos en Arrays`:
 
 ```javascript
 const numeros = [1, 2, 3, 4, 5];
 const [primerNumero, segundoNumero, ...restoNumeros] = numeros;
 ```
 
-Generación de Arrays Dinámicos:
+   `Generación de Arrays Dinámicos`:
 
 ```javascript
 const elementosFijos = [0, ...restoNumeros, 6, 7, 8];
@@ -1482,8 +1480,6 @@ El Rest Operator y el Spread Operator en JavaScript se parecen en su sintaxis, y
    - Se utiliza en lugares donde se esperan múltiples elementos, como al crear nuevos arrays, objetos o en argumentos de función.
    - Se utiliza para copiar, combinar o desglosar datos.
 
-Ejemplo del Spread Operator:
-
 ```javascript
 const array1 = [1, 2, 3];
 const array2 = [...array1, 4, 5, 6];
@@ -1496,8 +1492,6 @@ const objeto2 = { ...objeto1, prop3: 'valor3', prop4: 'valor4' };
    - Se utiliza para capturar una cantidad variable de elementos en un solo lugar, ya sea en parámetros de función o en elementos de arrays.
    - Se utiliza cuando necesitas trabajar con un número variable de elementos, como al definir funciones que aceptan múltiples argumentos o al capturar elementos restantes en un array.
 
-Ejemplo del Rest Operator:
-
 ```javascript
 function sumar(...numeros) {
   return numeros.reduce((total, numero) => total + numero, 0);
@@ -1508,9 +1502,9 @@ const [primerElemento, segundoElemento, ...restoElementos] = array;
 /* El método reduce toma dos argumentos: una función de reducción y un valor inicial. En este caso, la función de reducción (total, numero) => total + numero suma el valor actual (numero) al acumulador (total), comenzando desde un valor inicial de 0. */
 ```
 
-Ejemplos detallados del utilizo de Spread Operator y Rest Operator juntos:
+Ejemplos detallados del utilizo de Spread Operator y Rest Operator juntos.
 
-Primer ejemplo paso a paso:
+*Primer ejemplo paso a paso:*
 
 ```javascript
 class MyArray extends Array {
@@ -1545,7 +1539,7 @@ console.log(arr2.sum());
 3. Por último:
    Se crea una instancia de `MyArray` llamada `arr2`, que contiene los elementos 1, 2, 3, 4 y 5, y se imprime el primer elemento del array utilizando `console.log(arr2[0]);`, que en este caso es 1.
 
-Segundo ejemplo paso a paso:
+*Segundo ejemplo paso a paso:*
 
 ```javascript
 class MyArray extends Array {
@@ -1611,7 +1605,7 @@ console.log(doSomething({"sum": true, "divide": false}, 2, 3, 4, 5, 2, 1));
 
 Este código demuestra cómo utilizar el Spread Operator y el Rest Operator en conjunto en la definición de una clase y en una función. También muestra cómo trabajar con objetos con propiedades opcionales y argumentos rest en una función.
 
-Tercer ejemplo paso a paso:
+*Tercer ejemplo paso a paso:*
 
 ```javascript
 const person = {
@@ -1685,7 +1679,7 @@ La diferencia clave entre las dos formas de uso radica en la dirección del fluj
 
 Ambas formas de uso aprovechan los operadores Rest y Spread para manejar y organizar la información contenida en objetos de manera flexible y eficiente.
 
-Cuarto ejemplo paso a paso:
+*Ejemplo paso a paso:*
 
 ```javascript
 const person = {
@@ -1748,8 +1742,6 @@ En resumen, aunque ambas características utilizan la notación de tres puntos (
 
    `Serializar` es el proceso de convertir una estructura de datos, como un objeto o un conjunto de datos, en una forma de texto o binaria para que pueda ser almacenada o transmitida y luego reconstruida o recuperada para su uso posterior. La serialización es comúnmente utilizada para guardar datos en archivos, enviar datos a través de redes y comunicarse con otros sistemas.
 
-Ejemplo de uso:
-
 ```javascript
 const objeto = { nombre: "Luis", edad: 35 };
 const jsonString = JSON.stringify(objeto);
@@ -1759,8 +1751,6 @@ console.log(jsonString); // Resultado: {"nombre":"Luis","edad":35}
    `JSON.parse()`: Esta función convierte una cadena JSON en un objeto JavaScript. Permite analizar y extraer información de datos JSON para que sean accesibles y utilizables en el entorno de JavaScript. A esto se le llama `Deserializar`.
 
    `Deserializar` es el proceso de convertir una representación de datos en un formato específico (como una cadena JSON) de vuelta a su estructura original en un lenguaje de programación. En otras palabras, se trata de tomar datos que fueron serializados previamente para su transmisión o almacenamiento y convertirlos nuevamente en objetos o estructuras que puedan ser manipulados y utilizados en el programa.
-
-Ejemplo de uso:
 
 ```javascript
 const jsonString = '{"nombre": "Ana", "edad": 28}';
@@ -1789,7 +1779,7 @@ const objetoClonado = JSON.parse(JSON.stringify(objetoOriginal));
 7. `Las fechas en JSON`:
    JSON (JavaScript Object Notation) es un formato de intercambio de datos ligero y legible por humanos. Aunque JSON no tiene un tipo de dato específico para fechas, se pueden representar fechas como cadenas de texto en un formato estandarizado para su serialización y deserialización de la siguiente manera:
 
-Ejemplo práctico paso a paso:
+*Ejemplo práctico paso a paso:*
 
 1. Convierte la fecha a una cadena de texto en formato estándar ISO 8601 usando toISOString():
 
@@ -1906,8 +1896,6 @@ En resumen, los Métodos JSON en JavaScript ofrecen herramientas fundamentales p
 
 3. `Sintaxis de Template Strings`:
    La sintaxis básica de un Template String implica el uso de comillas invertidas (\`) para delimitar la cadena de texto. Las variables y expresiones se insertan utilizando `${}`. 
-   
-Ejemplo:
 
 ```javascript
 const nombre = "Alice";
@@ -1919,9 +1907,7 @@ console.log(mensaje);
 ```
 
 4. `Interpolación de Expresiones`:
-   Además de variables, puedes incrustar expresiones dentro de los Template Strings. Esto es útil para realizar operaciones y cálculos directamente en la cadena. 
-
-Ejemplo:
+   Además de variables, puedes incrustar expresiones dentro de los Template Strings. Esto es útil para realizar operaciones y cálculos directamente en la cadena.
 
 ```javascript
 const a = 5;
@@ -2017,7 +2003,7 @@ En resumen, los Template Strings en JavaScript son una herramienta valiosa para 
    - `console.prompt()`:
      *Nota:* Este método no es estándar y puede no funcionar en todos los navegadores. Muestra un cuadro de diálogo de entrada con un mensaje y un campo de entrada.
 
-Ejemplos utilizando Métodos de la Consola:
+*Ejemplos utilizando Métodos de la Consola:*
 
 Aquí hay ejemplos de cómo podríamos usar algunos de los métodos de la consola:
 
@@ -2068,28 +2054,30 @@ console.log(`Hola, ${respuesta}!`);
 
 
 
-**Sentencias Try Catch: Una Explicación Detallada**
+**Sentencias Try - Catch - Finally: Una Explicación Detallada**
 
-1. `Introducción a las Sentencias Try Catch`:
-Las sentencias `try` y `catch` en JavaScript son herramientas esenciales para manejar errores y excepciones en el código. Estas sentencias permiten controlar de manera controlada los errores que puedan surgir durante la ejecución de un programa, evitando que el flujo de ejecución se interrumpa abruptamente.
+1. `Introducción a las Sentencias Try Catch Finally`:
+Las sentencias `try` y `catch` en JavaScript son herramientas esenciales para manejar errores y excepciones en el código. Estas sentencias permiten controlar de manera controlada los errores que puedan surgir durante la ejecución de un programa, evitando que el flujo de ejecución se interrumpa abruptamente. Además, '`finally` permite ejecutar el código, después de `try` y `catch`, sin importarle de la resolución de la operación realizada, lo cual permite ejecutar código si o si.
 
 2. `Propósito y Beneficios de las Sentencias Try Catch`:
-El propósito principal de las sentencias `try` y `catch` es detectar errores en el código y proporcionar una forma de manejarlos sin que el programa se detenga por completo. Esto es especialmente útil en situaciones en las que no puedes predecir con certeza si ocurrirá un error, pero deseas tener un plan para manejarlo si sucede.
+El propósito principal de las sentencias `try` y `catch` es detectar errores en el código y proporcionar una forma de manejarlos sin que el programa se detenga por completo. Esto es especialmente útil en situaciones en las que no puedes predecir con certeza si ocurrirá un error, pero deseas tener un plan para manejarlo si sucede. Además contamos con `finally` que nos ayuda a ejecutar código sin importar la aparición de dichos errores.
 
-3. `Sintaxis y Uso de las Sentencias Try Catch`:
-La sintaxis básica de las sentencias `try` y `catch` es la siguiente:
+3. `Sintaxis y Uso de las Sentencias Try Catch Finally`:
+La sintaxis básica de las sentencias `try`, `catch` y `finally` es la siguiente:
 
 ```javascript
 try {
   // Bloque de código que podría generar un error
 } catch (error) {
   // Manejo del error
+} finally {
+  // Ejecuta el código independientemente de si produce un error o no, después de los bloques try y catch
 }
 ```
 
-Dentro del bloque `try`, colocas el código que podría lanzar una excepción. Si ocurre un error en ese bloque, el control se transfiere automáticamente al bloque `catch`, donde puedes definir cómo deseas manejar el error. El objeto `error` captura la información sobre el error que ocurrió.
+Dentro del bloque `try`, colocas el código que podría lanzar una excepción. Si ocurre un error en ese bloque, el control se transfiere automáticamente al bloque `catch`, donde puedes definir cómo deseas manejar el error. El objeto `error` captura la información sobre el error que ocurrió. `finally` por último nos avisa de la finalización del código o la ejecución de otro bloque independiente de resolución positiva o negativa.
 
-Ejemplo de uso de try-catch:
+*Ejemplo de uso de try-catch:*
 
 ```javascript
 try {
@@ -2097,6 +2085,8 @@ try {
   console.log(resultado);
 } catch (error) {
   console.error("Ocurrió un error:", error.message);
+} finally {
+  console.log("El proceso de ejecución del código ha terminado.")
 }
 ```
 
@@ -2207,13 +2197,13 @@ operacionAsincrona(() => {
 9. `Solución a Callback Hell, las Promesas`:
    Para manejar de manera más efectiva la complejidad y la legibilidad en el código asíncrono, JavaScript introdujo las promesas. Una promesa es un objeto que representa un valor futuro, que puede estar disponible o no. Las promesas proporcionan métodos como `.then()` y `.catch()` que permiten manejar de manera más ordenada y estructurada las tareas asíncronas.
 
-10. `Conceptos y ejemplos relacionados con el uso de funciones flecha como callbacks`:
+10. `Conceptos relacionados con el uso de funciones flecha como callbacks`:
    Las funciones flecha son una característica introducida en ECMAScript 6 (ES6) que ofrece una sintaxis más concisa y clara para definir funciones en JavaScript. Son especialmente útiles cuando se utilizan como callbacks, que son funciones pasadas como argumentos a otras funciones para que se ejecuten en un momento posterior o en respuesta a ciertas condiciones.
 
    `Contexto de this`:
    En JavaScript, el valor de `this` en una función puede variar dependiendo de cómo se llama la función. Esto puede ser confuso en algunas situaciones, especialmente cuando se utilizan funciones tradicionales como callbacks. Las funciones flecha abordan este problema al heredar el contexto de `this` del ámbito que las rodea. Esto significa que no tienen su propio contexto de `this`, lo que evita confusiones y errores comunes.
 
-Ejemplo con función tradicional como callback:
+   `Function standard como callback`:
 
 ```javascript
 function MiObjeto() {
@@ -2227,7 +2217,7 @@ const objeto = new MiObjeto();
 setTimeout(objeto.mostrarValor, 1000); // Aquí, "this" dentro de mostrarValor no apuntaría a objeto
 ```
 
-Ejemplo con función flecha como callback:
+   `Arrow function como callback`:
 
 ```javascript
 function MiObjeto() {
@@ -2244,7 +2234,7 @@ setTimeout(objeto.mostrarValor, 1000); // En este caso, "this" dentro de mostrar
    `Sintaxis Concisa`:
    Las funciones flecha usan una sintaxis más breve `() => {}`. Esta sintaxis reduce la necesidad de escribir la palabra clave `function`, y en muchos casos, permite omitir las llaves `{}` cuando el cuerpo de la función es una única expresión. Esto puede hacer que el código sea más legible, especialmente para funciones simples.
 
-Ejemplo de función tradicional:
+   `Function standard`:
 
 ```javascript
 const numeros = [1, 2, 3, 4];
@@ -2253,7 +2243,7 @@ const cuadrados = numeros.map(function(numero) {
 });
 ```
 
-Ejemplo de función flecha:
+   `Arrow function`:
 
 ```javascript
 const numeros = [1, 2, 3, 4];
@@ -2262,8 +2252,6 @@ const cuadrados = numeros.map(numero => numero * numero);
 
    `Compatibilidad con Closures`:
    Las funciones flecha heredan automáticamente las variables locales del ámbito que las rodea. Esto puede ser útil cuando deseas acceder a esas variables en tu función de callback.
-
-Ejemplo de compatibilidad con closures:
 
 ```javascript
 function contador() {
@@ -2293,8 +2281,6 @@ setTimeout(incrementar, 1000); // Cada vez que se llama, aumenta el valor de cou
    `En una función normal`:
    El valor de `this` en una función normal depende de cómo se llama la función. Puede ser el objeto global (`window` en un navegador), el objeto que llama la función o el objeto al que se adjunta el método.
 
-Ejemplo:
-
 ```javascript
 function saludar() {
   console.log(`Hola, ${this.nombre}`);
@@ -2311,8 +2297,6 @@ persona.decirHola(); // Imprime: "Hola, Juan"
    `En una función de objeto (método)`:
    El `this` en una función de objeto se refiere al objeto que contiene el método.
 
-Ejemplo:
-
 ```javascript
 const coche = {
   marca: "Toyota",
@@ -2327,8 +2311,6 @@ console.log(coche.obtenerMarca()); // Imprime: "Toyota"
    `En una función constructora`:
    El `this` dentro de un constructor se refiere a la instancia del objeto que se está creando.
 
-Ejemplo:
-
 ```javascript
 function Mascota(nombre) {
   this.nombre = nombre;
@@ -2340,8 +2322,6 @@ console.log(perro.nombre); // Imprime: "Fido"
 
    `En funciones flecha`:
    En las funciones flecha, `this` se hereda del contexto en el que se definió la función.
-
-Ejemplo:
 
 ```javascript
 const objeto = {
@@ -2358,7 +2338,7 @@ objeto.funcionNormal(); // Imprime: "valor"
 objeto.funcionFlecha(); // Imprime: undefined (dependiendo del contexto global)
 ```
 
-Ejemplo del uso de callbacks paso a paso:
+*Ejemplo del uso de callbacks paso a paso:*
 
 En el siguiente ejemplo utilizaremos las tres funciones asociadas para comprender mejor cómo utilizarlas
 
@@ -2422,7 +2402,7 @@ printAsyncName(saludar, nombre);
 
 Este código demuestra cómo trabajar con callbacks, programar tareas asíncronas y controlar el flujo de ejecución en JavaScript. Cada parte del código tiene un propósito específico para lograr el comportamiento deseado.
 
-Ejemplo Complejo - Simulación de Carga y Procesamiento de Datos:
+*Ejemplo Complejo - Simulación de Carga y Procesamiento de Datos:*
 
 Supongamos que estás desarrollando una aplicación que simula el proceso de descargar datos de un servidor y luego procesarlos. Utilizaremos callbacks para manejar este flujo.
 
@@ -2455,7 +2435,7 @@ descargarDesdeServidor("https://ejemplo.com/datos", (datosDescargados) => {
 });
 ```
 
-Explicación del Ejemplo Paso a Paso:
+Explicación del ejemplo paso a paso:
 
 1. Definimos una función `descargarDesdeServidor` que simula la descarga de datos desde un servidor utilizando un temporizador. Acepta una URL y un callback como parámetros.
 
@@ -2469,7 +2449,7 @@ Explicación del Ejemplo Paso a Paso:
 
 6. Iniciamos el flujo llamando a `descargarDesdeServidor` y pasándole un callback. Dentro de este callback, llamamos a `procesarDatos`, y dentro del callback de `procesarDatos`, llamamos a `mostrarResultado`.
 
-Ejemplo complejo en entorno asíncrono:
+*Ejemplo complejo en entorno asíncrono:*
 
 Simulando la lectura de un archivo utilizando el módulo `fs` en Node.js. Los callbacks son comunes en Node.js y se utilizan para manejar operaciones asíncronas, como la lectura y escritura de archivos.
 
@@ -2653,8 +2633,6 @@ leerArchivo("archivo.txt", (contenidoArchivo) => {
 3. `Sintaxis y Ejecución de las Promesas`:
    Las promesas se crean utilizando la clase `Promise`. Una promesa representa un valor que puede estar disponible ahora o en el futuro. Tiene dos posibles estados: `resolve` (cuando se está ejecutando y cuando se ha completado con éxito) o `reject` (cuando ha ocurrido un error).
 
-   Ejemplo:
-
 ```javascript
 const miPromesa = new Promise((resolve, reject) => {
   // Realizar operación asíncrona
@@ -2677,8 +2655,6 @@ miPromesa
 4. `Encadenamiento de Promesas`:
    Una de las ventajas clave de las promesas es la capacidad de encadenar múltiples operaciones asíncronas de manera secuencial. Esto hace que el código sea más legible y fácil de seguir.
 
-   Ejemplo:
-
 ```javascript
 realizarPrimeraOperacion()
   .then(resultadoPrimera => {
@@ -2698,8 +2674,6 @@ realizarPrimeraOperacion()
 5. `Promesas en Paralelo`:
    Las promesas también se pueden utilizar para ejecutar múltiples operaciones asíncronas en paralelo y esperar a que todas se completen antes de continuar.
 
-   Ejemplo:
-
 ```javascript
 const promesa1 = realizarOperacion1();
 const promesa2 = realizarOperacion2();
@@ -2716,8 +2690,6 @@ Promise.all([promesa1, promesa2, promesa3])
 
 6. `Async/Await - Simplificando el Uso de Promesas`:
    La sintaxis async/await es una forma más moderna y legible de trabajar con promesas. Permite escribir código asíncrono de manera similar a las funciones síncronas.
-
-   Ejemplo:
 
 ```javascript
 async function obtenerDatos() {
@@ -2758,7 +2730,7 @@ main();
 10. `Promesas vs. Callbacks`:
    Aunque los callbacks son fundamentales, las promesas brindan una estructura más ordenada y legible para trabajar con código asíncrono. Las promesas permiten evitar el Callback Hell y facilitan el gestión de errores. Async/await es una mejora adicional que hace que el código sea aún más claro.
 
-Ejemplo Completo de Async Code - Promesas:
+*Ejemplo Completo de Async Code - Promesas:*
 
 Simulación de Descarga y Procesamiento de Datos usando Promesas.
 
@@ -2846,7 +2818,7 @@ Explicación paso a paso:
 
 Este código simula una secuencia de descarga y procesamiento de datos utilizando promesas en JavaScript. Cada paso es manejado mediante el encadenamiento de `.then()` para las promesas exitosas, el uso de `.catch()` para manejar los errores y `finally()` para finalizar para especificar un bloque de código que se ejecutará independientemente de si la promesa se resuelve o se rechaza. Esto demuestra cómo las promesas proporcionan un flujo de trabajo estructurado y legible para operaciones asíncronas.
 
-Ejemplo complejo y realista explicado paso a paso:
+*Ejemplo complejo y realista explicado paso a paso:*
 
 Aquí tienes un ejemplo más realista para ayudarte a comprender mejor cómo funcionan las promesas en una situación práctica. Supongamos que estás construyendo una aplicación de gestión de usuarios y necesitas cargar la información de un usuario desde una API.
 
@@ -2906,7 +2878,7 @@ Paso a paso:
 
 Este ejemplo simula la carga de información del usuario desde una API utilizando promesas. La aplicación real podría tener flujos más complejos y manejar más escenarios de error, pero este es un buen punto de partida para comprender cómo funcionan las promesas en situaciones prácticas.
 
-Ejemplo aplicado:
+*Ejemplo aplicado:*
 
 Escribimos una promesa. Si la variable number es mayor que 10, devolveremos resolve, si no, el reject.
 Después manejaremos la promesa con .then, .catch y .finally.
@@ -2993,9 +2965,7 @@ En resumen, las promesas son una forma poderosa y estructurada de trabajar con c
 4. `Uso de Async / Await con Promesas`:
    Async / Await es especialmente útil al trabajar con funciones que devuelven promesas. Permite escribir código secuencial similar al código síncrono, lo que mejora la legibilidad y el mantenimiento.
 
-   Ejemplo:
-
-Aquí se ilustra cómo usar `async/await` para crear y manejar promesas en una situación similar.
+*Ejemplo aplicado:*
 
 ```javascript
 function simularConsultaDataBase() {
@@ -3026,9 +2996,9 @@ async function realizarTarea() {
 realizarTarea();
 ```
 
-En este ejemplo, la función `simularConsultaDB` devuelve una promesa que simula una consulta a una base de datos. Dependiendo de un valor aleatorio, la promesa se resuelve exitosamente o se rechaza para simular un error.
+En este ejemplo, la función `simularConsultaDataBase` devuelve una promesa que simula una consulta a una base de datos. Dependiendo de un valor aleatorio, la promesa se resuelve exitosamente o se rechaza para simular un error.
 
-La función `realizarTarea` utiliza `async/await` para consumir la promesa devuelta por `simularConsultaDB`. Si la consulta es exitosa, se muestra el mensaje de éxito. Si hay un error, se captura y maneja mediante el bloque `catch`, mostrando un mensaje de error.
+La función `realizarTarea` utiliza `async/await` para consumir la promesa devuelta por `simularConsultaDataBase`. Si la consulta es exitosa, se muestra el mensaje de éxito. Si hay un error, se captura y maneja mediante el bloque `catch`, mostrando un mensaje de error.
 
 Este ejemplo ilustra cómo puedes crear y usar promesas con `async/await` para manejar operaciones asíncronas de manera más legible y estructurada.
 
@@ -3084,13 +3054,13 @@ mostrarArticulos();
 10. `Compatibilidad y Uso`:
    Async / Await es compatible con la mayoría de los navegadores modernos y entornos de Node.js. Puede utilizarse en proyectos nuevos o añadirse gradualmente a proyectos existentes.
 
-Ejemplo práctico que simula una situación real utilizando `Async / Await` y `Finally`:
+*Ejemplo práctico que simula una situación real utilizando `Async / Await` y `Finally`:*
 
 Imaginemos que estás construyendo una aplicación que realiza transacciones financieras en una base de datos. Quieres asegurarte de que, sin importar el resultado de la transacción, la base de datos siempre se cierre adecuadamente. Utilizaremos `Async / Await` para manejar operaciones asíncronas y la cláusula `finally` para asegurarnos de que la base de datos se cierre correctamente.
 
 Supongamos que tienes una función `realizarTransaccion` que simula la realización de una transacción financiera en una base de datos. Quieres utilizar `Async / Await` para manejar la transacción y, en el bloque `finally`, asegurarte de que la base de datos siempre se cierre correctamente, independientemente de si la transacción se completó con éxito o no.
 
-Paso a paso:
+Explicación paso a paso:
 
 1. Importa la biblioteca o módulo necesario para manejar la base de datos. En este caso, para simplificar, supongamos que estamos utilizando una biblioteca ficticia llamada `basededatos`:
 
@@ -3151,16 +3121,71 @@ realizarTransaccion(montoTransaccion)
   });
 ```
 
-En este ejemplo:
+8. La función `realizarTransaccion` realiza varias operaciones asincrónicas simuladas, como abrir la conexión a la base de datos, iniciar y confirmar la transacción, y registrar la transacción financiera.
 
-- La función `realizarTransaccion` realiza varias operaciones asincrónicas simuladas, como abrir la conexión a la base de datos, iniciar y confirmar la transacción, y registrar la transacción financiera.
+9. En caso de que ocurra un error durante cualquier etapa de la transacción, se captura y se muestra en el bloque `catch`. Luego, el error se relanza para que pueda ser capturado por el exterior si es necesario.
 
-- En caso de que ocurra un error durante cualquier etapa de la transacción, se captura y se muestra en el bloque `catch`. Luego, el error se relanza para que pueda ser capturado por el exterior si es necesario.
+10. El bloque `finally` asegura que la base de datos se cierre correctamente, independientemente de si la transacción se realizó con éxito o no.
 
-- El bloque `finally` asegura que la base de datos se cierre correctamente, independientemente de si la transacción se realizó con éxito o no.
-
-- Al final, llamamos a la función `realizarTransaccion` con un monto de transacción y manejamos el resultado utilizando `then` y `catch`.
+11. Al final, llamamos a la función `realizarTransaccion` con un monto de transacción y manejamos el resultado utilizando `then` y `catch`.
 
 Este ejemplo ilustra cómo `Async / Await` y la cláusula `finally` pueden utilizarse en conjunto para manejar operaciones asíncronas, manejar errores y asegurarse de que se realicen acciones de limpieza o cierre, sin importar el resultado de la operación.
+
+*Mismo ejemplo simulando el Callback Hell:*
+
+Utilizamos `await` dentro de funciones `setTimeout` para simular operaciones asincrónicas retardadas y crear un `Callback hell`:
+
+```javascript
+const basededatos = require('basededatos');
+
+async function realizarTransaccion(monto) {
+  try {
+    await basededatos.abrirConexion();
+
+    setTimeout(async () => {
+      await basededatos.iniciarTransaccion();
+      console.log('Iniciando transacción...');
+
+      setTimeout(async () => {
+        const resultado = await basededatos.registrarTransaccion(monto);
+        console.log('Transacción registrada:', resultado);
+
+        setTimeout(async () => {
+          await basededatos.confirmarTransaccion();
+          console.log('Transacción confirmada.');
+
+        }, 2000); // Simula una operación de confirmación de 2 segundos
+
+      }, 1500); // Simula una operación de registro de 1.5 segundos
+
+    }, 1000); // Simula una operación de inicio de 1 segundo
+
+  } catch (error) {
+    console.error('Error durante la transacción:', error);
+    throw error;
+  } finally {
+    await basededatos.cerrarConexion();
+    console.log('Conexión a la base de datos cerrada.');
+  }
+}
+
+const montoTransaccion = 1000;
+
+realizarTransaccion(montoTransaccion)
+  .then(() => {
+    console.log('Transacción completada.');
+  })
+  .catch(error => {
+    console.error('Transacción fallida. Error:', error);
+  });
+```
+
+En este ejemplo, hemos envuelto las operaciones asincrónicas dentro de funciones `setTimeout` para simular operaciones retardadas. Cada operación se simula para demorar la ejecución por un cierto tiempo antes de continuar con la siguiente.
+
+La lógica general del ejemplo es similar al que mencioné anteriormente. Sin embargo, en este caso, cada operación se realiza después de un cierto retraso, simulando operaciones asincrónicas en un entorno de tiempo real.
+
+Ten en cuenta que las operaciones dentro de `setTimeout` siguen siendo asíncronas, por lo que utilizamos `await` dentro de cada una de ellas para asegurarnos de que las operaciones se completen antes de continuar con la siguiente. El bloque `finally` sigue asegurándose de que la base de datos se cierre correctamente sin importar el resultado de las operaciones.
+
+Recuerda que este ejemplo está simplificado y utiliza `setTimeout` para simular operaciones asincrónicas con retraso. En una situación real, podrías estar trabajando con APIs, bases de datos reales u otras operaciones asíncronas.
 
 En resumen, Async / Await es una valiosa adición a JavaScript que simplifica significativamente el manejo de operaciones asincrónicas. Proporciona una sintaxis más limpia y legible, lo que mejora la calidad del código y la experiencia de desarrollo en general. Con Async / Await, los desarrolladores pueden escribir código asincrónico de manera similar al código síncrono, lo que facilita la comprensión y el mantenimiento del código.
