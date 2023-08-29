@@ -3121,13 +3121,13 @@ realizarTransaccion(montoTransaccion)
   });
 ```
 
-8. La función `realizarTransaccion` realiza varias operaciones asincrónicas simuladas, como abrir la conexión a la base de datos, iniciar y confirmar la transacción, y registrar la transacción financiera.
+7. La función `realizarTransaccion` realiza varias operaciones asincrónicas simuladas, como abrir la conexión a la base de datos, iniciar y confirmar la transacción, y registrar la transacción financiera.
 
-9. En caso de que ocurra un error durante cualquier etapa de la transacción, se captura y se muestra en el bloque `catch`. Luego, el error se relanza para que pueda ser capturado por el exterior si es necesario.
+8. En caso de que ocurra un error durante cualquier etapa de la transacción, se captura y se muestra en el bloque `catch`. Luego, el error se relanza para que pueda ser capturado por el exterior si es necesario.
 
-10. El bloque `finally` asegura que la base de datos se cierre correctamente, independientemente de si la transacción se realizó con éxito o no.
+9. El bloque `finally` asegura que la base de datos se cierre correctamente, independientemente de si la transacción se realizó con éxito o no.
 
-11. Al final, llamamos a la función `realizarTransaccion` con un monto de transacción y manejamos el resultado utilizando `then` y `catch`.
+10. Al final, llamamos a la función `realizarTransaccion` con un monto de transacción y manejamos el resultado utilizando `then` y `catch`.
 
 Este ejemplo ilustra cómo `Async / Await` y la cláusula `finally` pueden utilizarse en conjunto para manejar operaciones asíncronas, manejar errores y asegurarse de que se realicen acciones de limpieza o cierre, sin importar el resultado de la operación.
 
