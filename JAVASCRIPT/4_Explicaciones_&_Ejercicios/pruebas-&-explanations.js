@@ -120,7 +120,7 @@ for (let cadaNumero of misNumeros) {
   console.log(multiplicacion); // Imprime resultado de la multiplicación de cada numero del array por 2.
 }
 
-// ------------------- ITERACIONES FOR...IN \ FOR IN \ FOR-IN: PARA OBJETO --------------------------------------
+// ------------------- ITERACIONES FOR...IN \ FOR IN \ FOR-IN \ Object.entries: PARA OBJETO --------------------------------------
 
 /* 
     Recuerda que: el ciclo `for in` itera sobre las `keys`.
@@ -158,6 +158,50 @@ function iterarEnObjeto(object) {
 }
 
 iterarEnObjeto(car);
+
+/* Object.entries */
+
+const persona = {
+  nombre: "Juan",
+  edad: 30,
+  direccion: {
+    calle: "Calle Principal",
+    ciudad: "Ciudad Ejemplo",
+  },
+};
+
+const arrFromEntries = Object.entries(persona);
+
+arrFromEntries[0][1] = "Pedro"; // Modifica el valor "Juan" a "Pedro"
+arrFromEntries[2][1].ciudad = "Otra Ciudad"; // Modifica la ciudad en la dirección
+arrFromEntries[1][1] = 41;
+
+console.log(persona.nombre); // Imprime "Pedro"
+console.log(persona.direccion.ciudad); // Imprime "Otra Ciudad"
+
+console.log(arrFromEntries);
+
+/* 
+Explicación del código:
+
+Definimos un objeto llamado persona con algunas propiedades, incluida una propiedad anidada direccion.
+
+Usamos Object.entries() para convertir el objeto persona en un array de pares clave-valor llamado arrFromEntries.
+
+Modificamos el valor en la posición [0][1] del array arrFromEntries. Esto afecta al primer par clave-valor en el array, que corresponde a la propiedad nombre del objeto persona. Cambiamos "Juan" a "Pedro".
+
+Modificamos la propiedad ciudad en la dirección del objeto anidado en la posición [2][1] del array arrFromEntries. Esto modifica la propiedad ciudad del objeto persona, cambiándola de "Ciudad Ejemplo" a "Otra Ciudad".
+
+Modificamos la edad en la posición [1][1] del array arrFromEntries. Esto cambia la propiedad edad del objeto persona de 30 a 41.
+
+Imprimimos el valor de la propiedad nombre del objeto persona. Como hemos modificado este valor en el array arrFromEntries, ahora imprime "Pedro".
+
+Imprimimos el valor de la propiedad ciudad en la dirección del objeto anidado persona. Como hemos modificado este valor en el array arrFromEntries, ahora imprime "Otra Ciudad".
+
+Imprimimos el contenido del array arrFromEntries en la consola, que muestra cómo se han modificado los valores dentro del array.
+
+En resumen, el código demuestra cómo modificar valores dentro del objeto persona utilizando el array arrFromEntries que fue creado a partir del objeto original utilizando Object.entries(). Sin embargo, ten en cuenta que los cambios se realizan indirectamente a través del array, no directamente en el objeto original.
+*/
 
 // ------------------- ITERACIONES FOR...OF \ FOR OF \ FOR-OF: PARA ARRAY --------------------------------------
 
@@ -610,7 +654,7 @@ console.log("Elementos eliminados:", removedElements); // Resultado: [3, 4]
 
 /* En JavaScript, el método .reduce() se utiliza para recorrer/iterar un arreglo/array y acumular sus elementos en un único valor. Se usa frecuentemente para realizar operaciones como sumar números, encontrar el valor máximo o mínimo, o cualquier otra operación que involucre combinar elementos del arreglo. */
 /* La sintaxis básica del método .reduce() es la siguiente: */
-const miValorFinal = array.reduce((acumulador, valorActual o indiceActual o array) => {
+const miValorFinal = array.reduce((acumulador, valorActual) => {
   // operaciones del código
 }, valorInicial);
 /* 
@@ -621,7 +665,7 @@ const miValorFinal = array.reduce((acumulador, valorActual o indiceActual o arra
       ·Valor Actual (opcional): El elemento actual en el arreglo que está siendo procesado.
       ·Índice Actual (opcional): El índice del elemento actual.
       ·Array (opcional): El arreglo original en el que se está iterando.
-4. valorInicial: Un valor inicial opcional para el acumulador. Si no se proporciona, se utilizará el primer elemento del arreglo como valor inicial del acumulador.
+4. valorInicial: Un valor inicial opcional para el acumulador, normalmente 0. Si no se proporciona, se utilizará el primer elemento del arreglo como valor inicial del acumulador.
 */
 
 /* Usando .reduce() para calcular la suma de los elementos del array */
@@ -656,6 +700,42 @@ const maximo = numerols.reduce((acumulador, valorActual) => Math.max(acumulador,
 
 console.log(maximo); // Salida: 11
 /* Recuerda que .reduce() puede ser poderoso, pero otros métodos de arreglo como .map(), .filter() y .forEach() podrían ser más apropiados para ciertas tareas. Es importante elegir el método adecuado según la operación específica que deseas realizar. */
+
+/* Tanto `.map()` como `.forEach()` son métodos de los arrays en JavaScript y se utilizan para iterar sobre los elementos de un array, pero tienen algunas diferencias clave en términos de su funcionamiento y el valor que devuelven. Aquí están las diferencias más importantes:
+
+1. Valor Devuelto:
+   - `.map()`: Devuelve un nuevo array que contiene los resultados de aplicar una función a cada elemento del array original. La longitud del nuevo array es la misma que la del array original.
+   - `.forEach()`: No devuelve ningún valor. La función se ejecuta para cada elemento del array, pero no crea un nuevo array.
+
+2. Efecto Secundario vs. Transformación:
+   - `.map()`: Se utiliza cuando deseas realizar una transformación en cada elemento del array original y crear un nuevo array basado en esas transformaciones.
+   - `.forEach()`: Se utiliza cuando deseas ejecutar una función en cada elemento del array sin necesariamente crear un nuevo array. Por lo general, se usa cuando estás interesado en el efecto secundario de la función (por ejemplo, imprimir valores en la consola) en lugar de generar un nuevo array.
+
+3. Uso de Resultados:
+   - `.map()`: Se utiliza cuando necesitas trabajar con una nueva colección de datos que es el resultado de aplicar alguna transformación a los elementos originales.
+   - `.forEach()`: Se utiliza cuando deseas ejecutar una operación en cada elemento del array sin necesidad de generar un nuevo array.
+
+4. Modificación del Array Original:
+   - `.map()`: No modifica el array original. Crea un nuevo array con los resultados de la función aplicada a cada elemento.
+   - `.forEach()`: No modifica el array original. Se utiliza principalmente para efectos secundarios, como impresiones en consola, cambios de estado externo, etc.
+
+5. Encadenamiento:
+   - `.map()`: Puedes encadenar métodos después de `.map()` para seguir aplicando operaciones en el nuevo array.
+   - `.forEach()`: Como no devuelve un valor, no es posible encadenar métodos directamente después de `.forEach()`.
+
+Ejemplos: */
+
+
+const nmbers = [1, 2, 3];
+
+// Ejemplo de .map() - creando un nuevo array
+const duplicados = nmbers.map(numero => numero * 2); // [2, 4, 6]
+
+// Ejemplo de .forEach() - efecto secundario
+nmbers.forEach(numero => console.log(numero * 2)); // Imprime 2, 4, 6
+
+
+/* En resumen, utiliza `.map()` cuando necesitas transformar elementos y crear un nuevo array basado en esas transformaciones, y utiliza `.forEach()` cuando deseas ejecutar una función en cada elemento del array sin necesariamente crear un nuevo array. Ambos métodos tienen sus propios casos de uso específicos dependiendo de tus necesidades. */
 
 // ---------- FUNCION ES PRIMO O NO ES PRIMO / BUSCAR NUMEROS PRIMOS--------------
 
