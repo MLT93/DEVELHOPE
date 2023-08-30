@@ -608,18 +608,40 @@ console.log("Elementos eliminados:", removedElements); // Resultado: [3, 4]
 
 
 
-/* En JavaScript, el método .reduce() se utiliza para recorrer un arreglo y acumular sus elementos en un único valor. Se usa frecuentemente para realizar operaciones como sumar números, encontrar el valor máximo o mínimo, o cualquier otra operación que involucre combinar elementos del arreglo. */
+/* En JavaScript, el método .reduce() se utiliza para recorrer/iterar un arreglo/array y acumular sus elementos en un único valor. Se usa frecuentemente para realizar operaciones como sumar números, encontrar el valor máximo o mínimo, o cualquier otra operación que involucre combinar elementos del arreglo. */
 /* La sintaxis básica del método .reduce() es la siguiente: */
-array.reduce(callback, valorInicial);
+const miValorFinal = array.reduce((acumulador, valorActual o indiceActual o array) => {
+  // operaciones del código
+}, valorInicial);
 /* 
-1. array: El arreglo en el que deseas operar.
-2. callback: Una función que se ejecuta en cada elemento del arreglo. Tiene cuatro argumentos:
-    ·Acumulador: El valor que se está acumulando mientras la función recorre el arreglo.
-    ·Valor Actual: El elemento actual en el arreglo que está siendo procesado.
-    ·Índice Actual: El índice del elemento actual.
-    ·Arreglo Fuente: El arreglo original en el que se está operando.
-    ·valorInicial: Un valor inicial opcional para el acumulador. Si no se proporciona, se utilizará el primer elemento del arreglo como valor inicial del acumulador.
+1. array: El arreglo en el que deseas operar + .reduce().
+2. .reduce(): ponemos una función y un valor inicial.
+3. función callback: una función que se ejecuta en cada elemento del arreglo y que acepta 3 argumentos a su vez:
+      ·Acumulador (obligatorio): El valor que se está acumulando mientras la función  recorre el arreglo.
+      ·Valor Actual (opcional): El elemento actual en el arreglo que está siendo procesado.
+      ·Índice Actual (opcional): El índice del elemento actual.
+      ·Array (opcional): El arreglo original en el que se está iterando.
+4. valorInicial: Un valor inicial opcional para el acumulador. Si no se proporciona, se utilizará el primer elemento del arreglo como valor inicial del acumulador.
 */
+
+/* Usando .reduce() para calcular la suma de los elementos del array */
+const nume = [10, 5, 3, 7, 2];
+
+const numerosSumados = nume.reduce((contador, valor) => {
+  return contador + valor;
+}, 0);
+
+console.log(`La suma de los números es: ${numerosSumados}`);
+
+/* Usando .reduce() para encontrar el número más grande en el array */
+const numb = [10, 5, 3, 7, 2];
+
+const numeroMasGrande = numb.reduce((acumulador, valorActual) => {
+  return valorActual > acumulador ? valorActual : acumulador;
+}, numb[0]); /* Inicializamos el acumulador con el primer valor del array */
+
+console.log(`El número más grande es: ${numeroMasGrande}`);
+
 
 /* Aquí tienes un ejemplo de cómo podrías usar .reduce() para encontrar la suma de un arreglo de números: */
 const numeros = [1, 2, 3, 4, 5];
