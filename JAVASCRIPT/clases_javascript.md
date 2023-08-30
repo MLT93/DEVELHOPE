@@ -2979,57 +2979,33 @@ Escribimos una segunda `promesa` que toma como parámetro una variable de tipo n
 Una vez hecho esto, intente encadenar las promesas para eventualmente devolver el objeto final `{nombre: "John", edad: 24}`
 
 ```javascript
-const isLogged = true;
+const number = 15;
 
-const miPromesa = (isLogged) => {
+/* Creas una función para que haga una nueva Promise con resolve y reject como argumentos.
+Adentro creas el setTimeout con un delay en milisegundos.
+En el interior haces un if-else y, si es correcta la condición devuelves resolve, si no, el reject */
+const esMayorQue10 = (number) => {
   return new Promise((resolve, reject) => {
-    const intervalID = setInterval(() => {
-      // guardo una variable con el ID del setInterval para después parar los intervalos de mi función
-      if (isLogged === true) {
-        const number = new Number(isLogged); // isLogged vale 1, porque está en true
-        const randomNumber = Math.random() * number; // creo una variable con números aleatorios entre el 0 y 1
-        resolve(randomNumber); // Resuelve randomNumber, si isLogged es true, devolviendo un número aleatorio
-      } else {
-        // Devuelve false cuando rechaza isLogged porque el usuario no está logueado
-        reject(`El usuario no esta logueado -> isLogged = ${isLogged}`);
-      }
-    }, 2000);
-    // Creo un setTimeout para parar la ejecución de setInterval con el clearInterval(intervalID) después de 4 segundos
     setTimeout(() => {
-      clearInterval(intervalID);
-    }, 4000);
+      if (number > 10) {
+        resolve(number);
+      } else {
+        reject("El número es menor que 10.");
+      }
+    }, 1500);
   });
 };
 
-const miSegundaPromesa = (number) => {
-  return new Promise((resolve, reject) => {
-    // Si el número que le paso es mayor que 0.5 me resuelve con un objeto
-    if (number > 0.5) {
-      // Uso un setTimeout para simular un tiempo de espera
-      setTimeout(() => {
-        resolve({ nombre: "John", edad: 24 });
-      }, 3000);
-      // Manejo el error
-    } else {
-      reject("El número no es mayor a 0.5");
-    }
-  });
-};
-
-/* Llamo a mi función pasándole los valores de resolve y reject */
-miPromesa(isLogged)
-  // utilizo el primer resolve para ver si el usuario está logueado o no e imprimo su resultado
-  .then((result) => {
-    console.log(`El usuario está logueado y el número aleatorio es: ${result}`);
-    return miSegundaPromesa(result); // Encadenar la segunda promesa
-  })
-  // Usar el otro resolve para devolver el objeto { nombre: "John", edad: 24 } gracias a la otra promesa encadenada
-  .then((result) => {
-    console.log("Datos del usuario:", result);
+/* Llamas a la función y le pasas los .then() para el resolve, .catch() para el reject y .finally() para que nos diga si hemos acabado el proceso */
+esMayorQue10(number)
+  .then((number) => {
+    console.log("Número correcto:", number);
   })
   .catch((error) => {
-    // Utilizo el mensaje dentro del reject e imprimo un error de advertencia
-    console.error(`Error: ${error}`);
+    console.error("El número introducido no es correcto.", error);
+  })
+  .finally(() => {
+    console.log("Proceso de carga finalizado.");
   });
 ```
 
@@ -3052,6 +3028,8 @@ Déjame explicarte el flujo paso a paso:
 8. En el segundo `.then()`, los "Datos del usuario" se resuelven y se muestran en la consola.
 
 9. Si en algún punto las promesas se rechazan (debido a que el usuario no está logueado o el número no es mayor que 0.5), se captura el error en el `.catch()` y se muestra en la consola.
+
+10. Después que se realice el proceso del `.then(() => {})` y el `.catch(() => {})` entra en acción el bloque `.finally(() => {})` para mandar un mensaje para avisar que el proceso de ejecución se ha terminado.
 
 El código utiliza promesas encadenadas para simular operaciones asíncronas secuenciales y maneja los resultados y errores en consecuencia. ¡Bien hecho!
 
