@@ -1,76 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    body {
-      display: flex;
-      flex-flow: column wrap;
-      align-items: center;
-    }
+      .card {
+        display: flex;
+        flex-flow: column wrap;
 
-    .card {
-      display: flex;
-      flex-flow: column wrap;
+        border: 1px solid black;
+        padding: 20px;
+        margin: 10px;
 
-      border: 1px solid black;
-      padding: 20px;
-      margin: 10px;
+        width: 200px;
 
-      width: 200px;
+        text-align: center;
 
-      text-align: center;
+        box-shadow: 2px 2px 7px 1px black;
+      }
 
-      box-shadow: 2px 2px 7px 1px black;
-    }
+      img {
+        width: 200px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
 
-    img {
-      width: 200px;
-      border: 1px solid black;
-    }
-  </style>
-</head>
+  <body>
+    <h1>Ricky & Morty Characters</h1>
+    <div id="character-container"></div>
 
-<body>
-  <h1>
-    Ricky & Morty Characters
-  </h1>
-  <div id="character-container"></div>
+    <script>
+      const fetchData = async () => {
+        try {
+          const response = await fetch(
+            "https://rickandmortyapi.com/api/character",
+            {},
+          );
 
-  <script>
-    const fetchData = async () => {
-      try {
-        const response = await fetch("https://rickandmortyapi.com/api/character", {
+          const data = await response.json();
 
-        });
+          const characterContainer = document.getElementById(
+            "character-container",
+          );
 
-        const data = await response.json();
+          data.results.forEach((character) => {
+            const card = document.createElement("div");
 
-        const characterContainer = document.getElementById('character-container');
+            card.classList.add("card");
 
-        data.results.forEach(character => {
-          const card = document.createElement("div");
-
-          card.classList.add("card");
-
-          card.innerHTML = `
+            card.innerHTML = `
           <h2>${character.name}</h2>
           <p>Status: ${character.status}</p>
           <p>Species: ${character.species}</p>
           <img src="${character.image}" alt="${character.name}"/>
-        `
-          characterContainer.appendChild(card);
-        });
-      } catch (err) {
-        console.error(`Error fetching data: ${err}`)
-      }
-    };
+        `;
+            characterContainer.appendChild(card);
+          });
+        } catch (err) {
+          console.error(`Error fetching data: ${err}`);
+        }
+      };
 
-    fetchData();
-  </script>
-</body>
-
+      fetchData();
+    </script>
+  </body>
 </html>
