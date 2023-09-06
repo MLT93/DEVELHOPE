@@ -3342,9 +3342,9 @@ En última instancia, la elección entre `async/await` y `Promise` depende de tu
 
    La función `fetch()` es una función de JavaScript que se utiliza para realizar solicitudes de red a recursos en la web, como archivos JSON, HTML, imágenes u otros tipos de datos. Esta función se utiliza principalmente en aplicaciones web para interactuar con servidores y obtener o enviar datos de manera asíncrona. A partir de mi última actualización en septiembre de 2021, aquí tienes una descripción de cómo funciona y los 2 argumentos que recibe:
    
-   ```javascript
-   fetch('url', {options});
-   ```
+    ```javascript
+    fetch('url', {options});
+    ```
    
     1. `url` (obligatorio): Es la URL del recurso al que deseas acceder. Puede ser una cadena que contenga la dirección completa o relativa del recurso que deseas solicitar.
    
@@ -3634,23 +3634,23 @@ En última instancia, la elección entre `async/await` y `Promise` depende de tu
 
       - `signal`: Permite proporcionar una señal AbortController para cancelar la solicitud si es necesario.
 
-La función `fetch()` devuelve una promesa que se resuelve cuando la solicitud se completa, ya sea con éxito o con un error. Puedes encadenar métodos `.then()` y `catch` o `try` y `catch` para manejar la respuesta de la solicitud y manejar los datos devueltos y/o los errores.
+   La función `fetch()` devuelve una promesa que se resuelve cuando la solicitud se completa, ya sea con éxito o con un error. Puedes encadenar métodos `.then()` y `catch` o `try` y `catch` para manejar la respuesta de la solicitud y manejar los datos devueltos y/o los errores.
 
-```javascript
-fetch('https://api.example.com/data')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('No se pudo obtener la respuesta.', response.status);
-    }
-    return response.json(); // Parsea la respuesta a JSON para trabajar con ella
-  })
-  .then(data => {
-    console.log(data); // Haz algo con los datos
-  })
-  .catch(error => {
-    console.error('Hubo un error:', error);
-  });
-```
+    ```javascript
+    fetch('https://api.example.com/data')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('No se pudo obtener la respuesta.', response.status);
+        }
+        return response.json(); // Parsea la respuesta a JSON para trabajar con ella
+      })
+      .then(data => {
+        console.log(data); // Haz algo con los datos
+      })
+      .catch(error => {
+        console.error('Hubo un error:', error);
+      });
+    ```
 
    - `fetch('URL')` inicia una solicitud HTTP a la URL especificada.
 
@@ -3663,89 +3663,89 @@ fetch('https://api.example.com/data')
 4. **`Métodos HTTP de Fetch`:**
    Fetch admite varios métodos HTTP, como GET, POST, PUT, PATCH y DELETE, que se pueden especificar en la solicitud.
 
-```javascript
-fetch('https://api.example.com/users', {
-  method: 'POST',
-  body: JSON.stringify({ name: 'John', age: 30 }),
-  headers: {
-    'Content-Type': 'application/json'
-  }
-})
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-```
+    ```javascript
+    fetch('https://api.example.com/users', {
+      method: 'POST',
+      body: JSON.stringify({ name: 'John', age: 30 }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    ```
 
    En este caso, se realiza una solicitud POST enviando datos JSON al servidor.
 
 5. **`Headers y Opciones de Fetch`:**
    Fetch permite configurar encabezados personalizados y otras opciones en la solicitud. Puedes incluir encabezados de autorización, establecer el tipo de contenido y más.
 
-```javascript
-fetch('https://api.example.com/data', {
-  headers: {
-    Authorization: 'Bearer token123',
-    'Content-Type': 'application/json'
-  }
-})
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-```
+    ```javascript
+    fetch('https://api.example.com/data', {
+      headers: {
+        Authorization: 'Bearer token123',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    ```
 
 6. **`Funciones Relacionadas: async/await`:**
    Además de utilizar `.then()` y `.catch()` para manejar promesas, puedes aprovechar `async` y `await` para escribir código más legible y síncrono en torno a Fetch.
 
-```javascript
-async function obtenerDatos() {
-  try {
-    const response = await fetch('https://api.example.com/data'); // Obtiene la respuesta
-    if (!response.ok) {
-      throw new Error('No se pudo obtener la respuesta.', response.status); // Este if sobre la creación de un nuevo error, es opcional, en este caso.
+    ```javascript
+    async function obtenerDatos() {
+      try {
+        const response = await fetch('https://api.example.com/data'); // Obtiene la respuesta
+        if (!response.ok) {
+          throw new Error('No se pudo obtener la respuesta.', response.status); // Este if sobre la creación de un nuevo error, es opcional, en este caso.
+        }
+        const data = await response.json(); // Parsea la respuesta
+        console.log(data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
     }
-    const data = await response.json(); // Parsea la respuesta
-    console.log(data);
-  } catch (error) {
-    console.error('Error:', error);
-  }
-}
 
-obtenerDatos();
-```
+    obtenerDatos();
+    ```
 
    Usando `async` y `await`, el código se asemeja más a un estilo síncrono, lo que lo hace más fácil de entender y mantener.
 
 7. **`Funciones Relacionadas: Promesas`:**
    Fetch devuelve una promesa que se resuelve con la respuesta de la solicitud HTTP. Puedes utilizar promesas para manejar las respuestas de Fetch de manera más modular y reutilizable.
 
-```javascript
-function obtenerDatos() {
-  return fetch('https://api.example.com/data')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('No se pudo obtener la respuesta.');
-      }
-      return response.json();
-    });
-}
+    ```javascript
+    function obtenerDatos() {
+      return fetch('https://api.example.com/data')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('No se pudo obtener la respuesta.');
+          }
+          return response.json();
+        });
+    }
 
-// Luego puedes usar obtenerDatos() en otros lugares de tu código
-obtenerDatos()
-  .then(data => {
-    console.log(data);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-```
+    // Luego puedes usar obtenerDatos() en otros lugares de tu código
+    obtenerDatos()
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    ```
 
    Al encapsular la lógica de Fetch en una función que devuelve una promesa, puedes reutilizarla en múltiples partes de tu aplicación.
 
@@ -3795,21 +3795,21 @@ En resumen, la Fetch API y las funciones relacionadas, como async/await y promes
 10. **`Ejemplo de uso de CORS Hints`:**
    A continuación, se presenta un ejemplo simplificado de cómo utilizar CORS Hints para diagnosticar y resolver problemas de CORS en una aplicación web:
 
-```javascript
-fetch('https://api.ejemplo.com/data')
-  .then(response => {
-    if (!response.ok) {
-      console.error('Error de solicitud:', response.status, response.statusText);
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log('Datos recibidos:', data);
-  })
-  .catch(error => {
-    console.error('Error de red:', error);
-  });
-```
+    ```javascript
+    fetch('https://api.ejemplo.com/data')
+      .then(response => {
+        if (!response.ok) {
+          console.error('Error de solicitud:', response.status, response.statusText);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Datos recibidos:', data);
+      })
+      .catch(error => {
+        console.error('Error de red:', error);
+      });
+    ```
 
    En este ejemplo, si se produce un problema de CORS, la consola del navegador proporcionará pistas sobre el motivo del bloqueo, lo que facilita la solución de problemas.
 
