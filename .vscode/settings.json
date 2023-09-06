@@ -4,7 +4,7 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "cSpell.words": ["Morty", "Publicacion"],
+  "cSpell.words": ["Morty", "pokemon", "Publicacion"],
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
