@@ -116,8 +116,8 @@ misNumeros.forEach((argumentoNum) => {
 // 3ª FORMA DE ITERACIÓN DEL MISMO ARRAY
 for (let cadaNumero of misNumeros) {
   // El bucle FOR...OF (pertenece al ECMAScript 2015, ES6) se utiliza para iterar sobre arrays, strings (que es un array de letras), array de objetos y todo aquello que es iterable. Lo que hace, es pasar por cada elemento de un array (itera sobre de él) y trabaja el código que yo le introduzca.
-  let multiplicacion = cadaNumero * 2; // Código introducido.
-  console.log(multiplicacion); // Imprime resultado de la multiplicación de cada numero del array por 2.
+  let multiplication = cadaNumero * 2; // Código introducido.
+  console.log(multiplication); // Imprime resultado de la multiplicación de cada numero del array por 2.
 }
 
 // ------------------- ITERACIONES FOR...IN \ FOR IN \ FOR-IN \ Object.entries: PARA OBJETO --------------------------------------
