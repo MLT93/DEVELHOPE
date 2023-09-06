@@ -159,14 +159,14 @@ function iterarEnObjeto(object) {
 
 iterarEnObjeto(car);
 
-/* Object.entries */
+/* Object.entries crea un array de arrays [['key', 'value'], ['key', 'value'], ['key', '{ value }']]*/
 
-const persona = {
-  nombre: "Juan",
-  edad: 30,
-  direccion: {
-    calle: "Calle Principal",
-    ciudad: "Ciudad Ejemplo",
+const persona = {                               
+  nombre: "Juan",                                     
+  edad: 30,                                     
+  dirección: {
+    calle: "Calle Principal",                   
+    ciudad: "Ciudad Ejemplo",                     
   },
 };
 
@@ -177,14 +177,20 @@ arrFromEntries[2][1].ciudad = "Otra Ciudad"; // Modifica la ciudad en la direcci
 arrFromEntries[1][1] = 41;
 
 console.log(persona.nombre); // Imprime "Pedro"
-console.log(persona.direccion.ciudad); // Imprime "Otra Ciudad"
+console.log(persona.dirección.ciudad); // Imprime "Otra Ciudad"
 
-console.log(arrFromEntries);
+console.log(arrFromEntries); /* Imprime:
+[
+  [ 'nombre', 'Pedro' ],
+  [ 'edad', 41 ],
+  [ 'dirección', { calle: 'Calle Principal', ciudad: 'Otra Ciudad' } ]
+]
+*/
 
 /* 
 Explicación del código:
 
-Definimos un objeto llamado persona con algunas propiedades, incluida una propiedad anidada direccion.
+Definimos un objeto llamado persona con algunas propiedades, incluida una propiedad anidada dirección.
 
 Usamos Object.entries() para convertir el objeto persona en un array de pares clave-valor llamado arrFromEntries.
 
@@ -1547,7 +1553,7 @@ switch (room) {
     console.log("El precio de la Master Suite son 100£");
     break;
   default:
-    console.log("Esta habitacion no esta disponible");
+    console.log("Esta habitación no esta disponible");
 }
 
 // Marcos PRODIGY
@@ -1675,10 +1681,10 @@ let arrayImpar = [];
 function comprobarParImpar(variableNumero) {
   // La <variableNumero> hace referencia al número que yo le pondré a la función cuando la "llame" fuera de su código.
   for (let num = 0; num <= variableNumero; num++) {
-    // En este caso, la función <comprobarParImpar> está diseñada para verificar si los números del 0 a <variableNumero> son pares o impares. Uso el parámetro <variableNumero> para compararlo con la variable <num> para utilizarlo dentro del código y así poderle asignar a la funcion un número cualquiera cuando la llamo.
+    // En este caso, la función <comprobarParImpar> está diseñada para verificar si los números del 0 a <variableNumero> son pares o impares. Uso el parámetro <variableNumero> para compararlo con la variable <num> para utilizarlo dentro del código y así poderle asignar a la función un número cualquiera cuando la llamo.
     if (num % 2 === 0) {
       // L’operatore resto <%> non è legato alla percentuale. Il risultato di <%> è il resto della divisione intera di <num> diviso <2>. Ad esempio: 5 / 2 = 1, con resto 1. È lo stesso che fare: 2 * 2 = 4, ma fino al 5 abbiamo resto di 1.
-      arrayPar.push(`El Número ${num} es par.`); // Con el <.push> agrago al <arrayPar> los número pares, en éste caso.
+      arrayPar.push(`El Número ${num} es par.`); // Con el <.push> agrego al <arrayPar> los número pares, en éste caso.
       console.log(arrayPar);
     } else {
       arrayImpar.push(`El número ${num} es impar.`); // Almaceno números impares.
@@ -1744,7 +1750,7 @@ let cajaDeNumeros = 0;
 for (let num = 0; num <= 10; num++) {
   console.log("La vuelta del bucle va así -> " + num);
   cajaDeNumeros = cajaDeNumeros + num;
-  // console.log("La suma de los números a medida que el búcle va girando es " + cajaDeNumeros)
+  // console.log("La suma de los números a medida que el bucle va girando es " + cajaDeNumeros)
 }
 
 console.log("La suma de los números = " + cajaDeNumeros);
@@ -1840,7 +1846,7 @@ let teamMembers = [
   ];
   
   /* La función .sort() se utiliza en el array (teamMembers) para ordenar sus elementos. Recibe una función de comparación como argumento para determinar el orden de los elementos, que sería la arrow function (prev, next) => { ... } que utilizamos para comparar los atributos/elementos "prev" y "next".
-  Luego comparamos las variables fa y fb, que contienen los atributos/elementos (a) con las propiedades de los apellidos (.suranme) escritas en minúsculas (.toLowerCase).
+  Luego comparamos las variables fa y fb, que contienen los atributos/elementos (a) con las propiedades de los apellidos (.surname) escritas en minúsculas (.toLowerCase).
   Si (if) (prevSurname) es menor (<) que (nextSurname), se retorna (return) (-1), lo que indica que a se pondrá antes de b en el ordenamiento de los elementos. Si (if) (prevSurname) es mayor (>) que (nextSurname), se retorna (return) (1), lo que indica que a debe ubicarse después de b en el ordenamiento. En el caso de que nada de lo anterior se cumpla, se devuelve (return) (0), lo que indica que no hay diferencia en el orden relativo de prev y next. */
   teamMembers.sort((prev, next) => {
     /* .toLowerCase() convierte todas las letras a minúsculas. */
@@ -1853,7 +1859,7 @@ let teamMembers = [
   
       return 0;
   });
-  /* Imprimo por consola un titulo relativo a la funcion, para mejorar su lectura */
+  /* Imprimo por consola un titulo relativo a la función, para mejorar su lectura */
   console.log("Los miembros del grupo son:")
 
   /* Por cada (.forEach) atributo/elemento (element) que hay en el array (teamMembers), devuelve (return) e imprime por consola (console.log()) la propiedad (.surname) del elemento (element) y también la propiedad nombre del mismo elemento (element.name)*/
@@ -1861,7 +1867,7 @@ let teamMembers = [
   console.log(`   ${element.surname} ${element.name} `)
   });
   
-  /* Imprimo por consola un titulo relativo a la funcion, para mejorar su lectura */
+  /* Imprimo por consola un titulo relativo a la función, para mejorar su lectura */
   console.log("La edad de los miembros del grupo es:")
 
   /* El (.sort) nos compara los atributos/elementos al interno del array, ordenándolos y nos devuelve (return) el mismo arreglo de forma ordenada, después de hacer una comparación entre el parametro "a" y el parametro "b" */
@@ -1884,35 +1890,35 @@ let teamMembers = [
   teamMembers.forEach(atributo => {
     return sumaDeEdades = sumaDeEdades + atributo.age /* también se puede escribir así: sumarEdades += atributo.age */
   });
-  /* creo una variable para guardar el valor de la media de edades (una media se realiza sumando todos los valores entre sí y dividiéndo el resultado entre la cantidad de valores dados) y finalmente imprimo el resultado por consola */
+  /* creo una variable para guardar el valor de la media de edades (una media se realiza sumando todos los valores entre sí y dividiendo el resultado entre la cantidad de valores dados) y finalmente imprimo el resultado por consola */
   console.log("La edad media del equipo es:", sumaDeEdades / cantidadDeEdadesEnElArray);
   
 
-  /* Imprimo por consola un titulo relativo a la funcion, para mejorar su lectura */
+  /* Imprimo por consola un titulo relativo a la función, para mejorar su lectura */
   console.log("Quién es fanático de League Of Legends?")
 
   /* Por cada atributo/elemento del array: 
-  creo una variable (let juegoFavorito) para almacenar las propiedades (.favoriteVideoGame) del atributo/elemento (atribute) del array
+  creo una variable (let juegoFavorito) para almacenar las propiedades (.favoriteVideoGame) del atributo/elemento (attribute) del array
   Después digo, Si (if) la variable (let juegoFavorito) sin importar si está escrito en mayúsculas o minúsculas (.toLowerCase) es estrictamente equivalente (===) a "lol" o (||) "league of legends"
   devuelve (return) e imprime por consola (console.log()) que se juega a ese juego */
-  teamMembers.forEach(atribute => {
-    let juegoFavorito = atribute.favoriteVideoGame
+  teamMembers.forEach(attribute => {
+    let juegoFavorito = attribute.favoriteVideoGame
     if (
       juegoFavorito.toLowerCase() === "lol" || juegoFavorito.toLowerCase() === "league of legends"
       ) {
-        console.log(`   ${atribute.name} es un fanático del Lol`);
+        console.log(`   ${attribute.name} es un fanático del Lol`);
     } 
     if (
         juegoFavorito.toLowerCase() !== "lol" && juegoFavorito.toLowerCase() !== "league of legends"
     ) {
-        console.log(`   ${atribute.name} no pierde la vida en el Lol`)
+        console.log(`   ${attribute.name} no pierde la vida en el Lol`)
     }
   });
 
-  /* Imprimo por consola un titulo relativo a la funcion, para mejorar su lectura */
+  /* Imprimo por consola un titulo relativo a la función, para mejorar su lectura */
   console.log("Mascota o mascotas que tienen los participantes del grupo:")
   
-  /* Creo una funcón con un parametro (function petAtribute (arr)) para saber qué mascotas tiene cada miembro del team y si ha rellenado la casilla de petName */
+  /* Creo una función con un parametro (function petAtribute (arr)) para saber qué mascotas tiene cada miembro del team y si ha rellenado la casilla de petName */
   function petAtribute(arr) {
     /* Recorro el array completo utilizando un bucle (for) */
     for (let i = 0; i < arr.length; i++) {
@@ -1932,7 +1938,7 @@ let teamMembers = [
     };
   };
   petAtribute(teamMembers);
-  /** Las ĺineas de codigo desde la linea #135 hasta la linea #154 pueden ser reemplazadas por algo mas simple: 
+  /** Las lineas de código desde la linea #135 hasta la linea #154 pueden ser reemplazadas por algo mas simple: 
   
    * teamMembers.forEach((member) => {
         if(member.petName){
@@ -1970,7 +1976,7 @@ let teamMembers = [
 
 
 /** Otra forma de encontrar los nombres repetidos:
- * Funcion para encontrar nombres repetidos entre los miembros del equipo
+ * Function para encontrar nombres repetidos entre los miembros del equipo
  * 
  * @param {teamMembers} array - array de miembros del equipo
  */
