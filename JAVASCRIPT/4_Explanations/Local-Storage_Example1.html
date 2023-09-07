@@ -9,41 +9,59 @@
 
 <body>
   <h1>titulo</h1>
-  <button onclick="guardarDatos()">guardar datos</button>
-  <button onclick="recuperarDatos()">recuperar datos</button>
-  <button onclick="reset()">resetear</button>
-  <button onclick="modificar()">modificar</button>
-  <button onclick="eliminarItem()">eliminar item</button>
+  <button onclick="setStorage()">guardar datos</button>
+  <button onclick="getStorage()">recuperar datos</button>
+  <button onclick="clearStorage()">resetear</button>
+  <button onclick="modifyStorage()">modificar</button>
+  <button onclick="removeStorageItem()">eliminar item</button>
   <script>
-    /* Guardamos los datos en el Local Storage del navegador con el .setItem() */
-    function guardarDatos() {
-      const clave = "name";
-      const valor = "Juan"
-      localStorage.setItem(clave, valor)
+    /* Guardamos los datos en el Local Storage del navegador con el .setItem(key, value) */
+    function setStorage() {
+
+      /* Con variables */
+      const key = "name";
+      const value = "John"
+      localStorage.setItem(key, value)
+
+      /* Sin variables */
       localStorage.setItem("edad", 19)
+
     }
-    /* Recuperamos el Local Storage */
-    function recuperarDatos() {
+    /* Recuperamos el Local Storage con .getItem(key) */
+    function getStorage() {
+
+      /* Accedo a través del localStorage */
       const name = localStorage.getItem("name")
 
+
+      /* Accedo a través de las variables */
       const clave = "edad"
       const edad = localStorage.getItem(clave)
       console.log(name, edad)
+
     }
-    /* Limpiamos el Local Storage */
-    function reset() {
+    /* Limpiamos el Local Storage por completo con .clear() */
+    function clearStorage() {
+
       localStorage.clear()
+
     }
-    /* Modifico singularmente los valores en el Local Storage */
-    function modificar() {
-      const clave = "name";
+    /* Modifico singularmente los valores en el Local Storage con un nuevo .setItem(key, value) */
+    function modifyStorage() {
+
+      const clave = "nombre";
       const valor = "Roberto"
       localStorage.setItem(clave, valor)
+
+
       localStorage.setItem("edad", 21)
+
     }
-    /* Eliminar un valor, a través de su clave, en el Local Storage */
-    function eliminarItem() {
+    /* Eliminar un valor en el Local Storage a través de .removeItem(key) */
+    function removeStorageItem() {
+
       localStorage.removeItem("edad")
+      
     }
   </script>
 </body>
