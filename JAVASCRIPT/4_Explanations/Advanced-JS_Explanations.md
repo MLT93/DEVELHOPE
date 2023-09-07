@@ -3416,20 +3416,22 @@ En última instancia, la elección entre `async/await` y `Promise` depende de tu
         ```
 
         `PUT`
-        El método PUT se usa para actualizar un recurso existente en el servidor o crearlo si no existe. El cuerpo de la solicitud contiene los datos actualizados que se deben utilizar para reemplazar el recurso existente.
+        El método PUT se usa para actualizar un recurso existente en el servidor o crearlo si no existe. El cuerpo de la solicitud contiene los datos actualizados que se deben utilizar para reemplazar el recurso existente. En la url del fetch debemos siempre poner el query params indicando el recurso que se irá a modificar o el número correspondiente al id que iremos a modificar, dependiendo siempre del servidor.
 
         *Ejemplo con fetch:*
 
         ```javascript
         const actualizerData = async () => {
           try {
-            const response = await fetch(`https://api.ejemplo.com/users/124`, {
+            /* Recuerda que en el caso del PUT debemos también indicar el query param para especificar el elemento que se va a modificar. En este caso será el id=1  */
+            const response = await fetch(`https://api.ejemplo.com/users?id=1`, {
               method: "PUT",
               headers: {
                 "Content-Type": "application/json",
               },
-              /* Datos actualizados para reemplazar el recurso existente */
+              /* Acá se pone todo el objeto actualizado que reemplazará el recurso existente */
               body: JSON.stringify({
+                id: 1,
                 name: "Actualized Name",
                 email: "actualized@email.com"
                 cambioDeTitular: true,
@@ -3449,7 +3451,7 @@ En última instancia, la elección entre `async/await` y `Promise` depende de tu
         *Ejemplo con Axios:*
 
         ```javascript
-        axios.put('https://api.ejemplo.com/resource/1', { key1: 'updated_value' })
+        axios.put('https://api.ejemplo.com/resource?id=1', { key1: 'updated_value' })
           .then(response => console.log(response.data))
           .catch(error => console.error('Error:', error));
         ```
@@ -3462,13 +3464,15 @@ En última instancia, la elección entre `async/await` y `Promise` depende de tu
         ```javascript
         const modifyData = async () => {
           try {
-            const response = await fetch(`https://api.ejemplo.com/users/124`, {
+            /* Siempre hay que identificar el recurso que se modificará a través del query param */
+            const response = await fetch(`https://api.ejemplo.com/users?id=1`, {
               method: "PATCH",
               headers: {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
-                email: "modify@email.com" /* cambio para aplicar */
+                /* Poner solo el único cambio que se va a aplicar al recurso existente */
+                email: "modified@email.com" 
               }),
             });
             const data = await response.json();
@@ -3491,7 +3495,7 @@ En última instancia, la elección entre `async/await` y `Promise` depende de tu
         ```
 
         `DELETE`
-        El método DELETE se utiliza para eliminar un recurso en el servidor.
+        El método DELETE se utiliza para eliminar un recurso en el servidor y siempre necesitará una id dentro del url(ya sea en query param o simplemente el número del id, dependiendo de cómo trabaje el servidor), para indicar el recurso que se desea borrar.
 
         *Ejemplo con fetch:*
 
@@ -3499,7 +3503,7 @@ En última instancia, la elección entre `async/await` y `Promise` depende de tu
         const deletedData = async () => {
           try {
             const response = await fetch(`https://api.ejemplo.com/resource/124`, {
-              method: "DELETED",
+              method: "DELETED", /* Borramos el recurso del server con id 124 */
             });
             console.log("Deleted:", response.status === 204);
 
@@ -3652,13 +3656,13 @@ En última instancia, la elección entre `async/await` y `Promise` depende de tu
       });
     ```
 
-   - `fetch('URL')` inicia una solicitud HTTP a la URL especificada.
+   - `fetch('url', {options})` inicia una solicitud HTTP a la URL especificada.
 
-   - `.then(response => {...})` maneja la respuesta de la solicitud y devuelve los datos en formato JSON.
+   - `.then(response => {response.json()})` maneja la respuesta de la solicitud y devuelve los datos en formato JSON.
 
-   - `.then(data => {...})` procesa los datos obtenidos de la respuesta.
+   - `.then(data => {console.log(data)})` procesa los datos obtenidos de la respuesta.
 
-   - `.catch(error => {...})` maneja cualquier error que ocurra durante la solicitud.
+   - `.catch(error => {'...', error})` maneja cualquier error que ocurra durante la solicitud.
 
 4. **`Métodos HTTP de Fetch`:**
    Fetch admite varios métodos HTTP, como GET, POST, PUT, PATCH y DELETE, que se pueden especificar en la solicitud.

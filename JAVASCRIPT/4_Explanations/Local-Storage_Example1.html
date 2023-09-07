@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>titulo</h1>
+  <button onclick="guardarDatos()">guardar datos</button>
+  <button onclick="recuperarDatos()">recuperar datos</button>
+  <button onclick="reset()">resetear</button>
+  <button onclick="modificar()">modificar</button>
+  <button onclick="eliminarItem()">eliminar item</button>
+  <script>
+    /* Guardamos los datos en el Local Storage del navegador con el .setItem() */
+    function guardarDatos() {
+      const clave = "name";
+      const valor = "Juan"
+      localStorage.setItem(clave, valor)
+      localStorage.setItem("edad", 19)
+    }
+    /* Recuperamos el Local Storage */
+    function recuperarDatos() {
+      const name = localStorage.getItem("name")
+
+      const clave = "edad"
+      const edad = localStorage.getItem(clave)
+      console.log(name, edad)
+    }
+    /* Limpiamos el Local Storage */
+    function reset() {
+      localStorage.clear()
+    }
+    /* Modifico singularmente los valores en el Local Storage */
+    function modificar() {
+      const clave = "name";
+      const valor = "Roberto"
+      localStorage.setItem(clave, valor)
+      localStorage.setItem("edad", 21)
+    }
+    /* Eliminar un valor, a través de su clave, en el Local Storage */
+    function eliminarItem() {
+      localStorage.removeItem("edad")
+    }
+  </script>
+</body>
+
+</html>
