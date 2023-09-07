@@ -42,7 +42,7 @@
         try {
           const response = await fetch(
             "https://rickandmortyapi.com/api/character",
-            {},
+            {/* Acá crearíamos el objeto con las keys del method, el headers y body en caso de necesitar hacer un POST, PUT, PATCH O DELETE */},
           );
 
           const data = await response.json();
