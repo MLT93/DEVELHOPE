@@ -3746,8 +3746,8 @@ En última instancia, la elección entre `async/await` y `Promise` depende de tu
       .then(data => {
         console.log(data);
       })
-      .catch(error => {
-        console.error('Error:', error);
+      .catch(err => {
+        console.error('Error:', err);
       });
     ```
 
@@ -3756,8 +3756,239 @@ En última instancia, la elección entre `async/await` y `Promise` depende de tu
 8. **`Consideraciones de Seguridad y CORS`:**
    Cuando se realiza una solicitud Fetch a un dominio diferente, es importante tener en cuenta la política de Same-Origin y las reglas de Cross-Origin Resource Sharing (CORS). Estas políticas de seguridad pueden requerir configuración adicional en el servidor y en la solicitud Fetch para permitir el acceso a recursos desde otros dominios.
 
-9. **`Resumen de Fetch API`:**
-   La Fetch API es una herramienta poderosa para realizar solicitudes HTTP desde JavaScript en aplicaciones web. Su sintaxis es más moderna y legible que las técnicas anteriores, y admite una amplia variedad de configuraciones y opciones. Al combinar Fetch con async/await y promesas, puedes escribir código más eficiente y mantenible para interactuar con servidores y obtener datos de manera asíncrona.
+
+***Ejemplo aplicado a una API con fetch:***
+
+```javascript
+const fetchData = async () => {
+  try {
+    const response = await fetch("http://numbersapi.com/8/29/date?json");
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(`No se puede acceder al servidor (response = ${response.ok})`)
+    }
+    
+    console.log(data);
+    
+    const { found, number, text, type } = data;
+    console.log(found, number);
+    
+    if (found) {
+      console.log(`${number}: ${text}`);
+      console.log(`El tipo de respuesta es: ${type}`);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+fetchData();
+```
+
+Aquí tienes una explicación detallada de la lógica del código paso a paso:
+
+1. Definición de la función `fetchData`:
+   - Se define una función asíncrona llamada `fetchData`. Esta función será responsable de realizar una solicitud a la API y manejar los datos obtenidos.
+
+2. Bloque `try`:
+   - Comienza un bloque `try`, que se utilizará para manejar posibles errores que puedan ocurrir durante la ejecución del código.
+
+3. Solicitud a la API:
+   - Se utiliza `await` para pausar la ejecución y esperar a que se complete la solicitud a la API usando `fetch`. La URL proporcionada como argumento a `fetch` es "http://numbersapi.com/8/29/date?json", que busca obtener información relacionada con el número 8 en la fecha 29.
+
+4. Obtención de la respuesta y conversión a JSON:
+   - La respuesta de la solicitud se almacena en la variable `response`. Se utiliza `await` nuevamente para esperar a que esta respuesta se convierta a formato JSON utilizando `response.json()`.
+
+5. Visualización de los datos obtenidos:
+   - Los datos obtenidos de la API se registran en la consola utilizando `console.log(data)`. Esto permite ver la estructura completa de los datos JSON en la consola del navegador.
+
+6. Desestructuración de datos:
+   - Se desestructuran las propiedades importantes de los datos obtenidos: `found`, `number`, `text` y `type`. Esto facilita el acceso a estas propiedades en el código posterior.
+
+7. Visualización de `found` y `number`:
+   - Se registran en la consola los valores de `found` y `number`. Esto muestra si la información para el número y fecha especificados fue encontrada en la API.
+
+8. Condicional para verificar `found`:
+   - Se utiliza un condicional (`if`) para verificar si la propiedad `found` es `true`. Esto indica si se encontró información para el número y fecha especificados en la API.
+
+9. Visualización de información adicional si `found` es `true`:
+   - Si `found` es `true`, se registran en la consola el número y su descripción (`text`). Además, se muestra el tipo de respuesta proporcionado por la API (`type`).
+
+10. Bloque `catch`:
+   - Si ocurre algún error durante la ejecución del bloque `try`, se captura y maneja utilizando el bloque `catch`. El error se registra en la consola utilizando `console.error(error)`.
+
+11. Llamada a la función `fetchData`:
+   - Se llama a la función `fetchData()` para iniciar el proceso de obtención y manejo de datos. Esto activa toda la lógica definida en la función.
+
+Este código utiliza `async/await` para manejar operaciones asíncronas al realizar una solicitud a la API usando `fetch` y procesar los datos obtenidos. Los datos se desestructuran y se muestran en la consola, y se manejan posibles errores utilizando bloques `try` y `catch`.
+
+***Ejemplo aplicado a una API 2:***
+
+```javascript
+const traerLaData = async () => {
+  try {
+    const respuesta = await fetch(
+      "https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=beng&api_key=live_rigf81eCb0dq6Pbm0Ss6KURpJpprKHMcGFRCS6CQArt2jJoIsR5GpWSAfgmPPxw5"
+    );
+
+    if (!respuesta.ok) {
+      throw new Error(`No se puede acceder al servidor (respuesta = ${respuesta.ok})`)
+    }
+
+    const data = await respuesta.text();
+    const dataParseada = JSON.parse(data);
+
+    const url = dataParseada.map((element) => {
+      return element.url;
+    });
+
+    console.log(url);
+    
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+traerLaData();
+```
+
+Explicación detallada:
+
+1. Se define una función asíncrona llamada `traerLaData` usando la sintaxis de función flecha (`() => {}`).
+
+2. Usamos un bloque `try` para manejar posibles errores que puedan ocurrir durante la ejecución.
+
+3. Utilizamos el método `fetch()` para hacer una solicitud GET a la API "The Cat API". La URL contiene varios parámetros, incluido un límite de 10 imágenes y la identificación de una raza específica ("beng"). La clave de API también se proporciona para autenticación.
+
+4. Utilizamos `await` para esperar a que la solicitud se complete y obtener una respuesta del servidor. La respuesta se almacena en la constante `respuesta`.
+
+5. Usamos `await` nuevamente para obtener el contenido de la respuesta como texto utilizando el método `.text()`.
+
+6. Usamos `JSON.parse()` para analizar el contenido de texto como JSON y convertirlo en un objeto JavaScript manipulable llamado `dataParseada`.
+
+7. Utilizamos el método `.map()` en el objeto `dataParseada` para crear un nuevo array `url` que contiene solo las URLs de las imágenes de gatos. El método `.map()` itera sobre cada elemento del array y crea un nuevo array basado en la función proporcionada.
+
+8. Imprimimos el array de URLs en la consola usando `console.log(url)`.
+
+9. Si ocurre algún error durante el proceso en el bloque `try`, el flujo se redirige al bloque `catch`, donde el error se captura y se muestra en la consola mediante `console.error(error)`.
+
+10. Finalmente, llamamos a la función `traerLaData()` para iniciar el proceso de obtener y procesar la información.
+
+Este código ilustra cómo hacer una solicitud a una API, analizar los datos JSON recibidos y extraer información específica usando el método `.map()`.
+
+***Ejemplo aplicado a una API 3:***
+
+```javascript
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 1</title>
+  <script>
+      const requestData = async () => {
+        try {
+          /* Hago la llamada */
+          const response = await fetch(
+            "https://jsonplaceholder.typicode.com/todo1s",
+          );
+          /* Mando error si la llamada a la API no da respuesta (esto se usaría si no trabajamos con el Try-Catch) */
+          if (!response.ok) {
+            throw new Error(
+              `No se puede acceder al servidor (response = ${response.ok})`,
+            );
+          }
+          /* Convierto respuesta en JSON y la imprimo para ver qué es */
+          const data = await response.json();
+          console.log(data);
+          /* Asignar clase '.todo-list' al elemento div con id #container en el DOM */
+          const myContainer = document.getElementById("container");
+          if (myContainer.className === "") {
+            myContainer.classList.add("todo-list");
+          }
+          /* Creo elementos para después agregarlos al DOM */
+          const elementUl = document.createElement("ul");
+          const elementLi = document.createElement("li");
+          const elementTitleH3 = document.createElement("h3");
+          elementTitleH3.textContent = "Todo:";
+          /* Modifico el style por defecto del h3 */
+          elementTitleH3.style.margin = "0";
+          elementTitleH3.style.color = "red";
+          /* Asigno cada elemento en su contenedor correspondiente */
+          myContainer.appendChild(elementUl);
+          elementUl.appendChild(elementLi);
+          elementLi.appendChild(elementTitleH3);
+          /* Recorro el array de data */
+          data.forEach((element) => {
+            /* Creo elemento para meterlo en la lista desordenada "ul" */
+            const createElement = document.createElement("li");
+            /* Destructuring de cada elemento (que ahora es un objeto) */
+            const { userId, id, title } = element;
+            console.log(`${id} ${title}`);
+            createElement.textContent = `${element.id} => ${element.title}`;
+            elementUl.appendChild(createElement);
+          });
+        } catch (err) {
+          console.error(err);
+        } finally {
+          console.log("Fin del proceso");
+        }
+      };
+
+      requestData();
+  </script>
+</head>
+
+<body>
+  <div id="container" style="display: flex; align-items: center"></div>
+</body>
+
+</html>
+```
+
+Este código HTML y JavaScript realiza una serie de acciones para obtener datos de una API y mostrarlos en el documento HTML. Vamos a desglosar el código paso a paso:
+
+1. Definición del documento HTML: El código comienza con la declaración del tipo de documento y la apertura de las etiquetas `<html>` y `<head>`. En el encabezado (`<head>`), se establecen metadatos, como el conjunto de caracteres, la vista inicial y el título de la página.
+
+2. Script JavaScript en el encabezado: Dentro del encabezado, hay una sección de script JavaScript que contiene todo el código funcional. Esto es lo que sucede en el script:
+
+   - Se define una función asincrónica llamada `requestData` usando la sintaxis de funciones flecha (`async () => { ... }`).
+
+   - Dentro de esta función, se utiliza `fetch` para hacer una solicitud HTTP GET a la URL "https://jsonplaceholder.typicode.com/todos", que es una API de ejemplo que devuelve una lista de tareas.
+
+   - Se verifica si la respuesta (`response`) es exitosa (código de estado HTTP 200) usando `response.ok`. Si no es exitosa, se lanza un error que contiene el código de estado de la respuesta.
+
+   - Si la respuesta es exitosa, se convierte el cuerpo de la respuesta en formato JSON utilizando `response.json()` y se almacena en la variable `data`.
+
+   - Los datos obtenidos de la API se muestran en la consola utilizando `console.log(data)`.
+
+   - Se selecciona un elemento div con el id "container" en el DOM y se le asigna la clase ".todo-list" si no tiene ninguna clase.
+
+   - Se crean elementos HTML, como una lista desordenada (`<ul>`), un elemento de lista (`<li>`), y un encabezado de nivel 3 (`<h3>`) para mostrar la lista de tareas.
+
+   - Se modifican los estilos del elemento `<h3>` para establecer el margen en cero y el color de texto en rojo.
+
+   - Se agregan los elementos creados al DOM como hijos del elemento con id "container".
+
+   - Se recorre el array `data` (que contiene las tareas obtenidas de la API) usando un bucle `forEach`.
+
+   - Dentro del bucle, se crea un nuevo elemento de lista (`<li>`) para cada tarea y se deconstruye el objeto tarea en sus propiedades `userId`, `id`, y `title`. También se muestra información sobre la tarea en la consola.
+
+   - Se asigna el contenido de cada elemento de lista con el formato "id => title" y se agrega como hijo de la lista desordenada (`<ul>`).
+
+3. Manejo de errores: Se utiliza un bloque `try...catch` para capturar cualquier error que ocurra durante la ejecución de la función `requestData`. Si se produce un error, se muestra un mensaje de error en la consola.
+
+4. Bloque `finally`: Se utiliza un bloque `finally` para asegurarse de que el mensaje "Fin del proceso" se muestre en la consola, independientemente de si hubo errores o no.
+
+5. Llamada a la función: Al final del script, se llama a la función `requestData` para iniciar el proceso de obtención y visualización de datos.
+
+6. Cierre de etiquetas HTML: Se cierran las etiquetas HTML `<head>` y `<html>`, y luego se abre la etiqueta `<body>`.
+
+7. Contenedor en el cuerpo del documento: En el cuerpo del documento, se encuentra un `<div>` con el id "container" y algunos estilos CSS en línea para controlar la visualización (flex y alineación).
+
+Este código HTML y JavaScript realiza una solicitud a una API, muestra los datos de respuesta en el DOM y proporciona manejo de errores para gestionar posibles problemas durante la solicitud. La información se presenta en una lista de tareas dentro de un contenedor en la página web.
 
 En resumen, la Fetch API y las funciones relacionadas, como async/await y promesas, son elementos esenciales en el desarrollo web moderno para realizar solicitudes HTTP de manera asíncrona y obtener recursos de servidores web. Estas herramientas permiten interactuar con servicios web, autenticar usuarios, cargar datos dinámicos y más, lo que las convierte en parte integral del desarrollo web contemporáneo.
 
