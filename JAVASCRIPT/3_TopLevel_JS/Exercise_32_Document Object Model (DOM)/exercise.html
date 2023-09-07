@@ -1,24 +1,43 @@
-<html>
-  <body>
-    <div id="container">
-      <form>
-        <div>
-          <label>First Name:</label>
-          <input type="text" class="form-input" id="firstName" value="Mario"/>
-        </div>
-        <div>
-          <label>Last Name:</label>
-          <input type="text" class="form-input" id="lastName" value="Rossi"/>
-        </div>
-        <div>
-          <label>Age:</label>
-          <input type="number" class="form-input" id="age" value="25"/>
-        </div>
-      </form>
-    </div>
-  </body>
-</html>
+<!DOCTYPE html>
+<html lang="en">
 
-<script>
-  // code here
-</script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="container">
+    <form>
+      <div>
+        <label for="first_name">First Name:</label>
+        <input name="first_name" type="text" class="form-input" id="firstName" value="Mario" />
+      </div>
+      <div>
+        <label for="last_name" >Last Name:</label>
+        <input name="last_name" type="text" class="form-input" id="lastName" value="Rossi" />
+      </div>
+      <div>
+        <label for="age" >Age:</label>
+        <input name="age" type="number" class="form-input" id="age" value="25" />
+      </div>
+    </form>
+  </div>
+  <script>
+    const firstName = document.querySelector('label[for="first_name"]').textContent;
+    const firstNameValue = document.querySelector('input[name="first_name"]').value;
+
+    const lastName = document.querySelector('label[for="last_name"]').textContent;
+    const lastNameValue = document.querySelector('input[name="last_name"]').value;
+    
+    const age = document.querySelector('label[for="age"]').textContent;
+    const ageValue = document.querySelector('input[name="age"]').value;
+
+    console.log(`${firstName} ${firstNameValue}`);
+    console.log(`${lastName} ${lastNameValue}`);
+    console.log(`${age} ${ageValue}`);
+  </script>
+</body>
+
+</html>
