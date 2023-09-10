@@ -44,6 +44,7 @@
             /* Destructuring de cada elemento (que ahora es un objeto) */
             const { userId, id, title } = element;
             console.log(`${id} ${title}`);
+            /* Añado a cada línea de la lista el número del .id y el texto del .title */
             createElement.textContent = `${element.id} => ${element.title}`;
             elementUl.appendChild(createElement);
           });
