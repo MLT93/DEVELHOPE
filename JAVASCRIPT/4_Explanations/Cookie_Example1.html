@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    :root {
+      --bg: #eeeeee;
+      --text: #111111;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+    }
+  </style>
+</head>
+
+<body>
+  <label for="bg">Background:</label>
+  <input id="bg" name="background" type="color" value="#eeeeee">
+  <label for="text">Text:</label>
+  <input id="text" name="txt" type="color" value="#111111">
+  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla, maiores laboriosam repudiandae culpa quod earum
+    praesentium quasi? Officiis, tempora delectus fuga rerum deserunt similique facilis mollitia nostrum beatae dicta
+    impedit.</p>
+
+  <script>
+    /* document.cookie = "bg=#eeeeee" */
+    /* document.cookie = "text=#111111" */
+
+    let names = ["bg", "text"];
+
+    function getCookie(name) {
+      const cookieValue = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith(`${name}=`))
+        ?.split("=")[1];
+      return cookieValue;
+    };
+    function setCookie(name, value) {
+      document.cookie = `${name}=${value}`;
+    };
+    let inputs = document.querySelectorAll("input[type='color']");
+    inputs.forEach((input, i) => {
+      input.addEventListener("change", (evt) => {
+        let val = evt.target.value
+        setCookie(names[i], val);
+        document.documentElement.style.setProperty(`--${names[i]}`, val);
+      })
+    });
+    function loadCookies() {
+      names.forEach((name) => {
+        let val = getCookie(name);
+        document.getElementById(name).setAttribute("value", val);
+        document.documentElement.style.setProperty(`--${name}`, val);
+      })
+    };
+    loadCookies();
+
+/*
+1. `function getCookie(name) { ... }`: Define una función llamada `getCookie` que toma un parámetro `name`, que representa el nombre de la cookie que se quiere obtener.
+
+2. `const cookieValue = document.cookie ...`: Aquí se obtiene el valor de todas las cookies presentes en el documento actual. `document.cookie` es una propiedad que contiene una cadena con todas las cookies asociadas con la página web.
+
+3. `.split("; ")`: Divide la cadena de cookies en un array utilizando `;` seguido de un espacio como el delimitador. Esto crea un array donde cada elemento es una cookie en el formato `nombre=valor`.
+
+4. `.find((row) => row.startsWith(`${name}=`))`: Utiliza el método `find` para buscar la primera cookie en el array que comienza con el nombre de la cookie que se pasó como parámetro. `row` representa cada elemento del array. La condición `row.startsWith(`${name}=`)` verifica si la cookie comienza con el nombre específico seguido de un `=`.
+
+5. `?.split("=")[1]`: Si se encuentra una cookie que cumple con la condición, se ejecuta el siguiente paso. Esto significa que el nombre de la cookie existe. Luego, se utiliza el operador de encadenamiento opcional (`?.`) para asegurarse de que la siguiente operación se ejecute solo si hay una cookie válida.
+
+   - `?.split("=")`: Divide la cookie en un array utilizando `=` como delimitador. Esto devuelve un array con dos elementos: el nombre y el valor de la cookie.
+
+   - `[1]`: Obtiene el segundo elemento del array, que es el valor de la cookie.
+
+6. `return cookieValue;`: Devuelve el valor de la cookie. Si no se encontró ninguna cookie con el nombre especificado, `cookieValue` devolverá `undefined`. Esto puede ser útil para acceder a la información almacenada en cookies, como preferencias del usuario o datos de sesión.
+
+7. `function setCookie(name, value) { ... }`: Esto define una función llamada `setCookie` que toma dos parámetros: `name` (nombre de la cookie) y `value` (valor de la cookie). En resumen, esta función busca una cookie específica por su nombre en la lista de cookies del documento actual y devuelve su valor.
+
+8. `document.cookie = `${name}=${value}`;`: Esta línea de código asigna una cadena de texto a `document.cookie`. Esta cadena tiene la forma `nombre=valor` y se utiliza para definir la cookie. Por ejemplo, si llamas a `setCookie("usuario", "Juan")`, se creará una cookie con el nombre "usuario" y el valor "Juan". En resumen, cuando se llama a esta función con un nombre y un valor, se creará una cookie en el navegador del usuario con esa información. Es importante tener en cuenta que este código solo define la función `setCookie`. Para que se utilice, deberías llamar a esta función desde otro lugar en tu código JavaScript, pasando los nombres y valores deseados como argumentos.
+
+9. `let inputs = document.querySelectorAll("input[type='color']");`: Esta línea selecciona todos los elementos de entrada (`input`) que tienen un tipo (`type`) igual a `'color'` en el documento HTML y los guarda en una lista llamada `inputs`.
+
+10. `inputs.forEach((input, i) => {...});`: Aquí se utiliza un bucle `forEach` para iterar sobre todos los elementos de entrada seleccionados en el paso anterior. El bucle toma dos argumentos: `input`, que representa el elemento actual en la iteración, y `i`, que es el índice del elemento en la lista.
+
+11. `input.addEventListener("change", (evt) => {...});`: Para cada elemento de entrada, se agrega un evento de escucha (listener) que escucha el evento de cambio (`change`). Esto significa que cuando el valor del elemento de entrada cambia (por ejemplo, cuando el usuario selecciona un nuevo color, activando la actualización de una cookie y la modificación de variables CSS personalizada), se ejecutará la función proporcionada como segundo argumento.
+
+12. Dentro de esta función de evento proporcionada como segundo argumento, las siguientes líneas de código se ejecutan:
+
+   - `let val = evt.target.value`: Esto guarda el valor seleccionado por el usuario (el color elegido) en la variable `val`.
+   
+   - `setCookie(names[i], val);`: Aquí se llama a una función llamada `setCookie` (que no está definida en el código que proporcionaste). Es probable que esta función esté definida en otra parte del código o sea una función personalizada. Esta función parece estar relacionada con el almacenamiento de cookies, lo que implica guardar información en el navegador del usuario para recordarla en visitas posteriores.
+
+   - `document.documentElement.style.setProperty(`--${names[i]}`, val);`: Esto establece una nueva propiedad de estilo para el elemento raíz (`document.documentElement`). Parece que esta línea está relacionada con el uso de variables CSS personalizadas, ya que se está estableciendo una variable de estilo `--{nombre}` con el valor `val`. Sin embargo, `names[i]` no está definido en el código que proporcionaste, por lo que es posible que esta parte del código dependa de una parte que no se muestra aquí.
+
+13. `function loadCookies() {`: Aquí se define una función llamada `loadCookies`. Esto significa que cuando se llama `loadCookies()`, el código dentro de la función se ejecutará.
+
+14. `names.forEach((name) => {`: Esto parece que `names` es un array (o algo similar) que contiene nombres de cookies. `forEach` es un método que itera sobre cada elemento de un array. En este caso, está iterando sobre los nombres de las cookies.
+
+15. `let val = getCookie(name);`: Para cada nombre de cookie, se está llamando a una función llamada `getCookie` y el valor resultante se almacena en la variable `val`. Supongo que `getCookie` es una función definida en otra parte del código que recupera el valor de la cookie asociada al nombre proporcionado.
+
+16. `document.getElementById(name).setAttribute("value", val);`: Esta línea está buscando un elemento en el documento HTML con un ID igual al nombre de la cookie y luego establece el atributo "value" del elemento con el valor recuperado de la cookie. Esto podría ser útil para actualizar campos de entrada en un formulario, por ejemplo.
+
+17. `document.documentElement.style.setProperty(`--${name}`, val);`: Esto parece estar estableciendo una variable CSS personalizada utilizando el valor recuperado de la cookie. Está utilizando una notación especial (`--nombre`) para definir una variable CSS personalizada. Esto significa que cualquier regla CSS que utilice esta variable personalizada tomará el valor de la cookie.
+
+18. `})`: Cierra el bloque de código dentro del `forEach`.
+
+19. `}`: Cierra la función `loadCookies`.
+
+20. `loadCookies();`: Finalmente, esta línea llama a la función `loadCookies`, lo que significa que todo el proceso descrito anteriormente se ejecutará.
+*/
+  </script>
+</body>
+
+</html>
