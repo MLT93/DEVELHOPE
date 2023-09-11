@@ -3774,7 +3774,7 @@ Este código ilustra cómo hacer una solicitud a una API, analizar los datos JSO
   <title>Exercise 1</title>
   <script>
     /* Encierro la url de la Api en una variable */
-    const url = "https://jsonplaceholder.typicode.com/todo1s";
+    const url = "https://jsonplaceholder.typicode.com/todos";
     /* Creo la función con bloques try-catch y finally */
     const requestData = async () => {
       try {
