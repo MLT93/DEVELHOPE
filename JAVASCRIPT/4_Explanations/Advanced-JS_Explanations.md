@@ -3773,56 +3773,58 @@ Este código ilustra cómo hacer una solicitud a una API, analizar los datos JSO
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Exercise 1</title>
   <script>
-      const url = "https://jsonplaceholder.typicode.com/todo1s";
-
-      const requestData = async () => {
-        try {
-          /* Hago la llamada */
-          const response = await fetch(url);
-          /* Mando error si la llamada a la API no da respuesta (esto se usaría si no trabajamos con el Try-Catch) */
-          if (!response.ok) {
-            throw new Error(
-              `No se puede acceder al servidor (response = ${response.ok})`,
-            );
-          }
-          /* Convierto respuesta en JSON y la imprimo para ver qué es */
-          const data = await response.json();
-          console.log(data);
-          /* Asignar clase '.todo-list' al elemento div con id #container en el DOM */
-          const myContainer = document.getElementById("container");
-          if (myContainer.className === "") {
-            myContainer.classList.add("todo-list");
-          }
-          /* Creo elementos para después agregarlos al DOM */
-          const elementUl = document.createElement("ul");
-          const elementLi = document.createElement("li");
-          const elementTitleH3 = document.createElement("h3");
-          elementTitleH3.textContent = "Todo:";
-          /* Modifico el style por defecto del h3 */
-          elementTitleH3.style.margin = "0";
-          elementTitleH3.style.color = "red";
-          /* Asigno cada elemento en su contenedor correspondiente */
-          myContainer.appendChild(elementUl);
-          elementUl.appendChild(elementLi);
-          elementLi.appendChild(elementTitleH3);
-          /* Recorro el array de data */
-          data.forEach((element) => {
-            /* Creo elemento para meterlo en la lista desordenada "ul" */
-            const createElement = document.createElement("li");
-            /* Destructuring de cada elemento (que ahora es un objeto) */
-            const { userId, id, title } = element;
-            console.log(`${id} ${title}`);
-            createElement.textContent = `${element.id} => ${element.title}`;
-            elementUl.appendChild(createElement);
-          });
-        } catch (err) {
-          console.error(err);
-        } finally {
-          console.log("Fin del proceso");
+    /* Encierro la url de la Api en una variable */
+    const url = "https://jsonplaceholder.typicode.com/todo1s";
+    /* Creo la función con bloques try-catch y finally */
+    const requestData = async () => {
+      try {
+        /* Hago la llamada */
+        const response = await fetch(url);
+        /* Mando error si la llamada a la API no da respuesta (esto se usaría si no trabajamos con el Try-Catch) */
+        if (!response.ok) {
+          throw new Error(
+            `No se puede acceder al servidor (response = ${response.ok})`,
+          );
         }
-      };
+        /* Convierto respuesta en JSON y la imprimo para ver qué es */
+        const data = await response.json();
+        console.log(data);
+        /* Asignar clase '.todo-list' al elemento div con id #container en el DOM */
+        const myContainer = document.getElementById("container");
+        if (myContainer.className === "") {
+          myContainer.classList.add("todo-list");
+        }
+        /* Creo elementos para después agregarlos al DOM */
+        const elementUl = document.createElement("ul");
+        const elementLi = document.createElement("li");
+        const elementTitleH3 = document.createElement("h3");
+        elementTitleH3.textContent = "Todo:";
+        /* Modifico el style por defecto del h3 */
+        elementTitleH3.style.margin = "0";
+        elementTitleH3.style.color = "red";
+        /* Asigno cada elemento en su contenedor correspondiente */
+        myContainer.appendChild(elementUl);
+        elementUl.appendChild(elementLi);
+        elementLi.appendChild(elementTitleH3);
+        /* Recorro el array de data */
+        data.forEach((element) => {
+          /* Creo elemento para meterlo en la lista desordenada "ul" */
+          const createElement = document.createElement("li");
+          /* Destructuring de cada elemento (que ahora es un objeto) */
+          const { userId, id, title } = element;
+          console.log(`${id} ${title}`);
+          /* Añado a cada línea de la lista el número del .id y el texto del .title */
+          createElement.textContent = `${element.id} => ${element.title}`;
+          elementUl.appendChild(createElement);
+        });
+      } catch (err) {
+        console.error(err);
+      } finally {
+        console.log("Fin del proceso");
+      }
+    };
 
-      requestData();
+    requestData();
   </script>
 </head>
 
