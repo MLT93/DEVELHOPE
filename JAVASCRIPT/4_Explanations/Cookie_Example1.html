@@ -37,6 +37,7 @@
       const cookieValue = document.cookie
         .split("; ")
         .find((row) => row.startsWith(`${name}=`))
+        /* Si encuentra la cookie con el .find hace el siguiente código después del `?` condicional */
         ?.split("=")[1];
       return cookieValue;
     };
