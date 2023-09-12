@@ -35,8 +35,10 @@
       try {
         const response = await fetch(element);
         const data = await response.blob();
+
         const dataUrl = URL.createObjectURL(data);
         console.log(dataUrl);
+
         const img = document.getElementById("icon").setAttribute("src", dataUrl);
       } catch (err) {
         console.error(err);
