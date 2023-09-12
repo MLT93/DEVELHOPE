@@ -3214,6 +3214,11 @@ En última instancia, la elección entre `async/await` y `Promise` depende de tu
 
      `GET`
      El método GET se utiliza para recuperar información de un recurso en el servidor sin realizar ningún cambio en él.
+       - `Query Parameters (parámetros de consulta)`:
+       En una URL de una API, los parámetros de consulta se concatenan utilizando el signo de interrogación `?` al final de la URL base o `endpoint`, seguido de los nombres de los parámetros y sus valores separados por el signo de igual `=`. Si hay más de un parámetro de consulta, se separan utilizando el signo de ampersand `&`. Por ejemplo, si queremos enviar dos parámetros, "parametro1" con valor "valor1" y "parametro2" con valor "valor2", la URL se vería así: `https://api.ejemplo.com/endpoint?parametro1=valor1&parametro2=valor2`.
+       El símbolo `?` es para concatenar los `Query Parameters` con el `Endpoint` de la url y el símbolo `&` sirve para separar los demás parámetros entre sí, si los hubiera.
+       Los `Query Params` nos indican lo que se irá a modificar en específico (métodos `PUT`, `PATCH`) o lo que se pide a la API en concreto (método `GET`).
+       Por ejemplo, puedo pedirle a la API que me devuelva un usuario específico en formato json: `https://api.ejemplo.com/users?id=1&format=json`.
 
      _Ejemplo con fetch:_
 
@@ -3280,7 +3285,7 @@ En última instancia, la elección entre `async/await` y `Promise` depende de tu
      ```
 
      `PUT`
-     El método PUT se usa para actualizar un recurso existente en el servidor o crearlo si no existe. El cuerpo de la solicitud contiene los datos actualizados que se deben utilizar para reemplazar el recurso existente. En la url del fetch debemos siempre poner el query params indicando el recurso que se irá a modificar o el número correspondiente al id que iremos a modificar, dependiendo siempre del servidor.
+     El método PUT se usa para actualizar un recurso existente en el servidor o crearlo si no existe. El cuerpo de la solicitud contiene los datos actualizados que se deben utilizar para reemplazar el recurso existente. En la url del fetch debemos `siempre poner el Query Params con el método PUT` indicando el recurso que se irá a modificar o el número correspondiente al id que iremos a modificar, dependiendo siempre del servidor.
 
      _Ejemplo con fetch:_
 
@@ -3322,14 +3327,14 @@ En última instancia, la elección entre `async/await` y `Promise` depende de tu
      ```
 
      `PATCH`
-     Similar al método PUT, PATCH se usa para actualizar un recurso existente. Sin embargo, en lugar de reemplazar todo el recurso, se utiliza para aplicar modificaciones parciales. El cuerpo de la solicitud contiene solo los cambios que se deben aplicar.
+     Similar al método PUT, PATCH se usa para actualizar un recurso existente. Sin embargo, en lugar de reemplazar todo el recurso, se utiliza para aplicar modificaciones parciales. El cuerpo de la solicitud contiene solo los cambios que se deben aplicar. `Siempre hay que identificar el recurso que se irá a modificar en el método PATCH con los Query Params`.
 
      _Ejemplo con fetch:_
 
      ```javascript
      const modifyData = async () => {
        try {
-         /* Siempre hay que identificar el recurso que se modificará a través del query param */
+         /*  */
          const response = await fetch(`https://api.ejemplo.com/users?id=1`, {
            method: "PATCH",
            headers: {
@@ -3879,7 +3884,7 @@ Este código HTML y JavaScript realiza una solicitud a una API, muestra los dato
 
 En resumen, la Fetch API y las funciones relacionadas, como async/await y promesas, son elementos esenciales en el desarrollo web moderno para realizar solicitudes HTTP de manera asíncrona y obtener recursos de servidores web. Estas herramientas permiten interactuar con servicios web, autenticar usuarios, cargar datos dinámicos y más, lo que las convierte en parte integral del desarrollo web contemporáneo.
 
-#### **CORS Hints y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
+#### CORS Hints y Funciones Relacionadas en JavaScript: Una Explicación Detallada
 
 1. **`Introducción a CORS (Cross-Origin Resource Sharing)`**:
    CORS (Cross-Origin Resource Sharing) es un mecanismo de seguridad en navegadores web que impide las solicitudes de recursos (como archivos o datos) desde un dominio (origen) diferente al que sirve la página web actual. Esto es fundamental para prevenir ataques de seguridad, pero a veces puede ser problemático cuando necesitas realizar solicitudes a servidores externos.
