@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      background-color: rgb(82, 92, 102);
+    }
+    img {
+      position: absolute;
+      top: 15%;
+      left: 20%;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <button id="boton1">River</button>
+    <button id="boton2">Tech</button>
+    <button id="boton3">Food</button>
+  </div>
+  <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="photo" id="icon">
+
+  <script>
+    document.getElementById("boton1").addEventListener("click", () => { mostrar('https://source.unsplash.com/random/800x600/?river') });
+    document.getElementById("boton2").addEventListener("click", () => { mostrar('https://source.unsplash.com/random/800x600/?technology') });
+    document.getElementById("boton3").addEventListener("click", () => { mostrar('https://source.unsplash.com/random/800x600/?food') });
+
+
+    async function mostrar(element) {
+      try {
+        const response = await fetch(element);
+        const data = await response.blob();
+        const dataUrl = URL.createObjectURL(data);
+        console.log(dataUrl);
+        const img = document.getElementById("icon").setAttribute("src", dataUrl);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        console.log(`El proceso ha terminado`)
+      }
+    };
+  </script>
+</body>
+
+</html>

@@ -3633,6 +3633,74 @@ En última instancia, la elección entre `async/await` y `Promise` depende de tu
 8. **`Consideraciones de Seguridad y CORS`:**
    Cuando se realiza una solicitud Fetch a un dominio diferente, es importante tener en cuenta la política de Same-Origin y las reglas de Cross-Origin Resource Sharing (CORS). Estas políticas de seguridad pueden requerir configuración adicional en el servidor y en la solicitud Fetch para permitir el acceso a recursos desde otros dominios.
 
+9. **`Métodos de procesamiento de respuestas de peticiones fetch`:**
+   Las funciones que mencionaste son métodos de procesamiento de respuestas en el contexto de las peticiones Fetch en JavaScript. Cada una tiene un propósito específico:
+
+   `.text()`:
+   - Este método es utilizado cuando se espera que la respuesta de la petición sea texto, como por ejemplo `HTML, XML, texto plano, etc.`
+     Aunque `.text()` por defecto interpreta la respuesta como UTF-8, también puedes proporcionar un argumento opcional para especificar un encoding diferente, como `"ISO-8859-1"`.
+   
+     ```javascript
+     fetch('https://ejemplo.com/archivo.txt')
+       .then(response => response.text("ISO-8859-1"))
+       .then(data => {
+         console.log(data); // Aquí tendrás el contenido del archivo como texto
+       });
+     ```
+
+   `.blob()`:
+   - Esta función se utiliza cuando se espera que la respuesta sea un objeto Blob (Binary Large Objects). `Un Blob representa datos binarios, como imágenes, audio, video, entre otros`
+
+     ```javascript
+     fetch('https://ejemplo.com/imagen.jpg')
+       .then(response => response.blob())
+       .then(blob => {
+         // Aquí tendrás el archivo como un Blob
+         // Puedes usarlo para crear una URL o manipularlo como necesites
+       });
+     ```
+
+   `.json()`:
+   - Este método se utiliza cuando se espera que la respuesta sea un objeto JSON. `Es común trabajar con APIs que devuelven datos en formato JSON`
+
+     ```javascript
+     fetch('https://api.example.com/data')
+       .then(response => response.json())
+       .then(data => {
+         // Aquí tendrás el objeto JSON que la API devolvió
+         // Puedes trabajar con él como un objeto JavaScript
+       });
+     ```
+
+   `.arrayBuffer()`:
+   - La función `.arrayBuffer()` se utiliza cuando se espera que la respuesta sea un ArrayBuffer. `Un ArrayBuffer es un objeto que representa una secuencia de datos binarios`
+
+     ```javascript
+     fetch('https://ejemplo.com/archivo.bin')
+       .then(response => response.arrayBuffer())
+       .then(buffer => {
+         // Aquí tendrás el archivo como un ArrayBuffer
+         // Puedes manipularlo o convertirlo según tus necesidades
+       });
+     ```
+
+   `.formData()`:
+   - La función `.formData()` se utiliza cuando se espera que la respuesta sea un objeto FormData. `FormData es un objeto que se utiliza para representar un array de arrays clave-valor de datos de un formulario HTML`. Permite construir fácilmente conjuntos de pares clave-valor que representan los campos de un formulario y sus valores asociados. Esto es especialmente útil al enviar formularios a través de AJAX o cuando se necesita manipular y enviar datos de formularios en JavaScript.
+
+     ```javascript
+     fetch('https://ejemplo.com/formulario', {
+       method: 'POST',
+       body: new FormData(document.querySelector('form'))
+     })
+     .then(response => response.formData())
+     .then(formData => {
+       // Aquí tendrás los datos del formulario en un objeto FormData
+       // Puedes manipularlos o enviarlos a otra parte según tus necesidades
+     });
+     ```
+
+Recuerda que la elección del método de procesamiento dependerá del tipo de respuesta que esperas y cómo planeas utilizarla en tu aplicación.
+
 **_Ejemplo aplicado a una API con fetch:_**
 
 ```javascript
