@@ -13,12 +13,12 @@
       try {
         /* Hago la llamada */
         const response = await fetch(url);
-        /* Mando error si la llamada a la API no da respuesta (esto se usaría si no trabajamos con el Try-Catch) */
+        /* Mando error si la llamada a la API (la base de datos) no da respuesta. Este es un proceso opcional */
         if (!response.ok) {
           throw new Error(
-            `No se puede acceder al servidor (response = ${response.ok})`,
+            `No se puede acceder al servidor (response = ${response.ok})`
           );
-        }
+        };
         /* Convierto respuesta en JSON y la imprimo para ver qué es */
         const data = await response.json();
         console.log(data);
