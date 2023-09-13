@@ -34,12 +34,12 @@
     async function mostrar(element) {
       try {
         const response = await fetch(element);
-        const blob = await response.blob(); /* Para trabajar con .blob() tenemos que guardar los datos en una url así podremos trabajar */
+        const blob = await response.blob(); /* Para trabajar con .blob() tenemos que guardar los datos en una url así podremos usarlos */
 
         const blobUrl = URL.createObjectURL(blob);
         console.log(blobUrl);
 
-        const img = document.getElementById("icon").setAttribute("src", dataUrl);
+        const img = document.getElementById("icon").setAttribute("src", blobUrl);
       } catch (err) {
         console.error(err);
       } finally {
