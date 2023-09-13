@@ -95,6 +95,33 @@ Dentro de la función de devolución de llamada, también se llama a la función
 
 Por lo tanto, cuando se ejecuta este código, se imprimirá el nombre de cada alumno y su índice en el array, seguido de su apellido. */
 
+// ---------------------------------------------------------------------
+
+/** Enunciado del ejercicio:
+ *
+ * Dado un array de números enteros, crea una función llamada encontrarSuma que tome como argumento el array y un número objetivo. La función debe encontrar dos números en el array que, sumados entre sí, den exactamente la cifra del número objetivo y devolver un array con esos dos números. Si no se encuentran dos números que cumplan con esta condición, la función debe retornar un mensaje indicando que no se encontraron.
+ */
+
+function encontrarSuma(arr, objetivo) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] === objetivo) {
+        return [arr[i], arr[j]];
+      }
+    }
+  }
+  return `No se encontraron dos números que sumen ${objetivo}`;
+}
+
+const num = [2, 7, 11, 15];
+const objetivo1 = 9;
+const resultado1 = encontrarSuma(num, objetivo1);
+console.log(resultado1); // Output esperado: [2, 7]
+
+const objetivo2 = 8;
+const resultado2 = encontrarSuma(num, objetivo2);
+console.log(resultado2); // Output esperado: "No se encontraron dos números que sumen 8"
+
 
 /**
  * **Enunciado del ejercicio:**
@@ -236,7 +263,7 @@ Recuerda que: el ciclo `for of` itera sobre las `values`.
 Por esta razón se usan más para arrays/arreglos/matrices 
 */
 
-// El bucle `FOR...OF`: pertenece al ECMAScript 2015, ES6. Se utiliza para iterar sobre arrays, strings (que es un array de letras), array de objetos y todo aquello que es iterable. Lo que hace, es pasar por cada elemento de un array (itera sobre de él) y trabaja el código que yo le introduzca.
+// `FOR...OF`: pertenece al ECMAScript 2015, ES6. Se utiliza para iterar sobre arrays, strings (que es un array de letras), array de objetos y todo aquello que es iterable. Lo que hace, es pasar por cada elemento de un array (itera sobre de él) y trabaja el código que yo le introduzca.
 var misNumeros = [1, 2, 3, 4, 5];
 for (let cadaNumero of misNumeros) {
   let multiplication = cadaNumero * 2; // Código introducido.
@@ -256,16 +283,22 @@ misNumeros.forEach((argumentoNum) => {
   console.log(por2);
 });
 
-// Bucle `FOR`: (crea una variable; cumple una condición; modifica esa condición)
+// `FOR`: (crea una variable; cumple una condición; modifica esa condición)
 var misNumeros = [1, 2, 3, 4, 5];
 for (let i = 0; i < misNumeros.length; i++) {
   let por2 = misNumeros[i] * 2;
   console.log(por2);
 }
 
-// `.map()`: sirve para crear un nuevo array a partir
+// `.map()`: sirve para crear un nuevo array a iterando cada elemento del array original. A través de una función callback transformamos los elementos del array original y retornamos los valores que deseamos que tenga en el nuevo array.
+var misNumeros = [1, 2, 3, 4, 5];
+const cuadrados = misNumeros.map((numero) => numero * numero); // el nuevo array contendrá: [1, 4, 9, 16, 25]
 
-// `.filter()`: sirve
+// `.filter()`: sirve para reducir un array a partir del cumplimiento de una condición proporcionada a través de una función callback. A menudo se utiliza en conjunto con .map()
+var misNumeros = [1, 2, 3, 4, 5];
+const losPares = misNumeros.filter(numero => numero % 2 === 0); // losPares contendrá: [2, 4]
+
+
 
 //---------------- FORMAS DE USAR UN OBJETO CON FUNCIÓN AGREGADA, BUSCAR LAS PROPIEDADES Y LOS MODOS ---------------------
 
