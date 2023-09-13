@@ -40,9 +40,9 @@
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
-                /* acá lo que hago es tomar el valor que se introduce al interno del elemento correspondiente al `id` asignado */
+                /* Acá tomo el valor que se introduce a través del ("input[type='text']"), dentro del elemento correspondiente al `id` puesto */
                 title: document.getElementById("todo-title").value,
-                /* acá hago lo mismo pero con los valores para un checkbox (true o false) */
+                /* Acá hago lo mismo pero con los valores del ("input[type='checkbox']"), que pueden ser true o false */
                 completed: document.getElementById("todo-completed").checked,
               }),
             },
