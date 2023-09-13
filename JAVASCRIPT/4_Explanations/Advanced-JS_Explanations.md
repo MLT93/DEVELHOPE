@@ -3657,6 +3657,19 @@ En última instancia, la elección entre `async/await` y `Promise` depende de tu
        .then(blob => {
          // Aquí tendrás el archivo como un Blob
          // Puedes usarlo para crear una URL o manipularlo como necesites
+
+         // Creamos un enlace (link) para descargar el Blob
+         const enlaceDescarga = document.createElement('a');
+         enlaceDescarga.href = URL.createObjectURL(blob); // Creamos la url que enlaza el Blob con el link
+         enlaceDescarga.download = 'ejemplo.txt'; // Nombre del archivo
+         enlaceDescarga.textContent = 'Descargar archivo';
+         document.body.appendChild(enlaceDescarga);
+         // Si quieres mostrar una imagen en una etiqueta img también
+         const imgUrl = URL.createObjectURL(blob);
+         const imgElement = document.createElement('img');
+         imgElement.src = imgUrl;
+         document.body.appendChild(imgElement);
+
        });
      ```
 
@@ -3685,12 +3698,13 @@ En última instancia, la elección entre `async/await` y `Promise` depende de tu
      ```
 
    `.formData()`:
-   - La función `.formData()` se utiliza cuando se espera que la respuesta sea un objeto FormData. `FormData es un objeto que se utiliza para representar un array de arrays clave-valor de datos de un formulario HTML`. Permite construir fácilmente conjuntos de pares clave-valor que representan los campos de un formulario y sus valores asociados. Esto es especialmente útil al enviar formularios a través de AJAX o cuando se necesita manipular y enviar datos de formularios en JavaScript.
+   - La función `.formData()` se utiliza cuando se espera que la respuesta sea un objeto FormData (en casos en los cuales creamos nosotros un post y le decimos que el Content-Type sea en ese formato). `FormData es un objeto que se utiliza para representar un array de arrays clave-valor de datos de un formulario HTML`. Permite construir fácilmente conjuntos de pares clave-valor que representan los campos de un formulario y sus valores asociados. Esto es especialmente útil al enviar formularios a través de AJAX o cuando se necesita manipular y enviar datos de formularios en JavaScript.
 
      ```javascript
      fetch('https://ejemplo.com/formulario', {
        method: 'POST',
-       body: new FormData(document.querySelector('form'))
+       body: new FormData(document.querySelector('form')),
+       headers: 'Content-Type': 'multipart/form-data'
      })
      .then(response => response.formData())
      .then(formData => {

@@ -15,6 +15,7 @@
         const respuesta = await fetch(
           "https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=beng&api_key=live_rigf81eCb0dq6Pbm0Ss6KURpJpprKHMcGFRCS6CQArt2jJoIsR5GpWSAfgmPPxw5",
         );
+        console.log(respuesta);
 
         if (!respuesta.ok) {
           throw new Error(
@@ -22,10 +23,10 @@
           );
         }
 
-        const data = await respuesta.text();
-        const dataParseada = JSON.parse(data);
+        const data = await respuesta.json();
+        /* console.log(data) */
 
-        const url = dataParseada.map((element) => {
+        const url = data.map((element) => {
           return element.url;
         });
 
@@ -36,7 +37,7 @@
     };
 
     traerLaData();
-    
+
   </script>
 </body>
 

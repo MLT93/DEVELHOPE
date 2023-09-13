@@ -14,7 +14,7 @@
       console.log(randomNumber);
 
       const response = await fetch(`http://numbersapi.com/${randomNumber}?json`);
-      const data = await response.json();
+      const data = await response.json(); /* .json() ya te deja la data lista para trabajarla, pero hay que usar los métodos que proporciona la API para que te de lo que buscas (ej. data.text) */
       console.log(data.text);
 
       return data.text;
