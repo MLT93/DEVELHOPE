@@ -95,30 +95,48 @@ Dentro de la función de devolución de llamada, también se llama a la función
 
 Por lo tanto, cuando se ejecuta este código, se imprimirá el nombre de cada alumno y su índice en el array, seguido de su apellido. */
 
-//--------------------------------------------
 
-// ARRAY PARA LA DEMOSTRACIÓN
-let misNumeros = [1, 2, 3, 4, 5];
+/**
+ * **Enunciado del ejercicio:**
+ *
+ * Dado un array de objetos que contienen propiedades alfanuméricas,
+ * crea una función llamada `filtrarNumeros` que tome como argumento
+ * este array y devuelva un nuevo array solo con los valores numéricos.
+ *
+ * **Condiciones:**
+ *
+ * La función `filtrarNumeros` debe retornar un array con los valores
+ * numéricos encontrados en el arreglo de objetos de entrada.
+ */
 
-// 1º FORMA DE ITERAR/RECORRER EL ARRAY
-for (let i = 0; i < misNumeros.length; i++) {
-  let por2 = misNumeros[i] * 2;
-  console.log(por2);
+const datos = [
+  { clave: "a1", valor: 10 },
+  { clave: "b2", valor: "Hola" },
+  { clave: "c3", valor: 30 },
+  { clave: "d4", valor: "Mundo" },
+];
+
+function filtrarNumeros(arr) {
+  const numberArr = [];
+  arr.forEach((element) => {
+    if (typeof element.valor === "number") {
+      numberArr.push(element.valor);
+    }
+  });
+  return numberArr;
 }
+const numerosFiltrados = filtrarNumeros(datos);
+console.log(numerosFiltrados);
 
-// 2ª FORMA DE ITERAR/RECORRER MI ARRAY
-misNumeros.forEach((argumentoNum) => {
-  // .forEach() quiere decir: .porCada(lo que haya dentro de los paréntesis. En éste caso, un arrow function).
-  let por2 = argumentoNum * 2;
-  console.log(por2);
-});
+const filtrarCadenas = (arr) => {
+  const arrOfStrings = arr
+    .map((element) => element.valor)
+    .filter((valor) => typeof valor === "string");
+  return arrOfStrings;
+};
+const stringsFiltrados = filtrarCadenas(datos);
+console.log(stringsFiltrados);
 
-// 3ª FORMA DE ITERACIÓN DEL MISMO ARRAY
-for (let cadaNumero of misNumeros) {
-  // El bucle FOR...OF (pertenece al ECMAScript 2015, ES6) se utiliza para iterar sobre arrays, strings (que es un array de letras), array de objetos y todo aquello que es iterable. Lo que hace, es pasar por cada elemento de un array (itera sobre de él) y trabaja el código que yo le introduzca.
-  let multiplication = cadaNumero * 2; // Código introducido.
-  console.log(multiplication); // Imprime resultado de la multiplicación de cada numero del array por 2.
-}
 
 // ------------------- ITERACIONES FOR...IN \ FOR IN \ FOR-IN \ Object.entries: PARA OBJETO --------------------------------------
 
@@ -159,7 +177,7 @@ function iterarEnObjeto(object) {
 
 iterarEnObjeto(car);
 
-/* Object.entries crea un array de arrays [['key', 'value'], ['key', 'value'], ['key', '{ value }']]*/
+/* `Object.entries`: crea un array de arrays [['key', 'value'], ['key', 'value'], ['key', '{ value }']]. Tiene un hermano gemelo que hace lo mismo, pero al revés `Object.fromEntries()`, o sea que convierte un array de arrays (key-value) en objeto. */
 
 const persona = {                               
   nombre: "Juan",                                     
@@ -209,21 +227,45 @@ Imprimimos el contenido del array arrFromEntries en la consola, que muestra cóm
 En resumen, el código demuestra cómo modificar valores dentro del objeto persona utilizando el array arrFromEntries que fue creado a partir del objeto original utilizando Object.entries(). Sin embargo, ten en cuenta que los cambios se realizan indirectamente a través del array, no directamente en el objeto original.
 */
 
-// ------------------- ITERACIONES FOR...OF \ FOR OF \ FOR-OF: PARA ARRAY --------------------------------------
+
+// ------------------- ITERACIONES FOR...OF \ FOR OF \ FOR-OF \ .forEach() \ FOR \ .map() \ .filter() : PARA ARRAY --------------------------------------
 
 /* 
-    Recuerda que: el ciclo `for of` itera sobre las `values`. 
+Recuerda que: el ciclo `for of` itera sobre las `values`. 
 
-    Por esta razón se usan más para arrays/arreglos/matrices 
+Por esta razón se usan más para arrays/arreglos/matrices 
 */
 
+// El bucle `FOR...OF`: pertenece al ECMAScript 2015, ES6. Se utiliza para iterar sobre arrays, strings (que es un array de letras), array de objetos y todo aquello que es iterable. Lo que hace, es pasar por cada elemento de un array (itera sobre de él) y trabaja el código que yo le introduzca.
+var misNumeros = [1, 2, 3, 4, 5];
+for (let cadaNumero of misNumeros) {
+  let multiplication = cadaNumero * 2; // Código introducido.
+  console.log(multiplication); // Imprime resultado de la multiplicación de cada numero del array por 2.
+}
 
 let array = [1, 2, 3];
-
 for (let elemento of array) {
   console.log(elemento); // Imprime: 1, 2, 3
   console.log();
 }
+
+// `.forEach()`: quiere decir -> .porCada(lo que haya dentro de los paréntesis.En éste caso, un arrow function).
+var misNumeros = [1, 2, 3, 4, 5];
+misNumeros.forEach((argumentoNum) => {
+  let por2 = argumentoNum * 2;
+  console.log(por2);
+});
+
+// Bucle `FOR`: (crea una variable; cumple una condición; modifica esa condición)
+var misNumeros = [1, 2, 3, 4, 5];
+for (let i = 0; i < misNumeros.length; i++) {
+  let por2 = misNumeros[i] * 2;
+  console.log(por2);
+}
+
+// `.map()`: sirve para crear un nuevo array a partir
+
+// `.filter()`: sirve
 
 //---------------- FORMAS DE USAR UN OBJETO CON FUNCIÓN AGREGADA, BUSCAR LAS PROPIEDADES Y LOS MODOS ---------------------
 
@@ -731,7 +773,6 @@ console.log(maximo); // Salida: 11
 
 Ejemplos: */
 
-
 const nmbers = [1, 2, 3];
 
 // Ejemplo de .map() - creando un nuevo array
@@ -740,26 +781,23 @@ const duplicados = nmbers.map(numero => numero * 2); // [2, 4, 6]
 // Ejemplo de .forEach() - efecto secundario
 nmbers.forEach(numero => console.log(numero * 2)); // Imprime 2, 4, 6
 
-
 /* En resumen, utiliza `.map()` cuando necesitas transformar elementos y crear un nuevo array basado en esas transformaciones, y utiliza `.forEach()` cuando deseas ejecutar una función en cada elemento del array sin necesariamente crear un nuevo array. Ambos métodos tienen sus propios casos de uso específicos dependiendo de tus necesidades. */
 
-// ---------- FUNCION ES PRIMO O NO ES PRIMO / BUSCAR NUMEROS PRIMOS--------------
+// ---------- FUNCIÓN ES PRIMO O NO ES PRIMO / BUSCAR NUMEROS PRIMOS--------------
 
-// PRIMERA FORMA con .forEach ------------------
+// PRIMERA FORMA con .forEach() ------------------
 let numerolos = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 function refactorNumbersArray(NumeroDelArray) {
   let newArray = [];
-
   NumeroDelArray.forEach((number) => {
-    //Inizializo la varible isPrime como true
+    // Inicializo la variale isPrime como true
     let isPrime = true;
 
-    //Si le numero es igual o mayor a dos entro al if
+    // Si le numero es igual o mayor a dos ->
     if (number >= 2) {
-      //Divido cada numero, por los numeros anteriores pero no por si mismo
+      // Empiezo otro bucle y le digo que comience su índice a partir de la posición 2, eso elimina la división entre el 1 y el mismo número que estamos evaluando
       for (let i = 2; i < number; i++) {
-        //Si el resto es 0, fue divisible por otro numero y cambio
-        // la variable isPrime a false
+        // Si el resto es 0, fue divisible por otro numero, por lo que no es primo y cambio isPrime a false
         if (number % i === 0) {
           isPrime = false;
         }
@@ -779,22 +817,22 @@ function refactorNumbersArray(NumeroDelArray) {
 let resultadox = refactorNumbersArray(numerolos); // le paso un array a mi función para que ejecute el código.
 console.log("Resultado de números primos con .forEach:", resultadox);
 
-// SEGUNDA FORMA con for loop ------------------
+// SEGUNDA FORMA con FOR loop ------------------
 let numerillos = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function encontrarNumerosPrimos(arr) {
   let numerosPrimos = []; // Creo una variable vacía para guardar mis resultados
 
+  // Le digo a mi loop que recorra el array
   for (let i = 0; i < arr.length; i++) {
-    // Le digo a mi loop que recorra el array
-    let esPrimo = true; // Inicio una variable con un valor true, así puedo utilizarla después déntro de un IF, si encuentro algún número Primo
+    let esPrimo = true; // Inicio una variable con un valor true, así puedo utilizarla después dentro de un IF, si encuentro algún número Primo
 
+    // Busco los números dentro del array que sean mayores que 1 (porque un número primo es un número entero mayor que 1 que solo es divisible por 1 y por sí mismo. Si un número es menor o igual a 1, no puede ser considerado primo porque tiene divisores adicionales aparte de 1 y él mismo. Por lo tanto, la condición > 1 se utiliza para excluir los números menores o iguales a 1 de la verificación de primos)
     if (arr[i] > 1) {
-      // Busco los números dentro del array que sean mayores que 1 (porque un número primo es un número entero mayor que 1 que solo es divisible por 1 y por sí mismo. Si un número es menor o igual a 1, no puede ser considerado primo porque tiene divisores adicionales aparte de 1 y él mismo. Por lo tanto, la condición > 1 se utiliza para excluir los números menores o iguales a 1 de la verificación de primos)
+      // Al comenzar desde 2 el segundo bucle, nos saltamos la división entre 1 y el número que estamos evaluando (), ya que todo número es divisible por 1. Iniciar en 2 es eficiente y suficiente para realizar la comprobación de divisibilidad adecuada. Establecer j = 2 nos permite iniciar la verificación de divisibilidad desde el número 2 y continuar hasta un número anterior al número que estamos evaluando (el número de j < arr[i]), evitando considerar la divisibilidad entre 1 y el número mismo.
       for (let j = 2; j < arr[i]; j++) {
-        // Al comenzar desde 2 el segundo bucle, nos saltamos la división entre 1 y el número que estamos evaluando (), ya que todo número es divisible por 1. Iniciar en 2 es eficiente y suficiente para realizar la comprobación de divisibilidad adecuada. Establecer j = 2 nos permite iniciar la verificación de divisibilidad desde el número 2 y continuar hasta un número anterior al número que estamos evaluando (el número de j < arr[i]), evitando considerar la divisibilidad entre 1 y el número mismo.
+        // El operador de módulo % devuelve el resto de la división entre dos números. En este caso, arr[i] % j calcula el resto de dividir arr[i] entre j. Si el resultado es 0, significa que arr[i] es divisible de manera exacta por j, lo que implica que arr[i] no es un número primo, lo cual indica que arr[i] tiene un divisor distinto de 1 y de sí mismo, por lo tanto no sería un número primo.
         if (arr[i] % j === 0) {
-          // El operador de módulo % devuelve el resto de la división entre dos números. En este caso, arr[i] % j calcula el resto de dividir arr[i] entre j. Si el resultado es 0, significa que arr[i] es divisible de manera exacta por j, lo que implica que arr[i] no es un número primo, lo cual indica que arr[i] tiene un divisor distinto de 1 y de sí mismo, por lo tanto no sería un número primo.
           esPrimo = false; // Digo que mi variable esPrimo, es false
           break; // Paro el bucle
         }
@@ -820,40 +858,35 @@ function encontrarNumerosPrimos(arr) {
 const primosEncontrados = encontrarNumerosPrimos(numerillos);
 console.log("Los números primos con for loop:", primosEncontrados);
 
-// // TERCERA OPCIÓN con while loop --------------
-// let numeroz = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+// // TERCERA OPCIÓN con .map() y .filter() --------------
 
-// function refactorNumbersArray2(delArray) {
-//   let newArray3 = [];
+let numerolosX = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+function refactorNumbersArray(NumeroDelArray) {
+  const newArray = NumeroDelArray.map((number) => {
+    // Inicializo la variale isPrime como true, suponiendo que cada número es primo
+    let isPrime = true;
 
-//   delArray.forEach((number) => {
-//     //Inicializo la variable isPrime como true
-//     let isPrime = true;
-
-//     //Si le numero es igual o mayor a dos entro al if
-//     if (number >= 2) {
-//       //Divido cada numero, por los numeros anteriores pero no por si mismo
-//       let i = 2;
-//       while (i < number) {
-//         if (number % i === 0) {
-//           isPrime = false;
-//         }
-//         i++;
-//       }
-//     } else {
-//       isPrime = false;
-//     }
-
-//     if (isPrime) {
-//       newArray3.push(number);
-//     }
-//   });
-
-//   return newArray3;
-// }
-
-// let result = refactorNumbersArray2("Resultado con el while:", numeroz);
-// console.log(result);
+    // Empezamos la búsqueda por el 2 dado que es el primer número primo que existe y así eliminamos las futuras divisiones entre sí mismos, entre 0 y entre 1
+    if (number >= 2) {
+      // Ahora creamos otro bucle y le digo que comience su índice a partir de la posición 2, eso elimina la división entre el 1 y el mismo número que estamos evaluando
+      for (let i = 2; i < number; i++) {
+        // Si el resto es 0, fue divisible por otro numero, por lo que no es primo y cambio isPrime a false
+        if (number % i === 0) {
+          isPrime = false;
+        }
+      }
+    } else {
+      isPrime = false;
+    }
+    if (isPrime) {
+      return number; // Agregamos el número a newArray solo si es primo
+    }
+  });
+  return newArray.filter((num) => num !== undefined); // Filtramos los elementos undefined
+}
+// creo una variable para almacenar el resultado de mi función
+let resultadoxX = refactorNumbersArray(numerolos); // le paso un array a mi función para que ejecute el código.
+console.log("Resultado de números primos con .forEach:", resultadoxX);
 
 // --------------------------------------------------
 
