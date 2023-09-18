@@ -4408,7 +4408,7 @@ En resumen, los módulos son una característica fundamental en JavaScript que p
 4. **`Bundling y Minificación`**:
    Webpack permite combinar múltiples archivos fuente en un solo archivo (bundle) y luego optimizar este archivo resultante para reducir su tamaño, lo que es crucial para la eficiencia en la carga de páginas web.
 
-   Claro, profundicemos en los conceptos de Bundling y Minificación en el contexto de Webpack y su importancia en el desarrollo web moderno:
+   Ahora profundicemos en los conceptos de `Bundling` y `Minificación` en el contexto de `Webpack` y su importancia en el desarrollo web moderno:
 
    **Bundling (Agrupación):**
 
