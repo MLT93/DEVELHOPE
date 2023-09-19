@@ -4473,7 +4473,7 @@ En resumen, los módulos son una característica fundamental en JavaScript que p
 6. **`Plugins`**:
    Los plugins son módulos que proporcionan funcionalidades adicionales a Webpack. Pueden utilizarse para realizar una amplia variedad de tareas, como la minificación de código, la inyección de variables de entorno, y la optimización de imágenes, entre otros. A continuación, te mostraré algunos plugins comunes en Webpack:
 
-Los plugins en Webpack son módulos que se utilizan para extender y personalizar las funcionalidades del proceso de empaquetado. Permiten realizar tareas como la optimización de bundles, inyección de variables de entorno, generación de archivos HTML y mucho más. A continuación, te mostraré algunos plugins comunes en Webpack:
+   Los plugins en Webpack son módulos que se utilizan para extender y personalizar las funcionalidades del proceso de empaquetado. Permiten realizar tareas como la optimización de bundles, inyección de variables de entorno, generación de archivos HTML y mucho más. A continuación, te mostraré algunos plugins comunes en Webpack:
 
    **HtmlWebpackPlugin**:
 
