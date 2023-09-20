@@ -18,8 +18,7 @@ export function HelloWorld() {
  * Write a function that receives a name argument and returns a h1 tag with the name variable appended to the "Hello, " string.
  */
 export function NameArgument(param) {
-  const helloString = `Hello, ${param.name}`;
-  return <h1>{helloString}</h1>;
+  return <h1>Hello, {param.name}</h1>;
 };
 
 /**
