@@ -1,7 +1,7 @@
-#### **HOW TO START REACT PROJECT**
+## **HOW TO START REACT PROJECT**
 
 
-# **`npx create-react-app`**
+### **`npx create-react-app`**
 
 1. - Este comando es útil para crear tu proyecto de React.
 Puedes elegir el nombre de la carpeta que almacenará dicho proyecto, usando el comando `npx create-react-app <nombre-de-la-carpeta>`-
