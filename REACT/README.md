@@ -18,3 +18,4 @@ En el contexto de React, Vite proporciona un entorno de desarrollo eficiente y o
 
 2. - A la hora de ejecutar el comando, Vite te permite elegir el nombre de la carpeta y los compiladores que vas a utilizar, como Vanilla, React, Preact y algunos más. También te permite elegir el lenguaje, como TypeScript o JavaScript.
 
+
