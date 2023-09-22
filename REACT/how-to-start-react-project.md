@@ -14,3 +14,4 @@ Vite es una herramienta de construcción de aplicaciones web para JavaScript y T
 En el contexto de React, Vite proporciona un entorno de desarrollo eficiente y optimizado para crear aplicaciones web modernas con esta biblioteca. Al utilizar Vite con React, puedes experimentar una mejora significativa en los tiempos de compilación y carga, lo que facilita el proceso de desarrollo y prueba de tus aplicaciones.
 
 2. - A la hora de ejecutar el comando, Vite te permite elegir el nombre de la carpeta y los compiladores que vas a utilizar, como Vanilla, React, Preact y algunos más. También te permite elegir el lenguaje, como TypeScript o JavaScript.
+
