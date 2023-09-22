@@ -10,7 +10,8 @@ Si deseas crear el proyecto en la misma carpeta donde estás parado, usa el coma
 
 2. - Recuerda que el nombre de la carpeta siempre debe de estar en letras minúsculas, si no, React no lo acepta.
 
-3. - Después has de ejecutar el comando `npm install` para agregar todas las dependencias necesarias automáticamente.
+3. - Después hay que ejecutar el comando `npm install` para agregar todas las dependencias necesarias automáticamente.
+Estas dependencias se guardarán en una carpeta que se llama `node_modules` y es temporanea, por lo que se puede borrar tranquilamente porque ejecutando otro `npm install` se vuelve a crear, lo que puede llegar a ser necesario si tenemos algún error de compilación, por ejemplo.
 
 4. - Por último ejecutamos la aplicación con `npm start`
 
@@ -22,7 +23,7 @@ En el contexto de React, Vite proporciona un entorno de desarrollo eficiente y o
 
 2. - A la hora de ejecutar el comando, Vite te permite elegir el nombre de la carpeta y los compiladores que vas a utilizar, como Vanilla, React, Preact y algunos más. También te permite elegir el lenguaje, como TypeScript o JavaScript.
 
-3. - Luego se debe ejecutar el comando para crear las dependencias necesarias con `npm install`.
+3. - Luego se debe ejecutar el comando para crear las dependencias necesarias con `npm install`, de la misma forma que se explica arriba.
 
 4. - Por último, para ejecutar la aplicación se utiliza el comando `npm run dev`.
 
