@@ -1,7 +1,8 @@
 ## **HOW TO START REACT PROJECT**
 
+Antes de nada verifica que tienes instalado `node.js` para poder ejecutar la aplicación con los comandos `npm`(node package manager).
 
-### **`npx create-react-app`**
+### **`npx create-react-app` or `npm init react-app`**
 
 1. - Este comando es útil para crear tu proyecto de React.
 Puedes elegir el nombre de la carpeta que almacenará dicho proyecto, usando el comando `npx create-react-app <nombre-de-la-carpeta>`-
@@ -9,6 +10,9 @@ Si deseas crear el proyecto en la misma carpeta donde estás parado, usa el coma
 
 2. - Recuerda que el nombre de la carpeta siempre debe de estar en letras minúsculas, si no, React no lo acepta.
 
+3. - Después has de ejecutar el comando `npm install` para agregar todas las dependencias necesarias automáticamente.
+
+4. - Por último ejecutamos la aplicación con `npm start`
 
 ### **`npm create vite@latest`**
 
@@ -18,4 +22,7 @@ En el contexto de React, Vite proporciona un entorno de desarrollo eficiente y o
 
 2. - A la hora de ejecutar el comando, Vite te permite elegir el nombre de la carpeta y los compiladores que vas a utilizar, como Vanilla, React, Preact y algunos más. También te permite elegir el lenguaje, como TypeScript o JavaScript.
 
+3. - Luego se debe ejecutar el comando para crear las dependencias necesarias con `npm install`.
+
+4. - Por último, para ejecutar la aplicación se utiliza el comando `npm run dev`.
 
