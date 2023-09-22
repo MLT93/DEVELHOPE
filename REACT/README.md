@@ -10,7 +10,7 @@ Si deseas crear el proyecto en la misma carpeta donde estás parado, usa el coma
 2. - Recuerda que el nombre de la carpeta siempre debe de estar en letras minúsculas, si no, React no lo acepta.
 
 
-# **`npm create vite@latest`**
+### **`npm create vite@latest`**
 
 1. - Este comando crea un proyecto utilizando Vite.
 Vite es una herramienta de construcción de aplicaciones web para JavaScript y TypeScript. Está especialmente diseñada para proyectos de React, Vue y Svelte. Vite se caracteriza por su rapidez en el proceso de desarrollo, ya que utiliza un sistema de construcción basado en ESmodules (ESM) que permite una carga instantánea de módulos durante el desarrollo.
