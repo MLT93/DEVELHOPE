@@ -1,5 +1,11 @@
 export const Hello = () => {
-  return <div>Hello, World!</div>;
+  return (
+    <h2>
+      Hello, World!
+      <hr/>
+      <p>What a beautiful day!</p>
+    </h2>
+  );
 };
 
 export function App() {
