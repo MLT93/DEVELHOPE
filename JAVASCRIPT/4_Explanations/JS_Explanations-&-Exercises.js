@@ -27,15 +27,49 @@ console.log(hola[1]); // Print O.
 console.log(hola[2]); // Print L.
 console.log(hola[3]); // Print A.
 
+// --------------------- AND & OR OPERATOR ------------------------
+
+const obj = {
+  a: "a = " + true,
+  b: "b = " + true,
+}
+const { a, b } = obj;
+
+const c = "c = " + false;
+const d = "d = " + false;
+
+console.log(d == a || c == c);
+
+/* **`Aclaraciones antes de empezar`**: */
+
+/* En JavaScript todo lo que no es falso como `Null`, `NaN`, `false`, `0`, `undefined` o `"" <empty string>`, se considera verdadero. */
+
+/* En todas las operaciones de comparación se tienen operandos que se comparan en contexto `Booleano` */
+
+/* **`AND operator &&`**: */
+
+/* Si en una comparación con el operador AND `&&` sus operandos obtienen una operación positiva, eso significa que ambos operandos son `true`, obtendremos siempre el segundo valor positivo que se encuentre y nos renderizará ese valor. */
+
+/* Si en una comparación con el operador AND `&&` sus operandos obtienen una operación negativa, eso significa que al menos uno de los operandos es negativo `false`, obtendremos siempre el primer valor negativo que se encuentre y nos renderizará ese valor. */
+
+/* Si ambos operandos son `false` la operación completa se evalúa como false y devuelve la segunda opción */
+
+/* **`OR operator ||`**: */
+
+/* Si en una comparación con el operador OR `||` sus operandos obtienen una operación positiva, por lo tanto ambos operandos son `true`, obtendremos siempre el primer valor positivo que se encuentre y nos renderizará ese valor. */
+
+/* Si en una comparación con el operador OR `||` sus operandos obtienen una operación negativa, por lo tanto los operandos contienen al menos una parte negativa `false`, obtendremos siempre el primer valor positivo que se encuentre y nos renderizará ese valor. */
+
+/* Si ambos operandos son `false` la operación completa se evalúa como false y devuelve la primera opción */
+
 // ---------------------------------------------
 
+// creo variable dentro del bucle, creo una condición, modifico la condición.
 for (let i = 0; i >= -10; i--) {
-  // creo variable dentro del bucle, creo una condición, modifico la condición.
   console.log(i);
 }
 
 // lo mismo, pero con array
-
 let miArrayDeNumerosNegativoss = [];
 
 for (let numNeg = 0; numNeg >= -10; numNeg--) {
