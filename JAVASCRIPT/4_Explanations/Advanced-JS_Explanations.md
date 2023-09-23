@@ -1,14 +1,16 @@
-**CLASES**
+# **ADVANCED JAVASCRIPT**
+
+### **Classes in JavaScript: Una explicación detallada**
 
 En JavaScript, las clases son una forma de implementar la Programación Orientada a Objetos (POO). Permiten crear objetos que tienen propiedades y métodos, lo que facilita la organización y reutilización del código.
 Son plantillas que definen cómo se crearán los objetos (instancias) y qué comportamientos (métodos) tendrán.
 
 Aquí te explico más sobre las clases, para qué sirven y cómo se utilizan en JavaScript:
 
-¿Para qué sirven las clases en JavaScript?
+**¿Para qué sirven las clases en JavaScript?**
 Las clases en JavaScript sirven para encapsular datos y comportamientos relacionados en un objeto, lo que facilita la creación y el mantenimiento de código. Ayudan a organizar y estructurar programas, permitiendo la reutilización de código a través de la herencia.
 
-¿Cómo se utilizan las clases en JavaScript?
+**¿Cómo se utilizan las clases en JavaScript?**
 Para crear una clase en JavaScript, utilizamos la palabra clave "class" seguida del nombre de la clase. Dentro de la clase, definimos sus propiedades y métodos usando el constructor y otros métodos.
 
 ```javascript
@@ -52,8 +54,6 @@ const estudiante1 = new Estudiante("Pedro", 22, "Ingeniería");
 estudiante1.saludar(); // Imprime: Hola, soy Pedro y tengo 22 años.
 estudiante1.estudiar(); // Imprime: Pedro está estudiando Ingeniería.
 ```
-
-**Classes in JavaScript: Una explicación detallada**
 
 En JavaScript, las clases son un concepto fundamental introducido en ECMAScript 2015 (ES6) para permitir la programación orientada a objetos dentro del lenguaje. Las clases proporcionan un plano para crear objetos, permitiéndote definir la estructura y el comportamiento de un tipo de objeto. Vamos a desglosar los aspectos clave de las clases en JavaScript:
 
@@ -148,7 +148,7 @@ circulo.setRadio = 8; // Usando el setter para modificar la variable
 
 En resumen, las clases en JavaScript proporcionan una forma de definir planos para crear objetos con propiedades y métodos compartidos. Mejoran la organización del código, promueven la reutilización y permiten modelar mejor conceptos del mundo real en tus aplicaciones. Al comprender y utilizar las clases, puedes escribir código JavaScript más estructurado y mantenible.
 
-**Classes Inheritance: Una Explicación Detallada**
+### **Classes Inheritance: Una Explicación Detallada**
 
 La herencia de clases es un concepto importante en la programación orientada a objetos que permite crear nuevas clases basadas en clases existentes. Esto permite compartir propiedades y métodos entre clases relacionadas, lo que ayuda a organizar y reutilizar el código de manera eficiente. Vamos a explorar los aspectos clave de la herencia de clases:
 
@@ -172,7 +172,7 @@ La herencia de clases es un concepto importante en la programación orientada a 
    - Organización: Permite una estructura jerárquica para las clases, lo que facilita la comprensión y el mantenimiento del código.
    - Extensibilidad: Puedes agregar funcionalidades específicas en las clases hijas sin afectar a la clase padre o a otras clases.
 
-_Ejemplo de Herencia:_
+**_Ejemplo de Herencia:_**
 
 Supongamos que tenemos una clase Animal como clase padre y deseamos crear una clase hija Perro:
 
@@ -203,7 +203,7 @@ En este ejemplo, `Perro` hereda las propiedades y métodos de `Animal`, y tambi�
 
 En resumen, la herencia de clases permite crear nuevas clases basadas en clases existentes, compartiendo propiedades y métodos. Esto promueve la reutilización de código, la organización y la extensibilidad en la programación orientada a objetos.
 
-**The Prototype Chain: Una Explicación Detallada**
+### **The Prototype Chain: Una Explicación Detallada**
 
 La cadena de prototipos es un concepto fundamental en JavaScript que explica cómo los objetos se enlazan y heredan propiedades y métodos entre sí. Esto está relacionado con cómo JavaScript maneja la herencia y el acceso a propiedades en un entorno basado en prototipos. Vamos a explorar los aspectos clave de la cadena de prototipos:
 
@@ -258,7 +258,7 @@ miAuto.encender(); // Hereda encender de Vehiculo
 
 En resumen, la cadena de prototipos es la base del sistema de herencia en JavaScript. Permite que los objetos hereden propiedades y métodos de otros objetos, lo que mejora la eficiencia y la flexibilidad en la programación orientada a objetos en JavaScript.
 
-**Class Fields: Una Explicación Detallada**
+### **Class Fields: Una Explicación Detallada**
 
 Los campos de clase son una característica introducida en JavaScript que permite declarar propiedades directamente en la definición de una clase, lo que simplifica la asignación y uso de propiedades de instancia. Esta característica hace que el código sea más claro y eficiente al evitar la necesidad de definir propiedades en el constructor. Vamos a explorar los aspectos clave de los campos de clase:
 
@@ -386,7 +386,7 @@ En este ejemplo, el método privado `#metodoPrivado()` puede acceder al campo pr
 
 Esta limitación asegura que los campos y métodos privados cumplan su propósito de encapsulación y privacidad.
 
-**Static Properties and Methods: Una Explicación Detallada**
+### **Static Properties and Methods: Una Explicación Detallada**
 
 Las propiedades y métodos estáticos son elementos de las clases en JavaScript que están asociados directamente con la clase en sí, en lugar de con las instancias individuales de la clase. Esto significa que no es necesario crear una instancia de la clase para acceder a estas propiedades y métodos. Vamos a explorar los aspectos clave de las propiedades y métodos estáticos:
 
@@ -430,7 +430,7 @@ console.log(Calculadora.restar(8, 2)); // Llamada a método estático
 
 En resumen, las propiedades y métodos estáticos son elementos asociados directamente con la clase en sí, en lugar de con instancias individuales. Son útiles para funcionalidades globales o compartidas entre todas las instancias de una clase. El acceso a estas propiedades y métodos se realiza directamente desde la clase, sin necesidad de crear instancias.
 
-**Private Properties and Methods: Una Explicación Detallada**
+### **Private Properties and Methods: Una Explicación Detallada**
 
 Las propiedades y métodos privados son una característica introducida en JavaScript que permite definir miembros en una clase que solo son accesibles desde dentro de la propia clase. Esto ayuda a encapsular y proteger la información interna de la clase de cualquier acceso no autorizado desde fuera. Vamos a explorar los aspectos clave de las propiedades y métodos privados:
 
@@ -481,7 +481,7 @@ instancia.metodoPublico(); // Llamada a método público que accede al método p
 
 En resumen, las propiedades y métodos privados en JavaScript permiten definir miembros en una clase que solo pueden ser accedidos desde dentro de la misma clase. Esto mejora la encapsulación, la seguridad y la calidad del código. Sin embargo, es importante tener en cuenta la compatibilidad con los navegadores y entornos antes de utilizarlos.
 
-**Getters and Setters: Una Explicación Detallada**
+### **Getters and Setters: Una Explicación Detallada**
 
 1. `Introducción a Getters y Setters`:
    Los getters y setters en JavaScript son herramientas que permiten un control más preciso sobre cómo se accede y se modifica el valor de las propiedades de un objeto. Estas funciones especiales son particularmente útiles cuando se busca encapsular y proteger los datos de una clase, al mismo tiempo que se brinda una interfaz controlada para interactuar con ellos.
@@ -522,7 +522,7 @@ Este setter permitirá asignar un nuevo valor a \_nombre, pero solo si el valor 
 5. `Compatibilidad y Consideraciones`:
    Es importante tener en cuenta que aunque los getters y setters son una característica estándar de ECMAScript 5 y son compatibles con la mayoría de los navegadores modernos, siempre es recomendable verificar la compatibilidad en el entorno en el que estás trabajando.
 
-_Ejemplo de Getters y Setters:_
+**_Ejemplo de Getters y Setters:_**
 
 Supongamos que tenemos una clase Persona con una propiedad privada \_edad. Podemos definir un getter y un setter para \_edad como se muestra a continuación:
 
@@ -551,7 +551,7 @@ console.log(persona1.edad); // Acceder al valor a través del getter
 persona1.edad = 25; // Asignar un nuevo valor a través del setter
 ```
 
-_Otro ejemplo:_
+**_Otro ejemplo:_**
 
 Vamos a analizar tanto el getter como el setter, y también cómo se usan en el siguiente código.
 
@@ -642,7 +642,7 @@ Es importante mencionar que JavaScript no tiene verdaderas propiedades privadas,
 
 Por lo tanto, si deseas exponer propiedades de una clase con un control adicional sobre su acceso y modificación, los getters y setters son una herramienta valiosa. Sin embargo, si una propiedad no necesita lógica adicional o control, simplemente puedes acceder y modificar directamente la propiedad pública sin necesidad de usar getters y setters.
 
-**Extending Built-in Classes: Una Explicación Detallada**
+### **Extending Built-in Classes: Una Explicación Detallada**
 
 1. `Introducción a Extending Built-in Classes`:
    Extender clases integradas en JavaScript significa crear nuevas clases que hereden propiedades y métodos de las clases incorporadas del lenguaje, como Array, String, Number, etc. Esta característica proporciona la capacidad de agregar funcionalidades personalizadas y métodos específicos a las clases ya existentes.
@@ -699,7 +699,7 @@ console.log(miTexto.invertir()); // Resultado: '!odnum ,aloH¡'
 
 En resumen, la extensión de clases incorporadas en JavaScript permite añadir funcionalidades personalizadas a las clases existentes, mejorando la organización y la claridad del código. Al hacerlo, puedes aprovechar la funcionalidad ya existente mientras añades métodos y propiedades específicos. Recuerda tener en cuenta las consideraciones y buenas prácticas al extender clases para un código más eficiente y legible.
 
-**Operador instanceof: Una Explicación Detallada**
+### **Operador instanceof: Una Explicación Detallada**
 
 1. `Introducción al Operador instanceof`:
    El operador instanceof en JavaScript es una herramienta que te permite verificar si un objeto es una instancia de una clase específica. Esta característica es útil para determinar si un objeto fue creado a partir de una clase en particular o de una clase que hereda de ella.
@@ -876,7 +876,7 @@ En resumen, el operador instanceof se utiliza en este código para determinar si
 
 El operador instanceof en JavaScript te permite verificar la pertenencia de un objeto a una clase o su herencia, lo que resulta útil para realizar comprobaciones de tipo y tomar decisiones basadas en la estructura de clases. Su uso contribuye a un código más seguro y mantenible al evitar operaciones inapropiadas en objetos no válidos.
 
-### Destructuring Assignment: Una Explicación Detallada
+### **Destructuring Assignment: Una Explicación Detallada**
 
 1. `Introducción a Destructuring Assignment`:
    La Destructuring Assignment es una característica de JavaScript que permite extraer valores de objetos y arrays en variables individuales. En lugar de acceder a los valores mediante notación de puntos o índices, puedes descomponer una estructura de datos en partes más pequeñas y asignar esas partes a variables específicas.
@@ -1091,7 +1091,7 @@ console.log(id3, name3, surname3, old3); // print: 3, Marco, Zampellan, 75
 
 En Resumen, la Destructuring Assignment en JavaScript es una técnica poderosa para extraer valores de objetos y arrays en variables individuales. Proporciona claridad, acceso rápido y la capacidad de manipular datos de manera efectiva. Al comprender y aplicar esta característica, puedes escribir un código más legible y eficiente.
 
-## Destructuring Arrays: Una Explicación Detallada
+### **Destructuring Arrays: Una Explicación Detallada**
 
 1. `Introducción a Destructuring Arrays`:
    El "destructuring" de arrays en JavaScript es una característica que permite descomponer o extraer elementos de un array en variables individuales. Esto simplifica el proceso de asignar valores a variables a partir de los elementos de un array.
@@ -1145,7 +1145,7 @@ console.log(num2); // Resultado: 5
 
 En resumen, el destructuring de arrays en JavaScript ofrece una forma concisa y legible de asignar elementos de arrays a variables individuales. Esta técnica puede mejorar la claridad y eficiencia del código al acceder a los valores del array de manera directa y conveniente.
 
-### Destructuring Objects: Una Explicación Detallada
+### **Destructuring Objects: Una Explicación Detallada**
 
 1. `Introducción al Destructuring de Objetos`:
    El "destructuring" de objetos en JavaScript es una técnica que nos permite extraer propiedades específicas de un objeto y asignarlas a variables independientes. Esta característica resulta muy útil para acceder a los valores de un objeto de manera más directa y eficiente.
@@ -1259,7 +1259,7 @@ Con esto, obtendrás los valores correctos y no te dará undefined.
 
 En resumen, el destructuring de objetos en JavaScript es una técnica eficiente que nos permite extraer propiedades de un objeto y asignarlas a variables independientes. Esto mejora la legibilidad y eficiencia del código al evitar el uso repetitivo de notación de punto o corchetes para acceder a las propiedades del objeto.
 
-### Spread Operator: Una Explicación Detallada
+### **Spread Operator: Una Explicación Detallada**
 
 1. **`Introducción al Spread Operator`**:
    El Spread Operator en JavaScript es una herramienta poderosa que te permite "expandir" elementos de arrays y propiedades de objetos en lugares donde se necesitan varios elementos por separado. Imagina que es como si estuvieras desempacando una caja llena de elementos y colocándolos individualmente en diferentes lugares.
@@ -1332,7 +1332,7 @@ En resumen, el destructuring de objetos en JavaScript es una técnica eficiente 
 
 En Resumen, el Spread Operator es una característica esencial en JavaScript que te permite desempacar elementos de arrays y propiedades de objetos de manera flexible. Te ayuda a crear copias, combinar datos y desglosar estructuras. Al entender y aplicar esta característica, podrás escribir código más limpio, eficiente y organizado en tus proyectos.
 
-**Rest Operator: Una Explicación Detallada**
+### **Rest Operator: Una Explicación Detallada**
 
 1. **`Introducción al Rest Operator`**:
    El Rest Operator en JavaScript es una herramienta que te permite capturar varios elementos en un solo lugar, ya sea en un array o en parámetros de función. Imagina que estás recolectando elementos dispersos en una sola caja para tratarlos de manera conjunta.
@@ -1386,7 +1386,7 @@ En Resumen, el Spread Operator es una característica esencial en JavaScript que
 
 En Resumen, el Rest Operator en JavaScript es una característica esencial que te permite capturar múltiples elementos en un solo lugar, ya sea para parámetros de función o elementos de arrays. Ofrece una forma conveniente de trabajar con argumentos variables y conjuntos de datos dispersos. Al comprender y aplicar esta característica, podrás escribir código más eficiente y dinámico en tus proyectos.
 
-### Diferencias entre Spread Operator y Rest Operator con ejemplos
+### **Diferencias entre Spread Operator y Rest Operator con ejemplos**
 
 El Rest Operator y el Spread Operator en JavaScript se parecen en su sintaxis, ya que ambos utilizan tres puntos (...) en su notación. Sin embargo, cumplen propósitos diferentes y se utilizan en contextos distintos. Aquí te explico las diferencias clave:
 
@@ -1555,7 +1555,7 @@ console.log(id, personInfo);
 
 En resumen, el primer bloque de código crea un objeto info utilizando el Operador Spread, que copia todas las propiedades del objeto person y modifica la propiedad id al valor 3. Mientras que el segundo bloque de código utiliza la deconstrucción para extraer la propiedad id del objeto person y recolecta las propiedades restantes en otro objeto llamado personInfo (como si le "robáramos" los datos al objeto person).
 
-### Diferencias entre `const { id, ...personInfo } = person;` y `const info = { ...person, id: 3 };`:
+### **Diferencias entre `const { id, ...personInfo } = person;` y `const info = { ...person, id: 3 };`:**
 
 1. `const { id, ...personInfo } = person;`:
 
@@ -1632,7 +1632,7 @@ console.log(isAdult4(person2));
 
 En resumen, aunque ambas características utilizan la notación de tres puntos (...), el Spread Operator se enfoca en expandir elementos y se usa en lugares donde se esperan varios elementos, mientras que el Rest Operator se enfoca en capturar elementos variables en un solo lugar, utilizado principalmente en funciones y en el desglose de elementos en arrays.
 
-### Métodos JSON: Una Explicación Detallada
+### **Métodos JSON: Una Explicación Detallada**
 
 1. **`Introducción a los Métodos JSON`**:
    Dentro del contexto de la programación en JavaScript, los "Métodos JSON" se refieren a las funciones integradas que permiten la manipulación, conversión y transformación de datos en formato JSON (JavaScript Object Notation). JSON es un formato de intercambio de datos ampliamente utilizado debido a su estructura legible tanto para humanos como para máquinas, y es fundamental en el desarrollo web moderno para transmitir y almacenar información estructurada.
@@ -1784,7 +1784,7 @@ console.log(formattedDate); // Salida esperada: viernes, 25 de agosto de 2023, 9
 
 En resumen, los Métodos JSON en JavaScript ofrecen herramientas fundamentales para el manejo de datos en formato JSON. Ya sea para analizar cadenas JSON y convertirlas en objetos JavaScript, o para convertir objetos en cadenas JSON estructuradas, estos métodos facilitan la transferencia, el almacenamiento y la manipulación de datos en aplicaciones web. Con el uso adecuado de estos métodos y la adhesión a las buenas prácticas, es posible lograr un flujo eficiente y confiable de datos en tu desarrollo. Asegúrate de comprender y gestionar las zonas horarias cuando serialices y deserialices fechas. La cadena de fecha resultante de `toISOString()` incluirá la zona horaria UTC. Si necesitas un control más preciso sobre la serialización y deserialización de fechas, también puedes considerar el uso de bibliotecas como `date-fns`, `luxon` o `moment.js` para un manejo más avanzado de las zonas horarias (aunque se encuentra en proceso de desuso), o bibliotecas específicas para la manipulación de fechas y tiempo.
 
-### Template Strings: Una Explicación Detallada
+### **Template Strings: Una Explicación Detallada**
 
 1. **`Introducción a Template Strings`**:
    Los Template Strings, también conocidos como literales de plantilla, son una característica de JavaScript que permite la creación de cadenas de texto más legibles y flexibles. Estas cadenas pueden contener expresiones incrustadas y variables, lo que facilita la concatenación de valores dinámicos dentro de un texto.
@@ -1843,7 +1843,7 @@ console.log(poema);
 
 En resumen, los Template Strings en JavaScript son una herramienta valiosa para crear cadenas de texto más legibles y flexibles. Facilitan la interpolación de variables y expresiones, así como la creación de cadenas multilínea. Al aprovechar esta característica, puedes mejorar la calidad y la claridad del código en tus proyectos.
 
-### Métodos de la Consola: Una Explicación Detallada
+### **Métodos de la Consola: Una Explicación Detallada**
 
 1. **`Introducción a los Métodos de la Consola`**:
    Los métodos de la consola en JavaScript son funciones proporcionadas por el navegador o el entorno de ejecución para interactuar y mostrar información en la consola de desarrollo. Estas funciones son herramientas esenciales para depurar y monitorear el comportamiento de tu código, ya que te permiten imprimir mensajes, variables, objetos y más en la consola del navegador.
@@ -1944,7 +1944,7 @@ console.log(`Hola, ${respuesta}!`);
 5. **`Consideraciones Finales`**:
    Si bien los métodos de la consola son valiosos para la depuración y el desarrollo, es importante recordar que no deben dejarse en el código final de producción, ya que pueden afectar el rendimiento y la seguridad. Se recomienda eliminar o comentar los llamados a los métodos de la consola antes de implementar la aplicación en producción.
 
-### Sentencias Try - Catch y Finally: Una Explicación Detallada
+### **Sentencias Try - Catch y Finally: Una Explicación Detallada**
 
 1. **`Introducción a las Sentencias Try - Catch y Finally`**:
    Las sentencias `try` y `catch` en JavaScript son herramientas esenciales para manejar errores y excepciones en el código. Estas sentencias permiten controlar de manera controlada los errores que puedan surgir durante la ejecución de un programa, evitando que el flujo de ejecución se interrumpa abruptamente. Además, '`finally` permite ejecutar el código, después de `try` y `catch`, sin importarle de la resolución de la operación realizada, lo cual permite ejecutar código si o si.
@@ -2003,7 +2003,7 @@ Es importante recordar que las sentencias `try` y `catch` no deben utilizarse pa
 
 En resumen, las sentencias `try` y `catch` son herramientas poderosas para manejar errores y excepciones en JavaScript. Te permiten mantener el control sobre el flujo de ejecución incluso cuando ocurren errores inesperados, lo que contribuye a un código más robusto y a una experiencia de usuario más confiable. Recuerda utilizar estas sentencias de manera apropiada y específica para situaciones de manejo de errores.
 
-### Async code - callbacks y Funciones Relacionadas en JavaScript: Una Explicación Detallada
+### **Async code - callbacks y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
 
 1. **`Introducción a Callbacks`**:
    Los callbacks son un concepto esencial en JavaScript que permite la ejecución de funciones después de que se complete una operación o evento específico. Estas funciones pasadas como argumentos permiten manejar tareas asíncronas y modularizar el código.
@@ -2401,7 +2401,7 @@ Este ejemplo simula la lectura de un archivo de manera asíncrona y demuestra c�
 
 En resumen, los callbacks, `setInterval` con `clearInterval` y `setTimeout` son herramientas esenciales en JavaScript para manejar operaciones asíncronas y programar tareas diferidas. Su comprensión y uso adecuado son fundamentales para escribir código efectivo en un entorno asíncrono.
 
-### Async Code - Pyramid of Doom: Una Explicación Detallada
+### **Async Code - Pyramid of Doom: Una Explicación Detallada**
 
 1. **`Introducción al Pyramid of Doom (Pirámide del Infierno)`**:
    El término "Pyramid of Doom" (Pirámide del Infierno) se refiere a una estructura de código antiestética y difícil de mantener que se produce cuando anidamos múltiples callbacks en un código asíncrono. Esta estructura en forma de pirámide se forma cuando las tareas asincrónicas se encadenan una tras otra, creando un anidamiento profundo y visualmente poco claro. Esto puede dificultar la lectura y el mantenimiento del código a medida que aumenta la complejidad de las operaciones asíncronas.
@@ -2494,7 +2494,7 @@ leerArchivo("archivo.txt", (contenidoArchivo) => {
 7. **`Conclusión`**:
    El Pyramid of Doom es un patrón antiestético y desafiante que se produce cuando anidamos múltiples callbacks en el código asíncrono. A medida que JavaScript ha evolucionado, han surgido soluciones más modernas y legibles, como Promesas y async/await, que permiten manejar operaciones asíncronas de manera más efectiva y clara. Estas soluciones eliminan la pirámide del infierno y mejoran la organización y la legibilidad del código asincrónico.
 
-### Async Code - Promise: Una Explicación Detallada
+### **Async Code - Promise: Una Explicación Detallada**
 
 1. **`Introducción a las Promesas`:**
    Las promesas son un concepto fundamental en JavaScript para manejar código asíncrono de manera más estructurada y legible. Proporcionan una forma más ordenada de manejar el flujo de trabajo cuando se tratan con operaciones que toman tiempo, como solicitudes a servidores o lecturas de archivos.
@@ -3971,7 +3971,7 @@ Este código HTML y JavaScript realiza una solicitud a una API, muestra los dato
 
 En resumen, la Fetch API y las funciones relacionadas, como async/await y promesas, son elementos esenciales en el desarrollo web moderno para realizar solicitudes HTTP de manera asíncrona y obtener recursos de servidores web. Estas herramientas permiten interactuar con servicios web, autenticar usuarios, cargar datos dinámicos y más, lo que las convierte en parte integral del desarrollo web contemporáneo.
 
-#### CORS Hints y Funciones Relacionadas en JavaScript: Una Explicación Detallada
+### **CORS Hints y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
 
 1. **`Introducción a CORS (Cross-Origin Resource Sharing)`**:
    CORS (Cross-Origin Resource Sharing) es un mecanismo de seguridad en navegadores web que impide las solicitudes de recursos (como archivos o datos) desde un dominio (origen) diferente al que sirve la página web actual. Esto es fundamental para prevenir ataques de seguridad, pero a veces puede ser problemático cuando necesitas realizar solicitudes a servidores externos.
@@ -4027,7 +4027,7 @@ En este ejemplo, si se produce un problema de CORS, la consola del navegador pro
 
 En resumen, CORS Hints y las funciones relacionadas en JavaScript son herramientas esenciales para comprender, diagnosticar y solucionar problemas de CORS en aplicaciones web. Estas características permiten a los desarrolladores garantizar la seguridad y la privacidad de los datos mientras consumen recursos de diferentes dominios de manera efectiva y segura.
 
-#### Cookies y Funciones Relacionadas en JavaScript: Una Explicación Detallada
+### **Cookies y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
 
 1. **`Introducción a las Cookies`**:
    Las cookies son pequeños archivos de texto que los sitios web utilizan para almacenar información en el navegador del usuario. Esta información puede ser recuperada posteriormente para personalizar la experiencia del usuario, como recordar preferencias o mantener un usuario conectado.
@@ -4103,7 +4103,7 @@ En resumen, CORS Hints y las funciones relacionadas en JavaScript son herramient
 
 En resumen, las cookies son una herramienta esencial en el desarrollo web para mantener la persistencia de datos y la autenticación del usuario. Sin embargo, es importante utilizarlas de manera responsable y estar al tanto de las regulaciones de privacidad vigentes.
 
-#### Local Storage & Session Storage y Funciones Relacionadas en JavaScript: Una Explicación Detallada
+### **Local Storage & Session Storage y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
 
 1. **`Introducción a Local Storage y Session Storage`**:
 
@@ -4192,7 +4192,7 @@ En resumen, las cookies son una herramienta esencial en el desarrollo web para m
 
 En resumen, `Local Storage` y `Session Storage` son mecanismos de almacenamiento web proporcionados por los navegadores. `Local Storage` persiste incluso después de cerrar el navegador, mientras que `Session Storage` se elimina cuando se cierra la pestaña o el navegador. Ambos utilizan la misma API y permiten el almacenamiento de datos en formato de texto. Son útiles para almacenar preferencias de usuario, configuraciones de aplicaciones y datos temporales que deben persistir o ser relevantes durante una sesión. Deben usarse con precaución y no para datos sensibles debido a su naturaleza basada en texto. Son herramientas poderosas para mejorar la experiencia del usuario en aplicaciones web al permitir la persistencia de datos en el lado del cliente.
 
-#### ES Modules y Funciones Relacionadas en JavaScript: Una Explicación Detallada
+### **ES Modules y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
 
 1. **`Introducción a ES Modules`**:
    Los ES Modules (ECMAScript Modules) son una característica introducida en ECMAScript 6 (ES6) que permite a los desarrolladores dividir su código en módulos reutilizables y modularizar sus aplicaciones. Esto facilita la organización y mantenimiento del código, ya que cada módulo se enfoca en una funcionalidad específica.
@@ -4381,7 +4381,7 @@ Este ejemplo muestra un contador que empieza en cero. Los botones de incrementar
 
 En resumen, los módulos son una característica fundamental en JavaScript que permite la modularización y organización eficiente del código. Su uso es esencial para construir aplicaciones escalables y mantenibles. Con la sintaxis de importación y exportación, puedes dividir tu código en módulos reutilizables y trabajar de manera más eficaz en proyectos grandes y complejos.
 
-#### Webpack y Funciones Relacionadas en JavaScript: Una Explicación Detallada
+### **Webpack y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
 
 1. **`Introducción a Webpack`**:
    Webpack es una herramienta de construcción (bundler) para JavaScript. Su principal objetivo es tomar módulos con dependencias y generar activos estáticos que representen esos módulos. En otras palabras, Webpack es una herramienta muy popular en el ecosistema de desarrollo web, especialmente en entornos de JavaScript. Se clasifica como un "empaquetador de módulos", lo que significa que su función principal es tomar múltiples archivos de código fuente y combinarlos en uno o más archivos de salida, generalmente para su uso en un navegador web.
