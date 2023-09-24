@@ -6,6 +6,7 @@ export function App() {
       <Hello />
       <Message />
       <Welcome name={"John"} age={17} />
+      <AlertClock />
     </div>
   );
 }
@@ -39,3 +40,14 @@ const Welcome = ({ name, age }) => {
 const Age = ({ age }) => {
   return age >= 18 ? <p>Your age is {age}</p> : <p>You are very young!</p>;
 };
+
+
+const AlertClock = () => {
+  function HandelClick() {
+    alert(new Date);
+  }
+  return (
+    <button onClick={HandelClick}>See current Date</button>
+  )
+}
+
