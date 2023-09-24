@@ -488,11 +488,27 @@ const element = <h1>Hola, {nombre}</h1>;
 
    ```jsx
    function MostrarElemento(props) {
+     {/* If-Else Statement */}   
      if (props.mostrar) {
        return <div>Elemento visible</div>;
      } else {
        return <div>Elemento oculto</div>;
      }
+   }
+   ```
+
+   ```jsx
+   import HelloWorld from "./HelloWorld.js";
+
+   // Si no recibiéramos una de las dos props, deberíamos crear un condicional
+   export function Welcome({ name, age }) {
+     return (
+       <div>
+         {name ? <h2>Welcome, {name}</h2> : <HelloWorld />} {/* Ternary Operator */}
+         {Boolean(age) && <p>Your are {age} years.old</p>} {/* Cuidado con los números al crear condicionales, porque el número 0 por ejemplo es un valor `false` pero también es un valor que React puede renderizar, por lo tanto deberemos tratarlo con cuidado y transformarlo a un valor `Boolean` siempre que trabajemos con números */}
+         {age === 0 && <p>Your are very young!</p>} {/* El número 0 es transformado a `Boolean` nuevamente */}
+       </div>
+     );
    }
    ```
 
