@@ -4,7 +4,7 @@ export function App() {
       <Hello />
       <Hello />
       <Message />
-      <Welcome /> {/* if not pass the name Prop, the component rendering only the <p> element with out javascript property */}
+      <Welcome name={"Manuel"} age={22} /> {/* if not pass the Props, the component rendering only the <p> element without javascript property */}
     </div>
   );
 }
@@ -24,8 +24,11 @@ const Message = () => {
 };
 
 // eslint-disable-next-line react/prop-types
-const Welcome = ({ name }) => {
-  return <p>Welcome, {name}</p>;
+const Welcome = ({ name, age }) => {
+  return (
+    <div>
+      <p>Welcome, {name}</p>;
+      <p>Your age is {age}</p>;
+    </div>
+  )
 };
-
-
