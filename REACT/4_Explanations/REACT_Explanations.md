@@ -1084,7 +1084,7 @@ const Hijo = (props) => {
 6. **`Eventos de Cambio de Estado (State)`**:
    Los eventos en React son a menudo utilizados para actualizar el estado (state) de un componente. Cuando el estado se actualiza, React se encarga de volver a renderizar el componente para reflejar los cambios.
 
-   Los eventos de cambio de estado (state) en React son fundamentales para crear componentes interactivos y dinámicos. Estos eventos permiten que un componente reaccione a las acciones del usuario o a cambios en su entorno y actualice su estado en consecuencia.
+   Los eventos de cambio de estado (state) en React son fundamentales para crear componentes más interactivos y dinámicos. Estos eventos permiten que un componente reaccione a las acciones del usuario o a cambios en su entorno y actualice su estado en consecuencia.
 
    - **Estado en Componentes Funcionales**: En los componentes funcionales, el hook `useState` te permite agregar estado a tus componentes. Este hook proporciona una forma de declarar variables de estado y una función para actualizarlas.
 
