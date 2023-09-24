@@ -6,7 +6,9 @@ export function App() {
       <Hello />
       <Message />
       <Welcome name={"John"} age={17} />
-      <AlertClock />
+      <div>
+        <AlertClock />
+      </div>
     </div>
   );
 }
