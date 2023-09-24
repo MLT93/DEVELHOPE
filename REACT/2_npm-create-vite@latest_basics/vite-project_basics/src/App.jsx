@@ -4,7 +4,7 @@ export function App() {
       <Hello />
       <Hello />
       <Message />
-      <Welcome name={"Marcos"}/>
+      <Welcome /> {/* if not pass the name Prop, the component rendering only the <p> element with out javascript property */}
     </div>
   );
 }
@@ -27,3 +27,5 @@ const Message = () => {
 const Welcome = ({ name }) => {
   return <p>Welcome, {name}</p>;
 };
+
+
