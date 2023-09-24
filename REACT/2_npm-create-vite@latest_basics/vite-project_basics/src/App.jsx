@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 /* eslint-disable react/prop-types */
 export function App() {
   return (
@@ -8,6 +10,7 @@ export function App() {
       <Welcome name={"John"} age={17} />
       <div>
         <AlertClock HandleClick={HandleClick} />
+        <Counter />
       </div>
     </div>
   );
@@ -36,7 +39,7 @@ const Welcome = ({ name, age }) => {
         <Age age={age} />
       </div>
     );
-  } 
+  }
 };
 
 const Age = ({ age }) => {
@@ -44,12 +47,25 @@ const Age = ({ age }) => {
 };
 
 function HandleClick() {
-  alert(new Date);
+  alert(new Date());
 }
 
 const AlertClock = ({ HandleClick }) => {
   return (
-    <button onClick={HandleClick}>See current Date</button>
-  )
-}
+    <p>
+      <button onClick={HandleClick}>See current Date</button>
+    </p>
+  );
+};
 
+export const Counter = () => {
+  const [counter, setCounter] = useState(0);
+
+  return (
+    <div>
+      <span>Counter: {counter}</span>
+      <br />
+      <button onClick={() => setCounter(counter + 1)}>Incrementar</button>
+    </div>
+  );
+};
