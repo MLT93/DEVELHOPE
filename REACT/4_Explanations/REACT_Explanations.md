@@ -409,6 +409,7 @@ const element = <h1>Hola, {nombre}</h1>;
 
 4. **`Propiedades (Props) en Componentes`**:
    Las propiedades (`props`) son la forma en que los componentes de React pueden recibir datos de su componente padre. Estas se pasan como atributos al componente y se acceden como argumentos de la función del componente.
+   Las Props en React son de solo lectura. No se deben modificar en el componente hijo. Si necesitas un valor que pueda cambiar, debe manejarse mediante el estado del componente.
 
    ```jsx
    function Saludo(props) {
@@ -484,7 +485,7 @@ const element = <h1>Hola, {nombre}</h1>;
    ```
 
 8. **`Renderizado Condicional en React`**:
-   Permite mostrar diferentes elementos o componentes en función de una condición.
+   Permite mostrar diferentes elementos o componentes en función de una condición. Como por ejemplo, el hecho de recibir o no las Props según la necesidad o circunstancia.
 
    ```jsx
    function MostrarElemento(props) {
@@ -504,9 +505,12 @@ const element = <h1>Hola, {nombre}</h1>;
    export function Welcome({ name, age }) {
      return (
        <div>
-         {name ? <h2>Welcome, {name}</h2> : <HelloWorld />} {/* Ternary Operator */}
-         {Boolean(age) && <p>Your are {age} years.old</p>} {/* Cuidado con los números al crear condicionales, porque el número 0 por ejemplo es un valor `false` pero también es un valor que React puede renderizar, por lo tanto deberemos tratarlo con cuidado y transformarlo a un valor `Boolean` siempre que trabajemos con números */}
-         {age === 0 && <p>Your are very young!</p>} {/* El número 0 es transformado a `Boolean` nuevamente */}
+         {/* Ternary Operator */}
+         {name ? <h2>Welcome, {name}</h2> : <HelloWorld />}
+         {/* Cuidado con los números al crear condicionales, porque el número 0 por ejemplo es un valor `false` pero también es un valor que React puede renderizar, por lo tanto deberemos tratarlo con cuidado y transformarlo a un valor `Boolean` siempre que trabajemos con números */}
+         {Boolean(age) && <p>Your are {age} years.old</p>}
+         {/* El número 0 es transformado a `Boolean` nuevamente */}
+         {age === 0 && <p>Your are very young!</p>}
        </div>
      );
    }
@@ -629,3 +633,340 @@ const element = <h1>Hola, {nombre}</h1>;
     React es una poderosa biblioteca de JavaScript para construir interfaces de usuario interactivas y reactivas. Con un buen entendimiento de los componentes, el estado, las props y otros conceptos fundamentales, puedes construir aplicaciones web modernas y escalables.
 
 Esta explicación proporciona una visión general detallada de los componentes en React y las funciones relacionadas en JavaScript. Al dominar estos conceptos, estarás bien equipado para desarrollar aplicaciones web modernas y dinámicas. Recuerda que la práctica y la construcción de proyectos reales son esenciales para consolidar tu conocimiento. ¡Buena suerte en tu viaje de desarrollo con React!
+
+### **Pasar Datos con Props en React: Una Explicación Detallada**
+
+1. **`Introducción a Props en React`**:
+   En React, "props" es una abreviatura de "properties" (propiedades en inglés). Son un mecanismo para pasar datos de un componente padre a un componente hijo. Los props permiten que los componentes sean configurables y reutilizables.
+
+2. **`Sintaxis y Uso de Props`**:
+   Para pasar props a un componente hijo, simplemente se añaden como atributos en el componente cuando se utiliza en el componente padre. Luego, el componente hijo puede acceder a esos props como argumentos de su función.
+
+   ```jsx
+   // En el componente padre
+   <ComponenteHijo nombre="Juan" edad={30} />
+   ```
+
+   ```jsx
+   // En el componente hijo
+   const ComponenteHijo = (props) => {
+     return <div>{props.nombre} tiene {props.edad} años</div>;
+   };
+   ```
+
+3. **`Props como Argumentos de Función`**:
+   En un componente funcional, los props se pasan como un objeto que puede ser desestructurado para acceder a los valores individuales.
+
+   ```jsx
+   const ComponenteHijo = ({ nombre, edad }) => {
+     return <div>{nombre} tiene {edad} años</div>;
+   };
+   ```
+
+4. **`Props en Componentes de Clase`**:
+   En un componente de clase, los props están disponibles a través de `this.props`.
+
+   ```jsx
+   class ComponenteHijo extends React.Component {
+     render() {
+       return <div>{this.props.nombre} tiene {this.props.edad} años</div>;
+     }
+   }
+   ```
+
+5. **`Las Props son de Solo Lectura`**:
+   Los props en React son de solo lectura. No se deben modificar en el componente hijo. Si necesitas un valor que pueda cambiar, debe manejarse mediante el estado del componente.
+
+6. **`Paso de Funciones como Props`**:
+   Además de datos, también puedes pasar funciones como props. Esto permite que los componentes hijos interactúen con el componente padre.
+
+   ```jsx
+   // En el componente padre (`App.jsx`)
+   <ComponenteHijo handleClick={this.handleClick} />
+   ```
+
+   ```jsx
+   // En el componente hijo (`MiComponente.jsx`)
+   <button onClick={props.handleClick}>Click Me</button>
+   ```
+
+7. **`Propiedades de Componentes Funcionales`**:
+   Los componentes funcionales también pueden tener propiedades (props) por defecto. Esto se hace usando el método `defaultProps`.
+
+   ```jsx
+   const ComponenteHijo = (props) => {
+     return <div>{props.nombre} tiene {props.edad} años</div>;
+   };
+
+   ComponenteHijo.defaultProps = {
+     nombre: 'Usuario',
+     edad: 18
+   };
+   ```
+
+8. **`Uso de Props en la Práctica`**:
+
+```jsx
+import React from 'react';
+
+const Usuario = ({nombre, edad}) => {
+  return <div>{nombre} tiene {edad} años</div>;
+};
+
+const App = () => {
+  return (
+    <div>
+      <h1>Datos del Usuario</h1>
+      <Usuario nombre="Juan" edad={30} />
+    </div>
+  );
+};
+
+export default App;
+```
+
+9. **`Props en Componentes Anidados`**:
+   Puedes pasar props a componentes anidados a través del componente intermedio. Esto sigue el mismo principio de pasar props de un componente padre a un componente hijo.
+
+```jsx
+const Abuelo = (props) => {
+  return <Padre hijoNombre="Pedro" />;
+};
+
+const Padre = (props) => {
+  return <Hijo nombre={props.hijoNombre} />;
+};
+
+const Hijo = (props) => {
+  return <div>{props.nombre}</div>;
+};
+```
+
+10. **`Props y Componentes de Alto Orden (HOCs)`**:
+    Los HOCs son patrones avanzados en React donde un componente recibe un componente como argumento y devuelve un nuevo componente con funcionalidades adicionales. Pueden ser utilizados para pasar props adicionales a un componente.
+
+11. **`Consideraciones sobre Props`**:
+    - **Mantenlo Simple**:
+      En general, es una buena práctica mantener las props lo más simples y específicas posible. Esto facilita la comprensión y el mantenimiento del código.
+
+    - **Nombres Descriptivos**:
+      Usa nombres descriptivos para tus props. Esto hará que el código sea más legible y comprensible.
+
+    - **Validación de Props**:
+      Puedes utilizar `propTypes` para validar los tipos de datos de las props y garantizar que el componente reciba los datos esperados.
+
+   ```jsx
+   import PropTypes from 'prop-types';
+   
+   ComponenteHijo.propTypes = {
+     nombre: PropTypes.string.isRequired,
+     edad: PropTypes.number.isRequired
+   };
+   ```
+
+    - **Documentación de Props**:
+      Es importante documentar las props que un componente espera recibir. Esto facilita su uso y comprensión por parte de otros desarrolladores.
+
+12. **`Conclusión`**:
+    Pasar datos con props es una parte fundamental de la programación en React. Permite la comunicación entre componentes y es esencial para construir aplicaciones escalables y reutilizables. Comprender cómo funcionan las props y cómo se utilizan correctamente es esencial para desarrollar aplicaciones efectivas en React.
+
+### **Conditional Rendering en React: Una Explicación Detallada**
+
+1. **`Introducción al Conditional Rendering`**:
+   Conditional Rendering en React se refiere a la capacidad de mostrar diferentes elementos o componentes en función de ciertas condiciones o estados en la aplicación. Esto permite construir interfaces dinámicas que responden a la interacción del usuario o a cambios en los datos.
+
+2. **`Uso de Operadores Ternarios para Conditional Rendering`**:
+   Uno de los métodos más comunes para el Conditional Rendering es el uso de operadores ternarios (`condition ? true : false`) dentro del JSX. Esto permite renderizar un componente o elemento si una condición es verdadera y otro si es falsa.
+
+   ```jsx
+   return (
+     <div>
+       {condition ? <Componente1 /> : <Componente2 />}
+     </div>
+   );
+   ```
+
+3. **`Uso de Operadores Lógicos para Conditional Rendering`**:
+   También se pueden utilizar operadores lógicos (`&&` y `||`) para determinar qué elemento o componente se renderiza. Esto se basa en la evaluación booleana de las expresiones.
+
+   ```jsx
+   return (
+     <div>
+       {isLoggedIn && <Usuario />}
+     </div>
+   );
+   ```
+
+   ```jsx
+   return (
+     <div>
+       {isLoading || <MensajeDeCarga />}
+     </div>
+   );
+   ```
+
+4. **`Conditional Rendering con if-else`**:
+   Aunque no se puede usar una declaración `if-else` directamente en el JSX, puedes utilizar una estructura `if-else` fuera del JSX y luego renderizar el componente apropiado.
+
+   ```jsx
+   let componente;
+   if (condition) {
+     componente = <Componente1 />;
+   } else {
+     componente = <Componente2 />;
+   }
+
+   return <div>{componente}</div>;
+   ```
+
+5. **`Conditional Rendering con Elementos en una Array`**:
+   Puedes usar métodos de Array como `map` para renderizar múltiples elementos condicionalmente, creando operaciones booleanas `num % 2 === 0`.
+
+   ```jsx
+   const listaDeComponentes = [1, 2, 3, 4];
+
+   return (
+     <ul>
+       {listaDeComponentes.map((num) => (
+         num % 2 === 0 ? <ComponentePar key={num} /> : <ComponenteImpar key={num} />
+       ))}
+     </ul>
+   );
+   ```
+
+6. **`Conditional Rendering basado en el Estado o Propiedades`**:
+   Puedes basar el Conditional Rendering en el estado interno del componente o en las props que recibe.
+
+   ```jsx
+   return (
+     <div>
+       {this.state.mostrarComponente && <Componente />}
+     </div>
+   );
+   ```
+
+   ```jsx
+   return (
+     <div>
+       {this.props.isLoggedIn ? <Bienvenida /> : <IniciarSesion />}
+     </div>
+   );
+   ```
+
+7. **`Conditional Rendering con Operador de Negación`**:
+   El operador de negación `!` puede ser útil para condicionar el renderizado en función de si una condición es falsa.
+
+   ```jsx
+   return (
+     <div>
+       {!isLoading && <Contenido />}
+     </div>
+   );
+   ```
+
+8. **`Renderizado Condicional en Componentes de Clase`**:
+   En componentes de clase, puedes usar declaraciones `if-else` en el método `render()`.
+
+   ```jsx
+   render() {
+     if (this.state.mostrarComponente) {
+       return <Componente />;
+     } else {
+       return null;
+     }
+   }
+   ```
+
+9. **`Conditional Rendering en la Práctica`**:
+
+   ```jsx
+   import React, { Component } from 'react';
+   
+   class App extends Component {
+     constructor(props) {
+       super(props);
+       this.state = {
+         isLoggedIn: true
+       };
+     }
+   
+     render() {
+       return (
+         <div>
+           {this.state.isLoggedIn ? (
+             <div>
+               <h1>Bienvenido</h1>
+               <button>Cerrar Sesión</button>
+             </div>
+           ) : (
+             <div>
+               <h1>Iniciar Sesión</h1>
+               <button>Iniciar Sesión</button>
+             </div>
+           )}
+         </div>
+       );
+     }
+   }
+   
+   export default App;
+   ```
+
+10. **`Consideraciones sobre Conditional Rendering`**:
+    - **Mantenlo Simple**:
+      Conditional Rendering es una técnica poderosa pero debe usarse con moderación. Demasiadas condiciones pueden complicar el código y hacerlo menos legible.
+
+    - **Separación de Responsabilidades**:
+      Es importante mantener la lógica de renderizado condicional separada de la lógica de negocio. Esto facilita la comprensión y el mantenimiento del código.
+
+    - **Uso de Componentes Funcionales y de Clase**:
+      Ambos tipos de componentes pueden realizar Conditional Rendering. Elige el tipo de componente que mejor se adapte a tus necesidades.
+
+    - **Documentación y Comentarios**:
+      Cuando se utilizan condiciones complejas, es útil proporcionar documentación o comentarios para explicar el razonamiento detrás del Conditional Rendering.
+
+11. **`Cuidado con valores numerales falsy. El 0`**:
+   En React, incluso si una expresión es considerada como un valor falsy (como `0`), React seguirá renderizándola en el DOM porque de todas formas sigue siendo un número utilizable. Esto es una característica importante de React.
+
+   Por lo tanto, si deseas condicionar el renderizado de un componente basado en una variable que podría ser un valor falsy, `debes convertirlo explícitamente a un valor booleano`. Esto se puede hacer utilizando una expresión booleana o una operación de comparación.
+
+   En el siguiente ejemplo, la expresión `!!` convierte `valor` a un valor booleano. Esto asegura que se evalúe correctamente en el condicional:
+
+   ```jsx
+   const MiComponente = ({ valor }) => {
+     if (!!valor) {
+       return <div>El valor es verdadero</div>;
+     } else {
+       return <div>El valor es falso o 0</div>;
+     }
+   };
+   ```
+   
+   En el próximo ejemplo, también convertimos `valor` en una expresión booleana pero con el constructor por defecto `Boolean()`:
+
+   ```jsx
+   const MiComponente = ({ valor }) => {
+     if (Boolean(valor)) {
+       return <div>El valor es verdadero</div>;
+     } else {
+       return <div>El valor es falso o 0</div>;
+     }
+   };
+   ```
+   
+   Y en el último ejemplo, se expone otra forma bastante común, que es utilizar comparaciones explícitas como `===` o `!==` formando operaciones booleanas `valor !== 0`:
+   
+   ```jsx
+   const MiComponente = ({ valor }) => {
+     if (valor !== 0) {
+       return <div>El valor no es 0</div>;
+     } else {
+       return <div>El valor es 0</div>;
+     }
+   };
+   ```
+   
+   En resumen, al utilizar valores que pueden ser falsy con expresiones condicionales en React, es importante asegurarse de que se esté realizando la comparación adecuada para lograr el comportamiento deseado en tu aplicación.      
+   
+12. **`Conclusión`**:
+    Conditional Rendering es una técnica fundamental en React que permite construir interfaces dinámicas y reactivas. Al comprender cómo aplicar condicionales en tus componentes, puedes crear aplicaciones que respondan de manera efectiva a las interacciones del usuario y a los cambios en los datos. Es importante utilizar esta técnica de manera prudente para mantener un código limpio y legible.
