@@ -5,7 +5,7 @@ export function App() {
       <Hello />
       <Hello />
       <Message />
-      <Welcome name={name} age={21} />
+      <Welcome name={name} age={17} />
     </div>
   );
 }
@@ -38,7 +38,7 @@ const name = <strong>Manuel</strong>;
 const Age = ({ age }) => {
   return (
     <div>
-      <p>Your age is {age}</p>
+      { age > 18 ? <p>Your age is {age}</p> : null}
     </div>
   );
 };
