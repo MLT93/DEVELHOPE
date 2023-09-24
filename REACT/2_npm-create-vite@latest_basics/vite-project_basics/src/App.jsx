@@ -5,7 +5,7 @@ export function App() {
       <Hello />
       <Hello />
       <Message />
-      <Welcome name={name} age={66} />
+      <Welcome name={"John"} age={23} />
     </div>
   );
 }
@@ -26,15 +26,16 @@ const Message = () => {
 
 // eslint-disable-next-line react/prop-types
 const Welcome = ({ name, age }) => {
-  return (
-    <div>
-      <p>Welcome, {name}</p>
-      <Age age={age} />
-    </div>
-  );
+  if (age >= 18 && age <= 65 && name === "John") {
+    return (
+      <div>
+        <p>Welcome, {name}</p>
+        <Age age={age} />
+      </div>
+    );
+  }
 };
-const name = <strong>Manuel</strong>;
 
 const Age = ({ age }) => {
-  return <div>{age >= 18 && age <= 65 ? <p>Your age is {age}</p> : null}</div>;
+  return <p>Your age is {age}</p>;
 };
