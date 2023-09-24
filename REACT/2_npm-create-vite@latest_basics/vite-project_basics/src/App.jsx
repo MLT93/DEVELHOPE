@@ -65,7 +65,7 @@ export const Counter = () => {
     <div>
       <span>Counter: {counter}</span>
       <br />
-      <button onClick={() => setCounter(counter + 1)}>Incrementar</button>
+      <button onClick={() => setCounter(/* El valor puede ser una función o un valor inmediato, dependiendo de lo que se desee asignar como nuevo estado. */)}>Incrementar</button>
     </div>
   );
 };
