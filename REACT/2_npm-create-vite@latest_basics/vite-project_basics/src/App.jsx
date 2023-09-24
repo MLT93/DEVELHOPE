@@ -7,7 +7,7 @@ export function App() {
       <Message />
       <Welcome name={"John"} age={17} />
       <div>
-        <AlertClock />
+        <AlertClock HandleClick={HandleClick} />
       </div>
     </div>
   );
@@ -43,13 +43,13 @@ const Age = ({ age }) => {
   return age >= 18 ? <p>Your age is {age}</p> : <p>You are very young!</p>;
 };
 
+function HandleClick() {
+  alert(new Date);
+}
 
-const AlertClock = () => {
-  function HandelClick() {
-    alert(new Date);
-  }
+const AlertClock = ({ HandleClick }) => {
   return (
-    <button onClick={HandelClick}>See current Date</button>
+    <button onClick={HandleClick}>See current Date</button>
   )
 }
 
