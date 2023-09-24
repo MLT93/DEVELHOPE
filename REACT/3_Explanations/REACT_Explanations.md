@@ -167,7 +167,7 @@
    Ejemplo de componente funcional en React (es una function):
 
    ```jsx
-   import React from 'react';
+   import React from "react";
 
    export function Saludo(props) {
      return <h1>Hola, {props.nombre}</h1>; // Prop sin destructurar
@@ -213,6 +213,132 @@ const element = <h1>Hola, {nombre}</h1>;
    ```jsx
    const element = <h1>Hola, Mundo!</h1>;
    ReactDOM.render(element, document.getElementById("root"));
+   ```
+
+   Normalmente el proceso típico de estructuración y montaje de una aplicación web utilizando React es utilizando la arquitectura de una sola página (Single Page Application, SPA por sus siglas en inglés) aprovechando el potencial de React para construir interfaces de usuario interactivas y dinámicas.
+
+   La composición es la siguiente:
+
+   **Creación de Componentes**:
+
+   - Los componentes se crean en archivos separados, generalmente con extensiones `.js` o `.jsx`.
+   - Los nombres de los componentes suelen comenzar con una letra mayúscula (conocido como convención PascalCase) para distinguirlos de las etiquetas HTML.
+
+   ```jsx
+   import "./Texto.css";
+   
+   export const Texto = ({ size, color, label }) => {
+     return (
+       <>
+         {size === "title-lg-bold" && (
+           <h1 className="title-lg-bold" style={{ color: `var(${color})` }}>
+             {label}
+           </h1>
+         )}
+         {size === "title-lg" && (
+           <h1 className="title-lg" style={{ color: `var(${color})` }}>
+             {label}
+           </h1>
+         )}
+       </>
+     );
+   };
+   ```
+
+   **Archivo Principal (`App.js` o `App.jsx`)**:
+
+   - Este archivo suele actuar como el componente raíz de la aplicación.
+   - Puede importar y combinar varios componentes para formar la estructura de la aplicación.
+   - Exporta el componente raíz con `export default`.
+
+   ```jsx
+   import "./App.css";
+   import "./styles/index.scss";
+   import Texto from "./componentes/Texto/Texto";
+
+   function App() {
+     return (
+       <div className="App">
+         <section className="App-section">
+           <Texto
+             size={"title-large"}
+             label={"Texto"}
+             color={"--color-subtitulo-lila"}
+           />
+           <Texto
+             size={"title-large"}
+             label={"Texto"}
+             color={"--color-secondary"}
+           />
+         </section>
+       </div>
+     );
+   }
+
+   export default App;
+   ```
+
+   **Renderización de la Aplicación (`index.js` o `index.jsx`)**:
+
+   - Este archivo se encarga de conectar la aplicación con el archivo HTML principal (`index.html`).
+   - Utiliza `ReactDOM.render()` para renderizar el componente raíz en el elemento HTML identificado por `root`.
+
+   ```jsx
+   import React from 'react';
+   import ReactDOM from 'react-dom/client';
+   import './index.css';
+   import App from './App';
+
+   ReactDOM.createRoot(document.getElementById('root'));.render(
+     <React.StrictMode>
+       <App />
+     </React.StrictMode>
+   );
+   ```
+
+   **Conexión con `index.html`**:
+
+   - El archivo `index.html` contiene la estructura básica de la página web, incluyendo un elemento con el id `root`.
+   - A través de `document.getElementById('root')`, se selecciona este elemento para renderizar la aplicación React.
+
+   ```html
+   <!DOCTYPE html>
+   <html lang="en">
+     <head>
+       <meta charset="utf-8" />
+       <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+       <meta name="viewport" content="width=device-width, initial-scale=1" />
+       <title>React App</title>
+     </head>
+     <body>
+       <div id="root"></div>
+      <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+   
+      You can add web fonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+   
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+      -->
+     </body>
+   </html>
+   ```
+
+   Este enfoque facilita la organización y mantenimiento de proyectos de React al dividir la lógica en componentes reutilizables y estructurarlos de manera intuitiva. Además, permite una separación clara entre la lógica de la aplicación y la presentación en HTML.
+
+   ```jsx
+   import React from 'react';
+   import ReactDOM from 'react-dom/client';
+   import './index.css';
+   import App from './App';
+
+   ReactDOM.createRoot(document.getElementById('root'));.render(
+     <React.StrictMode>
+       <App />
+     </React.StrictMode>
+   );
    ```
 
 7. **`Manejo de Eventos en JSX`**:
