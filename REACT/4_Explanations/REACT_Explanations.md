@@ -570,6 +570,7 @@
      ```
    
      - `startValueOfState`: Es el valor con el que quieres inicializar el estado.
+     
 
      ```jsx
      // El contador empieza desde el número 0
