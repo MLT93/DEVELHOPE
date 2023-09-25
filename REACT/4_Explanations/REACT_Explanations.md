@@ -198,12 +198,12 @@
 5. **`Expresiones JavaScript en JSX`**:
    Las expresiones JavaScript se pueden insertar dentro de elementos JSX utilizando llaves `{}`. Esto permite la evaluación de variables, cálculos y llamadas a funciones dentro del código JSX.
 
-Ejemplo de expresión JavaScript en JSX:
-
-```jsx
-const nombre = "Juan";
-const element = <h1>Hola, {nombre}</h1>;
-```
+   Ejemplo de expresión JavaScript en JSX:
+   
+   ```jsx
+   const nombre = "Juan";
+   const element = <h1>Hola, {nombre}</h1>;
+   ```
 
 6. **`Renderizado de Elementos en React`**:
    Para mostrar un elemento JSX en el DOM, se utiliza el método `ReactDOM.render()`. Este método toma dos argumentos: el elemento JSX que se va a renderizar y el elemento del DOM en el que se va a insertar.
@@ -536,7 +536,78 @@ const element = <h1>Hola, {nombre}</h1>;
     - Los componentes de clase son clases de JavaScript que extienden `React.Component` y tienen un método `render()`.
 
 11. **`Hooks en React`**:
-    Los Hooks son una adición en React 16.8 que permiten usar estado y otras características de React en componentes funcionales.
+   Los Hooks son una adición en React 16.8 que permiten asignar un estado y otras características de React en componentes funcionales, lo que antes solo era posible en componentes de clase.
+
+   Los más comunes son:
+
+   - **useState hook**: `useState` permite añadir o modificar un estado a un componente.
+   
+   Sintaxis:
+
+   ```jsx
+   import React, { useState } from 'react';
+
+   const [state, setState] = useState(startValueOfState);
+   ```
+
+   - `state`: Es la variable que va a mantener el estado actual.
+
+   - `setState`: Es una función que te permite actualizar el estado. Esta función toma un argumento que será el nuevo valor del estado. Puede recibir dos tipos de argumentos: un objeto que representa los nuevos valores de estado o una función que devuelve un objeto de estado.
+
+   ```jsx
+   // Aplicación directa de un valor al estado asignado
+   this.setState({ 
+     nombre: 'Juan',
+     edad: 30
+   });
+   ```
+
+   ```jsx
+   // Arrow function que modifica el estado y devuelve uno nuevo
+   this.setState((prevState) => ({
+     contador: prevState.contador + 1
+   }));
+   ```
+
+   - `startValueOfState`: Es el valor con el que quieres inicializar el estado.
+
+   ```jsx
+   // El contador empieza desde el número 0
+   const [contador, setContador] = useState(0);
+   ```
+
+   - **useEffect hook**: `useEffect` permite realizar efectos secundarios en . Se ejecuta después de cada renderizado y puede emular varios ciclos de vida de componentes de clase como `componentDidMount`, `componentDidUpdate` y `componentWillUnmount`.
+
+   Sintaxis:
+
+   ```jsx
+   import React, { useEffect } from 'react';
+   
+   useEffect(() => {
+     // Código del efecto secundario
+   }, [dependencias]);
+   ```
+
+   - `Primer argumento de useEffect`: El primer argumento de useEffect es una arrow function que contiene el código del efecto secundario.
+
+   - `Segundo argumento de useEffect`: El segundo argumento es un arreglo de dependencias opcional, si no se desea usar se dejan los corchetes vacíos. Este arreglo especifica las variables que el efecto debe estar observando para ejecutarse el efecto y, si alguna de estas variables cambiase, el efecto se ejecutaría nuevamente.
+
+   ```jsx
+   // Arrow function en el primer argumento
+   useEffect(() => {
+     // Simulando una solicitud a un servidor
+     setTimeout(() => {
+       setDatos('Datos cargados desde el servidor');
+     }, 2000);
+   }, []); // Array vacío porque no se necesita observar ninguna variable
+   ```
+
+   - **useContext hook**: `useContext`
+
+   - **useRef hook**: `useRef`
+
+   - **useMemo hook**: `useMemo`
+
 
    ```jsx
    import React, { useState } from "react";
@@ -706,41 +777,41 @@ Esta explicación proporciona una visión general detallada de los componentes e
 
 8. **`Uso de Props en la Práctica`**:
 
-```jsx
-import React from 'react';
-
-const Usuario = ({nombre, edad}) => {
-  return <div>{nombre} tiene {edad} años</div>;
-};
-
-const App = () => {
-  return (
-    <div>
-      <h1>Datos del Usuario</h1>
-      <Usuario nombre="Juan" edad={30} />
-    </div>
-  );
-};
-
-export default App;
-```
+   ```jsx
+   import React from 'react';
+   
+   const Usuario = ({nombre, edad}) => {
+     return <div>{nombre} tiene {edad} años</div>;
+   };
+   
+   const App = () => {
+     return (
+       <div>
+         <h1>Datos del Usuario</h1>
+         <Usuario nombre="Juan" edad={30} />
+       </div>
+     );
+   };
+   
+   export default App;
+   ```
 
 9. **`Props en Componentes Anidados`**:
    Puedes pasar props a componentes anidados a través del componente intermedio. Esto sigue el mismo principio de pasar props de un componente padre a un componente hijo.
 
-```jsx
-const Abuelo = (props) => {
-  return <Padre hijoNombre="Pedro" />;
-};
-
-const Padre = (props) => {
-  return <Hijo nombre={props.hijoNombre} />;
-};
-
-const Hijo = (props) => {
-  return <div>{props.nombre}</div>;
-};
-```
+   ```jsx
+   const Abuelo = (props) => {
+     return <Padre hijoNombre="Pedro" />;
+   };
+   
+   const Padre = (props) => {
+     return <Hijo nombre={props.hijoNombre} />;
+   };
+   
+   const Hijo = (props) => {
+     return <div>{props.nombre}</div>;
+   };
+   ```
 
 10. **`Props y Componentes de Alto Orden (HOCs)`**:
     Los HOCs son patrones avanzados en React donde un componente recibe un componente como argumento y devuelve un nuevo componente con funcionalidades adicionales. Pueden ser utilizados para pasar props adicionales a un componente.
@@ -1088,7 +1159,8 @@ const Hijo = (props) => {
 
    - **Estado en Componentes Funcionales**: En los componentes funcionales, el hook `useState` te permite agregar estado a tus componentes. Este hook proporciona una forma de declarar variables de estado y una función para actualizarlas.
 
-   Por ejemplo, si queremos crear un componente funcional con un contador, podemos hacerlo de la siguiente manera:
+   Explicación con ejemplo:
+   Si queremos crear un componente funcional con un contador, podemos hacerlo de la siguiente manera:
 
    ```jsx
    import React, { useState } from 'react';
@@ -1114,7 +1186,8 @@ const Hijo = (props) => {
 
    - **Eventos de Cambio de Estado**: Los eventos de cambio de estado se manejan de la misma manera que en los componentes de clase, pero en este caso utilizamos funciones declaradas dentro del componente funcional.
 
-   Por ejemplo, si queremos cambiar el estado en respuesta a un evento, podemos hacer lo siguiente:
+   Otro ejemplo y explicación:
+   Si queremos cambiar el estado en respuesta a un evento, podemos hacer lo siguiente:
 
    ```jsx
    import React, { useState } from 'react';
@@ -1168,7 +1241,7 @@ const Hijo = (props) => {
 
    Por ejemplo, el componente funcional `Contador` mostrado anteriormente es un ejemplo de cómo se puede utilizar el hook `useState` en un componente funcional.
 
-   - **Uso en Conjunto con Otros Hooks**: Los componentes funcionales en React pueden hacer uso de una variedad de hooks, como `useState`, `useEffect`, `useContext`, entre otros. Estos hooks permiten a los componentes funcionales tener funcionalidades similares a los componentes de clase sin la necesidad de gestionar ciclos de vida o estados de manera compleja.
+   - **Uso en Conjunto con Otros Hooks**: Los componentes funcionales en React pueden hacer uso de una variedad de hooks, como `useState`, `useEffect`, `useContext`, `useRef`, `useMemo`, entre otros. Estos hooks permiten a los componentes funcionales tener funcionalidades similares a los componentes de clase sin la necesidad de gestionar ciclos de vida o estados de manera compleja.
 
    Por ejemplo, el hook `useEffect` se utiliza para realizar efectos secundarios en componentes funcionales, como suscripciones a datos o manipulación del DOM.
 
