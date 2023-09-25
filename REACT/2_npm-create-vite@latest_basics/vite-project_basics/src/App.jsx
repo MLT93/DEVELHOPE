@@ -11,6 +11,7 @@ export function App() {
       <div>
         <AlertClock handleClick={handleClick} />
         <Counter initialValue={200} incrementAmount={4} decrementAmount={2} />
+        <Clock />
       </div>
     </div>
   );
@@ -113,3 +114,32 @@ const Counter = ({ initialValue, incrementAmount, decrementAmount }) => {
 const CounterDisplay = ({ counter }) => {
   return <h2 id="current-value">Counter =&gt; {counter}</h2>;
 };
+
+const Clock = () => {
+  const [currentTimeFormatted, setCurrentTimeFormatted] = useState(
+    new Intl.DateTimeFormat("en-GB", {
+      timeStyle: "full",
+      timeZone: "Europe/Madrid",
+    }).format(new Date()),
+  );
+
+  useEffect(() => {
+    const intervalID = setInterval(() => {
+      const newTime = new Intl.DateTimeFormat("en-GB", {
+        timeStyle: "full",
+        timeZone: "Europe/Madrid",
+      }).format(new Date());
+
+      setCurrentTimeFormatted(newTime);
+    }, 1000);
+
+    return () => clearInterval(intervalID);
+  }, []);
+
+  return (
+    <div>
+      <h2>{currentTimeFormatted}</h2>
+    </div>
+  );
+};
+
