@@ -1,6 +1,6 @@
 # **REACT**
 
-## **The Declarative Approach y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
+#### **The Declarative Approach y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
 
 1. **`Introducción a The Declarative Approach`**:
 
