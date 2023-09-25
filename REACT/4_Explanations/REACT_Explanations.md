@@ -140,7 +140,7 @@
 
    The Declarative Approach y las funciones relacionadas en JavaScript son herramientas poderosas para escribir código más limpio, legible y modular. Al comprender y aplicar estos conceptos, los desarrolladores pueden mejorar la eficiencia y mantenibilidad de su código, lo que resulta en aplicaciones más robustas y fáciles de mantener a largo plazo.
 
-### **JSX y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
+## **JSX y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
 
 1. **`Introducción a JSX`**:
    JSX (JavaScript XML) es una extensión de JavaScript que permite escribir código que se parece mucho al HTML pero que se interpreta como JavaScript. JSX es comúnmente utilizado en bibliotecas y frameworks de JavaScript como React para definir la estructura de la interfaz de usuario.
@@ -390,7 +390,7 @@
 11. **`Resumen`**:
     En resumen, JSX es una extensión de JavaScript que permite la creación de interfaces de usuario de manera más intuitiva y declarativa. Al mezclar HTML con JavaScript, JSX facilita la creación y manipulación de elementos del DOM de manera dinámica y eficiente. Se utiliza comúnmente en bibliotecas y frameworks de JavaScript como React para definir la estructura de la interfaz de usuario y crear componentes reutilizables y modulares. Al comprender y utilizar JSX de manera efectiva, los desarrolladores pueden construir aplicaciones web modernas y escalables.
 
-### **Componentes de React y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
+## **Componentes de React y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
 
 1. **`Introducción a los Componentes de React`**:
    Los componentes son bloques de construcción fundamentales en React, una biblioteca de JavaScript para construir interfaces de usuario. Un componente es una pieza reutilizable e independiente de la interfaz de usuario que puede contener HTML, CSS y JavaScript.
@@ -704,7 +704,7 @@
 16. **`Consideraciones Finales y Próximos Pasos`**:
     React es una poderosa biblioteca de JavaScript para construir interfaces de usuario interactivas y reactivas. Con un buen entendimiento de los componentes, el estado, las props y otros conceptos fundamentales, puedes construir aplicaciones web modernas y escalables.
 
-### **Pasar Datos con Props en React: Una Explicación Detallada**
+## **Pasar Datos con Props en React: Una Explicación Detallada**
 
 1. **`Introducción a Props en React`**:
    En React, "props" es una abreviatura de "properties" (propiedades en inglés). Son un mecanismo para pasar datos de un componente padre a un componente hijo. Los props permiten que los componentes sean configurables y reutilizables.
@@ -840,7 +840,7 @@
 12. **`Conclusión`**:
     Pasar datos con props es una parte fundamental de la programación en React. Permite la comunicación entre componentes y es esencial para construir aplicaciones escalables y reutilizables. Comprender cómo funcionan las props y cómo se utilizan correctamente es esencial para desarrollar aplicaciones efectivas en React.
 
-### **Conditional Rendering en React: Una Explicación Detallada**
+## **Conditional Rendering en React: Una Explicación Detallada**
 
 1. **`Introducción al Conditional Rendering`**:
    Conditional Rendering en React se refiere a la capacidad de mostrar diferentes elementos o componentes en función de ciertas condiciones o estados en la aplicación. Esto permite construir interfaces dinámicas que responden a la interacción del usuario o a cambios en los datos.
@@ -1041,7 +1041,7 @@
 12. **`Conclusión`**:
     Conditional Rendering es una técnica fundamental en React que permite construir interfaces dinámicas y reactivas. Al comprender cómo aplicar condicionales en tus componentes, puedes crear aplicaciones que respondan de manera efectiva a las interacciones del usuario y a los cambios en los datos. Es importante utilizar esta técnica de manera prudente para mantener un código limpio y legible.
 
-### **Virtual DOM: Una Explicación Detallada**
+## **Virtual DOM: Una Explicación Detallada**
 
 1. **`Introducción al DOM`**:
 
@@ -1111,7 +1111,7 @@
 
    El Virtual DOM es una poderosa técnica para optimizar el rendimiento de las aplicaciones web al minimizar las operaciones en el DOM real. Aunque agrega una capa de complejidad al código interno, los beneficios en términos de rendimiento y eficiencia hacen que valga la pena utilizarlo en aplicaciones web modernas y complejas.
 
-### **Eventos en React y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
+## **Eventos en React y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
 
 1. **`Introducción a los Eventos en React`**:
    Los eventos en React son acciones que ocurren cuando un usuario interactúa con un elemento de la interfaz, como hacer clic en un botón o mover el cursor sobre una imagen. Estos eventos son manejados por funciones llamadas "manejadores de eventos" que se ejecutan en respuesta a la interacción del usuario.
