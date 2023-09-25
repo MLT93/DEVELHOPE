@@ -561,17 +561,16 @@
        edad: 30
      });
      ```
-   
+     
      ```jsx
      // Arrow function que modifica el estado y devuelve uno nuevo
      this.setState((prevState) => ({
        contador: prevState.contador + 1
      }));
-     
      ```
-   
+     
      - `startValueOfState`: Es el valor con el que quieres inicializar el estado.
-
+     
      ```jsx
      // El contador empieza desde el número 0
      const [contador, setContador] = useState(0);
