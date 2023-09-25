@@ -537,23 +537,23 @@
 
 11. **`Hooks en React`**:
    Los Hooks son una adición en React 16.8 que permiten asignar un estado y otras características de React en componentes funcionales, lo que antes solo era posible en componentes de clase.
-
+   
    Los más comunes son:
-
+   
    - **useState hook**: `useState` permite añadir o modificar un estado a un componente.
    
       Sintaxis:
-
+   
      ```jsx
      import React, { useState } from 'react';
    
      const [state, setState] = useState(startValueOfState);
      ```
-
+   
      - `state`: Es la variable que va a mantener el estado actual.
    
      - `setState`: Es una función que te permite actualizar el estado. Esta función toma un argumento que será el nuevo valor del estado. Puede recibir dos tipos de argumentos: un objeto que representa los nuevos valores de estado o una función que devuelve un objeto de estado.
-   
+     
      ```jsx
      // Aplicación directa de un valor al estado asignado
      this.setState({ 
@@ -571,14 +571,13 @@
      
      - `startValueOfState`: Es el valor con el que quieres inicializar el estado.
      
-     
      ```jsx
      // El contador empieza desde el número 0
      const [contador, setContador] = useState(0);
      ```
      
    - **useEffect hook**: `useEffect` permite realizar efectos secundarios en componentes funcionales. Se ejecuta después de cada renderizado y puede emular varios ciclos de vida de componentes de clase como `componentDidMount`, `componentDidUpdate` y `componentWillUnmount`.
-
+   
      Sintaxis:
    
      ```jsx
@@ -590,9 +589,9 @@
      ```
    
      - `Primer argumento de useEffect`: El primer argumento de useEffect es una arrow function que contiene el código del efecto secundario.
-   
+     
      - `Segundo argumento de useEffect`: El segundo argumento es un arreglo de dependencias opcional, si no se desea usar se dejan los corchetes vacíos. Este arreglo especifica las variables que el efecto debe estar observando para ejecutarse el efecto y, si alguna de estas variables cambiase, el efecto se ejecutaría nuevamente.
-   
+     
      ```jsx
      // Arrow function en el primer argumento
      useEffect(() => {
@@ -602,14 +601,15 @@
        }, 2000);
      }, []); // Array vacío porque no se necesita observar ninguna variable
      ```
-
+     
    - **useContext hook**: `useContext`
-
+   
    - **useRef hook**: `useRef`
-
+   
    - **useMemo hook**: `useMemo`
-
-
+   
+   Ejemplo aplicando varios hooks contemporáneamente:
+   
    ```jsx
    import React, { useState } from "react";
    
@@ -624,7 +624,7 @@
      );
    }
    ```
-
+   
 12. **`Componentes de Clase vs. Componentes Funcionales con Hooks`**:
 
     - Los componentes de clase ofrecen un ciclo de vida completo y la capacidad de manejar el estado local.
