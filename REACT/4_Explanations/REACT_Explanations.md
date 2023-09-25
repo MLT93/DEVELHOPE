@@ -537,46 +537,46 @@
 
 11. **`Hooks en React`**:
    Los Hooks son una adición en React 16.8 que permiten asignar un estado y otras características de React en componentes funcionales, lo que antes solo era posible en componentes de clase.
-   
+
    Los más comunes son:
 
    - **useState hook**: `useState` permite añadir o modificar un estado a un componente.
    
-   Sintaxis:
+      Sintaxis:
 
-   ```jsx
-   import React, { useState } from 'react';
+     ```jsx
+     import React, { useState } from 'react';
+   
+     const [state, setState] = useState(startValueOfState);
+     ```
 
-   const [state, setState] = useState(startValueOfState);
-   ```
-
-   - `state`: Es la variable que va a mantener el estado actual.
-
-   - `setState`: Es una función que te permite actualizar el estado. Esta función toma un argumento que será el nuevo valor del estado. Puede recibir dos tipos de argumentos: un objeto que representa los nuevos valores de estado o una función que devuelve un objeto de estado.
-
-   ```jsx
-   // Aplicación directa de un valor al estado asignado
-   this.setState({ 
-     nombre: 'Juan',
-     edad: 30
-   });
-   ```
-
-   ```jsx
-   // Arrow function que modifica el estado y devuelve uno nuevo
-   this.setState((prevState) => ({
-     contador: prevState.contador + 1
-   }));
-   ```
-
-   - `startValueOfState`: Es el valor con el que quieres inicializar el estado.
-
-   ```jsx
-   // El contador empieza desde el número 0
-   const [contador, setContador] = useState(0);
-   ```
-
-   - **useEffect hook**: `useEffect` permite realizar efectos secundarios en . Se ejecuta después de cada renderizado y puede emular varios ciclos de vida de componentes de clase como `componentDidMount`, `componentDidUpdate` y `componentWillUnmount`.
+     - `state`: Es la variable que va a mantener el estado actual.
+   
+     - `setState`: Es una función que te permite actualizar el estado. Esta función toma un argumento que será el nuevo valor del estado. Puede recibir dos tipos de argumentos: un objeto que representa los nuevos valores de estado o una función que devuelve un objeto de estado.
+   
+     ```jsx
+     // Aplicación directa de un valor al estado asignado
+     this.setState({ 
+       nombre: 'Juan',
+       edad: 30
+     });
+     ```
+   
+     ```jsx
+     // Arrow function que modifica el estado y devuelve uno nuevo
+     this.setState((prevState) => ({
+       contador: prevState.contador + 1
+     }));
+     ```
+   
+     - `startValueOfState`: Es el valor con el que quieres inicializar el estado.
+   
+     ```jsx
+     // El contador empieza desde el número 0
+     const [contador, setContador] = useState(0);
+     ```
+   
+     - **useEffect hook**: `useEffect` permite realizar efectos secundarios en . Se ejecuta después de cada renderizado y puede emular varios ciclos de vida de componentes de clase como `componentDidMount`, `componentDidUpdate` y `componentWillUnmount`.
 
    Sintaxis:
 
