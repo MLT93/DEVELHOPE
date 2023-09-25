@@ -576,8 +576,7 @@
      const [contador, setContador] = useState(0);
      ```
 
-   - **useEffect hook**: `useEffect` permite realizar efectos secundarios en componentes funcionales. Se ejecuta después de cada renderizado y puede emular varios ciclos de vida de componentes de clase como `componentDidMount`, `componentDidUpdate` y `componentWillUnmount`.
-
+     - **useEffect hook**: `useEffect` permite realizar efectos secundarios en componentes funcionales. Se ejecuta después de cada renderizado y puede emular varios ciclos de vida de componentes de clase como `componentDidMount`, `componentDidUpdate` y `componentWillUnmount`.
      Sintaxis:
    
      ```jsx
