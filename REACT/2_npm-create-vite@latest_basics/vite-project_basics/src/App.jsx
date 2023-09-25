@@ -10,6 +10,7 @@ export function App() {
       <Welcome name={"John"} age={17} />
       <div>
         <AlertClock handleClick={handleClick} />
+        <Counter />
       </div>
     </div>
   );
@@ -46,7 +47,7 @@ const Age = ({ age }) => {
 };
 
 function handleClick() {
-  alert(new Date());
+  alert(new Date().toLocaleString());
 }
 const AlertClock = ({ handleClick }) => {
   return (
@@ -56,3 +57,16 @@ const AlertClock = ({ handleClick }) => {
   );
 };
 
+const Counter = () => {
+  const [counter, setCounter] = useState(0);
+  return (
+    <div>
+      <span>Counter: {counter}</span>
+      <br />
+      <input type="text"></input>
+      <button onClick={() => setCounter((event) => {
+        event.target.value;
+      })}>Envíe su valor</button>
+    </div>
+  );
+};
