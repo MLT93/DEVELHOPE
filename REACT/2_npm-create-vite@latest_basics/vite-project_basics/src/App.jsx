@@ -59,14 +59,18 @@ const AlertClock = ({ handleClick }) => {
 
 const Counter = () => {
   const [counter, setCounter] = useState(0);
+
+  const handleClickCounter = () => {
+    const input = document.getElementById("counter");
+    (input) && setCounter(input.value);
+  };
+
   return (
     <div>
       <span>Counter: {counter}</span>
       <br />
-      <input type="text"></input>
-      <button onClick={() => setCounter((event) => {
-        event.target.value;
-      })}>Envíe su valor</button>
+      <input id="counter" type="number"></input>
+      <button onClick={handleClickCounter}>Click</button>
     </div>
   );
 };
