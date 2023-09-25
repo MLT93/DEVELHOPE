@@ -2,7 +2,7 @@
 
 ## **The Declarative Approach y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
 
-1. ### **`Introducción a The Declarative Approach`**:
+###1.  **`Introducción a The Declarative Approach`**:
 
    The Declarative Approach es un enfoque de programación que se centra en describir qué se debe hacer, en lugar de cómo hacerlo. Se basa en la utilización de declaraciones y expresiones para definir la lógica de un programa.
 
