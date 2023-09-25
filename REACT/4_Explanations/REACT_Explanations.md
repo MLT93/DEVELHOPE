@@ -567,6 +567,7 @@
      this.setState((prevState) => ({
        contador: prevState.contador + 1
      }));
+     
      ```
    
      - `startValueOfState`: Es el valor con el que quieres inicializar el estado.
