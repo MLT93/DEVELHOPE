@@ -537,7 +537,7 @@
 
 11. **`Hooks en React`**:
    Los Hooks son una adición en React 16.8 que permiten asignar un estado y otras características de React en componentes funcionales, lo que antes solo era posible en componentes de clase.
-
+   
    Los más comunes son:
 
    - **useState hook**: `useState` permite añadir o modificar un estado a un componente.
