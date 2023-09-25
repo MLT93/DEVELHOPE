@@ -635,20 +635,44 @@
        }, [dependencias]);
        ```
      
-       - `Primer argumento de useEffect`: El primer argumento de useEffect es una `arrow function` que contiene el código del efecto secundario.
+       - `Primer argumento de useEffect`: El primer argumento de useEffect es una `arrow function`. Contiene el código del efecto secundario que quieres que se ejecute cuando el componente se monte o cuando ciertas dependencias cambien.
        
-       - `Segundo argumento de useEffect`: El segundo argumento es un arreglo de `dependencias` opcional, si no se desea usar se dejan los corchetes vacíos. Este arreglo especifica las variables que el efecto debe estar observando para ejecutarse el efecto y, si alguna de estas variables cambiase, el efecto se ejecutaría nuevamente.
+       - `Segundo argumento de useEffect`: El segundo argumento es un arreglo de `dependencias` opcional.
        
+       - `La presencia del array`: Si el array está presente y posee dependencias en su interno `[dependencia1, dependencia2]`, indica a React que el efecto secundario debe reejecutarse si alguna de las dependencias cambia. Si no quieres que el efecto se ejecute en actualizaciones posteriores (sólo cuando el componente se monta), puedes pasar un array vacío como segundo argumento `[]`.
+       
+       - `Si se omite este array`: La omisión del arreglo dentro del hook nos indica que el efecto secundario se ejecutará cada vez que el componente se renderice. Si quieres que el efecto se ejecute en cada actualización del componente, puedes omitir el segundo argumento directamente.
+
        Ejemplo:
 
        ```jsx
-       // Arrow function en el primer argumento
-       useEffect(() => {
-         // Simulando una solicitud a un servidor
-         setTimeout(() => {
-           setDatos('Datos cargados desde el servidor');
-         }, 2000);
-       }, []); // Array vacío porque no se necesita observar ninguna variable
+       import React, { useState, useEffect } from 'react';
+
+       const EjemploComponente = () => {
+         const [datos, setDatos] = useState([]);
+       
+         // Arrow function en el primer argumento
+         useEffect(() => {
+           // Simulando una petición asíncrona a un servidor
+           setTimeout(() => {
+             const nuevosDatos = ['Dato 1', 'Dato 2', 'Dato 3'];
+             setDatos(nuevosDatos);
+           }, 2000);
+         }, []); // El segundo argumento (Array vacío []) indica que este efecto se ejecuta solo al montar el componente 
+       
+         return (
+           <div>
+             <h2>Datos:</h2>
+             <ul>
+               {datos.map((dato, index) => (
+                 <li key={index}>{dato}</li>
+               ))}
+             </ul>
+           </div>
+         );
+       };
+       
+       export default EjemploComponente;
        ```
        
    - **useContext hook**:

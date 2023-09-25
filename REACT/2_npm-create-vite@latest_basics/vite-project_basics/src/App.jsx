@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 /* eslint-disable react/prop-types */
 export function App() {
@@ -87,8 +87,16 @@ const Counter = ({ initialValue, incrementAmount, decrementAmount }) => {
   };
 
   const reset = () => {
-    setCounter(() => counter = initialValue);
+    setCounter(() => (counter = initialValue));
   };
+
+  useEffect(() => {
+    const currentValue = document.getElementById("current-value").textContent;
+
+    return () => {
+      console.log(currentValue);
+    };
+  });
 
   return (
     <div>
@@ -103,5 +111,5 @@ const Counter = ({ initialValue, incrementAmount, decrementAmount }) => {
 };
 
 const CounterDisplay = ({ counter }) => {
-  return <h2>Counter =&gt; {counter}</h2>;
+  return <h2 id="current-value">Counter =&gt; {counter}</h2>;
 };
