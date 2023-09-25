@@ -635,10 +635,12 @@
        }, [dependencias]);
        ```
      
-       - `Primer argumento de useEffect`: El primer argumento de useEffect es una arrow function que contiene el código del efecto secundario.
+       - `Primer argumento de useEffect`: El primer argumento de useEffect es una `arrow function` que contiene el código del efecto secundario.
        
-       - `Segundo argumento de useEffect`: El segundo argumento es un arreglo de dependencias opcional, si no se desea usar se dejan los corchetes vacíos. Este arreglo especifica las variables que el efecto debe estar observando para ejecutarse el efecto y, si alguna de estas variables cambiase, el efecto se ejecutaría nuevamente.
+       - `Segundo argumento de useEffect`: El segundo argumento es un arreglo de `dependencias` opcional, si no se desea usar se dejan los corchetes vacíos. Este arreglo especifica las variables que el efecto debe estar observando para ejecutarse el efecto y, si alguna de estas variables cambiase, el efecto se ejecutaría nuevamente.
        
+       Ejemplo:
+
        ```jsx
        // Arrow function en el primer argumento
        useEffect(() => {
@@ -649,33 +651,150 @@
        }, []); // Array vacío porque no se necesita observar ninguna variable
        ```
        
-   - **useContext hook**: `useContext`
+   - **useContext hook**:
    
-   - **useRef hook**: `useRef`
+     `useContext` te permite acceder al valor del contexto que ha sido proporcionado por un proveedor de contexto superior en jerarquía.
+
+       Sintaxis:
    
-   - **useMemo hook**: `useMemo`
+       ```jsx
+       import React { createContext } from 'react';
+       
+       // Primera letra mayúscula en la variable
+       const Context = React.createContext()
+       ```
+
+       - `creación del contexto`: Antes de utilizar useContext, primero necesitas crear un contexto. Esto se hace utilizando la función `createContext`, que toma un valor por defecto que se utilizará si no hay ningún proveedor de contexto superior. Este valor es opcional y se utiliza principalmente para facilitar el desarrollo.
+
+       - `Proveedor de Contexto`: A continuación, necesitas proporcionar un contexto utilizando el componente `Provider` que se deriva del contexto que has creado. `value` es la información que deseas compartir con todos los componentes hijos dentro de este proveedor de contexto.
+       
+       - `Acceso al Contexto`: Finalmente, en cualquier componente funcional dentro del árbol de componentes, puedes utilizar 
+       el hook `useContext` para acceder al valor del contexto. Ahora `valorDelContexto` contiene el valor proporcionado por el proveedor de contexto más cercano en la jerarquía.
+
+       Para tener acceso al contexto dentro de un componente de clase, deberías utilizar `.Consumer` dentro del método `render` o en el cuerpo del componente.
+       
+       Ejemplo:
+
+       ```jsx
+       import React {useContext} from 'react';
+
+       const MiContexto = React.createContext()
+       
+       const ComponentePadre = () => {
+         return (
+           <MiContexto.Provider value={'Valor del contexto'}>
+             <ComponenteHijo />
+           </MiContexto.Provider>
+         );
+       };
+
+       const ComponenteHijo = () => {
+         const valorDelContexto = useContext(MiContexto);
+         return <div>{valorDelContexto}</div>;
+       };
+       ```
+       
+   - **useRef hook**:
+   
+     `useRef` te permite crear un objeto mutable que persiste durante todo el ciclo de vida del componente. Esto significa que puedes mantener valores entre renderizaciones sin que provoquen una nueva renderización cuando se actualizan. La mayoría de las veces se utiliza para contener un nodo del DOM.
+
+       Sintaxis:
+
+       ```jsx
+       import React, { useRef } from 'react';
+       
+       const Component = () => {
+         const refContainer = useRef(initialValue);
+         
+         return <input ref={refContainer} />
+       }
+       ```
+       
+       - `Relación con el atributo ref`: En React, el atributo HTML `ref` se utiliza para hacer referencia a un elemento del DOM o a un componente de React creado. Puede servir para acceder directamente a un elemento del DOM o para interactuar con un componente React, utilizar sus métodos y acceder a sus propiedades desde fuera del mismo componente.
+       
+       - `Funcionamiento interno`: Devuelve un objeto `refContainer` que es mutable y posee una propiedad `.current` que se inicializa con el valor del argumento señalado entre paréntesis `useRef(null)`. Esta propiedad puede ser asignada a cualquier elemento del DOM trámite el atributo `ref`.
+       
+       Ejemplo:
+     
+       ```jsx
+       import React, { useRef, useEffect } from 'react';
+       
+       function MyComponent() {
+         const myRef = useRef(null);
+       
+         useEffect(() => {
+           myRef.current.focus(); // Enfoca el elemento cuando se monta el componente
+         }, []);
+       
+         return <input ref={myRef} />;
+       }
+       ```
+       
+       En este ejemplo, `myRef` será un objeto que contiene una propiedad `.current`. Esta propiedad puede ser asignada a cualquier elemento del DOM. Si asignas `myRef.current` a un elemento, podrás referenciar ese elemento directamente con el valor de tu `useRef()`. Cuando un elemento recibe el foco en una página web, como en este caso, significa que está preparado para recibir entrada del usuario. Esto es especialmente relevante para elementos interactivos como campos de texto, selectores, botones, etc.
+       
+   - **useMemo hook**:
+   
+     `useMemo`
    
    Ejemplo aplicando varios hooks contemporáneamente:
    
    ```jsx
-   import React, { useState } from "react";
+   import React, { createContext, useContext, useState } from 'react';
    
-   function Contador() {
-     const [contador, setContador] = useState(0);
+   const TemaContexto = createContext();
+   
+   const TemaProveedor = ({ children }) => {
+     const [tema, setTema] = useState('oscuro');
+   
+     const cambiarTema = () => {
+       setTema(prevTema => (prevTema === 'oscuro' ? 'claro' : 'oscuro'));
+     };
    
      return (
-       <div>
-         <p>Contador: {contador}</p>
-         <button onClick={() => setContador(contador + 1)}>Incrementar</button>
+       <TemaContexto.Provider value={{ tema, cambiarTema }}>
+         {children}
+       </TemaContexto.Provider>
+     );
+   };
+   
+   const BotonTema = () => {
+     const { cambiarTema } = useContext(TemaContexto);
+   
+     return (
+       <button onClick={cambiarTema}>
+         Cambiar Tema
+       </button>
+     );
+   };
+   
+   const ComponenteConsumidor = () => {
+     const { tema } = useContext(TemaContexto);
+   
+     return (
+       <div style={{ background: tema === 'oscuro' ? '#333' : '#fff', color: tema === 'oscuro' ? '#fff' : '#000' }}>
+         Componente Consumidor
        </div>
      );
-   }
+   };
+   
+   const App = () => {
+     return (
+       <TemaProveedor>
+         <div>
+           <BotonTema />
+           <ComponenteConsumidor />
+         </div>
+       </TemaProveedor>
+     );
+   };
+   
+   export default App;
    ```
    
 12. #### **`Componentes de Clase vs. Componentes Funcionales con Hooks`**:
 
     - Los componentes de clase ofrecen un ciclo de vida completo y la capacidad de manejar el estado local.
-    - Los componentes funcionales con Hooks proporcionan una forma más simple y concisa de trabajar con el estado y otros aspectos de React.
+    - Los componentes funcionales con Hooks llegan con React 16.8 y proporcionan una forma más simple y concisa de trabajar con el estado, el ciclo de vida y otros aspectos de React.
 
 13. #### **`Context en React`**:
 
@@ -1466,7 +1585,7 @@
    }
    ```
 
-10. #### **`Contexto de `this` en Funciones Manejadoras`**:
+10. #### **`Contexto <this> en Funciones Manejadoras`**:
 
    En los componentes de clase, el contexto de `this` en una función manejadora puede ser diferente del componente en sí. Para solucionar esto, es necesario enlazar la función manejadora o utilizar funciones de flecha para mantener el contexto.
 

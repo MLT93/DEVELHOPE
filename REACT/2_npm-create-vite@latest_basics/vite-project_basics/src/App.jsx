@@ -10,7 +10,7 @@ export function App() {
       <Welcome name={"John"} age={17} />
       <div>
         <AlertClock handleClick={handleClick} />
-        <Counter />
+        <Counter incrementAmount={4} initialValue={200} />
       </div>
     </div>
   );
@@ -57,12 +57,12 @@ const AlertClock = ({ handleClick }) => {
   );
 };
 
-const Counter = () => {
+/* const Counter = () => {
   const [counter, setCounter] = useState(0);
 
   const handleClickCounter = () => {
     const input = document.getElementById("counter");
-    (input) && setCounter(input.value);
+    input && setCounter(input.value);
   };
 
   return (
@@ -73,4 +73,23 @@ const Counter = () => {
       <button onClick={handleClickCounter}>Click</button>
     </div>
   );
+}; */
+
+const Counter = ({ initialValue, incrementAmount }) => {
+  const [counter, setCounter] = useState(initialValue);
+  
+  const amount = () => {
+    setCounter(() => counter + incrementAmount);
+  };
+  
+  return (
+    <div>
+      <CounterDisplay counter={counter} />
+      <button onClick={amount}>Amount Counter by {incrementAmount}</button>
+    </div>
+  );
+};
+
+const CounterDisplay = ({ counter }) => {
+return <h2>Counter =&gt; {counter}</h2>;
 };
