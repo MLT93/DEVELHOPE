@@ -703,8 +703,6 @@
 16. **`Consideraciones Finales y Próximos Pasos`**:
     React es una poderosa biblioteca de JavaScript para construir interfaces de usuario interactivas y reactivas. Con un buen entendimiento de los componentes, el estado, las props y otros conceptos fundamentales, puedes construir aplicaciones web modernas y escalables.
 
-Esta explicación proporciona una visión general detallada de los componentes en React y las funciones relacionadas en JavaScript. Al dominar estos conceptos, estarás bien equipado para desarrollar aplicaciones web modernas y dinámicas. Recuerda que la práctica y la construcción de proyectos reales son esenciales para consolidar tu conocimiento. ¡Buena suerte en tu viaje de desarrollo con React!
-
 ### **Pasar Datos con Props en React: Una Explicación Detallada**
 
 1. **`Introducción a Props en React`**:
