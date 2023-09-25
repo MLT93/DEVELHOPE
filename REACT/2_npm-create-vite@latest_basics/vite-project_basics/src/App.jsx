@@ -10,7 +10,6 @@ export function App() {
       <Welcome name={"John"} age={17} />
       <div>
         <AlertClock handleClick={handleClick} />
-        <Counter />
       </div>
     </div>
   );
