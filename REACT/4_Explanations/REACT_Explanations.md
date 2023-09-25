@@ -576,31 +576,31 @@
      const [contador, setContador] = useState(0);
      ```
    
-     - **useEffect hook**: `useEffect` permite realizar efectos secundarios en . Se ejecuta después de cada renderizado y puede emular varios ciclos de vida de componentes de clase como `componentDidMount`, `componentDidUpdate` y `componentWillUnmount`.
+   - **useEffect hook**: `useEffect` permite realizar efectos secundarios en . Se ejecuta después de cada renderizado y puede emular varios ciclos de vida de componentes de clase como `componentDidMount`, `componentDidUpdate` y `componentWillUnmount`.
 
-   Sintaxis:
-
-   ```jsx
-   import React, { useEffect } from 'react';
+     Sintaxis:
    
-   useEffect(() => {
-     // Código del efecto secundario
-   }, [dependencias]);
-   ```
-
-   - `Primer argumento de useEffect`: El primer argumento de useEffect es una arrow function que contiene el código del efecto secundario.
-
-   - `Segundo argumento de useEffect`: El segundo argumento es un arreglo de dependencias opcional, si no se desea usar se dejan los corchetes vacíos. Este arreglo especifica las variables que el efecto debe estar observando para ejecutarse el efecto y, si alguna de estas variables cambiase, el efecto se ejecutaría nuevamente.
-
-   ```jsx
-   // Arrow function en el primer argumento
-   useEffect(() => {
-     // Simulando una solicitud a un servidor
-     setTimeout(() => {
-       setDatos('Datos cargados desde el servidor');
-     }, 2000);
-   }, []); // Array vacío porque no se necesita observar ninguna variable
-   ```
+     ```jsx
+     import React, { useEffect } from 'react';
+     
+     useEffect(() => {
+       // Código del efecto secundario
+     }, [dependencias]);
+     ```
+   
+     - `Primer argumento de useEffect`: El primer argumento de useEffect es una arrow function que contiene el código del efecto secundario.
+   
+     - `Segundo argumento de useEffect`: El segundo argumento es un arreglo de dependencias opcional, si no se desea usar se dejan los corchetes vacíos. Este arreglo especifica las variables que el efecto debe estar observando para ejecutarse el efecto y, si alguna de estas variables cambiase, el efecto se ejecutaría nuevamente.
+   
+     ```jsx
+     // Arrow function en el primer argumento
+     useEffect(() => {
+       // Simulando una solicitud a un servidor
+       setTimeout(() => {
+         setDatos('Datos cargados desde el servidor');
+       }, 2000);
+     }, []); // Array vacío porque no se necesita observar ninguna variable
+     ```
 
    - **useContext hook**: `useContext`
 
