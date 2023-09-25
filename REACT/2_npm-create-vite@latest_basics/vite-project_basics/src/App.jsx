@@ -10,7 +10,7 @@ export function App() {
       <Welcome name={"John"} age={17} />
       <div>
         <AlertClock handleClick={handleClick} />
-        <Counter incrementAmount={4} initialValue={200} />
+        <Counter initialValue={200} incrementAmount={4} decrementAmount={2} />
       </div>
     </div>
   );
@@ -75,21 +75,34 @@ const AlertClock = ({ handleClick }) => {
   );
 }; */
 
-const Counter = ({ initialValue, incrementAmount }) => {
-  const [counter, setCounter] = useState(initialValue);
-  
+const Counter = ({ initialValue, incrementAmount, decrementAmount }) => {
+  let [counter, setCounter] = useState(initialValue);
+
   const amount = () => {
     setCounter(() => counter + incrementAmount);
   };
-  
+
+  const decrement = () => {
+    setCounter(() => counter - decrementAmount);
+  };
+
+  const reset = () => {
+    let resetValue = 0;
+    setCounter(() => counter = resetValue);
+  };
+
   return (
     <div>
       <CounterDisplay counter={counter} />
       <button onClick={amount}>Amount Counter by {incrementAmount}</button>
+      <button onClick={decrement}>
+        Decrement Counter by {decrementAmount}
+      </button>
+      <button onClick={reset}>Reset Counter</button>
     </div>
   );
 };
 
 const CounterDisplay = ({ counter }) => {
-return <h2>Counter =&gt; {counter}</h2>;
+  return <h2>Counter =&gt; {counter}</h2>;
 };
