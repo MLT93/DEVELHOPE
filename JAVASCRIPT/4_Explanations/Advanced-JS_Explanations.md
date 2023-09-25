@@ -1740,7 +1740,7 @@ console.log("Local Date Zone:", localDate);
 8. Si se quiere, podemos formatear la fecha de manera más específica con Intl.DateTimeFormat().format():
 
 ```javascript
-// Especifique el formato de fecha y hora usando las opciones de "estilo" (es decir, completo, largo, medio, corto)
+// Especifique el formato de fecha y hora usando las opciones de "estilo" (es decir: full, long, medium, short)
 console.log(
   new Intl.DateTimeFormat("en-GB", {
     dateStyle: "full",
@@ -3970,6 +3970,97 @@ Este código HTML y JavaScript realiza una serie de acciones para obtener datos 
 Este código HTML y JavaScript realiza una solicitud a una API, muestra los datos de respuesta en el DOM y proporciona manejo de errores para gestionar posibles problemas durante la solicitud. La información se presenta en una lista de tareas dentro de un contenedor en la página web.
 
 En resumen, la Fetch API y las funciones relacionadas, como async/await y promesas, son elementos esenciales en el desarrollo web moderno para realizar solicitudes HTTP de manera asíncrona y obtener recursos de servidores web. Estas herramientas permiten interactuar con servicios web, autenticar usuarios, cargar datos dinámicos y más, lo que las convierte en parte integral del desarrollo web contemporáneo.
+
+### **Events y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
+
+1. **`Introducción a los Eventos en JavaScript`**
+   Los eventos son sucesos que ocurren en el navegador, como clics de ratón, pulsaciones de teclas o cambios en el contenido de una página. JavaScript permite capturar y responder a estos eventos, lo que permite la interactividad en una página web.
+
+2. **`Escuchando Eventos con addEventListener`**
+   `addEventListener` es un método en JavaScript que permite asignar funciones (event handlers) a eventos específicos en un elemento HTML. Por ejemplo, si queremos ejecutar una función cuando un botón es clicado, usaríamos `addEventListener` para asociar esa función al evento de clic.
+
+```javascript
+const miBoton = document.getElementById('miBoton');
+
+miBoton.addEventListener('click', () => {
+  console.log('El botón fue clicado');
+});
+```
+
+3. **`Event Objects`**
+   Cuando un evento ocurre, JavaScript crea un objeto de evento que contiene información sobre el evento. Este objeto puede proporcionar detalles como la tecla presionada, las coordenadas del clic o el elemento al que se aplicó el evento. Es común pasar este objeto como argumento a la función de controlador de eventos.
+
+```javascript
+const miBoton = document.getElementById('miBoton');
+
+miBoton.addEventListener('click', (evento) => {
+  console.log('El botón fue clicado');
+  console.log('Información del evento:', evento);
+});
+```
+
+4. **`Tipos Comunes de Eventos`**
+   - `click`: Se activa cuando se hace clic en un elemento.
+   - `mouseover`: Se activa cuando el ratón se mueve sobre un elemento.
+   - `keydown`: Se activa cuando una tecla del teclado es presionada.
+   - `submit`: Se activa cuando se envía un formulario.
+
+5. **`Removiendo Event Listeners`**
+   Si ya no necesitamos escuchar un evento en un elemento, podemos usar `removeEventListener` para eliminar la asociación entre el evento y la función de controlador.
+
+```javascript
+const miBoton = document.getElementById('miBoton');
+
+function miFuncion() {
+  console.log('El botón fue clicado');
+}
+
+miBoton.addEventListener('click', miFuncion);
+
+// Después de un tiempo, decidimos dejar de escuchar el evento
+miBoton.removeEventListener('click', miFuncion);
+```
+
+6. **`Event Bubbling y Capturing`**
+   Los eventos en JavaScript siguen un modelo de propagación que involucra dos fases: capturing y bubbling. En la fase de capturing, el evento desciende del elemento raíz al objetivo del evento. En la fase de bubbling, el evento se propaga de vuelta desde el objetivo hacia el elemento raíz.
+
+7. **`Event Delegation`**
+   Es una técnica en la que en lugar de asignar un controlador de eventos a cada elemento, se asigna a un elemento superior (como un contenedor) y se utiliza la propagación de eventos para manejar eventos en sus hijos. Esto es útil para elementos que se agregan dinámicamente o se eliminan del DOM.
+
+```javascript
+const lista = document.getElementById('miLista');
+
+lista.addEventListener('click', (evento) => {
+  if (evento.target && evento.target.nodeName === 'LI') {
+    console.log('Elemento de la lista clicado:', evento.target.textContent);
+  }
+});
+```
+
+8. **`Prevenir el Comportamiento Predeterminado (Event.preventDefault())`**
+   A veces, queremos anular el comportamiento predeterminado de un evento, como evitar que un enlace siga un enlace o que un formulario se envíe.
+
+```javascript
+const miEnlace = document.getElementById('miEnlace');
+
+miEnlace.addEventListener('click', (evento) => {
+  evento.preventDefault();
+  console.log('El enlace fue clicado, pero no se siguió el enlace.');
+});
+```
+
+9. **`Eventos en la Programación Asíncrona`**
+   Los eventos son fundamentales en la programación asíncrona en JavaScript. Por ejemplo, al hacer solicitudes HTTP con `fetch`, podemos asignar funciones a los eventos `then` y `catch` para manejar la respuesta.
+
+```javascript
+fetch('https://api.example.com/data')
+  .then(response => response.json())
+  .then(data => console.log('Datos obtenidos:', data))
+  .catch(error => console.error('Error al obtener datos:', error));
+```
+
+10. **`Resumen`**
+   Los eventos son una parte esencial de la programación web y permiten que las páginas web sean interactivas y receptivas. JavaScript proporciona métodos como `addEventListener` para manejar eventos y `preventDefault` para anular el comportamiento predeterminado de un evento. Comprender cómo funcionan los eventos es crucial para desarrollar aplicaciones web dinámicas y efectivas.
 
 ### **CORS Hints y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
 
