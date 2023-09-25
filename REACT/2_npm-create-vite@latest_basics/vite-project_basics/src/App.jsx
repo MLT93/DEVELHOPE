@@ -9,7 +9,7 @@ export function App() {
       <Message />
       <Welcome name={"John"} age={17} />
       <div>
-        <AlertClock HandleClick={HandleClick} />
+        <AlertClock handleClick={handleClick} />
         <Counter />
       </div>
     </div>
@@ -46,26 +46,14 @@ const Age = ({ age }) => {
   return age >= 18 ? <p>Your age is {age}</p> : <p>You are very young!</p>;
 };
 
-function HandleClick() {
+function handleClick() {
   alert(new Date());
 }
-
-const AlertClock = ({ HandleClick }) => {
+const AlertClock = ({ handleClick }) => {
   return (
     <p>
-      <button onClick={HandleClick}>See current Date</button>
+      <button onClick={handleClick}>See current Date</button>
     </p>
   );
 };
 
-export const Counter = () => {
-  const [counter, setCounter] = useState(0);
-
-  return (
-    <div>
-      <span>Counter: {counter}</span>
-      <br />
-      <button onClick={() => setCounter(/* El valor puede ser una función o un valor inmediato, dependiendo de lo que se desee asignar como nuevo estado. */)}>Incrementar</button>
-    </div>
-  );
-};
