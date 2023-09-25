@@ -87,8 +87,7 @@ const Counter = ({ initialValue, incrementAmount, decrementAmount }) => {
   };
 
   const reset = () => {
-    let resetValue = 0;
-    setCounter(() => counter = resetValue);
+    setCounter(() => counter = initialValue);
   };
 
   return (
