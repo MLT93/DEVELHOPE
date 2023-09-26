@@ -597,28 +597,31 @@
    
        - `state`: Es la variable que va a mantener el estado actual.
      
-       - `setState`: Es una función que te permite actualizar el estado. Esta función toma un argumento que será el nuevo valor del estado. Puede recibir dos tipos de argumentos: un objeto que representa los nuevos valores de estado o una función que devuelve un objeto de estado.
+       - `setState`: Es una función que te permite actualizar el estado. Esta función toma un argumento que será el nuevo valor del estado.
+       Puede recibir dos tipos de argumentos: un objeto que representa los nuevos valores de estado o una función que devuelve un objeto de estado.
        
-       ```jsx
-       // Aplicación directa de un valor al estado asignado
-       this.setState({ 
-         nombre: 'Juan',
-         edad: 30
-       });
-       ```
-       
-       ```jsx
-       // Arrow function que modifica el estado y devuelve uno nuevo
-       this.setState((prevState) => ({
-         contador: prevState.contador + 1
-       }));
-       ```
-     
        - `startValueOfState`: Es el valor con el que quieres inicializar el estado.
        
+       Ejemplo:
+       
        ```jsx
-       // El contador empieza desde el número 0
-       const [contador, setContador] = useState(0);
+       import React, { useState } from 'react';
+
+       function Contador() {
+         // El contador empieza desde el número 0
+         const [contador, setContador] = useState(0);
+       
+         return (
+           <div>
+             <p>Contador: {contador}</p>
+             // Cambio del valor del estado (contador) con setContador
+             <button onClick={() => setContador(contador + 1)}>Incrementar</button>
+             <button onClick={() => setContador(contador - 1)}>Decrementar</button>
+           </div>
+         );
+       }
+       
+       export default Contador;
        ```
      
    - **useEffect hook**:
