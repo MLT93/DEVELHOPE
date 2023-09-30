@@ -661,8 +661,7 @@
              const nuevosDatos = ['Dato 1', 'Dato 2', 'Dato 3'];
              setDatos(nuevosDatos);
            }, 2000);
-         }, []); // El segundo argumento (Array vacío []) indica que este efecto se ejecuta solo al montar el componente 
-       
+         }, []); // El segundo argumento (Array vacío []) indica que este efecto se ejecuta solo al montar el componente y no cuando se actualiza la dependencia, que podría ser [nuevosDatos] en este caso, porque cuando se actualiza la base de datos, vuelve a hacer la llamada a la API      
          return (
            <div>
              <h2>Datos:</h2>

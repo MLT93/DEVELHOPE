@@ -20,7 +20,7 @@ let cajaDeNumeros = 0;
 for (let num = 0; num <=10; num++){
     console.log("La vuelta del bucle va así -> " + num)
     cajaDeNumeros = cajaDeNumeros + num
-    // console.log("La suma de los números a medida que el búcle va girando es " + cajaDeNumeros)
+    // console.log("La suma de los números a medida que el bucle va girando es " + cajaDeNumeros)
 };
 
 console.log("La suma de los números = " + cajaDeNumeros)
