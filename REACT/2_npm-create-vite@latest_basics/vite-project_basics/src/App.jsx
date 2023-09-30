@@ -145,7 +145,7 @@ const Clock = () => {
 };
 
 const MouseClicker = () => {
-  const handleClickMouse = () => console.log(document.getElementsByName("one")[0]);
+  const handleClickMouse = (event) => console.log(event.target.name);
 
   return (
     <button name="one" onClick={handleClickMouse}>
