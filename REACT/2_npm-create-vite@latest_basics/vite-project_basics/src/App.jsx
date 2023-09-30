@@ -12,6 +12,7 @@ export function App() {
         <AlertClock handleClick={handleClick} />
         <Counter initialValue={200} incrementAmount={4} decrementAmount={2} />
         <Clock />
+        <MouseClicker />
       </div>
     </div>
   );
@@ -143,3 +144,12 @@ const Clock = () => {
   );
 };
 
+const MouseClicker = () => {
+  const handleClickMouse = () => console.log(document.getElementsByName("one")[0]);
+
+  return (
+    <button name="one" onClick={handleClickMouse}>
+      Click here
+    </button>
+  );
+};
