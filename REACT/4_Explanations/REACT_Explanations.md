@@ -626,7 +626,7 @@
      
    - **useEffect hook**:
    
-     `useEffect` permite realizar efectos secundarios en componentes funcionales. Se ejecuta después de cada renderizado y puede emular varios ciclos de vida de componentes de clase como `componentDidMount`, `componentDidUpdate` y `componentWillUnmount`.
+     `useEffect` permite realizar efectos secundarios en componentes funcionales. Se ejecuta después de cada renderizado y puede emular varios ciclos de vida de componentes de clase como `componentDidMount`, `componentDidUpdate` y `componentWillUnmount`. Nos permite ejecutar acciones cada vez que ocurre algo.
    
        Sintaxis:
      
@@ -634,13 +634,13 @@
        import React, { useEffect } from 'react';
        
        useEffect(() => {
-         // Código del efecto secundario
+         // Código que se acciona cuando cambia una dependencia o cuando ocurre algo (por ejemplo, cuando se monta el componente)
        }, [dependencias]);
        ```
      
        - `Primer argumento de useEffect`: El primer argumento de useEffect es una `arrow function`. Contiene el código del efecto secundario que quieres que se ejecute cuando el componente se monte o cuando ciertas dependencias cambien.
        
-       - `Segundo argumento de useEffect`: El segundo argumento es un arreglo de `dependencias` opcional.
+       - `Segundo argumento de useEffect`: El segundo argumento es un arreglo de `dependencias` opcional. Esto nos permite tener "bajo la mira" la dependencia que accionará nuestro efecto secundario cada vez que cambie.
        
        - `La presencia del array`: Si el array está presente y posee dependencias en su interno `[dependencia1, dependencia2]`, indica a React que el efecto secundario debe reejecutarse si alguna de las dependencias cambia. Si no quieres que el efecto se ejecute en actualizaciones posteriores (sólo cuando el componente se monta), puedes pasar un array vacío como segundo argumento `[]`.
        
@@ -686,7 +686,7 @@
        ```jsx
        import React { createContext } from 'react';
        
-       // Primera letra mayúscula en la variable
+       // Primera letra mayúscula en esta variable siempre
        const Context = React.createContext()
        ```
 
@@ -760,7 +760,61 @@
        
    - **useMemo hook**:
    
-     `useMemo`
+     `useMemo` es una herramienta en React que te permite memorizar el resultado de una función y solo recalcularla cuando alguna de sus dependencias cambia. Esto puede ser útil para optimizar el rendimiento de tu aplicación al evitar cálculos costosos en cada renderizado.
+
+       Sintaxis:
+
+       ```jsx
+       const memoizedValue = useMemo(() => {a + b}, [a, b]);
+       ```
+
+       - `Primer argumento de useMemo`: es una herramienta en React que te permite `memoizar` el resultado de una función y solo recalcularla cuando alguna de sus dependencias cambia. React llamará a tu función solo durante el renderizado inicial, guardando en caché el resultado del cálculo. En renderizados posteriores, React devolverá el mismo valor nuevamente si las dependencias no han cambiado desde el último renderizado, si lo hacen, volverá a calcular, devolverá el resultado y lo volverá a guardar. Esta optimización ayuda a evitar cálculos costosos en cada renderizado de la página.
+
+       - `Segundo argumento de useMemo`: El array de dependencias contiene las variables que la función utiliza para realizar los cálculos. Si alguna de estas variables cambia, useMemo recalculará la función nuevamente. En cuanto a cuándo debe utilizarse `useMemo`, es recomendable utilizarlo en cualquier lugar donde se estén realizando cálculos costosos y no es necesario recalcularlos a menos que las dependencias cambien. Es importante tener en cuenta que las dependencias deben ser valores casi inmutables, ya que si una dependencia cambia, el valor `memoizado` se recalcula.
+
+       Ejemplo:
+
+       ```jsx
+       import React { useMemo } from "react";
+       
+       const props = {
+         productos: [
+           {
+             nombre: "Alcaparras",
+             precio: 2.48,
+           },
+         ],
+         tasa: 21 / 100, // 0.21
+       };
+       
+       const ListaProducto = ({ productos, tasa }) => {
+         const tasas = useMemo(() => {
+           return productos.map((producto) => {
+             return {
+               // copia del objeto producto
+               ...producto,
+               precioConTasas: producto.precio + producto.precio * { tasa },
+             };
+           });
+         }, [productos, tasa]);
+       
+         return (
+           <ul>
+             {tasas.map((producto) => (
+               <li key={producto.productos.nombre}>
+                 `El producto ${producto.productos.nombre} vale ${producto.productos.precioConTasas}`
+               </li>
+             ))}
+           </ul>
+         );
+       };
+       
+       <ListaProducto productos={props.productos} tasa={props.tasa} />;
+       
+       export default ListaProducto;
+       ```
+
+       En el código anterior utilizamos `useMemo` para memorizar el cálculo del precio con impuestos de cada producto en una lista. Utilizamos una función para definir la función que se ejecutará dentro de `useMemo`, y `establecemos las dependencias como productos y tasa. Cada vez que cambian estos valores, la función se vuelve a ejecutar y se actualizan los precios con impuestos`. Luego, utilizamos la variable tasas para renderizar la lista de productos con los precios con impuestos actualizados.
    
    Ejemplo aplicando varios hooks contemporáneamente:
    
