@@ -9,10 +9,16 @@ export function App() {
       <Message />
       <Welcome name={"John"} age={17} />
       <div>
+        <hr />
         <AlertClock handleClick={handleClick} />
+        <hr />
         <Counter initialValue={200} incrementAmount={4} decrementAmount={2} />
+        <hr />
         <Clock />
+        <hr />
         <MouseClicker />
+        <hr />
+        <MultiButton />
       </div>
     </div>
   );
@@ -160,5 +166,23 @@ const MouseClicker = () => {
       <hr />
       Click Me
     </button>
+  );
+};
+
+const MultiButton = () => {
+  const handleClickMultiButton = (event) => console.log(event.target.name);
+
+  return (
+    <div style={{display: 'flex', flexFlow: 'row wrap', justifyContent: 'center', gap: '10px', padding: '20px', backgroundColor: 'lightgray'}}>
+      <button onClick={handleClickMultiButton} name="one">
+        One
+      </button>
+      <button onClick={handleClickMultiButton} name="two">
+        Two
+      </button>
+      <button onClick={handleClickMultiButton} name="three">
+        Three
+      </button>
+    </div>
   );
 };
