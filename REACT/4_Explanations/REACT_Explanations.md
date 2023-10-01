@@ -350,9 +350,9 @@
    );
    ```
 
-7. #### **`Manejo de Eventos en JSX`**:
+7. #### **`Manejo de Eventos en JSX (handle)`**:
 
-   En JSX, los eventos se escriben utilizando camelCase y se pasan como funciones. Estas funciones se ejecutan cuando ocurre el evento.
+   En JSX, los eventos se escriben utilizando camelCase y se pasan como funciones. Estas funciones se ejecutan cuando ocurre el evento prefijado (por ejemplo, `onChange` o `onClick`) y tienen una convención, que es empezar el nombre de la función con `handle`.
 
    Ejemplo de manejo de eventos en JSX:
 
@@ -366,7 +366,7 @@
 
 8. #### **`Estilos en JSX`**:
 
-   Los estilos en JSX se manejan utilizando objetos de JavaScript que contienen propiedades de estilo en camelCase en lugar de las propiedades de estilo de CSS en kebab-case.
+   Los estilos en JSX se manejan utilizando objetos de JavaScript que contienen propiedades de estilo en `camelCase` en lugar de las propiedades de estilo de CSS en `kebab-case`.
 
    Ejemplo de estilos en JSX:
 
@@ -377,6 +377,12 @@
    };
 
    const element = <div style={divStyle}>Texto con estilo</div>;
+   ```
+
+   También se pueden escribir directamente dentro del elemento html utilizando una doble llave, de la siguiente manera:
+
+   ```jsx
+   const element = <div style={{backgroundColor:"yellow", width:"240px"}}>Texto con estilo</div>
    ```
 
 9. #### **`Uso de JSX con Babel`**:
@@ -579,13 +585,13 @@
 
 11. #### **`Hooks en React`**:
 
-   Los Hooks son una adición en React 16.8 que permiten asignar un estado y otras características de React en componentes funcionales, lo que antes solo era posible en componentes de clase.
+   Los Hooks son una adición en React 16.8 que permiten asignar un estado y otras características de React en componentes funcionales, lo que antes solo era posible en componentes de clase. Los Hooks tienen una convención y es utilizar siempre `use` delante del nombre del hook. A demás hay que recordar que los Hooks sólo se pueden llamar en en el nivel superior de tu componente funcional, por lo tanto no podrás llamarlo dentro de un ciclo for, de un gestor de un gestor de eventos, de un if-else statement, etc... `Los hooks sólo pueden llamarse dentro del cuerpo del componente funcional y no de forma anidada`.
    
    Los más comunes son:
    
    - **useState hook**:
    
-     `useState` permite añadir o modificar un estado a un componente.
+     `useState` permite añadir o modificar un estado a un componente. Comienza con un array donde el primer elemento es el estado que queremos modificar (con la posibilidad de asignarle un valor inicial también) y el segundo es una función para poder modificar ese elemento inicial. Posteriormente la función useState tiene un argumento, que será el valor inicial de nuestro primer elemento del array.
    
        Sintaxis:
    
