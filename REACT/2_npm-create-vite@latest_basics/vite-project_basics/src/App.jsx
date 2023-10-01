@@ -145,18 +145,18 @@ const Clock = () => {
 };
 
 const MouseClicker = () => {
-  const handleClickButton = (event) => console.log(event.currentTarget.name);
+  const handleClickButton = (event) => console.log(event.target.name);
   const handleClickImg = (event) => console.log(event.src);
 
   return (
     <button name="one" style={{ color: "red" }} onClick={handleClickButton}>
       <img
-        style={{width: '150px', height: 'auto'}}
+        style={{ width: "150px", height: "auto" }}
         name="image"
         src="https://www.rionegro.com.ar/wp-content/uploads/2022/07/EMPANADAS-CRIOLLAS-VA1.jpg?w=920&h=517&crop=1"
         alt="image"
         onClick={handleClickImg}></img>
-      {/* El `.currentTarget` hace referencia al nodo HTML donde se monta el `handleEvent`, esto hace que cuando se hace click en el botón se vaya directamente a la referencia del nodo y no a sus anidados  */}
+      {/* Para impedir que se imprima el nombre del botón cuando se hace click en la imagen, hay que utilizar el `.target` porque cuando se ejecuta `click`, te da acceso al elemento específico que fue clickeado y no al nodo raíz donde se implementa el código `handleEvent` */}
       <hr />
       Click Me
     </button>
