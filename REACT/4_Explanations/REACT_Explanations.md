@@ -350,9 +350,13 @@
    );
    ```
 
-7. #### **`Manejo de Eventos en JSX (handle)`**:
+7. #### **`Manejo de Eventos en JSX (handleEvent)`**:
 
-   En JSX, los eventos se escriben utilizando camelCase y se pasan como funciones. Estas funciones se ejecutan cuando ocurre el evento prefijado (por ejemplo, `onChange` o `onClick`) y tienen una convención, que es empezar el nombre de la función con `handle`.
+   En JSX, los eventos se escriben utilizando camelCase y se pasan como funciones. Estas funciones se ejecutan cuando ocurre el evento prefijado (por ejemplo: `onChange`, `onClick`, etc...) y tienen una convención, que es empezar el nombre de la función con `handle`.
+
+   Recuerda que el `handleEvent` cuando viene activado siempre se lleva consigo el `objeto evento con sus propiedades`, que `en React es una instancia de la clase SyntheticEvent` y que a su vez es una abstracción de como los eventos de la UI al interno de los navegadores deberían ser estructurados, siguiendo las especificaciones W3C.
+   
+   Por lo tanto, cada gestor de eventos está efectivamente recibiendo un parámetro, que podemos llamar `event` y utilizarlo cuando nos interese (también podemos ignorarlo si queremos).
 
    Ejemplo de manejo de eventos en JSX:
 
@@ -363,6 +367,16 @@
 
    const element = <button onClick={handleClick}>Haz click</button>;
    ```
+
+      ```jsx
+   const handleMouseClick = (event) => console.log(event); // te imprime toda la información guardada en SyntheticEvent
+
+   const element = <button onClick={handleMouseClick}>Click me</button>;
+   ```
+
+   Recuerda que el `event.target` representa el elemento (nodo HTML) que ha activado el evento, mientras que `event.currentTarget` representa el elemento donde fue asociado el evento.Esto es importante porque aunque tengamos un elemento HTML anidado dentro de otro que posee el gestor de eventos, este ultimo cuando se acciona el evento recorre `bubble` todas los anidamientos hasta llegar a la raíz.
+
+   `Gracias a esto podemos leer las informaciones de cada nodo HTML` interactuar con ellos y modificar su comportamiento, porque `tenemos acceso a cada atributo que se le pueda asignar a cualquier nodo HTML (elemento) que utilicemos`.
 
 8. #### **`Estilos en JSX`**:
 

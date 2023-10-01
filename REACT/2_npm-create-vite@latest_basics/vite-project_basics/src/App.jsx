@@ -145,10 +145,10 @@ const Clock = () => {
 };
 
 const MouseClicker = () => {
-  const handleClickMouse = (event) => console.log(event.target.name);
+  const handleClickMouse = (event) => console.log(event.currentTarget.style);
 
   return (
-    <button name="one" onClick={handleClickMouse}>
+    <button name="one" style={{color: "red"}} onClick={handleClickMouse}>
       Click here
     </button>
   );
