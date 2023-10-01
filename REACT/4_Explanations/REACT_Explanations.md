@@ -478,7 +478,7 @@
 
 6. #### **`Ciclo de Vida de un Componente`**:
 
-   En componentes de clase, hay métodos especiales conocidos como "ciclo de vida" que se ejecutan en diferentes etapas, como montaje, actualización y desmontaje. Los componentes funcionales utilizan Hooks para lograr un comportamiento similar.
+   En componentes de clase, hay métodos especiales conocidos como "ciclo de vida" que se ejecutan en diferentes etapas, como montaje, actualización y desmontaje (los componentes funcionales utilizan Hooks para lograr un comportamiento similar).
 
    - **componentDidMount()**:
    
@@ -603,8 +603,9 @@
    
        - `state`: Es la variable que va a mantener el estado actual.
      
-       - `setState`: Es una función que te permite actualizar el estado. Esta función toma un argumento que será el nuevo valor del estado.
-       Puede recibir dos tipos de argumentos: un objeto que representa los nuevos valores de estado o una función que devuelve un objeto de estado.
+       - `setState`: Es una función que te permite actualizar el estado. Esta función toma un argumento que será el nuevo valor del estado y este argumento puede ser de dos tipos:
+         - `Estado + modificaciones` representan los nuevos valores asignados directamente al estado.
+         - `Callback` representa una arrow-function que devuelve el estado modificado (`aconsejo esta siempre`).
        
        - `startValueOfState`: Es el valor con el que quieres inicializar el estado.
        
@@ -621,8 +622,8 @@
            <div>
              <p>Contador: {contador}</p>
              // Cambio del valor del estado (contador) con setContador
-             <button onClick={() => setContador(contador + 1)}>Incrementar</button>
-             <button onClick={() => setContador(contador - 1)}>Decrementar</button>
+             <button onClick={() => setContador(contador + 1)}>Incrementar</button> // cambio directo al estado "contador"
+             <button onClick={() => setContador((c) => c - 1)}>Decrementar</button> // cambio con callback
            </div>
          );
        }
@@ -644,13 +645,12 @@
        }, [dependencias]);
        ```
      
-       - `Primer argumento de useEffect`: El primer argumento de useEffect es una `arrow function`. Contiene el código del efecto secundario que quieres que se ejecute cuando el componente se monte o cuando ciertas dependencias cambien.
+       - `Primer argumento de useEffect`: El primer argumento de useEffect es una `arrow function` (callback). Contiene el código del efecto secundario que quieres que se ejecute cuando el componente se monte o cuando ciertas dependencias cambian.
        
-       - `Segundo argumento de useEffect`: El segundo argumento es un arreglo de `dependencias` opcional. Esto nos permite tener "bajo la mira" la dependencia que accionará nuestro efecto secundario cada vez que cambie.
-       
-       - `La presencia del array`: Si el array está presente y posee dependencias en su interno `[dependencia1, dependencia2]`, indica a React que el efecto secundario debe reejecutarse si alguna de las dependencias cambia. Si no quieres que el efecto se ejecute en actualizaciones posteriores (sólo cuando el componente se monta), puedes pasar un array vacío como segundo argumento `[]`.
-       
-       - `Si se omite este array`: La omisión del arreglo dentro del hook nos indica que el efecto secundario se ejecutará cada vez que el componente se renderice. Si quieres que el efecto se ejecute en cada actualización del componente, puedes omitir el segundo argumento directamente.
+       - `Segundo argumento de useEffect`: El segundo argumento es un arreglo de `dependencias` (opcional). Esto nos permite tener "bajo la mira" la dependencia que accionará nuestro efecto secundario cada vez que cambie. Esto puede provocar algunas formas de accionar nuestro primer argumento (callback), de la siguiente manera:
+         - `La presencia del array` con dependencias en su interno `[dependencia1, dependencia2]`, indica a React que el efecto secundario debe reejecutarse si alguna de las dependencias cambie.
+         Si no quieres que el efecto se ejecute en actualizaciones posteriores de las dependencias y sólo cuando el componente se monta, puedes pasar un array vacío como segundo argumento `[]`.
+         - `Si se omite este array` dentro del hook, esto indica que el efecto secundario se ejecutará cada vez que el componente se renderice. Si quieres que el efecto se ejecute en cada actualización del componente, puedes omitir el segundo argumento directamente.
 
        Ejemplo:
 
@@ -662,11 +662,15 @@
        
          // Arrow function en el primer argumento
          useEffect(() => {
-           // Simulando una petición asíncrona a un servidor
-           setTimeout(() => {
+           // Simulando una petición asíncrona a un servidor que se repite cada 2 segundos
+           const intervalId = setInterval(() => {
              const nuevosDatos = ['Dato 1', 'Dato 2', 'Dato 3'];
              setDatos(nuevosDatos);
            }, 2000);
+           
+           // cada vez que retornamos algo al interno de un hook, debe ser devuelto a través de una función
+           return () => clearInterval(intervalId)
+
          }, []); // El segundo argumento (Array vacío []) indica que este efecto se ejecuta solo al montar el componente y no cuando se actualiza la dependencia, que podría ser [nuevosDatos] en este caso, porque cuando se actualiza la base de datos, vuelve a hacer la llamada a la API      
          return (
            <div>
@@ -682,6 +686,8 @@
        
        export default EjemploComponente;
        ```
+
+       Ten en cuenta que `cada vez que creamos un código que al desmontarse pudiera seguir funcionando, tenemos que acordarnos de limpiar o parar el código después de que se desmonte` rigurosamente, porque puede provocar varios conflictos y errores. `Y recordémonos que cada vez que retornamos algo al interno de un hook, debe ser devuelto a través de una función` también.
        
    - **useContext hook**:
    
@@ -696,7 +702,7 @@
        const Context = React.createContext()
        ```
 
-       - `creación del contexto`: Antes de utilizar useContext, primero necesitas crear un contexto. Esto se hace utilizando la función `createContext`, que toma un valor por defecto que se utilizará si no hay ningún proveedor de contexto superior. Este valor es opcional y se utiliza principalmente para facilitar el desarrollo.
+       - `Creación del contexto`: Antes de utilizar useContext, primero necesitas crear un contexto. Esto se hace utilizando la función `createContext`, que toma un valor por defecto que se utilizará si no hay ningún proveedor de contexto superior. Este valor es opcional y se utiliza principalmente para facilitar el desarrollo.
 
        - `Proveedor de Contexto`: A continuación, necesitas proporcionar un contexto utilizando el componente `Provider` que se deriva del contexto que has creado. `value` es la información que deseas compartir con todos los componentes hijos dentro de este proveedor de contexto.
        
