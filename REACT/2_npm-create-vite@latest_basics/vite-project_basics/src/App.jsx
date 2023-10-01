@@ -145,11 +145,18 @@ const Clock = () => {
 };
 
 const MouseClicker = () => {
-  const handleClickMouse = (event) => console.log(event.currentTarget.name);
+  const handleClickButton = (event) => console.log(event.currentTarget.name);
+  const handleClickImg = (event) => console.log(event.src);
 
   return (
-    <button name="one" style={{ color: "red" }} onClick={handleClickMouse}>
-      <img src="#" alt="image"></img>
+    <button name="one" style={{ color: "red" }} onClick={handleClickButton}>
+      <img
+        style={{width: '150px', height: 'auto'}}
+        name="image"
+        src="https://www.rionegro.com.ar/wp-content/uploads/2022/07/EMPANADAS-CRIOLLAS-VA1.jpg?w=920&h=517&crop=1"
+        alt="image"
+        onClick={handleClickImg}></img>
+      {/* El `.currentTarget` hace referencia al nodo HTML donde se monta el `handleEvent`, esto hace que cuando se hace click en el botón se vaya directamente a la referencia del nodo y no a sus anidados  */}
       <hr />
       Click Me
     </button>
