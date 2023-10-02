@@ -1,6 +1,6 @@
 # **REACT**
 
-## **The Declarative Approach y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
+## **The Declarative Approach y Funciones Relacionadas en React: Una Explicación Detallada**
 
 1. #### **`Introducción a The Declarative Approach`**:
 
@@ -143,7 +143,7 @@
 
    The Declarative Approach y las funciones relacionadas en JavaScript son herramientas poderosas para escribir código más limpio, legible y modular. Al comprender y aplicar estos conceptos, los desarrolladores pueden mejorar la eficiencia y mantenibilidad de su código, lo que resulta en aplicaciones más robustas y fáciles de mantener a largo plazo.
 
-## **JSX y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
+## **JSX y Funciones Relacionadas en React: Una Explicación Detallada**
 
 1. #### **`Introducción a JSX`**:
 
@@ -437,7 +437,7 @@
 
     En resumen, JSX es una extensión de JavaScript que permite la creación de interfaces de usuario de manera más intuitiva y declarativa. Al mezclar HTML con JavaScript, JSX facilita la creación y manipulación de elementos del DOM de manera dinámica y eficiente. Se utiliza comúnmente en bibliotecas y frameworks de JavaScript como React para definir la estructura de la interfaz de usuario y crear componentes reutilizables y modulares. Al comprender y utilizar JSX de manera efectiva, los desarrolladores pueden construir aplicaciones web modernas y escalables.
 
-## **Componentes de React y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
+## **Componentes de React y Funciones Relacionadas en React: Una Explicación Detallada**
 
 1. #### **`Introducción a los Componentes de React`**:
 
@@ -1444,7 +1444,7 @@
 
    El Virtual DOM es una poderosa técnica para optimizar el rendimiento de las aplicaciones web al minimizar las operaciones en el DOM real. Aunque agrega una capa de complejidad al código interno, los beneficios en términos de rendimiento y eficiencia hacen que valga la pena utilizarlo en aplicaciones web modernas y complejas.
 
-## **Eventos en React y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
+## **Eventos en React y Funciones Relacionadas en React: Una Explicación Detallada**
 
 1. #### **`Introducción a los Eventos en React`**:
 
@@ -1738,13 +1738,13 @@
 
    Los eventos en React permiten la interactividad en una aplicación al responder a las acciones del usuario. Las funciones manejadoras se utilizan para manejar estos eventos y actualizar el estado o realizar otras acciones según sea necesario. Comprender cómo funcionan los eventos en React es esencial para construir aplicaciones interactivas y dinámicas.
 
-## **React Controlled Forms y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
+## **Forms - Controlled Components y Funciones Relacionadas en React: Una Explicación Detallada**
 
-1. #### `Introducción a React-Controlled Forms`:
+1. #### `Introducción a Controlled Forms`:
 
-   En React, los formularios controlados (controlled forms) son una técnica para manejar los datos de un formulario a través del estado de React. Esto significa que el estado de la aplicación mantiene el control sobre los valores de los elementos de formulario.
+   En React, los formularios controlados (controlled forms) son una técnica para manejar los datos de un formulario a través del estado de React. Esto significa que el estado de la aplicación mantiene el control sobre los valores de los elementos de formulario. Ofrecen una mayor personalización del formulario a costa de una mayor lógica, porque implementan un controlador de estado y un controlador de eventos.
 
-2. #### `¿Por qué usar Formularios Controlados?`
+2. #### `¿Por qué usar Componentes Controlados?`
 
    Los formularios controlados permiten a React ser la fuente única de verdad para el estado de los elementos de formulario. Esto facilita la manipulación de los datos y la interacción con el formulario de manera predecible.
 
@@ -1823,7 +1823,7 @@
    - **Facilita la manipulación de datos**: 
 
      Permite realizar acciones como validaciones de datos o transformaciones antes de enviar el formulario.
-     
+
    - **Interfaz más predecible**: 
 
      Los cambios en los elementos de formulario son controlados por React, lo que hace que el comportamiento sea más predecible.
@@ -1845,3 +1845,85 @@
 10. #### **`En resumen`**:
 
    Los formularios controlados en React son una técnica poderosa para manejar la entrada de usuario y manipular datos de formularios de manera efectiva. Al comprender y aplicar correctamente esta técnica, puedes crear aplicaciones más interactivas y con una mejor gestión de datos de formulario.
+
+## Forms - Uncontrolled Components y Funciones Relacionadas en React: Una Explicación Detallada
+
+1. #### `Introducción a Uncontrolled Forms`:
+
+   En React los formularios no controlados (uncontrolled forms) son aquellos en los que el valor de los elementos del formulario se maneja por el DOM en lugar de ser controlado por React a través del estado. Necesitan menos lógica y son más simples de utilizar porque no necesitan la implementación de lógica externa para mantener su estado a costa de una personalización menor.
+
+2. #### `¿Cuándo usar Uncontrolled Components?`
+
+   Los componentes no controlados son útiles en situaciones donde no necesitas realizar validaciones de datos o manipulaciones antes de enviar el formulario. Son especialmente útiles cuando se trabaja con bibliotecas o códigos legacy que no están diseñados para funcionar con formularios controlados.
+
+3. #### `Sintaxis y Uso Básico de Uncontrolled Form`:
+
+   Para crear un formulario no controlado, simplemente se deja que el DOM maneje el valor del elemento de formulario y se accede a él utilizando referencias (refs) de React.
+
+   ```jsx
+   import React, { useRef } from 'react';
+
+   const UncontrolledForm = () => {
+     const inputRef = useRef(null);
+
+     const handleSubmit = (event) => {
+       event.preventDefault();
+       console.log('Valor del input:', inputRef.current.value);
+     };
+
+     return (
+       <form onSubmit={handleSubmit}>
+         <input type="text" ref={inputRef} />
+         <button type="submit">Enviar</button>
+       </form>
+     );
+   };
+
+   export default UncontrolledForm;
+   ```
+
+   En este ejemplo, el elemento de entrada (`<input>`) no está vinculado a ninguna propiedad de estado. En su lugar, se utiliza una referencia (`inputRef`) para acceder al valor del elemento de formulario en el DOM.
+
+4. #### `Uso de Refs para Acceder a los Elementos del DOM`:
+
+   Las refs (`useRef`) proporcionan una forma de acceder a los nodos del DOM directamente desde el código de React. En el ejemplo anterior, `inputRef.current` se utiliza para obtener el valor del elemento de entrada.
+
+5. #### `Evento onSubmit y Envío del Formulario`:
+
+   El evento `onSubmit` se dispara cuando se envía el formulario. Al capturar este evento, puedes realizar cualquier acción necesaria antes o después de enviar los datos del formulario.
+
+6. #### `Ventajas de los Uncontrolled Forms`:
+
+   - **Simplicidad de Implementación**: 
+   
+     Los formularios no controlados son más simples de implementar, ya que no requieren el manejo de estado para los componentes del formulario.
+
+   - **Integración con Códigos Legacy**: 
+   
+     Pueden ser útiles cuando trabajas con códigos heredados o bibliotecas que no están diseñadas para trabajar con formularios controlados.
+
+   - **Interacción con el DOM Externo**: 
+   
+     Si necesitas interactuar con librerías o código que no está basado en React y que manipula el DOM directamente, los formularios no controlados pueden ser la mejor opción.
+
+7. #### `Consideraciones Finales`:
+
+   - **Limitaciones de los Uncontrolled Forms**: 
+   
+     No son ideales para situaciones donde necesitas realizar validaciones de datos o manipulaciones antes de enviar el formulario. Tampoco proporcionan el mismo nivel de control que los formularios controlados.
+
+   - **Elección entre Controlled y Uncontrolled Forms**: 
+   
+     La elección entre formularios controlados y no controlados depende de los requisitos específicos de tu aplicación y del contexto en el que estés trabajando.
+
+   - **Ref y Manipulación del DOM**: 
+   
+     Al usar formularios no controlados, es importante entender cómo funcionan las refs en React y cómo se pueden usar para interactuar con el DOM.
+
+   - **Prueba y Práctica**: 
+   
+     Es importante practicar y probar los formularios no controlados para comprender completamente su uso y beneficios en el contexto de tu aplicación.
+
+8. #### **`En resumen`**: 
+
+   Los uncontrolled forms en React son una técnica útil para manejar formularios en situaciones específicas. Proporcionan simplicidad y flexibilidad en comparación con los controlled forms, pero es importante entender sus limitaciones y elegir la técnica adecuada según los requisitos de tu proyecto.
