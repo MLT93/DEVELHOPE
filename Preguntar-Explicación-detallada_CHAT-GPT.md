@@ -417,4 +417,6 @@ Realiza una explicación igual a la que te expongo a continuación, con la misma
      
      Este ejemplo simula la lectura de un archivo de manera asíncrona y demuestra cómo se utiliza un callback para manejar el resultado de la operación asincrónica. La aplicación real podría implicar operaciones más complejas, pero este es un ejemplo sólido para comprender los callbacks en un entorno asíncrono.
      
-En resumen, los callbacks, `setInterval` con `clearInterval` y `setTimeout` son herramientas esenciales en JavaScript para manejar operaciones asíncronas y programar tareas diferidas. Su comprensión y uso adecuado son fundamentales para escribir código efectivo en un entorno asíncrono.
+13. - #### **`En resumen`**:
+
+   Los callbacks `setInterval` con `clearInterval` y `setTimeout`, son herramientas esenciales en JavaScript para manejar operaciones asíncronas y programar tareas diferidas. Su comprensión y uso adecuado son fundamentales para escribir código efectivo en un entorno asíncrono.
