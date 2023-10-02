@@ -1756,12 +1756,14 @@
    import React, { useState } from 'react';
 
    const ControlledForm = () => {
+     // Creamos un objeto para poder pasarle más de una sola propiedad y así modificar más de una variable contemporaneamente sin escribir un nuevo controlador de estado.
      const [formData, setFormData] = useState({
        username: '',
        email: '',
      });
 
      const handleInputChange = (event) => {
+       // Hacemos un destructuring de las propiedades de event.target (el nodo HTML) así podemos trabajarlas más facilmente
        const { name, value } = event.target;
        setFormData({
          ...formData,
@@ -1779,6 +1781,7 @@
          <input
            type="text"
            name="username"
+           // Ahora el valor será el valor proporcionado al objeto
            value={formData.username}
            onChange={handleInputChange}
          />
@@ -1796,7 +1799,7 @@
    export default ControlledForm;
    ```
 
-   En este ejemplo, `formData` es un objeto en el estado que contiene las propiedades `username` y `email`. Los campos de entrada están vinculados a estas propiedades del estado, y cualquier cambio en los campos de entrada invoca la función `handleInputChange` que actualiza el estado.
+   En este ejemplo, `formData` es un objeto en el estado que contiene las propiedades `username` y `email`. Los campos de entrada están vinculados a estas propiedades del estado, y cualquier cambio en los campos de entrada invoca la función `handleInputChange` que actualiza el estado a través del gestor de eventos `onChange`.
 
 4. #### `Evento onChange y Control de Estado`:
 
