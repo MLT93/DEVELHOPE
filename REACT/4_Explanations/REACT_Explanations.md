@@ -1744,7 +1744,7 @@
 
    En React, los formularios controlados (controlled forms) son una técnica para manejar los datos de un formulario a través del estado de React. Esto significa que el estado de la aplicación mantiene el control sobre los valores de los elementos de formulario. Ofrecen una mayor personalización del formulario a costa de una mayor lógica, porque implementan un controlador de estado y un controlador de eventos.
 
-2. #### `¿Por qué usar Componentes Controlados?`
+2. #### `¿Por qué usar Controlled Components?`
 
    Los formularios controlados permiten a React ser la fuente única de verdad para el estado de los elementos de formulario. Esto facilita la manipulación de los datos y la interacción con el formulario de manera predecible.
 
