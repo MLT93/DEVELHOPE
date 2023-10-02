@@ -1750,7 +1750,7 @@
 
 3. #### `Sintaxis y Uso Básico de Formularios Controlados`:
 
-   Para crear un formulario controlado en React, es necesario vincular el valor de cada elemento de formulario (como `input`, `textarea`, `select`, etc.) a una propiedad del estado de React. Luego, se utiliza un controlador de eventos para actualizar el estado cuando el valor del elemento cambia.
+   Para crear un formulario controlado en React, es necesario vincular el valor de cada elemento de formulario (como `input`, `textarea`, `select`, etc...) a una propiedad del estado de React. Luego, se utiliza un controlador de eventos para actualizar el estado cuando el valor del elemento cambia.
 
    ```jsx
    import React, { useState } from 'react';
@@ -1761,16 +1761,16 @@
        email: '',
      });
 
-     const handleInputChange = (e) => {
-       const { name, value } = e.target;
+     const handleInputChange = (event) => {
+       const { name, value } = event.target;
        setFormData({
          ...formData,
          [name]: value,
        });
      };
 
-     const handleSubmit = (e) => {
-       e.preventDefault();
+     const handleSubmit = (event) => {
+       event.preventDefault();
        console.log('Formulario enviado:', formData);
      };
 
@@ -1819,9 +1819,11 @@
    - **Un único origen de verdad**: 
 
      El estado de React es la fuente única de verdad para los valores de los elementos del formulario.
+
    - **Facilita la manipulación de datos**: 
 
      Permite realizar acciones como validaciones de datos o transformaciones antes de enviar el formulario.
+     
    - **Interfaz más predecible**: 
 
      Los cambios en los elementos de formulario son controlados por React, lo que hace que el comportamiento sea más predecible.
