@@ -1746,11 +1746,11 @@
 
 2. #### `¿Por qué usar Controlled Components?`
 
-   Los formularios controlados permiten a React ser la fuente única de verdad para el estado de los elementos de formulario. Esto facilita la manipulación de los datos y la interacción con el formulario de manera predecible.
+  Los Controlled Components en React son una técnica que permite a React manejar el estado de los elementos de un formulario. Esto significa que el valor de los elementos de formulario (como `input`, `select`, y `textarea`) es controlado por el estado de React. Cuando el usuario interactúa con un elemento del formulario, el estado de React se actualiza y eso a su vez actualiza el valor del elemento del formulario. Esto facilita la manipulación de los datos y la interacción con el formulario de manera predecible.
 
 3. #### `Sintaxis y Uso Básico de Formularios Controlados`:
 
-   Para crear un formulario controlado en React, es necesario vincular el valor de cada elemento de formulario (como `input`, `textarea`, `select`, etc...) a una propiedad del estado de React. Luego, se utiliza un controlador de eventos para actualizar el estado cuando el valor del elemento cambia.
+   Para crear un formulario controlado en React, es necesario vincular el valor de cada elemento de formulario (como `input`, `textarea`, `select`, `button`) a una propiedad del estado de React. Luego, se utiliza un controlador de eventos para actualizar el estado cuando el valor del elemento cambia.
 
    ```jsx
    import React, { useState } from 'react';
@@ -1859,7 +1859,7 @@
 
    Los componentes no controlados son útiles en situaciones donde no necesitas realizar validaciones de datos o manipulaciones antes de enviar el formulario. Son especialmente útiles cuando se trabaja con bibliotecas o códigos legacy que no están diseñados para funcionar con formularios controlados.
 
-3. #### `Sintaxis y Uso Básico de Uncontrolled Form`:
+3. #### `Sintaxis y Uso Básico de Formulario no controlado`:
 
    Para crear un formulario no controlado, simplemente se deja que el DOM maneje el valor del elemento de formulario y se accede a él utilizando referencias (refs) de React.
 

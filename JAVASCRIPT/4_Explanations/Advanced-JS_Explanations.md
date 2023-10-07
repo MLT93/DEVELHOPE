@@ -1644,6 +1644,24 @@ En resumen, aunque ambas características utilizan la notación de tres puntos (
 
    `JSON.stringify()`: Este método transforma un objeto JavaScript en una cadena JSON válida. Es esencial para enviar información estructurada a través de redes o para almacenarla en bases de datos. A esto se le llama `Serializar`.
 
+   ```javascript
+   JSON.stringify(value, replacer(optional), indent(optional));
+   ```
+
+     Stringify recibe 3 argumentos:
+
+       `VALUE`:
+
+         Es el valor que le pasamos para que lo serialize. Puede ser un objeto o un
+
+       `REPLACER`: 
+           
+         Sirve para filtrar o transformar los resultados de la serialización. Puede ser una función o un array.
+           
+       `INDENT`:
+          
+         Es la cantidad de espacio de sangría que deseas agregarle a la serialización. Toma como valor un número o un array.
+
    `Serializar` es el proceso de convertir una estructura de datos, como un objeto o un conjunto de datos, en una forma de texto o binaria para que pueda ser almacenada o transmitida y luego reconstruida o recuperada para su uso posterior. La serialización es comúnmente utilizada para guardar datos en archivos, enviar datos a través de redes y comunicarse con otros sistemas.
 
 ```javascript
