@@ -222,7 +222,7 @@ const InteractiveWelcome = () => {
       <input
         id="01-name"
         value={nameData.username}
-        type="textarea"
+        type="text"
         onChange={handleInputChange}
         placeholder="Enter name"></input>
       <Welcome name={name} />
