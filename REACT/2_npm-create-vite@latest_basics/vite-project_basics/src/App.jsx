@@ -21,6 +21,9 @@ export function App() {
         <MultiButton />
         <hr />
         <InteractiveWelcome />
+        <hr />
+        <Login onLogin={console.log("You are logged in")} />
+        {/* <Logged /> */}
       </div>
     </div>
   );
@@ -200,24 +203,62 @@ const MultiButton = () => {
 const InteractiveWelcome = () => {
   const [nameData, setNameData] = useState({
     username: "",
+  });
+
+  const handleInputOnChange = (event) => {
+    setNameData({
+      ...nameData,
+      username: event.target.value,
+    });
+  };
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexFlow: "column wrap",
+        alignItems: "flex-start",
+        gap: "10px",
+      }}>
+      <label htmlFor="01-name">Section of Name</label>
+      <input
+        id="01-name"
+        value={nameData.username}
+        type="textarea"
+        onChange={handleInputOnChange}
+        placeholder="Enter name"></input>
+      <Welcome name={nameData.username} />
+      <pre>{JSON.stringify(nameData, null, 2)}</pre>
+    </div>
+  );
+};
+
+const Login = ({ onLogin }) => {
+  const [nameData, setNameData] = useState({
+    username: "",
     password: "",
     remember: false,
   });
 
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  useEffect(() => {
+    nameData.username !== "" && nameData.password !== ""
+      ? setIsDisabled(false)
+      : setIsDisabled(true);
+  }, [setIsDisabled, nameData]);
+
   const handleInputChange = (event) => {
     const { name, value, type, checked } = event.target;
 
-    if (type === "checkbox") {
-      setNameData({
-        ...nameData,
-        [name]: checked,
-      });
-    } else {
-      setNameData({
-        ...nameData,
-        [name]: value,
-      });
-    }
+    type === "checkbox"
+      ? setNameData({ ...nameData, [name]: checked })
+      : setNameData({ ...nameData, [name]: value });
+  };
+
+  const handleSendData = (event) => {
+    event.preventDefault();
+    onLogin(nameData);
   };
 
   return (
@@ -253,14 +294,13 @@ const InteractiveWelcome = () => {
         value={nameData.remember}
         type="checkbox"
         onChange={handleInputChange}></input>
-      <Welcome name={name} />
+      <Welcome name={nameData.username} />
       <button
         id="04-login"
         name="send-data"
         type="submit"
-        onClick={() => {
-          console.log("Click on submit button");
-        }}>
+        onClick={handleSendData}
+        disabled={isDisabled}>
         Submit
       </button>
       <pre>{JSON.stringify(nameData, null, 2)}</pre>
