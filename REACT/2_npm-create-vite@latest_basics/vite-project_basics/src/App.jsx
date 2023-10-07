@@ -1,13 +1,13 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 
-/* eslint-disable react/prop-types */
 export function App() {
   return (
     <div>
       <Hello />
       <Hello />
       <Message />
-      <Welcome name={"John"} age={17} />
+      <Welcome name={"John"} age={16} />
       <div>
         <hr />
         <AlertClock handleClick={handleClick} />
@@ -42,20 +42,23 @@ const Message = () => {
   return <p>What a beautiful day!</p>;
 };
 
-// eslint-disable-next-line react/prop-types
 const Welcome = ({ name, age }) => {
-  if (name === "John") {
-    return (
-      <div>
-        <p>Welcome, {name}</p>
-        <Age age={age} />
-      </div>
-    );
-  }
+  return (
+    <>
+      <p>Welcome, {name}</p>
+      <Age age={age && age} />
+    </>
+  );
 };
 
 const Age = ({ age }) => {
-  return age >= 18 ? <p>Your age is {age}</p> : <p>You are very young!</p>;
+  if (age !== undefined && age >= 18) {
+    return <p>Your age is {age}</p>;
+  } else if (age !== undefined && age < 18) {
+    return <p>You are very young!</p>;
+  } else {
+    return null;
+  }
 };
 
 function handleClick() {
@@ -226,8 +229,8 @@ const InteractiveWelcome = () => {
         type="textarea"
         onChange={handleInputOnChange}
         placeholder="Enter name"></input>
+      {/* <pre>{JSON.stringify(nameData, null, 2)}</pre> */}
       <Welcome name={nameData.username} />
-      <pre>{JSON.stringify(nameData, null, 2)}</pre>
     </div>
   );
 };
@@ -251,6 +254,7 @@ const Login = ({ onLogin }) => {
   const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {
+    // para evitar que se salven espacios equivocados debido a un mal typing por parte de los usuarios, se utiliza el .trim()
     nameData.username.trim() !== "" && nameData.password.trim() !== ""
       ? setIsDisabled(false)
       : setIsDisabled(true);
@@ -264,10 +268,16 @@ const Login = ({ onLogin }) => {
       : setNameData({ ...nameData, [name]: value });
   };
 
+  const handleResetForm = () => {
+    setNameData({ username: "", password: "", remember: false });
+  };
+
   const handleSendData = (event) => {
     event.preventDefault();
     console.log("You are logged with:", nameData);
-    {onLogin}
+    {
+      onLogin;
+    }
   };
 
   return (
@@ -316,15 +326,28 @@ const Login = ({ onLogin }) => {
           type="checkbox"
           onChange={handleInputChange}></input>
       </div>
-      <Welcome name={nameData.username} />
-      <button
-        id="04-login"
-        name="send-data"
-        type="submit"
-        onClick={handleSendData}
-        disabled={isDisabled}>
-        Submit
-      </button>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          width: "125px",
+        }}>
+        <button
+          id="04-login"
+          name="send-data"
+          type="submit"
+          onClick={handleSendData}
+          disabled={isDisabled}>
+          Submit
+        </button>
+        <button
+          id="04-login"
+          name="send-data"
+          type="reset"
+          onClick={handleResetForm}>
+          Reset
+        </button>
+      </div>
       <pre>{JSON.stringify(nameData, null, 2)}</pre>
     </form>
   );
