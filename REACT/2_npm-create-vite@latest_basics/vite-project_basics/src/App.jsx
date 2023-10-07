@@ -22,8 +22,7 @@ export function App() {
         <hr />
         <InteractiveWelcome />
         <hr />
-        <Login onLogin={console.log("You are logged in")} />
-        {/* <Logged /> */}
+        <OnLogin />
       </div>
     </div>
   );
@@ -233,6 +232,15 @@ const InteractiveWelcome = () => {
   );
 };
 
+function OnLogin() {
+  return (
+    <>
+      <h2>Form of log in session</h2>
+      <Login onLogin={OnLogin} />
+    </>
+  );
+}
+
 const Login = ({ onLogin }) => {
   const [nameData, setNameData] = useState({
     username: "",
@@ -243,7 +251,7 @@ const Login = ({ onLogin }) => {
   const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {
-    nameData.username !== "" && nameData.password !== ""
+    nameData.username.trim() !== "" && nameData.password.trim() !== ""
       ? setIsDisabled(false)
       : setIsDisabled(true);
   }, [setIsDisabled, nameData]);
@@ -258,7 +266,8 @@ const Login = ({ onLogin }) => {
 
   const handleSendData = (event) => {
     event.preventDefault();
-    onLogin(nameData);
+    console.log("You are logged with:", nameData);
+    {onLogin}
   };
 
   return (
@@ -267,33 +276,46 @@ const Login = ({ onLogin }) => {
         display: "flex",
         flexFlow: "column wrap",
         alignItems: "flex-start",
-        gap: "10px",
+        gap: "15px",
       }}>
-      <label htmlFor="01-login">Name</label>
-      <input
-        id="01-login"
-        name="username"
-        value={nameData.username}
-        type="text"
-        onChange={handleInputChange}
-        placeholder="Enter name"
-        required></input>
-      <label htmlFor="02-login">Password</label>
-      <input
-        id="02-login"
-        name="password"
-        value={nameData.password}
-        type="password"
-        onChange={handleInputChange}
-        placeholder="Enter password"
-        required></input>
-      <label htmlFor="02-login">Stay Logged</label>
-      <input
-        id="03-login"
-        name="remember"
-        value={nameData.remember}
-        type="checkbox"
-        onChange={handleInputChange}></input>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <label htmlFor="01-login">Username:</label>
+        <input
+          id="01-login"
+          name="username"
+          value={nameData.username}
+          type="text"
+          onChange={handleInputChange}
+          placeholder="Enter name"
+          required></input>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <label htmlFor="02-login">Password:</label>
+        <input
+          id="02-login"
+          name="password"
+          value={nameData.password}
+          type="password"
+          onChange={handleInputChange}
+          placeholder="Enter password"
+          required></input>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          width: "125px",
+        }}>
+        <label htmlFor="02-login">
+          <small>Stay Logged?</small>
+        </label>
+        <input
+          id="03-login"
+          name="remember"
+          value={nameData.remember}
+          type="checkbox"
+          onChange={handleInputChange}></input>
+      </div>
       <Welcome name={nameData.username} />
       <button
         id="04-login"
