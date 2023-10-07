@@ -200,33 +200,70 @@ const MultiButton = () => {
 const InteractiveWelcome = () => {
   const [nameData, setNameData] = useState({
     username: "",
-    age: 0,
+    password: "",
+    remember: false,
   });
 
   const handleInputChange = (event) => {
-    setNameData({
-      ...nameData,
-      username: event.target.value,
-    });
+    const { name, value, type, checked } = event.target;
+
+    if (type === "checkbox") {
+      setNameData({
+        ...nameData,
+        [name]: checked,
+      });
+    } else {
+      setNameData({
+        ...nameData,
+        [name]: value,
+      });
+    }
   };
 
   return (
-    <div
+    <form
       style={{
         display: "flex",
         flexFlow: "column wrap",
         alignItems: "flex-start",
         gap: "10px",
       }}>
-      <label htmlFor="01-name">Section of Name</label>
+      <label htmlFor="01-login">Name</label>
       <input
-        id="01-name"
+        id="01-login"
+        name="username"
         value={nameData.username}
         type="text"
         onChange={handleInputChange}
-        placeholder="Enter name"></input>
+        placeholder="Enter name"
+        required></input>
+      <label htmlFor="02-login">Password</label>
+      <input
+        id="02-login"
+        name="password"
+        value={nameData.password}
+        type="password"
+        onChange={handleInputChange}
+        placeholder="Enter password"
+        required></input>
+      <label htmlFor="02-login">Stay Logged</label>
+      <input
+        id="03-login"
+        name="remember"
+        value={nameData.remember}
+        type="checkbox"
+        onChange={handleInputChange}></input>
       <Welcome name={name} />
+      <button
+        id="04-login"
+        name="send-data"
+        type="submit"
+        onClick={() => {
+          console.log("Click on submit button");
+        }}>
+        Submit
+      </button>
       <pre>{JSON.stringify(nameData, null, 2)}</pre>
-    </div>
+    </form>
   );
 };
