@@ -19,6 +19,8 @@ export function App() {
         <MouseClicker />
         <hr />
         <MultiButton />
+        <hr />
+        <InteractiveWelcome />
       </div>
     </div>
   );
@@ -173,7 +175,15 @@ const MultiButton = () => {
   const handleClickMultiButton = (event) => console.log(event.target.name);
 
   return (
-    <div style={{display: 'flex', flexFlow: 'row wrap', justifyContent: 'center', gap: '10px', padding: '20px', backgroundColor: 'lightgray'}}>
+    <div
+      style={{
+        display: "flex",
+        flexFlow: "row wrap",
+        justifyContent: "center",
+        gap: "10px",
+        padding: "20px",
+        backgroundColor: "lightgray",
+      }}>
       <button onClick={handleClickMultiButton} name="one">
         One
       </button>
@@ -183,6 +193,40 @@ const MultiButton = () => {
       <button onClick={handleClickMultiButton} name="three">
         Three
       </button>
+    </div>
+  );
+};
+
+const InteractiveWelcome = () => {
+  const [nameData, setNameData] = useState({
+    username: "",
+    age: 0,
+  });
+
+  const handleInputChange = (event) => {
+    setNameData({
+      ...nameData,
+      username: event.target.value,
+    });
+  };
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexFlow: "column wrap",
+        alignItems: "flex-start",
+        gap: "10px",
+      }}>
+      <label htmlFor="01-name">Section of Name</label>
+      <input
+        id="01-name"
+        value={nameData.username}
+        type="textarea"
+        onChange={handleInputChange}
+        placeholder="Enter name"></input>
+      <Welcome name={name} />
+      <pre>{JSON.stringify(nameData, null, 2)}</pre>
     </div>
   );
 };
