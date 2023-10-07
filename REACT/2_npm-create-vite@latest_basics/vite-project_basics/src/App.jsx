@@ -237,10 +237,10 @@ const InteractiveWelcome = () => {
 
 function OnLogin() {
   return (
-    <>
+    <div>
       <h2>Form of log in session</h2>
       <Login onLogin={OnLogin} />
-    </>
+    </div>
   );
 }
 
@@ -273,8 +273,10 @@ const Login = ({ onLogin }) => {
   };
 
   const handleSendData = (event) => {
+    /* impedimos que la página se vuelva a cargar una vez que apretamos el botón `Submit` */
     event.preventDefault();
     console.log("You are logged with:", nameData);
+    /* Chiama la funzione di login passando i dati del modulo */
     {
       onLogin;
     }
