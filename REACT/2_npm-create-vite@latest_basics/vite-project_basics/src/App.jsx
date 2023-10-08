@@ -363,6 +363,7 @@ const UncontrolledLogin = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
+    /* Esta es la API DOM para acceder a los datos del formulario */
     const userID = event.target.elements.namedItem("userID").value;
     const passID = event.target.elements.namedItem("passID").value;
     const session = event.target.elements.namedItem("session").checked;
@@ -373,6 +374,7 @@ const UncontrolledLogin = () => {
       session,
     };
 
+    /* Esta es la API estándar y recomendada para acceder a los datos del formulario */
     /* const formData = new FormData(event.target);
 
     const data = {
