@@ -23,6 +23,8 @@ export function App() {
         <InteractiveWelcome />
         <hr />
         <OnLogin />
+        <hr />
+        <UncontrolledLogin />
       </div>
     </div>
   );
@@ -238,7 +240,7 @@ const InteractiveWelcome = () => {
 function OnLogin() {
   return (
     <div>
-      <h2>Form of log in session</h2>
+      <h2>Controlled-Form of log in session</h2>
       <Login onLogin={OnLogin} />
     </div>
   );
@@ -284,6 +286,7 @@ const Login = ({ onLogin }) => {
 
   return (
     <form
+      onSubmit={handleSendData}
       style={{
         display: "flex",
         flexFlow: "column wrap",
@@ -351,6 +354,38 @@ const Login = ({ onLogin }) => {
         </button>
       </div>
       <pre>{JSON.stringify(nameData, null, 2)}</pre>
+    </form>
+  );
+};
+
+const UncontrolledLogin = () => {
+  
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    /*  const userID = event.target.elements.namedItem("userID").value;
+    const passID = event.target.elements.namedItem("passID").value;
+    const session = event.target.elements.namedItem("session").checked; */
+
+    const formData = new FormData(event.target)
+
+    const data = {
+      userID: formData.get("userID"),
+      passID: formData.get("passID"),
+      session: formData.get("session") === "on" ? true : false,
+    };
+
+    console.log(data);
+  };
+
+  return (
+    <form onSubmit={handleFormSubmit}>
+      <h2>Uncontrolled-Form of log in session</h2>
+      <input id="01" name="userID" type="text"></input>
+      <input id="02" name="passID" type="password"></input>
+      <input name="session" type="checkbox"></input>
+      <button type="submit">Login</button>
+      <button type="reset">Reset</button>
     </form>
   );
 };
