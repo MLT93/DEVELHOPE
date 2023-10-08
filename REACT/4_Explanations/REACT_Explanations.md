@@ -1746,7 +1746,7 @@
 
 2. #### `¿Por qué usar Controlled Components?`
 
-  Los Controlled Components en React son una técnica que permite a React manejar el estado de los elementos de un formulario. Esto significa que el valor de los elementos de formulario (como `input`, `select`, y `textarea`) es controlado por el estado de React. Cuando el usuario interactúa con un elemento del formulario, el estado de React se actualiza y eso a su vez actualiza el valor del elemento del formulario. Esto facilita la manipulación de los datos y la interacción con el formulario de manera predecible.
+   Los Controlled Components en React son una técnica que permite a React manejar el estado de los elementos de un formulario. Esto significa que el valor de los elementos de formulario (como `input`, `select`, y `textarea`) es controlado por el estado de React. Cuando el usuario interactúa con un elemento del formulario, el estado de React se actualiza y eso a su vez actualiza el valor del elemento del formulario. Esto facilita la manipulación de los datos y la interacción con el formulario de manera predecible.
 
 3. #### `Sintaxis y Uso Básico de Formularios Controlados`:
 
@@ -1930,3 +1930,280 @@
 8. #### **`En resumen`**: 
 
    Los uncontrolled forms en React son una técnica útil para manejar formularios en situaciones específicas. Proporcionan simplicidad y flexibilidad en comparación con los controlled forms, pero es importante entender sus limitaciones y elegir la técnica adecuada según los requisitos de tu proyecto.
+
+## Forms - Como Acceder a los Datos de un Formulario y Funciones Relacionadas en React: Una Explicación Detallada
+
+1. #### **`FormData`**:
+   
+   Es un constructor en JavaScript que se utiliza para crear un objeto de pares clave/valor que representan datos de un formulario HTML. Permite construir fácilmente un conjunto de datos que luego se puede enviar a través de una solicitud HTTP, como una petición de tipo POST, por ejemplo.
+
+   Aquí tienes unos pasos a seguir:
+
+   - **Creación de un objeto FormData**:
+     
+     Puedes crear un nuevo objeto FormData pasando un formulario HTML como argumento:
+
+     ```jsx
+     const formulario = document.getElementById('miFormulario');
+     const formData = new FormData(formulario);
+     ```
+
+     ```jsx
+     const handleFormSubmit = (event) => {
+       event.preventDefault();
+       const formData = new FormData(event.target);
+       const data = {
+         userID: formData.get("userID"),
+         passID: formData.get("passID"),
+         session: formData.get("session") === "on" ? true : false,
+       };
+     }
+     ```
+
+   - **Funciones útiles de FormData**:
+
+     `FormData` posee varias funciones que pueden ser de grande ayuda a la hora de trabajar con este constructor:
+
+     - `.get(key)`:
+         
+       Se utiliza para obtener el valor asociado a una key específica en un objeto FormData. `Retorna el primer valor` encontrado asociado a esa clave.
+
+     - `.getAll(key)`:
+
+       Esto nos `retorna` en todos los casos `un Array` con todos los valores asociados a la key que hayamos puesto entre paréntesis, aunque sea solo uno.
+       En los objetos podemos tener varios objetos anidados a su vez al interno de una misma key, la cual podría ser generica, como por ejemplo los "intereses" en un formulario de 100 personas.
+
+     - `.append(key, value)`:
+
+       `Agrega un nuevo par key/value` al objeto FormData. Es especialmente útil cuando estás construyendo y enviando formularios a través de solicitudes HTTP, ya que permite añadir nuevos campos de manera dinámica.
+
+     - `.set(key, value)`:
+
+       Es una función que te permite `añadir o modificar valores para un campo específico en el objeto` FormData. Si la key especificada ya existe en el objeto, entonces el value asociado a esa key se actualizará con el nuevo value proporcionado, si no, crea un nuevo key/value.
+
+     - `.delete(key)`:
+
+       `Elimina` la key del objeto y, por lo tanto, también su valor. Esto es útil si deseas quitar un campo específico antes de enviar el formulario, por ejemplo.
+
+     - `.has(key)`:
+
+       Verifica si el objeto FormData contiene una key específica. Funciona como filtrado. `Devuelve un valor Boolean` (true o false) que indica si el campo existe o no.
+
+   - **Enviar FormData a través de una solicitud HTTP**:
+
+     Puedes usar `FormData` para enviar datos a través de una solicitud HTTP, como en una petición `fetch` o una petición `AJAX`.
+
+     ```jsx
+     const formulario = document.getElementById('miFormulario');
+     const formData = new FormData(formulario);
+  
+     fetch('url_del_servidor', {
+       method: 'POST',
+       body: formData
+     })
+       .then(response => response.json())
+       .then(data => {
+         console.log('Respuesta del servidor:', data);
+       })
+       .catch(error => console.error('Error:', error));
+     ```
+
+   En resumen, el método FormData, es uno de las formas más standard para conseguir datos de los formularios o trabajar con las peticiones HTTP. Necesita más código, pero es útil para formularios complejos.
+
+2. #### **`useRef`**:
+
+   El acceso directo a los elementos HTML de un formulario se refiere a la posibilidad de interactuar con los campos de un formulario sin necesidad de utilizar el estado de React o cualquier otro método de manipulación del DOM.
+
+   En React, esto se puede hacer a través de refs, que proporcionan una manera de acceder directamente a los elementos del DOM dentro de tus componentes.
+
+   Aquí tienes los pasos detallados para acceder directamente a los elementos HTML de un formulario en React:
+
+   - **Crear una Ref**:
+
+     En el componente de React donde se encuentra el formulario, primero debes crear una ref para el elemento que deseas acceder. Puedes hacer esto usando el hook `useRef`.
+
+     ```jsx
+     import { useRef } from 'react';
+      
+     const MyComponent = () => {
+       const inputRef = useRef(null);      
+       // ...
+     };
+     ```
+
+   - **Asignar la Ref al Elemento**:
+
+     Luego, debes asignar esta ref al elemento HTML dentro del JSX del formulario. Esto se hace utilizando el atributo `ref`.
+
+     ```jsx
+     <input type="text" ref={inputRef} />
+     ```
+
+     Ahora, `inputRef` apunta directamente al elemento `<input>` del formulario.
+
+     Cuando estás utilizando `useRef` en un formulario de React, normalmente quieres asignarlo a elementos individuales dentro del formulario, como los elementos de entrada (<input>), para poder acceder a sus valores de manera más directa.
+
+     Por ejemplo, si tienes un formulario con varios campos de entrada y deseas acceder a los valores de cada campo, puedes asignar un `useRef` a cada uno de los elementos de entrada. Esto te permitirá obtener y modificar los valores de manera más eficiente.
+
+     ```jsx
+     import React, { useRef } from 'react';
+
+     function MyForm() {
+       const inputRef1 = useRef();
+       const inputRef2 = useRef();
+         
+       const handleSubmit = (e) => {
+         e.preventDefault();
+          console.log(inputRef1.current.value); // Accediendo al valor del primer campo
+         console.log(inputRef2.current.value); // Accediendo al valor del segundo campo
+       };
+       
+       return (
+         <form onSubmit={handleSubmit}>
+           <input type="text" ref={inputRef1} />
+           <input type="text" ref={inputRef2} />
+           <button type="submit">Enviar</button>
+         </form>
+       );
+     }
+       
+     export default MyForm;
+     ```
+
+   - **Acceder al Valor del Elemento**:
+       
+     Una vez que tienes la ref, puedes acceder al valor del elemento en cualquier parte de tu componente.
+
+     ```jsx
+     const handleButtonClick = () => {
+       const value = inputRef.current.value;
+       console.log(value);
+     };
+     ```
+
+     En este ejemplo, inputRef.current te da acceso al elemento <input> del formulario, y value contiene el valor del campo de entrada.
+
+   - **Actualizar el Valor del Elemento**:
+
+     Puedes usar la ref para actualizar el valor del elemento si es necesario.
+
+     ```jsx
+     inputRef.current.value = 'Nuevo valor';
+     ```
+
+   En resumen, cuando necesitas interactuar directamente con el DOM, las refs proporcionan una solución útil, aunque es importante tener en cuenta que el uso de refs para acceder directamente a los elementos del DOM debe hacerse con precaución, ya que puede llevar a un código menos declarativo y más propenso a errores. Por lo general, es preferible utilizar formularios controlados y manejar los valores a través del estado de React.
+
+3. #### **`Gestor de eventos`**:
+
+   Acceder a los datos de un formulario a través del gestor de eventos implica utilizar los datos proporcionados por el evento (como `onSubmit` o `onChange`) para obtener y manipular los valores de los campos del formulario.
+
+   A continuación, te proporciono una guía detallada paso a paso:
+
+   - **Agregar el Gestor de Eventos**:
+
+     Primero, asegúrate de tener un formulario en tu componente de React y añade un gestor de eventos, como `onSubmit` y/o `onChange`, según lo que desees hacer.
+
+     Aquí te explico la funcionalidad de cada uno:
+
+     - `onSubmit`:
+
+       Nos envía la información al servidor o simplemente nos devuelve un console.log() de lo que el utente pueda enviar a través del formulario.
+      
+       ```jsx
+       const handleSubmit = (event) => {
+         event.preventDefault(); // Esto evita el comportamiento predeterminado del formulario (enviar una solicitud)
+         // Aquí es donde accederemos y trabajaremos con los datos del formulario
+       };
+
+       return (
+         <form onSubmit={handleSubmit}>
+           {/* ...campos de formulario... */}
+           <button type="submit">Enviar</button>
+         </form>
+       );
+       ```
+
+     - `onChange`:
+
+       Nos permite realizar acciones a medida que el usuario escribe en el formulario, de este modo manejaremos los cambios en tiempo real.
+
+       ```jsx
+       const handleInputChange = (event) => {
+         const { name, value } = event.target;
+         // `name` es el nombre del campo, que en este caso sería "username" y `value` es el valor que le introduce el usuario al campo
+       };
+         
+       return (
+         <form onSubmit={handleSubmit}>
+           <input
+             type="text"
+             name="username"
+             value={formData.username}
+             onChange={handleInputChange}
+           />
+           {/* Otros campos del formulario */}
+           <button type="submit">Enviar</button>
+         </form>
+       );
+       ```
+
+       Aquí, handleChange se ejecutará cada vez que el usuario escriba en el campo.
+
+   - **Obtener Datos del Evento**:
+
+     Dentro del gestor de eventos, tendrás acceso al evento default `event`, el cual contiene información sobre la acción que se está llevando a cabo (por ejemplo, enviar el formulario). Usa `event.target` para acceder al formulario en sí.
+       
+     ```jsx
+     const handleSubmit = (event) => {
+       event.preventDefault();
+         
+       const formData = new FormData(event.target);
+       // `formData` contiene todos los datos del formulario
+     };
+     ```
+
+     Aquí estamos utilizando FormData para crear un objeto que contiene todos los campos del formulario y sus valores.
+
+   - **Trabajar con los Datos**:
+
+     Ahora que tienes los datos del formulario en formData, puedes manipularlos según tus necesidades. Por ejemplo, puedes acceder a un campo específico usando `formData.get('fieldName')`.
+
+     ```jsx
+     const handleSubmit = (event) => {
+       event.preventDefault();
+
+       const formData = new FormData(event.target);
+       
+       const data = {
+         username: formData.get("username"),
+         password: formData.get("password"),
+         session: formData.get("session") === "on" ? true : false,
+       };
+       
+        // Haz lo que necesites con data
+       console.log(data);           
+     };
+     ```
+
+     ```jsx
+     return (
+       <form onSubmit={handleSubmit}>
+         <input name="username" type="text"></input>
+         <input name="password" type="password"></input>
+         <input name="session" type="checkbox"></input>
+         <button type="submit">Login</button>
+         <button type="reset">Reset</button>
+       </form>
+     );
+     ```
+
+     Esto te da acceso directo a los valores de los campos del formulario.
+
+   Estos pasos te permitirán acceder y trabajar con los datos del formulario a través de los gestores de eventos en React. Recuerda que es una práctica común utilizar formularios controlados siempre que sea posible para mantener un flujo de datos más predecible.
+
+4. #### **`Obtener los valores de los campos a través de referencias o estados (en el caso de formularios controlados):`**:
+
+5. #### **`Acceder a los datos de los campos (en el caso de formulario no controlado)`**:
+
+6. #### **`Acceso a través de bibliotecas o frameworks`**:
+
