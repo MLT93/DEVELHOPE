@@ -364,7 +364,7 @@ const UncontrolledLogin = () => {
     event.preventDefault();
 
     /* Esta es la API DOM para acceder a los datos del formulario */
-    const userID = event.target.elements.namedItem("userID").value;
+    /* const userID = event.target.elements.namedItem("userID").value;
     const passID = event.target.elements.namedItem("passID").value;
     const session = event.target.elements.namedItem("session").checked;
     
@@ -372,16 +372,16 @@ const UncontrolledLogin = () => {
       userID,
       passID,
       session,
-    };
+    }; */
 
-    /* Esta es la API estándar y recomendada para acceder a los datos del formulario */
-    /* const formData = new FormData(event.target);
+    /* Esta es la API FormData para acceder a los datos del formulario */
+    const formData = new FormData(event.target);
 
     const data = {
       userID: formData.get("userID"),
       passID: formData.get("passID"),
       session: formData.get("session") === "on" ? true : false,
-    }; */
+    };
 
     console.log(data);
   };
