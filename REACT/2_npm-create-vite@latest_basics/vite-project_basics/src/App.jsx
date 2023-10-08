@@ -363,11 +363,17 @@ const UncontrolledLogin = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    /*  const userID = event.target.elements.namedItem("userID").value;
+    /* const userID = event.target.elements.namedItem("userID").value;
     const passID = event.target.elements.namedItem("passID").value;
-    const session = event.target.elements.namedItem("session").checked; */
+    const session = event.target.elements.namedItem("session").checked;
+    
+    const data = {
+      userID,
+      passID,
+      session,
+    }; */
 
-    const formData = new FormData(event.target)
+    const formData = new FormData(event.target);
 
     const data = {
       userID: formData.get("userID"),
@@ -384,7 +390,7 @@ const UncontrolledLogin = () => {
       <input id="01" name="userID" type="text"></input>
       <input id="02" name="passID" type="password"></input>
       <input name="session" type="checkbox"></input>
-      <button type="submit">Login here</button>
+      <button type="submit">Login</button>
       <button type="reset">Reset</button>
     </form>
   );
