@@ -363,7 +363,7 @@ const UncontrolledLogin = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    /* const userID = event.target.elements.namedItem("userID").value;
+    const userID = event.target.elements.namedItem("userID").value;
     const passID = event.target.elements.namedItem("passID").value;
     const session = event.target.elements.namedItem("session").checked;
     
@@ -371,15 +371,15 @@ const UncontrolledLogin = () => {
       userID,
       passID,
       session,
-    }; */
+    };
 
-    const formData = new FormData(event.target);
+    /* const formData = new FormData(event.target);
 
     const data = {
       userID: formData.get("userID"),
       passID: formData.get("passID"),
       session: formData.get("session") === "on" ? true : false,
-    };
+    }; */
 
     console.log(data);
   };
