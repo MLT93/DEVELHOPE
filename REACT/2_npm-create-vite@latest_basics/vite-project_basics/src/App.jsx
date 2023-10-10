@@ -27,6 +27,8 @@ export function App() {
         <UncontrolledLogin />
         <hr />
         <FocusableInput />
+        <hr />
+        <Colors items={arrColors} />
       </div>
     </div>
   );
@@ -458,4 +460,18 @@ const FocusableInput = () => {
         placeholder="Name"></input>
     </>
   );
+};
+
+const arrColors = ["gray", "coral", "yellow"];
+
+const Colors = ({ items }) => {
+  const colorsItems = items.map((element) => {
+    return (
+      <li key={element} style={{ backgroundColor: `${element}` }}>
+        {element}
+      </li>
+    );
+  });
+
+  return <ul>{colorsItems}</ul>;
 };
