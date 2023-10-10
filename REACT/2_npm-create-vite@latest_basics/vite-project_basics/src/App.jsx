@@ -132,8 +132,11 @@ const Counter = ({ initialValue, incrementAmount, decrementAmount }) => {
 const CounterDisplay = ({ counter }) => {
   const prevCounterRef = useRef(null);
 
+  //En este código, estamos utilizando prevCounterRef para mantener el valor anterior del contador. En el efecto, comparamos el valor actual del contador con el valor anterior para determinar la dirección del cambio. Luego, actualizamos prevCounterRef.current con el valor actual del contador para que esté listo para la próxima actualización.
   useEffect(() => {
+    // Comprueba primero si hay algún valor
     if (prevCounterRef.current !== null) {
+      // Si hay valor, entonces hace las comparaciones teniendo como punto de referencia el valor de la Refs
       if (counter > prevCounterRef.current) {
         console.log("up");
       } else if (counter < prevCounterRef.current) {
@@ -141,7 +144,7 @@ const CounterDisplay = ({ counter }) => {
       }
     }
 
-
+    // Se actualiza la referencia después de las comparaciones para asegurarse de que siempre se actualice al valor más reciente para compararse con el valor del próximo renderizado
     prevCounterRef.current = counter;
   }, [counter]);
 
