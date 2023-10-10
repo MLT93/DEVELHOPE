@@ -1944,14 +1944,23 @@
      Puedes crear un nuevo objeto FormData pasando un formulario HTML como argumento:
 
      ```jsx
+     // Accede al formulario a través del DOM
      const formulario = document.getElementById('miFormulario');
+
+     // Crea el objeto FromData con los datos obtenidos del DOM
      const formData = new FormData(formulario);
      ```
 
      ```jsx
+     // Gestor de eventos
      const handleFormSubmit = (event) => {
+       // Previene el comportamiento por defecto de enviar el formulario
        event.preventDefault();
+
+       // Crea un objeto FormData con los datos del formulario
        const formData = new FormData(event.target);
+
+       // Accede a los datos del formulario a través de formData
        const data = {
          userID: formData.get("userID"),
          passID: formData.get("passID"),
@@ -2008,13 +2017,13 @@
        .catch(error => console.error('Error:', error));
      ```
 
-   En resumen, el método FormData, es uno de las formas más standard para conseguir datos de los formularios o trabajar con las peticiones HTTP. Necesita más código, pero es útil para formularios complejos.
+   En resumen, el método FormData, es uno de las formas más standard para conseguir datos de los formularios o trabajar con las peticiones HTTP. Necesita más código, pero es útil para formularios complejos o si necesitas enviar archivos adjuntos.
 
 2. #### **`useRef`**:
 
    El acceso directo a los elementos HTML de un formulario se refiere a la posibilidad de interactuar con los campos de un formulario sin necesidad de utilizar el estado de React o cualquier otro método de manipulación del DOM.
 
-   En React, esto se puede hacer a través de refs, que proporcionan una manera de acceder directamente a los elementos del DOM dentro de tus componentes.
+   En React, esto puede hacerse a través de refs utilizando el hook `useRef`, que proporcionan una manera de acceder directamente a los elementos del DOM dentro de tus componentes.
 
    Aquí tienes los pasos detallados para acceder directamente a los elementos HTML de un formulario en React:
 
@@ -2060,8 +2069,8 @@
        
        return (
          <form onSubmit={handleSubmit}>
-           <input type="text" ref={inputRef1} />
-           <input type="text" ref={inputRef2} />
+           <input name="nombre" type="text" ref={inputRef1} />
+           <input name="password" type="password" ref={inputRef2} />
            <button type="submit">Enviar</button>
          </form>
        );
@@ -2076,8 +2085,8 @@
 
      ```jsx
      const handleButtonClick = () => {
-       const value = inputRef.current.value;
-       console.log(value);
+       const valuePassword = inputRef2.current.value;
+       console.log(valuePassword);
      };
      ```
 
@@ -2088,7 +2097,7 @@
      Puedes usar la ref para actualizar el valor del elemento si es necesario.
 
      ```jsx
-     inputRef.current.value = 'Nuevo valor';
+     inputRef1.current.value = 'Nuevo nombre';
      ```
 
    En resumen, cuando necesitas interactuar directamente con el DOM, las refs proporcionan una solución útil, aunque es importante tener en cuenta que el uso de refs para acceder directamente a los elementos del DOM debe hacerse con precaución, ya que puede llevar a un código menos declarativo y más propenso a errores. Por lo general, es preferible utilizar formularios controlados y manejar los valores a través del estado de React.
@@ -2101,17 +2110,19 @@
 
    - **Agregar el Gestor de Eventos**:
 
-     Primero, asegúrate de tener un formulario en tu componente de React y añade un gestor de eventos, como `onSubmit` y/o `onChange`, según lo que desees hacer.
+     Primero, asegúrate de tener un formulario en tu componente de React y añade un gestor de eventos, como `onSubmit` y `onChange`.
 
      Aquí te explico la funcionalidad de cada uno:
 
      - `onSubmit`:
 
-       Nos envía la información al servidor o simplemente nos devuelve un console.log() de lo que el utente pueda enviar a través del formulario.
+       Nos envía la información al servidor o simplemente nos devuelve un console.log() de lo que el utente envíe a través del formulario.
       
        ```jsx
        const handleSubmit = (event) => {
-         event.preventDefault(); // Esto evita el comportamiento predeterminado del formulario (enviar una solicitud)
+         // `event.preventDefault()` evita el comportamiento predeterminado del formulario (enviar una solicitud) y la recarga de la página
+         event.preventDefault(); 
+
          // Aquí es donde accederemos y trabajaremos con los datos del formulario
        };
 
@@ -2125,12 +2136,17 @@
 
      - `onChange`:
 
-       Nos permite realizar acciones a medida que el usuario escribe en el formulario, de este modo manejaremos los cambios en tiempo real.
+       Nos permite realizar acciones a medida que el usuario escribe en el formulario, de este modo manejaremos los cambios en tiempo real. Es comúnmente utilizado al interno de formularios controlados.
 
        ```jsx
        const handleInputChange = (event) => {
-         const { name, value } = event.target;
-         // `name` es el nombre del campo, que en este caso sería "username" y `value` es el valor que le introduce el usuario al campo
+         const { name, value, type, checked } = event.target;
+         // `name` corresponde cada nombre de los campos HTML a los cuales hace referencia el event.target. En este caso serían "username", "password" y "session". `value` es el valor que le introduce el usuario a cada campo, el cual se verá reflejado inmediatamente cuando el usuario escriba.
+         
+         // El siguiente trozo de código corresponde a un pedazo del código de un hook `useState` para que vean cómo manejar varios campos contemporáneamente y el porqué tenemos `type` y `checked` desestructurados arriba... Si el campo es de `type` checkbox, me devuelve el valor `checked`, si no, me devuelve el valor `value` correspondiente a cada campo. Esto se hace porque checkbox trabaja con el valor `checked` y no con el valor `value`, entonces accedemos a él a través del tipo de input que es con `type`.
+         type === "checkbox"
+           ? setFormData({ ...formData, [name]: checked })
+           : setFormData({ ...formData, [name]: value });
        };
          
        return (
@@ -2139,6 +2155,18 @@
              type="text"
              name="username"
              value={formData.username}
+             onChange={handleInputChange}
+           />
+           <input
+             type="password"
+             name="password"
+             value={formData.password}
+             onChange={handleInputChange}
+           />
+           <input
+             type="checkbox"
+             name="session"
+             value={formData.session}
              onChange={handleInputChange}
            />
            {/* Otros campos del formulario */}
@@ -2199,11 +2227,137 @@
 
      Esto te da acceso directo a los valores de los campos del formulario.
 
-   Estos pasos te permitirán acceder y trabajar con los datos del formulario a través de los gestores de eventos en React. Recuerda que es una práctica común utilizar formularios controlados siempre que sea posible para mantener un flujo de datos más predecible.
+   En resumen, estos pasos te permitirán acceder y trabajar con los datos del formulario a través de los gestores de eventos en React. Recuerda que es una práctica común utilizar formularios controlados siempre que sea posible para mantener un flujo de datos más predecible.
 
-4. #### **`Obtener los valores de los campos a través de referencias o estados (en el caso de formularios controlados):`**:
+4. #### **`DOM`**:
 
-5. #### **`Acceder a los datos de los campos (en el caso de formulario no controlado)`**:
+   Acceder directamente a los elementos HTML de un formulario utilizando la API DOM implica seleccionar y manipular los elementos HTML usando métodos y propiedades proporcionados por el DOM.
+   
+   Aquí te explico detalladamente cómo hacerlo:
+
+   - **Obtener una Referencia al Formulario**:
+
+     Primero, necesitas obtener una referencia al formulario en tu código JavaScript. Puedes hacerlo utilizando métodos como `document.getElementById()`, `document.querySelector()`, `document.getElementsByName()`, o cualquier otro selector de elementos.
+
+     Por ejemplo, si tu formulario tiene un ID como "myForm", puedes obtener una referencia de la siguiente manera:
+
+     ```jsx
+     const form = document.getElementById('myForm');
+     ```
+
+   - **Acceder a los Elementos del Formulario**:
+
+     Una vez que tienes la referencia al formulario, ya sea por ID o por Name, puedes acceder a los elementos individuales dentro de él con `querySelector()` o con `getElementById()` (este último sólo para elementos específicos).
+
+     Por ejemplo, si tienes un campo de texto con un nombre como "username", podrías acceder a él así:
+
+     ```jsx
+     const usernameInput = form.querySelector('[name="username"]');
+     ```
+
+   - **Obtener o Modificar los Valores de los Elementos**:
+
+     Una vez que has accedido a un elemento, puedes obtener o modificar su valor utilizando las propiedades value o checked para los campos de texto y casillas de verificación, respectivamente.
+
+     Por ejemplo, para obtener el valor de un campo de texto:
+
+     ```jsx
+     const usernameValue = usernameInput.value;
+     ```
+     
+     Y para modificar el valor de un campo de texto:
+     
+     ```jsx
+     usernameInput.value = 'NuevoValor';
+     ```
+
+   - **Manipulación Adicional**:
+
+     Puedes realizar otras manipulaciones en los elementos, como añadir o quitar clases, cambiar estilos, agregar eventos, etc.
+     
+     Por ejemplo, para añadir una clase a un elemento:
+     
+     ```jsx
+     usernameInput.classList.add('miClase');
+     ```
+     
+   En resumen, trabajar con el DOM es una forma común y eficaz para interactuar con los formularios. Esta técnica es especialmente útil para formularios simples o cuando necesitas una solución rápida y directa.
 
 6. #### **`Acceso a través de bibliotecas o frameworks`**:
+
+   En React, puedes acceder a los datos de los formularios utilizando bibliotecas y frameworks específicos que proporcionan funcionalidades adicionales y herramientas para el manejo de formularios. Aquí te presento dos de las bibliotecas más populares para este propósito:
+
+  - **Formik**:
+
+     Formik es una biblioteca popular de gestión de formularios en React que simplifica el proceso de creación y validación de formularios. Ofrece una forma sencilla de manejar el estado y las validaciones de los formularios. Facilita la gestión de errores y mensajes de validación. Integra la lógica de envío de formularios con facilidad.
+   
+     ```jsx
+     import { useFormik } from 'formik';
+   
+     const MyForm = () => {
+       const formik = useFormik({
+         initialValues: {
+           username: '',
+           password: '',
+         },
+         onSubmit: values => {
+           console.log(values);
+         },
+       });
+   
+       return (
+         <form onSubmit={formik.handleSubmit}>
+           <input
+             type="text"
+             name="username"
+             onChange={formik.handleChange}
+             value={formik.values.username}
+           />
+           <input
+             type="password"
+             name="password"
+             onChange={formik.handleChange}
+             value={formik.values.password}
+           />
+           <button type="submit">Submit</button>
+         </form>
+       );
+     };
+     ```
+
+  - **React Hook Form**:
+
+     React Hook Form es otra biblioteca popular que proporciona una forma eficiente de trabajar con formularios en React utilizando hooks. Utiliza hooks para un manejo eficiente de los formularios. Permite un control más granular sobre el estado y las validaciones de los formularios. Ofrece una fácil integración con React Native para el desarrollo de aplicaciones móviles.
+
+     ```jsx
+     import { useForm, Controller } from 'react-hook-form';
+   
+     const MyForm = () => {
+       const { handleSubmit, control } = useForm();
+   
+       const onSubmit = data => {
+         console.log(data);
+       };
+   
+       return (
+         <form onSubmit={handleSubmit(onSubmit)}>
+           <Controller
+             name="username"
+             control={control}
+             defaultValue=""
+             render={({ field }) => <input {...field} />}
+           />
+           <Controller
+             name="password"
+             control={control}
+             defaultValue=""
+             render={({ field }) => <input type="password" {...field} />}
+           />
+           <button type="submit">Submit</button>
+         </form>
+       );
+     };
+     ```
+
+   Ambas bibliotecas proporcionan herramientas poderosas para el manejo de formularios en React y permiten un desarrollo más eficiente y organizado. La elección entre Formik y React Hook Form dependerá de las necesidades específicas de tu proyecto y de tu preferencia personal.
 
