@@ -115,7 +115,7 @@ const Counter = ({ initialValue, incrementAmount, decrementAmount }) => {
     return () => {
       console.log(currentValue);
     };
-  });
+  }, []);
 
   return (
     <div>
@@ -130,7 +130,26 @@ const Counter = ({ initialValue, incrementAmount, decrementAmount }) => {
 };
 
 const CounterDisplay = ({ counter }) => {
-  return <h2 id="current-value">Counter =&gt; {counter}</h2>;
+  const prevCounterRef = useRef(null);
+
+  useEffect(() => {
+    if (prevCounterRef.current !== null) {
+      if (counter > prevCounterRef.current) {
+        console.log("up");
+      } else if (counter < prevCounterRef.current) {
+        console.log("down");
+      }
+    }
+
+
+    prevCounterRef.current = counter;
+  }, [counter]);
+
+  return (
+    <h2 ref={prevCounterRef} id="current-value">
+      Counter =&gt; {counter}
+    </h2>
+  );
 };
 
 const Clock = () => {
