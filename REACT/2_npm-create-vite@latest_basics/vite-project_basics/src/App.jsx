@@ -409,8 +409,21 @@ const UncontrolledLogin = () => {
 const FocusableInput = () => {
   const inputFocusRef = useRef(null);
 
+  // Inicializo en falso
+  var isMounted = useRef(false);
+
   useEffect(() => {
     inputFocusRef.current?.focus();
+
+    // Compruebo si el componente está montado por primera vez
+    if (!isMounted.current) {
+      console.log("Mounted first time");
+      isMounted.current = true;
+    }
+
+    return () => {
+      console.log("Mounted another time");
+    };
   }, []);
 
   return (
