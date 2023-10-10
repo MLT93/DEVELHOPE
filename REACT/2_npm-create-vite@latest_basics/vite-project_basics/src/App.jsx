@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export function App() {
   return (
@@ -25,6 +25,8 @@ export function App() {
         <OnLogin />
         <hr />
         <UncontrolledLogin />
+        <hr />
+        <FocusableInput />
       </div>
     </div>
   );
@@ -284,6 +286,12 @@ const Login = ({ onLogin }) => {
     }
   };
 
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+
   return (
     <form
       onSubmit={handleSendData}
@@ -298,6 +306,7 @@ const Login = ({ onLogin }) => {
         <input
           id="01-login"
           name="username"
+          ref={inputRef}
           value={nameData.username}
           type="text"
           onChange={handleInputChange}
@@ -359,7 +368,6 @@ const Login = ({ onLogin }) => {
 };
 
 const UncontrolledLogin = () => {
-  
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
@@ -395,5 +403,24 @@ const UncontrolledLogin = () => {
       <button type="submit">Login</button>
       <button type="reset">Reset</button>
     </form>
+  );
+};
+
+const FocusableInput = () => {
+  const inputFocusRef = useRef(null);
+
+  useEffect(() => {
+    inputFocusRef.current?.focus();
+  }, []);
+
+  return (
+    <>
+      <h2>Input Focus Ref</h2>
+      <input
+        ref={inputFocusRef}
+        name="username"
+        type="text"
+        placeholder="Name"></input>
+    </>
   );
 };
