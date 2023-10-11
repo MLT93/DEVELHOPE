@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect, useRef } from "react";
+import { Prueba } from "./prueba-tecnica/Prueba-tecnica";
 
 export function App() {
   return (
@@ -47,6 +48,8 @@ export function App() {
           })}
         <hr />
         <MyToDoComponent arr={toDoList} />
+        <hr />
+        <Prueba />
       </div>
     </div>
   );
@@ -572,7 +575,7 @@ const Card = ({ username, id, name, lastName, avatar }) => {
         borderRadius: "10px",
         backgroundColor: "lightgrey",
         overflow: "hidden",
-        width: "215px",
+        width: "290px",
         height: "auto",
         padding: "5px",
       }}>
@@ -580,7 +583,7 @@ const Card = ({ username, id, name, lastName, avatar }) => {
         style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
         <span>{`${id}`}</span>
       </div>
-      <h2>{`# ${username}`} </h2>
+      <h2 style={{ margin: "10px" }}>{`# ${username}`} </h2>
       <img
         src={`${avatar}`}
         alt="User avatar"
@@ -588,10 +591,10 @@ const Card = ({ username, id, name, lastName, avatar }) => {
           border: "1.5px solid black",
           borderRadius: "10px",
           width: "95%",
-          height: "auto",
+          height: "230px",
         }}
       />
-      <h5
+      <h4
         style={{
           whiteSpace: "pre-line",
           marginTop: "5px",
@@ -600,7 +603,7 @@ const Card = ({ username, id, name, lastName, avatar }) => {
       Is the best student
       
       Increment his superpower
-      up tu 5 points every Empanada ate`}</h5>
+      up tu 5 points every Empanada ate`}</h4>
     </div>
   );
 };
