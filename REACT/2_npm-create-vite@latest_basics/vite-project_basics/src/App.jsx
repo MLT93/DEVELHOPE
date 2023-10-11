@@ -28,10 +28,7 @@ export function App() {
         <hr />
         <FocusableInput />
         <hr />
-        {arr &&
-          arr.map((card) => {
-            return <ArrComponent id={card.id} name={card.name} key={card.id} />;
-          })}
+        <ArrayComponent array={users} />
       </div>
     </div>
   );
@@ -465,7 +462,7 @@ const FocusableInput = () => {
   );
 };
 
-const arr = [
+const users = [
   {
     id: "01",
     name: "John",
@@ -484,6 +481,21 @@ const arr = [
   },
 ];
 
-const ArrComponent = ({ id, name }) => {
+const Colors = ({ id, name }) => {
+  return <Color id={id} name={name} />;
+};
+
+export const Color = ({ id, name }) => {
   return <li id={id}>{name}</li>;
+};
+
+const ArrayComponent = ({ array }) => {
+  return (
+    <ul>
+      {array &&
+        array.map((card) => {
+          return <Colors id={card.id} name={card.name} key={card.id} />;
+        })}
+    </ul>
+  );
 };
