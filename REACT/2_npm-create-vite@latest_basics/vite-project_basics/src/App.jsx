@@ -45,6 +45,8 @@ export function App() {
               />
             );
           })}
+        <hr />
+        <MyToDoComponent arr={toDoList} />
       </div>
     </div>
   );
@@ -493,27 +495,35 @@ const users = [
   {
     id: "01",
     name: "John",
+    bgColor: "green",
   },
   {
     id: "02",
     name: "Mary",
+    bgColor: "yellow",
   },
   {
     id: "03",
     name: "Jason",
+    bgColor: "coral",
   },
   {
     id: "04",
     name: "Berry",
+    bgColor: "lightgray",
   },
 ];
 
-const Colors = ({ id, name }) => {
-  return <Color id={id} name={name} />;
+const Colors = ({ id, name, color }) => {
+  return <Color id={id} name={name} color={color} />;
 };
 
-export const Color = ({ id, name }) => {
-  return <li id={id}>{name}</li>;
+export const Color = ({ id, name, color }) => {
+  return (
+    <li id={id} style={{ backgroundColor: `${color}` }}>
+      {name}
+    </li>
+  );
 };
 
 const ArrayComponent = ({ array }) => {
@@ -521,7 +531,14 @@ const ArrayComponent = ({ array }) => {
     <ul>
       {array &&
         array.map((card) => {
-          return <Colors id={card.id} name={card.name} key={card.id} />;
+          return (
+            <Colors
+              id={card.id}
+              key={card.id}
+              name={card.name}
+              color={card.bgColor}
+            />
+          );
         })}
     </ul>
   );
@@ -555,7 +572,7 @@ const Card = ({ username, id, name, lastName, avatar }) => {
         borderRadius: "10px",
         backgroundColor: "lightgrey",
         overflow: "hidden",
-        width: "180px",
+        width: "215px",
         height: "auto",
         padding: "5px",
       }}>
@@ -585,5 +602,85 @@ const Card = ({ username, id, name, lastName, avatar }) => {
       Increment his superpower
       up tu 5 points every Empanada ate`}</h5>
     </div>
+  );
+};
+
+const toDoList = [
+  {
+    id: 1,
+    task: "Hacer la compra",
+    completed: false,
+  },
+  {
+    id: 2,
+    task: "Estudiar para el examen",
+    completed: true,
+  },
+  {
+    id: 3,
+    task: "Llamar al médico",
+    completed: false,
+  },
+  {
+    id: 4,
+    task: "Hacer ejercicio",
+    completed: false,
+  },
+];
+
+const MyToDoComponent = ({ arr }) => {
+  const [task, setNewTask] = useState("");
+
+  const handleInputChange = (event) => {
+    console.log(event.target.value);
+
+    setNewTask(event.target.value);
+  };
+
+  const handleClickTask = () => {
+    console.log(task);
+
+    const newIndex = arr.length;
+    const newArr = [...arr, { id: newIndex, task: task, completed: false }];
+    task.trim() !== "" ? console.log(newArr) : null;
+  };
+
+  return (
+    <ul
+      style={{
+        display: "flex",
+        flexFlow: "column wrap",
+        justifyContent: "space-around",
+        alignItems: "flex-start",
+        width: "100%",
+        whiteSpace: "pre-line",
+        gap: "25px",
+      }}>
+      {arr &&
+        arr.map((element, index) => {
+          return (
+            <div key={index}>
+              <li
+                id={element.id}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "auto",
+                  gap: "10px",
+                }}>
+                {`ID => ${element.id}
+                Task => ${element.task}
+                Is completed? => ${element.completed}`}
+                <div style={{ display: "flex", gap: "5px" }}>
+                  <input type="text" onChange={handleInputChange} />
+                  <button type="submit" onClick={handleClickTask}>
+                    Add Task
+                  </button>
+                </div>
+              </li>
+            </div>
+          );
+        })}
+    </ul>
   );
 };
