@@ -605,9 +605,9 @@
    
    - **useState hook**:
    
-     `useState` permite añadir o modificar un estado a un componente. Comienza con un array donde el primer elemento es el estado que queremos modificar (con la posibilidad de asignarle un valor inicial también) y el segundo es una función para poder modificar ese elemento inicial. Posteriormente la función useState tiene un argumento, que será el valor inicial de nuestro primer elemento del array.
+     `useState` permite añadir o modificar un estado a un componente y renderizarlo posteriormente a la página. Comienza con una "destructuración" de array donde el primer elemento es el estado que queremos modificar (tenemos la posibilidad de asignarle un valor inicial también) y el segundo es una función para poder modificar ese elemento inicial. Posteriormente la función useState tiene un argumento, que será el valor inicial de nuestro primer elemento de la "destructuración".
 
-     Recuerda que `useState es Asincrono`.
+     Recuerda que `useState es Asíncrono`.
      
      Se utiliza para agregar estado a tus componentes funcionales. Puedes usarlo cuando necesitas mantener y actualizar un valor en el componente a lo largo del tiempo. Por ejemplo, si necesitas almacenar el estado de un input o el estado de un modal.
      
@@ -621,17 +621,17 @@
      
      - `state`:
      
-       Es la variable que va a mantener el estado actual.
+       Es la variable que va a mantener el estado actual con el valor de `startValueOfState`.
      
      - `setState`:
      
-       Es una función que te permite actualizar la variable del estado. Esta función toma un argumento que será el nuevo valor del estado y este argumento puede ser de dos tipos:
+       Es una función que te permite actualizar la variable del estado. Esta función toma un argumento que será el nuevo valor del estado, y este argumento puede ser de dos tipos:
        
        - `Estado + modificaciones` representan los nuevos valores asignados directamente al estado.
        
-       - `Callback` representa una arrow-function que devuelve el estado modificado (`aconsejo esta siempre`).
+       - `Callback` representa una arrow-function que devuelve el estado modificado (`aconsejo usar esta siempre`).
        
-     - `startValueOfState`: Es el valor con el que quieres inicializar el estado a través del hook `useState`.
+     - `startValueOfState`: Es el valor con el que se inicializa el estado, a través del hook `useState` claramente.
      
      Ejemplo:
      
@@ -669,7 +669,8 @@
      import React, { useEffect } from 'react';
      
      useEffect(() => {
-       // Código que se acciona cuando cambia una dependencia o cuando ocurre algo (por ejemplo, cuando se monta el componente)
+       // Código que se acciona cuando cambia una dependencia o cuando ocurre algo
+       // Como mínimo se va a ejecutar una vez, al montar el componente
      }, [dependencias]);
      ```
      
@@ -683,10 +684,14 @@
      
        El segundo argumento es un arreglo de `dependencias` (opcional). Esto nos permite tener "bajo la mira" las dependencias que accionarán nuestro efecto secundario cada vez que cambien. `Normalmente son estados`. Esto puede provocar algunas formas de accionar nuestro primer argumento (callback), de la siguiente manera:
        
-       - `La presencia del array` con dependencias en su interno `[dependencia1, dependencia2]`, indica a React que el efecto secundario debe reejecutarse si alguna de las dependencias cambie.
+       - `La presencia del array`:
+
+       Con dependencias presentes `[dependencia1, dependencia2]` indica a React que el código dentro del useEffect debe reejecutarse si alguna de esas dependencias cambia.
        Si no quieres que el efecto se ejecute en actualizaciones posteriores de las dependencias y sólo cuando el componente se monta, puedes pasar un array vacío como segundo argumento `[]`.
        
-       - `Si se omite este array` dentro del hook, esto indica que el efecto secundario se ejecutará cada vez que el componente se renderice. Si quieres que el efecto se ejecute en cada actualización del componente, puedes omitir el segundo argumento directamente.
+       - `Si se omite este array`:
+       
+        Al omitir el array dentro del hook indica a React que el efecto secundario se ejecutará cada vez que el componente se renderice, o sea, que se ejecuta el código del useEffect por cada modificación que ocurra al interno del componente, pase lo que pase. Si quieres que el efecto se ejecute en cada actualización del componente, puedes omitir el segundo argumento directamente.
        
      Ejemplo:
      
