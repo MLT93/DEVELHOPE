@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 export const Prueba = () => {
   const [state, setState] = useState("lorem ipusm");
   const [imageState, setImageState] = useState("image cat");
+  const [error, setError] = useState(null)
   const urlFact = `https://catfact.ninja/fact`;
   const urlImage = `https://api.thecatapi.com/v1/images/search?limit=10&rand`;
 
@@ -11,11 +12,16 @@ export const Prueba = () => {
       (async () => {
         const response = await fetch(urlFact);
 
+        // Manejo error de respuesta del servidor
         if (!response.ok) {
           throw new Error(
             `La respuesta no ha encontrado resultado: (response = ${response.ok})`,
           );
         }
+
+        // TODO: utilizar un useState para manejar el error de la petición y no solo el de la respuesta
+
+        // ...
 
         console.log(response);
 
