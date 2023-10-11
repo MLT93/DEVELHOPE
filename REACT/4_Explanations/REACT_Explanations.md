@@ -771,9 +771,9 @@
    - **useRef hook**:
      
      `useRef` te permite crear un objeto mutable que persiste durante todo el ciclo de vida del componente. Esto significa que puedes mantener valores entre renderizaciones sin que provoquen una nueva renderización cuando se actualizan. La mayoría de las veces se utiliza para contener un nodo del DOM.
-
+     
      Se utiliza para crear referencias a elementos del DOM o para mantener valores mutables que no provocarán una nueva renderización cuando cambien. Esto puede ser útil para interactuar con elementos del DOM, como obtener su valor actual o enfocar un input.
-
+     
      Sintaxis:
      
      ```jsx
@@ -785,17 +785,17 @@
        return <input ref={refContainer} />
      }
      ```
-       
-     - `Relación con el atributo ref`:
      
+     - `Relación con el atributo ref`:
+       
        En React, el atributo HTML `ref` se utiliza para hacer referencia a un elemento del DOM o a un componente de React creado. Puede servir para acceder directamente a un elemento del DOM o para interactuar con un componente React y acceder a sus propiedades desde fuera del mismo componente.
        
      - `Funcionamiento interno`:
-     
+       
        Devuelve un objeto `refContainer` que es mutable y posee solo una propiedad `.current` que se inicializa con el valor del argumento señalado entre paréntesis `useRef(null)`. Esta propiedad puede ser asignada a cualquier elemento del DOM trámite el atributo `ref` y React no vuelve a renderizar la página cuando cambia su elemento, ni tampoco se vuelve a renderizar si cambia el valor de la propiedad `.current`.
-
+       
      Ejemplo 1:
-
+     
      ```jsx
      import React, { useRef, useEffect } from 'react';
      
