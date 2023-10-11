@@ -29,6 +29,22 @@ export function App() {
         <FocusableInput />
         <hr />
         <ArrayComponent array={users} />
+        <hr />
+        <ArrComponent arr={users} />
+        <hr />
+        {dataArray &&
+          dataArray.map((card, index) => {
+            return (
+              <Card
+                key={index}
+                username={card.username}
+                id={card.id}
+                name={card.name}
+                lastName={card.lastName}
+                avatar={card.avatar}
+              />
+            );
+          })}
       </div>
     </div>
   );
@@ -462,6 +478,17 @@ const FocusableInput = () => {
   );
 };
 
+const dataArray = [
+  {
+    id: "001",
+    name: "Marcos",
+    lastName: "Lambir Torres",
+    username: "Mquitox23",
+    avatar:
+      "https://4.bp.blogspot.com/-tAYXmWGcTYE/V_UUBGq-7SI/AAAAAAAAGRc/20SEZJOAtt8wa5krzqSqUlGOLzNvnb47ACPcB/s640/EMPANADAS%2BCRIOLLAS%2BARGENTINAS%2B%25281.%2529.jpg",
+  },
+];
+
 const users = [
   {
     id: "01",
@@ -497,5 +524,66 @@ const ArrayComponent = ({ array }) => {
           return <Colors id={card.id} name={card.name} key={card.id} />;
         })}
     </ul>
+  );
+};
+
+const ArrComponent = ({ arr }) => {
+  return (
+    <ul>
+      {arr &&
+        arr.map((element, index) => {
+          return (
+            <li id={element.id} key={index}>
+              {element.name}
+            </li>
+          );
+        })}
+    </ul>
+  );
+};
+
+const Card = ({ username, id, name, lastName, avatar }) => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexFlow: "column wrap",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        textAlign: "center",
+        border: "1.5px solid black",
+        borderRadius: "10px",
+        backgroundColor: "lightgrey",
+        overflow: "hidden",
+        width: "180px",
+        height: "auto",
+        padding: "5px",
+      }}>
+      <div
+        style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
+        <span>{`${id}`}</span>
+      </div>
+      <h2>{`# ${username}`} </h2>
+      <img
+        src={`${avatar}`}
+        alt="User avatar"
+        style={{
+          border: "1.5px solid black",
+          borderRadius: "10px",
+          width: "95%",
+          height: "auto",
+        }}
+      />
+      <h5
+        style={{
+          whiteSpace: "pre-line",
+          marginTop: "5px",
+        }}>{`${name} ${lastName}
+      
+      Is the best student
+      
+      Increment his superpower
+      up tu 5 points every Empanada ate`}</h5>
+    </div>
   );
 };
