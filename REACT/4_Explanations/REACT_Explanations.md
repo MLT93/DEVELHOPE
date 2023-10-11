@@ -606,25 +606,33 @@
    - **useState hook**:
    
      `useState` permite añadir o modificar un estado a un componente. Comienza con un array donde el primer elemento es el estado que queremos modificar (con la posibilidad de asignarle un valor inicial también) y el segundo es una función para poder modificar ese elemento inicial. Posteriormente la función useState tiene un argumento, que será el valor inicial de nuestro primer elemento del array.
+
+     Se utiliza para agregar estado a tus componentes funcionales. Puedes usarlo cuando necesitas mantener y actualizar un valor en el componente a lo largo del tiempo. Por ejemplo, si necesitas almacenar el estado de un input o el estado de un modal.
    
-       Sintaxis:
-   
-       ```jsx
-       import React, { useState } from 'react';
+     Sintaxis:
+  
+     ```jsx
+     import React, { useState } from 'react';
+    
+     const [state, setState] = useState(startValueOfState);
+     ```
+  
+     - `state`:
      
-       const [state, setState] = useState(startValueOfState);
-       ```
-   
-       - `state`: Es la variable que va a mantener el estado actual.
+       Es la variable que va a mantener el estado actual.
+    
+     - `setState`:
      
-       - `setState`: Es una función que te permite actualizar el estado. Esta función toma un argumento que será el nuevo valor del estado y este argumento puede ser de dos tipos:
-         - `Estado + modificaciones` representan los nuevos valores asignados directamente al estado.
-         - `Callback` representa una arrow-function que devuelve el estado modificado (`aconsejo esta siempre`).
+       Es una función que te permite actualizar la variable del estado. Esta función toma un argumento que será el nuevo valor del estado y este argumento puede ser de dos tipos:
+
+       - `Estado + modificaciones` representan los nuevos valores asignados directamente al estado.
        
-       - `startValueOfState`: Es el valor con el que quieres inicializar el estado.
-       
-       Ejemplo:
-       
+       - `Callback` representa una arrow-function que devuelve el estado modificado (`aconsejo esta siempre`).
+     
+     - `startValueOfState`: Es el valor con el que quieres inicializar el estado a través del hook `useState`.
+
+     Ejemplo:
+     
        ```jsx
        import React, { useState } from 'react';
 
@@ -648,199 +656,257 @@
    - **useEffect hook**:
    
      `useEffect` permite realizar efectos secundarios en componentes funcionales. Se ejecuta después de cada renderizado y puede emular varios ciclos de vida de componentes de clase como `componentDidMount`, `componentDidUpdate` y `componentWillUnmount`. Nos permite ejecutar acciones cada vez que ocurre algo.
+
+     Este hook te permite llevar a cabo efectos secundarios en tu componente. Esto puede ser útil para realizar acciones como la suscripción a eventos, la carga de datos desde una API, o actualizar el DOM después de que el componente ha renderizado. Se ejecuta después de cada renderización.
    
-       Sintaxis:
+     Sintaxis:
+    
+     ```jsx
+     import React, { useEffect } from 'react';
      
-       ```jsx
-       import React, { useEffect } from 'react';
+     useEffect(() => {
+       // Código que se acciona cuando cambia una dependencia o cuando ocurre algo (por ejemplo, cuando se monta el componente)
+     }, [dependencias]);
+     ```
+     
+     - `Primer argumento de useEffect`:
+     
+       El primer argumento de useEffect es una `arrow function` (callback). Contiene el código del efecto secundario que quieres que se ejecute cuando el componente se monte o cuando ciertas dependencias cambian.
        
+     - `Segundo argumento de useEffect`:
+     
+       El segundo argumento es un arreglo de `dependencias` (opcional). Esto nos permite tener "bajo la mira" la dependencia que accionará nuestro efecto secundario cada vez que cambie. Esto puede provocar algunas formas de accionar nuestro primer argumento (callback), de la siguiente manera:
+
+       - `La presencia del array` con dependencias en su interno `[dependencia1, dependencia2]`, indica a React que el efecto secundario debe reejecutarse si alguna de las dependencias cambie.
+       Si no quieres que el efecto se ejecute en actualizaciones posteriores de las dependencias y sólo cuando el componente se monta, puedes pasar un array vacío como segundo argumento `[]`.
+
+       - `Si se omite este array` dentro del hook, esto indica que el efecto secundario se ejecutará cada vez que el componente se renderice. Si quieres que el efecto se ejecute en cada actualización del componente, puedes omitir el segundo argumento directamente.
+     
+     Ejemplo:
+
+     ```jsx
+     import React, { useState, useEffect } from 'react';
+     
+     const EjemploComponente = () => {
+       const [datos, setDatos] = useState([]);
+     
+       // Arrow function en el primer argumento
        useEffect(() => {
-         // Código que se acciona cuando cambia una dependencia o cuando ocurre algo (por ejemplo, cuando se monta el componente)
-       }, [dependencias]);
-       ```
+         // Simulando una petición asíncrona a un servidor que se repite cada 2 segundos
+         const intervalId = setInterval(() => {
+           const nuevosDatos = ['Dato 1', 'Dato 2', 'Dato 3'];
+           setDatos(nuevosDatos);
+         }, 2000);
+         
+         // cada vez que retornamos algo al interno de un hook, debe ser devuelto a través de una función
+         return () => clearInterval(intervalId)
      
-       - `Primer argumento de useEffect`: El primer argumento de useEffect es una `arrow function` (callback). Contiene el código del efecto secundario que quieres que se ejecute cuando el componente se monte o cuando ciertas dependencias cambian.
-       
-       - `Segundo argumento de useEffect`: El segundo argumento es un arreglo de `dependencias` (opcional). Esto nos permite tener "bajo la mira" la dependencia que accionará nuestro efecto secundario cada vez que cambie. Esto puede provocar algunas formas de accionar nuestro primer argumento (callback), de la siguiente manera:
-         - `La presencia del array` con dependencias en su interno `[dependencia1, dependencia2]`, indica a React que el efecto secundario debe reejecutarse si alguna de las dependencias cambie.
-         Si no quieres que el efecto se ejecute en actualizaciones posteriores de las dependencias y sólo cuando el componente se monta, puedes pasar un array vacío como segundo argumento `[]`.
-         - `Si se omite este array` dentro del hook, esto indica que el efecto secundario se ejecutará cada vez que el componente se renderice. Si quieres que el efecto se ejecute en cada actualización del componente, puedes omitir el segundo argumento directamente.
-
-       Ejemplo:
-
-       ```jsx
-       import React, { useState, useEffect } from 'react';
-
-       const EjemploComponente = () => {
-         const [datos, setDatos] = useState([]);
-       
-         // Arrow function en el primer argumento
-         useEffect(() => {
-           // Simulando una petición asíncrona a un servidor que se repite cada 2 segundos
-           const intervalId = setInterval(() => {
-             const nuevosDatos = ['Dato 1', 'Dato 2', 'Dato 3'];
-             setDatos(nuevosDatos);
-           }, 2000);
-           
-           // cada vez que retornamos algo al interno de un hook, debe ser devuelto a través de una función
-           return () => clearInterval(intervalId)
-
-         }, []); // El segundo argumento (Array vacío []) indica que este efecto se ejecuta solo al montar el componente y no cuando se actualiza la dependencia, que podría ser [nuevosDatos] en este caso, porque cuando se actualiza la base de datos, vuelve a hacer la llamada a la API      
-         return (
-           <div>
-             <h2>Datos:</h2>
-             <ul>
-               {datos.map((dato, index) => (
-                 <li key={index}>{dato}</li>
-               ))}
-             </ul>
-           </div>
-         );
-       };
-       
-       export default EjemploComponente;
-       ```
-
-       Ten en cuenta que `cada vez que creamos un código que al desmontarse pudiera seguir funcionando, tenemos que acordarnos de limpiar o parar el código después de que se desmonte` rigurosamente, porque puede provocar varios conflictos y errores. `Y recordémonos que cada vez que retornamos algo al interno de un hook, debe ser devuelto a través de una función` también.
+       }, []); // El segundo argumento (Array vacío []) indica que este efecto se ejecuta solo al montar el componente y no cuando se actualiza la dependencia, que podría ser [nuevosDatos] en este caso, porque cuando se actualiza la base de datos, vuelve a hacer la llamada a la API      
+       return (
+         <div>
+           <h2>Datos:</h2>
+           <ul>
+             {datos.map((dato, index) => (
+               <li key={index}>{dato}</li>
+             ))}
+           </ul>
+         </div>
+       );
+     };
+     
+     export default EjemploComponente;
+     ```
+     
+     Ten en cuenta que `cada vez que creamos un código que al desmontarse pudiera seguir funcionando, tenemos que acordarnos de limpiar o parar el código después de que se desmonte` rigurosamente, porque puede provocar varios conflictos y errores. `Y recordémonos que cada vez que retornamos algo al interno de un hook, debe ser devuelto a través de una función` también.
        
    - **useContext hook**:
    
      `useContext` te permite acceder al valor del contexto que ha sido proporcionado por un proveedor de contexto superior en jerarquía.
 
-       Sintaxis:
-   
-       ```jsx
-       import React { createContext } from 'react';
-       
-       // Primera letra mayúscula en esta variable siempre
-       const Context = React.createContext()
-       ```
+     Sintaxis:
+     
+     ```jsx
+     import React { createContext } from 'react';
+     
+     // Primera letra mayúscula en esta variable siempre
+     const Context = React.createContext()
+     ```
 
-       - `Creación del contexto`: Antes de utilizar useContext, primero necesitas crear un contexto. Esto se hace utilizando la función `createContext`, que toma un valor por defecto que se utilizará si no hay ningún proveedor de contexto superior. Este valor es opcional y se utiliza principalmente para facilitar el desarrollo.
-
-       - `Proveedor de Contexto`: A continuación, necesitas proporcionar un contexto utilizando el componente `Provider` que se deriva del contexto que has creado. `value` es la información que deseas compartir con todos los componentes hijos dentro de este proveedor de contexto.
+     - `Creación del contexto`:
        
-       - `Acceso al Contexto`: Finalmente, en cualquier componente funcional dentro del árbol de componentes, puedes utilizar 
+       Antes de utilizar useContext, primero necesitas crear un contexto. Esto se hace utilizando la función `createContext`, que toma un valor por defecto que se utilizará si no hay ningún proveedor de contexto superior. Este valor es opcional y se utiliza principalmente para facilitar el desarrollo.
+
+     - `Proveedor de Contexto`:
+     
+       A continuación, necesitas proporcionar un contexto utilizando el componente `Provider` que se deriva del contexto que has creado. `value` es la información que deseas compartir con todos los componentes hijos dentro de este proveedor de contexto.
+       
+     - `Acceso al Contexto`:
+     
+       Finalmente, en cualquier componente funcional dentro del árbol de componentes, puedes utilizar 
        el hook `useContext` para acceder al valor del contexto. Ahora `valorDelContexto` contiene el valor proporcionado por el proveedor de contexto más cercano en la jerarquía.
 
        Para tener acceso al contexto dentro de un componente de clase, deberías utilizar `.Consumer` dentro del método `render` o en el cuerpo del componente.
-       
-       Ejemplo:
 
-       ```jsx
-       import React {useContext} from 'react';
+     Ejemplo:
 
-       const MiContexto = React.createContext()
-       
-       const ComponentePadre = () => {
-         return (
-           <MiContexto.Provider value={'Valor del contexto'}>
-             <ComponenteHijo />
-           </MiContexto.Provider>
-         );
-       };
-
-       const ComponenteHijo = () => {
-         const valorDelContexto = useContext(MiContexto);
-         return <div>{valorDelContexto}</div>;
-       };
-       ```
-       
+     ```jsx
+     import React {useContext} from 'react';
+     
+     const MiContexto = React.createContext()
+     
+     const ComponentePadre = () => {
+       return (
+         <MiContexto.Provider value={'Valor del contexto'}>
+           <ComponenteHijo />
+         </MiContexto.Provider>
+       );
+     };
+     
+     const ComponenteHijo = () => {
+       const valorDelContexto = useContext(MiContexto);
+       return <div>{valorDelContexto}</div>;
+     };
+     ```
+     
    - **useRef hook**:
    
      `useRef` te permite crear un objeto mutable que persiste durante todo el ciclo de vida del componente. Esto significa que puedes mantener valores entre renderizaciones sin que provoquen una nueva renderización cuando se actualizan. La mayoría de las veces se utiliza para contener un nodo del DOM.
 
-       Sintaxis:
+     Se utiliza para crear referencias a elementos del DOM o para mantener valores mutables que no provocarán una nueva renderización cuando cambien. Esto puede ser útil para interactuar con elementos del DOM, como obtener su valor actual o enfocar un input.
 
-       ```jsx
-       import React, { useRef } from 'react';
-       
-       const Component = () => {
-         const refContainer = useRef(initialValue);
-         
-         return <input ref={refContainer} />
-       }
-       ```
-       
-       - `Relación con el atributo ref`: En React, el atributo HTML `ref` se utiliza para hacer referencia a un elemento del DOM o a un componente de React creado. Puede servir para acceder directamente a un elemento del DOM o para interactuar con un componente React, utilizar sus métodos y acceder a sus propiedades desde fuera del mismo componente.
-       
-       - `Funcionamiento interno`: Devuelve un objeto `refContainer` que es mutable y posee una propiedad `.current` que se inicializa con el valor del argumento señalado entre paréntesis `useRef(null)`. Esta propiedad puede ser asignada a cualquier elemento del DOM trámite el atributo `ref`.
-       
-       Ejemplo:
+     Sintaxis:
      
-       ```jsx
-       import React, { useRef, useEffect } from 'react';
+     ```jsx
+     import React, { useRef } from 'react';
+     
+     const Component = () => {
+       const refContainer = useRef(initialValue);
        
-       function MyComponent() {
-         const myRef = useRef(null);
+       return <input ref={refContainer} />
+     }
+     ```
        
-         useEffect(() => {
-           myRef.current.focus(); // Enfoca el elemento cuando se monta el componente
-         }, []);
+     - `Relación con el atributo ref`:
+     
+       En React, el atributo HTML `ref` se utiliza para hacer referencia a un elemento del DOM o a un componente de React creado. Puede servir para acceder directamente a un elemento del DOM o para interactuar con un componente React y acceder a sus propiedades desde fuera del mismo componente.
        
-         return <input ref={myRef} />;
-       }
-       ```
-       
-       En este ejemplo, `myRef` será un objeto que contiene una propiedad `.current`. Esta propiedad puede ser asignada a cualquier elemento del DOM. Si asignas `myRef.current` a un elemento, podrás referenciar ese elemento directamente con el valor de tu `useRef()`. Cuando un elemento recibe el foco en una página web, como en este caso, significa que está preparado para recibir entrada del usuario. Esto es especialmente relevante para elementos interactivos como campos de texto, selectores, botones, etc.
+     - `Funcionamiento interno`:
+     
+       Devuelve un objeto `refContainer` que es mutable y posee solo una propiedad `.current` que se inicializa con el valor del argumento señalado entre paréntesis `useRef(null)`. Esta propiedad puede ser asignada a cualquier elemento del DOM trámite el atributo `ref` y React no vuelve a renderizar la página cuando cambia su elemento, ni tampoco se vuelve a renderizar si cambia el valor de la propiedad `.current`.
+
+     Ejemplo 1:
+
+     ```jsx
+     import React, { useRef, useEffect } from 'react';
+     
+     function MyComponent() {
+       const myRef = useRef(null);
+     
+       useEffect(() => {
+         myRef.current.focus(); // Enfoca el elemento cuando se monta el componente (cuando carga la página)
+       }, []);
+     
+       return <input ref={myRef} />;
+     }
+     ```
+     
+     En este ejemplo, `myRef` será un objeto que contiene una propiedad `.current`. Esta propiedad puede ser asignada a cualquier elemento del DOM. Si asignas `myRef.current` a un elemento, podrás referenciar ese elemento directamente con el valor de tu `useRef()`. Cuando un elemento recibe el foco en una página web, como en este caso, significa que está preparado para recibir entrada del usuario. Esto es especialmente relevante para elementos interactivos como campos de texto, selectores, botones, etc.
+
+     Ejemplo 2:
+
+     ```jsx
+     import React, { useState, useRef } from 'react';
+     
+     export const ChangeBgColor = () => {
+       const count = useRef(null);
+       const [number, setNumber] = useState(0);
+    
+       const checkNumber = () => {
+         if (count.current.value < 10) {
+           count.current.style.backgroundColor = "red";
+         } else {
+           count.current.style.backgroundColor = "green";
+         }
+       };
+     
+       return (
+         <div className="App">
+           <h1>Enter a number greater than 10</h1>
+           <input
+             ref={count}
+             type="text"
+             value={number}
+             onChange={(e) => setNumber(e.target.value)}
+           />
+           <button onClick={() => checkNumber()}>Click</button>
+         </div>
+       );
+     }
+     ```
+     En este código de ejemplo, el color del elemento de entrada cambia según el número que ingrese en el cuadro de entrada. Primero, asigna el resultado del hook useRef() a la variable de conteo. Hay dos elementos: uno de entrada y el botón. El elemento de entrada tiene el valor del número y la propiedad ref de la etiqueta de entrada cuenta para coincidir con la variable.
+     Cuando se hace clic en el botón, se llama a la función checkNumber(). Esta función verifica si el valor del número es mayor que 10 para luego establecer el color de fondo del elemento de entrada usando la propiedad count.current.style.backgroundColor.
        
    - **useMemo hook**:
    
      `useMemo` es una herramienta en React que te permite memorizar el resultado de una función y solo recalcularla cuando alguna de sus dependencias cambia. Esto puede ser útil para optimizar el rendimiento de tu aplicación al evitar cálculos costosos en cada renderizado.
 
-       Sintaxis:
+     Sintaxis:
 
-       ```jsx
-       const memoizedValue = useMemo(() => {a + b}, [a, b]);
-       ```
+     ```jsx
+     const memoizedValue = useMemo(() => {a + b}, [a, b]);
+     ```
 
-       - `Primer argumento de useMemo`: es una herramienta en React que te permite `memoizar` el resultado de una función y solo recalcularla cuando alguna de sus dependencias cambia. React llamará a tu función solo durante el renderizado inicial, guardando en caché el resultado del cálculo. En renderizados posteriores, React devolverá el mismo valor nuevamente si las dependencias no han cambiado desde el último renderizado, si lo hacen, volverá a calcular, devolverá el resultado y lo volverá a guardar. Esta optimización ayuda a evitar cálculos costosos en cada renderizado de la página.
+     - `Primer argumento de useMemo`:
+     
+       Es una herramienta en React que te permite `memoizar` el resultado de una función y solo recalcularla cuando alguna de sus dependencias cambia. React llamará a tu función solo durante el renderizado inicial, guardando en caché el resultado del cálculo. En renderizados posteriores, React devolverá el mismo valor nuevamente si las dependencias no han cambiado desde el último renderizado, si lo hacen, volverá a calcular, devolverá el resultado y lo volverá a guardar. Esta optimización ayuda a evitar cálculos costosos en cada renderizado de la página.
 
-       - `Segundo argumento de useMemo`: El array de dependencias contiene las variables que la función utiliza para realizar los cálculos. Si alguna de estas variables cambia, useMemo recalculará la función nuevamente. En cuanto a cuándo debe utilizarse `useMemo`, es recomendable utilizarlo en cualquier lugar donde se estén realizando cálculos costosos y no es necesario recalcularlos a menos que las dependencias cambien. Es importante tener en cuenta que las dependencias deben ser valores casi inmutables, ya que si una dependencia cambia, el valor `memoizado` se recalcula.
+     - `Segundo argumento de useMemo`:
+     
+       El array de dependencias contiene las variables que la función utiliza para realizar los cálculos. Si alguna de estas variables cambia, useMemo recalculará la función nuevamente. En cuanto a cuándo debe utilizarse `useMemo`, es recomendable utilizarlo en cualquier lugar donde se estén realizando cálculos costosos y no es necesario recalcularlos a menos que las dependencias cambien. Es importante tener en cuenta que las dependencias deben ser valores casi inmutables, ya que si una dependencia cambia, el valor `memoizado` se recalcula.
+     
+     Ejemplo:
 
-       Ejemplo:
-
-       ```jsx
-       import React { useMemo } from "react";
-       
-       const props = {
-         productos: [
-           {
-             nombre: "Alcaparras",
-             precio: 2.48,
-           },
-         ],
-         tasa: 21 / 100, // 0.21
-       };
-       
-       const ListaProducto = ({ productos, tasa }) => {
-         const tasas = useMemo(() => {
-           return productos.map((producto) => {
-             return {
-               // copia del objeto producto
-               ...producto,
-               precioConTasas: producto.precio + producto.precio * { tasa },
-             };
-           });
-         }, [productos, tasa]);
-       
-         return (
-           <ul>
-             {tasas.map((producto) => (
-               <li key={producto.productos.nombre}>
-                 `El producto ${producto.productos.nombre} vale ${producto.productos.precioConTasas}`
-               </li>
-             ))}
-           </ul>
-         );
-       };
-       
-       <ListaProducto productos={props.productos} tasa={props.tasa} />;
-       
-       export default ListaProducto;
-       ```
-
-       En el código anterior utilizamos `useMemo` para memorizar el cálculo del precio con impuestos de cada producto en una lista. Utilizamos una función para definir la función que se ejecutará dentro de `useMemo`, y `establecemos las dependencias como productos y tasa. Cada vez que cambian estos valores, la función se vuelve a ejecutar y se actualizan los precios con impuestos`. Luego, utilizamos la variable tasas para renderizar la lista de productos con los precios con impuestos actualizados.
+     ```jsx
+     import React { useMemo } from "react";
+     
+     const props = {
+       productos: [
+         {
+           nombre: "Alcaparras",
+           precio: 2.48,
+         },
+       ],
+       tasa: 21 / 100, // 0.21
+     };
+     
+     const ListaProducto = ({ productos, tasa }) => {
+       const tasas = useMemo(() => {
+         return productos.map((producto) => {
+           return {
+             // copia del objeto producto
+             ...producto,
+             precioConTasas: producto.precio + producto.precio * { tasa },
+           };
+         });
+       }, [productos, tasa]);
+     
+       return (
+         <ul>
+           {tasas.map((producto) => (
+             <li key={producto.productos.nombre}>
+               `El producto ${producto.productos.nombre} vale ${producto.productos.precioConTasas}`
+             </li>
+           ))}
+         </ul>
+       );
+     };
+     
+     <ListaProducto productos={props.productos} tasa={props.tasa} />;
+     
+     export default ListaProducto;
+     ```
+     
+     En el código anterior utilizamos `useMemo` para memorizar el cálculo del precio con impuestos de cada producto en una lista. Utilizamos una función para definir la función que se ejecutará dentro de `useMemo`, y `establecemos las dependencias como productos y tasa. Cada vez que cambian estos valores, la función se vuelve a ejecutar y se actualizan los precios con impuestos`. Luego, utilizamos la variable tasas para renderizar la lista de productos con los precios con impuestos actualizados.
    
    Ejemplo aplicando varios hooks contemporáneamente:
    
