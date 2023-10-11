@@ -1758,9 +1758,9 @@
    ```
 
 10. #### **`Contexto <this> en Funciones Manejadoras`**:
-
+   
    En los componentes de clase, el contexto de `this` en una función manejadora puede ser diferente del componente en sí. Para solucionar esto, es necesario enlazar la función manejadora o utilizar funciones de flecha para mantener el contexto.
-
+   
    ```jsx
    class MiComponente extends React.Component {
      handleClick() {
@@ -1772,7 +1772,7 @@
      }
    }
    ```
-
+   
    ```jsx
    class MiComponente extends React.Component {
      handleClick = () => {
@@ -1784,11 +1784,11 @@
      }
    }
    ```
-
+   
 11. #### **`Funciones Flecha como Funciones Manejadoras`**:
-
+   
    Las funciones flecha heredan automáticamente el contexto `this` del ámbito que las rodea, lo que las hace especialmente útiles como funciones manejadoras. Esto evita la necesidad de enlazarlas manualmente.
-
+   
    ```jsx
    class MiComponente extends React.Component {
      handleClick = () => {
@@ -1799,11 +1799,11 @@
      }
    }
    ```
-
+   
 12. #### **`En resumen`**:
-
+   
    Los eventos en React permiten la interactividad en una aplicación al responder a las acciones del usuario. Las funciones manejadoras se utilizan para manejar estos eventos y actualizar el estado o realizar otras acciones según sea necesario. Comprender cómo funcionan los eventos en React es esencial para construir aplicaciones interactivas y dinámicas.
-
+   
 ## **Forms - Controlled Components y Funciones Relacionadas en React: Una Explicación Detallada**
 
 1. #### `Introducción a Controlled Forms`:
