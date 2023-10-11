@@ -2023,7 +2023,9 @@
 
    El acceso directo a los elementos HTML de un formulario se refiere a la posibilidad de interactuar con los campos de un formulario sin necesidad de utilizar el estado de React o cualquier otro método de manipulación del DOM.
 
-   En React, esto puede hacerse a través de refs utilizando el hook `useRef`, que proporcionan una manera de acceder directamente a los elementos del DOM dentro de tus componentes.
+   En React, esto puede hacerse a través de refs utilizando el hook `useRef`, que proporcionan una manera de acceder directamente a los elementos del DOM dentro de tus componentes. Esto es sumamente útil en los momentos en los cuales deseemos acceder a los elementos del DOM fuera de un gestor de eventos. A demás, hay librerías externas que nos piden una referencia directa a un elemento HTML para poder funcionar, como por ejemplo las librerías de mapas para su renderizado, o las librerías de animaciones que piden una referencia a un nodo DOM para poderlo animar.
+
+   Es el caso de los formularios un ejemplo práctico en el cual podemos utilizar unas refs. Cuando cargamos la página web y tenemos un formulario login, a lo mejor deseamos que se haga un "focus" directo al primer campo del formulario donde el usuario introducirá el nombre/email y la password para poder efectuar el login. Esto lo podemos hacer con un `useRef`.
 
    Aquí tienes los pasos detallados para acceder directamente a los elementos HTML de un formulario en React:
 
@@ -2035,7 +2037,8 @@
      import { useRef } from 'react';
       
      const MyComponent = () => {
-       const inputRef = useRef(null);      
+       // Se inicializa useRef siempre en null porque no hace falta que tenga ningún valor inicial
+       const inputRef = useRef(null);
        // ...
      };
      ```
@@ -2045,7 +2048,7 @@
      Luego, debes asignar esta ref al elemento HTML dentro del JSX del formulario. Esto se hace utilizando el atributo `ref`.
 
      ```jsx
-     <input type="text" ref={inputRef} />
+     <input ref={inputRef} name="username" type="text" />
      ```
 
      Ahora, `inputRef` apunta directamente al elemento `<input>` del formulario.
@@ -2058,8 +2061,8 @@
      import React, { useRef } from 'react';
 
      function MyForm() {
-       const inputRef1 = useRef();
-       const inputRef2 = useRef();
+       const inputRef1 = useRef(null);
+       const inputRef2 = useRef(null);
          
        const handleSubmit = (e) => {
          e.preventDefault();
@@ -2098,6 +2101,39 @@
 
      ```jsx
      inputRef1.current.value = 'Nuevo nombre';
+     ```
+
+   - **Crear un Focus con useEffect y useRef a un nodo HTML**:
+
+     Como mencionábamos antes, si tuviésemos un formulario de login en nuestra página web y deseáramos que el usuario pudiese escribir directamente al interno del campo correspondiente al login, sin necesidad de tener que mover el cursor hasta estos campos, deberíamos "focalizar" ese elemento HTML a penas la página web cargase. Para hacer esto, deberíamos crear una refs con `useRef` para recibir el valor del nodo HTML de dicho campo y a su vez añadir un `focus` a través de un `useEffect` para que se monte a penas carga el `document`.
+
+     ```jsx
+          import React, { useRef, useEffect } from 'react';
+
+     function MyForm() {
+       const inputRef = useRef(null);
+       // Utilizamos el useEffect para que se active el inputRef cuando ocurra algo.  
+       useEffect(() => {
+         // Utilizamos el operador Optional Chaining `?` para verificar si la propiedad precedente al método 'focus()' posee el valor `null` o `undefined`. Si `inputRef.current` está definido, se continuará el código llamando al método `focus()`. Esta forma previene errores.
+         inputRef.current?.focus()
+       }, []) // Dejamos el array vacío para que se active el efecto cuando se monte el componente. En este caso, al cargar la página.
+       
+       const handleSubmit = (e) => {
+         e.preventDefault();
+
+          console.log(inputRef.current.value);
+       };
+       
+       return (
+         <form onSubmit={handleSubmit}>
+           <input ref={inputRef} name="nombre" type="text" />
+           <input name="password" type="password" />
+           <button type="submit">Enviar</button>
+         </form>
+       );
+     }
+       
+     export default MyForm;
      ```
 
    En resumen, cuando necesitas interactuar directamente con el DOM, las refs proporcionan una solución útil, aunque es importante tener en cuenta que el uso de refs para acceder directamente a los elementos del DOM debe hacerse con precaución, ya que puede llevar a un código menos declarativo y más propenso a errores. Por lo general, es preferible utilizar formularios controlados y manejar los valores a través del estado de React.
