@@ -606,6 +606,8 @@
    - **useState hook**:
    
      `useState` permite añadir o modificar un estado a un componente. Comienza con un array donde el primer elemento es el estado que queremos modificar (con la posibilidad de asignarle un valor inicial también) y el segundo es una función para poder modificar ese elemento inicial. Posteriormente la función useState tiene un argumento, que será el valor inicial de nuestro primer elemento del array.
+
+     Recuerda que `useState es Asincrono`.
      
      Se utiliza para agregar estado a tus componentes funcionales. Puedes usarlo cuando necesitas mantener y actualizar un valor en el componente a lo largo del tiempo. Por ejemplo, si necesitas almacenar el estado de un input o el estado de un modal.
      
@@ -656,6 +658,8 @@
    - **useEffect hook**:
      
      `useEffect` permite realizar efectos secundarios en componentes funcionales. Se ejecuta después de cada renderizado y puede emular varios ciclos de vida de componentes de clase como `componentDidMount`, `componentDidUpdate` y `componentWillUnmount`. Nos permite ejecutar acciones cada vez que ocurre algo.
+
+     Recuerda que las funciones de `useEffect` deben ser funciones normales, `no pueden ser asíncronas`.
      
      Este hook te permite llevar a cabo efectos secundarios en tu componente. Esto puede ser útil para realizar acciones como la suscripción a eventos, la carga de datos desde una API, o actualizar el DOM después de que el componente ha renderizado. Se ejecuta después de cada renderización.
      
@@ -672,10 +676,12 @@
      - `Primer argumento de useEffect`:
      
        El primer argumento de useEffect es una `arrow function` (callback). Contiene el código del efecto secundario que quieres que se ejecute cuando el componente se monte o cuando ciertas dependencias cambian.
+
+       Recuerda que para hacer un `efecto Unmount`, debes retornar una función al interno del useEffect. Esta función se ejecutará cuando el componente se desmonta.
        
      - `Segundo argumento de useEffect`:
      
-       El segundo argumento es un arreglo de `dependencias` (opcional). Esto nos permite tener "bajo la mira" la dependencia que accionará nuestro efecto secundario cada vez que cambie. Esto puede provocar algunas formas de accionar nuestro primer argumento (callback), de la siguiente manera:
+       El segundo argumento es un arreglo de `dependencias` (opcional). Esto nos permite tener "bajo la mira" las dependencias que accionarán nuestro efecto secundario cada vez que cambien. `Normalmente son estados`. Esto puede provocar algunas formas de accionar nuestro primer argumento (callback), de la siguiente manera:
        
        - `La presencia del array` con dependencias en su interno `[dependencia1, dependencia2]`, indica a React que el efecto secundario debe reejecutarse si alguna de las dependencias cambie.
        Si no quieres que el efecto se ejecute en actualizaciones posteriores de las dependencias y sólo cuando el componente se monta, puedes pasar un array vacío como segundo argumento `[]`.
@@ -698,7 +704,7 @@
            setDatos(nuevosDatos);
          }, 2000);
          
-         // cada vez que retornamos algo al interno de un hook, debe ser devuelto a través de una función
+         // efecto Unmount, para eliminar la repetición del código una vez que se desmonte el componente
          return () => clearInterval(intervalId)
          
        }, []); // El segundo argumento (Array vacío []) indica que este efecto se ejecuta solo al montar el componente y no cuando se actualiza la dependencia, que podría ser [nuevosDatos] en este caso, porque cuando se actualiza la base de datos, vuelve a hacer la llamada a la API      
@@ -773,6 +779,8 @@
      `useRef` te permite crear un objeto mutable que persiste durante todo el ciclo de vida del componente. Esto significa que puedes mantener valores entre renderizaciones sin que provoquen una nueva renderización cuando se actualizan. La mayoría de las veces se utiliza para contener un nodo del DOM.
      
      Se utiliza para crear referencias a elementos del DOM o para mantener valores mutables que no provocarán una nueva renderización cuando cambien. Esto puede ser útil para interactuar con elementos del DOM, como obtener su valor actual o enfocar un input.
+
+     También funciona para simular una variable `this` de una clase.
      
      Sintaxis:
      
@@ -780,7 +788,7 @@
      import React, { useRef } from 'react';
      
      const Component = () => {
-       const refContainer = useRef(initialValue);
+       const refContainer = useRef(null);
        
        return <input ref={refContainer} />
      }
@@ -863,6 +871,8 @@
      - `Segundo argumento de useMemo`:
      
        El array de dependencias contiene las variables que la función utiliza para realizar los cálculos. Si alguna de estas variables cambia, useMemo recalculará la función nuevamente. En cuanto a cuándo debe utilizarse `useMemo`, es recomendable utilizarlo en cualquier lugar donde se estén realizando cálculos costosos y no es necesario recalcularlos a menos que las dependencias cambien. Es importante tener en cuenta que las dependencias deben ser valores casi inmutables, ya que si una dependencia cambia, el valor `memoizado` se recalcula.
+
+       Recuerda que `una dependencia normalmente es un estado`, como con el hook useEffect.
      
      Ejemplo:
 
@@ -919,6 +929,7 @@
      const [tema, setTema] = useState('oscuro');
    
      const cambiarTema = () => {
+       // Acá estamos utilizando el callback de useState `prev` con su valor inicial para modificar los valores o actualizarlos
        setTema(prevTema => (prevTema === 'oscuro' ? 'claro' : 'oscuro'));
      };
    
