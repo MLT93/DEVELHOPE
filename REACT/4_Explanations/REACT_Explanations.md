@@ -598,7 +598,7 @@
     - Los componentes de clase son clases de JavaScript que extienden `React.Component` y tienen un método `render()`.
 
 11. #### **`Hooks en React`**:
-
+   
    Los Hooks son una adición en React 16.8 que permiten asignar un estado y otras características de React en componentes funcionales, lo que antes solo era posible en componentes de clase. Los Hooks tienen una convención y es utilizar siempre `use` delante del nombre del hook. A demás hay que recordar que los Hooks sólo se pueden llamar en en el nivel superior de tu componente funcional, por lo tanto no podrás llamarlo dentro de un ciclo for, de un gestor de un gestor de eventos, de un if-else statement, etc... `Los hooks sólo pueden llamarse dentro del cuerpo del componente funcional y no de forma anidada`.
    
    Los más comunes son:
@@ -606,36 +606,36 @@
    - **useState hook**:
    
      `useState` permite añadir o modificar un estado a un componente. Comienza con un array donde el primer elemento es el estado que queremos modificar (con la posibilidad de asignarle un valor inicial también) y el segundo es una función para poder modificar ese elemento inicial. Posteriormente la función useState tiene un argumento, que será el valor inicial de nuestro primer elemento del array.
-
+     
      Se utiliza para agregar estado a tus componentes funcionales. Puedes usarlo cuando necesitas mantener y actualizar un valor en el componente a lo largo del tiempo. Por ejemplo, si necesitas almacenar el estado de un input o el estado de un modal.
-   
+     
      Sintaxis:
-  
+     
      ```jsx
      import React, { useState } from 'react';
-    
+     
      const [state, setState] = useState(startValueOfState);
      ```
-  
+     
      - `state`:
      
        Es la variable que va a mantener el estado actual.
-    
+     
      - `setState`:
      
        Es una función que te permite actualizar la variable del estado. Esta función toma un argumento que será el nuevo valor del estado y este argumento puede ser de dos tipos:
-
+       
        - `Estado + modificaciones` representan los nuevos valores asignados directamente al estado.
        
        - `Callback` representa una arrow-function que devuelve el estado modificado (`aconsejo esta siempre`).
-     
+       
      - `startValueOfState`: Es el valor con el que quieres inicializar el estado a través del hook `useState`.
-
+     
      Ejemplo:
      
        ```jsx
        import React, { useState } from 'react';
-
+       
        function Contador() {
          // El contador empieza desde el número 0
          const [contador, setContador] = useState(0);
@@ -652,15 +652,15 @@
        
        export default Contador;
        ```
-     
+       
    - **useEffect hook**:
-   
+     
      `useEffect` permite realizar efectos secundarios en componentes funcionales. Se ejecuta después de cada renderizado y puede emular varios ciclos de vida de componentes de clase como `componentDidMount`, `componentDidUpdate` y `componentWillUnmount`. Nos permite ejecutar acciones cada vez que ocurre algo.
-
+     
      Este hook te permite llevar a cabo efectos secundarios en tu componente. Esto puede ser útil para realizar acciones como la suscripción a eventos, la carga de datos desde una API, o actualizar el DOM después de que el componente ha renderizado. Se ejecuta después de cada renderización.
-   
+     
      Sintaxis:
-    
+     
      ```jsx
      import React, { useEffect } from 'react';
      
@@ -676,14 +676,14 @@
      - `Segundo argumento de useEffect`:
      
        El segundo argumento es un arreglo de `dependencias` (opcional). Esto nos permite tener "bajo la mira" la dependencia que accionará nuestro efecto secundario cada vez que cambie. Esto puede provocar algunas formas de accionar nuestro primer argumento (callback), de la siguiente manera:
-
+       
        - `La presencia del array` con dependencias en su interno `[dependencia1, dependencia2]`, indica a React que el efecto secundario debe reejecutarse si alguna de las dependencias cambie.
        Si no quieres que el efecto se ejecute en actualizaciones posteriores de las dependencias y sólo cuando el componente se monta, puedes pasar un array vacío como segundo argumento `[]`.
-
+       
        - `Si se omite este array` dentro del hook, esto indica que el efecto secundario se ejecutará cada vez que el componente se renderice. Si quieres que el efecto se ejecute en cada actualización del componente, puedes omitir el segundo argumento directamente.
-     
+       
      Ejemplo:
-
+     
      ```jsx
      import React, { useState, useEffect } from 'react';
      
@@ -700,7 +700,7 @@
          
          // cada vez que retornamos algo al interno de un hook, debe ser devuelto a través de una función
          return () => clearInterval(intervalId)
-     
+         
        }, []); // El segundo argumento (Array vacío []) indica que este efecto se ejecuta solo al montar el componente y no cuando se actualiza la dependencia, que podría ser [nuevosDatos] en este caso, porque cuando se actualiza la base de datos, vuelve a hacer la llamada a la API      
        return (
          <div>
@@ -718,11 +718,11 @@
      ```
      
      Ten en cuenta que `cada vez que creamos un código que al desmontarse pudiera seguir funcionando, tenemos que acordarnos de limpiar o parar el código después de que se desmonte` rigurosamente, porque puede provocar varios conflictos y errores. `Y recordémonos que cada vez que retornamos algo al interno de un hook, debe ser devuelto a través de una función` también.
-       
+     
    - **useContext hook**:
-   
+     
      `useContext` te permite acceder al valor del contexto que ha sido proporcionado por un proveedor de contexto superior en jerarquía.
-
+     
      Sintaxis:
      
      ```jsx
@@ -731,24 +731,24 @@
      // Primera letra mayúscula en esta variable siempre
      const Context = React.createContext()
      ```
-
+     
      - `Creación del contexto`:
        
        Antes de utilizar useContext, primero necesitas crear un contexto. Esto se hace utilizando la función `createContext`, que toma un valor por defecto que se utilizará si no hay ningún proveedor de contexto superior. Este valor es opcional y se utiliza principalmente para facilitar el desarrollo.
-
+       
      - `Proveedor de Contexto`:
      
        A continuación, necesitas proporcionar un contexto utilizando el componente `Provider` que se deriva del contexto que has creado. `value` es la información que deseas compartir con todos los componentes hijos dentro de este proveedor de contexto.
-       
+        
      - `Acceso al Contexto`:
-     
+       
        Finalmente, en cualquier componente funcional dentro del árbol de componentes, puedes utilizar 
        el hook `useContext` para acceder al valor del contexto. Ahora `valorDelContexto` contiene el valor proporcionado por el proveedor de contexto más cercano en la jerarquía.
 
        Para tener acceso al contexto dentro de un componente de clase, deberías utilizar `.Consumer` dentro del método `render` o en el cuerpo del componente.
-
+       
      Ejemplo:
-
+     
      ```jsx
      import React {useContext} from 'react';
      
@@ -769,7 +769,7 @@
      ```
      
    - **useRef hook**:
-   
+     
      `useRef` te permite crear un objeto mutable que persiste durante todo el ciclo de vida del componente. Esto significa que puedes mantener valores entre renderizaciones sin que provoquen una nueva renderización cuando se actualizan. La mayoría de las veces se utiliza para contener un nodo del DOM.
 
      Se utiliza para crear referencias a elementos del DOM o para mantener valores mutables que no provocarán una nueva renderización cuando cambien. Esto puede ser útil para interactuar con elementos del DOM, como obtener su valor actual o enfocar un input.
