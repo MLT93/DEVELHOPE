@@ -60,24 +60,30 @@ export function App() {
 
 const Hello = () => {
   return (
-    <h2>
-      Hello, World!
-      <hr />
-      <Message />
-    </h2>
+    <div style={{ padding: "20px" }}>
+      <h2>
+        Hello, World!
+        <hr />
+        <Message />
+      </h2>
+    </div>
   );
 };
 
 const Message = () => {
-  return <p>What a beautiful day!</p>;
+  return (
+    <div style={{ padding: "20px" }}>
+      <p>What a beautiful day!</p>
+    </div>
+  );
 };
 
 const Welcome = ({ name, age }) => {
   return (
-    <>
+    <div style={{ padding: "20px" }}>
       <p>Welcome, {name}</p>
       <Age age={age && age} />
-    </>
+    </div>
   );
 };
 
@@ -96,9 +102,11 @@ function handleClick() {
 }
 const AlertClock = ({ handleClick }) => {
   return (
-    <p>
-      <button onClick={handleClick}>See current Date</button>
-    </p>
+    <div style={{ padding: "20px" }}>
+      <p>
+        <button onClick={handleClick}>See current Date</button>
+      </p>
+    </div>
   );
 };
 
@@ -144,7 +152,7 @@ const Counter = ({ initialValue, incrementAmount, decrementAmount }) => {
   }, []);
 
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
       <CounterDisplay counter={counter} />
       <button onClick={amount}>Amount Counter by {incrementAmount}</button>
       <button onClick={decrement}>
@@ -175,9 +183,11 @@ const CounterDisplay = ({ counter }) => {
   }, [counter]);
 
   return (
-    <h2 ref={prevCounterRef} id="current-value">
-      Counter =&gt; {counter}
-    </h2>
+    <div style={{ padding: "20px" }}>
+      <h2 ref={prevCounterRef} id="current-value">
+        Counter =&gt; {counter}
+      </h2>
+    </div>
   );
 };
 
@@ -203,7 +213,7 @@ const Clock = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
       <h2>{currentTimeFormatted}</h2>
     </div>
   );
@@ -214,17 +224,19 @@ const MouseClicker = () => {
   const handleClickImg = (event) => console.log(event.src);
 
   return (
-    <button name="one" style={{ color: "red" }} onClick={handleClickButton}>
-      <img
-        style={{ width: "150px", height: "auto" }}
-        name="image"
-        src="https://www.rionegro.com.ar/wp-content/uploads/2022/07/EMPANADAS-CRIOLLAS-VA1.jpg?w=920&h=517&crop=1"
-        alt="image"
-        onClick={handleClickImg}></img>
-      {/* Para impedir que se imprima el nombre del botón cuando se hace click en la imagen, hay que utilizar el `.target` porque cuando se ejecuta `click`, te da acceso al elemento específico que fue clickeado y no al nodo raíz donde se implementa el código `handleEvent` */}
-      <hr />
-      Click Me
-    </button>
+    <div style={{ padding: "20px" }}>
+      <button name="one" style={{ color: "red" }} onClick={handleClickButton}>
+        <img
+          style={{ width: "150px", height: "auto" }}
+          name="image"
+          src="https://www.rionegro.com.ar/wp-content/uploads/2022/07/EMPANADAS-CRIOLLAS-VA1.jpg?w=920&h=517&crop=1"
+          alt="image"
+          onClick={handleClickImg}></img>
+        {/* Para impedir que se imprima el nombre del botón cuando se hace click en la imagen, hay que utilizar el `.target` porque cuando se ejecuta `click`, te da acceso al elemento específico que fue clickeado y no al nodo raíz donde se implementa el código `handleEvent` */}
+        <hr />
+        Click Me
+      </button>
+    </div>
   );
 };
 
@@ -232,24 +244,26 @@ const MultiButton = () => {
   const handleClickMultiButton = (event) => console.log(event.target.name);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexFlow: "row wrap",
-        justifyContent: "center",
-        gap: "10px",
-        padding: "20px",
-        backgroundColor: "lightgray",
-      }}>
-      <button onClick={handleClickMultiButton} name="one">
-        One
-      </button>
-      <button onClick={handleClickMultiButton} name="two">
-        Two
-      </button>
-      <button onClick={handleClickMultiButton} name="three">
-        Three
-      </button>
+    <div style={{ padding: "20px" }}>
+      <div
+        style={{
+          display: "flex",
+          flexFlow: "row wrap",
+          justifyContent: "center",
+          gap: "10px",
+          padding: "20px",
+          backgroundColor: "lightgray",
+        }}>
+        <button onClick={handleClickMultiButton} name="one">
+          One
+        </button>
+        <button onClick={handleClickMultiButton} name="two">
+          Two
+        </button>
+        <button onClick={handleClickMultiButton} name="three">
+          Three
+        </button>
+      </div>
     </div>
   );
 };
@@ -273,6 +287,7 @@ const InteractiveWelcome = () => {
         flexFlow: "column wrap",
         alignItems: "flex-start",
         gap: "10px",
+        padding: "24px",
       }}>
       <label htmlFor="01-name">Section of Name</label>
       <input
@@ -289,7 +304,7 @@ const InteractiveWelcome = () => {
 
 function OnLogin() {
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
       <h2>Controlled-Form of log in session</h2>
       <Login onLogin={OnLogin} />
     </div>
@@ -348,6 +363,7 @@ const Login = ({ onLogin }) => {
         flexFlow: "column wrap",
         alignItems: "flex-start",
         gap: "15px",
+        padding: "24px",
       }}>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <label htmlFor="01-login">Username:</label>
@@ -443,7 +459,7 @@ const UncontrolledLogin = () => {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={handleFormSubmit} style={{ padding: "20px" }}>
       <h2>Uncontrolled-Form of log in session</h2>
       <input id="01" name="userID" type="text"></input>
       <input id="02" name="passID" type="password"></input>
@@ -475,14 +491,14 @@ const FocusableInput = () => {
   }, []);
 
   return (
-    <>
+    <div style={{ padding: "20px" }}>
       <h2>Input Focus Ref</h2>
       <input
         ref={inputFocusRef}
         name="username"
         type="text"
         placeholder="Name"></input>
-    </>
+    </div>
   );
 };
 
@@ -534,80 +550,90 @@ export const Color = ({ id, name, color }) => {
 
 const ArrayComponent = ({ array }) => {
   return (
-    <ul>
-      {array &&
-        array.map((card) => {
-          return (
-            <Colors
-              id={card.id}
-              key={card.id}
-              name={card.name}
-              color={card.bgColor}
-            />
-          );
-        })}
-    </ul>
+    <div style={{ padding: "20px" }}>
+      <ul>
+        {array &&
+          array.map((card) => {
+            return (
+              <Colors
+                id={card.id}
+                key={card.id}
+                name={card.name}
+                color={card.bgColor}
+              />
+            );
+          })}
+      </ul>
+    </div>
   );
 };
 
 const ArrComponent = ({ arr }) => {
   return (
-    <ul>
-      {arr &&
-        arr.map((element, index) => {
-          return (
-            <li id={element.id} key={index}>
-              {element.name}
-            </li>
-          );
-        })}
-    </ul>
+    <div style={{ padding: "20px" }}>
+      <ul>
+        {arr &&
+          arr.map((element, index) => {
+            return (
+              <li id={element.id} key={index}>
+                {element.name}
+              </li>
+            );
+          })}
+      </ul>
+    </div>
   );
 };
 
 const Card = ({ username, id, name, lastName, avatar }) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexFlow: "column wrap",
-        justifyContent: "flex-start",
-        alignItems: "center",
-        textAlign: "center",
-        border: "1.5px solid black",
-        borderRadius: "10px",
-        backgroundColor: "lightgrey",
-        overflow: "hidden",
-        width: "290px",
-        height: "auto",
-        padding: "5px",
-        color: "black",
-      }}>
+    <div style={{ padding: "20px" }}>
       <div
-        style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
-        <span>{`${id}`}</span>
-      </div>
-      <h2 style={{ margin: "10px" }}>{`# ${username}`} </h2>
-      <img
-        src={`${avatar}`}
-        alt="User avatar"
         style={{
+          display: "flex",
+          flexFlow: "column wrap",
+          justifyContent: "flex-start",
+          alignItems: "center",
+          textAlign: "center",
           border: "1.5px solid black",
           borderRadius: "10px",
-          width: "95%",
-          height: "230px",
-        }}
-      />
-      <h4
-        style={{
-          whiteSpace: "pre-line",
-          marginTop: "5px",
-        }}>{`${name} ${lastName}
-      
-      Is the best student
-      
-      Increment his superpower
-      up tu 5 points every Empanada ate`}</h4>
+          backgroundColor: "lightgrey",
+          overflow: "hidden",
+          width: "290px",
+          height: "auto",
+          padding: "5px",
+          color: "black",
+        }}>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "flex-end",
+          }}>
+          <span>{`${id}`}</span>
+        </div>
+        <h2 style={{ margin: "10px" }}>{`# ${username}`} </h2>
+        <img
+          src={`${avatar}`}
+          alt="User avatar"
+          style={{
+            border: "1.5px solid black",
+            borderRadius: "10px",
+            width: "95%",
+            height: "230px",
+          }}
+        />
+        <h4
+          style={{
+            whiteSpace: "pre-line",
+            marginTop: "5px",
+          }}>{`${name} ${lastName}
+        
+        Is the best student
+        
+        Increment his superpower
+        up tu 5 points every Empanada ate`}</h4>
+      </div>
     </div>
   );
 };
@@ -653,41 +679,43 @@ const MyToDoComponent = ({ arr }) => {
   };
 
   return (
-    <ul
-      style={{
-        display: "flex",
-        flexFlow: "column wrap",
-        justifyContent: "space-around",
-        alignItems: "flex-start",
-        width: "100%",
-        whiteSpace: "pre-line",
-        gap: "25px",
-      }}>
-      {arr &&
-        arr.map((element, index) => {
-          return (
-            <div key={index}>
-              <li
-                id={element.id}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  height: "auto",
-                  gap: "10px",
-                }}>
-                {`ID => ${element.id}
+    <div style={{ padding: "20px" }}>
+      <ul
+        style={{
+          display: "flex",
+          flexFlow: "column wrap",
+          justifyContent: "space-around",
+          alignItems: "flex-start",
+          width: "100%",
+          whiteSpace: "pre-line",
+          gap: "25px",
+        }}>
+        {arr &&
+          arr.map((element, index) => {
+            return (
+              <div key={index}>
+                <li
+                  id={element.id}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    height: "auto",
+                    gap: "10px",
+                  }}>
+                  {`ID => ${element.id}
                 Task => ${element.task}
                 Is completed? => ${element.completed}`}
-                <div style={{ display: "flex", gap: "5px" }}>
-                  <input type="text" onChange={handleInputChange} />
-                  <button type="submit" onClick={handleClickTask}>
-                    Add Task
-                  </button>
-                </div>
-              </li>
-            </div>
-          );
-        })}
-    </ul>
+                  <div style={{ display: "flex", gap: "5px" }}>
+                    <input type="text" onChange={handleInputChange} />
+                    <button type="submit" onClick={handleClickTask}>
+                      Add Task
+                    </button>
+                  </div>
+                </li>
+              </div>
+            );
+          })}
+      </ul>
+    </div>
   );
 };

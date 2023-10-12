@@ -68,7 +68,7 @@ export const Prueba = () => {
   }, [urlFact, urlImage]);
 
   return (
-    <main>
+    <main style={{padding: '20px'}}>
       <div
         style={{
           display: "flex",
