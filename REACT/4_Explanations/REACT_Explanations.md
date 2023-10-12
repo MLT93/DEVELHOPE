@@ -609,7 +609,7 @@
 
      Recuerda que `useState es Asíncrono`.
      
-     Se utiliza para agregar estado a tus componentes funcionales. Puedes usarlo cuando necesitas mantener y actualizar un valor en el componente a lo largo del tiempo. Por ejemplo, si necesitas almacenar el estado de un input o el estado de un modal.
+     Se utiliza para agregar estado a tus componentes funcionales. Puedes usarlo cuando necesitas mantener y actualizar un valor en el componente a lo largo del tiempo. Es una variable que puede cambiar su valor a través través de su función, según la necesidad. Por ejemplo, si necesitas almacenar el estado de un input o el estado de un modal.
      
      Sintaxis:
      
@@ -661,24 +661,38 @@
 
      Recuerda que las funciones de `useEffect` deben ser funciones normales, `no pueden ser asíncronas`.
      
-     Este hook te permite llevar a cabo efectos secundarios en tu componente. Esto puede ser útil para realizar acciones como la suscripción a eventos, la carga de datos desde una API, o actualizar el DOM después de que el componente ha renderizado. Se ejecuta después de cada renderización.
+     Este hook te permite llevar a cabo efectos secundarios en tu componente. Esto puede ser útil para realizar acciones como la suscripción a eventos, la carga de datos desde una API o actualizar el DOM después de que el componente se ha renderizado.
+     
+     - Memoriza que ejecuta siempre después de cada `Mount` del componente (cada vez que se monta).
+
+     - Ten en cuenta que cada vez que creamos código que al desmontarse pudiera seguir funcionando, tenemos que acordarnos rigurosamente de limpiar o parar el código después de que se desmonte el componente, porque puede provocar varios conflictos y errores. Esto lo conseguimos retornando una función al interno del hook useEffect, porque esa función ejecutará sólo y unicamente después del `Unmount` del componente (cuando se desmonta).
+
+     - Si deseamos simplemente ejecutar un `Update` (actualización del componente) dependiendo de los cambios que puedan ocurrir en base a las actualizaciones de estado (useState), peticiones HTTP con API, la escucha de eventos externos (eventos del navegador o del sistema utilizando los addEventListener y removeEventListener dentro del useEffect), operaciones de limpieza, la manipulación del DOM, escribir algo en una base de datos o modificar una variable global, deberemos utilizar obligatoriamente las `dependencias`.
      
      Sintaxis:
      
      ```jsx
      import React, { useEffect } from 'react';
      
-     useEffect(() => {
-       // Código que se acciona cuando cambia una dependencia o cuando ocurre algo
-       // Como mínimo se va a ejecutar una vez, al montar el componente
-     }, [dependencias]);
+       const PruebaUseEffect = () => {
+
+        console.log("Esto se imprime cada vez que el componente se renderiza.")
+
+       useEffect(() => {
+         // Código que se acciona cuando cambia una dependencia o siempre que el componente se renderiza si no tiene array
+         // Como mínimo se va a ejecutar una vez, al montar el componente
+
+         console.log("Esto se imprime dependiendo de las dependencias, una sola vez si el array de dependencias está vacío (al montar el componente) o cada vez que el componente se renderiza si no tiene array. ")
+
+       }, [dependencias])
+     };
      ```
      
      - `Primer argumento de useEffect`:
      
        El primer argumento de useEffect es una `arrow function` (callback). Contiene el código del efecto secundario que quieres que se ejecute cuando el componente se monte o cuando ciertas dependencias cambian.
 
-       Recuerda que para hacer un `efecto Unmount`, debes retornar una función al interno del useEffect. Esta función se ejecutará cuando el componente se desmonta.
+       Recuerda que para hacer un `efecto Unmount`, debes retornar una función al interno del useEffect. Esta función se ejecutará cuando el componente se desmonta. Sirve para limpiar código, como cancelar suscripciones o liberar recursos (como la llamada a una API)
        
      - `Segundo argumento de useEffect`:
      
@@ -709,10 +723,10 @@
            setDatos(nuevosDatos);
          }, 2000);
          
-         // efecto Unmount, para eliminar la repetición del código una vez que se desmonte el componente
+         // efecto `Unmount`, para eliminar la repetición del código una vez que se desmonte el componente
          return () => clearInterval(intervalId)
          
-       }, []); // El segundo argumento (Array vacío []) indica que este efecto se ejecuta solo al montar el componente y no cuando se actualiza la dependencia, que podría ser [nuevosDatos] en este caso, porque cuando se actualiza la base de datos, vuelve a hacer la llamada a la API      
+       }, []); // El segundo argumento (Array vacío []) indica que este efecto se ejecuta solo al montar el componente porque no tiene dependencias. En este caso no sería necesario tenerlas, porque si las tuviera volvería a ejecutar la llamada a la API continuamente al modificarse las dependencias, cosa innecesaria. 
        return (
          <div>
            <h2>Datos:</h2>
@@ -727,8 +741,6 @@
      
      export default EjemploComponente;
      ```
-     
-     Ten en cuenta que `cada vez que creamos un código que al desmontarse pudiera seguir funcionando, tenemos que acordarnos de limpiar o parar el código después de que se desmonte` rigurosamente, porque puede provocar varios conflictos y errores. `Y recordémonos que cada vez que retornamos algo al interno de un hook, debe ser devuelto a través de una función` también.
      
    - **useContext hook**:
      
