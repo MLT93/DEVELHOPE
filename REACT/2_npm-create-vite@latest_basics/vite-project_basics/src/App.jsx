@@ -154,11 +154,13 @@ const Counter = ({ initialValue, incrementAmount, decrementAmount }) => {
   return (
     <div style={{ padding: "20px" }}>
       <CounterDisplay counter={counter} />
-      <button onClick={amount}>Amount Counter by {incrementAmount}</button>
-      <button onClick={decrement}>
-        Decrement Counter by {decrementAmount}
-      </button>
-      <button onClick={reset}>Reset Counter</button>
+      <div style={{ display: "flex", gap: "5px" }}>
+        <button onClick={amount}>Amount Counter by {incrementAmount}</button>
+        <button onClick={decrement}>
+          Decrement Counter by {decrementAmount}
+        </button>
+        <button onClick={reset}>Reset Counter</button>
+      </div>
     </div>
   );
 };
@@ -461,11 +463,13 @@ const UncontrolledLogin = () => {
   return (
     <form onSubmit={handleFormSubmit} style={{ padding: "20px" }}>
       <h2>Uncontrolled-Form of log in session</h2>
-      <input id="01" name="userID" type="text"></input>
-      <input id="02" name="passID" type="password"></input>
-      <input name="session" type="checkbox"></input>
-      <button type="submit">Login</button>
-      <button type="reset">Reset</button>
+      <div style={{ display: "flex", gap: "5px" }}>
+        <input id="01" name="userID" type="text"></input>
+        <input id="02" name="passID" type="password"></input>
+        <input name="session" type="checkbox"></input>
+        <button type="submit">Login</button>
+        <button type="reset">Reset</button>
+      </div>
     </form>
   );
 };
@@ -522,7 +526,7 @@ const users = [
   {
     id: "02",
     name: "Mary",
-    bgColor: "yellow",
+    bgColor: "#ab4100",
   },
   {
     id: "03",
@@ -532,7 +536,7 @@ const users = [
   {
     id: "04",
     name: "Berry",
-    bgColor: "lightgray",
+    bgColor: "gray",
   },
 ];
 
