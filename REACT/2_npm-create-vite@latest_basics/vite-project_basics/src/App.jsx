@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect, useRef } from "react";
-import { Prueba } from "./prueba-tecnica/Prueba-tecnica";
+import { TresEnRaya } from "./components/TresEnRaya/TresEnRaya.jsx";
+import { Prueba } from "./components/prueba-tecnica/Prueba-tecnica.jsx";
 
 export function App() {
   return (
@@ -50,6 +51,8 @@ export function App() {
         <MyToDoComponent arr={toDoList} />
         <hr />
         <Prueba />
+        <hr />
+        <TresEnRaya />
       </div>
     </div>
   );
@@ -578,6 +581,7 @@ const Card = ({ username, id, name, lastName, avatar }) => {
         width: "290px",
         height: "auto",
         padding: "5px",
+        color: "black",
       }}>
       <div
         style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>

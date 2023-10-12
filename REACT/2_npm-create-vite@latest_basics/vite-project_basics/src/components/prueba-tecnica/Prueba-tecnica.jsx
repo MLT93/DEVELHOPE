@@ -80,6 +80,7 @@ export const Prueba = () => {
           borderRadius: "10px",
           padding: "10px",
           backgroundColor: 'lightcyan',
+          color: "black",
         }}>
         <img
           src={imageState}
