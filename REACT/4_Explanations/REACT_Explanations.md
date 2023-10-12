@@ -461,7 +461,7 @@
 
    Las propiedades (`props`) son la forma en que los componentes de React pueden recibir datos de su componente padre. Estas se pasan como atributos al componente y se acceden como argumentos de la función del componente.
    Las Props en React son de solo lectura. No se deben modificar en el componente hijo. Si necesitas un valor que pueda cambiar, debe manejarse mediante el estado del componente.
-
+   
    ```jsx
    function Saludo(props) {
      return <div>Hola, {props.nombre}</div>;
