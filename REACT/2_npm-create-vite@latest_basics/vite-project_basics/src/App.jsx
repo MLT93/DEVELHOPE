@@ -668,17 +668,20 @@ const toDoList = [
 const MyToDoComponent = ({ arr }) => {
   const [task, setNewTask] = useState("");
 
+  // Recibe el valor del <input> y lo guarda en `task` una vez que acaba de escribir el usuario
   const handleInputChange = (event) => {
     console.log(event.target.value);
 
     setNewTask(event.target.value);
   };
 
-  const handleClickTask = (e) => {
+  // Cuando mapea, recibe el índice del array y crea otro array nuevo con los valores actualizados
+  const newIndex = arr.length;
+  const newArr = [...arr, { id: newIndex, task: task, completed: false }];
+
+  const handleClickNewTask = (e) => {
     console.log(task);
 
-    const newIndex = arr.length;
-    const newArr = [...arr, { id: newIndex, task: task, completed: false }];
     task.trim() !== "" ? console.log(newArr) : null;
 
     if (document) {
@@ -686,6 +689,13 @@ const MyToDoComponent = ({ arr }) => {
 
       e.target = resetInput;
     }
+  };
+
+  const handleResetArray = (e) => {
+    task.trim() !== "" ? console.log(newArr) : null;
+
+    // .splice(indexStart, ItemDelete, ItemAdd)
+    e.target = newArr.splice(0, 4);
   };
 
   return (
@@ -721,8 +731,11 @@ const MyToDoComponent = ({ arr }) => {
                       type="text"
                       onChange={handleInputChange}
                     />
-                    <button type="submit" onClick={handleClickTask}>
+                    <button type="submit" onClick={handleClickNewTask}>
                       Add Task
+                    </button>
+                    <button type="submit" onClick={handleResetArray}>
+                      Reset Array
                     </button>
                   </div>
                 </li>
