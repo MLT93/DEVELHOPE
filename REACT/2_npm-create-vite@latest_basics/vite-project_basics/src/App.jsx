@@ -674,12 +674,18 @@ const MyToDoComponent = ({ arr }) => {
     setNewTask(event.target.value);
   };
 
-  const handleClickTask = () => {
+  const handleClickTask = (e) => {
     console.log(task);
 
     const newIndex = arr.length;
     const newArr = [...arr, { id: newIndex, task: task, completed: false }];
     task.trim() !== "" ? console.log(newArr) : null;
+
+    if (document) {
+      const resetInput = (document.getElementById("input-task").value = "");
+
+      e.target = resetInput;
+    }
   };
 
   return (
@@ -710,7 +716,11 @@ const MyToDoComponent = ({ arr }) => {
                 Task => ${element.task}
                 Is completed? => ${element.completed}`}
                   <div style={{ display: "flex", gap: "5px" }}>
-                    <input type="text" onChange={handleInputChange} />
+                    <input
+                      id="input-task"
+                      type="text"
+                      onChange={handleInputChange}
+                    />
                     <button type="submit" onClick={handleClickTask}>
                       Add Task
                     </button>
