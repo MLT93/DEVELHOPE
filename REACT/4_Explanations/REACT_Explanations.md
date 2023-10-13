@@ -605,11 +605,13 @@
    
    - **useState hook**:
    
-     `useState` permite añadir o modificar un estado a un componente y renderizarlo posteriormente a la página. Comienza con una "destructuración" de array donde el primer elemento es el estado que queremos modificar (tenemos la posibilidad de asignarle un valor inicial también) y el segundo es una función para poder modificar ese elemento inicial. Posteriormente la función useState tiene un argumento, que será el valor inicial de nuestro primer elemento de la "destructuración".
+     `useState` permite añadir o modificar un estado a un componente y renderizarlo posteriormente a la página. Comienza con una "destructuración" de array donde el primer elemento es el estado (la variable) que queremos modificar y el segundo es una función para poder modificar ese estado/variable. Posteriormente la función `useState` tiene un argumento, que será el valor inicial de nuestro primer elemento en la "destructuración", o sea, la variable.
 
      Recuerda que `useState es Asíncrono`.
      
-     Se utiliza para agregar estado a tus componentes funcionales. Puedes usarlo cuando necesitas mantener y actualizar un valor en el componente a lo largo del tiempo. Es una variable que puede cambiar su valor a través través de su función, según la necesidad. Por ejemplo, si necesitas almacenar el estado de un input o el estado de un modal.
+     Puedes usarlo cuando necesitas mantener y/o actualizar un valor en el componente a lo largo del tiempo. Es una variable que puede modificar su valor a través de su función, según la necesidad. Por ejemplo, si necesitas almacenar el estado de un input o el estado de un modal.
+
+     Posee una convención, y es aplicar el mismo nombre de la variable (ej. `estado`), al modificador del estado, con la palabra `set` al inicio (ej. `setEstado`).
      
      Sintaxis:
      
@@ -625,9 +627,9 @@
      
      - `setState`:
      
-       Es una función que te permite actualizar la variable del estado. Esta función toma un argumento que será el nuevo valor del estado, y este argumento puede ser de dos tipos:
+       Es una función que te permite actualizar la variable del estado. Esta función toma un argumento, que será el nuevo valor del estado. Este argumento puede ser de dos tipos:
        
-       - `Estado + modificaciones` representan los nuevos valores asignados directamente al estado.
+       - `Estado + modificaciones` representa el valor inicial de la variable y las modificaciones son los nuevos valores asignados directamente al estado/variable.
        
        - `Callback` representa una arrow-function que devuelve el estado modificado (`aconsejo usar esta siempre`).
        
@@ -639,13 +641,13 @@
        import React, { useState } from 'react';
        
        function Contador() {
-         // El contador empieza desde el número 0
+         // la variable `contador` empieza desde el número 0
          const [contador, setContador] = useState(0);
        
          return (
            <div>
              <p>Contador: {contador}</p>
-             // Cambio del valor del estado (contador) con setContador
+             // Cambio del valor del estado `contador` con `setContador`
              <button onClick={() => setContador(contador + 1)}>Incrementar</button> // cambio directo al estado "contador"
              <button onClick={() => setContador((c) => c - 1)}>Decrementar</button> // cambio con callback
            </div>
