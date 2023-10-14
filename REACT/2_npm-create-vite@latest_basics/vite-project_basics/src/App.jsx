@@ -357,6 +357,18 @@ const Login = ({ onLogin }) => {
     inputRef.current?.focus();
   }, []);
 
+  var buttonLogin = document.getElementById("04-login");
+
+  const { password } = nameData;
+
+  if (password) {
+    if (password.length < 8) {
+      buttonLogin.style.backgroundColor = "#f30000ba";
+    } else {
+      buttonLogin.style.backgroundColor = "green";
+    }
+  }
+
   return (
     <form
       onSubmit={handleSendData}
@@ -417,14 +429,29 @@ const Login = ({ onLogin }) => {
           name="send-data"
           type="submit"
           onClick={handleSendData}
-          disabled={isDisabled}>
-          Submit
+          disabled={isDisabled}
+          style={{
+            color: "white",
+            backgroundColor: "#f30000ba",
+            padding: "5px",
+            borderRadius: "5px",
+            border: "0",
+            boxShadow: "0px -1px 0px 0px inset lightgray",
+          }}>
+          Login
         </button>
         <button
           id="05-login"
           name="send-data"
           type="reset"
-          onClick={handleResetForm}>
+          onClick={handleResetForm}
+          style={{
+            color: "white",
+            padding: "5px",
+            borderRadius: "5px",
+            border: "0",
+            boxShadow: "0px -1px 0px 0px inset lightgray",
+          }}>
           Reset
         </button>
       </div>
