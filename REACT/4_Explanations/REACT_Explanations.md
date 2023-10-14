@@ -2717,24 +2717,26 @@
    
 7. #### `Instalar Paquete Tailwind y SASS con YARN`:
    
-   `Yarn` fue desarrollado por Facebook y luego se convirtió en un proyecto de código abierto mantenido por la comunidad.
+   - **Introducción de Yarn**:
 
-   Instala las dependencias en paralelo, lo que significa mayor velocidad con respecto a `NPM`.
-
-   Incluye un comando para revisar y solucionar problemas de seguridad:
-
-   ```bash
-   yarn audit
-   ```
-
-   Utiliza un archivo `yarn.lock` para rastrear las versiones exactas de las dependencias instaladas.
-
-   Al no estar integrado directamente, hay que instalarlo globalmente a través de este comando:
-
-   ```bash
-   npm install --global yarn
-   ```
-
+     `Yarn` fue desarrollado por Facebook y luego se convirtió en un proyecto de código abierto mantenido por la comunidad.
+   
+     Instala las dependencias en paralelo, lo que significa mayor velocidad con respecto a `NPM`.
+  
+     Incluye un comando para revisar y solucionar problemas de seguridad:
+     
+     ```bash
+     yarn audit
+     ```
+     
+     Utiliza un archivo `yarn.lock` para rastrear las versiones exactas de las dependencias instaladas.
+  
+     Al no estar integrado directamente, hay que instalarlo globalmente a través de este comando:
+   
+     ```bash
+     npm install --global yarn
+     ```
+     
    - **Inicia un nuevo proyecto con Yarn (si no lo has hecho ya)**:
 
      Si no tienes un proyecto existente, crea uno nuevo ejecutando el siguiente comando en tu terminal:
@@ -2859,16 +2861,18 @@
 
 8. #### `Instalar Paquete Tailwind y SASS con NPM`:
 
-   `NPM` fue el primer gestor de paquetes ampliamente utilizado en el ecosistema `Node.js`.
-   Viene preinstalado con Node.js y no es necesario instalarlo por separado.
+   - **Introducción de NPM**:
    
-   Incluye un comando que permite a los desarrolladores revisar y solucionar problemas de seguridad en las dependencias:
-
-   ```bash 
-   npm audit
-   ```
-
-   También utiliza un archivo `package-lock.json`  para mantener un registro preciso de las versiones exactas de las dependencias instaladas.
+     `NPM` fue el primer gestor de paquetes ampliamente utilizado en el ecosistema `Node.js`.
+     Viene preinstalado con Node.js y no es necesario instalarlo por separado.
+     
+     Incluye un comando que permite a los desarrolladores revisar y solucionar problemas de seguridad en las dependencias:
+  
+     ```bash 
+     npm audit
+     ```
+  
+     También utiliza un archivo `package-lock.json`  para mantener un registro preciso de las versiones exactas de las dependencias instaladas.
 
    - **Inicia un nuevo proyecto con npm (si no lo has hecho ya)**:
 
