@@ -152,7 +152,7 @@ const Counter = ({ initialValue, incrementAmount, decrementAmount }) => {
   }, []);
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "20px", color: "lightskyblue" }}>
       <CounterDisplay counter={counter} />
       <div style={{ display: "flex", gap: "5px" }}>
         <button onClick={amount}>Amount Counter by {incrementAmount}</button>
