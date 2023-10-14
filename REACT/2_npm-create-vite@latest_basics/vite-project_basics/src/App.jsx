@@ -695,7 +695,7 @@ const MyToDoComponent = ({ arr }) => {
     task.trim() !== "" ? console.log(newArr) : null;
 
     // .splice(indexStart, AmountItemsDelete, ItemAdd)
-    e.target = newArr.splice(0, newArr.length);
+    e.target = newArr.splice(newArr.length -1, newArr.length);
   };
 
   return (
