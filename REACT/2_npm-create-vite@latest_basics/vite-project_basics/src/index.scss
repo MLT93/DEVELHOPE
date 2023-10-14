@@ -1,0 +1,16 @@
+.welcome {
+  border: 1px solid white;
+  background-color: coral;
+}
+
+.clock {
+  padding: 20px;
+  color: #77c90c;
+
+  &:hover {
+    filter: drop-shadow(0 0 0.5rem #30c254);
+    -webkit-filter: drop-shadow(0 0 0.5rem #30c254);
+    color: #ffffffde;
+    cursor: pointer;
+  }
+}

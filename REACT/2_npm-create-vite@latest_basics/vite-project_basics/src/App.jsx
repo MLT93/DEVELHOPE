@@ -215,7 +215,7 @@ const Clock = () => {
   }, []);
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="clock">
       <h2>{currentTimeFormatted}</h2>
     </div>
   );
