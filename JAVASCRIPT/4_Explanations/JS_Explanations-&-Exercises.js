@@ -733,7 +733,7 @@ console.log(
 
 
 
-// El método .splice(indice de inicio(inclusive), elementos a eliminar, item a añadir) permite modificar el contenido de un array eliminando, reemplazando o agregando elementos. Acepta varios argumentos. Puedes utilizarlo para quitar una parte del array especificando el índice de inicio (inclusive) y la cantidad de elementos a eliminar en elementos a eliminar.
+// El método .splice(indice de inicio(inclusive), cantidad de elementos a eliminar, item a añadir) permite modificar el contenido de un array eliminando, reemplazando o agregando elementos. Acepta varios argumentos. Puedes utilizarlo para quitar una parte del array especificando el índice de inicio (inclusive) y la cantidad de elementos a eliminar en elementos a eliminar.
 let numbers2 = [1, 2, 3, 4, 5, 11, 12, 22, 0.7];
 
 console.log(

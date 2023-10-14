@@ -16,7 +16,7 @@
 
      Enfoque Imperativo:
 
-     ```javascript
+     ```jsx
      let numeros = [1, 2, 3, 4];
      let cuadrados = [];
 
@@ -31,7 +31,7 @@
 
      Enfoque Declarativo:
 
-     ```javascript
+     ```jsx
      let numeros = [1, 2, 3, 4];
      let cuadrados = numeros.map((numero) => numero * numero);
 
@@ -62,7 +62,7 @@
 
      Ejemplo de función de orden superior:
 
-     ```javascript
+     ```jsx
      function aplicarOperacion(num, operacion) {
        return operacion(num);
      }
@@ -81,7 +81,7 @@
 
      Ejemplo de función anónima:
 
-     ```javascript
+     ```jsx
      let cuadrado = function (x) {
        return x * x;
      };
@@ -95,7 +95,7 @@
 
      Ejemplo de función flecha:
 
-     ```javascript
+     ```jsx
      let cuadrado = (x) => x * x;
 
      let resultado = cuadrado(4); // resultado = 16
@@ -107,7 +107,7 @@
 
      Ejemplo de closure:
 
-     ```javascript
+     ```jsx
      function crearContador() {
        let contador = 0;
        return function () {
@@ -127,7 +127,7 @@
 
      Ejemplo de función recursiva:
 
-     ```javascript
+     ```jsx
      function factorial(n) {
        if (n <= 1) {
          return 1;
@@ -2493,7 +2493,7 @@
 
    Ambas bibliotecas proporcionan herramientas poderosas para el manejo de formularios en React y permiten un desarrollo más eficiente y organizado. La elección entre Formik y React Hook Form dependerá de las necesidades específicas de tu proyecto y de tu preferencia personal.
 
-## React - RENDERIZACIÓN DE LISTAS y Funciones Relacionadas en JavaScript: Una Explicación Detallada
+## Renderización de Listas (Arrays) y Funciones Relacionadas en React: Una Explicación Detallada
 
 1. #### **`Introducción a la Renderización de Listas en React`**:
 
@@ -2595,3 +2595,439 @@
 7. #### **`Conclusiones`**:
 
    La renderización de listas y las funciones relacionadas son conceptos fundamentales en React y JavaScript en general. Comprender cómo trabajar con arreglos y cómo aplicar funciones en ellos es esencial para construir aplicaciones eficientes y dinámicas. El uso adecuado de keys y la optimización de la lógica de renderizado son aspectos clave para lograr un rendimiento óptimo.
+
+## Styling Components, CSS Modules y Funciones Relacionadas en React: Una Explicación Detallada
+
+1. #### `Introducción a Styling Components en React`:
+
+   Styling Components en React se refiere a las técnicas y enfoques utilizados para aplicar estilos visuales a los componentes de una aplicación React. Tradicionalmente, esto se hacía mediante CSS (Cascading Style Sheets), pero con la popularización de React, han surgido diferentes formas de manejar estilos.
+
+2. #### `CSS en React`:
+
+   **Estilos en línea (Inline Styles)**:
+
+   Permite aplicar estilos directamente en el elemento usando un objeto de JavaScript.
+
+   ```jsx
+   <div style={{ color: 'blue', fontSize: '16px' }}>Texto con estilo</div>
+   ```
+
+   **Usar clases CSS tradicionales**:
+
+   Se puede usar CSS o SCSS de la misma manera que en una aplicación web tradicional, aplicando nombres de clase a los componentes y/o elementos JSX.
+
+   El nombre del atributo `class` viene cambiado por `className` dado que el primero es una palabra reservada en JavaScript para la Programación Orientada a Objetos (POO), y no se puede utiliza en JSX para asignarle `styles` porque podría crear conflictos y confusiones.
+
+   ```jsx
+   <div className="mi-clase-css">Texto con estilo</div>
+   ```
+
+3. #### `CSS Modules en React`:
+
+   Los CSS Modules son una forma de modularizar los estilos en React. Permiten encapsular los estilos de un componente para evitar conflictos con otros estilos en la aplicación.
+
+   Sintaxis:
+
+   Los archivos de estilos tienen una extensión específica, como `.module.css` o `module.scss`.
+
+   Los nombres de clase en estos archivos están focalizados al componente o elemento de React.
+
+   ```jsx
+   // Dentro del archivo MiComponente.module.css
+   .miEstilo {
+     color: blue;
+     font-size: 16px;
+   }
+   ```
+
+   ```jsx
+   // Dentro del archivo MiComponente.jsx
+   import styles from './MiComponente.module.css';
+   
+   const MiComponente = () => {
+     return <div className={styles.miEstilo}>Texto con estilo</div>;
+   };
+   ```
+
+4. #### `En Resumen`:
+
+   - **Styling Components en React** se refiere a la aplicación de estilos hacia los componentes o elementos de React.
+
+   - Se pueden usar **CSS en línea** directamente en los elementos JSX o **clases CSS tradicionales** mediante el uso de `className`.
+
+   - **CSS Modules** son una forma de modularizar estilos en React para evitar conflictos y mantener la encapsulación.
+   
+   Estas técnicas y conceptos son esenciales para desarrollar aplicaciones web con React y JavaScript en general. La comprensión de cómo aplicar estilos y organizar funciones relacionadas es fundamental para escribir código efectivo y mantener una base de código bien estructurada y mantenible.
+
+## Tailwind CSS y SCSS: Una Explicación Detallada
+
+1. #### `Introducción a Tailwind CSS`:
+
+   Tailwind CSS es un marco de diseño (framework) de utilidades de primera clase para la construcción rápida y eficiente de interfaces de usuario. A diferencia de otros marcos como Bootstrap, Tailwind se centra en proporcionar utilidades de bajo nivel que permiten construir diseños personalizados sin la necesidad de escribir CSS personalizado.
+
+   Se puede utilizar con `CSS` y `SCSS`.
+
+   En React:
+
+   ```jsx
+   function MiComponente() {
+     return (
+       <div className="bg-blue-500 text-white py-2 px-4 rounded">
+         Mi Contenido
+       </div>
+     );
+   }
+   ```
+
+   En HTML:
+
+   ```html
+      <button class="bg-blue-500 text-white py-2 px-4 rounded">Mi Botón</button>
+   ```
+
+   - `bg-blue-500` establece el fondo azul.
+
+   - `text-white` establece el color del texto en blanco.
+
+   - `py-2` y `px-4` establecen el espaciado interno (padding) vertical y horizontal.
+
+   - `rounded` agrega bordes redondeados al botón.
+
+   Esta es una forma simplificada de trabajar con estilos en comparación con escribir CSS personalizado.
+
+2. #### `Filosofía de Tailwind CSS`:
+
+   La filosofía de Tailwind es promover la utilidad sobre la configuración. En lugar de escribir clases personalizadas en tu CSS, utilizas clases de utilidad directamente en tu marcado HTML para estilizar componentes y diseños.
+
+3. #### `Clases de Utilidad en Tailwind CSS`:
+
+   Tailwind proporciona una amplia gama de clases de utilidad que abarcan desde márgenes y rellenos hasta tipografías y colores. Por ejemplo, puedes agregar márgenes a un elemento utilizando clases como `m-4` para un margen de 1rem o `mx-auto` para centrar horizontalmente.
+
+4. #### `Configuración Personalizada`:
+
+   Aunque Tailwind ofrece una gran cantidad de utilidades listas para usar, también es altamente configurable. Puedes personalizar colores, fuentes, márgenes y otros aspectos de la apariencia de tu sitio a través de un archivo de configuración.
+
+5. #### `Integración con Proyectos`:
+
+   Puedes integrar Tailwind en tu proyecto de varias formas, incluyendo la instalación a través de npm o utilizando CDN en tu HTML. Luego, puedes importar Tailwind en tu CSS o JavaScript según sea necesario.
+
+6. #### `Tailwind Con Sass (SCSS)`:
+
+   `SCSS` es una extensión de sintaxis para `CSS` que agrega características como variables, anidamiento y funciones. Permite escribir estilos más limpios y organizados. Tailwind también permite su utilizo pero recuerda que deberás tener `SASS` descargado en tu proyecto, para que se pueda compilar en código válido que los navegadores puedan interpretar.
+   
+7. #### `Instalar Paquete Tailwind y SASS con YARN`:
+   
+   `Yarn` fue desarrollado por Facebook y luego se convirtió en un proyecto de código abierto mantenido por la comunidad.
+
+   Instala las dependencias en paralelo, lo que significa mayor velocidad con respecto a `NPM`.
+
+   Incluye un comando para revisar y solucionar problemas de seguridad:
+
+   ```bash
+   yarn audit
+   ```
+
+   Utiliza un archivo `yarn.lock` para rastrear las versiones exactas de las dependencias instaladas.
+
+   Al no estar integrado directamente, hay que instalarlo globalmente a través de este comando:
+
+   ```bash
+   npm install --global yarn
+   ```
+
+   - **Inicia un nuevo proyecto con Yarn (si no lo has hecho ya)**:
+
+     Si no tienes un proyecto existente, crea uno nuevo ejecutando el siguiente comando en tu terminal:
+        
+     ```bash
+     yarn init -y
+     ```
+        
+     Esto creará un archivo `package.json` en tu directorio.
+
+   - **Instala Tailwind CSS y sus dependencias**:
+
+     Ejecuta el siguiente comando para instalar Tailwind CSS y sus dependencias:
+
+     ```bash
+     yarn add tailwindcss postcss autoprefixer
+     ```
+
+   - **Configura Tailwind**:
+  
+     Después de instalar Tailwind, necesitas configurarlo. Puedes hacerlo ejecutando el siguiente comando:
+  
+     ```bash
+     npx tailwindcss init -p
+     ```
+
+     - `-p` es un argumento que se pasa al comando init. En este caso, `-p indica que Tailwind debe agregar una configuración de preprocesador a la configuración inicial`. Por lo tanto, si estás utilizando un preprocesador como `Sass` o `Less` en tu proyecto, este comando configurará Tailwind para trabajar con él.
+  
+     Esto creará un archivo `tailwind.config.js` y un archivo `postcss.config.js` en tu directorio.
+  
+   - **Configura SASS para Webpack**:
+  
+     Si también deseas utilizar SASS, instálalo junto con el cargador de SASS para Webpack:
+  
+     ```bash
+     yarn add sass sass-loader
+     ```
+  
+     Luego, agrega el siguiente código en tu archivo `webpack.config.js` para configurar el cargador de SASS:
+  
+     ```javascript
+     module.exports = {
+       module: {
+         rules: [
+           {
+             test: /\.s[ac]ss$/i,
+             use: [
+               // ...otros cargadores
+               'sass-loader',
+             ],
+           },
+         ],
+       },
+     };
+     ```
+    
+     Asegúrate de que `sass-loader` esté incluido en la configuración de Webpack.
+    
+   - **Configurar SASS para Vite**:
+   
+   Si deseas utilizar Vite como bundler en vez de webpack, instala los plugins con el siguiente comando:
+   
+   ```bash
+   yarn add @vitejs/plugin-vue @vitejs/plugin-sass --dev
+   ```
+   
+   Ahora configura Vite para que trabaje con SASS.
+   Abre tu archivo `vite.config.js` en la raíz de tu proyecto y agrega el plugin de SASS:
+   
+   ```javascript
+   // vite.config.js
+   import { defineConfig } from 'vite';
+   import vue from '@vitejs/plugin-vue';
+   import sass from '@vitejs/plugin-sass';
+   
+   // https://vitejs.dev/config/
+   export default defineConfig({
+     plugins: [vue(), sass()],
+   });
+   ```
+   
+   Esto configura Vite para utilizar el plugin de SASS cuando procesa tus archivos.
+   
+   Ahora, puedes crear archivos `.scss` en tu proyecto y Vite debería procesarlos (compilarlos) automáticamente. Por ejemplo, puedes crear un archivo `styles.scss` en tu directorio `src` y ejecutar tu aplicación con el siguiente comando:
+
+   ```bash
+   yarn dev
+   ```
+  
+   - **Si no has configurado los plugins debes agregar comandos de construcción en package.json**:
+  
+     Abre tu archivo `package.json` y agrega los siguientes comandos en la sección de `scripts`:
+  
+     ```json
+     "scripts": {
+       "build": "tailwindcss build src/styles.css -o public/styles.css",
+       "watch": "tailwindcss build src/styles.css -o public/styles.css --watch"
+     }
+     ```
+  
+     Esto creará dos comandos: uno para construir tu archivo CSS y otro para observar cambios y compilar automáticamente.
+  
+     Ahora puedes crear tus archivos de estilo en el directorio `src` (o cualquier otro directorio que prefieras). Por ejemplo, puedes tener `src/styles.scss`.
+  
+   - **Si no has configurado los plugins y deseas iniciar el proceso de construcción**:
+  
+     Puedes iniciar el proceso de construcción ejecutando el siguiente comando en tu terminal:
+  
+     ```bash
+     yarn build
+     ```
+  
+     O si deseas observar cambios y compilar automáticamente:
+  
+     ```bash
+     yarn watch
+     ```
+  
+     Esto generará un archivo CSS optimizado en el directorio `public`.
+  
+   ¡Listo! Ahora has configurado Tailwind CSS y SASS en tu proyecto utilizando Yarn. Puedes comenzar a escribir tu código CSS en archivos SASS y utilizar las utilidades de Tailwind CSS.
+
+8. #### `Instalar Paquete Tailwind y SASS con NPM`:
+
+   `NPM` fue el primer gestor de paquetes ampliamente utilizado en el ecosistema `Node.js`.
+   Viene preinstalado con Node.js y no es necesario instalarlo por separado.
+   
+   Incluye un comando que permite a los desarrolladores revisar y solucionar problemas de seguridad en las dependencias:
+
+   ```bash 
+   npm audit
+   ```
+
+   También utiliza un archivo `package-lock.json`  para mantener un registro preciso de las versiones exactas de las dependencias instaladas.
+
+   - **Inicia un nuevo proyecto con npm (si no lo has hecho ya)**:
+
+     Si no tienes un proyecto existente, crea uno nuevo ejecutando el siguiente comando en tu terminal:
+
+     ```bash
+     npm init -y
+     ```
+
+     Esto creará un archivo `package.json` en tu directorio.
+
+   - **Instala Tailwind CSS y sus dependencias:**
+
+     Ejecuta el siguiente comando para instalar Tailwind CSS y sus dependencias:
+
+     ```bash
+     npm install tailwindcss postcss autoprefixer
+     ```
+
+   - **Configura Tailwind:**
+
+     Después de instalar Tailwind, necesitas configurarlo. Puedes hacerlo ejecutando el siguiente comando:
+
+     ```bash
+     npx tailwindcss init -p
+     ```
+
+     - `-p` es un argumento que se pasa al comando init. En este caso, `-p indica que Tailwind debe agregar una configuración de preprocesador a la configuración inicial`. Por lo tanto, si estás utilizando un preprocesador como `Sass` o `Less` en tu proyecto, este comando configurará Tailwind para trabajar con él.
+
+     Esto creará un archivo `tailwind.config.js` y un archivo `postcss.config.js` en tu directorio.
+
+   - **Configura SASS para Webpack:**
+
+     Si también deseas utilizar SASS, instálalo y agrega el cargador de SASS para Webpack:
+
+     ```bash
+     npm install sass sass-loader
+     ```
+
+     Luego, agrega el siguiente código en tu archivo `webpack.config.js` para configurar el cargador de SASS:
+
+     ```javascript
+     module.exports = {
+       module: {
+         rules: [
+           {
+             test: /\.s[ac]ss$/i,
+             use: [
+               // ...otros cargadores
+               'sass-loader',
+             ],
+           },
+         ],
+       },
+     };
+     ```
+
+     Asegúrate de que `sass-loader` esté incluido en la configuración de Webpack.
+
+   - **Configurar SASS para Vite**:
+
+     Si deseas utilizar Vite como bundler en vez de webpack, instala los plugins con el siguiente comando:
+     
+     ```bash
+     npm install @vitejs/plugin-vue @vitejs/plugin-sass --save-dev
+     ```
+     
+     Ahora configura Vite para que trabaje con SASS.
+     Abre tu archivo `vite.config.js` en la raíz de tu proyecto y agrega el plugin de SASS:
+     
+     ```javascript
+     // vite.config.js
+     import { defineConfig } from 'vite';
+     import vue from '@vitejs/plugin-vue';
+     import sass from '@vitejs/plugin-sass';
+     
+     // https://vitejs.dev/config/
+     export default defineConfig({
+       plugins: [vue(), sass()],
+     });
+     ```
+     
+     Esto configura Vite para utilizar el plugin de SASS cuando procesa tus archivos.
+     
+     Ahora, puedes crear archivos `.scss` en tu proyecto y Vite debería procesarlos (compilarlos) automáticamente. Por ejemplo, puedes crear un archivo `styles.scss` en tu directorio `src` y ejecutar tu aplicación con el siguiente comando:
+  
+     ```bash
+     npm run dev
+     ```
+    
+   - **Si no has configurado los plugins debes agregar comandos de construcción en package.json**:
+
+     Abre tu archivo `package.json` y agrega los siguientes comandos en la sección de `scripts`:
+
+     ```json
+     "scripts": {
+       "build": "tailwindcss build src/styles.css -o public/styles.css",
+       "watch": "tailwindcss build src/styles.css -o public/styles.css --watch"
+     }
+     ```
+
+     Esto creará dos comandos: uno para construir tu archivo CSS y otro para observar cambios y compilar automáticamente.
+
+     Ahora puedes crear tus archivos de estilo en el directorio `src` (o cualquier otro directorio que prefieras). Por ejemplo, puedes tener `src/styles.scss`.
+
+   - **Si no has configurado los plugins y deseas iniciar el proceso de construcción**:
+
+     Puedes iniciar el proceso de construcción ejecutando el siguiente comando en tu terminal:
+
+     ```bash
+     npm run build
+     ```
+
+     O si deseas observar cambios y compilar automáticamente:
+
+     ```bash
+     npm run watch
+     ```
+
+     Esto generará un archivo CSS optimizado en el directorio `public`.
+
+   ¡Listo! Ahora has configurado Tailwind CSS y SASS en tu proyecto utilizando npm. Puedes comenzar a escribir tu código CSS en archivos SASS y utilizar las utilidades de Tailwind CSS.
+
+9. #### `Refrescando SCSS`:
+
+   SCSS es una preprocesador de CSS que proporciona funcionalidades adicionales para escribir estilos de manera más eficiente y organizada. Permite el uso de variables, reglas anidadas, mixins y funciones, entre otras características.
+
+   - **Variables en SCSS**:
+
+     Una de las características más útiles de SCSS son las variables, que te permiten definir valores que se pueden reutilizar en todo tu archivo de estilo. Por ejemplo, puedes definir una variable para un color y luego usar esa variable en múltiples lugares.
+
+   - **Reglas Anidadas**:
+
+     SCSS permite anidar reglas de estilo, lo que facilita la organización y comprensión del código. Puedes anidar selectores hijos dentro de selectores padres para indicar la jerarquía de los elementos.
+
+   - **Mixins y Funciones**:
+
+     Los mixins y las funciones son bloques reutilizables de código en SCSS. Los mixins te permiten definir un conjunto de estilos que se pueden aplicar a múltiples elementos, mientras que las funciones pueden realizar cálculos y manipulaciones de datos para generar estilos dinámicos.
+
+   - **Partials y Archivos Importados**:
+
+     SCSS permite dividir tus estilos en múltiples archivos y luego importarlos según sea necesario. Esto facilita la organización y la separación de responsabilidades en tu código.
+
+   - **Extends**:
+
+     La directiva `@extend` en SCSS te permite heredar estilos de una regla a otra, lo que puede ser útil para evitar la repetición de código.
+
+   - **Operadores y Funciones de Matemáticas**:
+
+     SCSS también ofrece operadores y funciones matemáticas que te permiten realizar cálculos en tus estilos, lo que puede ser útil para crear diseños más dinámicos.
+
+   - **Comentarios y Documentación**:
+
+     SCSS te permite agregar comentarios a tu código, lo que facilita la comprensión de tus estilos por parte de otros desarrolladores o incluso por ti mismo en el futuro. También puedes utilizar comentarios para documentar tu código.
+
+10. #### `Ventajas de Utilizar Tailwind CSS y SCSS Juntos`:
+
+    Tailwind y SCSS pueden combinarse en un proyecto para aprovechar al máximo las ventajas de ambos. Puedes utilizar las clases de utilidad de Tailwind para estilos rápidos y luego utilizar SCSS para personalizaciones más detalladas y organización de código.
+
+11. #### `En resumen`:
+
+   Tailwind CSS es un marco de diseño que se centra en utilidades de bajo nivel para la construcción de interfaces de usuario, mientras que SCSS es una extensión de sintaxis para CSS que agrega características como variables y reglas anidadas para escribir estilos más eficientes y organizados. Al utilizarlos juntos, puedes construir sitios web de manera eficiente y con un código bien organizado.
