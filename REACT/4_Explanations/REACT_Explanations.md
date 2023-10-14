@@ -2697,7 +2697,7 @@
    
    Página oficial:
    
-   ```
+   ```bash
    https://tailwindcss.com/docs/installation
    ```
    
