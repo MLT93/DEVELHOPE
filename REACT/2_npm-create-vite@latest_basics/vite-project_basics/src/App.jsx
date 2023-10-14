@@ -489,7 +489,10 @@ const UncontrolledLogin = () => {
   };
 
   return (
-    <form onSubmit={handleFormSubmit} style={{ padding: "20px" }}>
+    <form
+      onSubmit={handleFormSubmit}
+      style={{ padding: "20px" }}
+      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-justify">
       <h2>Uncontrolled-Form of log in session</h2>
       <div style={{ display: "flex", gap: "5px" }}>
         <input id="01" name="userID" type="text"></input>
