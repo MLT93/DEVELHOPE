@@ -80,7 +80,7 @@ const Message = () => {
 
 const Welcome = ({ name, age }) => {
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="welcome" style={{ padding: "20px", marginBottom: "5px" }}>
       <p>Welcome, {name}</p>
       <Age age={age && age} />
     </div>
@@ -695,11 +695,11 @@ const MyToDoComponent = ({ arr }) => {
     task.trim() !== "" ? console.log(newArr) : null;
 
     // .splice(indexStart, AmountItemsDelete, ItemAdd)
-    e.target = newArr.splice(newArr.length -1, newArr.length);
+    e.target = newArr.splice(newArr.length - 1, newArr.length);
   };
 
   return (
-    <div style={{ padding: "20px " }}>
+    <div style={{ padding: "20px" }}>
       <ul
         style={{
           display: "flex",
