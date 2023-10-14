@@ -694,8 +694,8 @@ const MyToDoComponent = ({ arr }) => {
   const handleResetArray = (e) => {
     task.trim() !== "" ? console.log(newArr) : null;
 
-    // .splice(indexStart, ItemDelete, ItemAdd)
-    e.target = newArr.splice(0, 4);
+    // .splice(indexStart, AmountItemsDelete, ItemAdd)
+    e.target = newArr.splice(0, newArr.length);
   };
 
   return (
