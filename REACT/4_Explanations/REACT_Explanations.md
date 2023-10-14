@@ -2693,7 +2693,9 @@
    
    - `rounded` agrega bordes redondeados al botón.
    
-   Esta es una forma simplificada de trabajar con estilos en comparación con escribir CSS personalizado.
+   Esta es una forma simplificada de trabajar con estilos en comparación con escribir CSS personalizado. Para más especificaciones y detalles aquí está la página oficial:
+
+   https://tailwindcss.com/docs/installation
    
 2. #### `Filosofía de Tailwind CSS`:
    
