@@ -2872,7 +2872,7 @@
    Si deseas utilizar Vite como bundler en vez de webpack, instala los plugins con el siguiente comando:
    
    ```bash
-   yarn add vite-plugin-sass-dts
+   yarn add vite-plugin-sass-dts vite-plugin-sass
    ```
    
    Ahora configura Vite para que trabaje con SASS.
@@ -3040,11 +3040,11 @@
      Si deseas utilizar Vite como bundler en vez de webpack, instala los plugins con el siguiente comando:
      
      ```bash
-     npm install vite-plugin-sass-dts --save-dev
+     npm install vite-plugin-sass-dts vite-plugin-sass --save-dev
      ```
 
      ```bash
-     npm i -D vite-plugin-sass-dts
+     npm i -D vite-plugin-sass-dts vite-plugin-sass
      ```
      
      `-D` o `--save-dev`: Esto indica que el paquete se instalará como una dependencia de desarrollo. Esto significa que el paquete no será necesario para la ejecución normal del proyecto, sino solo durante el desarrollo.
