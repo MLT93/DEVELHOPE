@@ -2697,9 +2697,7 @@
    
    Página oficial:
    
-   ```bash
-   https://tailwindcss.com/docs/installation
-   ```
+   **https://tailwindcss.com/docs/installation**
    
 2. #### `Filosofía de Tailwind CSS`:
    
