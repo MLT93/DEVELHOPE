@@ -2685,20 +2685,58 @@
       <button class="bg-blue-500 text-white py-2 px-4 rounded">Mi Botón</button>
    ```
    
-   - `bg-blue-500` establece el fondo azul.
+   `bg-blue-500` establece el fondo azul.
    
-   - `text-white` establece el color del texto en blanco.
+   `text-white` establece el color del texto en blanco.
    
-   - `py-2` y `px-4` establecen el espaciado interno (padding) vertical y horizontal.
+   `py-2` y `px-4` establecen el espaciado interno (padding) vertical y horizontal.
    
-   - `rounded` agrega bordes redondeados al botón.
+   `rounded` agrega bordes redondeados al botón.
    
    Esta es una forma simplificada de trabajar con estilos en comparación con escribir CSS personalizado. Para más especificaciones y detalles puedes consular su web oficial.
-   
-   Página oficial:
-   
-   **https://tailwindcss.com/docs/installation**
-   
+      
+   Página oficial Y video:
+     
+     - VIDEO EXPLICATIVO:
+
+       **https://www.youtube.com/watch?v=booX21Ynopw**
+     
+     - GET STARTED (elegir el framework que se utiliza e iniciar):
+       
+       **https://tailwindcss.com/docs/installation/framework-guides**
+
+     - EDITOR SET UP:
+
+       **https://tailwindcss.com/docs/editor-setup**
+
+     - USANDO PREPROCESADOR (como SASS, LESS, etc...):
+
+       **https://tailwindcss.com/docs/using-with-preprocessors**
+
+     - IMPORTACIÓN Y DIRECTIVAS DE USO:
+
+       **https://tailwindcss.com/docs/functions-and-directives**
+
+     - UTILIDADES:
+
+       **https://tailwindcss.com/docs/utility-first**
+
+     - UTILIDADES-HOVER:
+
+       **https://tailwindcss.com/docs/hover-focus-and-other-states**
+
+     - MEDIA QUERIES:
+
+       **https://tailwindcss.com/docs/responsive-design**
+
+     - TEMA OSCURO / CLARO:
+
+       **https://tailwindcss.com/docs/dark-mode**
+
+     - ESTILOS PERSONALIZADOS:
+
+       **https://tailwindcss.com/docs/adding-custom-styles**
+
 2. #### `Filosofía de Tailwind CSS`:
    
    La filosofía de Tailwind es promover la utilidad sobre la configuración. En lugar de escribir clases personalizadas en tu CSS, utilizas clases de utilidad directamente en tu marcado HTML para estilizar componentes y diseños.
@@ -2721,7 +2759,7 @@
    
 7. #### `Instalar Paquete Tailwind y SASS con YARN`:
    
-   - **Introducción de Yarn**:
+   - **`Introducción de Yarn`**:
      
      `Yarn` fue desarrollado por Facebook y luego se convirtió en un proyecto de código abierto mantenido por la comunidad.
      
@@ -2735,13 +2773,13 @@
      
      Utiliza un archivo `yarn.lock` para rastrear las versiones exactas de las dependencias instaladas.
      
-     Al no estar integrado directamente, hay que instalarlo globalmente a través de este comando:
+     Al no estar integrado directamente en `Node.js`, hay que instalarlo globalmente a través de este comando:
      
      ```bash
      npm install --global yarn
      ```
      
-   - **Inicia un nuevo proyecto con Yarn (si no lo has hecho ya)**:
+   - **`Inicia un nuevo proyecto con Yarn` (si no lo has hecho ya)**:
      
      Si no tienes un proyecto existente, crea uno nuevo ejecutando el siguiente comando en tu terminal:
         
@@ -2751,7 +2789,7 @@
         
      Esto creará un archivo `package.json` en tu directorio.
      
-   - **Instala Tailwind CSS y sus dependencias**:
+   - **`Instalar Tailwindcss` y sus dependencias**:
      
      Ejecuta el siguiente comando para instalar Tailwind CSS y sus dependencias:
      
@@ -2759,7 +2797,7 @@
      yarn add tailwindcss postcss autoprefixer
      ```
      
-   - **Configura Tailwind**:
+   - **`Configurar Tailwind`**:
      
      Después de instalar Tailwind, necesitas configurarlo. Puedes hacerlo ejecutando el siguiente comando:
      
@@ -2770,8 +2808,38 @@
      `-p` es un argumento que se pasa al comando init. En este caso, `-p indica que Tailwind debe agregar una configuración de preprocesador a la configuración inicial`. Por lo tanto, si estás utilizando un preprocesador como `Sass` o `Less` en tu proyecto, este comando configurará Tailwind para trabajar con él.
      
      Esto creará un archivo `tailwind.config.js` y un archivo `postcss.config.js` en tu directorio.
+
+   - **Configurar `tailwind.config.js `** :
+
+     Una vez instalado Tailwind CSS tenemos que añadir los directorios de todos los tipos de archivos y sus extensiones para que Tailwind pueda configurarse correctamente.
+
+     ```javascript
+     // Dentro del archivo tailwind.config.js escribimos lo que esta dentro de `content`:
+     /** @type {import('tailwindcss').Config} */
+     export default {
+       content: [
+         "./index.html",
+         "./src/**/*.{js,ts,jsx,tsx,scss}",
+       ],
+       theme: {
+         extend: {},
+       },
+       plugins: [],
+     }
+     ```
+
+     Ahora le agregamos las directivas correspondientes al archivo `.src/index.css` (o index.scss) al inicio del archivo.
+
+     ```css
+     @tailwind base;
+     @tailwind components;
+     @tailwind utilities;
+     @tailwind variants;
+     ```
+
+     Ahora podrías empezar a ejecutar tu aplicación y trabajar con Tailwind sin ningún problema.
      
-   - **Configura SASS para Webpack**:
+   - **Configurar plugin SASS para Webpack `webpack.config.js`**:
      
      Si también deseas utilizar SASS, instálalo junto con el cargador de SASS para Webpack:
      
@@ -2799,26 +2867,27 @@
      
      Asegúrate de que `sass-loader` esté incluido en la configuración de Webpack.
      
-   - **Configurar SASS para Vite**:
+   - **Configurar plugin SASS para Vite `vite.config.js`**:
    
    Si deseas utilizar Vite como bundler en vez de webpack, instala los plugins con el siguiente comando:
    
    ```bash
-   yarn add @vitejs/plugin-vue @vitejs/plugin-sass --dev
+   yarn add vite-plugin-sass-dts
    ```
    
    Ahora configura Vite para que trabaje con SASS.
    Abre tu archivo `vite.config.js` en la raíz de tu proyecto y agrega el plugin de SASS:
    
    ```javascript
-   // vite.config.js
+   // añadir plugins al archivo vite.config.js
    import { defineConfig } from 'vite';
-   import vue from '@vitejs/plugin-vue';
-   import sass from '@vitejs/plugin-sass';
+   import react from "@vitejs/plugin-react-swc";
+   import sassDts from "@vitejs/plugin-sass-dts";
    
    // https://vitejs.dev/config/
+   // https://classic.yarnpkg.com/en/package/vite-plugin-sass-dts
    export default defineConfig({
-     plugins: [vue(), sass()],
+     plugins: [react(), sassDts()],
    });
    ```
    
@@ -2830,7 +2899,7 @@
    yarn dev
    ```
    
-   - **Si no has configurado los plugins debes agregar comandos de construcción en package.json**:
+   - **Si no has configurado los plugins debes agregar comandos de construcción en `package.json`**:
      
      Abre tu archivo `package.json` y agrega los siguientes comandos en la sección de `scripts`:
      
@@ -2845,7 +2914,7 @@
      
      Ahora puedes crear tus archivos de estilo en el directorio `src` (o cualquier otro directorio que prefieras). Por ejemplo, puedes tener `src/styles.scss`.
      
-   - **Si no has configurado los plugins y deseas iniciar el proceso de construcción**:
+   - **Si no has configurado los plugins y deseas iniciar el `proceso de construcción`**:
      
      Puedes iniciar el proceso de construcción ejecutando el siguiente comando en tu terminal:
      
@@ -2865,7 +2934,7 @@
      
 8. #### `Instalar Paquete Tailwind y SASS con NPM`:
    
-   - **Introducción de NPM**:
+   - **`Introducción de NPM`**:
      
      `NPM` fue el primer gestor de paquetes ampliamente utilizado en el ecosistema `Node.js`.
      Viene preinstalado con Node.js y no es necesario instalarlo por separado.
@@ -2878,7 +2947,7 @@
      
      También utiliza un archivo `package-lock.json`  para mantener un registro preciso de las versiones exactas de las dependencias instaladas.
      
-   - **Inicia un nuevo proyecto con npm (si no lo has hecho ya)**:
+   - **`Inicia un nuevo proyecto con npm` (si no lo has hecho ya)**:
      
      Si no tienes un proyecto existente, crea uno nuevo ejecutando el siguiente comando en tu terminal:
      
@@ -2888,7 +2957,7 @@
      
      Esto creará un archivo `package.json` en tu directorio.
      
-   - **Instala Tailwind CSS y sus dependencias:**
+   - **`Instalar Tailwindcss` y sus dependencias**:
      
      Ejecuta el siguiente comando para instalar Tailwind CSS y sus dependencias:
      
@@ -2896,7 +2965,7 @@
      npm install tailwindcss postcss autoprefixer
      ```
      
-   - **Configura Tailwind:**
+   - **`Configurar Tailwind`**:
      
      Después de instalar Tailwind, necesitas configurarlo. Puedes hacerlo ejecutando el siguiente comando:
      
@@ -2907,8 +2976,38 @@
      `-p` es un argumento que se pasa al comando init. En este caso, `-p indica que Tailwind debe agregar una configuración de preprocesador a la configuración inicial`. Por lo tanto, si estás utilizando un preprocesador como `Sass` o `Less` en tu proyecto, este comando configurará Tailwind para trabajar con él.
      
      Esto creará un archivo `tailwind.config.js` y un archivo `postcss.config.js` en tu directorio.
+
+   - **Configurar `tailwind.config.js `** :
+
+     Una vez instalado Tailwind CSS tenemos que añadir los directorios de todos los tipos de archivos y sus extensiones para que Tailwind pueda configurarse correctamente.
+
+     ```javascript
+     // Dentro del archivo tailwind.config.js escribimos lo que esta dentro de `content`:
+     /** @type {import('tailwindcss').Config} */
+     export default {
+       content: [
+         "./index.html",
+         "./src/**/*.{js,ts,jsx,tsx,scss}",
+       ],
+       theme: {
+         extend: {},
+       },
+       plugins: [],
+     }
+     ```
+
+     Ahora le agregamos las directivas correspondientes al archivo `.src/index.css` (o index.scss) al inicio del archivo.
+
+     ```css
+     @tailwind base;
+     @tailwind components;
+     @tailwind utilities;
+     @tailwind variants;
+     ```
+
+     Ahora podrías empezar a ejecutar tu aplicación y trabajar con Tailwind sin ningún problema.
      
-   - **Configura SASS para Webpack:**
+   - **Configurar plugin SASS para Webpack `webpack.config.js`**:
      
      Si también deseas utilizar SASS, instálalo y agrega el cargador de SASS para Webpack:
      
@@ -2936,26 +3035,33 @@
      
      Asegúrate de que `sass-loader` esté incluido en la configuración de Webpack.
      
-   - **Configurar SASS para Vite**:
+   - **Configurar plugin SASS para Vite `vite.config.js`**:
      
      Si deseas utilizar Vite como bundler en vez de webpack, instala los plugins con el siguiente comando:
      
      ```bash
-     npm install @vitejs/plugin-vue @vitejs/plugin-sass --save-dev
+     npm install vite-plugin-sass-dts --save-dev
+     ```
+
+     ```bash
+     npm i -D vite-plugin-sass-dts
      ```
      
+     `-D` o `--save-dev`: Esto indica que el paquete se instalará como una dependencia de desarrollo. Esto significa que el paquete no será necesario para la ejecución normal del proyecto, sino solo durante el desarrollo.
+
      Ahora configura Vite para que trabaje con SASS.
      Abre tu archivo `vite.config.js` en la raíz de tu proyecto y agrega el plugin de SASS:
      
      ```javascript
-     // vite.config.js
+     // añadir plugins al archivo vite.config.js
      import { defineConfig } from 'vite';
-     import vue from '@vitejs/plugin-vue';
-     import sass from '@vitejs/plugin-sass';
+     import react from "@vitejs/plugin-react-swc";
+     import sassDts from "vite-plugin-sass-dts";
      
      // https://vitejs.dev/config/
+     // https://www.npmjs.com/package/vite-plugin-sass-dts
      export default defineConfig({
-       plugins: [vue(), sass()],
+       plugins: [react(), sassDts()],
      });
      ```
      
@@ -2967,7 +3073,7 @@
      npm run dev
      ```
      
-   - **Si no has configurado los plugins debes agregar comandos de construcción en package.json**:
+   - **Si no has configurado los plugins debes agregar comandos de construcción en `package.json`**:
      
      Abre tu archivo `package.json` y agrega los siguientes comandos en la sección de `scripts`:
      
@@ -2982,7 +3088,7 @@
      
      Ahora puedes crear tus archivos de estilo en el directorio `src` (o cualquier otro directorio que prefieras). Por ejemplo, puedes tener `src/styles.scss`.
      
-   - **Si no has configurado los plugins y deseas iniciar el proceso de construcción**:
+   - **Si no has configurado los plugins y deseas iniciar el `proceso de construcción`**:
      
      Puedes iniciar el proceso de construcción ejecutando el siguiente comando en tu terminal:
      
