@@ -2662,13 +2662,13 @@
 ## Tailwind CSS y SCSS: Una Explicación Detallada
 
 1. #### `Introducción a Tailwind CSS`:
-
+   
    Tailwind CSS es un marco de diseño (framework) de utilidades de primera clase para la construcción rápida y eficiente de interfaces de usuario. A diferencia de otros marcos como Bootstrap, Tailwind se centra en proporcionar utilidades de bajo nivel que permiten construir diseños personalizados sin la necesidad de escribir CSS personalizado.
-
+   
    Se puede utilizar con `CSS` y `SCSS`.
-
+   
    En React:
-
+   
    ```jsx
    function MiComponente() {
      return (
@@ -2678,51 +2678,51 @@
      );
    }
    ```
-
+   
    En HTML:
-
+   
    ```html
       <button class="bg-blue-500 text-white py-2 px-4 rounded">Mi Botón</button>
    ```
-
+   
    - `bg-blue-500` establece el fondo azul.
-
+   
    - `text-white` establece el color del texto en blanco.
-
+   
    - `py-2` y `px-4` establecen el espaciado interno (padding) vertical y horizontal.
-
+   
    - `rounded` agrega bordes redondeados al botón.
-
+   
    Esta es una forma simplificada de trabajar con estilos en comparación con escribir CSS personalizado.
-
+   
 2. #### `Filosofía de Tailwind CSS`:
-
+   
    La filosofía de Tailwind es promover la utilidad sobre la configuración. En lugar de escribir clases personalizadas en tu CSS, utilizas clases de utilidad directamente en tu marcado HTML para estilizar componentes y diseños.
-
+   
 3. #### `Clases de Utilidad en Tailwind CSS`:
-
+   
    Tailwind proporciona una amplia gama de clases de utilidad que abarcan desde márgenes y rellenos hasta tipografías y colores. Por ejemplo, puedes agregar márgenes a un elemento utilizando clases como `m-4` para un margen de 1rem o `mx-auto` para centrar horizontalmente.
-
+   
 4. #### `Configuración Personalizada`:
-
+   
    Aunque Tailwind ofrece una gran cantidad de utilidades listas para usar, también es altamente configurable. Puedes personalizar colores, fuentes, márgenes y otros aspectos de la apariencia de tu sitio a través de un archivo de configuración.
-
+   
 5. #### `Integración con Proyectos`:
-
+   
    Puedes integrar Tailwind en tu proyecto de varias formas, incluyendo la instalación a través de npm o utilizando CDN en tu HTML. Luego, puedes importar Tailwind en tu CSS o JavaScript según sea necesario.
-
+   
 6. #### `Tailwind Con Sass (SCSS)`:
-
+   
    `SCSS` es una extensión de sintaxis para `CSS` que agrega características como variables, anidamiento y funciones. Permite escribir estilos más limpios y organizados. Tailwind también permite su utilizo pero recuerda que deberás tener `SASS` descargado en tu proyecto, para que se pueda compilar en código válido que los navegadores puedan interpretar.
    
 7. #### `Instalar Paquete Tailwind y SASS con YARN`:
    
    - **Introducción de Yarn**:
-
+     
      `Yarn` fue desarrollado por Facebook y luego se convirtió en un proyecto de código abierto mantenido por la comunidad.
-   
+     
      Instala las dependencias en paralelo, lo que significa mayor velocidad con respecto a `NPM`.
-  
+     
      Incluye un comando para revisar y solucionar problemas de seguridad:
      
      ```bash
@@ -2730,15 +2730,15 @@
      ```
      
      Utiliza un archivo `yarn.lock` para rastrear las versiones exactas de las dependencias instaladas.
-  
+     
      Al no estar integrado directamente, hay que instalarlo globalmente a través de este comando:
-   
+     
      ```bash
      npm install --global yarn
      ```
      
    - **Inicia un nuevo proyecto con Yarn (si no lo has hecho ya)**:
-
+     
      Si no tienes un proyecto existente, crea uno nuevo ejecutando el siguiente comando en tu terminal:
         
      ```bash
@@ -2746,37 +2746,37 @@
      ```
         
      Esto creará un archivo `package.json` en tu directorio.
-
+     
    - **Instala Tailwind CSS y sus dependencias**:
-
+     
      Ejecuta el siguiente comando para instalar Tailwind CSS y sus dependencias:
-
+     
      ```bash
      yarn add tailwindcss postcss autoprefixer
      ```
-
+     
    - **Configura Tailwind**:
-  
+     
      Después de instalar Tailwind, necesitas configurarlo. Puedes hacerlo ejecutando el siguiente comando:
-  
+     
      ```bash
      npx tailwindcss init -p
      ```
-
+     
      `-p` es un argumento que se pasa al comando init. En este caso, `-p indica que Tailwind debe agregar una configuración de preprocesador a la configuración inicial`. Por lo tanto, si estás utilizando un preprocesador como `Sass` o `Less` en tu proyecto, este comando configurará Tailwind para trabajar con él.
-  
+     
      Esto creará un archivo `tailwind.config.js` y un archivo `postcss.config.js` en tu directorio.
-  
+     
    - **Configura SASS para Webpack**:
-  
+     
      Si también deseas utilizar SASS, instálalo junto con el cargador de SASS para Webpack:
-  
+     
      ```bash
      yarn add sass sass-loader
      ```
-  
+     
      Luego, agrega el siguiente código en tu archivo `webpack.config.js` para configurar el cargador de SASS:
-  
+     
      ```javascript
      module.exports = {
        module: {
@@ -2792,9 +2792,9 @@
        },
      };
      ```
-    
+     
      Asegúrate de que `sass-loader` esté incluido en la configuración de Webpack.
-    
+     
    - **Configurar SASS para Vite**:
    
    Si deseas utilizar Vite como bundler en vez de webpack, instala los plugins con el siguiente comando:
@@ -2821,99 +2821,99 @@
    Esto configura Vite para utilizar el plugin de SASS cuando procesa tus archivos.
    
    Ahora, puedes crear archivos `.scss` en tu proyecto y Vite debería procesarlos (compilarlos) automáticamente. Por ejemplo, puedes crear un archivo `styles.scss` en tu directorio `src` y ejecutar tu aplicación con el siguiente comando:
-
+   
    ```bash
    yarn dev
    ```
-  
+   
    - **Si no has configurado los plugins debes agregar comandos de construcción en package.json**:
-  
+     
      Abre tu archivo `package.json` y agrega los siguientes comandos en la sección de `scripts`:
-  
+     
      ```json
      "scripts": {
        "build": "tailwindcss build src/styles.css -o public/styles.css",
        "watch": "tailwindcss build src/styles.css -o public/styles.css --watch"
      }
      ```
-  
+     
      Esto creará dos comandos: uno para construir tu archivo CSS y otro para observar cambios y compilar automáticamente.
-  
+     
      Ahora puedes crear tus archivos de estilo en el directorio `src` (o cualquier otro directorio que prefieras). Por ejemplo, puedes tener `src/styles.scss`.
-  
+     
    - **Si no has configurado los plugins y deseas iniciar el proceso de construcción**:
-  
+     
      Puedes iniciar el proceso de construcción ejecutando el siguiente comando en tu terminal:
-  
+     
      ```bash
      yarn build
      ```
-  
+     
      O si deseas observar cambios y compilar automáticamente:
-  
+     
      ```bash
      yarn watch
      ```
-  
+     
      Esto generará un archivo CSS optimizado en el directorio `public`.
-  
+     
    ¡Listo! Ahora has configurado Tailwind CSS y SASS en tu proyecto utilizando Yarn. Puedes comenzar a escribir tu código CSS en archivos SASS y utilizar las utilidades de Tailwind CSS.
-
+     
 8. #### `Instalar Paquete Tailwind y SASS con NPM`:
-
-   - **Introducción de NPM**:
    
+   - **Introducción de NPM**:
+     
      `NPM` fue el primer gestor de paquetes ampliamente utilizado en el ecosistema `Node.js`.
      Viene preinstalado con Node.js y no es necesario instalarlo por separado.
      
      Incluye un comando que permite a los desarrolladores revisar y solucionar problemas de seguridad en las dependencias:
-  
+     
      ```bash 
      npm audit
      ```
-  
+     
      También utiliza un archivo `package-lock.json`  para mantener un registro preciso de las versiones exactas de las dependencias instaladas.
-
+     
    - **Inicia un nuevo proyecto con npm (si no lo has hecho ya)**:
-
+     
      Si no tienes un proyecto existente, crea uno nuevo ejecutando el siguiente comando en tu terminal:
-
+     
      ```bash
      npm init -y
      ```
-
+     
      Esto creará un archivo `package.json` en tu directorio.
-
+     
    - **Instala Tailwind CSS y sus dependencias:**
-
+     
      Ejecuta el siguiente comando para instalar Tailwind CSS y sus dependencias:
-
+     
      ```bash
      npm install tailwindcss postcss autoprefixer
      ```
-
+     
    - **Configura Tailwind:**
-
+     
      Después de instalar Tailwind, necesitas configurarlo. Puedes hacerlo ejecutando el siguiente comando:
-
+     
      ```bash
      npx tailwindcss init -p
      ```
-
+     
      `-p` es un argumento que se pasa al comando init. En este caso, `-p indica que Tailwind debe agregar una configuración de preprocesador a la configuración inicial`. Por lo tanto, si estás utilizando un preprocesador como `Sass` o `Less` en tu proyecto, este comando configurará Tailwind para trabajar con él.
-
+     
      Esto creará un archivo `tailwind.config.js` y un archivo `postcss.config.js` en tu directorio.
-
+     
    - **Configura SASS para Webpack:**
-
+     
      Si también deseas utilizar SASS, instálalo y agrega el cargador de SASS para Webpack:
-
+     
      ```bash
      npm install sass sass-loader
      ```
-
+     
      Luego, agrega el siguiente código en tu archivo `webpack.config.js` para configurar el cargador de SASS:
-
+     
      ```javascript
      module.exports = {
        module: {
@@ -2929,11 +2929,11 @@
        },
      };
      ```
-
+     
      Asegúrate de que `sass-loader` esté incluido en la configuración de Webpack.
-
+     
    - **Configurar SASS para Vite**:
-
+     
      Si deseas utilizar Vite como bundler en vez de webpack, instala los plugins con el siguiente comando:
      
      ```bash
@@ -2958,44 +2958,44 @@
      Esto configura Vite para utilizar el plugin de SASS cuando procesa tus archivos.
      
      Ahora, puedes crear archivos `.scss` en tu proyecto y Vite debería procesarlos (compilarlos) automáticamente. Por ejemplo, puedes crear un archivo `styles.scss` en tu directorio `src` y ejecutar tu aplicación con el siguiente comando:
-  
+     
      ```bash
      npm run dev
      ```
-    
+     
    - **Si no has configurado los plugins debes agregar comandos de construcción en package.json**:
-
+     
      Abre tu archivo `package.json` y agrega los siguientes comandos en la sección de `scripts`:
-
+     
      ```json
      "scripts": {
        "build": "tailwindcss build src/styles.css -o public/styles.css",
        "watch": "tailwindcss build src/styles.css -o public/styles.css --watch"
      }
      ```
-
+     
      Esto creará dos comandos: uno para construir tu archivo CSS y otro para observar cambios y compilar automáticamente.
-
+     
      Ahora puedes crear tus archivos de estilo en el directorio `src` (o cualquier otro directorio que prefieras). Por ejemplo, puedes tener `src/styles.scss`.
-
+     
    - **Si no has configurado los plugins y deseas iniciar el proceso de construcción**:
-
+     
      Puedes iniciar el proceso de construcción ejecutando el siguiente comando en tu terminal:
-
+     
      ```bash
      npm run build
      ```
-
+     
      O si deseas observar cambios y compilar automáticamente:
-
+     
      ```bash
      npm run watch
      ```
-
+     
      Esto generará un archivo CSS optimizado en el directorio `public`.
-
+     
    ¡Listo! Ahora has configurado Tailwind CSS y SASS en tu proyecto utilizando npm. Puedes comenzar a escribir tu código CSS en archivos SASS y utilizar las utilidades de Tailwind CSS.
-
+     
 9. #### `Refrescando SCSS`:
 
    SCSS es una preprocesador de CSS que proporciona funcionalidades adicionales para escribir estilos de manera más eficiente y organizada. Permite el uso de variables, reglas anidadas, mixins y funciones, entre otras características.
