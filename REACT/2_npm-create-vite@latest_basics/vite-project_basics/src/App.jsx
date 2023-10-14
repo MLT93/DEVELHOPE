@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { TresEnRaya } from "./components/TresEnRaya/TresEnRaya.jsx";
 import { Prueba } from "./components/prueba-tecnica/Prueba-tecnica.jsx";
+import style from "./App.module.scss";
 
 export function App() {
   return (
@@ -726,33 +727,17 @@ const MyToDoComponent = ({ arr }) => {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <ul
-        style={{
-          display: "flex",
-          flexFlow: "column wrap",
-          justifyContent: "space-around",
-          alignItems: "flex-start",
-          width: "100%",
-          whiteSpace: "pre-line",
-          gap: "25px",
-        }}>
+    <div className={style.divContainer}>
+      <ul>
         {arr &&
           arr.map((element, index) => {
             return (
               <div key={index}>
-                <li
-                  id={element.id}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    height: "auto",
-                    gap: "10px",
-                  }}>
+                <li id={element.id}>
                   {`ID => ${element.id}
                 Task => ${element.task}
                 Is completed? => ${element.completed}`}
-                  <div style={{ display: "flex", gap: "5px" }}>
+                  <div>
                     <input
                       id="input-task"
                       type="text"

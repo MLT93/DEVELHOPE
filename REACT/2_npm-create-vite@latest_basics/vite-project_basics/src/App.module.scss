@@ -1,0 +1,21 @@
+.divContainer {
+  padding: 20px;
+  margin: 0px;
+
+  >ul {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+    white-space: pre-line;
+    gap: 25px;
+    line-height: 2;
+
+    div {
+      display: flex;
+      margin-top: 10px;
+      gap: 5px;
+    }
+  }
+}
