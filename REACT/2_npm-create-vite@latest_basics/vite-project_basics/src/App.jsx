@@ -699,7 +699,7 @@ const MyToDoComponent = ({ arr }) => {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "20px " }}>
       <ul
         style={{
           display: "flex",
