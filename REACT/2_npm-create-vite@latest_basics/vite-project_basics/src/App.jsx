@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Children } from "react";
 import { TresEnRaya } from "./components/TresEnRaya/TresEnRaya.jsx";
 import { Prueba } from "./components/prueba-tecnica/Prueba-tecnica.jsx";
 import styles from "./App.module.scss";
@@ -763,4 +763,8 @@ const MyToDoComponent = ({ arr }) => {
       </ul>
     </div>
   );
+};
+
+const Container = ({ children }) => {
+  return <div className="bg-white border border-red-500 p-4">{children}</div>;
 };
