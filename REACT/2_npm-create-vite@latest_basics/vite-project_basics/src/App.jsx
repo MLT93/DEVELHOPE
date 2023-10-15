@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect, useRef} from "react";
+import { useState, useEffect, useRef } from "react";
 import { TresEnRaya } from "./components/TresEnRaya/TresEnRaya.jsx";
 import { Prueba } from "./components/prueba-tecnica/Prueba-tecnica.jsx";
 import styles from "./App.module.scss";
@@ -58,7 +58,7 @@ export function App() {
         <hr />
         <Button />
         <hr />
-        <Container>
+        <Container title="Hello Component">
           <Hello />
         </Container>
       </div>
@@ -769,10 +769,16 @@ const MyToDoComponent = ({ arr }) => {
   );
 };
 
-const Container = ({ children }) => {
-  return <div style={{color: "black"}} className="bg-white border border-red-500 p-4">{children}</div>;
+const Container = ({ children, title }) => {
+  return (
+    <div
+      style={{ color: "black" }}
+      className="bg-white border-2 border-red-500 p-5">
+      <p>{title}</p>
+      {children}
+    </div>
+  );
 };
-
 
 /* const Container = ({ Children }) => {
   return (
