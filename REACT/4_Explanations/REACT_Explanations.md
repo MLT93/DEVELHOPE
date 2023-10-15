@@ -2984,43 +2984,11 @@
      
    ¡Listo! Ahora has configurado Tailwind CSS y SASS en tu proyecto utilizando NPM o Yarn. Puedes comenzar a escribir tu código CSS en archivos SASS y utilizar las utilidades de Tailwind CSS.
     
-8. #### `Refrescando SCSS`:
-   
-   SCSS es una preprocesador de CSS que proporciona funcionalidades adicionales para escribir estilos de manera más eficiente y organizada. Permite el uso de variables, reglas anidadas, mixins y funciones, entre otras características.
-   
-   - **Variables en SCSS**:
-     
-     Una de las características más útiles de SCSS son las variables, que te permiten definir valores que se pueden reutilizar en todo tu archivo de estilo. Por ejemplo, puedes definir una variable para un color y luego usar esa variable en múltiples lugares.
-     
-   - **Reglas Anidadas**:
-     
-     SCSS permite anidar reglas de estilo, lo que facilita la organización y comprensión del código. Puedes anidar selectores hijos dentro de selectores padres para indicar la jerarquía de los elementos.
-     
-   - **Mixins y Funciones**:
-     
-     Los mixins y las funciones son bloques reutilizables de código en SCSS. Los mixins te permiten definir un conjunto de estilos que se pueden aplicar a múltiples elementos, mientras que las funciones pueden realizar cálculos y manipulaciones de datos para generar estilos dinámicos.
-     
-   - **Partials y Archivos Importados**:
-     
-     SCSS permite dividir tus estilos en múltiples archivos y luego importarlos según sea necesario. Esto facilita la organización y la separación de responsabilidades en tu código.
-     
-   - **Extends**:
-     
-     La directiva `@extend` en SCSS te permite heredar estilos de una regla a otra, lo que puede ser útil para evitar la repetición de código.
-     
-   - **Operadores y Funciones de Matemáticas**:
-     
-     SCSS también ofrece operadores y funciones matemáticas que te permiten realizar cálculos en tus estilos, lo que puede ser útil para crear diseños más dinámicos.
-     
-   - **Comentarios y Documentación**:
-     
-     SCSS te permite agregar comentarios a tu código, lo que facilita la comprensión de tus estilos por parte de otros desarrolladores o incluso por ti mismo en el futuro. También puedes utilizar comentarios para documentar tu código.
-      
-9. #### `Ventajas de Utilizar Tailwind CSS y SCSS Juntos`:
+8. #### `Ventajas de Utilizar Tailwind CSS y SCSS Juntos`:
    
    Tailwind y SCSS pueden combinarse en un proyecto para aprovechar al máximo las ventajas de ambos. Puedes utilizar las clases de utilidad de Tailwind para estilos rápidos y luego utilizar SCSS para personalizaciones más detalladas y organización de código.
     
-10. #### `En resumen`:
+9. #### `En resumen`:
    
    Tailwind CSS es un marco de diseño que se centra en utilidades de bajo nivel para la construcción de interfaces de usuario, mientras que SCSS es una extensión de sintaxis para CSS que agrega características como variables y reglas anidadas para escribir estilos más eficientes y organizados. Al utilizarlos juntos, puedes construir sitios web de manera eficiente y con un código bien organizado.
 
