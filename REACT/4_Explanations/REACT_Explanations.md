@@ -2628,26 +2628,38 @@
 
    Sintaxis:
 
-   Los archivos de estilos tienen una extensión específica, como `.module.css` o `module.scss`.
+   Los archivos de estilos tienen una extensión específica, como `archivo.css` o `archivo.scss`.
 
-   Los nombres de clase en estos archivos están focalizados al componente o elemento de React.
+   Los nombres de las clases en estos archivos estarán focalizados al componente o elemento de React directamente, esto puede evitar conflictos y confusiones con el otorgamiento de los nombres de las clases.
 
-   ```jsx
-   // Dentro del archivo MiComponente.module.css
-   .miEstilo {
-     color: blue;
-     font-size: 16px;
-   }
-   ```
+   **Importaciones y escritura**:
 
-   ```jsx
-   // Dentro del archivo MiComponente.jsx
-   import styles from './MiComponente.module.css';
-   
-   const MiComponente = () => {
-     return <div className={styles.miEstilo}>Texto con estilo</div>;
-   };
-   ```
+     Asegúrate de que el archivo de estilos `tenga el mismo nombre` que el archivo donde se renderizará.
+     
+     `Dentro del archivo de estilos` escribirás tus styles como siempre has hecho, pero el nombre que se le asigna a ese archivo deberá incluir la extensión `.module` después de su proprio nombre, y antes de la extensión del tipo de archivo `.scss` o `.css`.
+     
+     Por ejemplo: `MiComponente.module.scss`.
+
+     ```jsx
+     // Dentro del archivo MiComponente.module.scss
+     .miEstilo {
+       color: blue;
+       font-size: 16px;
+     }
+     ```
+     
+     `Dentro del archivo donde se importan los estilos` tendrás que importar la palabra reservada `styles` desde el módulo que posee los estilos, y cuando le asignas la `class` o el `className` a tu elemento o componente, deberás escribir la palabra reservada antes del nombre que le quieras dar a esa clase bajo la forma JSX.
+
+     Por ejemplo: `<div className={styles.miEstilo}`.
+
+     ```jsx
+     // Dentro del archivo MiComponente.jsx
+     import styles from './MiComponente.module.scss';
+     
+     const MiComponente = () => {
+       return <p className={styles.miEstilo}>Texto con estilo</p>;
+     };
+     ```
 
 4. #### `En Resumen`:
 
@@ -2998,12 +3010,22 @@
 
    Bootstrap es un marco de diseño (framework) popular que facilita el proceso de creación de interfaces web atractivas y responsivas. Está basado en HTML, CSS y JavaScript, y proporciona una colección de estilos y componentes predefinidos que puedes utilizar en tu aplicación.
 
+   Página oficial y video:
+
+     - VIDEO EXPLICATIVO:
+     
+       **https://www.youtube.com/watch?v=Y6giH81r1WI**
+     
+     - GETTING STARTED:
+
+       **https://react-bootstrap.netlify.app/docs/getting-started/introduction**
+
 2. #### `Integración de Bootstrap en React`:
 
    Para integrar Bootstrap en un proyecto de React, puedes instalar la biblioteca de Bootstrap y sus dependencias utilizando npm o yarn. Asegúrate de tener un proyecto React ya configurado antes de comenzar.
 
    ```bash
-   npm install bootstrap react-bootstrap
+   npm i bootstrap react-bootstrap
    ```
 
    ```bash
@@ -3012,33 +3034,52 @@
 
    Luego, puedes importar los estilos y componentes de Bootstrap en tus archivos de React según sea necesario.
 
-3. #### `Uso de Componentes de Bootstrap en React`:
-
-   Bootstrap proporciona una amplia gama de componentes como botones, barras de navegación, tarjetas, formularios, entre otros. Puedes usar estos componentes directamente en tus archivos de JSX.
-
-   Por ejemplo, para utilizar un botón de Bootstrap, puedes hacer lo siguiente:
-
+3. #### `Uso de Componentes e Importación de Bootstrap en React`:
+   
+   - **Importar Bootstrap usando CSS**:
+   
+   Bootstrap proporciona una amplia gama de componentes como botones, barras de navegación, tarjetas, formularios, entre otros. Puedes usar estos componentes directamente en tus archivos de JSX utilizando `CSS` normal.
+   
+   Recuerda que si deseas utilizar simplemente los componentes de Bootstrap, no hace falta que importes sus estilos.
+   
+   Para `importar BootStrap en tu CSS`, puedes hacer lo siguiente:
+   
    ```jsx
    import React from 'react';
+   // Importar en tu archivo `src/index.js` o `App.js el CSS de Bootstrap (aunque no es obligatorio. Si prefieres tus estilos, utiliza esos)`
    import 'bootstrap/dist/css/bootstrap.min.css';
+   // Ejemplo de componente importado
    import { Button } from 'react-bootstrap';
-
+   
    const MiComponente = () => {
      return (
        <Button variant="primary">Botón de Bootstrap</Button>
      );
    }
-
+   
    export default MiComponente;
    ```
-
+   
+   **Importar Bootstrap utilizando SASS**:
+     
+     En caso de que esté utilizando `SASS` la forma más sencilla de incluir los archivos fuente (que encontrarás en `node_modules`) de Bootstrap, es importarlo directamente en tus archivos `SCSS`.
+     
+     Recuerda que si deseas utilizar simplemente los componentes de Bootstrap, no hace falta que importes sus estilos.
+     
+     Para `importar BootStrap en tu SCSS`, puedes hacer lo siguiente:
+     
+     ```jsx
+     /* Importar en tu archivo `src/App.scss` o `src/index.scss` el SCSS de Bootstrap (aunque no es obligatorio) */
+     @import "node_modules/bootstrap/scss/bootstrap.scss";
+     ```
+     
 4. #### `Personalización de Estilos en Bootstrap`:
 
    Bootstrap permite la personalización de estilos a través de variables de Sass o CSS personalizado. Puedes modificar las variables de Bootstrap para adaptar el diseño a tus necesidades específicas.
 
 5. #### `Responsive & Grid System`:
 
-   Una de las características más poderosas de Bootstrap es su sistema de rejilla (Grid System). Te permite crear diseños responsivos que se adaptan a diferentes tamaños de pantalla y dispositivos. Puedes definir columnas y filas para organizar el contenido de tu página de manera eficiente.
+   Una de las características más poderosas de Bootstrap es su sistema de rejilla (Grid System). Te permite crear diseños responsivos que se adaptan a diferentes tamaños de pantalla y dispositivos. Puedes definir columnas y filas para organizar el contenido de tu página de manera eficiente. Esto te permite hacer el famoso `mobile-first`.
 
    ```jsx
    import React from 'react';

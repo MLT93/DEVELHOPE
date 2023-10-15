@@ -1,4 +1,4 @@
 declare const classNames: {
-  readonly divContainer: "divContainer";
+  readonly MyToDoComponent: "MyToDoComponent";
 };
 export = classNames;

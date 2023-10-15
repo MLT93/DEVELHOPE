@@ -2,7 +2,8 @@
 import { useState, useEffect, useRef } from "react";
 import { TresEnRaya } from "./components/TresEnRaya/TresEnRaya.jsx";
 import { Prueba } from "./components/prueba-tecnica/Prueba-tecnica.jsx";
-import style from "./App.module.scss";
+import styles from "./App.module.scss";
+import { Button } from "react-bootstrap";
 
 export function App() {
   return (
@@ -54,6 +55,8 @@ export function App() {
         <Prueba />
         <hr />
         <TresEnRaya />
+        <hr />
+        <Button />
       </div>
     </div>
   );
@@ -730,7 +733,7 @@ const MyToDoComponent = ({ arr }) => {
   };
 
   return (
-    <div className={style.divContainer}>
+    <div className={styles.MyToDoComponent}>
       <ul>
         {arr &&
           arr.map((element, index) => {
