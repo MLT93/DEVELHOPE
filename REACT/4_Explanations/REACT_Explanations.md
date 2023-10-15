@@ -2861,7 +2861,7 @@
      }
      ```
      
-     Ahora le agregamos las directivas correspondientes al archivo `.src/index.css` (o index.scss) al inicio del archivo para que traiga todos los elementos de Tailwind.
+     Ahora le agregamos las directivas correspondientes al archivo `.src/index.css` o `index.scss` al inicio del archivo para que traiga todos los elementos de Tailwind.
      
      ```css
      @tailwind base;
@@ -3010,6 +3010,8 @@
 
    Bootstrap es un marco de diseño (framework) popular que facilita el proceso de creación de interfaces web atractivas y responsivas. Está basado en HTML, CSS y JavaScript, y proporciona una colección de estilos y componentes predefinidos que puedes utilizar en tu aplicación.
 
+   Bootstrap está muy bien, sin embargo tiene unos estilos muy definidos, lo cual es perfecto para hacer prototipado.
+
    Página oficial y video:
 
      - VIDEO EXPLICATIVO:
@@ -3042,12 +3044,12 @@
    
    Recuerda que si deseas utilizar simplemente los componentes de Bootstrap, no hace falta que importes sus estilos.
    
-   Para `importar BootStrap en tu CSS`, puedes hacer lo siguiente:
+   Para `importar el estilo BootStrap en tu CSS`, puedes hacer lo siguiente:
    
    ```jsx
    import React from 'react';
-   // Importar en tu archivo `src/index.js` o `App.js el CSS de Bootstrap (aunque no es obligatorio. Si prefieres tus estilos, utiliza esos)`
-   import 'bootstrap/dist/css/bootstrap.min.css';
+   // Importar en tu archivo `src/index.js` el CSS de Bootstrap
+   import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
    // Ejemplo de componente importado
    import { Button } from 'react-bootstrap';
    
@@ -3060,24 +3062,56 @@
    export default MiComponente;
    ```
    
+   Recuerda de comprobar correctamente los directorios de los archivos para ejecutar bien las importaciones.
+   
    **Importar Bootstrap utilizando SASS**:
      
      En caso de que esté utilizando `SASS` la forma más sencilla de incluir los archivos fuente (que encontrarás en `node_modules`) de Bootstrap, es importarlo directamente en tus archivos `SCSS`.
      
-     Recuerda que si deseas utilizar simplemente los componentes de Bootstrap, no hace falta que importes sus estilos.
-     
-     Para `importar BootStrap en tu SCSS`, puedes hacer lo siguiente:
+     Para `importar el estilo BootStrap en tu SCSS`, puedes hacer lo siguiente:
      
      ```jsx
-     /* Importar en tu archivo `src/App.scss` o `src/index.scss` el SCSS de Bootstrap (aunque no es obligatorio) */
+     // Importar en tu archivo `src/index.scss` el SCSS de Bootstrap
      @import "node_modules/bootstrap/scss/bootstrap.scss";
      ```
-     
-4. #### `Personalización de Estilos en Bootstrap`:
 
+4. #### `Mode (Dark/Light)`:
+
+   Bootstrap ofrece dos estilos que puedes alternar entre ellos: el modo `dark` y el modo `light`. Por defecto, se utiliza el modo claro.
+
+   Puedes aplicar estos estilos a tu página usando la propiedad `data-bs-theme` en el elemento HTML de tu preferencia. 
+   
+   También se puede aplicar directamente al elemento <html> en el archivo `index.html` para modificar toda la página en un solo golpe, pero puedes utilizarlo indistintamente entre los elementos o componentes que desarrolles como prefieras.
+
+   **data-bs-theme="dark" / data-bs-theme="light"**
+
+     ```html
+     <!doctype html>
+     <!-- data-bs-theme="dark" o data-bs-theme="light" -->
+     <html lang="en" data-bs-theme="dark">
+       <head>
+         <meta charset="UTF-8" />
+         <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+         <title>Vite + React</title>
+       </head>
+       <body>
+         <div id="root"></div>
+         <script type="module" src="./src/index.jsx"></script>
+       </body>
+     </html>
+     ```
+     
+     En el ejemplo se muestra un archivo `HTML` básico.
+     La propiedad `data-bs-theme` se utiliza para definir el tema que se aplicará. Puedes elegir entre `dark` y `light` dependiendo de tus preferencias o de los requisitos de tu aplicación.
+     En este caso, se ha establecido `data-bs-theme="dark"`, lo que significa que se aplicará el tema oscuro a la página. Si prefieres el tema claro, simplemente cambia el valor a `light`.
+     Esta configuración se aplica a toda la página, lo que significa que afectará a todos los elementos que utilicen los estilos de `Bootstrap`.
+          
+5. #### `Personalización de Estilos en Bootstrap`:
+   
    Bootstrap permite la personalización de estilos a través de variables de Sass o CSS personalizado. Puedes modificar las variables de Bootstrap para adaptar el diseño a tus necesidades específicas.
 
-5. #### `Responsive & Grid System`:
+6. #### `Responsive & Grid System`:
 
    Una de las características más poderosas de Bootstrap es su sistema de rejilla (Grid System). Te permite crear diseños responsivos que se adaptan a diferentes tamaños de pantalla y dispositivos. Puedes definir columnas y filas para organizar el contenido de tu página de manera eficiente. Esto te permite hacer el famoso `mobile-first`.
 
@@ -3099,7 +3133,7 @@
    export default MiComponente;
    ```
 
-6. #### `Eventos y Funciones en Bootstrap`:
+7. #### `Eventos y Funciones en Bootstrap`:
 
    Bootstrap proporciona eventos integrados para componentes como botones y modales. Puedes usar estos eventos junto con funciones de JavaScript para agregar interactividad a tu aplicación.
 
@@ -3121,7 +3155,7 @@
    export default MiComponente;
    ```
 
-7. #### `Integración de JavaScript en Bootstrap`:
+8. #### `Integración de JavaScript en Bootstrap`:
 
    Bootstrap también incluye componentes interactivos que requieren JavaScript para funcionar correctamente, como modales y pestañas. Asegúrate de incluir la biblioteca de JavaScript de Bootstrap en tu proyecto.
 
@@ -3129,7 +3163,7 @@
    import 'bootstrap/dist/js/bootstrap.bundle.min.js';
    ```
 
-8. #### `Consideraciones Finales`:
+9. #### `Consideraciones Finales`:
 
    - Bootstrap es una herramienta valiosa para acelerar el desarrollo de interfaces web en React.
    - Puedes personalizar Bootstrap según tus necesidades específicas.

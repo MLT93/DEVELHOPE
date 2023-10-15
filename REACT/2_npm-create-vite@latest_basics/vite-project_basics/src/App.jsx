@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { TresEnRaya } from "./components/TresEnRaya/TresEnRaya.jsx";
 import { Prueba } from "./components/prueba-tecnica/Prueba-tecnica.jsx";
 import styles from "./App.module.scss";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
 export function App() {
   return (
@@ -530,12 +530,12 @@ const FocusableInput = () => {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h2>Input Focus Ref</h2>
-      <input
-        ref={inputFocusRef}
-        name="username"
-        type="text"
-        placeholder="Name"></input>
+      <Form style={{ height: "200px" }}>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label className="mb-3">Name:</Form.Label>
+          <Form.Control type="email" placeholder="Enter email" />
+        </Form.Group>
+      </Form>
     </div>
   );
 };

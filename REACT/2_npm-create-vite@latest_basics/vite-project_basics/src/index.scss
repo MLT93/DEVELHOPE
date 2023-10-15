@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
+@import "node_modules/bootstrap/scss/bootstrap.scss";
 
 .welcome {
   border: 1px solid white;
