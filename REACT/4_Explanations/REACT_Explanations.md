@@ -2695,48 +2695,48 @@
    
    Esta es una forma simplificada de trabajar con estilos en comparación con escribir CSS personalizado. Para más especificaciones y detalles puedes consular su web oficial.
       
-   Página oficial Y video:
+   Página oficial y video:
      
      - VIDEO EXPLICATIVO:
-
+     
        **https://www.youtube.com/watch?v=booX21Ynopw**
      
      - GET STARTED (elegir el framework que se utiliza e iniciar):
        
        **https://tailwindcss.com/docs/installation/framework-guides**
-
+     
      - EDITOR SET UP:
-
+     
        **https://tailwindcss.com/docs/editor-setup**
-
+     
      - USANDO PREPROCESADOR (como SASS, LESS, etc...):
-
+     
        **https://tailwindcss.com/docs/using-with-preprocessors**
-
+     
      - IMPORTACIÓN Y DIRECTIVAS DE USO:
-
+     
        **https://tailwindcss.com/docs/functions-and-directives**
-
+     
      - UTILIDADES:
-
+     
        **https://tailwindcss.com/docs/utility-first**
-
+     
      - UTILIDADES-HOVER:
-
+     
        **https://tailwindcss.com/docs/hover-focus-and-other-states**
-
+     
      - MEDIA QUERIES:
-
+     
        **https://tailwindcss.com/docs/responsive-design**
-
+     
      - TEMA OSCURO / CLARO:
-
+     
        **https://tailwindcss.com/docs/dark-mode**
-
+     
      - ESTILOS PERSONALIZADOS:
-
+     
        **https://tailwindcss.com/docs/adding-custom-styles**
-
+     
 2. #### `Filosofía de Tailwind CSS`:
    
    La filosofía de Tailwind es promover la utilidad sobre la configuración. En lugar de escribir clases personalizadas en tu CSS, utilizas clases de utilidad directamente en tu marcado HTML para estilizar componentes y diseños.
@@ -2756,7 +2756,7 @@
 6. #### `Tailwind Con Sass (SCSS)`:
    
    `SCSS` es una extensión de sintaxis para `CSS` que agrega características como variables, anidamiento y funciones. Permite escribir estilos más limpios y organizados. Tailwind también permite su utilizo pero recuerda que deberás tener `SASS` descargado en tu proyecto, para que se pueda compilar en código válido que los navegadores puedan interpretar.
-   
+    
 7. #### `Instalar Paquete Tailwind y SASS`:
    
    - **`Introducción de NPM`**:
@@ -2771,7 +2771,7 @@
      ```
      
      También utiliza un archivo `package-lock.json`  para mantener un registro preciso de las versiones exactas de las dependencias instaladas.
-
+     
    - **`Introducción de Yarn`**:
      
      `Yarn` fue desarrollado por Facebook y luego se convirtió en un proyecto de código abierto mantenido por la comunidad.
@@ -2791,7 +2791,7 @@
      ```bash
      npm install --global yarn
      ```
-          
+     
    - **`Inicia un nuevo proyecto` (si no lo has hecho ya)**:
      
      Si no tienes un proyecto existente, crea uno nuevo ejecutando el siguiente comando en tu terminal:
@@ -2799,13 +2799,13 @@
      ```bash
      npm init -y
      ```
-
+     
      ```bash
      yarn init -y
      ```
      
      Esto creará un archivo `package.json` en tu directorio.
-     
+      
    - **`Instalar Tailwindcss` y sus dependencias**:
      
      Ejecuta el siguiente comando para instalar Tailwind CSS y sus dependencias:
@@ -2813,11 +2813,11 @@
      ```bash
      npm install tailwindcss postcss autoprefixer
      ```
-
+     
      ```bash
      yarn add tailwindcss postcss autoprefixer
      ```
-     
+      
    - **`Configurar Tailwind`**:
      
      Después de instalar Tailwind, necesitas configurarlo. Puedes hacerlo ejecutando el siguiente comando:
@@ -2829,7 +2829,7 @@
      `-p` es un argumento que se pasa al comando init. En este caso, `-p indica que Tailwind debe agregar una configuración de preprocesador a la configuración inicial`. Por lo tanto, si estás utilizando un preprocesador como `Sass` o `Less` en tu proyecto, este comando configurará Tailwind para trabajar con él.
      
      Esto creará un archivo `tailwind.config.js` y un archivo `postcss.config.js` en tu directorio.
-     
+      
    - **Configurar `tailwind.config.js `** :
      
      Una vez instalado Tailwind CSS tenemos que añadir los directorios de todos los tipos de archivos y sus extensiones para que Tailwind pueda configurarse correctamente.
@@ -2859,7 +2859,7 @@
      ```
      
      Ahora podrías empezar a ejecutar tu aplicación y trabajar con Tailwind sin ningún problema.
-     
+      
    - **Configurar plugin SASS para Webpack `webpack.config.js`**:
      
      Si también deseas utilizar SASS, instálalo y agrega el cargador de SASS para Webpack:
@@ -2926,7 +2926,6 @@
      import sass from "vite-plugin-sass";
      
      // https://vitejs.dev/config/
-     
      export default defineConfig({
        plugins: [react(), sassDts(), sass()],
      });
@@ -2939,11 +2938,11 @@
      ```bash
      npm run dev
      ```
-
+     
      ```bash
      yarn dev
      ```
-
+      
    - **Si no has configurado los plugins debes agregar comandos de construcción en `package.json`**:
      
      Abre tu archivo `package.json` y agrega los siguientes comandos en la sección de `scripts`:
@@ -2966,7 +2965,7 @@
      ```bash
      npm run build
      ```
-
+     
      ```bash
      yarn build
      ```
@@ -2976,7 +2975,7 @@
      ```bash
      npm run watch
      ```
-
+     
      ```bash
      yarn watch
      ```
@@ -2984,7 +2983,7 @@
      Esto generará un archivo CSS optimizado en el directorio `public`.
      
    ¡Listo! Ahora has configurado Tailwind CSS y SASS en tu proyecto utilizando NPM o Yarn. Puedes comenzar a escribir tu código CSS en archivos SASS y utilizar las utilidades de Tailwind CSS.
-   
+    
 8. #### `Refrescando SCSS`:
    
    SCSS es una preprocesador de CSS que proporciona funcionalidades adicionales para escribir estilos de manera más eficiente y organizada. Permite el uso de variables, reglas anidadas, mixins y funciones, entre otras características.
@@ -3016,9 +3015,9 @@
    - **Comentarios y Documentación**:
      
      SCSS te permite agregar comentarios a tu código, lo que facilita la comprensión de tus estilos por parte de otros desarrolladores o incluso por ti mismo en el futuro. También puedes utilizar comentarios para documentar tu código.
-     
+      
 9. #### `Ventajas de Utilizar Tailwind CSS y SCSS Juntos`:
-
+   
    Tailwind y SCSS pueden combinarse en un proyecto para aprovechar al máximo las ventajas de ambos. Puedes utilizar las clases de utilidad de Tailwind para estilos rápidos y luego utilizar SCSS para personalizaciones más detalladas y organización de código.
     
 10. #### `En resumen`:
