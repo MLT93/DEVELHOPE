@@ -2,15 +2,15 @@ Realiza una explicación igual a la que te expongo a continuación, con la misma
 
 ## Async code - callbacks y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
 
-1. #### `Introducción a Callbacks`:
+1. #### **`Introducción a Callbacks`**:
 
    Los callbacks son un concepto esencial en JavaScript que permite la ejecución de funciones después de que se complete una operación o evento específico. Estas funciones pasadas como argumentos permiten manejar tareas asíncronas y modularizar el código.
 
-2. #### `Importancia de los Callbacks`:
+2. #### **`Importancia de los Callbacks`**:
 
    En un entorno asíncrono como JavaScript, los callbacks son fundamentales para gestionar operaciones que pueden llevar tiempo, como solicitudes a servidores, interacciones del usuario o tareas programadas. Ayudan a mantener la fluidez del flujo de trabajo y a evitar bloqueos del hilo de ejecución.
 
-3. #### `Sintaxis y Ejecución de Callbacks`:
+3. #### **`Sintaxis y Ejecución de Callbacks`**:
 
    Los callbacks se definen como funciones que se pasan como argumentos a otras funciones. Se ejecutan después de que se complete la operación o evento esperado. Veamos un ejemplo:
 
@@ -29,7 +29,7 @@ Realiza una explicación igual a la que te expongo a continuación, con la misma
    tareaAsincrona(algunParametro, miCallback);
    ```
 
-4. #### `setInterval y clearInterval`:
+4. #### **`setInterval y clearInterval`**:
 
    setInterval y clearInterval son funciones que trabajan juntas para ejecutar y detener tareas repetitivas a intervalos regulares.
 
@@ -51,7 +51,7 @@ Realiza una explicación igual a la que te expongo a continuación, con la misma
      clearInterval(intervaloID); // Detiene la repetición
      ```
 
-5. #### `setTimeout`:
+5. #### **`setTimeout`**:
 
    Permite programar la ejecución de una función después de un retraso específico. 
    
@@ -65,7 +65,7 @@ Realiza una explicación igual a la que te expongo a continuación, con la misma
      }, 2000);
      ```
 
-6. #### `Manejo de Operaciones Asíncronas y Encadenamiento`:
+6. #### **`Manejo de Operaciones Asíncronas y Encadenamiento`**:
 
    Los callbacks son especialmente útiles para manejar operaciones asíncronas y tareas que dependen de la finalización de otras tareas. También se pueden encadenar y componer para crear secuencias de tareas.
 
@@ -78,19 +78,19 @@ Realiza una explicación igual a la que te expongo a continuación, con la misma
    });
    ```
 
-7. #### `Consideraciones y Alternativas`:
+7. #### **`Consideraciones y Alternativas`**:
 
    Aunque los callbacks son fundamentales, pueden llevar a un código confuso en casos de anidamiento excesivo. Las Promesas y async/await son enfoques más modernos que manejan operaciones asíncronas de manera más legible y estructurada.
 
-8. #### `Encadenamiento de Callbacks - Callback Hell`:
+8. #### **`Encadenamiento de Callbacks - Callback Hell`**:
 
    A medida que aumenta la complejidad de las tareas asíncronas, es posible que te encuentres en lo que se llama "Callback Hell". Esto sucede cuando anidas múltiples callbacks, lo que puede dificultar la lectura y el mantenimiento del código.
 
-9. #### `Solución a Callback Hell, las Promesas`:
+9. #### **`Solución a Callback Hell, las Promesas`**:
 
    Para manejar de manera más efectiva la complejidad y la legibilidad en el código asíncrono, JavaScript introdujo las promesas. Una promesa es un objeto que representa un valor futuro, que puede estar disponible o no. Las promesas proporcionan métodos como `.then()` y `.catch()` que permiten manejar de manera más ordenada y estructurada las tareas asíncronas.
 
-10. #### `Conceptos y ejemplos relacionados con el uso de funciones flecha como callbacks`:
+10. #### **`Conceptos y ejemplos relacionados con el uso de funciones flecha como callbacks`**:
 
    Las funciones flecha son una característica introducida en ECMAScript 6 (ES6) que ofrece una sintaxis más concisa y clara para definir funciones en JavaScript. Son especialmente útiles cuando se utilizan como callbacks, que son funciones pasadas como argumentos a otras funciones para que se ejecuten en un momento posterior o en respuesta a ciertas condiciones.
 
@@ -175,7 +175,7 @@ Realiza una explicación igual a la que te expongo a continuación, con la misma
      Por ejemplo, no se pueden utilizar como constructores (no se pueden llamar con `new`), y no tienen su propio objeto `arguments`. Además, debido a que heredan el contexto de this, no son adecuadas para todas las situaciones, especialmente cuando necesitas controlar explícitamente el contexto de `this`.
      En última instancia, la elección entre usar una función flecha o una función tradicional como callback dependerá de las necesidades específicas de tu código y de cómo quieras manejar el contexto de `this`.
 
-11. #### `Especificaciones sobre el contexto this`:
+11. #### **`Especificaciones sobre el contexto this`**:
 
    El contexto `this` es uno de los conceptos más importantes en JavaScript y se refiere al objeto al que hace referencia en un momento dado dentro de una función. El valor de `this` depende de cómo se llama una función y en qué contexto se ejecuta. Entender el contexto `this` es esencial para escribir código efectivo y evitar confusiones.
    El contexto `this` es fundamental para acceder a propiedades y métodos dentro de un objeto. Permite que una función acceda a las propiedades y métodos de un objeto en el que se encuentra. Además, en JavaScript, `this` se usa para diferentes propósitos en diferentes contextos:
@@ -433,7 +433,7 @@ Realiza una explicación igual a la que te expongo a continuación, con la misma
 
      Este ejemplo simula la lectura de un archivo de manera asíncrona y demuestra cómo se utiliza un callback para manejar el resultado de la operación asincrónica. La aplicación real podría implicar operaciones más complejas, pero este es un ejemplo sólido para comprender los callbacks en un entorno asíncrono.
      
-13. #### `Explicación del porqué el callback se pone como segundo argumento`:
+13. #### **`Explicación del porqué el callback se pone como segundo argumento`**:
   
    En JavaScript y en muchas librerías y frameworks que siguen el patrón de diseño de programación asíncrona, el patrón de pasar `el callback como último argumento es una convención común`. Esto se hace por varias razones:
 

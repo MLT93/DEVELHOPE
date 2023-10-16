@@ -4,6 +4,8 @@ import { TresEnRaya } from "./components/TresEnRaya/TresEnRaya.jsx";
 import { Prueba } from "./components/prueba-tecnica/Prueba-tecnica.jsx";
 import styles from "./App.module.scss";
 import { Button, Form, Collapse, Card } from "react-bootstrap";
+import { Module } from "./components/Module/Module.jsx";
+import { Toggle } from "./components/ToggleComponent/Toggle.jsx";
 
 export function App() {
   return (
@@ -61,6 +63,10 @@ export function App() {
         <Container title="Hello Component Collapse">
           <Hello />
         </Container>
+        <hr />
+        <Module />
+        <hr />
+        <Toggle />
       </div>
     </div>
   );
@@ -349,7 +355,7 @@ const Login = ({ onLogin }) => {
     setNameData({ username: "", password: "", remember: false });
   };
 
-  const handleSendData = (event) => {
+  const handleSubmit = (event) => {
     /* impedimos que la página se vuelva a cargar una vez que apretamos el botón `Submit` */
     event.preventDefault();
     console.log("You are logged with:", nameData);
@@ -379,7 +385,7 @@ const Login = ({ onLogin }) => {
 
   return (
     <form
-      onSubmit={handleSendData}
+      onSubmit={handleSubmit}
       style={{
         display: "flex",
         flexFlow: "column wrap",
@@ -436,7 +442,7 @@ const Login = ({ onLogin }) => {
           id="04-login"
           name="send-data"
           type="submit"
-          onClick={handleSendData}
+          onClick={handleSubmit}
           disabled={isDisabled}
           style={{
             color: "white",

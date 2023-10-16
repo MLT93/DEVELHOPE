@@ -3,14 +3,17 @@ import { useEffect, useState } from "react";
 export const Prueba = () => {
   const [state, setState] = useState("lorem ipusm");
   const [imageState, setImageState] = useState("image cat");
-  const [error, setError] = useState(null)
-  const urlFact = `https://catfact.ninja/fact`;
+  const [error, setError] = useState(null);
+  const urlFact = `https://catfact.ninja/f765ract`;
   const urlImage = `https://api.thecatapi.com/v1/images/search?limit=10&rand`;
 
   useEffect(() => {
     try {
       (async () => {
         const response = await fetch(urlFact);
+        
+        // Manejo del error de la petición al servidor
+        setError(`La petición al servidor ha ido mal`)
 
         // Manejo error de respuesta del servidor
         if (!response.ok) {
@@ -18,10 +21,6 @@ export const Prueba = () => {
             `La respuesta no ha encontrado resultado: (response = ${response.ok})`,
           );
         }
-
-        // TODO: utilizar un useState para manejar el error de la petición y no solo el de la respuesta
-
-        // ...
 
         console.log(response);
 
@@ -32,9 +31,9 @@ export const Prueba = () => {
         setState(data.fact);
       })();
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
-  }, [urlFact]);
+  }, [urlFact, error]);
 
   useEffect(() => {
     try {
@@ -68,35 +67,37 @@ export const Prueba = () => {
   }, [urlFact, urlImage]);
 
   return (
-    <main style={{padding: '20px'}}>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          placeItems: "center",
-          width: "290px",
-          height: "auto",
-          border: "1.5px solid black",
-          borderRadius: "10px",
-          padding: "10px",
-          backgroundColor: 'lightcyan',
-          color: "black",
-        }}>
-        <img
-          src={imageState}
-          alt={`Image given of ${urlImage}`}
+    <>
+      <main style={{ padding: "20px" }}>
+        <div
           style={{
-            width: "98.5%",
-            height: "250px",
-            border: "1px solid black",
+            display: "flex",
+            flexDirection: "column",
+            placeItems: "center",
+            width: "290px",
+            height: "auto",
+            border: "1.5px solid black",
             borderRadius: "10px",
-          }}
-        />
-        <div>
-          <h4>Information:</h4>
-          <p>{state && state}</p>
+            padding: "10px",
+            backgroundColor: "lightcyan",
+            color: "black",
+          }}>
+          <img
+            src={imageState}
+            alt={`Image given of ${urlImage}`}
+            style={{
+              width: "98.5%",
+              height: "250px",
+              border: "1px solid black",
+              borderRadius: "10px",
+            }}
+          />
+          <div>
+            <h4>Information:</h4>
+            <p>{state && state}</p>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 };

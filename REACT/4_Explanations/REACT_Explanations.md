@@ -607,9 +607,9 @@
    
      `useState` permite añadir o modificar un estado a un componente y renderizarlo posteriormente a la página. Comienza con una "destructuración" de array donde el primer elemento es el estado (la variable) que queremos modificar y el segundo es una función para poder modificar ese estado/variable. Posteriormente la función `useState` tiene un argumento, que será el valor inicial de nuestro primer elemento en la "destructuración", o sea, la variable.
 
-     Recuerda que `useState es Asíncrono`.
+     Recuerda que `useState es Asíncrono` porque hace una "partición en la memoria" para guardar el valor inicial de la variable de estado `state` que se asigna en la destructuración de su array, `const [state, setState] = useState(null)`. Esta variable, será lo que renderices en el `return` del componente (la parte HTML), o sea, que va a ser lo primero que se vea en la UI hasta que venga modificado por su función `setState`. En pocas palabras, la variable de `state` se renderiza en el HTML que devuelve tu componente, se modificada únicamente por su función `setState` y se inicializa con el valor que le introduzcas a `useState` en la destructuración.
      
-     Puedes usarlo cuando necesitas mantener y/o actualizar un valor en el componente a lo largo del tiempo. Es una variable que puede modificar su valor a través de su función, según la necesidad. Por ejemplo, si necesitas almacenar el estado de un input o el estado de un modal.
+     Puedes usarlo cuando necesitas mantener y/o actualizar un valor en el componente a lo largo del tiempo. Es una variable que puede modificar su valor a través de su función, según la renderización del componente. Por ejemplo, si necesitas almacenar el estado de un input o el estado de un modal.
 
      Posee una convención, y es aplicar el mismo nombre de la variable (ej. `estado`), al modificador del estado, con la palabra `set` al inicio (ej. `setEstado`).
      
@@ -618,6 +618,7 @@
      ```jsx
      import React, { useState } from 'react';
      
+     // El valor de `state` es guardado en una partición de la memoria que será recuperado según la renderización del componente, y después viene modificado a través de su función `setState`
      const [state, setState] = useState(startValueOfState);
      ```
      
@@ -3074,15 +3075,17 @@
      // Importar en tu archivo `src/index.scss` el SCSS de Bootstrap
      @import "node_modules/bootstrap/scss/bootstrap.scss";
      ```
+
+     Recuerda de comprobar los directorios de los archivos.
       
 4. #### **`Mode (Dark/Light)`**:
-
+   
    Bootstrap ofrece dos estilos que puedes alternar entre ellos: el modo `dark` y el modo `light`. Por defecto, se utiliza el modo claro.
-
+   
    Puedes aplicar estos estilos a tu página usando la propiedad `data-bs-theme` en el elemento HTML de tu preferencia. 
    
    También se puede aplicar directamente al elemento <html> en el archivo `index.html` para modificar toda la página en un solo golpe, pero puedes utilizarlo indistintamente entre los elementos o componentes que desarrolles como prefieras.
-
+   
    - **data-bs-theme="dark" / data-bs-theme="light"**
      
      ```html
@@ -3106,10 +3109,61 @@
      La propiedad `data-bs-theme` se utiliza para definir el tema que se aplicará. Puedes elegir entre `dark` y `light` dependiendo de tus preferencias o de los requisitos de tu aplicación.
      En este caso, se ha establecido `data-bs-theme="dark"`, lo que significa que se aplicará el tema oscuro a la página. Si prefieres el tema claro, simplemente cambia el valor a `light`.
      Esta configuración se aplica a toda la página, lo que significa que afectará a todos los elementos que utilicen los estilos de `Bootstrap`.
-           
-5. #### **`Personalización de Estilos en Bootstrap`**:
-   
-   Bootstrap permite la personalización de estilos a través de variables de Sass o CSS personalizado. Puedes modificar las variables de Bootstrap para adaptar el diseño a tus necesidades específicas.
+      
+   - **`Personalización de Estilos en Bootstrap`**:
+     
+     Bootstrap permite la personalización de estilos a través de variables de Sass o CSS personalizado. Puedes modificar las variables de Bootstrap para adaptar el diseño a tus necesidades específicas.
+     
+     - **Crea un archivo de configuración**:
+     
+       Crea un archivo `bootstrap-custom.css` o `custom-bootstrap.scss` (o cualquier otro nombre que prefieras) en tu proyecto. Este archivo será usado para sobrescribir las variables de Bootstrap.
+
+       Ten presente que si utilizas `SASS` o `CSS` normal, el procedimiento es distinto.
+
+     - **Sobrescribe e Importa las variables en `SCSS`**:
+       
+       En el archivo `bootstrap-custom.scss`, puedes sobrescribir las variables que desees. Dentro de este archivo "custom", y unicamente después de haber hecho las modificaciones pertinentes, deberás importar el archivo principal de Bootstrap. Por ejemplo, si deseas cambiar el color primario, puedes hacer lo siguiente:
+       
+       ```scss
+       // Sobrescribe las variables que necesites en tu archivo `bootstrap-custom.scss`
+       $primary: #tuColorPersonalizado;
+       $secondary: #tuColorSecundario;
+
+       // Importa Bootstrap después de sobrescribir las variables 
+       @import "../node_modules/bootstrap/scss/bootstrap";
+       ```
+       
+       En tu archivo de entrada (por lo general `index.js` o `index.jsx`), importa tu archivo personalizado:
+       
+       ```jsx
+       import "../node_modules/bootstrap/scss/bootstrap.scss";
+       ```
+        
+     - **Sobrescribe e Importa las variables en `CSS`**:
+       
+       En el archivo `custom-bootstrap.css`, puedes sobrescribir las variables de Bootstrap. Por ejemplo, si deseas cambiar el color primario, puedes hacer lo siguiente:
+       
+       ```css
+       :root {
+         /* Modifica las variables que quieras */
+         --primary: #tuColorPersonalizado;
+         --secondary: #tuColorSecundario;
+       }
+       ```
+       
+       En tu archivo de entrada (por lo general `index.js` o `App.js`), importa tu archivo personalizado:
+       
+       ```jsx
+       import './custom-bootstrap.css';
+       ```
+
+       Después de importar tu archivo "customizado", asegúrate de importar el archivo principal de Bootstrap después de tu archivo de estilos personalizado para que las modificaciones de tus variables tengan prioridad:
+
+       ```jsx
+       import 'bootstrap/dist/css/bootstrap.min.css';
+       ```
+
+Con estos pasos, habrás personalizado las variables preestablecidas de Bootstrap en tu proyecto de React.
 
 6. #### **`Responsive & Grid System`**:
 
