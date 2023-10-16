@@ -4043,7 +4043,9 @@ En resumen, la Fetch API y las funciones relacionadas, como async/await y promes
        throw {
          error: true,
          status: response.status,
-         statusText: response.statusText ? "ocurrió un error" : response.statusText
+         statusText: !response.statusText 
+           ? "ocurrió un error" 
+           : response.statusText,
        }
      }
      setError({error: false})
