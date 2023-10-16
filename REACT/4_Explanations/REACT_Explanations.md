@@ -2598,11 +2598,11 @@
 
 ## Styling Components, CSS Modules y Funciones Relacionadas en React: Una Explicación Detallada
 
-1. #### `Introducción a Styling Components en React`:
+1. #### **`Introducción a Styling Components en React`**:
 
    Styling Components en React se refiere a las técnicas y enfoques utilizados para aplicar estilos visuales a los componentes de una aplicación React. Tradicionalmente, esto se hacía mediante CSS (Cascading Style Sheets), pero con la popularización de React, han surgido diferentes formas de manejar estilos.
 
-2. #### `CSS en React`:
+2. #### **`CSS en React`**:
 
    **Estilos en línea (Inline Styles)**:
 
@@ -2622,7 +2622,7 @@
    <div className="mi-clase-css">Texto con estilo</div>
    ```
 
-3. #### `CSS Modules en React`:
+3. #### **`CSS Modules en React`**:
 
    Los CSS Modules son una forma de modularizar los estilos en React. Permiten encapsular los estilos de un componente para evitar conflictos con otros estilos en la aplicación.
 
@@ -2661,7 +2661,7 @@
      };
      ```
 
-4. #### `En Resumen`:
+4. #### **`En Resumen`**:
 
    - **Styling Components en React** se refiere a la aplicación de estilos hacia los componentes o elementos de React.
 
@@ -2673,7 +2673,7 @@
 
 ## Tailwind CSS y SCSS: Una Explicación Detallada
 
-1. #### `Introducción a Tailwind CSS`:
+1. #### **`Introducción a Tailwind CSS`**:
    
    Tailwind CSS es un marco de diseño (framework) de utilidades de primera clase para la construcción rápida y eficiente de interfaces de usuario. A diferencia de otros marcos como Bootstrap, Tailwind se centra en proporcionar utilidades de bajo nivel que permiten construir diseños personalizados sin la necesidad de escribir CSS personalizado.
    
@@ -2706,7 +2706,7 @@
    `rounded` agrega bordes redondeados al botón.
    
    Esta es una forma simplificada de trabajar con estilos en comparación con escribir CSS personalizado. Para más especificaciones y detalles puedes consular su web oficial.
-      
+    
    Página oficial y video:
      
      - VIDEO EXPLICATIVO:
@@ -2749,27 +2749,27 @@
      
        **https://tailwindcss.com/docs/adding-custom-styles**
      
-2. #### `Filosofía de Tailwind CSS`:
+2. #### **`Filosofía de Tailwind CSS`**:
    
    La filosofía de Tailwind es promover la utilidad sobre la configuración. En lugar de escribir clases personalizadas en tu CSS, utilizas clases de utilidad directamente en tu marcado HTML para estilizar componentes y diseños.
    
-3. #### `Clases de Utilidad en Tailwind CSS`:
+3. #### **`Clases de Utilidad en Tailwind CSS`**:
    
    Tailwind proporciona una amplia gama de clases de utilidad que abarcan desde márgenes y rellenos hasta tipografías y colores. Por ejemplo, puedes agregar márgenes a un elemento utilizando clases como `m-4` para un margen de 1rem o `mx-auto` para centrar horizontalmente.
    
-4. #### `Configuración Personalizada`:
+4. #### **`Configuración Personalizada`**:
    
    Aunque Tailwind ofrece una gran cantidad de utilidades listas para usar, también es altamente configurable. Puedes personalizar colores, fuentes, márgenes y otros aspectos de la apariencia de tu sitio a través de un archivo de configuración.
    
-5. #### `Integración con Proyectos`:
+5. #### **`Integración con Proyectos`**:
    
    Puedes integrar Tailwind en tu proyecto de varias formas, incluyendo la instalación a través de npm o utilizando CDN en tu HTML. Luego, puedes importar Tailwind en tu CSS o JavaScript según sea necesario.
    
-6. #### `Tailwind Con Sass (SCSS)`:
+6. #### **`Tailwind Con Sass (SCSS)`**:
    
    `SCSS` es una extensión de sintaxis para `CSS` que agrega características como variables, anidamiento y funciones. Permite escribir estilos más limpios y organizados. Tailwind también permite su utilizo pero recuerda que deberás tener `SASS` descargado en tu proyecto, para que se pueda compilar en código válido que los navegadores puedan interpretar.
     
-7. #### `Instalar Paquete Tailwind y SASS`:
+7. #### **`Instalar Paquete Tailwind y SASS`**:
    
    - **`Introducción de NPM`**:
      
@@ -2996,33 +2996,33 @@
      
    ¡Listo! Ahora has configurado Tailwind CSS y SASS en tu proyecto utilizando NPM o Yarn. Puedes comenzar a escribir tu código CSS en archivos SASS y utilizar las utilidades de Tailwind CSS.
     
-8. #### `Ventajas de Utilizar Tailwind CSS y SCSS Juntos`:
+8. #### **`Ventajas de Utilizar Tailwind CSS y SCSS Juntos`**:
    
    Tailwind y SCSS pueden combinarse en un proyecto para aprovechar al máximo las ventajas de ambos. Puedes utilizar las clases de utilidad de Tailwind para estilos rápidos y luego utilizar SCSS para personalizaciones más detalladas y organización de código.
     
-9. #### `En resumen`:
+9. #### **`En resumen`**:
    
    Tailwind CSS es un marco de diseño que se centra en utilidades de bajo nivel para la construcción de interfaces de usuario, mientras que SCSS es una extensión de sintaxis para CSS que agrega características como variables y reglas anidadas para escribir estilos más eficientes y organizados. Al utilizarlos juntos, puedes construir sitios web de manera eficiente y con un código bien organizado.
 
 ## Bootstrap React: Una Explicación Detallada
-
-1. #### `Introducción a Bootstrap`:
-
+   
+1. #### **`Introducción a Bootstrap`**:
+   
    Bootstrap es un marco de diseño (framework) popular que facilita el proceso de creación de interfaces web atractivas y responsivas. Está basado en HTML, CSS y JavaScript, y proporciona una colección de estilos y componentes predefinidos que puedes utilizar en tu aplicación.
-
+   
    Bootstrap está muy bien, sin embargo tiene unos estilos muy definidos, lo cual es perfecto para hacer prototipado.
-
+   
    Página oficial y video:
-
+   
      - VIDEO EXPLICATIVO:
      
        **https://www.youtube.com/watch?v=Y6giH81r1WI**
      
      - GETTING STARTED:
-
+     
        **https://react-bootstrap.netlify.app/docs/getting-started/introduction**
-
-2. #### `Integración de Bootstrap en React`:
+    
+2. #### **`Integración de Bootstrap en React`**:
 
    Para integrar Bootstrap en un proyecto de React, puedes instalar la biblioteca de Bootstrap y sus dependencias utilizando npm o yarn. Asegúrate de tener un proyecto React ya configurado antes de comenzar.
 
@@ -3036,7 +3036,7 @@
 
    Luego, puedes importar los estilos y componentes de Bootstrap en tus archivos de React según sea necesario.
 
-3. #### `Uso de Componentes e Importación de Bootstrap en React`:
+3. #### **`Uso de Componentes e Importación de Bootstrap en React`**:
    
    - **Importar Bootstrap usando CSS**:
    
@@ -3075,7 +3075,7 @@
      @import "node_modules/bootstrap/scss/bootstrap.scss";
      ```
 
-4. #### `Mode (Dark/Light)`:
+4. #### **`Mode (Dark/Light)`**:
 
    Bootstrap ofrece dos estilos que puedes alternar entre ellos: el modo `dark` y el modo `light`. Por defecto, se utiliza el modo claro.
 
@@ -3107,11 +3107,11 @@
      En este caso, se ha establecido `data-bs-theme="dark"`, lo que significa que se aplicará el tema oscuro a la página. Si prefieres el tema claro, simplemente cambia el valor a `light`.
      Esta configuración se aplica a toda la página, lo que significa que afectará a todos los elementos que utilicen los estilos de `Bootstrap`.
           
-5. #### `Personalización de Estilos en Bootstrap`:
+5. #### **`Personalización de Estilos en Bootstrap`**:
    
    Bootstrap permite la personalización de estilos a través de variables de Sass o CSS personalizado. Puedes modificar las variables de Bootstrap para adaptar el diseño a tus necesidades específicas.
 
-6. #### `Responsive & Grid System`:
+6. #### **`Responsive & Grid System`**:
 
    Una de las características más poderosas de Bootstrap es su sistema de rejilla (Grid System). Te permite crear diseños responsivos que se adaptan a diferentes tamaños de pantalla y dispositivos. Puedes definir columnas y filas para organizar el contenido de tu página de manera eficiente. Esto te permite hacer el famoso `mobile-first`.
 
@@ -3133,7 +3133,7 @@
    export default MiComponente;
    ```
 
-7. #### `Eventos y Funciones en Bootstrap`:
+7. #### **`Eventos y Funciones en Bootstrap`**:
 
    Bootstrap proporciona eventos integrados para componentes como botones y modales. Puedes usar estos eventos junto con funciones de JavaScript para agregar interactividad a tu aplicación.
 
@@ -3155,7 +3155,7 @@
    export default MiComponente;
    ```
 
-8. #### `Integración de JavaScript en Bootstrap`:
+8. #### **`Integración de JavaScript en Bootstrap`**:
 
    Bootstrap también incluye componentes interactivos que requieren JavaScript para funcionar correctamente, como modales y pestañas. Asegúrate de incluir la biblioteca de JavaScript de Bootstrap en tu proyecto.
 
@@ -3163,7 +3163,7 @@
    import 'bootstrap/dist/js/bootstrap.bundle.min.js';
    ```
 
-9. #### `Consideraciones Finales`:
+9. #### **`Consideraciones Finales`**:
 
    - Bootstrap es una herramienta valiosa para acelerar el desarrollo de interfaces web en React.
    - Puedes personalizar Bootstrap según tus necesidades específicas.
