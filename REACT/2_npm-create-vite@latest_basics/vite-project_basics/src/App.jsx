@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { TresEnRaya } from "./components/TresEnRaya/TresEnRaya.jsx";
 import { Prueba } from "./components/prueba-tecnica/Prueba-tecnica.jsx";
 import styles from "./App.module.scss";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Collapse, Card } from "react-bootstrap";
 
 export function App() {
   return (
@@ -39,7 +39,7 @@ export function App() {
         {dataArray &&
           dataArray.map((card, index) => {
             return (
-              <Card
+              <MyCard
                 key={index}
                 username={card.username}
                 id={card.id}
@@ -56,9 +56,9 @@ export function App() {
         <hr />
         <TresEnRaya />
         <hr />
-        <Button />
+        <Button className="m-5">Botón Bootstrap</Button>
         <hr />
-        <Container title="Hello Component">
+        <Container title="Hello Component Collapse">
           <Hello />
         </Container>
       </div>
@@ -627,7 +627,7 @@ const ArrComponent = ({ arr }) => {
   );
 };
 
-const Card = ({ username, id, name, lastName, avatar }) => {
+const MyCard = ({ username, id, name, lastName, avatar }) => {
   return (
     <div style={{ padding: "20px" }}>
       <div
@@ -770,12 +770,27 @@ const MyToDoComponent = ({ arr }) => {
 };
 
 const Container = ({ children, title }) => {
+  const [open, setOpen] = useState(false);
+
   return (
     <div
-      style={{ color: "black" }}
-      className="bg-white border-2 border-red-500 p-5">
-      <p>{title}</p>
-      {children}
+      style={{ color: "black", minHeight: "150px", height: "430px" }}
+      className="bg-white border-2 border-red-500 p-5 container">
+      <Button
+        aria-expanded={open}
+        aria-controls="collapse-text"
+        onClick={() => setOpen(!open)}
+        variant="dark"
+        className="mb-3 ml-3 w-4">
+        {title}
+      </Button>
+      <Collapse in={open} dimension="width">
+        <div id="collapse-text">
+          <Card body style={{ width: "400px" }}>
+            {children}
+          </Card>
+        </div>
+      </Collapse>
     </div>
   );
 };
