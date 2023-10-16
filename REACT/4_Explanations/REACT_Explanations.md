@@ -3048,19 +3048,13 @@
      Para `importar el estilo BootStrap en tu CSS`, puedes hacer lo siguiente:
      
      ```jsx
-     import React from 'react';
-     // Importar en tu archivo `src/index.js` el CSS de Bootstrap
+     // Importar en tu archivo `index.jsx` el CSS de Bootstrap
      import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-     // Ejemplo de componente importado
-     import { Button } from 'react-bootstrap';
+     import React from 'react';
+     import { createRoot } from "react-dom/client";
+     import { App } from "./App.jsx";
      
-     const MiComponente = () => {
-       return (
-         <Button variant="primary">Botón de Bootstrap</Button>
-       );
-     }
-     
-     export default MiComponente;
+     createRoot(document.getElementById("root")).render(<App />);
      ```
      
      Recuerda de comprobar correctamente los directorios de los archivos para ejecutar bien las importaciones.
@@ -3072,8 +3066,17 @@
      Para `importar el estilo BootStrap en tu SCSS`, puedes hacer lo siguiente:
      
      ```jsx
-     // Importar en tu archivo `src/index.scss` el SCSS de Bootstrap
-     @import "node_modules/bootstrap/scss/bootstrap.scss";
+     // Importar en tu archivo `index.jsx` el SCSS de Bootstrap
+     import "../node_modules/bootstrap/scss/bootstrap.scss";
+     import React from "react";
+     import ReactDOM from "react-dom/client";
+     import { App } from "./App.jsx";
+     
+     ReactDOM.createRoot(document.getElementById("root")).render(
+       <React.StrictMode>
+         <App />
+       </React.StrictMode>,
+     );
      ```
 
      Recuerda de comprobar los directorios de los archivos.
@@ -3165,7 +3168,7 @@
 
 Con estos pasos, habrás personalizado las variables preestablecidas de Bootstrap en tu proyecto de React.
 
-6. #### **`Responsive & Grid System`**:
+5. #### **`Responsive & Grid System`**:
 
    Una de las características más poderosas de Bootstrap es su sistema de rejilla (Grid System). Te permite crear diseños responsivos que se adaptan a diferentes tamaños de pantalla y dispositivos. Puedes definir columnas y filas para organizar el contenido de tu página de manera eficiente. Esto te permite hacer el famoso `mobile-first`.
 
@@ -3187,7 +3190,7 @@ Con estos pasos, habrás personalizado las variables preestablecidas de Bootstra
    export default MiComponente;
    ```
 
-7. #### **`Eventos y Funciones en Bootstrap`**:
+6. #### **`Eventos y Funciones en Bootstrap`**:
 
    Bootstrap proporciona eventos integrados para componentes como botones y modales. Puedes usar estos eventos junto con funciones de JavaScript para agregar interactividad a tu aplicación.
 
@@ -3209,7 +3212,7 @@ Con estos pasos, habrás personalizado las variables preestablecidas de Bootstra
    export default MiComponente;
    ```
 
-8. #### **`Integración de JavaScript en Bootstrap`**:
+7. #### **`Integración de JavaScript en Bootstrap`**:
 
    Bootstrap también incluye componentes interactivos que requieren JavaScript para funcionar correctamente, como modales y pestañas. Asegúrate de incluir la biblioteca de JavaScript de Bootstrap en tu proyecto.
 
@@ -3217,7 +3220,7 @@ Con estos pasos, habrás personalizado las variables preestablecidas de Bootstra
    import 'bootstrap/dist/js/bootstrap.bundle.min.js';
    ```
 
-9. #### **`Consideraciones Finales`**:
+8. #### **`Consideraciones Finales`**:
 
    - Bootstrap es una herramienta valiosa para acelerar el desarrollo de interfaces web en React.
    - Puedes personalizar Bootstrap según tus necesidades específicas.

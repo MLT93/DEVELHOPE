@@ -4,21 +4,18 @@ export const Prueba = () => {
   const [state, setState] = useState("lorem ipusm");
   const [imageState, setImageState] = useState("image cat");
   const [error, setError] = useState(null);
-  const urlFact = `https://catfact.ninja/f765ract`;
+  const urlFact = `https://catfact.ninja/fact`;
   const urlImage = `https://api.thecatapi.com/v1/images/search?limit=10&rand`;
 
   useEffect(() => {
-    try {
-      (async () => {
-        const response = await fetch(urlFact);
-        
-        // Manejo del error de la petición al servidor
-        setError(`La petición al servidor ha ido mal`)
+    (async () => {
+      try {
+        let response = await fetch(urlFact);
 
         // Manejo error de respuesta del servidor
         if (!response.ok) {
           throw new Error(
-            `La respuesta no ha encontrado resultado: (response = ${response.ok})`,
+            `Ocurrió un error. Response: ${response.ok}, Status: ${response.status}, StatusText: ${response.statusText}`,
           );
         }
 
@@ -29,11 +26,16 @@ export const Prueba = () => {
         console.log(data);
 
         setState(data.fact);
-      })();
-    } catch (error) {
-      console.error(error);
-    }
-  }, [urlFact, error]);
+      } catch (error) {
+        if (error instanceof SyntaxError) {
+          console.error(`Error de sintaxis: ${error.message}`);
+        } else if (error instanceof TypeError) {
+          console.error(`Error de tipo: ${error.message}`);
+        }
+        setError({ error });
+      }
+    })();
+  }, [urlFact]);
 
   useEffect(() => {
     try {
@@ -42,11 +44,9 @@ export const Prueba = () => {
 
         if (!response.ok) {
           throw new Error(
-            `La respuesta no ha encontrado resultado: (response = ${response.ok})`,
+            `Ocurrió un error. Response: ${response.ok}, Status: ${response.status}, StatusText: ${response.statusText}`,
           );
         }
-
-        console.log(response);
 
         const data = await response.json();
 
@@ -57,17 +57,16 @@ export const Prueba = () => {
         // .splice(start, delete, add)
         imageUrl.splice(0, 9);
 
-        console.log(imageUrl);
-
         setImageState(imageUrl);
       })();
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }, [urlFact, urlImage]);
 
   return (
     <>
+      {error}
       <main style={{ padding: "20px" }}>
         <div
           style={{

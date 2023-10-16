@@ -5,7 +5,7 @@ import { Prueba } from "./components/prueba-tecnica/Prueba-tecnica.jsx";
 import styles from "./App.module.scss";
 import { Button, Form, Collapse, Card } from "react-bootstrap";
 import { Module } from "./components/Module/Module.jsx";
-import { Toggle } from "./components/ToggleComponent/Toggle.jsx";
+import { Toggle } from "./components/Toggle/Toggle.jsx";
 
 export function App() {
   return (
@@ -543,7 +543,7 @@ const FocusableInput = () => {
       <Form style={{ height: "200px" }}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label className="mb-3">Name:</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
+          <Form.Control ref={inputFocusRef} type="text" placeholder="Enter your name" />
         </Form.Group>
       </Form>
     </div>
