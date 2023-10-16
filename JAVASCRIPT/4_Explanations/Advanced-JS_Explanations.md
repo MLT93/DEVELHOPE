@@ -4040,15 +4040,15 @@ En resumen, la Fetch API y las funciones relacionadas, como async/await y promes
 
    try {
      if (!response.ok) {
-        throw {
-            error: true,
-            status: response.status,
-            statusText: response.statusText ? "ocurrió un error" : response.statusText
-        }
+       throw {
+         error: true,
+         status: response.status,
+         statusText: response.statusText ? "ocurrió un error" : response.statusText
+       }
      }
      setError({error: false})
    } catch(error) {
-      setError(error)
+     setError(error)
    }
    ```
 
@@ -4058,18 +4058,16 @@ En resumen, la Fetch API y las funciones relacionadas, como async/await y promes
         throw new Error(`Ocurrió un error. Response: ${response.ok}, Status: ${response.status}, StatusText: ${response.statusText}`);
      }
    } catch(error) {
-      if (error instanceof Error) {
-         console.error(`Error general: ${error.message}`);
-      } else if (error instanceof SyntaxError) {
-         console.error(`Error de sintaxis: ${error.message}`);
-      } else if (error instanceof TypeError) {
-         console.error(`Error de tipo: ${error.message}`);
-      } else {
-         console.error(`Error desconocido: ${error}`);
-      }
-      setError(error);
+     if (error instanceof Error) {
+        console.error(`Error general: ${error.message}`);
+     } else if (error instanceof SyntaxError) {
+        console.error(`Error de sintaxis: ${error.message}`);
+     } else if (error instanceof TypeError) {
+        console.error(`Error de tipo: ${error.message}`);
+     } else {
+        console.error(`Error desconocido: ${error}`);
+     }
    }
-
    ```
 
    Si una excepción se lanza dentro del bloque `try`, el flujo de ejecución se desviará al bloque `catch` donde podemos manejar el error.
