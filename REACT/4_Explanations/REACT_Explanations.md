@@ -3023,48 +3023,48 @@
        **https://react-bootstrap.netlify.app/docs/getting-started/introduction**
     
 2. #### **`Integración de Bootstrap en React`**:
-
+   
    Para integrar Bootstrap en un proyecto de React, puedes instalar la biblioteca de Bootstrap y sus dependencias utilizando npm o yarn. Asegúrate de tener un proyecto React ya configurado antes de comenzar.
-
+   
    ```bash
    npm i bootstrap react-bootstrap
    ```
-
+   
    ```bash
    yarn add bootstrap react-bootstrap
    ```
-
+   
    Luego, puedes importar los estilos y componentes de Bootstrap en tus archivos de React según sea necesario.
-
+    
 3. #### **`Uso de Componentes e Importación de Bootstrap en React`**:
    
    - **Importar Bootstrap usando CSS**:
-   
-   Bootstrap proporciona una amplia gama de componentes como botones, barras de navegación, tarjetas, formularios, entre otros. Puedes usar estos componentes directamente en tus archivos de JSX utilizando `CSS` normal.
-   
-   Recuerda que si deseas utilizar simplemente los componentes de Bootstrap, no hace falta que importes sus estilos.
-   
-   Para `importar el estilo BootStrap en tu CSS`, puedes hacer lo siguiente:
-   
-   ```jsx
-   import React from 'react';
-   // Importar en tu archivo `src/index.js` el CSS de Bootstrap
-   import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-   // Ejemplo de componente importado
-   import { Button } from 'react-bootstrap';
-   
-   const MiComponente = () => {
-     return (
-       <Button variant="primary">Botón de Bootstrap</Button>
-     );
-   }
-   
-   export default MiComponente;
-   ```
-   
-   Recuerda de comprobar correctamente los directorios de los archivos para ejecutar bien las importaciones.
-   
-   **Importar Bootstrap utilizando SASS**:
+     
+     Bootstrap proporciona una amplia gama de componentes como botones, barras de navegación, tarjetas, formularios, entre otros. Puedes usar estos componentes directamente en tus archivos de JSX utilizando `CSS` normal.
+     
+     Recuerda que si deseas utilizar simplemente los componentes de Bootstrap, no hace falta que importes sus estilos.
+     
+     Para `importar el estilo BootStrap en tu CSS`, puedes hacer lo siguiente:
+     
+     ```jsx
+     import React from 'react';
+     // Importar en tu archivo `src/index.js` el CSS de Bootstrap
+     import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+     // Ejemplo de componente importado
+     import { Button } from 'react-bootstrap';
+     
+     const MiComponente = () => {
+       return (
+         <Button variant="primary">Botón de Bootstrap</Button>
+       );
+     }
+     
+     export default MiComponente;
+     ```
+     
+     Recuerda de comprobar correctamente los directorios de los archivos para ejecutar bien las importaciones.
+     
+   - **Importar Bootstrap utilizando SASS**:
      
      En caso de que esté utilizando `SASS` la forma más sencilla de incluir los archivos fuente (que encontrarás en `node_modules`) de Bootstrap, es importarlo directamente en tus archivos `SCSS`.
      
@@ -3074,7 +3074,7 @@
      // Importar en tu archivo `src/index.scss` el SCSS de Bootstrap
      @import "node_modules/bootstrap/scss/bootstrap.scss";
      ```
-
+      
 4. #### **`Mode (Dark/Light)`**:
 
    Bootstrap ofrece dos estilos que puedes alternar entre ellos: el modo `dark` y el modo `light`. Por defecto, se utiliza el modo claro.
@@ -3083,8 +3083,8 @@
    
    También se puede aplicar directamente al elemento <html> en el archivo `index.html` para modificar toda la página en un solo golpe, pero puedes utilizarlo indistintamente entre los elementos o componentes que desarrolles como prefieras.
 
-   **data-bs-theme="dark" / data-bs-theme="light"**
-
+   - **data-bs-theme="dark" / data-bs-theme="light"**
+     
      ```html
      <!doctype html>
      <!-- data-bs-theme="dark" o data-bs-theme="light" -->
@@ -3106,7 +3106,7 @@
      La propiedad `data-bs-theme` se utiliza para definir el tema que se aplicará. Puedes elegir entre `dark` y `light` dependiendo de tus preferencias o de los requisitos de tu aplicación.
      En este caso, se ha establecido `data-bs-theme="dark"`, lo que significa que se aplicará el tema oscuro a la página. Si prefieres el tema claro, simplemente cambia el valor a `light`.
      Esta configuración se aplica a toda la página, lo que significa que afectará a todos los elementos que utilicen los estilos de `Bootstrap`.
-          
+           
 5. #### **`Personalización de Estilos en Bootstrap`**:
    
    Bootstrap permite la personalización de estilos a través de variables de Sass o CSS personalizado. Puedes modificar las variables de Bootstrap para adaptar el diseño a tus necesidades específicas.
