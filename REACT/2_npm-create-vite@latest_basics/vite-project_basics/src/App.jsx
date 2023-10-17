@@ -6,6 +6,7 @@ import styles from "./App.module.scss";
 import { Button, Form, Collapse, Card } from "react-bootstrap";
 import { Module } from "./components/Module/Module.jsx";
 import { Toggle } from "./components/Toggle/Toggle.jsx";
+import { PruebaCustomHook } from "./components/PruebaConCustomHook/PruebaCustomHook.jsx";
 
 export function App() {
   return (
@@ -67,6 +68,8 @@ export function App() {
         <Module />
         <hr />
         <Toggle />
+        <hr />
+        <PruebaCustomHook />
       </div>
     </div>
   );

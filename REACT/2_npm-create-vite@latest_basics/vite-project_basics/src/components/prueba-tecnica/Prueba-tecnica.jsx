@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const Prueba = () => {
-  const [state, setState] = useState("lorem ipusm");
+  const [data, setData] = useState("lorem ipusm");
   const [imageState, setImageState] = useState("image cat");
   const [error, setError] = useState(null);
   const urlFact = `https://catfact.ninja/fact`;
@@ -25,7 +25,7 @@ export const Prueba = () => {
 
         console.log(data);
 
-        setState(data.fact);
+        setData(data.fact);
       } catch (error) {
         if (error instanceof SyntaxError) {
           console.error(`Error de sintaxis: ${error.message}`);
@@ -66,7 +66,7 @@ export const Prueba = () => {
 
   return (
     <>
-      {error}
+      {error && error}
       <main style={{ padding: "20px" }}>
         <div
           style={{
@@ -93,7 +93,7 @@ export const Prueba = () => {
           />
           <div>
             <h4>Information:</h4>
-            <p>{state && state}</p>
+            <p>{data && data}</p>
           </div>
         </div>
       </main>
