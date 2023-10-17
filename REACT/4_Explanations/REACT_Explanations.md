@@ -3061,7 +3061,7 @@
      
    - **Importar Bootstrap utilizando SASS**:
      
-     En caso de que esté utilizando `SASS` la forma más sencilla de incluir los archivos fuente (que encontrarás en `node_modules`) de Bootstrap, es importarlo directamente en tus archivos `SCSS`.
+     En caso de que esté utilizando `SASS` la forma más sencilla de incluir los archivos fuente de Bootstrap (que encontrarás en `node_modules`), es importarlo directamente en tus archivos `index.jsx`.
      
      Para `importar el estilo BootStrap en tu SCSS`, puedes hacer lo siguiente:
      
