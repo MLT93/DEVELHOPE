@@ -352,11 +352,13 @@
 
 7. #### **`Manejo de Eventos en JSX (handleEvent)`**:
 
-   En JSX, los eventos se escriben utilizando camelCase y se pasan como funciones. Estas funciones se ejecutan cuando ocurre el evento prefijado (por ejemplo: `onChange`, `onClick`, etc...) y tienen una convención, que es empezar el nombre de la función con `handle`.
+   En JSX, los eventos se escriben utilizando camelCase y se pasan como funciones. Estas funciones se ejecutan cuando ocurre el evento prefijado (por ejemplo: `onChange`, `onClick`, `onSubmit`, etc...) y tienen una convención, que es empezar el nombre de la función con `handle`.
 
    Recuerda que el `handleEvent` cuando viene activado siempre se lleva consigo el `objeto evento con sus propiedades`, que `en React es una instancia de la clase SyntheticEvent` y que a su vez es una abstracción de como los eventos de la UI al interno de los navegadores deberían ser estructurados, siguiendo las especificaciones W3C.
    
    Por lo tanto, cada gestor de eventos está efectivamente recibiendo un parámetro, que podemos llamar `event` y utilizarlo cuando nos interese (también podemos ignorarlo si queremos).
+
+   Recuerda siempre que si hay un <input>, habrá un `event` dentro del `handleEvent` conectado al `onChange`. Mientras que si hay botón, no hace falta el `event` dentro del `handleEvent` conectado al `onClick`.
 
    Ejemplo de manejo de eventos en JSX:
 
@@ -368,10 +370,40 @@
    const element = <button onClick={handleClick}>Haz click</button>;
    ```
 
-      ```jsx
+   ```jsx
    const handleMouseClick = (event) => console.log(event); // te imprime toda la información guardada en SyntheticEvent
 
    const element = <button onClick={handleMouseClick}>Click me</button>;
+   ```
+
+   ```jsx
+   import React, { useState } from 'react';
+
+   const App = () => {
+     const [inputValue, setInputValue] = useState("");
+
+     const handleInputChange = (e) => {
+       console.log(e.target.value)
+       setInputValue(e.target.value)
+     }
+    
+     const handleClick = () => {
+       console.log("El valor del input es:", inputValue);
+     };
+     
+     return (
+       <div>
+         <input
+           type="text"
+           value={inputValue}
+           onChange={handleInputChange}
+         />
+         <button onClick={handleClick}>Capturar Valor</button>
+       </div>
+     );
+   };
+   
+   export default App;
    ```
 
    Recuerda que el `event.target` representa el elemento (nodo HTML) que ha activado el evento, mientras que `event.currentTarget` representa el elemento donde fue asociado el evento.Esto es importante porque aunque tengamos un elemento HTML anidado dentro de otro que posee el gestor de eventos, este ultimo cuando se acciona el evento recorre `bubble` todas los anidamientos hasta llegar a la raíz.

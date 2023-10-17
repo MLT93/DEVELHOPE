@@ -70,6 +70,7 @@ export function App() {
         <Toggle />
         <hr />
         <PruebaCustomHook />
+        <hr />
       </div>
     </div>
   );
