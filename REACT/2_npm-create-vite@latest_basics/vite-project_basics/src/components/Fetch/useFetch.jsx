@@ -10,28 +10,18 @@ export const useFetch = (url) => {
       try {
         const response = await fetch(url);
 
-        if (!response.ok) {
-          throw {
-            error: true,
-            status: response.status,
-            statusText: !response.statusText
-              ? "Ocurrió un error"
-              : response.statusText,
-          };
-        }
-
         console.log(`useFetch response = ${response}`);
 
         const data = await response.json();
 
         console.log(`useFetch data = ${data}`);
 
-        setIsPending(false);
         setData(data);
-        setError({ error: false });
+        setError(false);
       } catch (error) {
-        setIsPending(true);
-        setError(error);
+        setError(error.message);
+      } finally {
+        setIsPending(false);
       }
     })(url);
   }, [url]);
