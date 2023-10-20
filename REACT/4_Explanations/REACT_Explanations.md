@@ -781,7 +781,7 @@
      
      `useContext` te permite acceder al valor del contexto que ha sido proporcionado por un `.Provider` de contexto superior en jerarquía (es un contenedor que pasa información a los componentes hijos), que a su vez es creado a través de `createContext` una función de React para crear contextos.
 
-     `createContext` es una función que acepta solo 1 parámetro y se guarda en una variable para almacenar su valor. Realmente crea un `container` con un valor inicial (el parámetro de la función) para poder compartir información con los componentes hijos sin tener que pasar explícitamente props a través de cada nivel del árbol de componentes y así evitar complicaciones innecesarias de código, permitiendo que cada componente siga siendo reutilizable.
+     `createContext` es una función que acepta solo 1 parámetro (el valor por defecto) y se guarda en una variable para almacenar su valor. Realmente crea un `container` con un valor inicial (el parámetro de la función) para poder compartir información con los componentes hijos sin tener que pasar explícitamente props a través de cada nivel del árbol de componentes y así evitar complicaciones innecesarias de código, permitiendo que cada componente siga siendo reutilizable.
      
      Sintaxis:
      
@@ -809,8 +809,8 @@
         
      - `Acceso al Contexto`:
        
-       Finalmente, en cualquier componente funcional dentro del árbol de componentes, puedes utilizar 
-       el hook `useContext` para acceder al valor del contexto. Ahora `valorDelContexto` contiene el valor proporcionado por el proveedor de contexto más cercano en la jerarquía.
+       Finalmente, en cualquier componente funcional puedes utilizar 
+       el hook `useContext` para acceder al valor del contexto. Ahora `valorDelContexto` contiene el valor proporcionado por el proveedor de contexto más cercano en la jerarquía del árbol de componentes. Si no hay proveedor de contexto, se tomará el valor por defecto.
 
        Para tener acceso al contexto dentro de un componente de clase, deberías utilizar `.Consumer` dentro del método `render` o en el cuerpo del componente.
        
