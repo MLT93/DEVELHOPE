@@ -779,24 +779,33 @@
      
    - **useContext hook**:
      
-     `useContext` te permite acceder al valor del contexto que ha sido proporcionado por un proveedor de contexto superior en jerarquía.
+     `useContext` te permite acceder al valor del contexto que ha sido proporcionado por un `.Provider` de contexto superior en jerarquía (es un contenedor que pasa información a los componentes hijos), que a su vez es creado a través de `createContext` una función de React para crear contextos.
+
+     `createContext` es una función que acepta solo 1 parámetro y se guarda en una variable para almacenar su valor. Realmente crea un `container` con un valor inicial (el parámetro de la función) para poder compartir información con los componentes hijos sin tener que pasar explícitamente props a través de cada nivel del árbol de componentes y así evitar complicaciones innecesarias de código, permitiendo que cada componente siga siendo reutilizable.
      
      Sintaxis:
      
      ```jsx
-     import React { createContext } from 'react';
+     import React, { createContext } from 'react';
      
      // Primera letra mayúscula en esta variable siempre
-     const Context = React.createContext()
+     const Context = React.createContext("valorDelContexto");
+     ```
+
+     ```jsx
+     import { createContext } from 'react';
+
+     // Primera letra mayúscula en la variable
+     const LanguageContext = createContext('en');
      ```
      
      - `Creación del contexto`:
        
-       Antes de utilizar useContext, primero necesitas crear un contexto. Esto se hace utilizando la función `createContext`, que toma un valor por defecto que se utilizará si no hay ningún proveedor de contexto superior. Este valor es opcional y se utiliza principalmente para facilitar el desarrollo.
+       Antes de utilizar `useContext`, primero necesitas crear un contexto. Esto se hace utilizando la función `createContext`, que toma un valor por defecto que se utilizará si no hay ningún proveedor de contexto superior. Este valor es opcional y se utiliza principalmente para facilitar el desarrollo.
        
      - `Proveedor de Contexto`:
      
-       A continuación, necesitas proporcionar un contexto utilizando el componente `Provider` que se deriva del contexto que has creado. `value` es la información que deseas compartir con todos los componentes hijos dentro de este proveedor de contexto.
+       A continuación, necesitas proporcionar un contexto utilizando el componente `.Provider` que se deriva del contexto que has creado. `value` es la prop que se le pasa al proveedor de contexto y conlleva la información que deseas compartir con todos los componentes hijos dentro de este proveedor de contexto.
         
      - `Acceso al Contexto`:
        
@@ -808,9 +817,9 @@
      Ejemplo:
      
      ```jsx
-     import React {useContext} from 'react';
+     import { createContext } from 'react';
      
-     const MiContexto = React.createContext()
+     const MiContexto = createContext()
      
      const ComponentePadre = () => {
        return (
@@ -819,9 +828,16 @@
          </MiContexto.Provider>
        );
      };
+     ```
      
+     ```jsx
+     import { useContext } from 'react';
+     import { MiContexto } from './MiContexto';
+
      const ComponenteHijo = () => {
        const valorDelContexto = useContext(MiContexto);
+
+       // Acá se harían todas las modificaciones pertinentes para renderizar cosas distintas con el valor del contexto
        return <div>{valorDelContexto}</div>;
      };
      ```
