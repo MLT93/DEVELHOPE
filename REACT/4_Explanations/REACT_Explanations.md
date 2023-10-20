@@ -637,18 +637,23 @@
    
    - **useState hook**:
    
-     `useState` permite añadir o modificar un estado a un componente y renderizarlo posteriormente a la página. Comienza con una "destructuración" de array donde el primer elemento es el estado (la variable) que queremos modificar y el segundo es una función para poder modificar ese estado/variable. Posteriormente la función `useState` tiene un argumento, que será el valor inicial de nuestro primer elemento en la "destructuración", o sea, la variable.
+     `useState` permite añadir o modificar un estado a un componente y renderizarlo posteriormente a la página. Comienza con una destructuración de array donde el primer elemento es el estado (la variable) que queremos modificar y el segundo es una función para poder modificar ese estado/variable. Posteriormente la función `useState` tiene un argumento, que será el valor inicial de nuestro primer elemento en la destructuración, o sea, la variable.
 
-     Recuerda que `useState es Asíncrono` porque hace una "partición en la memoria" para guardar el valor inicial de la variable de estado `state` que se asigna en la destructuración de su array, `const [state, setState] = useState(null)`. Esta variable, será lo que renderices en el `return` del componente (la parte HTML), o sea, que va a ser lo primero que se vea en la UI hasta que venga modificado por su función `setState`. En pocas palabras, la variable de `state` se renderiza en el HTML que devuelve tu componente, se modificada únicamente por su función `setState` y se inicializa con el valor que le introduzcas a `useState` en la destructuración.
+     Recuerda que `useState es Asíncrono` porque hace una "partición en la memoria" para guardar el valor inicial de la variable del estado `state` que nombramos en la destructuración del array `const [state, setState] = useState(null)`. Esta variable, será lo que renderices en el `return` del componente (la parte HTML), o sea, que va a ser lo primero que se vea en la UI hasta que venga modificado por su función `setState`. En pocas palabras, la variable de `state` se renderiza en el HTML que devuelve tu componente, se modificada únicamente por su función `setState` y se inicializa con el valor que le introduzcas a `useState` en la destructuración.
      
-     Puedes usarlo cuando necesitas mantener y/o actualizar un valor en el componente a lo largo del tiempo. Es una variable que puede modificar su valor a través de su función, según la renderización del componente. Por ejemplo, si necesitas almacenar el estado de un input o el estado de un modal.
+     Puedes usarlo cuando necesitas mantener y/o actualizar un valor en el componente a través de su función, según la renderización del componente. Por ejemplo, si necesitas almacenar el `event` de un input o el estado de un modal.
+
+     Al final es siempre lo mismo:
+     - El `handleChange` va siempre con el <input> y guarda el `event` que introduce el usuario.
+     - El `handleClick` va con el <button> y `setea` el valor que ha introducido el usuario.
+     - El `useState` te da la variable que vas a renderizar, que guarda los valores y que se modifica.
 
      Posee una convención, y es aplicar el mismo nombre de la variable (ej. `estado`), al modificador del estado, con la palabra `set` al inicio (ej. `setEstado`).
      
      Sintaxis:
      
      ```jsx
-     import React, { useState } from 'react';
+     import { useState } from 'react';
      
      // El valor de `state` es guardado en una partición de la memoria que será recuperado según la renderización del componente, y después viene modificado a través de su función `setState`
      const [state, setState] = useState(startValueOfState);
@@ -661,17 +666,19 @@
      - `setState`:
      
        Es una función que te permite actualizar la variable del estado. Esta función toma un argumento, que será el nuevo valor del estado. Este argumento puede ser de dos tipos:
+
+       - Directo: `Estado + modificaciones` que representan el valor inicial de la variable (el valor que está guardado en la memoria) más las modificaciones, que serán las variaciones que cambiarán el valor inicial del estado/variable dentro de `useState`.
        
-       - `Estado + modificaciones` representa el valor inicial de la variable y las modificaciones son los nuevos valores asignados directamente al estado/variable.
-       
-       - `Callback` representa una arrow-function que devuelve el estado modificado (`aconsejo usar esta siempre`).
+       - Función: `Callback` que representa una `arrow-function` que devuelve el estado modificado, igual que la explicación de arriba pero a través de dicha función (`aconsejo usar esta siempre`).
        
      - `startValueOfState`: Es el valor con el que se inicializa el estado, a través del hook `useState` claramente.
      
      Ejemplo:
-     
+       
+       Contador:
+
        ```jsx
-       import React, { useState } from 'react';
+       import { useState } from 'react';
        
        function Contador() {
          // la variable `contador` empieza desde el número 0
@@ -690,6 +697,62 @@
        export default Contador;
        ```
        
+       Formulario Controlado:
+
+       ```jsx
+       import { useState } from 'react';
+
+       function Formulario() {
+         const [inputValor, setInputValor] = useState('');
+       
+         const handleChange = (event) => {
+           setInputValor(event.target.value);
+         };
+       
+         const handleSubmit = (event) => {
+           event.preventDefault();
+           alert(`Se envió: ${inputValor}`);
+         };
+       
+         return (
+           <form onSubmit={handleSubmit}>
+             <input 
+               type="text" 
+               value={inputValor} 
+               onChange={handleChange} 
+             />
+             <button type="submit">Enviar</button>
+           </form>
+         );
+       }
+       
+       export default Formulario;
+       ```
+       
+       Toggle:
+       
+       ```jsx
+       import React, { useState } from 'react';
+
+       function Alternador() {
+         const [visible, setVisible] = useState(true);
+       
+         const toggleVisibility = () => {
+           setVisible(!visible);
+         };
+       
+         return (
+           <div>
+             <button onClick={toggleVisibility}>Alternar Visibilidad</button>
+             {visible && <p>Este texto es visible</p>}
+           </div>
+         );
+       }
+       
+       export default Alternador;
+       ```
+
+       
    - **useEffect hook**:
      
      `useEffect` permite realizar efectos secundarios en componentes funcionales. Se ejecuta después de cada renderizado y puede emular varios ciclos de vida de componentes de clase como `componentDidMount`, `componentDidUpdate` y `componentWillUnmount`. Nos permite ejecutar acciones cada vez que ocurre algo.
@@ -707,7 +770,7 @@
      Sintaxis:
      
      ```jsx
-     import React, { useEffect } from 'react';
+     import { useEffect } from 'react';
      
        const PruebaUseEffect = () => {
 
@@ -743,9 +806,11 @@
         Al omitir el array dentro del hook indica a React que el efecto secundario se ejecutará cada vez que el componente se renderice, o sea, que se ejecuta el código del useEffect por cada modificación que ocurra al interno del componente, pase lo que pase. Si quieres que el efecto se ejecute en cada actualización del componente, puedes omitir el segundo argumento directamente.
        
      Ejemplo:
+
+     Simulación petición asíncrona:
      
      ```jsx
-     import React, { useState, useEffect } from 'react';
+     import { useState, useEffect } from 'react';
      
      const EjemploComponente = () => {
        const [datos, setDatos] = useState([]);
@@ -775,6 +840,83 @@
      };
      
      export default EjemploComponente;
+     ```
+
+     Cargar datos desde una API:
+
+     ```jsx
+     import { useState, useEffect } from 'react';
+
+     function ListaDeUsuarios() {
+       const [usuarios, setUsuarios] = useState([]);
+     
+       useEffect(() => {
+         fetch('https://jsonplaceholder.typicode.com/users')
+           .then(response => response.json())
+           .then(data => setUsuarios(data));
+       }, []);
+     
+       return (
+         <ul>
+           {usuarios.map(usuario => (
+             <li key={usuario.id}>{usuario.name}</li>
+           ))}
+         </ul>
+       );
+     }
+     
+     export default ListaDeUsuarios;
+     ```
+
+     Suscripción a eventos globales:
+
+     ```jsx
+     import React, { useEffect } from 'react';
+
+     function ComponenteConEvento() {
+       useEffect(() => {
+         const handleResize = () => {
+           console.log('La ventana ha cambiado de tamaño');
+         };
+     
+         window.addEventListener('resize', handleResize);
+     
+         return () => {
+           window.removeEventListener('resize', handleResize);
+         };
+       }, []);
+     
+       return <div>Componente con Evento</div>;
+     }
+     
+     export default ComponenteConEvento;
+     ```
+
+     Actualizar el título de la página:
+
+     ```jsx
+     import React, { useState, useEffect } from 'react';
+
+     function CambiarTitulo() {
+       const [contador, setContador] = useState(0);
+     
+       useEffect(() => {
+         document.title = `Contador: ${contador}`;
+       }, [contador]);
+     
+       const incrementar = () => {
+         setContador(contador + 1);
+       };
+     
+       return (
+         <div>
+           <p>Contador: {contador}</p>
+           <button onClick={incrementar}>Incrementar</button>
+         </div>
+       );
+     }
+     
+     export default CambiarTitulo;
      ```
      
    - **useContext hook**:
@@ -853,7 +995,7 @@
      Sintaxis:
      
      ```jsx
-     import React, { useRef } from 'react';
+     import { useRef } from 'react';
      
      const Component = () => {
        const refContainer = useRef(null);
@@ -873,7 +1015,7 @@
      Ejemplo 1:
      
      ```jsx
-     import React, { useRef, useEffect } from 'react';
+     import { useRef, useEffect } from 'react';
      
      function MyComponent() {
        const myRef = useRef(null);
@@ -891,7 +1033,7 @@
      Ejemplo 2:
 
      ```jsx
-     import React, { useState, useRef } from 'react';
+     import { useState, useRef } from 'react';
      
      export const ChangeBgColor = () => {
        const count = useRef(null);
@@ -945,7 +1087,7 @@
      Ejemplo:
 
      ```jsx
-     import React { useMemo } from "react";
+     import { useMemo } from "react";
      
      const props = {
        productos: [
@@ -989,7 +1131,7 @@
    Ejemplo aplicando varios hooks contemporáneamente:
    
    ```jsx
-   import React, { createContext, useContext, useState } from 'react';
+   import { createContext, useContext, useState } from 'react';
    
    const TemaContexto = createContext();
    
@@ -1052,15 +1194,17 @@
    El contexto es una característica de React que permite pasar datos a través del árbol de componentes sin tener que pasar props manualmente en cada nivel.
 
    ```jsx
-     const MiContexto = React.createContext();
-     
-     function Proveedor(props) {
-       return <MiContexto.Provider value={/* valor */}>{props.children}</MiContexto.Provider>;
-     }
-     
-     function Consumidor() {
-       return <MiContexto.Consumer>{valor => /* renderiza algo con el valor */}</MiContexto.Consumer>;
-     }
+   import { createContext } from 'react';
+
+   const MiContexto = React.createContext();
+   
+   function Proveedor(props) {
+     return <MiContexto.Provider value={/* valor */}>{props.children}</MiContexto.Provider>;
+   }
+   
+   function Consumidor() {
+     return <MiContexto.Consumer>{valor => /* renderiza algo con el valor */}</MiContexto.Consumer>;
+   }
    ```
 
 14. #### **`PropTypes y Tipos en React`**:
@@ -3275,3 +3419,175 @@ Con estos pasos, habrás personalizado las variables preestablecidas de Bootstra
    - Asegúrate de seguir las prácticas de diseño y accesibilidad al utilizar Bootstrap en tu aplicación.
 
    ¡Con Bootstrap, puedes crear interfaces atractivas y funcionales en tu aplicación de React de manera eficiente!
+
+## Composition & Children en React: Una Explicación Detallada
+
+1. #### **`Introducción a Composition y Children`**:
+
+   Composition & "children" son conceptos fundamentales en React que permiten construir componentes reutilizables y flexibles, combinando y anidando componentes. La `Composition` es el proceso de combinar componentes pequeños y reutilizables para crear otros más complejos. La propiedad `Children` en los componentes de React te permite incluir y manipular componentes secundarios dentro de un componente padre.
+
+2. #### **`Composition en React`**:
+
+   La Composición en React se trata de construir interfaces de usuario dividiéndolas en componentes más pequeños y reutilizables. Estos componentes más pequeños se pueden combinar para crear características y diseños más significativos, a demás que más complejos. Este enfoque promueve la reutilización, mantenibilidad y una clara separación de responsabilidades entre componentes.
+
+3. #### **`Uso de Children en React`**:
+
+   En React, la propiedad especial `children` permite que un componente contenga y renderice elementos o componentes secundarios dentro de sí mismo. Esto es especialmente útil cuando se quiere crear un componente que actúe como un contenedor o un envoltorio para otros elementos.
+
+   ```jsx
+   function Card({ children }) {
+     return <div className="card">{children}</div>;
+   }
+
+   function App() {
+     return (
+       <Card>
+         <h2>Título de la Card</h2>
+         <p>Contenido de la Card</p>
+         <Componente />
+       </Card>
+     );
+   }
+   ```
+
+   En este ejemplo, el componente `Card` recibe una `Prop` llamada `children` que representa cualquier elemento o componente que se coloque dentro de las etiquetas de apertura y cierre del este componente. En este caso, `children` es un <h2>, un <p> y un <Componente />.
+
+4. #### **`Manipulación de Children`**:
+
+   También puedes manipular e iterar a través de los componentes hijos en React. Las utilidades React.Children te permiten mapear, contar o manipular los componentes hijos. Por ejemplo, puedes iterar sobre los hijos y agregar una propiedad a cada uno.
+
+   Este procedimiento tiene un propósito común en React llamado `clonación de elementos`. Permite que el componente padre manipule y pase propiedades adicionales a sus hijos de manera dinámica.
+
+   Esto puede ser útil en situaciones en las que el componente padre necesita proporcionar ciertas configuraciones o información adicional a sus hijos, sin que los hijos necesiten conocer o depender directamente del componente padre.
+
+   Un caso de uso común es cuando se crea un componente de diseño o contenedor que envuelve otros componentes. Este contenedor puede proporcionar estilos, manipular eventos o agregar funcionalidades adicionales a los componentes hijos sin que estos últimos necesiten saberlo.
+
+   En resumen, este procedimiento te da un mayor control y flexibilidad sobre cómo los componentes hijos se comportan dentro del contexto del componente padre.
+
+   Ejemplo:
+
+   Propagando Estilos a los hijos del Contenedor:
+
+   ```jsx
+   import React from "react";
+   
+   export function Contenedor({ children }) {
+     return (
+       <div style={{ backgroundColor: "lightskyblue", color: "black" }}>
+         {React.Children.map(children, (element) => {
+           return React.cloneElement(element, {
+             style: { color: "white", border: "none", borderRadius: "20px", padding: "10px" },
+           });
+         })}
+       </div>
+     );
+   }
+   ```
+
+   ```jsx
+   import { Contenedor } from './components/Children/ChildrenExample.jsx';
+
+   export function App() {
+     return (
+       <Contenedor>
+         <button>Botón 1</button>
+         <button>Botón 2</button>
+       </Contenedor>
+     );
+   };
+   ```
+
+   Pasando Datos Adicionales
+   
+   ```jsx
+   import React from "react";
+   
+   export function Contenedor({ children }) {
+     return (
+       <div>
+         {React.Children.map(children, (element, index) => {
+           return React.cloneElement(element, {
+             id: `elemento-${index}`,
+           });
+         })}
+       </div>
+     );
+   }
+   ```
+
+   ```jsx
+   import { Contenedor } from './components/Children/ChildrenExample.jsx';
+
+   function App() {
+     return (
+       <Contenedor>
+         <div>Elemento 1</div>
+         <div>Elemento 2</div>
+       </Contenedor>
+     );
+   }
+   ```
+
+   Agregando funcionalidades adicionales:
+
+   ```jsx
+   import React from "react";
+   
+   export function Contenedor({ children }) {
+     return (
+       <div>
+         {React.Children.map(children, (element) => {
+           return React.cloneElement(element, {
+             onClick: () => console.log("¡Enlace clickeado!"),
+           });
+         })}
+       </div>
+     );
+   }
+   ```
+
+   ```jsx
+   import { Contenedor } from './components/Children/ChildrenExample.jsx';
+
+   function App() {
+     return (
+       <Contenedor>
+         <a href="#">Enlace 1</a>
+         <a href="#">Enlace 2</a>
+       </Contenedor>
+     );
+   }
+   ```
+
+   Esto agregará la propiedad `nuevaPropiedad` con el valor `Nuevo Valor Renderizado` a cada componente hijo.
+
+4. #### **`Ventajas de Composition y Children`**:
+
+   - **Reutilización de Componentes**:
+     Al utilizar la composición y "children", se pueden crear componentes que actúen como contenedores genéricos y reutilizables para diferentes tipos de contenido.
+
+   - **Flexibilidad y Personalización**:
+     Permite a los desarrolladores personalizar el contenido que se renderiza dentro de un componente, lo que brinda una gran flexibilidad en la construcción de interfaces.
+
+   - **Abstracción de la Estructura**:
+     Los componentes pueden encapsular la estructura y el estilo, lo que facilita el mantenimiento y la modificación de la apariencia de la interfaz.
+
+   - **Mejora la Legibilidad**:
+     La composición y el uso de "children" pueden hacer que el código sea más legible al separar la estructura de la lógica de presentación.
+
+   - **Facilita la Construcción de Interfaces Complejas**:
+     Permite la creación de componentes compuestos por múltiples subcomponentes, lo que facilita la construcción de interfaces complejas.
+
+5. #### **`Consideraciones sobre Composition & Children`**:
+
+   - **Prop Drilling**:
+     En casos donde los componentes anidados necesitan acceder a propiedades del componente principal, puede ocurrir el fenómeno conocido como "prop drilling". Esto se refiere a pasar propiedades a través de múltiples niveles de componentes, lo cual puede volverse incómodo y propenso a errores, sin contar la pérdida de reutilizo de los componentes involucrados. En estos casos, se pueden utilizar otras técnicas como `Context API` o bibliotecas de gestión de estado como Redux.
+
+   - **Context API y Render Props**:
+     En situaciones más avanzadas, donde la Composition y "Children" pueden volverse complicados, se pueden utilizar otras técnicas como Context API o el patrón "Render Props" para gestionar el estado y las propiedades de manera más eficiente.
+
+6. #### **`Conclusiones sobre Composition y Children en React`**:
+
+   La composición y el uso de "children" son conceptos esenciales en React que permiten construir componentes reutilizables y flexibles. Al comprender cómo estos conceptos funcionan, los desarrolladores pueden construir interfaces más dinámicas y complejas, manteniendo un código organizado y fácil de mantener.
+
+   Estos conceptos son fundamentales para el desarrollo efectivo en React y son ampliamente utilizados en la construcción de aplicaciones web y móviles modernas. Al combinar la composición y "children" con otras técnicas avanzadas como Context API o Render Props, los desarrolladores pueden crear aplicaciones React escalables y de alta calidad.

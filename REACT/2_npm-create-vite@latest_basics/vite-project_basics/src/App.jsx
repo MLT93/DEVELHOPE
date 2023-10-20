@@ -7,6 +7,7 @@ import { Button, Form, Collapse, Card } from "react-bootstrap";
 import { Module } from "./components/Module/Module.jsx";
 import { Toggle } from "./components/Toggle/Toggle.jsx";
 import { PruebaCustomHook } from "./components/PruebaConCustomHook/PruebaCustomHook.jsx";
+import { Contenedor } from "./components/Children/ChildrenExample.jsx";
 
 export function App() {
   return (
@@ -71,6 +72,13 @@ export function App() {
         <hr />
         <PruebaCustomHook />
         <hr />
+        <Contenedor>
+          {/* Pasando un componente externo como hijo */}
+          <Message />
+          {/* Agregando un elemento que recibirá las propiedades del componente padre */}
+          <button>Button 1</button>
+          <button>Button 2</button>
+        </Contenedor>
       </div>
     </div>
   );
@@ -547,7 +555,11 @@ const FocusableInput = () => {
       <Form style={{ height: "200px" }}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label className="mb-3">Name:</Form.Label>
-          <Form.Control ref={inputFocusRef} type="text" placeholder="Enter your name" />
+          <Form.Control
+            ref={inputFocusRef}
+            type="text"
+            placeholder="Enter your name"
+          />
         </Form.Group>
       </Form>
     </div>
