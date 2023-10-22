@@ -3358,7 +3358,7 @@
        import 'bootstrap/dist/css/bootstrap.min.css';
        ```
 
-Con estos pasos, habrás personalizado las variables preestablecidas de Bootstrap en tu proyecto de React.
+   Con estos pasos, habrás personalizado las variables preestablecidas de Bootstrap en tu proyecto de React.
 
 5. #### **`Responsive & Grid System`**:
 
