@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, createContext, useContext } from "react";
 import { TresEnRaya } from "./components/TresEnRaya/TresEnRaya.jsx";
 import { Prueba } from "./components/prueba-tecnica/Prueba-tecnica.jsx";
 import styles from "./App.module.scss";
@@ -79,6 +79,15 @@ export function App() {
           <button>Button 1</button>
           <button>Button 2</button>
         </Contenedor>
+        <hr />
+        <ClockLanguageProvider>
+          <Clock />
+        </ClockLanguageProvider>
+        <hr />
+        <LanguageProvider>
+          <LanguageConsumer />
+          <Clock />
+        </LanguageProvider>
       </div>
     </div>
   );
@@ -222,7 +231,7 @@ const CounterDisplay = ({ counter }) => {
 const Clock = () => {
   const [currentTimeFormatted, setCurrentTimeFormatted] = useState(
     new Intl.DateTimeFormat("en-GB", {
-      timeStyle: "full",
+      timeStyle: "medium",
       timeZone: "Europe/Madrid",
     }).format(new Date()),
   );
@@ -230,7 +239,7 @@ const Clock = () => {
   useEffect(() => {
     const intervalID = setInterval(() => {
       const newTime = new Intl.DateTimeFormat("en-GB", {
-        timeStyle: "full",
+        timeStyle: "medium",
         timeZone: "Europe/Madrid",
       }).format(new Date());
 
@@ -830,3 +839,94 @@ const Container = ({ children, title }) => {
     </div>
   );
 } */
+
+export const LanguageContexto = createContext();
+
+export const ClockLanguageProvider = ({ children }) => {
+  const [contextValue, setContextValue] = useState("en-GB");
+
+  return (
+    <div style={{ padding: "20px", height: "200px" }}>
+      <button
+        onClick={() => {
+          setContextValue("en-GB");
+        }}>
+        EN
+      </button>
+      <button
+        onClick={() => {
+          setContextValue("es-ES");
+        }}>
+        ES
+      </button>
+      <LanguageContexto.Provider value={contextValue}>
+        {contextValue === "en-GB" ? (
+          <div
+            style={{
+              display: "flex",
+              flexFlow: "column wrap",
+              justifyContent: "space-between",
+              padding: "20px",
+              width: "300px",
+            }}>
+            <h4>The current time is:</h4> {children}
+          </div>
+        ) : (
+          <div
+            style={{
+              display: "flex",
+              flexFlow: "column wrap",
+              justifyContent: "space-between",
+              padding: "20px",
+              width: "300px",
+            }}>
+            <h4>La hora actual es:</h4> {children}
+          </div>
+        )}
+      </LanguageContexto.Provider>
+    </div>
+  );
+};
+
+export const LanguageContext = createContext();
+
+export const LanguageProvider = ({ children }) => {
+  const [language, setLanguage] = useState("en-GB");
+
+  const changeLanguage = (language) => {
+    setLanguage(language);
+  };
+
+  return (
+    <div
+      style={{
+        padding: "20px",
+        display: "flex",
+        flexFlow: "column wrap",
+        alignItems: "flex-start",
+        gap: "10px",
+      }}>
+      <LanguageContext.Provider value={{ language, changeLanguage }}>
+        {children}
+      </LanguageContext.Provider>
+    </div>
+  );
+};
+
+export const LanguageConsumer = () => {
+  const { language, changeLanguage } = useContext(LanguageContext);
+
+  return (
+    <>
+      <select value={language} onChange={(e) => changeLanguage(e.target.value)}>
+        <option value={"en-GB"}>English</option>
+        <option value={"es-ES"}>Spanish</option>
+      </select>
+      {language === "en-GB" ? (
+        <h4>The current time is: </h4>
+      ) : (
+        <h4>La hora actual es: </h4>
+      )}
+    </>
+  );
+};
