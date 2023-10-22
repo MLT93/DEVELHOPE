@@ -644,8 +644,8 @@
      Puedes usarlo cuando necesitas mantener y/o actualizar un valor en el componente a través de su función, según la renderización del componente. Por ejemplo, si necesitas almacenar el `event` de un input o el estado de un modal.
 
      Al final es siempre lo mismo:
-     - El `handleChange` va siempre con el <input> y guarda el `event` que introduce el usuario.
-     - El `handleClick` va con el <button> y `setea` el valor que ha introducido el usuario.
+     - El `handleChange` va siempre con el `onChange` en el <input> y guarda el `event` que introduce el usuario.
+     - El `handleClick` va con el `onClick` en el <button> y `setea` el valor que ha introducido el usuario.
      - El `useState` te da la variable que vas a renderizar, que guarda los valores y que se modifica.
 
      Posee una convención, y es aplicar el mismo nombre de la variable (ej. `estado`), al modificador del estado, con la palabra `set` al inicio (ej. `setEstado`).
@@ -3600,15 +3600,34 @@
 
 2. #### **`Creación de un Contexto`**:
 
-   Para crear un Contexto en React, se utiliza `React.createContext()`. Esto devuelve un objeto con dos componentes: `Provider` y `Consumer`.
+   Para crear un Contexto en React, se utiliza la función `React.createContext()` o directamente `createContext()`, la cual puede poseer opcionalmente un `valor por defecto` dentro de sus paréntesis.
+   
+   Esta función devuelve un objeto con dos componentes: 
+   
+   - **Provider**:
+   
+     Es un componente que podemos usar para almacenar el valor que deseamos compartir con cualquier otro componente que sea parte de su subárbol. Cualquier hijo del proveedor puede acceder al valor del proveedor.
+   
+   - **Consumer**:
+   
+     Es el componente que nos permite acceder al valor del proveedor.
 
    ```jsx
-   const MiContexto = React.createContext();
+   import { createContext } from 'react';
+   import React from 'react';
+
+   const MiContexto = React.createContext("valor por defecto");
    ```
 
-3. #### **`Proveedor (Provider)`**:
+   ```jsx
+   import { createContext } from 'react';
 
-   El componente `Provider` se utiliza para envolver al árbol de componentes donde se desea compartir el contexto. Se proporciona un valor que será accesible a través del contexto.
+   const MiContexto = createContext("valor por defecto");
+   ```
+
+3. #### **`Provider`**:
+
+   El componente `Provider` se utiliza para envolver al árbol de componentes hijos donde se desea compartir el contexto. Se proporciona un valor que será accesible a través del contexto.
 
    ```jsx
    <MiContexto.Provider value={valor}>
@@ -3616,22 +3635,22 @@
    </MiContexto.Provider>
    ```
 
-4. #### **`Consumidor (Consumer)`**:
+4. #### **`Consumer`**:
 
-   Para acceder al valor proporcionado por el `Provider`, se utiliza el componente `Consumer`. Este componente utiliza una función como su hijo que recibe el valor del contexto como argumento.
+   Para acceder al valor proporcionado por el `Provider`, se utiliza el componente `Consumer`. Este componente debe englobar una función como hijo que recibirá el valor del contexto como argumento y devolverá algo relacionado con él.
 
    ```jsx
    <MiContexto.Consumer>
-     {valor => /* Renderizar algo basado en el contexto */}
+     {(valor) => /* Renderizar algo basado en el contexto */}
    </MiContexto.Consumer>
    ```
 
-5. #### **`Uso de Context en Componentes Funcionales`**:
+5. #### **`UseContext`**:
 
    En un componente funcional, se puede utilizar el Hook `useContext` para consumir el contexto.
 
    ```jsx
-   import React, { useContext } from 'react';
+   import { useContext } from 'react';
 
    const valor = useContext(MiContexto);
    ```
@@ -3642,43 +3661,128 @@
 
    Ejemplo:
 
+   Cambio de theme:
+
    ```jsx
-   // Creación del Contexto
-   const MiContexto = React.createContext();
+   // Crear el Provider (aquí se crea el componente padre y los useState necesarios)
+   import { createContext } from 'react';
+   
+   // Creación del contexto (en este caso tiene un valor por defecto)
+   export const ThemeContext = createContext('light');
 
-   // Componente Proveedor
-   function ProveedorComponente({ children }) {
-     const valorContexto = 'Este es un valor de contexto';
-
+   export const ThemeProvider = ({ children }) => {
+     const theme = 'light';
+   
      return (
-       <MiContexto.Provider value={valorContexto}>
+       <ThemeContext.Provider value={theme}>
          {children}
-       </MiContexto.Provider>
+       </ThemeContext.Provider>
      );
-   }
+   };
+   ```
 
-   // Componente Consumidor
-   function ConsumidorComponente() {
-     return (
-       <MiContexto.Consumer>
-         {valor => <div>El valor de contexto es: {valor}</div>}
-       </MiContexto.Consumer>
-     );
-   }
+   ```jsx
+   // Crear el Consumer (aquí se desarrolla la parte relevante del código)
+   import { useContext } from 'react';
+   import { ThemeContext } from './ThemeContext';
 
-   // Uso en la App
+   export const ThemeConsumer = () => {
+     const theme = useContext(ThemeContext);
+   
+     return <div>El tema actual es: {theme}</div>;
+   };
+   ```
+
+   ```jsx
+   // Renderizado
+   import { ThemeProvider } from './ThemeProvider';
+   import { ThemeConsumer } from './ThemeConsumer';
+   import { ComponentChildren } from './ComponentChildren';
+   
    function App() {
      return (
-       <ProveedorComponente>
-         <ConsumidorComponente />
-       </ProveedorComponente>
+       <ThemeProvider>
+           <ThemeConsumer />
+           <ComponentChildren />
+       </ThemeProvider>
+     );
+   }
+   
+   export default App;
+   ```
+
+   Idioma de la aplicación:
+
+   ```jsx
+   // Creación del Provider
+   import { createContext, useState } from 'react';
+
+   export const LanguageContext = createContext();
+   
+   export const LanguageProvider = ({ children }) => {
+     const [language, setLanguage] = useState("en-GB");
+   
+     const changeLanguage = (language) => {
+       setLanguage(language);
+     };
+   
+     return (
+       <div
+         style={{
+           padding: "20px",
+           display: "flex",
+           flexFlow: "column wrap",
+           alignItems: "flex-start",
+           gap: "10px",
+         }}>
+         <LanguageContext.Provider value={{ language, changeLanguage }}>
+           {children}
+         </LanguageContext.Provider>
+       </div>
+     );
+   };
+   ```
+   
+   ```jsx
+   // Creación del Consumer
+   import { LanguageContext } from './LanguageContext';
+
+   export const LanguageConsumer = () => {
+     const { language, changeLanguage } = useContext(LanguageContext);
+   
+     return (
+       <>
+         <select value={language} onChange={(e) => changeLanguage(e.target.value)}>
+           <option value={"en-GB"}>English</option>
+           <option value={"es-ES"}>Spanish</option>
+         </select>
+         {language === "en-GB" ? (
+           <h4>The current time is: </h4>
+         ) : (
+           <h4>La hora actual es: </h4>
+         )}
+       </>
+     );
+   };
+   ```
+
+   ```jsx
+   // Renderizado
+   import { LanguageProvider } from './LanguageProvider';
+   import { LanguageConsumer } from './LanguageConsumer';
+   import { ComponentChildren } from './ComponentChildren';
+
+   export const App = () => {
+     return (
+       <LanguageProvider>
+         <LanguageConsumer />
+         <ComponentChildren />
+       </LanguageProvider>
      );
    }
    ```
 
-   En este ejemplo, `ProveedorComponente` envuelve a `ConsumidorComponente` con el `Provider` del contexto. El valor del contexto proporcionado es "Este es un valor de contexto". `ConsumidorComponente` utiliza el `Consumer` para acceder y mostrar ese valor.
-
-7. #### **`Uso de Contexto en Clases de Componentes`**:
+7. #### **`Uso de Contexto en Componentes de Clase`**:
 
    En clases de componentes, se utiliza `Context.Consumer` en el método `render` para consumir el contexto.
 
@@ -3687,7 +3791,7 @@
      render() {
        return (
          <MiContexto.Consumer>
-           {valor => <div>El valor de contexto es: {valor}</div>}
+           {(valor) => <div>El valor de contexto es: {valor}</div>}
          </MiContexto.Consumer>
        );
      }
