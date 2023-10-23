@@ -1010,3 +1010,45 @@ export const useFetch = (url) => {
 
   return [data, loading, error];
 };
+
+export const useCurrentLocation = () => {
+  const [loading, setLoading] = useState(true);
+  const [location, setLocation] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setLocation({ latitude, longitude });
+          setLoading(false);
+        },
+        (err) => {
+          setError(err.message);
+          setLoading(false);
+        },
+      );
+    } else {
+      setError("Geolocation is not supported in this browser.");
+      setLoading(false);
+    }
+  }, []);
+
+  const getLocation = () => {
+    setLoading(true);
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        setLocation({ latitude, longitude });
+        setLoading(false);
+      },
+      (err) => {
+        setError(err.message);
+        setLoading(false);
+      },
+    );
+  };
+
+  return [location, getLocation, error, loading];
+};
