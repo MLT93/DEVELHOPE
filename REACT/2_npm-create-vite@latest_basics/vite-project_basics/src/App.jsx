@@ -918,7 +918,7 @@ export const GitHubUsers = () => {
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
   const [selectUser, setSelectUser] = useState(null);
-  const url = "https://api.github.com/users?per_page=2";
+  const url = "https://api.github.com/users?per_page=4";
 
   useEffect(() => {
     setIsPending(true);
@@ -943,8 +943,8 @@ export const GitHubUsers = () => {
           flexFlow: "row wrap",
           justifyContent: "flex-start",
           alginItems: "center",
-          gap: "15px",
           padding: "20px",
+          height: "470px",
         }}>
         {isPending && <h2>Is Loading...</h2>}
         <div>
