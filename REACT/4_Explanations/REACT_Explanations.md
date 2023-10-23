@@ -757,7 +757,7 @@
      
      `useEffect()` permite realizar efectos secundarios en componentes funcionales. Se ejecuta después de cada renderizado y puede emular varios ciclos de vida de componentes de clase como `componentDidMount`, `componentDidUpdate` y `componentWillUnmount`. Nos permite ejecutar acciones cada vez que ocurre algo.
 
-     Recuerda que las funciones de `useEffect` deben ser funciones normales, `no pueden ser asíncronas`.
+     Recuerda que las funciones de `useEffect()` deben ser funciones normales, `no pueden ser asíncronas`.
      
      Este hook te permite llevar a cabo efectos secundarios en tu componente. Esto puede ser útil para realizar acciones como la suscripción a eventos, la carga de datos desde una API o actualizar el DOM después de que el componente se ha renderizado.
      
