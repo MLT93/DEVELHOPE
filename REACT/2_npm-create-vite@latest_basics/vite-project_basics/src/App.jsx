@@ -971,7 +971,7 @@ export const GitHubUsers = () => {
 };
 
 export const useCounter = (startValue) => {
-  const [counter, setCounter] = useState(startValue = 0);
+  const [counter, setCounter] = useState((startValue = 0));
 
   const handleCounterIncrement = () => setCounter(counter + 1);
   const handleCounterDecrement = () => setCounter(counter - 1);
@@ -982,5 +982,16 @@ export const useCounter = (startValue) => {
     incrementFunction: handleCounterIncrement,
     decrementFunction: handleCounterDecrement,
     resetFunction: handleCounterReset,
+  };
+};
+
+export const useForm = (startValue) => {
+  const [value, setValue] = useState(startValue);
+
+  const handleChangeInput = (e) => setValue(e.target.value);
+
+  return {
+    value: value,
+    inputValueFunction: handleChangeInput,
   };
 };
