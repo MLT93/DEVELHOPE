@@ -8,6 +8,7 @@ import { Module } from "./components/Module/Module.jsx";
 import { Toggle } from "./components/Toggle/Toggle.jsx";
 import { PruebaCustomHook } from "./components/PruebaConCustomHook/PruebaCustomHook.jsx";
 import { Contenedor } from "./components/Children/ChildrenExample.jsx";
+import axios from "axios";
 
 export function App() {
   return (
@@ -84,6 +85,8 @@ export function App() {
           <LanguageConsumer />
           <Clock />
         </LanguageProvider>
+        <hr />
+        <GitHubUser username={"MLT93"} />
       </div>
     </div>
   );
@@ -847,7 +850,7 @@ export const LanguageProvider = ({ children }) => {
         gap: "10px",
       }}>
       {/* <LanguageContext.Provider value={{ language, changeLanguage }}> */}
-        {children}
+      {children}
       {/* </LanguageContext.Provider> */}
     </div>
   );
@@ -867,3 +870,46 @@ export const LanguageConsumer = () => {
     </>
   );
 };
+
+const GitHubUser = ({ username }) => {
+  const [data, setData] = useState(null);
+  const [isPending, setIsPending] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setIsPending(true);
+    axios
+      .get(`https://api.github.com/users/${username}`)
+      .then((response) => setData(response.data))
+      .catch((err) => setError(err.message))
+      .finally(() => setIsPending(false));
+  }, [username]);
+
+  return (
+    <>
+      {isPending && <h2>Is Loading...</h2>}
+      {data && (
+        <div
+          style={{
+            width: "300px",
+            padding: "20px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "15px",
+          }}>
+          <div>{data.name}</div>
+          <img
+            src={data.avatar_url}
+            alt={`Avatar of ${data.id}`}
+            style={{ width: "100%", height: "auto" }}
+          />
+          <span>{data.login}</span>
+        </div>
+      )}
+      {error && <h2>{error}</h2>}
+    </>
+  );
+};
+
+export default GitHubUser;
+
