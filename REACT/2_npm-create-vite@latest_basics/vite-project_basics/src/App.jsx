@@ -969,3 +969,18 @@ export const GitHubUsers = () => {
     </>
   );
 };
+
+export const useCounter = (startValue) => {
+  const [counter, setCounter] = useState(startValue = 0);
+
+  const handleCounterIncrement = () => setCounter(counter + 1);
+  const handleCounterDecrement = () => setCounter(counter - 1);
+  const handleCounterReset = () => setCounter(startValue);
+
+  return {
+    counter: counter,
+    incrementFunction: handleCounterIncrement,
+    decrementFunction: handleCounterDecrement,
+    resetFunction: handleCounterReset,
+  };
+};
