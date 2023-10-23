@@ -4131,10 +4131,10 @@
    ```jsx
    // Utilizo del Hook
    const MyComponent = () => {
-     const { data, loading, error } = useFetch('https://api.example.com/data');
+     const [data, loading, error] = useFetch('https://api.example.com/data');
    
      if (loading) return <div>Loading...</div>;
-     if (error) return <div>Error: {error.message}</div>;
+     if (error) return <div>Error: {error}</div>;
    
      return <div>{JSON.stringify(data)}</div>;
    };
