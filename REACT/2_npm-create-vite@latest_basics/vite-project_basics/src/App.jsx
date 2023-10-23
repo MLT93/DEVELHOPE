@@ -846,12 +846,14 @@ export const LanguageProvider = ({ children }) => {
         alignItems: "flex-start",
         gap: "10px",
       }}>
-      <LanguageContext.Provider value={{ language, changeLanguage }}>
+      {/* <LanguageContext.Provider value={{ language, changeLanguage }}> */}
         {children}
-      </LanguageContext.Provider>
+      {/* </LanguageContext.Provider> */}
     </div>
   );
 };
+
+/* Si removemos el `.Provider`, se acciona el valor por defecto del `createContext()` porque no hay ningún componente proveedor de contextos */
 
 export const LanguageConsumer = () => {
   const { language, changeLanguage } = useContext(LanguageContext);
