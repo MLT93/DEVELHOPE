@@ -80,10 +80,6 @@ export function App() {
           <button>Button 2</button>
         </Contenedor>
         <hr />
-        <ClockLanguageProvider>
-          <Clock />
-        </ClockLanguageProvider>
-        <hr />
         <LanguageProvider>
           <LanguageConsumer />
           <Clock />
@@ -229,6 +225,8 @@ const CounterDisplay = ({ counter }) => {
 };
 
 const Clock = () => {
+  const { language } = useContext(LanguageContext);
+
   const [currentTimeFormatted, setCurrentTimeFormatted] = useState(
     new Intl.DateTimeFormat("en-GB", {
       timeStyle: "medium",
@@ -251,7 +249,11 @@ const Clock = () => {
 
   return (
     <div className="clock">
-      <h2>{currentTimeFormatted}</h2>
+      <h2>
+        {language && language === "es-ES"
+          ? `Hora actual: ${currentTimeFormatted}`
+          : `Current time: ${currentTimeFormatted}`}
+      </h2>
     </div>
   );
 };
@@ -826,69 +828,7 @@ const Container = ({ children, title }) => {
   );
 };
 
-/* const Container = ({ Children }) => {
-  return (
-    <div>
-      {React.Children.map(Children, (child) => {
-        return (
-          React.cloneElement(child, { newProp: "color" }) && (
-            <div className="bg-white border border-red-500 p-4">{child}</div>
-          )
-        );
-      })}
-    </div>
-  );
-} */
-
-export const LanguageContexto = createContext();
-
-export const ClockLanguageProvider = ({ children }) => {
-  const [contextValue, setContextValue] = useState("en-GB");
-
-  return (
-    <div style={{ padding: "20px", height: "200px" }}>
-      <button
-        onClick={() => {
-          setContextValue("en-GB");
-        }}>
-        EN
-      </button>
-      <button
-        onClick={() => {
-          setContextValue("es-ES");
-        }}>
-        ES
-      </button>
-      <LanguageContexto.Provider value={contextValue}>
-        {contextValue === "en-GB" ? (
-          <div
-            style={{
-              display: "flex",
-              flexFlow: "column wrap",
-              justifyContent: "space-between",
-              padding: "20px",
-              width: "300px",
-            }}>
-            <h4>The current time is:</h4> {children}
-          </div>
-        ) : (
-          <div
-            style={{
-              display: "flex",
-              flexFlow: "column wrap",
-              justifyContent: "space-between",
-              padding: "20px",
-              width: "300px",
-            }}>
-            <h4>La hora actual es:</h4> {children}
-          </div>
-        )}
-      </LanguageContexto.Provider>
-    </div>
-  );
-};
-
-export const LanguageContext = createContext();
+export const LanguageContext = createContext("en-GB");
 
 export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState("en-GB");
@@ -922,11 +862,6 @@ export const LanguageConsumer = () => {
         <option value={"en-GB"}>English</option>
         <option value={"es-ES"}>Spanish</option>
       </select>
-      {language === "en-GB" ? (
-        <h4>The current time is: </h4>
-      ) : (
-        <h4>La hora actual es: </h4>
-      )}
     </>
   );
 };
