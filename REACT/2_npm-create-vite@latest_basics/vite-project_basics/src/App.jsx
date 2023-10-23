@@ -87,6 +87,8 @@ export function App() {
         </LanguageProvider>
         <hr />
         <GitHubUser username={"MLT93"} />
+        <hr />
+        <GitHubUsers />
       </div>
     </div>
   );
@@ -871,7 +873,7 @@ export const LanguageConsumer = () => {
   );
 };
 
-const GitHubUser = ({ username }) => {
+export const GitHubUser = ({ username }) => {
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
@@ -911,5 +913,59 @@ const GitHubUser = ({ username }) => {
   );
 };
 
-export default GitHubUser;
+export const GitHubUsers = () => {
+  const [isPending, setIsPending] = useState(true);
+  const [error, setError] = useState(null);
+  const [data, setData] = useState([]);
+  const [selectUser, setSelectUser] = useState(null);
+  const url = "https://api.github.com/users?per_page=2";
 
+  useEffect(() => {
+    setIsPending(true);
+    (() => {
+      axios
+        .get(url)
+        .then((response) => setData(response.data))
+        .catch((err) => setError(err))
+        .finally(() => setIsPending(false));
+    })();
+  }, []);
+
+  const handleClickUser = (username) => {
+    setSelectUser(username);
+  };
+
+  return (
+    <>
+      <div
+        style={{
+          display: "flex",
+          flexFlow: "row wrap",
+          justifyContent: "flex-start",
+          alginItems: "center",
+          gap: "15px",
+          padding: "20px",
+        }}>
+        {isPending && <h2>Is Loading...</h2>}
+        <div>
+          {data &&
+            data.map((element, index) => {
+              return (
+                <button
+                  key={index}
+                  onClick={() => handleClickUser(element.login)}
+                  style={{
+                    width: "150px",
+                    padding: "10px",
+                  }}>
+                  <span>{element.login}</span>
+                </button>
+              );
+            })}
+          {selectUser && <GitHubUser username={selectUser} />}
+        </div>
+        {error && <h2>{error}</h2>}
+      </div>
+    </>
+  );
+};
