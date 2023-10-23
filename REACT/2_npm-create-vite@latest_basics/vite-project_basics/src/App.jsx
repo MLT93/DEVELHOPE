@@ -6,6 +6,7 @@ import {
   createContext,
   useContext,
   useCallback,
+  useMemo,
 } from "react";
 import { TresEnRaya } from "./components/TresEnRaya/TresEnRaya.jsx";
 import { Prueba } from "./components/prueba-tecnica/Prueba-tecnica.jsx";
@@ -96,6 +97,8 @@ export function App() {
         <GitHubUser username={"MLT93"} />
         <hr />
         <GitHubUsers />
+        <hr />
+        <FilteredList list={myObj} />
       </div>
     </div>
   );
@@ -1069,4 +1072,30 @@ export const useCurrentLocation = () => {
   };
 
   return [location, getLocation, error, loading];
+};
+
+const myObj = [
+  { id: "10938", name: "Marcos", age: 45 },
+  { id: "29482", name: "Laura", age: 20 },
+  { id: "73839", name: "Juan", age: 17 },
+];
+
+export const FilteredList = ({ list }) => {
+  const [theList, setTheList] = useState([]);
+
+  useMemo(() => {
+    const filteredList = list.filter((element) => element.age > 18);
+    setTheList(filteredList);
+  }, [list]);
+
+  return (
+    <div style={{ padding: "20px" }}>
+      <h2>Mayores de edad:</h2>
+      {theList.map((element, index) => (
+        <h4 key={index}>{`${index + 1}. ${element.name} tiene ${
+          element.age
+        } años.`}</h4>
+      ))}
+    </div>
+  );
 };
