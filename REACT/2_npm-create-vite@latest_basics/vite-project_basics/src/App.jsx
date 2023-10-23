@@ -1,5 +1,12 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect, useRef, createContext, useContext } from "react";
+import {
+  useState,
+  useEffect,
+  useRef,
+  createContext,
+  useContext,
+  useCallback,
+} from "react";
 import { TresEnRaya } from "./components/TresEnRaya/TresEnRaya.jsx";
 import { Prueba } from "./components/prueba-tecnica/Prueba-tecnica.jsx";
 import styles from "./App.module.scss";
@@ -874,7 +881,9 @@ export const LanguageConsumer = () => {
 };
 
 export const GitHubUser = ({ username }) => {
-  const [data, loading, error] = useFetch(`https://api.github.com/users/${username}`);
+  const [data, loading, error] = useFetch(
+    `https://api.github.com/users/${username}`,
+  );
 
   return (
     <>
@@ -962,9 +971,18 @@ export const GitHubUsers = () => {
 export const useCounter = (startValue) => {
   const [counter, setCounter] = useState((startValue = 0));
 
-  const handleCounterIncrement = () => setCounter(counter + 1);
-  const handleCounterDecrement = () => setCounter(counter - 1);
-  const handleCounterReset = () => setCounter(startValue);
+  const handleCounterIncrement = useCallback(
+    () => setCounter(counter + 1),
+    [counter],
+  );
+  const handleCounterDecrement = useCallback(
+    () => setCounter(counter - 1),
+    [counter],
+  );
+  const handleCounterReset = useCallback(
+    () => setCounter(startValue),
+    [startValue],
+  );
 
   return {
     counter: counter,
