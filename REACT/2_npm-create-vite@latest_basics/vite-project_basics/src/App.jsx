@@ -926,7 +926,7 @@ export const GitHubUsers = () => {
       axios
         .get(url)
         .then((response) => setData(response.data))
-        .catch((err) => setError(err))
+        .catch((err) => setError(err.message))
         .finally(() => setIsPending(false));
     })();
   }, []);
