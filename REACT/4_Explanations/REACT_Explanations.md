@@ -3602,6 +3602,8 @@
    `createContext` es una función que proporciona un contexto en React. Un contexto en React es esencialmente un mecanismo para compartir datos entre componentes sin tener que pasar props manualmente a través de cada nivel del árbol de componentes.
 
    Para crear un Contexto en React se utiliza la función `React.createContext()` o directamente `createContext()`, la cual posee un solo argumento dentro de paréntesis, correspondiente al `valor por defecto` con el que empieza el Contexto. `Este valor inicial es el valor que se utiliza cuando no hay un proveedor envolviendo los componentes que consumen el contexto`. Esto es importante porque si no se proporciona un valor por defecto, intentar consumir el contexto fuera del proveedor provocará un error.
+
+   Si no tenemos ningún `.Provider`, se acciona el valor por defecto del `createContext()` porque no hay ningún componente proveedor de contextos.
    
    Esta función devuelve un objeto con dos componentes: 
    
