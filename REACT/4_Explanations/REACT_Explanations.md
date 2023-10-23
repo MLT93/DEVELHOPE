@@ -765,7 +765,7 @@
 
      - Ten en cuenta que cada vez que creamos código que al desmontarse pudiera seguir funcionando, tenemos que acordarnos rigurosamente de limpiar o parar el código después de que se desmonte el componente, porque puede provocar varios conflictos y errores. Esto lo conseguimos retornando una función al interno del hook useEffect, porque esa función ejecutará sólo y unicamente después del `Unmount` del componente (cuando se desmonta).
 
-     - Si deseamos simplemente ejecutar un `Update` (actualización del componente) dependiendo de los cambios que puedan ocurrir en base a las actualizaciones de estado (useState), peticiones HTTP con API, la escucha de eventos externos (eventos del navegador o del sistema utilizando los addEventListener y removeEventListener dentro del useEffect), operaciones de limpieza, la manipulación del DOM, escribir algo en una base de datos o modificar una variable global, deberemos utilizar obligatoriamente las `dependencias`.
+     - Si deseamos simplemente ejecutar un `Update` (actualización del componente) dependiendo de los cambios que puedan ocurrir en base a las actualizaciones de estado (useState), peticiones HTTP con API, la escucha de eventos externos (eventos del navegador o del sistema utilizando los addEventListener y removeEventListener dentro del useEffect), operaciones de limpieza, la manipulación del DOM, escribir algo en una base de datos o modificar una variable global, deberemos utilizar obligatoriamente las `dependencias` correspondientes.
      
      Sintaxis:
      
@@ -800,7 +800,7 @@
 
        `Con dependencias` presentes, `[dependencia1, dependencia2]`, indica a React que `el código debe reejecutarse si alguna de esas dependencias cambia`.
 
-       `Si quieres que el efecto se ejecute sólo cuando el componente se monta`, puedes pasar un `array vacío` como segundo argumento `[]`.
+       `Si quieres que el efecto se ejecute sólo cuando el componente se monta`, debes pasar un `array vacío` como segundo argumento `[]`.
        
        - `Si se omite este array`:
        
