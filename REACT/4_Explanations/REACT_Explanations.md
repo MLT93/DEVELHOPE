@@ -1128,7 +1128,84 @@
      ```
      
      En el código anterior utilizamos `useMemo` para memorizar el cálculo del precio con impuestos de cada producto en una lista. Utilizamos una función para definir la función que se ejecutará dentro de `useMemo`, y `establecemos las dependencias como productos y tasa. Cada vez que cambian estos valores, la función se vuelve a ejecutar y se actualizan los precios con impuestos`. Luego, utilizamos la variable tasas para renderizar la lista de productos con los precios con impuestos actualizados.
-   
+
+   - **useCallback hook**:
+
+     `useCallback()` es un hook de React que tiene como objetivo optimizar el rendimiento de componentes al `memoizar` (cachear) funciones. Esto significa que, si las dependencias de una función no han cambiado, `useCallback()` devolverá la misma función `memoizada` en lugar de crear una nueva en cada renderizado.
+
+     En React, las funciones pueden ser pasadas como `props` a componentes hijos. Si estas funciones se crean en el componente padre y no están `memoizadas`, cada vez que el componente padre se renderice, se creará una nueva instancia de esa función. Esto puede llevar a problemas de rendimiento, especialmente en componentes que se vuelven a renderizar frecuentemente.
+
+     `useCallback()` ayuda a mitigar este problema al memoizar funciones, lo que significa que la misma instancia de función se utilizará en renderizados posteriores si las dependencias no han cambiado. Esto puede reducir el consumo de memoria y mejorar el rendimiento del componente.
+
+     Sintaxis:
+
+     ```jsx
+     const memoizedCallbackFunction = useCallback(() => {
+
+       // Función que se memoizará (se guardará en el caché)
+
+     }, [/* Dependencias */]);
+     ```
+
+     - `Primer argumento de useCallback`:
+
+       Es la función que se guardará en la memoria y se utilizará si alguna de las dependencias se modifica
+
+     - `Segundo argumento de useCallback`:
+
+       Un array de dependencias. `La función memoizada se volverá a ejecutar solo si alguna de estas dependencias cambia` para actualizar los valores que devuelve la función pertinente, en base a los cambios sufridos.
+       
+       Cuando utilizas `useCallback() con un array de dependencias vacío []`, significa que `está memoizando la función`, `lo que significa que la función ejecutada en la primera renderización se mantendrá en caché y no se volverá a ejecutar` en futuras renderizaciones, `a menos que el componente se monte o desmonte`.
+       
+       Esto puede ser útil cuando tienes una función que no depende de ningún valor o estado específico del componente y quieres evitar que se cree una nueva instancia en cada renderizado. `En lugar de crear una nueva función en cada renderización, la misma instancia de la función memoizada se reutiliza`.
+       
+       Esta optimización puede ser útil para mejorar el rendimiento en situaciones donde la función no cambia y no necesita ser recalculada en cada renderizado.
+       
+     Ejemplo:
+     
+     ```jsx
+     import { useState, useEffect, useCallback } from "react";
+     
+     export function ButtonScroll() {
+       const [visible, setVisible] = useState(false);
+       const scroll = useCallback(() => {
+         window.scrollTo({
+           top: 0,
+           behavior: "smooth",
+         });
+       }, []);
+     
+       useEffect(() => {
+         if (document) {
+           var bunny = document.getElementById("bunny");
+           bunny.style.transform = "translateY(60px)";
+         }
+     
+         const handleScroll = () => {
+           if (window.scrollY > 500) {
+             setVisible(true);
+             bunny.style.transform = "translateY(-7px)";
+           } else {
+             setVisible(false);
+           }
+         };
+         window.addEventListener("scroll", handleScroll);
+     
+         return () => {
+           window.removeEventListener("scroll", handleScroll);
+         };
+       });
+     
+       return (
+         <div>
+           <button onClick={scroll}>Scroll Up</button>
+         </div>
+       );
+     }
+     ```
+     
+     En este código `useCallback()` se utiliza para `memoizar` la función `scroll`. La función `scroll` que guarda el código de `useCallback()` no cambiará a menos que las dependencias pasadas cambien (en este caso hay un array vacío `[]`, por lo que el código no será accionado nuevamente en cada renderizado, a menos que se monte o desmonte). Esto significa que si el componente se vuelve a renderizar pero las dependencias no cambian, se utilizará la misma instancia de la función `scroll` `memoizada`.
+     
    Ejemplo aplicando varios hooks contemporáneamente:
    
    ```jsx
@@ -3980,3 +4057,244 @@
 8. #### **`Conclusión`**:
 
    Comprender cómo realizar data fetching en React es esencial para construir aplicaciones web interactivas y dinámicas. `useEffect()`, junto con otras funciones y librerías como `axios` y `fetch`, proporciona las herramientas necesarias para interactuar con APIs y manejar datos de manera eficiente. Además, es importante seguir las mejores prácticas para garantizar un código limpio y de alto rendimiento.
+
+## Custom Hooks y Funciones Relacionadas en React: Una Explicación Detallada
+
+1. **`Introducción a Custom Hooks`**:
+
+   Los Custom Hooks en React son funciones que te permiten encapsular y reutilizar lógica de estado o efectos en tus componentes. Esto ayuda a mantener tu código más limpio y modular.
+
+2. **`Importancia de Custom Hooks`**:
+
+   Los Custom Hooks promueven la reutilización de lógica en componentes funcionales. Esto es especialmente útil cuando tienes lógica compleja que se repite en varios componentes. Además, ayuda a separar la lógica del componente de su representación, lo que facilita las pruebas unitarias.
+
+3. **`Sintaxis de Custom Hooks`**:
+
+   Un Custom Hook es simplemente una función de JavaScript que comienza con el prefijo `use`. Puedes usar hooks estándar dentro de un Custom Hook.
+
+   ```jsx
+   import { useState, useEffect } from 'react';
+
+   const useCustomHook = (initialValue) => {
+     const [value, setValue] = useState(initialValue);
+
+     useEffect(() => {
+       // Efectos secundarios aquí
+     }, [value]);
+
+     return [value, setValue];
+   };
+   ```
+
+   Acá `useCustomHook()` es un Custom Hook que utiliza el hook `useState()` y `useEffect()` para su creación.
+
+   Ejemplo:
+
+   Creación de `UseFetch()`:
+
+   ```jsx
+   // Creación del Hook
+   import { useState, useEffect } from 'react';
+   
+   const useFetch = (url) => {
+     const [data, setData] = useState(null);
+     const [loading, setLoading] = useState(true);
+     const [error, setError] = useState(null);
+   
+     useEffect(() => {
+       const fetchData = async () => {
+         try {
+           const response = await fetch(url);
+           const result = await response.json();
+           setData(result);
+         } catch (error) {
+           setError(error);
+         } finally {
+           setLoading(false);
+         }
+       };
+   
+       fetchData();
+     }, [url]);
+   
+     return { data, loading, error };
+   };
+   
+   export default useFetch;
+   ```
+   
+   ```jsx
+   // Utilizo del Hook
+   const MyComponent = () => {
+     const { data, loading, error } = useFetch('https://api.example.com/data');
+   
+     if (loading) return <div>Loading...</div>;
+     if (error) return <div>Error: {error.message}</div>;
+   
+     return <div>{JSON.stringify(data)}</div>;
+   };
+   ```
+
+   Creación de `useLocalStorage()`:
+
+   ```jsx
+   // Creación del Hook
+   import { useState } from 'react';
+   
+   const useLocalStorage = (key, initialValue) => {
+     const [value, setValue] = useState(() => {
+       const storedValue = localStorage.getItem(key);
+       return storedValue !== null ? JSON.parse(storedValue) : initialValue;
+     });
+   
+     const setLocalStorageValue = (newValue) => {
+       setValue(newValue);
+       localStorage.setItem(key, JSON.stringify(newValue));
+     };
+   
+     return [value, setLocalStorageValue];
+   };
+   
+   export default useLocalStorage;
+   ```
+
+   ```jsx
+   // Utilizo del Hook
+   const MyComponent = () => {
+     const [count, setCount] = useLocalStorage('count', 0);
+   
+     const increment = () => {
+       setCount(count + 1);
+     };
+   
+     return (
+       <div>
+         <p>Count: {count}</p>
+         <button onClick={increment}>Increment</button>
+       </div>
+     );
+   };
+   ```
+
+   Creación de `useMediaQuery()`:
+
+   ```jsx
+   // Creación del Hook
+   import { useState, useEffect } from 'react';
+   
+   const useMediaQuery = (query) => {
+     const [matches, setMatches] = useState(
+       window.matchMedia(query).matches
+     );
+   
+     useEffect(() => {
+       const mediaQuery = window.matchMedia(query);
+       const updateMatches = () => setMatches(mediaQuery.matches);
+   
+       mediaQuery.addListener(updateMatches);
+   
+       return () => {
+         mediaQuery.removeListener(updateMatches);
+       };
+     }, [query]);
+   
+     return matches;
+   };
+   
+   export default useMediaQuery;
+   ```
+
+   ```jsx
+   // Utilizo del Hook
+   const MyComponent = () => {
+     const isMobile = useMediaQuery('(max-width: 768px)');
+   
+     return (
+       <div>
+         <p>{isMobile ? 'Mobile View' : 'Desktop View'}</p>
+       </div>
+     );
+   };
+   ```
+
+4. **`Recomendaciones al Crear Custom Hooks`**:
+
+   - **Nombres con Prefijo "use"**:
+   
+     Los Custom Hooks deben comenzar con la palabra `use`. Esto es una convención en React para indicar que se trata de un hook.
+
+   - **No Llames Hooks Condicionales**:
+   
+     Los Hooks deben llamarse en el nivel superior del componente, no en condicionales, bucles o funciones anidadas.
+
+   - **Sigue las Reglas de los Hooks de React**:
+   
+     Esto incluye llamar a los hooks solo en componentes de función o en otros custom hooks.
+
+5. **`Ejemplo de Custom Hook`**:
+
+   Supongamos que queremos crear un Custom Hook para gestionar el estado de un input:
+
+   ```jsx
+   import { useState } from 'react';
+
+   const useInputState = (initialValue) => {
+     const [value, setValue] = useState(initialValue);
+
+     const handleChange = (e) => {
+       setValue(e.target.value);
+     };
+
+     return [value, handleChange];
+   };
+   ```
+
+   Luego, podemos usar este Custom Hook en un componente:
+
+   ```jsx
+   const MyComponent = () => {
+     const [inputValue, setInputValue] = useInputState('');
+
+     return (
+       <input
+         type="text"
+         value={inputValue}
+         onChange={setInputValue}
+       />
+     );
+   };
+   ```
+
+   Aquí, `useInputState()` es un Custom Hook que maneja el estado de un input y devuelve el valor actual y una función para actualizarlo.
+
+6. **`Custom Hooks y Funciones Relacionadas`**:
+
+   - **useState**:
+   
+     Puedes utilizar `useState()` dentro de un Custom Hook para gestionar el estado local de tu hook.
+
+   - **useEffect**:
+   
+     Puedes usar `useEffect()` dentro de un Custom Hook para realizar efectos secundarios en tu lógica personalizada.
+
+   - **useContext**:
+   
+     Si necesitas acceder a un contexto dentro de tu Custom Hook, puedes utilizar el hook `useContext()`.
+
+   - **useRef**:
+   
+     `useRef()` te permite crear una referencia mutable que puede ser utilizada para acceder a un elemento del DOM o a un valor mutable.
+
+   - **useReducer**:
+   
+     Puedes combinar `useReducer()` con `useState()` en un Custom Hook si necesitas una gestión de estado más compleja.
+
+   - **useMemo y useCallback**:
+   
+     Puedes utilizar `useMemo()` y `useCallback()` para memoizar valores y funciones en tu Custom Hook.
+
+7. **`Consideraciones Finales`**:
+
+   Los Custom Hooks son una herramienta poderosa para la reutilización y organización de lógica en tus componentes de React. Al crear tus propios Custom Hooks, puedes mantener tu código más limpio y modular, lo que facilita su mantenimiento y escalabilidad.
+
+   Recuerda seguir las convenciones de nomenclatura y las reglas de los Hooks de React para un uso efectivo y sin problemas de tus Custom Hooks en tu aplicación.
