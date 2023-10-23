@@ -3939,9 +3939,12 @@
      useEffect(() => {
        setIsPending(true)
        fetch('https://api.example.com/data')
-         .then(response => response.json())
-         .then(data => setData(data))
-         .catch(err => setError(err.message))
+         .then((response) => response.json())
+         .then((data) => setData(data))
+         .catch((err) => {
+            setError(err.message)
+            console.error('Error:', err.message)
+          })
          .finally(() => setIsPending(false));
      }, []); // El segundo argumento (arreglo de dependencias) determina cuándo se debe ejecutar el efecto. En este caso, solo al montar (Mount) el componente.
 
@@ -4000,7 +4003,7 @@
     
      axios.get('https://api.example.com/data')
        .then(response => console.log(response.data))
-       .catch(err => console.error('Error:', err));
+       .catch(err => console.error('Error:', err.message));
      ```
 
    - **fetch**:
@@ -4011,7 +4014,7 @@
      fetch('https://api.example.com/data')
        .then(response => response.json())
        .then(data => console.log(data))
-       .catch(error => console.error('Error:', error));
+       .catch(error => console.error('Error:', error.message));
      ```
 
    - **Async/Await**:
@@ -4025,7 +4028,7 @@
           const data = await response.data;
           console.log(data);
         } catch (err) {
-          setError(err.message);
+          console.error('Error:', err.message);
         }
       };
       ```
@@ -4096,28 +4099,30 @@
    // Creación del Hook
    import { useState, useEffect } from 'react';
    
-   const useFetch = (url) => {
-     const [data, setData] = useState(null);
+   export const useFetch = (url) => {
+     const [data, setData] = useState([]);
      const [loading, setLoading] = useState(true);
      const [error, setError] = useState(null);
    
      useEffect(() => {
-       const fetchData = async () => {
+       setLoading(true);
+       (async (url) => {
          try {
-           const response = await fetch(url);
-           const result = await response.json();
-           setData(result);
-         } catch (error) {
-           setError(error);
+           let response = await fetch(url);
+           console.log(`Response: ${response.status}`);
+           const data = await response.json();
+           console.log(data);
+           setData(data);
+         } catch (err) {
+           setError(err.message);
+           console.error('Error:', err.message)
          } finally {
            setLoading(false);
          }
-       };
-   
-       fetchData();
+       })(url);
      }, [url]);
    
-     return { data, loading, error };
+     return [data, loading, error];
    };
    
    export default useFetch;

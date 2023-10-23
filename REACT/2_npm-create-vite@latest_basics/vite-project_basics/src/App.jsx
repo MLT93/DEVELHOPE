@@ -874,22 +874,11 @@ export const LanguageConsumer = () => {
 };
 
 export const GitHubUser = ({ username }) => {
-  const [data, setData] = useState(null);
-  const [isPending, setIsPending] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    setIsPending(true);
-    axios
-      .get(`https://api.github.com/users/${username}`)
-      .then((response) => setData(response.data))
-      .catch((err) => setError(err.message))
-      .finally(() => setIsPending(false));
-  }, [username]);
+  const [data, loading, error] = useFetch(`https://api.github.com/users/${username}`);
 
   return (
     <>
-      {isPending && <h2>Is Loading...</h2>}
+      {loading && <h2>Is Loading...</h2>}
       {data && (
         <div
           style={{
@@ -1006,12 +995,13 @@ export const useFetch = (url) => {
     (async (url) => {
       try {
         let response = await fetch(url);
-        console.log(`Response: ${response.status}`)
+        console.log(`Response: ${response.status}`);
         const data = await response.json();
-        console.log(`Data received: ${data}`)
+        console.log(data);
         setData(data);
       } catch (err) {
         setError(err.message);
+        console.error("Error:", err.message);
       } finally {
         setLoading(false);
       }

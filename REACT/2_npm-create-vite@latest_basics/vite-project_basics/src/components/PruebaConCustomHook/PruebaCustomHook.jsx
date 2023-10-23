@@ -4,7 +4,7 @@ import { Card, ListGroup, ListGroupItem, CardImg } from "react-bootstrap";
 const url = "https://random-data-api.com/api/users/random_user?size=5";
 
 export const PruebaCustomHook = () => {
-  const { data, error, isPending } = useFetch(url);
+  const [data, error, isPending] = useFetch(url);
 
   console.log(data);
 

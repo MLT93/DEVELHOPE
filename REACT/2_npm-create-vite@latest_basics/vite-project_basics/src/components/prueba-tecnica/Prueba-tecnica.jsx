@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const Prueba = () => {
+  const [isPending, setIsPending] = useState(true);
   const [data, setData] = useState("lorem ipusm");
   const [imageState, setImageState] = useState("image cat");
   const [error, setError] = useState(null);
@@ -8,6 +9,7 @@ export const Prueba = () => {
   const urlImage = `https://api.thecatapi.com/v1/images/search?limit=10&rand`;
 
   useEffect(() => {
+    setIsPending(true);
     (async () => {
       try {
         let response = await fetch(urlFact);
@@ -19,7 +21,7 @@ export const Prueba = () => {
           );
         }
 
-        console.log(response);
+        console.log(`Response: ${response.status}`);
 
         const data = await response.json();
 
@@ -27,17 +29,21 @@ export const Prueba = () => {
 
         setData(data.fact);
       } catch (error) {
+        setError(error.message);
         if (error instanceof SyntaxError) {
           console.error(`Error de sintaxis: ${error.message}`);
-        } else if (error instanceof TypeError) {
+        }
+        if (error instanceof TypeError) {
           console.error(`Error de tipo: ${error.message}`);
         }
-        setError({ error });
+      } finally {
+        setIsPending(false);
       }
     })();
   }, [urlFact]);
 
   useEffect(() => {
+    setIsPending(true);
     try {
       (async () => {
         const response = await fetch(urlImage);
@@ -60,13 +66,16 @@ export const Prueba = () => {
         setImageState(imageUrl);
       })();
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
+      setError(error)
+    } finally {
+      setIsPending(false);
     }
   }, [urlFact, urlImage]);
 
   return (
     <>
-      {error && error}
+      {isPending && <h2>Is Loading...</h2>}
       <main style={{ padding: "20px" }}>
         <div
           style={{
@@ -95,6 +104,7 @@ export const Prueba = () => {
             <h4>Information:</h4>
             <p>{data && data}</p>
           </div>
+          {error && <h2>{error}</h2>}
         </div>
       </main>
     </>

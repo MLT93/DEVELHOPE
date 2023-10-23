@@ -9,23 +9,24 @@ export const useFetch = (url) => {
     setIsPending(true);
     (async (url) => {
       try {
-        const response = await fetch(url);
+        let response = await fetch(url);
 
-        console.log(`useFetch response = ${response}`);
+        console.log(`useFetch response = ${response.status}`);
 
         const data = await response.json();
 
-        console.log(`useFetch data = ${data}`);
+        console.log(data);
 
         setData(data);
-        setError(false);
+
       } catch (err) {
         setError(err.message);
+        console.error(err.message)
       } finally {
         setIsPending(false);
       }
     })(url);
   }, [url]);
 
-  return [ data, isPending, error ];
+  return [data, isPending, error];
 };
