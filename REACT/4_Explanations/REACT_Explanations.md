@@ -755,13 +755,13 @@
        
    - **useEffect hook**:
      
-     `useEffect` permite realizar efectos secundarios en componentes funcionales. Se ejecuta después de cada renderizado y puede emular varios ciclos de vida de componentes de clase como `componentDidMount`, `componentDidUpdate` y `componentWillUnmount`. Nos permite ejecutar acciones cada vez que ocurre algo.
+     `useEffect()` permite realizar efectos secundarios en componentes funcionales. Se ejecuta después de cada renderizado y puede emular varios ciclos de vida de componentes de clase como `componentDidMount`, `componentDidUpdate` y `componentWillUnmount`. Nos permite ejecutar acciones cada vez que ocurre algo.
 
      Recuerda que las funciones de `useEffect` deben ser funciones normales, `no pueden ser asíncronas`.
      
      Este hook te permite llevar a cabo efectos secundarios en tu componente. Esto puede ser útil para realizar acciones como la suscripción a eventos, la carga de datos desde una API o actualizar el DOM después de que el componente se ha renderizado.
      
-     - Memoriza que ejecuta siempre después de cada `Mount` del componente (cada vez que se monta).
+     - Memoriza que el código se ejecuta siempre después de cada `Mount` del componente (cada vez que se monta).
 
      - Ten en cuenta que cada vez que creamos código que al desmontarse pudiera seguir funcionando, tenemos que acordarnos rigurosamente de limpiar o parar el código después de que se desmonte el componente, porque puede provocar varios conflictos y errores. Esto lo conseguimos retornando una función al interno del hook useEffect, porque esa función ejecutará sólo y unicamente después del `Unmount` del componente (cuando se desmonta).
 
@@ -788,9 +788,9 @@
      
      - `Primer argumento de useEffect`:
      
-       El primer argumento de useEffect es una `arrow function` (callback). Contiene el código del efecto secundario que quieres que se ejecute cuando el componente se monte o cuando ciertas dependencias cambian.
+       El primer argumento de useEffect es una `arrow-function` (callback). Contiene el código del efecto secundario que quieres que se ejecute cuando el componente se monte `efecto Mount`, o cuando ciertas dependencias cambien `efecto Update`.
 
-       Recuerda que para hacer un `efecto Unmount`, debes retornar una función al interno del useEffect. Esta función se ejecutará cuando el componente se desmonta. Sirve para limpiar código, como cancelar suscripciones o liberar recursos (como la llamada a una API)
+       Recuerda que para hacer un `efecto Unmount`, debes retornar una función al interno del `useEffect()` en formato `arrow-function`. Esta función se ejecutará cuando el componente se desmonte. Sirve para limpiar código, como cancelar suscripciones o liberar recursos (como la llamada a una API)
        
      - `Segundo argumento de useEffect`:
      
@@ -798,12 +798,13 @@
        
        - `La presencia del array`:
 
-       Con dependencias presentes `[dependencia1, dependencia2]` indica a React que el código dentro del useEffect debe reejecutarse si alguna de esas dependencias cambia.
-       Si no quieres que el efecto se ejecute en actualizaciones posteriores de las dependencias y sólo cuando el componente se monta, puedes pasar un array vacío como segundo argumento `[]`.
+       `Con dependencias` presentes, `[dependencia1, dependencia2]`, indica a React que `el código debe reejecutarse si alguna de esas dependencias cambia`.
+
+       `Si quieres que el efecto se ejecute sólo cuando el componente se monta`, puedes pasar un `array vacío` como segundo argumento `[]`.
        
        - `Si se omite este array`:
        
-        Al omitir el array dentro del hook indica a React que el efecto secundario se ejecutará cada vez que el componente se renderice, o sea, que se ejecuta el código del useEffect por cada modificación que ocurra al interno del componente, pase lo que pase. Si quieres que el efecto se ejecute en cada actualización del componente, puedes omitir el segundo argumento directamente.
+        Al `omitir el array dentro del hook indica a React que el efecto secundario se ejecutará cada vez que el componente se renderice`, o sea, que se ejecuta el código por cada modificación que ocurra al interno del componente, pase lo que pase. Si quieres que el efecto se ejecute en cada actualización del componente, puedes omitir el segundo argumento directamente.
        
      Ejemplo:
 
@@ -921,9 +922,9 @@
      
    - **useContext hook**:
      
-     `useContext` te permite acceder al valor del contexto que ha sido proporcionado por un `.Provider` de contexto superior en jerarquía (es un contenedor que pasa información a los componentes hijos), que a su vez es creado a través de `createContext` una función de React para crear contextos.
+     `useContext()` te permite acceder al valor del contexto que ha sido proporcionado por un `.Provider` de contexto superior en jerarquía (es un contenedor que pasa información a los componentes hijos), que a su vez es creado a través de `createContext()` una función de React para crear contextos.
 
-     `createContext` es una función que acepta solo 1 parámetro (el valor por defecto) y se guarda en una variable para almacenar su valor. Realmente crea un `container` con un valor inicial (el parámetro de la función) para poder compartir información con los componentes hijos sin tener que pasar explícitamente props a través de cada nivel del árbol de componentes y así evitar complicaciones innecesarias de código, permitiendo que cada componente siga siendo reutilizable.
+     `createContext()` es una función que acepta solo 1 parámetro (el valor por defecto) y se guarda en una variable para almacenar su valor. Realmente crea un `container` con un valor inicial (el parámetro de la función) para poder compartir información con los componentes hijos sin tener que pasar explícitamente props a través de cada nivel del árbol de componentes y así evitar complicaciones innecesarias de código, permitiendo que cada componente siga siendo reutilizable.
      
      Sintaxis:
      
@@ -943,7 +944,7 @@
      
      - `Creación del contexto`:
        
-       Antes de utilizar `useContext`, primero necesitas crear un contexto. Esto se hace utilizando la función `createContext`, que toma un valor por defecto que se utilizará si no hay ningún proveedor de contexto superior. Este valor es opcional y se utiliza principalmente para facilitar el desarrollo.
+       Esto se hace utilizando la función `createContext()`, que toma un valor por defecto que se utilizará si no hay ningún proveedor de contexto superior (padre). Este valor es opcional y se utiliza principalmente para facilitar el desarrollo, aunque se aconseja utilizarlo para evitar errores.
        
      - `Proveedor de Contexto`:
      
@@ -952,9 +953,9 @@
      - `Acceso al Contexto`:
        
        Finalmente, en cualquier componente funcional puedes utilizar 
-       el hook `useContext` para acceder al valor del contexto. Ahora `valorDelContexto` contiene el valor proporcionado por el proveedor de contexto más cercano en la jerarquía del árbol de componentes. Si no hay proveedor de contexto, se tomará el valor por defecto.
+       el hook `useContext()` para acceder al valor del contexto. Ahora `valorDelContexto` contiene el valor proporcionado por el proveedor de contexto más cercano en la jerarquía del árbol de componentes. Si no hay proveedor de contexto, se tomará el valor por defecto.
 
-       Para tener acceso al contexto dentro de un componente de clase, deberías utilizar `.Consumer` dentro del método `render` o en el cuerpo del componente.
+       Para tener acceso al contexto dentro de un componente de clase, deberías utilizar `.Consumer` dentro del método `render()` o en el cuerpo del componente.
        
      Ejemplo:
      
@@ -986,7 +987,7 @@
      
    - **useRef hook**:
      
-     `useRef` te permite crear un objeto mutable que persiste durante todo el ciclo de vida del componente. Esto significa que puedes mantener valores entre renderizaciones sin que provoquen una nueva renderización cuando se actualizan. La mayoría de las veces se utiliza para contener un nodo del DOM.
+     `useRef()` te permite crear un objeto mutable que persiste durante todo el ciclo de vida del componente. Esto significa que puedes mantener valores entre renderizaciones sin que provoquen una nueva renderización cuando se actualizan. La mayoría de las veces se utiliza para contener un nodo del DOM.
      
      Se utiliza para crear referencias a elementos del DOM o para mantener valores mutables que no provocarán una nueva renderización cuando cambien. Esto puede ser útil para interactuar con elementos del DOM, como obtener su valor actual o enfocar un input.
 
@@ -1006,7 +1007,7 @@
      
      - `Relación con el atributo ref`:
        
-       En React, el atributo HTML `ref` se utiliza para hacer referencia a un elemento del DOM o a un componente de React creado. Puede servir para acceder directamente a un elemento del DOM o para interactuar con un componente React y acceder a sus propiedades desde fuera del mismo componente.
+       En React, el atributo HTML `ref=''` se utiliza para hacer referencia a un elemento del DOM o a un componente de React creado. Puede servir para acceder directamente a un elemento del DOM o para interactuar con un componente React y acceder a sus propiedades desde fuera del mismo componente.
        
      - `Funcionamiento interno`:
        
@@ -1061,12 +1062,12 @@
        );
      }
      ```
-     En este código de ejemplo, el color del elemento de entrada cambia según el número que ingrese en el cuadro de entrada. Primero, asigna el resultado del hook useRef() a la variable de conteo. Hay dos elementos: uno de entrada y el botón. El elemento de entrada tiene el valor del número y la propiedad ref de la etiqueta de entrada cuenta para coincidir con la variable.
-     Cuando se hace clic en el botón, se llama a la función checkNumber(). Esta función verifica si el valor del número es mayor que 10 para luego establecer el color de fondo del elemento de entrada usando la propiedad count.current.style.backgroundColor.
+     En este código de ejemplo, el color del elemento de entrada cambia según el número que ingrese en el cuadro de entrada. Primero, asigna el resultado del hook `useRef()` a la variable de conteo. Hay dos elementos: uno de entrada y el botón. El elemento de entrada tiene el valor del número y la propiedad ref de la etiqueta de entrada cuenta para coincidir con la variable.
+     Cuando se hace clic en el botón, se llama a la función `checkNumber()`. Esta función verifica si el valor del número es mayor que 10 para luego establecer el color de fondo del elemento de entrada usando la propiedad `count.current.style.backgroundColor`.
        
    - **useMemo hook**:
    
-     `useMemo` es una herramienta en React que te permite memorizar el resultado de una función y solo recalcularla cuando alguna de sus dependencias cambia. Esto puede ser útil para optimizar el rendimiento de tu aplicación al evitar cálculos costosos en cada renderizado.
+     `useMemo()` es una herramienta en React que te permite memorizar el resultado de una función y solo recalcularla cuando alguna de sus dependencias cambia. Esto puede ser útil para optimizar el rendimiento de tu aplicación al evitar cálculos costosos en cada renderizado.
 
      Sintaxis:
 
@@ -1080,7 +1081,7 @@
 
      - `Segundo argumento de useMemo`:
      
-       El array de dependencias contiene las variables que la función utiliza para realizar los cálculos. Si alguna de estas variables cambia, useMemo recalculará la función nuevamente. En cuanto a cuándo debe utilizarse `useMemo`, es recomendable utilizarlo en cualquier lugar donde se estén realizando cálculos costosos y no es necesario recalcularlos a menos que las dependencias cambien. Es importante tener en cuenta que las dependencias deben ser valores casi inmutables, ya que si una dependencia cambia, el valor `memoizado` se recalcula.
+       El array de dependencias contiene las variables que la función utiliza para realizar los cálculos. Si alguna de estas variables cambia, `useMemo()` recalculará la función nuevamente. En cuanto a cuándo debe utilizarse `useMemo()`, es recomendable utilizarlo en cualquier lugar donde se estén realizando cálculos costosos y no es necesario recalcularlos a menos que las dependencias cambien. Es importante tener en cuenta que las dependencias deben ser valores casi inmutables, ya que si una dependencia cambia, el valor `memoizado` se recalcula.
 
        Recuerda que `una dependencia normalmente es un estado`, como con el hook useEffect.
      
@@ -3424,11 +3425,11 @@
 
 1. #### **`Introducción a Composition y Children`**:
 
-   Composition & "children" son conceptos fundamentales en React que permiten construir componentes reutilizables y flexibles, combinando y anidando componentes. La `Composition` es el proceso de combinar componentes pequeños y reutilizables para crear otros más complejos. La propiedad `Children` en los componentes de React te permite incluir y manipular componentes secundarios dentro de un componente padre.
+   Composition & "children" son conceptos fundamentales en React que permiten construir componentes reutilizables y flexibles, combinando y anidando componentes. La `composition` es el proceso de combinar componentes pequeños y reutilizables para crear otros más complejos. La propiedad `children` en los componentes de React te permite incluir y manipular componentes secundarios dentro de un componente padre.
 
 2. #### **`Composition en React`**:
 
-   La Composición en React se trata de construir interfaces de usuario dividiéndolas en componentes más pequeños y reutilizables. Estos componentes más pequeños se pueden combinar para crear características y diseños más significativos, a demás que más complejos. Este enfoque promueve la reutilización, mantenibilidad y una clara separación de responsabilidades entre componentes.
+   La `composition` en React se trata de construir interfaces de usuario dividiéndolas en componentes más pequeños y reutilizables. Estos componentes más pequeños se pueden combinar para crear características y diseños más significativos, a demás que más complejos. Este enfoque promueve la reutilización, mantenibilidad y una clara separación de responsabilidades entre componentes.
 
 3. #### **`Uso de Children en React`**:
 
@@ -3450,11 +3451,11 @@
    }
    ```
 
-   En este ejemplo, el componente `Card` recibe una `Prop` llamada `children` que representa cualquier elemento o componente que se coloque dentro de las etiquetas de apertura y cierre del este componente. En este caso, `children` es un <h2>, un <p> y un <Componente />.
+   En este ejemplo, el componente `Card` recibe una `prop` llamada `children` que representa cualquier elemento o componente que se coloque dentro de las etiquetas de apertura y cierre del este componente. En este caso, `children` es un <h2>, un <p> y un <Componente />.
 
 4. #### **`Manipulación de Children`**:
 
-   También puedes manipular e iterar a través de los componentes hijos en React. Las utilidades React.Children te permiten mapear, contar o manipular los componentes hijos. Por ejemplo, puedes iterar sobre los hijos y agregar una propiedad a cada uno.
+   También puedes manipular e iterar a través de los componentes hijos en React. Las utilidades `React.Children` te permiten mapear, contar o manipular los componentes hijos. Por ejemplo, puedes iterar sobre los hijos y agregar una propiedad a cada uno.
 
    Este procedimiento tiene un propósito común en React llamado `clonación de elementos`. Permite que el componente padre manipule y pase propiedades adicionales a sus hijos de manera dinámica.
 
@@ -3497,7 +3498,7 @@
    };
    ```
 
-   Pasando Datos Adicionales
+   Pasando Datos Adicionales:
    
    ```jsx
    import React from "react";
@@ -3559,12 +3560,10 @@
    }
    ```
 
-   Esto agregará la propiedad `nuevaPropiedad` con el valor `Nuevo Valor Renderizado` a cada componente hijo.
-
 4. #### **`Ventajas de Composition y Children`**:
 
    - **Reutilización de Componentes**:
-     Al utilizar la composición y "children", se pueden crear componentes que actúen como contenedores genéricos y reutilizables para diferentes tipos de contenido.
+     Al utilizar la `composition` y `children`, se pueden crear componentes que actúen como contenedores genéricos y reutilizables para diferentes tipos de contenido.
 
    - **Flexibilidad y Personalización**:
      Permite a los desarrolladores personalizar el contenido que se renderiza dentro de un componente, lo que brinda una gran flexibilidad en la construcción de interfaces.
@@ -3573,7 +3572,7 @@
      Los componentes pueden encapsular la estructura y el estilo, lo que facilita el mantenimiento y la modificación de la apariencia de la interfaz.
 
    - **Mejora la Legibilidad**:
-     La composición y el uso de "children" pueden hacer que el código sea más legible al separar la estructura de la lógica de presentación.
+     La `composition` y el uso de `children` pueden hacer que el código sea más legible al separar la estructura de la lógica de presentación.
 
    - **Facilita la Construcción de Interfaces Complejas**:
      Permite la creación de componentes compuestos por múltiples subcomponentes, lo que facilita la construcción de interfaces complejas.
@@ -3581,10 +3580,10 @@
 5. #### **`Consideraciones sobre Composition & Children`**:
 
    - **Prop Drilling**:
-     En casos donde los componentes anidados necesitan acceder a propiedades del componente principal, puede ocurrir el fenómeno conocido como "prop drilling". Esto se refiere a pasar propiedades a través de múltiples niveles de componentes, lo cual puede volverse incómodo y propenso a errores, sin contar la pérdida de reutilizo de los componentes involucrados. En estos casos, se pueden utilizar otras técnicas como `Context API` o bibliotecas de gestión de estado como Redux.
+     En casos donde los componentes anidados necesitan acceder a propiedades del componente principal, puede ocurrir el fenómeno conocido como `prop drilling`. Esto se refiere a pasar propiedades a través de múltiples niveles de componentes, lo cual puede volverse incómodo y propenso a errores, sin contar la pérdida de reutilizo de los componentes involucrados. En estos casos, se pueden utilizar otras técnicas como `Context API` o bibliotecas de gestión de estado como Redux.
 
    - **Context API y Render Props**:
-     En situaciones más avanzadas, donde la Composition y "Children" pueden volverse complicados, se pueden utilizar otras técnicas como Context API o el patrón "Render Props" para gestionar el estado y las propiedades de manera más eficiente.
+     En situaciones más avanzadas, donde la `Composition` y `Children` pueden volverse complicados, se pueden utilizar otras técnicas como `Context API` o el patrón `Render Props` para gestionar el estado y las propiedades de manera más eficiente.
 
 6. #### **`Conclusiones sobre Composition y Children en React`**:
 
@@ -3598,19 +3597,21 @@
 
    El Contexto en React es una característica que facilita la propagación de datos en un árbol de componentes sin tener que pasar explícitamente las props a través de cada nivel del árbol.
 
-2. #### **`Creación de un Contexto`**:
+2. #### **`createContext`**:
 
-   Para crear un Contexto en React, se utiliza la función `React.createContext()` o directamente `createContext()`, la cual puede poseer opcionalmente un `valor por defecto` dentro de sus paréntesis.
+   `createContext` es una función que proporciona un contexto en React. Un contexto en React es esencialmente un mecanismo para compartir datos entre componentes sin tener que pasar props manualmente a través de cada nivel del árbol de componentes.
+
+   Para crear un Contexto en React se utiliza la función `React.createContext()` o directamente `createContext()`, la cual posee un solo argumento dentro de paréntesis, correspondiente al `valor por defecto` con el que empieza el Contexto. `Este valor inicial es el valor que se utiliza cuando no hay un proveedor envolviendo los componentes que consumen el contexto`. Esto es importante porque si no se proporciona un valor por defecto, intentar consumir el contexto fuera del proveedor provocará un error.
    
    Esta función devuelve un objeto con dos componentes: 
    
    - **Provider**:
    
-     Es un componente que podemos usar para almacenar el valor que deseamos compartir con cualquier otro componente que sea parte de su subárbol. Cualquier hijo del proveedor puede acceder al valor del proveedor.
+     Es un componente que podemos usar para almacenar el valor que deseamos compartir con cualquier otro elemento o componente que sea parte de su subárbol. `Cualquier hijo del proveedor podrá acceder al valor del proveedor`.
    
    - **Consumer**:
    
-     Es el componente que nos permite acceder al valor del proveedor.
+     Es la función o componente que nos permite acceder al valor del proveedor, `useContext()` y/o `.Provider`.
 
    ```jsx
    import { createContext } from 'react';
@@ -3627,17 +3628,17 @@
 
 3. #### **`Provider`**:
 
-   El componente `Provider` se utiliza para envolver al árbol de componentes hijos donde se desea compartir el contexto. Se proporciona un valor que será accesible a través del contexto.
+   El componente `.Provider` se utiliza para envolver al árbol de componentes hijos donde se desea compartir el contexto. Se proporciona un valor que será accesible a través del contexto.
 
    ```jsx
    <MiContexto.Provider value={valor}>
-     {/* Componentes hijos */}
+     {/* Componentes o Elementos hijos */}
    </MiContexto.Provider>
    ```
 
 4. #### **`Consumer`**:
 
-   Para acceder al valor proporcionado por el `Provider`, se utiliza el componente `Consumer`. Este componente debe englobar una función como hijo que recibirá el valor del contexto como argumento y devolverá algo relacionado con él.
+   Para acceder al valor proporcionado por el `.Provider`, se utiliza el componente `.Consumer`. Este componente debe englobar una función como hijo que recibirá el valor del contexto como argumento y devolverá algo relacionado con él.
 
    ```jsx
    <MiContexto.Consumer>
@@ -3645,9 +3646,9 @@
    </MiContexto.Consumer>
    ```
 
-5. #### **`UseContext`**:
+5. #### **`useContext`**:
 
-   En un componente funcional, se puede utilizar el Hook `useContext` para consumir el contexto.
+   En un componente funcional, se puede utilizar el Hook `useContext()` para consumir el contexto.
 
    ```jsx
    import { useContext } from 'react';
@@ -3657,7 +3658,7 @@
 
 6. #### **`Propagación de Contexto`**:
 
-   El contexto se propaga hacia abajo a través de los componentes hijos, lo que significa que cualquier componente descendiente del `Provider` puede consumir el contexto.
+   El contexto se propaga hacia abajo a través de los componentes hijos, lo que significa que cualquier componente descendiente del `.Provider` puede consumir el contexto.
 
    Ejemplo:
 
@@ -3784,7 +3785,7 @@
 
 7. #### **`Uso de Contexto en Componentes de Clase`**:
 
-   En clases de componentes, se utiliza `Context.Consumer` en el método `render` para consumir el contexto.
+   En clases de componentes, se utiliza `Context.Consumer` en el método `render()` para consumir el contexto.
 
    ```jsx
    class ConsumidorComponente extends React.Component {
@@ -3814,9 +3815,9 @@
 
    - El Contexto es ideal para datos que son necesarios en muchos componentes anidados, pero su uso excesivo puede hacer que sea difícil rastrear de dónde proviene un valor.
    
-   - Si un componente solo necesita consumir un valor de contexto, el uso de `useContext` en componentes funcionales es una forma más concisa.
+   - Si un componente solo necesita consumir un valor de contexto, el uso de `useContext()` en componentes funcionales es una forma más concisa.
 
-   - Si un componente necesita tanto consumir como proporcionar un valor de contexto, el uso de `useContext` y `useContext.Provider` en un componente funcional es una buena opción.
+   - Si un componente necesita tanto consumir como proporcionar un valor de contexto, el uso de `useContext()` y `.Provider` en conjunto dentro de un componente funcional, es una buena opción.
 
 9. #### **`Conclusiones`**:
 
