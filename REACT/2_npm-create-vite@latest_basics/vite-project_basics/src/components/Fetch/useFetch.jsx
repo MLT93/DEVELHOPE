@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
 export const useFetch = (url) => {
-  const [data, setData] = useState([]);
   const [isPending, setIsPending] = useState(true);
+  const [data, setData] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    setIsPending(true);
     (async (url) => {
       try {
         const response = await fetch(url);
@@ -18,13 +19,13 @@ export const useFetch = (url) => {
 
         setData(data);
         setError(false);
-      } catch (error) {
-        setError(error.message);
+      } catch (err) {
+        setError(err.message);
       } finally {
         setIsPending(false);
       }
     })(url);
   }, [url]);
 
-  return { data, isPending, error };
+  return [ data, isPending, error ];
 };
