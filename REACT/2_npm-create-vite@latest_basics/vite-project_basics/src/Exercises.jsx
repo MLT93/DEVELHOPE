@@ -18,6 +18,7 @@ import { PruebaCustomHook } from "./components/PruebaConCustomHook/PruebaCustomH
 import { Contenedor } from "./components/Children/ChildrenExample.jsx";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export function Exercises() {
   return (
@@ -898,19 +899,29 @@ export const GitHubUser = ({ username }) => {
       {data && (
         <div
           style={{
-            width: "300px",
+            width: "500px",
             padding: "20px",
             display: "flex",
             flexDirection: "column",
             gap: "15px",
           }}>
-          <div>{data.name}</div>
+          <div>
+            <b>Username: </b>
+            {data.login}
+          </div>
           <img
             src={data.avatar_url}
             alt={`Avatar of ${data.id}`}
             style={{ width: "100%", height: "auto" }}
           />
-          <span>{data.login}</span>
+          <span>
+            <b>Nombre: </b>
+            {data.name}
+          </span>
+          <div>
+            <b>URL link: </b>
+            <Link>{data.repos_url}</Link>
+          </div>
         </div>
       )}
       {error && <h2>{error}</h2>}
@@ -1100,6 +1111,15 @@ export const FilteredList = ({ list }) => {
           element.age
         } años.`}</h4>
       ))}
+    </div>
+  );
+};
+
+export const ShowGitHubUser = () => {
+  const { username = "MLT93" } = useParams();
+  return (
+    <div>
+      <GitHubUser username={username} />
     </div>
   );
 };
