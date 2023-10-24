@@ -17,7 +17,7 @@ import { Toggle } from "./components/Toggle/Toggle.jsx";
 import { PruebaCustomHook } from "./components/PruebaConCustomHook/PruebaCustomHook.jsx";
 import { Contenedor } from "./components/Children/ChildrenExample.jsx";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link, Outlet } from "react-router-dom";
 
 export function Exercises() {
   return (
@@ -973,11 +973,12 @@ export const GitHubUsers = () => {
                     width: "150px",
                     padding: "10px",
                   }}>
-                  <span>{element.login}</span>
+                  <Link to={element.login}>Ver perfil de {element.login}</Link>
                 </button>
               );
             })}
           {selectUser && <GitHubUser username={selectUser} />}
+          <Outlet />
         </div>
         {error && <h2>{error}</h2>}
       </div>
