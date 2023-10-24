@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { Counter, Exercises, Hello, Welcome, ShowGitHubUser } from "./Exercises";
+import { Link } from "react-router-dom";
+import { TresEnRaya } from "./components/TresEnRaya/TresEnRaya";
 
 export const App = () => {
   return (
@@ -14,6 +16,7 @@ export const App = () => {
         }
       />
       <Route path="/users/:username" element={<ShowGitHubUser />} />
+      <Route path="/tres-en-raya" element={<TresEnRaya />} />
     </Routes>
   );
 };

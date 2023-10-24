@@ -919,8 +919,8 @@ export const GitHubUser = ({ username }) => {
             {data.name}
           </span>
           <div>
-            <b>URL link: </b>
-            <Link>{data.repos_url}</Link>
+            <b>ID: </b>
+            {data.id}
           </div>
         </div>
       )}
