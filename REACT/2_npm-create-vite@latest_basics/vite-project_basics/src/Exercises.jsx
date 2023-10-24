@@ -18,7 +18,6 @@ import { PruebaCustomHook } from "./components/PruebaConCustomHook/PruebaCustomH
 import { Contenedor } from "./components/Children/ChildrenExample.jsx";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 export function Exercises() {
   return (
@@ -1120,6 +1119,19 @@ export const ShowGitHubUser = () => {
   return (
     <div>
       <GitHubUser username={username} />
+    </div>
+  );
+};
+
+export const NotFound = () => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}>
+      <h2>Error: 404 - Not Found</h2>
     </div>
   );
 };
