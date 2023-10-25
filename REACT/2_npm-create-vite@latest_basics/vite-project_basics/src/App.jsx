@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
+import { Routes, Route, BrowserRouter, Link, Outlet } from "react-router-dom";
 import {
   Counter,
   Exercises,
@@ -28,7 +28,7 @@ export const App = () => {
             <Link to="/counter">Contador</Link>
           </li>
           <li>
-            <Link to="/users/MLT93">Usuario de GitHub</Link>
+            <Link to="/users/">Usuario de GitHub</Link>
           </li>
           <li>
             <Link to="/tres-en-raya">Tres en raya</Link>
@@ -36,7 +36,7 @@ export const App = () => {
         </ul>
       </nav>
       <Routes>
-        <Route path="/" element={<Hello />} />
+        <Route index path="/" element={<Hello />} />
         <Route exact path="/dev" element={<Exercises />} />
         <Route exact path="/welcome/:username" element={<Welcome />} />
         <Route
@@ -50,10 +50,12 @@ export const App = () => {
             />
           }
         />
-        <Route exact path="/users/:username" element={<ShowGitHubUser />} />
         <Route exact path="/tres-en-raya" element={<TresEnRaya />} />
         <Route path="*" element={<NotFound />} />
-        <Route exact path="/users/" element={<GitHubUsers />} />
+        <Route exact path="/users/:username" element={<ShowGitHubUser />} />
+        <Route exact path="/users/" element={<GitHubUsers />}>
+          <Route index element={<h2>Add a user and select it</h2>} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
