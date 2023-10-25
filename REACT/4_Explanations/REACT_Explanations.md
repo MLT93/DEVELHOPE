@@ -358,7 +358,7 @@
    
    Por lo tanto, cada gestor de eventos está efectivamente recibiendo un parámetro, que podemos llamar `event` y utilizarlo cuando nos interese (también podemos ignorarlo si queremos).
 
-   Recuerda siempre que si hay un <input>, habrá un `event` dentro del `handleEvent` conectado al `onChange`. Mientras que si hay botón, no hace falta el `event` dentro del `handleEvent` conectado al `onClick`.
+   Recuerda siempre que si hay un `<input>`, habrá un `event` dentro del `handleEvent` conectado al `onChange`. Mientras que si hay botón, no hace falta el `event` dentro del `handleEvent` conectado al `onClick`.
 
    Ejemplo de manejo de eventos en JSX:
 
@@ -524,7 +524,7 @@
 
 6. #### **`Ciclo de Vida de un Componente`**:
 
-   En componentes de clase, hay métodos especiales conocidos como "ciclo de vida" que se ejecutan en diferentes etapas, como montaje, actualización y desmontaje (los componentes funcionales utilizan Hooks para lograr un comportamiento similar).
+   En componentes de clase, hay métodos especiales conocidos como `ciclo de vida` que se ejecutan en diferentes etapas, como montaje, actualización y desmontaje (los componentes funcionales utilizan Hooks para lograr un comportamiento similar).
 
    - **componentDidMount()**:
    
@@ -611,7 +611,7 @@
 
 9. #### **`Listas y Claves (Keys)`**:
 
-   En React, es común mapear un arreglo de datos para renderizar una lista de elementos. Para asegurarse de que React pueda identificar cada elemento de manera única, se utiliza una "key".
+   En React, es común mapear un arreglo de datos para renderizar una lista de elementos. Para asegurarse de que React pueda identificar cada elemento de manera única, se utiliza una `key`.
 
    ```jsx
    function ListaDeNombres(props) {
@@ -648,8 +648,8 @@
      Puedes usarlo cuando necesitas mantener y/o actualizar un valor en el componente a través de su función, según la renderización del componente. Por ejemplo, si necesitas almacenar el `event` de un input o el estado de un modal.
 
      Al final es siempre lo mismo:
-     - El `handleChange` va siempre con el `onChange` en el <input> y guarda el `event` que introduce el usuario.
-     - El `handleClick` va con el `onClick` en el <button> y `setea` el valor que ha introducido el usuario.
+     - El `handleChange` va siempre con el `onChange` en el `<input>` y guarda el `event` que introduce el usuario.
+     - El `handleClick` va con el `onClick` en el `<button>` y `setea` el valor que ha introducido el usuario.
      - El `useState()` te da la variable que vas a renderizar, que guarda los valores y que se modifica.
 
      Posee una convención, y es aplicar el mismo nombre de la variable (ej. `estado`), al modificador del estado, con la palabra `set` al inicio (ej. `setEstado()`).
@@ -3360,7 +3360,7 @@
    
    Puedes aplicar estos estilos a tu página usando la propiedad `data-bs-theme` en el elemento HTML de tu preferencia. 
    
-   También se puede aplicar directamente al elemento <html> en el archivo `index.html` para modificar toda la página en un solo golpe, pero puedes utilizarlo indistintamente entre los elementos o componentes que desarrolles como prefieras.
+   También se puede aplicar directamente al elemento `<html>` en el archivo `index.html` para modificar toda la página en un solo golpe, pero puedes utilizarlo indistintamente entre los elementos o componentes que desarrolles como prefieras.
    
    - **data-bs-theme="dark" / data-bs-theme="light"**
      
@@ -3531,7 +3531,7 @@
    }
    ```
 
-   En este ejemplo, el componente `Card` recibe una `prop` llamada `children` que representa cualquier elemento o componente que se coloque dentro de las etiquetas de apertura y cierre del este componente. En este caso, `children` es un <h2>, un <p> y un <Componente />.
+   En este ejemplo, el componente `Card` recibe una `prop` llamada `children` que representa cualquier elemento o componente que se coloque dentro de las etiquetas de apertura y cierre del este componente. En este caso, `children` es un `<h2>`, un `<p>` y un `<Componente />`.
 
 4. #### **`Manipulación de Children`**:
 
@@ -4444,6 +4444,7 @@
        <Route exact path="/about" render={() => <About />} />
        <Route path="/user/:id" element={<UserProfile />}>
          /* sub-rutas */
+         <Route index path="/user/:id/posts" element={<UserPosts>}>
          <Route path="/user/:id/setting" element={<UserSetting>}>
          <Route path="/user/:id/shopping-cart" element={<UserCart>}>
        </Route>
@@ -4910,7 +4911,7 @@
 
    Estas son solo algunas de las configuraciones que puedes utilizar con SWR. Puedes combinar estas opciones según las necesidades específicas de tu aplicación para optimizar la gestión de datos y la experiencia del usuario. Puedes encontrar más configuraciones y detalles en la [documentación oficial de SWR](https://swr.vercel.app/docs/options).
 
-9. #### **`Funciones Relacionadas y Compatibilidad con Hooks de React`**:
+10. #### **`Funciones Relacionadas y Compatibilidad con Hooks de React`**:
 
    `SWR` se integra fácilmente con otros hooks de React. Por ejemplo, puedes combinarlo con `useState` y `useEffect` para realizar tareas adicionales según sea necesario.
 
@@ -4925,11 +4926,11 @@
    }, [data]);
    ```
 
-10. #### **`Consideraciones y Alternativas`**:
+11. #### **`Consideraciones y Alternativas`**:
 
    `SWR` es una poderosa herramienta, pero es importante recordar que no es la única solución para la gestión de datos en React. Otras bibliotecas y patrones, como `Redux`, `Context API` y `Apollo Client`, también son populares y tienen sus propios casos de uso.
 
-11. #### **`Conclusión`**:
+12. #### **`Conclusión`**:
 
    `SWR` y las funciones relacionadas proporcionan una forma efectiva de gestionar y actualizar datos en aplicaciones React. Su capacidad para mantener los datos actualizados en tiempo real y su integración sencilla con otros hooks hacen de SWR una elección poderosa para proyectos modernos.
 
