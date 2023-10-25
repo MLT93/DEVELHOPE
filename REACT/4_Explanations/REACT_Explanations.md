@@ -4509,13 +4509,14 @@
    <Routes>
      <Route path="/" element={<Home />} />
      <Route path="/dashboard" element={<Dashboard />}>
+       /* subrutas */
        <Route index element={<DashboardHome />} />
        <Route path="/settings" element={<Settings />} />
      </Route>
    </Routes>
    ```
 
-   En este caso, `Dashboard` es una ruta principal que tiene rutas secundarias `DashboardHome` y `Settings`. Para que estas rutas secundarias se rendericen dentro de Dashboard, necesitas colocar un componente `Outlet` dentro de `Dashboard` donde deseas que se rendericen. De esta forma:
+   En este caso, el componente `Dashboard` es una ruta principal que tiene rutas secundarias `DashboardHome` y `Settings`. Para que estas rutas secundarias se rendericen dentro de Dashboard, necesitas colocar un componente `Outlet` dentro del código del componente `Dashboard` donde deseas que se rendericen. De esta forma:
 
    ```jsx
    function Dashboard() {
