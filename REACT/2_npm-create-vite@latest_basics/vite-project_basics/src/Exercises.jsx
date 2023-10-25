@@ -18,6 +18,7 @@ import { PruebaCustomHook } from "./components/PruebaConCustomHook/PruebaCustomH
 import { Contenedor } from "./components/Children/ChildrenExample.jsx";
 import axios from "axios";
 import { useParams, Link, Outlet } from "react-router-dom";
+import useSWR from "swr";
 
 export function Exercises() {
   return (
@@ -929,13 +930,19 @@ export const GitHubUser = ({ username }) => {
 };
 
 export const GitHubUsers = () => {
-  const [isPending, setIsPending] = useState(true);
-  const [error, setError] = useState(null);
-  const [data, setData] = useState([]);
+  /* const [isPending, setIsPending] = useState(true); */
+  /* const [error, setError] = useState(null); */
+  /* const [data, setData] = useState([]); */
   const [selectUser, setSelectUser] = useState(null);
   const url = "https://api.github.com/users?per_page=4";
 
-  useEffect(() => {
+  const fetcher = (url) => fetch(url).then((res) => res.json());
+  const { data, error } = useSWR(url, fetcher);
+
+  if (error) return <h2>{error.message}</h2>;
+  if (!data) return <h2>Is Loading...</h2>;
+
+  /*   useEffect(() => {
     setIsPending(true);
     (() => {
       axios
@@ -944,7 +951,7 @@ export const GitHubUsers = () => {
         .catch((err) => setError(err.message))
         .finally(() => setIsPending(false));
     })();
-  }, []);
+  }, [url]); */
 
   const handleClickUser = (username) => {
     setSelectUser(username);
@@ -961,7 +968,7 @@ export const GitHubUsers = () => {
           padding: "20px",
           height: "470px",
         }}>
-        {isPending && <h2>Is Loading...</h2>}
+        {/* {isPending && <h2>Is Loading...</h2>} */}
         <div>
           {data &&
             data.map((element, index) => {
