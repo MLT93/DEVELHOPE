@@ -3048,7 +3048,7 @@
      
      Incluye un comando que permite a los desarrolladores revisar y solucionar problemas de seguridad en las dependencias:
      
-     ```bash 
+     ```jsx 
      npm audit
      ```
      
@@ -3062,7 +3062,7 @@
      
      Incluye un comando para revisar y solucionar problemas de seguridad:
      
-     ```bash
+     ```jsx
      yarn audit
      ```
      
@@ -3070,7 +3070,7 @@
      
      Al no estar integrado directamente en `Node.js` hay que instalarlo globalmente a través de este comando:
      
-     ```bash
+     ```jsx
      npm install --global yarn
      ```
      
@@ -3078,11 +3078,11 @@
      
      Si no tienes un proyecto existente, crea uno nuevo ejecutando el siguiente comando en tu terminal:
      
-     ```bash
+     ```jsx
      npm init -y
      ```
      
-     ```bash
+     ```jsx
      yarn init -y
      ```
      
@@ -3092,11 +3092,11 @@
      
      Ejecuta el siguiente comando para instalar Tailwind CSS y sus dependencias:
      
-     ```bash
+     ```jsx
      npm install tailwindcss postcss autoprefixer
      ```
      
-     ```bash
+     ```jsx
      yarn add tailwindcss postcss autoprefixer
      ```
       
@@ -3104,7 +3104,7 @@
      
      Después de instalar Tailwind, necesitas configurarlo. Puedes hacerlo ejecutando el siguiente comando:
      
-     ```bash
+     ```jsx
      npx tailwindcss init -p
      ```
      
@@ -3116,7 +3116,7 @@
      
      Una vez instalado Tailwind CSS tenemos que añadir los directorios de todos los tipos de archivos y sus extensiones para que Tailwind pueda configurarse correctamente.
      
-     ```javascript
+     ```jsx
      // Dentro del archivo `tailwind.config.js` escribimos lo que esta dentro de `content`:
      /** @type {import('tailwindcss').Config} */
      export default {
@@ -3146,17 +3146,17 @@
      
      Si también deseas utilizar SASS, instálalo y agrega el cargador de SASS para Webpack:
      
-     ```bash
+     ```jsx
      npm install sass sass-loader
      ```
      
-     ```bash
+     ```jsx
      yarn add sass sass-loader
      ```
      
      Luego, agrega el siguiente código en tu archivo `webpack.config.js` para configurar el cargador de SASS:
      
-     ```javascript
+     ```jsx
      module.exports = {
        module: {
          rules: [
@@ -3180,11 +3180,11 @@
      
      **https://www.npmjs.com/package/vite-plugin-sass-dts**
      
-     ```bash
+     ```jsx
      npm install vite-plugin-sass-dts vite-plugin-sass --save-dev
      ```
      
-     ```bash
+     ```jsx
      npm i -D vite-plugin-sass-dts vite-plugin-sass
      ```
      `i` o `install`: Esto indica que se debe instalar el paquete.
@@ -3193,14 +3193,14 @@
      
      **https://classic.yarnpkg.com/en/package/vite-plugin-sass-dts**
      
-     ```bash
+     ```jsx
      yarn add vite-plugin-sass-dts vite-plugin-sass
      ```
      
      Ahora configura Vite para que trabaje con SASS.
      Abre tu archivo `vite.config.js` en la raíz de tu proyecto y agrega el plugin de SASS:
      
-     ```javascript
+     ```jsx
      // añadir plugins al archivo vite.config.js
      import { defineConfig } from 'vite';
      import react from "@vitejs/plugin-react-swc";
@@ -3217,11 +3217,11 @@
      
      Ahora, puedes crear archivos `.scss` en tu proyecto y Vite debería procesarlos (compilarlos) automáticamente. Por ejemplo, puedes crear un archivo `styles.scss` en tu directorio `src` y ejecutar tu aplicación con el siguiente comando:
      
-     ```bash
+     ```jsx
      npm run dev
      ```
      
-     ```bash
+     ```jsx
      yarn dev
      ```
       
@@ -3244,21 +3244,21 @@
      
      Puedes iniciar el proceso de construcción ejecutando el siguiente comando en tu terminal:
      
-     ```bash
+     ```jsx
      npm run build
      ```
      
-     ```bash
+     ```jsx
      yarn build
      ```
      
      O si deseas observar cambios y compilar automáticamente:
      
-     ```bash
+     ```jsx
      npm run watch
      ```
      
-     ```bash
+     ```jsx
      yarn watch
      ```
      
@@ -3296,11 +3296,11 @@
    
    Para integrar Bootstrap en un proyecto de React, puedes instalar la biblioteca de Bootstrap y sus dependencias utilizando npm o yarn. Asegúrate de tener un proyecto React ya configurado antes de comenzar.
    
-   ```bash
+   ```jsx
    npm i bootstrap react-bootstrap
    ```
    
-   ```bash
+   ```jsx
    yarn add bootstrap react-bootstrap
    ```
    
@@ -3993,7 +3993,7 @@
 
      `axios` es una librería popular para hacer solicitudes HTTP en JavaScript, ampliamente utilizada en aplicaciones de React para interactuar con APIs.
 
-     ```bash
+     ```jsx
      npm i axios
      ```
      
@@ -4313,11 +4313,11 @@
 
    Para comenzar a utilizar React Router en tu proyecto, primero debes instalarlo a través de npm:
 
-   ```bash
+   ```jsx
    npm i -D react-router-dom
    ```
 
-   ```bash
+   ```jsx
    yarn add react-router-dom
    ```
 
@@ -4713,3 +4713,214 @@
    - En React, las funciones relacionadas se refieren a Hooks, que permiten usar características de React en componentes funcionales.
 
    Esta explicación detallada debería proporcionarte una comprensión sólida de React Router y las funciones relacionadas en React. Si tienes preguntas adicionales o necesitas más detalles sobre algún punto en particular, no dudes en preguntar.
+
+## SWR y Funciones Relacionadas en React: Una Explicación Detallada
+
+1. #### **`Introducción a SWR e Instalación`**:
+
+   `SWR` es una librería de React que proporciona una forma sencilla y efectiva de gestionar y actualizar el estado local y remoto de tu aplicación. Esta biblioteca proviene de las iniciales de `Stale-While-Revalidate` (caducidad mientras se vuelve a validar), que describe su enfoque principal: mantener los datos actualizados en tiempo real.
+
+   Para instalar el framework de `SWR` escribe el siguiente comando en tu terminal favorito:
+
+   ```jsx
+   npm i -D swr
+   ```
+
+   ```jsx
+   yarn add swr
+   ```
+
+   ¡Listo! Ahora estás listo para empezar a utilizar SWR en tu proyecto de React.
+
+2. #### **`Importancia de SWR`**:
+
+   En aplicaciones modernas, es común trabajar con datos que pueden cambiar con el tiempo, como actualizaciones en una base de datos o información de un API externo. SWR simplifica este proceso al ofrecer una solución sencilla para manejar las solicitudes de datos y su actualización.
+
+3. #### **`Sintaxis y Uso Básico de SWR`**:
+
+   Para comenzar a usar este framework, primero necesitas instalarlo y luego importarlo en tu archivo. Luego, puedes utilizar la función `useSWR` para obtener y gestionar tus datos.
+
+   En React, `SWR` se utiliza como un hook. Aquí hay un ejemplo básico de cómo usarlo:
+
+   ```jsx
+   import useSWR from 'swr';
+   
+   const fetcher = (url) => fetch(url).then((res) => res.json());
+   
+   function Componente() {
+     const { data, error } = useSWR('https://www.api.com/datos', fetcher);
+   
+     if (error) return <div>Error al cargar los datos</div>;
+     if (!data) return <div>Cargando...</div>;
+   
+     return <div>Los datos son: {data}</div>;
+   }
+   ```
+   
+   - `useSWR()`:
+    
+       Es un hook que toma dos argumentos: la `API` y una `función fetcher` que maneja la solicitud y transformación de la respuesta en formato JSON.
+
+   - `data`:
+   
+     Contiene los `datos obtenidos de la URL` especificada.
+
+   - `error`:
+   
+     Contiene `cualquier error` que pueda ocurrir al cargar los datos.
+
+   - `'https://www.api.com/datos'`:
+   
+     Es la `URL de la API` donde obtendrás tus datos.
+
+   - `fetcher`:
+
+     Es una `función que se utiliza para realizar la solicitud/llamada` y obtener los datos.
+
+4. #### **`Fetchers y Uso de Funciones Personalizadas`**:
+
+   Los `fetcher` son funciones que se utilizan para obtener los datos de una URL. Puedes crear tu propio `fetcher` personalizado para adaptarlo a tus necesidades específicas. Esto es especialmente útil cuando necesitas agregar encabezados de autenticación u otras personalizaciones a tus solicitudes.
+
+   ```jsx
+   const fetcher = (url) => fetch(url).then((res) => res.json());
+   ```
+
+   Luego, esta función personalizada se pasa como segundo argumento a `useSWR()`.
+
+5. #### **`Mantenimiento de Datos en Caché`**:
+
+   `SWR` mantiene automáticamente una `caché local` de los datos recuperados, lo que significa que puedes acceder a los datos sin necesidad de realizar múltiples solicitudes al servidor. `Si la página se renderiza nuevamente o si otra parte de tu aplicación solicita los mismos datos, SWR los obtiene de la caché local`.
+
+6. #### **`Actualización Automática y Reactividad`**:
+
+   Una de las características más potentes de `SWR` es su `capacidad para mantener actualizados los datos en tiempo real`. Cuando se produce un cambio en los datos, `SWR` actualiza automáticamente el estado local y, en consecuencia, los componentes de tu aplicación que dependen de esos datos se renderizan de nuevo.
+
+7. #### **`Gestión de Estados de Carga y Errores`**:
+
+   `SWR` proporciona una forma de gestionar estados de carga y errores de manera eficiente.
+   
+   Puedes utilizar las propiedades `isLoading` e `isError` para controlar el estado de tus datos y mostrar indicadores de carga o mensajes de error según corresponda.
+
+   ```jsx
+   const { data, error } = useSWR('https://www.api.com/datos', fetcher);
+   const isLoading = !data && !error;
+   ```
+
+8. #### **`Revalidación Manual`**:
+
+   `SWR` tiene la capacidad de actualizar automáticamente los datos según el intervalo de revalidación configurado (por defecto es 0). Sin embargo, puedes forzar una revalidación manual utilizando la función `mutate`.
+
+   ```jsx
+   const { mutate } = useSWR('https://www.api.com/datos', fetcher);
+   // Llamada para forzar una revalidación
+   mutate();
+   ```
+
+9. #### **`Configuraciones adicionales`**:
+
+   `SWR` ofrece una serie de configuraciones adicionales para adaptarse a diferentes necesidades y escenarios.
+   
+   A continuación, te proporciono una lista de algunas de las configuraciones más comunes que puedes utilizar con SWR:
+
+   - **revalidateOnMount**:
+   
+     Determina si SWR debe volver a obtener los datos cuando un componente se monta por primera vez.
+
+     ```jsx
+     const { data } = useSWR('https://www.api.com/datos', fetcher, { revalidateOnMount: true });
+     ```
+
+   - **revalidateOnFocus**:
+   
+     Indica si `SWR` debe volver a obtener los datos cuando el componente recibe foco.
+
+     ```jsx
+     const { data } = useSWR('https://www.api.com/datos', fetcher, { revalidateOnFocus: true });
+     ```
+
+   - **revalidateOnReconnect**:
+   
+     Define si `SWR` debe volver a obtener los datos cuando se restablece la conexión a Internet.
+
+     ```jsx
+     const { data } = useSWR('https://www.api.com/datos', fetcher, { revalidateOnReconnect: true });
+     ```
+
+   - **shouldRetryOnError**:
+   
+     Define si `SWR` debe intentar nuevamente obtener los datos en caso de un error en la solicitud.
+
+     ```jsx
+     const { data } = useSWR('https://www.api.com/datos', fetcher, { shouldRetryOnError: true });
+     ```
+
+   - **dedupingInterval**:
+   
+     Controla el intervalo mínimo (en milisegundos) entre dos solicitudes de datos idénticas.
+
+     ```jsx
+     const { data } = useSWR('https://www.api.com/datos', fetcher, { dedupingInterval: 2000 });
+     ```
+
+   - **focusThrottleInterval**:
+   
+     Define el tiempo mínimo (en milisegundos) entre dos solicitudes cuando el componente obtiene foco.
+
+     ```jsx
+     const { data } = useSWR('https://www.api.com/datos', fetcher, { focusThrottleInterval: 3000 });
+     ```
+
+   - **loadingTimeout**:
+   
+     Establece el tiempo de espera (en milisegundos) antes de mostrar el estado de carga.
+
+     ```jsx
+     const { data } = useSWR('https://www.api.com/datos', fetcher, { loadingTimeout: 3000 });
+     ```
+
+   - **onLoadingSlow**:
+   
+     Una función de retorno de llamada que se ejecuta cuando una solicitud toma más tiempo del configurado en `loadingTimeout`.
+
+     ```jsx
+     const { data } = useSWR('https://www.api.com/datos', fetcher, {
+       onLoadingSlow: key => {
+         console.warn(`La solicitud ${key} está tomando demasiado tiempo.`);
+       }
+     });
+     ```
+
+   - **errorRetryInterval**:
+   
+     Define el intervalo (en milisegundos) entre los intentos de revalidación después de un error.
+
+     ```jsx
+     const { data } = useSWR('https://www.api.com/datos', fetcher, { errorRetryInterval: 5000 });
+     ```
+
+   Estas son solo algunas de las configuraciones que puedes utilizar con SWR. Puedes combinar estas opciones según las necesidades específicas de tu aplicación para optimizar la gestión de datos y la experiencia del usuario. Puedes encontrar más configuraciones y detalles en la [documentación oficial de SWR](https://swr.vercel.app/docs/options).
+
+9. #### **`Funciones Relacionadas y Compatibilidad con Hooks de React`**:
+
+   `SWR` se integra fácilmente con otros hooks de React. Por ejemplo, puedes combinarlo con `useState` y `useEffect` para realizar tareas adicionales según sea necesario.
+
+   ```jsx
+   const { data } = useSWR('https://www.api.com/datos', fetcher);
+   const [isActive, setIsActive] = useState(false);
+
+   useEffect(() => {
+     if (data) {
+       setIsActive(true);
+     }
+   }, [data]);
+   ```
+
+10. #### **`Consideraciones y Alternativas`**:
+
+   `SWR` es una poderosa herramienta, pero es importante recordar que no es la única solución para la gestión de datos en React. Otras bibliotecas y patrones, como `Redux`, `Context API` y `Apollo Client`, también son populares y tienen sus propios casos de uso.
+
+11. #### **`Conclusión`**:
+
+   `SWR` y las funciones relacionadas proporcionan una forma efectiva de gestionar y actualizar datos en aplicaciones React. Su capacidad para mantener los datos actualizados en tiempo real y su integración sencilla con otros hooks hacen de SWR una elección poderosa para proyectos modernos.
+
+   En resumen, `SWR` es una librería valiosa que puede simplificar en gran medida el manejo de datos asíncronos en aplicaciones React, lo que resulta en una experiencia de usuario más fluida y actualizada. Su facilidad de uso y su capacidad para mantener los datos actualizados en tiempo real lo convierten en una herramienta esencial para muchos desarrolladores de React.
