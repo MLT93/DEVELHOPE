@@ -889,13 +889,22 @@ export const LanguageConsumer = () => {
 };
 
 export const GitHubUser = ({ username }) => {
-  const [data, loading, error] = useFetch(
+/*   const [data, loading, error] = useFetch(
     `https://api.github.com/users/${username}`,
-  );
+  ); */
 
+  const url = `https://api.github.com/users/${username}`;
+  
+  const fetcher = (url) => fetch(url).then((res) => res.json());
+  const { data, error } = useSWR(url, fetcher);
+  
+  if (error) return <h2>{error.message}</h2>;
+  if (!data) return <h2>Is Loading...</h2>;
+  if (!username) return null;
+  
   return (
     <>
-      {loading && <h2>Is Loading...</h2>}
+      {/* {!data && <h2>Is Loading...</h2>} */}
       {data && (
         <div
           style={{
@@ -924,7 +933,7 @@ export const GitHubUser = ({ username }) => {
           </div>
         </div>
       )}
-      {error && <h2>{error}</h2>}
+      {/* {error && <h2>{error}</h2>} */}
     </>
   );
 };
@@ -987,7 +996,7 @@ export const GitHubUsers = () => {
           {selectUser && <GitHubUser username={selectUser} />}
           <Outlet />
         </div>
-        {error && <h2>{error}</h2>}
+        {/* {error && <h2>{error}</h2>} */}
       </div>
     </>
   );

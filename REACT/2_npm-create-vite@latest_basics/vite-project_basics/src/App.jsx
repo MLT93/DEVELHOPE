@@ -28,7 +28,7 @@ export const App = () => {
             <Link to="/counter">Contador</Link>
           </li>
           <li>
-            <Link to="/users/">Usuario de GitHub</Link>
+            <Link to="/users/">Usuarios de GitHub</Link>
           </li>
           <li>
             <Link to="/tres-en-raya">Tres en raya</Link>
@@ -38,7 +38,7 @@ export const App = () => {
       <Routes>
         <Route index path="/" element={<Hello />} />
         <Route exact path="/dev" element={<Exercises />} />
-        <Route exact path="/welcome/:username" element={<Welcome />} />
+        <Route path="/welcome/:username" element={<Welcome />} />
         <Route
           exact
           path="/counter"
