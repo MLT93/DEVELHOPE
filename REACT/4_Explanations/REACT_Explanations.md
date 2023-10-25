@@ -639,16 +639,16 @@
    
      `useState` permite añadir o modificar un estado a un componente y renderizarlo posteriormente a la página. Comienza con una destructuración de array donde el primer elemento es el estado (la variable) que queremos modificar y el segundo es una función para poder modificar ese estado/variable. Posteriormente la función `useState` tiene un argumento, que será el valor inicial de nuestro primer elemento en la destructuración, o sea, la variable.
 
-     Recuerda que `useState es Asíncrono` porque hace una "partición en la memoria" para guardar el valor inicial de la variable del estado `state` que nombramos en la destructuración del array `const [state, setState] = useState(null)`. Esta variable, será lo que renderices en el `return` del componente (la parte HTML), o sea, que va a ser lo primero que se vea en la UI hasta que venga modificado por su función `setState`. En pocas palabras, la variable de `state` se renderiza en el HTML que devuelve tu componente, se modificada únicamente por su función `setState` y se inicializa con el valor que le introduzcas a `useState` en la destructuración.
+     Recuerda que `useState es Asíncrono` porque hace una "partición en la memoria" para guardar el valor inicial de la variable del estado `state` que nombramos en la destructuración del array `const [state, setState] = useState(null)`. Esta variable, será lo que renderices en el `return` del componente (la parte HTML), o sea, que va a ser lo primero que se vea en la UI hasta que venga modificado por su función `setState()`. En pocas palabras, la variable de `state` se renderiza en el HTML que devuelve tu componente, se modificada únicamente por su función `setState()` y se inicializa con el valor que le introduzcas a `useState()` en la destructuración.
      
      Puedes usarlo cuando necesitas mantener y/o actualizar un valor en el componente a través de su función, según la renderización del componente. Por ejemplo, si necesitas almacenar el `event` de un input o el estado de un modal.
 
      Al final es siempre lo mismo:
      - El `handleChange` va siempre con el `onChange` en el <input> y guarda el `event` que introduce el usuario.
      - El `handleClick` va con el `onClick` en el <button> y `setea` el valor que ha introducido el usuario.
-     - El `useState` te da la variable que vas a renderizar, que guarda los valores y que se modifica.
+     - El `useState()` te da la variable que vas a renderizar, que guarda los valores y que se modifica.
 
-     Posee una convención, y es aplicar el mismo nombre de la variable (ej. `estado`), al modificador del estado, con la palabra `set` al inicio (ej. `setEstado`).
+     Posee una convención, y es aplicar el mismo nombre de la variable (ej. `estado`), al modificador del estado, con la palabra `set` al inicio (ej. `setEstado()`).
      
      Sintaxis:
      
@@ -751,7 +751,6 @@
        
        export default Alternador;
        ```
-
        
    - **useEffect hook**:
      
@@ -4303,3 +4302,413 @@
    Los Custom Hooks son una herramienta poderosa para la reutilización y organización de lógica en tus componentes de React. Al crear tus propios Custom Hooks, puedes mantener tu código más limpio y modular, lo que facilita su mantenimiento y escalabilidad.
 
    Recuerda seguir las convenciones de nomenclatura y las reglas de los Hooks de React para un uso efectivo y sin problemas de tus Custom Hooks en tu aplicación.
+
+## React Router y Funciones Relacionadas en React: Una Explicación Detallada
+
+1. #### **`Introducción a React Router`**:
+
+   React Router es una librería popular para la navegación en aplicaciones web desarrolladas con React. Permite definir rutas en la aplicación y renderizar diferentes componentes en función de la URL actual. Esto crea una experiencia de usuario más interactiva y dinámica al cambiar entre diferentes vistas o páginas sin tener que recargar la página completa.
+
+2. #### **`Instalación y Configuración de React Router`**:
+
+   Para comenzar a utilizar React Router en tu proyecto, primero debes instalarlo a través de npm:
+
+   ```bash
+   npm i -D react-router-dom
+   ```
+
+   ```bash
+   yarn add react-router-dom
+   ```
+
+   Al ejecutar este comando en la terminal, se instalará la librería `react-router-dom` como una dependencia de desarrollo en tu proyecto de React, lo que te permitirá utilizar sus funcionalidades para gestionar las rutas y la navegación en tu aplicación.
+
+3. #### **`BrowserRouter`**:
+   
+   Una vez que tienes React Router instalado y configurado, puedes comenzar a definir tus rutas en la aplicación. Esto se hace dentro del componente `BrowserRouter`.
+   
+   ```jsx
+   // Dentro del archivo `App.jsx`
+   import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+   import Home from "./Pages/Home";
+   import Market from "./Pages/Market";
+   import Wallet from "./Pages/Wallet";
+   import Dev from "./Pages/Dev";
+   
+   export const App = () => {
+     return (
+       <BrowserRouter>
+         <nav>
+           <ul
+             style={{
+               display: "inline-flex",
+               justifyContent: "space-evenly",
+               width: "100%",
+               padding: "20px",
+             }}>
+             <li>
+               <Link to="/">Inicio</Link>
+             </li>
+             <li>
+               <Link to="/wallet">Carrito</Link>
+             </li>
+           </ul>
+         </nav>
+         <Routes>
+           <Route index path="/" element={<Home />} />
+           <Route path="/marketplace" element={<Market />} />
+           <Route path="/wallet" element={<Wallet />} />
+           <Routes path="/dev" element={<Dev />} />
+           <Route element={NotFound} />
+         </Routes>
+       </BrowserRouter>
+     );
+   };
+   ```
+
+4. #### **`Routes o Switch`**:
+
+   En `react-router-dom`, tanto `Routes` como `Switch` son componentes que se utilizan para definir las rutas de una aplicación. Sin embargo, tienen diferencias fundamentales en cómo manejan las coincidencias de rutas:
+
+   - **Routes**:
+
+     `Routes` es un componente de enrutamiento de nivel superior que se utiliza para definir las rutas de la aplicación. Puede contener múltiples elementos `Route` o `React.Fragment` que representan las diferentes rutas de la aplicación.
+     Cuando se utiliza `Routes`, todas las rutas se evalúan, y se renderizan todos los componentes cuyas rutas coinciden con la URL actual.
+     Esto significa que si hay varias coincidencias de ruta, se renderizarán múltiples componentes. Esto puede ser útil en situaciones donde una URL puede coincidir con varias rutas, y deseas renderizar todos los componentes asociados.
+
+     ```jsx
+     <Routes>
+       <Route path="/home" element={<Home />} />
+       <Route path="/about" element={<About />} />
+     </Routes>
+     ```
+
+   - **Switch**:
+
+     `Switch` es otro componente de enrutamiento que envuelve a los elementos `Route`. Su propósito es renderizar el primer `Route` que coincide con la URL actual y luego detener el proceso de evaluación de rutas.
+     Una vez que se encuentra una coincidencia, `Switch` deja de buscar otras coincidencias y renderiza el primer componente coincidente.
+     Esto es útil cuando deseas asegurarte de que solo se renderice una ruta específica incluso si hay otras rutas que también coinciden.
+
+     ```jsx
+     <Switch>
+       <Route path="/home" element={<Home />} />
+       <Route path="/about" element={<About />} />
+     </Switch>
+     ```
+   
+5. #### **`Link`**:
+
+   Para permitir a los usuarios navegar entre las diferentes rutas de tu aplicación, puedes usar el componente `Link` proporcionado por React Router. La utilidad que tiene es que en lugar de recargar la página completamente, cambia la URL de manera dinámica utilizando el historial del navegador. Es similar a un ancla `<a>`, pero mantiene la aplicación en un estado de una sola página sin recargarla por completo.
+   Posee un atributo `to` que sirve para definir la dirección de navegación.
+
+   ```jsx
+   import { Link } from 'react-router-dom';
+   
+   function Navigation() {
+     return (
+       <nav>
+         <Link to="/">Inicio</Link>
+         <Link to="/about">Acerca de</Link>
+         <Link to="/contact" activeClassName="active">Contacto</Link>
+       </nav>
+     );
+   }
+   ```
+   
+   - **to**:
+   
+     El prop `to` especifica la URL a la que se debe navegar cuando se hace clic en el enlace.
+   
+   - **activeClassName**:
+
+     Permite especificar una clase de estilo que se aplicará al enlace cuando la ruta asociada esté activa. Esto es útil para resaltar visualmente el enlace correspondiente a la ruta actualmente activa.
+     En el ejemplo de arriba `active` es el nombre de la clase que se le asignará al enlace cuando esté activo.
+     Puedes asignar directamente la clase utilizando la `prop` `className` en un componente `Link` en React. No hay ninguna restricción que impida hacerlo. Sin embargo, la `prop` `activeClassName` tiene un propósito específico: se utiliza para aplicar una clase cuando el enlace está activo, es decir, cuando corresponde a la ruta actual en la que se encuentra el usuario.
+
+6. #### **`Route`**:
+
+   En muchas aplicaciones, es útil pasar parámetros a las rutas para mostrar contenido dinámico. Esto se logra utilizando `Route` con un `path` que incluye un segmento dinámico.
+
+   ```jsx
+   import { Route } from 'react-router-dom';
+   import { About } from './About';
+   import { UserProfile } from './UserProfile';
+   
+   function App() {
+     return (
+       <Route index exact path="/" element={<Home />} />
+       <Route exact path="/about" render={() => <About />} />
+       <Route path="/user/:id" element={<UserProfile />}>
+         /* subrutas */
+         <Route path="/user/:id/setting" element={<UserSetting>}>
+         <Route path="/user/:id/shopping-cart" element={<UserCart>}>
+       </Route>
+     );
+   }
+   ```
+
+   - **index**:
+
+     El atributo `index` se utiliza para especificar la ruta por defecto que se debe renderizar cuando el dominio o la ruta de una sección en específico se empareja. En otras palabras, es la ruta que se mostrará cuando no se añade ninguna subruta específica.
+
+     Esto es especialmente útil para establecer la página de inicio de una sección específica de tu aplicación, o para proporcionar un contenido predeterminado cuando el usuario accede a una ruta sin especificar una subruta específica.
+
+     Recuerda que solo se debe usar un `index` por cada nivel de jerarquía de rutas. Es decir, si tienes rutas anidadas, cada nivel debe tener su propio `index` para indicar la ruta por defecto.
+
+   - **exact**:
+
+     Al usar `exact` en una `Route`, aseguras que la ruta solo coincida cuando la URL es idéntica al `path` especificado, o sea que la coincidencia de ruta debe ser exacta. Por defecto es `false`.
+
+   - **path**:
+
+     El propósito del atributo `path` en `react-router-dom` es definir el patrón de la URL que debe coincidir con la ruta que se está configurando. En otras palabras, especifica la parte de la URL que se debe comparar con la ruta para determinar si hay una coincidencia.
+
+   - **:id**:
+
+     El segmento `:id` es un marcador de posición que indica un parámetro de ruta. Cualquier valor introducido en esa posición de la URL será capturado y se pasará como prop a `UserProfile`.
+
+   - **element o render**:
+
+     `element` especifica qué componente o elemento JSX debe renderizarse cuando la ruta coincide.
+
+     ```jsx
+     <Route path="/about" element={<About someProp="value" />} />
+     ```
+     
+     `render` es otra forma de especificar qué componente renderizar cuando una ruta coincide. En lugar de proporcionar un nombre de componente, proporcionas una función que devuelve un componente de React. Esto es útil cuando necesitas pasar props adicionales al componente que se renderizará. Es utilizado en versiones anteriores a `react-router-dom` (5+1).
+     
+     ```jsx
+     <Route path="/about" render={() => <About someProp="value" />} />
+     ```
+     
+7. #### **`Redirect`**:
+
+   Puedes redirigir a los usuarios a diferentes rutas utilizando el componente `Redirect`. Por ejemplo, si deseas redirigir a los usuarios desde una URL antigua a una nueva:
+
+   ```jsx
+   <Redirect from="/old" to="/new" />
+   ```
+
+   - **from & to**:
+
+     `from` especifica la URL antigua.
+     
+     `to` especifica la nueva URL a la que se debe redirigir.
+
+8. #### **`NavLink`**:
+
+   `NavLink` es similar a `Link`, pero proporciona estilos de navegación condicionales cuando la ruta coincide. Puedes agregar una clase de estilo o estilo en línea basado en si la ruta está activa o no.
+
+8. #### **`Outlet`**:
+
+   El componente `Outlet` se utiliza en React Router v6 para renderizar sub-rutas anidadas dentro de una ruta principal. Es especialmente útil cuando se tienen rutas secundarias dentro de una ruta principal y se desea que se rendericen en un punto específico del componente padre.
+
+   Supongamos que tienes una estructura de rutas como esta:
+
+   ```jsx
+   <Routes>
+     <Route path="/" element={<Home />} />
+     <Route path="/dashboard" element={<Dashboard />}>
+       <Route index element={<DashboardHome />} />
+       <Route path="/settings" element={<Settings />} />
+     </Route>
+   </Routes>
+   ```
+
+   En este caso, `Dashboard` es una ruta principal que tiene rutas secundarias `DashboardHome` y `Settings`. Para que estas rutas secundarias se rendericen dentro de Dashboard, necesitas colocar un componente `Outlet` dentro de `Dashboard` donde deseas que se rendericen. De esta forma:
+
+   ```jsx
+   function Dashboard() {
+     return (
+       <div>
+         <h2>Dashboard</h2>
+         <Outlet /> {/* Aquí se renderizarán las rutas secundarias */}
+       </div>
+     );
+   }
+   ```
+
+9. #### **`Hooks de react-router-dom`**:
+
+   `useParams()` y `useNavigate()` son dos hooks proporcionados por React Router que facilitan la obtención de parámetros de la ruta y ayudan a crear una navegación programática en componentes funcionales.
+
+   - **useNavigate hook**:
+
+     El hook `useNavigate()` (proporcionado por React Router) te proporciona una función para realizar navegación programática en tu aplicación. Esto te permite cambiar de ruta en respuesta a eventos o acciones del usuario, sin la necesidad de utilizar componentes `Link` (también proporcionado por React Router).
+
+     La navegación programática es útil en situaciones donde necesitas cambiar de ruta en respuesta a acciones del usuario (por ejemplo, después de enviar un formulario) o en eventos específicos (como un clic en un botón).
+
+     `useNavigate()` es especialmente útil en casos donde el componente no tiene acceso directo a las props de `history` (como en componentes funcionales no conectados al `router` o en `hooks personalizados`).
+
+     Es importante mencionar que `useNavigate() cambia la ruta en el enrutador de React sin recargar la página completa`. Esto significa que tu aplicación permanece en un estado de una sola página (SPA), proporcionando una experiencia de usuario más fluida.
+
+     Sintaxis:
+
+     ```jsx
+     import { useNavigate } from 'react-router-dom';
+     
+     function MyComponent() {
+       const navigate = useNavigate();
+     
+       function handleClickRoute() {
+         // Usa la función `navigate()` para redirigir a otra página
+         navigate('/route');
+       }
+     
+       return (
+         <button onClick={handleClickRoute}>Ir a otra ruta</button>
+       );
+     }
+     ```
+
+     - `navigate()`:
+    
+       La variable `navigate()` que obtienes al utilizar useNavigate() `es una función que te permite navegar entre diferentes rutas en tu aplicación React cuando utilizas React Router`. Esta función proporciona una forma programática de cambiar la URL y renderizar el componente asociado a esa ruta.
+
+       `Esta función toma un argumento`, que es la ruta a la que quieres navegar. Puedes proporcionar una `ruta relativa` (por ejemplo, `/about`) `o una ruta absoluta` (por ejemplo, `https://example.com/about`), dependiendo de tu configuración de enrutamiento.
+
+       También puedes añadir lógica y crear una `navegación condicional` (por ejemplo en una verificación de usuario).
+
+     Ejemplo:
+
+     Navegación con Parámetros:
+
+     ```jsx
+     import { useNavigate } from 'react-router-dom';
+     
+     function ProductPage() {
+       const navigate = useNavigate();
+     
+       const handleProductClick = (productId) => {
+         // Usa la función `navigate()` para redirigir a una página con parámetros
+         navigate(`/products/${productId}`);
+       };
+     
+       return (
+         <div>
+           <h1>Página de Productos</h1>
+           <button onClick={() => handleProductClick(123)}>Ver Producto 123</button>
+           <button onClick={() => handleProductClick(456)}>Ver Producto 456</button>
+         </div>
+       );
+     }
+     ```
+
+     Navegación con Estado:
+     
+     ```jsx
+     import { useNavigate } from 'react-router-dom';
+     
+     function PrivatePage() {
+       const navigate = useNavigate();
+     
+       const isLoggedIn = true; // Supongamos que esto depende del estado de autenticación de un usuario
+     
+       const handleButtonClick = () => {
+         if (isLoggedIn) {
+           // Usa la función `navigate()` para redirigir solo si está autenticado
+           navigate('/dashboard');
+         } else {
+           alert('Debes iniciar sesión primero');
+         }
+       };
+     
+       return (
+         <div>
+           <h1>Página Privada</h1>
+           <button onClick={handleButtonClick}>Ir al Tablero</button>
+         </div>
+       );
+     }
+     ```
+
+   - **useParams hook**:
+
+     El hook `useParams()` te permite acceder a los parámetros de ruta definidos en tu aplicación. Esto es especialmente útil cuando necesitas utilizar valores dinámicos en tus componentes basados en la URL actual.
+
+     Recuerda que puedes asignarle a este hook un valor por defecto a través de la desestructuración.
+
+     Imaginemos que tienes una ruta definida como `/users/:username` y estás renderizando un componente llamado `UserProfile`. Al utilizar `useParams()`, puedes acceder al valor del `param` `:username` proporcionado en la URL y utilizarlo en tu componente para cargar y mostrar la información del usuario correspondiente. Entonces utilizas `UserProfile` para dar un mensaje de bienvenida personalizado para cada usuario, pero a demás, deseas saludar de la misma manera a una persona que no tiene una cuenta. La asignación por defecto que permite `useParams()`, asegura que si no hay un `:username` como `param` en la URL, se acciona el valor asignado por defecto, por ejemplo `'Invitado'`. Por lo tanto, si la URL no tiene un `param` específico y es más genérico, como `http://www.example.com/users`, el componente mostrará simplemente `Bienvenido: Invitado`. Esto brinda una forma elegante de manejar escenarios donde el `username` no está presente en la URL.
+     
+     Sintaxis:
+
+     ```jsx
+     import { useParams } from 'react-router-dom';
+     
+     function UserProfile() {
+       // Destructuring de los parámetros de la URL
+       let { username } = useParams();
+     
+       return (
+         <div>
+           <h1>Perfil de Usuario</h1>
+           <p>Nombre de Usuario: {username}</p>
+         </div>
+       );
+     }
+     ```
+
+     - `Propiedades Definidas en la Ruta URL`:
+       
+       Por ejemplo, si tu ruta es `/users/:username`, al usar `useParams()` obtendrás a través de la desestructuración un `param` `:username` en forma de variable. Esto te permite acceder al valor que se proporciona en la URL. Si la URL es `/users/john`, entonces `:username` será `'john'`.
+
+     - `Propiedades Adicionales de React Router`:
+
+       Junto con las propiedades que definiste en tu ruta dinámica, el objeto devuelto por `useParams()` también puede contener propiedades adicionales proporcionadas por React Router. Esto puede incluir propiedades como `path`, `url`, `isExact`, y otras que son útiles para la navegación y el enrutamiento.
+
+     Ejemplo:
+
+     Ruta con valor predeterminado:
+
+     ```jsx
+     import { useParams } from 'react-router-dom';
+     
+     function UserProfile() {
+       // A los parámetros de la URL se le puede asignar un valor predeterminado
+       let { username = 'Invitado' } = useParams();
+     
+       return (
+         <div>
+           <h1>Perfil de Usuario</h1>
+           <p>Nombre de Usuario: {username}</p>
+         </div>
+       );
+     }
+     ```
+
+     Ruta con múltiples parámetros:
+
+     ```jsx
+     import { useParams } from 'react-router-dom';
+     
+     function CommentDetails() {
+       // Obtener los parámetros de la URL
+       let { postId, commentId } = useParams();
+     
+       return (
+         <div>
+           <h1>Detalles del Comentario</h1>
+           <p>Post ID: {postId}</p>
+           <p>Comment ID: {commentId}</p>
+         </div>
+       );
+     }
+     ```
+
+10. #### **`Resumen`**:
+
+   - React Router es una librería para la navegación en aplicaciones web de React, que permite definir rutas y renderizar componentes en función de la URL actual.
+
+   - Se instala y configura a través de npm y se importan los componentes necesarios.
+
+   - Las rutas se definen dentro del componente `BrowserRouter` utilizando `Route` y `Switch`.
+
+   - La navegación entre rutas se logra usando el componente `Link`.
+
+   - Los parámetros de ruta permiten mostrar contenido dinámico.
+
+   - Las redirecciones se hacen usando `Redirect`.
+
+   - En React, las funciones relacionadas se refieren a Hooks, que permiten usar características de React en componentes funcionales.
+
+   Esta explicación detallada debería proporcionarte una comprensión sólida de React Router y las funciones relacionadas en React. Si tienes preguntas adicionales o necesitas más detalles sobre algún punto en particular, no dudes en preguntar.
