@@ -4751,7 +4751,7 @@
 
    Recuerda que como todos los hooks, `useSWR()` debe de estar en el nivel superior de tu componente.
 
-   Recuerda que `useSWR() no ofrece un modo para realizar` métodos `get`, `post`, `put`, `patch`, `delete` o algún método de este tipo. Sólo está diseñado para la recuperación de datos y el manejo del caché. Para realizar estos métodos deberás utilizar `Fetch API` u otras librerías, como `Axios`, por ejemplo.
+   Recuerda que `useSWR() no ofrece un modo para realizar` métodos `get`, `post`, `put`, `patch`, `delete` o algún método de este tipo. Sólo está diseñado para la recuperación de datos y el manejo del caché. Para realizar estos métodos deberás utilizar `Fetch API` u otras librerías, como `Axios` por ejemplo.
 
    ```jsx
    import useSWR from 'swr';
