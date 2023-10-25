@@ -4508,7 +4508,7 @@
 
    `NavLink` es similar a `Link`, pero proporciona estilos de navegación condicionales cuando la ruta coincide. Puedes agregar una clase de estilo o estilo en línea basado en si la ruta está activa o no.
 
-8. #### **`Outlet`**:
+9. #### **`Outlet`**:
 
    El componente `Outlet` se utiliza en React Router v6 para renderizar `sub-rutas` anidadas dentro de una ruta principal. Es especialmente útil cuando se tienen rutas secundarias dentro de una ruta principal y se desea que se rendericen en un punto específico del componente padre.
 
@@ -4538,7 +4538,7 @@
    }
    ```
 
-9. #### **`Hooks de react-router-dom`**:
+10. #### **`Hooks de react-router-dom`**:
 
    `useParams()` y `useNavigate()` son dos hooks proporcionados por React Router que facilitan la obtención de parámetros de la ruta y ayudan a crear una navegación programática en componentes funcionales.
 
@@ -4705,7 +4705,7 @@
      }
      ```
 
-10. #### **`Resumen`**:
+11. #### **`Resumen`**:
 
    - React Router es una librería para la navegación en aplicaciones web de React, que permite definir rutas y renderizar componentes en función de la URL actual.
 
@@ -4743,23 +4743,24 @@
 
 2. #### **`Importancia de SWR`**:
 
-   En aplicaciones modernas, es común trabajar con datos que pueden cambiar con el tiempo, como actualizaciones en una base de datos o información de un API externo. SWR simplifica este proceso al ofrecer una solución sencilla para manejar las solicitudes de datos y su actualización.
-
-   Recuerda que como todos los hooks, `SWR` debe de estar en el nivel superior de tu componente.
+   En aplicaciones modernas, es común trabajar con datos que pueden cambiar con el tiempo, como actualizaciones en una base de datos o información de un API externo. `SWR` simplifica este proceso al ofrecer una solución sencilla para manejar las solicitudes de datos en el caché.
 
 3. #### **`Sintaxis y Uso Básico de SWR`**:
+   
+   En React este framework se utiliza como un hook. Luego, puedes utilizar la función `useSWR()` para obtener y gestionar tus datos.
 
-   Para comenzar a usar este framework, primero necesitas instalarlo y luego importarlo en tu archivo. Luego, puedes utilizar la función `useSWR` para obtener y gestionar tus datos.
+   Recuerda que como todos los hooks, `useSWR()` debe de estar en el nivel superior de tu componente.
 
-   En React, `SWR` se utiliza como un hook. Aquí hay un ejemplo básico de cómo usarlo:
+   Recuerda que `useSWR() no ofrece un modo para realizar` métodos `get`, `post`, `put`, `patch`, `delete` o algún método de este tipo. Sólo está diseñado para la recuperación de datos y el manejo del caché. Para realizar estos métodos deberás utilizar `Fetch API` u otras librerías, como `Axios`, por ejemplo.
 
    ```jsx
    import useSWR from 'swr';
    
+   // `fetch()` realiza el método get y después se guarda en el caché para ahorrar consumo
    const fetcher = (url) => fetch(url).then((res) => res.json());
    
    function Componente() {
-     const { data, error } = useSWR('https://www.api.com/datos', fetcher);
+     const { data, error } = useSWR('https://www.api.com/endpoint', fetcher);
    
      if (error) return <h2>{error.message}</h2>;
      if (!data) return <h2>Is Loading...</h2>;
@@ -4780,13 +4781,13 @@
    
      Contiene `cualquier error` que pueda ocurrir al cargar los datos.
 
-   - `'https://www.api.com/datos'`:
+   - `'https://www.api.com/endpoint'`:
    
      Es la `URL de la API` donde obtendrás tus datos.
 
    - `fetcher`:
 
-     Es una `función que se utiliza para realizar la solicitud/llamada` y obtener los datos.
+     Es una `función que se utiliza para realizar la solicitud al caché`.
 
 4. #### **`Fetchers y Uso de Funciones Personalizadas`**:
 
@@ -4813,7 +4814,7 @@
    Puedes utilizar las propiedades `isLoading` e `isError` para controlar el estado de tus datos y mostrar indicadores de carga o mensajes de error según corresponda.
 
    ```jsx
-   const { data, error } = useSWR('https://www.api.com/datos', fetcher);
+   const { data, error } = useSWR('https://www.api.com/endpoint', fetcher);
    const isLoading = !data && !error;
    ```
 
@@ -4822,8 +4823,8 @@
    `SWR` tiene la capacidad de actualizar automáticamente los datos según el intervalo de revalidación configurado (por defecto es 0). Sin embargo, puedes forzar una revalidación manual utilizando la función `mutate`.
 
    ```jsx
-   const { mutate } = useSWR('https://www.api.com/datos', fetcher);
-   
+   const { mutate } = useSWR('https://www.api.com/endpoint', fetcher);
+
    // Llamada para forzar una revalidación
    mutate();
    ```
@@ -4839,7 +4840,7 @@
      Determina si `SWR` debe volver a obtener los datos cuando un componente se monta por primera vez.
 
      ```jsx
-     const { data } = useSWR('https://www.api.com/datos', fetcher, { revalidateOnMount: true });
+     const { data } = useSWR('https://www.api.com/endpoint', fetcher, { revalidateOnMount: true });
      ```
 
    - **revalidateOnFocus**:
@@ -4847,7 +4848,7 @@
      Indica si `SWR` debe volver a obtener los datos cuando el componente recibe foco.
 
      ```jsx
-     const { data } = useSWR('https://www.api.com/datos', fetcher, { revalidateOnFocus: true });
+     const { data } = useSWR('https://www.api.com/endpoint', fetcher, { revalidateOnFocus: true });
      ```
 
    - **revalidateOnReconnect**:
@@ -4855,7 +4856,7 @@
      Define si `SWR` debe volver a obtener los datos cuando se restablece la conexión a Internet.
 
      ```jsx
-     const { data } = useSWR('https://www.api.com/datos', fetcher, { revalidateOnReconnect: true });
+     const { data } = useSWR('https://www.api.com/endpoint', fetcher, { revalidateOnReconnect: true });
      ```
 
    - **shouldRetryOnError**:
@@ -4863,7 +4864,7 @@
      Define si `SWR` debe intentar nuevamente obtener los datos en caso de un error en la solicitud.
 
      ```jsx
-     const { data } = useSWR('https://www.api.com/datos', fetcher, { shouldRetryOnError: true });
+     const { data } = useSWR('https://www.api.com/endpoint', fetcher, { shouldRetryOnError: true });
      ```
 
    - **dedupingInterval**:
@@ -4871,7 +4872,7 @@
      Controla el intervalo mínimo (en milisegundos) entre dos solicitudes de datos idénticas.
 
      ```jsx
-     const { data } = useSWR('https://www.api.com/datos', fetcher, { dedupingInterval: 2000 });
+     const { data } = useSWR('https://www.api.com/endpoint', fetcher, { dedupingInterval: 2000 });
      ```
 
    - **focusThrottleInterval**:
@@ -4879,7 +4880,7 @@
      Define el tiempo mínimo (en milisegundos) entre dos solicitudes cuando el componente obtiene foco.
 
      ```jsx
-     const { data } = useSWR('https://www.api.com/datos', fetcher, { focusThrottleInterval: 3000 });
+     const { data } = useSWR('https://www.api.com/endpoint', fetcher, { focusThrottleInterval: 3000 });
      ```
 
    - **loadingTimeout**:
@@ -4887,7 +4888,7 @@
      Establece el tiempo de espera (en milisegundos) antes de mostrar el estado de carga.
 
      ```jsx
-     const { data } = useSWR('https://www.api.com/datos', fetcher, { loadingTimeout: 3000 });
+     const { data } = useSWR('https://www.api.com/endpoint', fetcher, { loadingTimeout: 3000 });
      ```
 
    - **onLoadingSlow**:
@@ -4895,7 +4896,7 @@
      Una función de retorno de llamada que se ejecuta cuando una solicitud toma más tiempo del configurado en `loadingTimeout`.
 
      ```jsx
-     const { data } = useSWR('https://www.api.com/datos', fetcher, {
+     const { data } = useSWR('https://www.api.com/endpoint', fetcher, {
        onLoadingSlow: key => {
          console.warn(`La solicitud ${key} está tomando demasiado tiempo.`);
        }
@@ -4907,7 +4908,7 @@
      Define el intervalo (en milisegundos) entre los intentos de revalidación después de un error.
 
      ```jsx
-     const { data } = useSWR('https://www.api.com/datos', fetcher, { errorRetryInterval: 5000 });
+     const { data } = useSWR('https://www.api.com/endpoint', fetcher, { errorRetryInterval: 5000 });
      ```
 
    Estas son solo algunas de las configuraciones que puedes utilizar con SWR. Puedes combinar estas opciones según las necesidades específicas de tu aplicación para optimizar la gestión de datos y la experiencia del usuario. Puedes encontrar más configuraciones y detalles en la [documentación oficial de SWR](https://swr.vercel.app/docs/options).
@@ -4917,7 +4918,7 @@
    `SWR` se integra fácilmente con otros hooks de React. Por ejemplo, puedes combinarlo con `useState` y `useEffect` para realizar tareas adicionales según sea necesario.
 
    ```jsx
-   const { data } = useSWR('https://www.api.com/datos', fetcher);
+   const { data } = useSWR('https://www.api.com/endpoint', fetcher);
    const [isActive, setIsActive] = useState(false);
 
    useEffect(() => {
