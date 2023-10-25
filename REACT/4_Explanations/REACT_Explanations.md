@@ -406,7 +406,7 @@
    export default App;
    ```
 
-   Recuerda que el `event.target` representa el elemento (nodo HTML) que ha activado el evento, mientras que `event.currentTarget` representa el elemento donde fue asociado el evento.Esto es importante porque aunque tengamos un elemento HTML anidado dentro de otro que posee el gestor de eventos, este ultimo cuando se acciona el evento recorre `bubble` todas los anidamientos hasta llegar a la raíz.
+   Recuerda que el `event.target` representa el elemento (nodo HTML) que ha activado el evento, mientras que `event.currentTarget` representa el elemento donde fue asociado el evento.Esto es importante porque aunque tengamos un elemento HTML anidado dentro de otro que posee el gestor de eventos, este ultimo cuando se acciona el evento recorre (`bubble`) todas los anidamientos hasta llegar a la raíz.
 
    `Gracias a esto podemos leer las informaciones de cada nodo HTML` interactuar con ellos y modificar su comportamiento, porque `tenemos acceso a cada atributo que se le pueda asignar a cualquier nodo HTML (elemento) que utilicemos`.
 
@@ -609,15 +609,28 @@
    }
    ```
 
-9. #### **`Listas y Claves (Keys)`**:
+9. #### **`Listas y La Clave (Key)`**:
 
-   En React, es común mapear un arreglo de datos para renderizar una lista de elementos. Para asegurarse de que React pueda identificar cada elemento de manera única, se utiliza una `key`.
+   En React, es común mapear un `array` de datos para renderizar una lista de elementos. Para asegurarse de que React pueda identificar cada elemento de manera única, se utiliza una `key`. Esta es una `prop` especialmente reservada de React para optimizar el renderizado de componentes en una lista.
 
    ```jsx
    function ListaDeNombres(props) {
      const nombres = props.nombres;
      const listaNombres = nombres.map((nombre) => (
        <li key={nombre.id}>{nombre.nombre}</li>
+     ));
+
+     return <ul>{listaNombres}</ul>;
+   }
+   ```
+
+   ```jsx
+   function ListaDeNombres(props) {
+     // Llamada a una API...
+
+     // Mapeo de la data devuelta
+     const listaNombres = nombres.map((element, index) => (
+       <li key={index}>{element.nombre}</li>
      ));
 
      return <ul>{listaNombres}</ul>;
@@ -4794,7 +4807,16 @@
    Los `fetcher` son funciones que se utilizan para obtener los datos de una URL. Puedes crear tu propio `fetcher` personalizado para adaptarlo a tus necesidades específicas. Esto es especialmente útil cuando necesitas agregar encabezados de autenticación u otras personalizaciones a tus solicitudes.
 
    ```jsx
+   import useSWR from "swr";
+   import axios from "axios";
+
    const fetcher = (url) => fetch(url).then((res) => res.json());
+   ```
+
+      ```jsx
+   import useSWR from "swr";
+
+   const fetcher = (url) => axios.get(url).then((res) => res.data);
    ```
 
    Luego, esta función personalizada se pasa como segundo argumento a `useSWR()`.
@@ -4814,6 +4836,10 @@
    Puedes utilizar las propiedades `isLoading` e `isError` para controlar el estado de tus datos y mostrar indicadores de carga o mensajes de error según corresponda.
 
    ```jsx
+   import useSWR from "swr";
+   import axios from "axios";
+
+   const fetcher = (url) => axios.get(url).then((res) => res.data);
    const { data, error } = useSWR('https://www.api.com/endpoint', fetcher);
    const isLoading = !data && !error;
    ```
@@ -4823,6 +4849,8 @@
    `SWR` tiene la capacidad de actualizar automáticamente los datos según el intervalo de revalidación configurado (por defecto es 0). Sin embargo, puedes forzar una revalidación manual utilizando la función `mutate`.
 
    ```jsx
+   import useSWR from "swr";
+
    const { mutate } = useSWR('https://www.api.com/endpoint', fetcher);
 
    // Llamada para forzar una revalidación
@@ -4840,6 +4868,10 @@
      Determina si `SWR` debe volver a obtener los datos cuando un componente se monta por primera vez.
 
      ```jsx
+     import useSWR from "swr";
+     import axios from "axios";
+
+     const fetcher = (url) => axios.get(url).then((res) => res.data);
      const { data } = useSWR('https://www.api.com/endpoint', fetcher, { revalidateOnMount: true });
      ```
 
@@ -4848,6 +4880,10 @@
      Indica si `SWR` debe volver a obtener los datos cuando el componente recibe foco.
 
      ```jsx
+     import useSWR from "swr";
+     import axios from "axios";
+
+     const fetcher = (url) => axios.get(url).then((res) => res.data);
      const { data } = useSWR('https://www.api.com/endpoint', fetcher, { revalidateOnFocus: true });
      ```
 
@@ -4856,6 +4892,10 @@
      Define si `SWR` debe volver a obtener los datos cuando se restablece la conexión a Internet.
 
      ```jsx
+     import useSWR from "swr";
+     import axios from "axios";
+
+     const fetcher = (url) => axios.get(url).then((res) => res.data);
      const { data } = useSWR('https://www.api.com/endpoint', fetcher, { revalidateOnReconnect: true });
      ```
 
@@ -4864,6 +4904,10 @@
      Define si `SWR` debe intentar nuevamente obtener los datos en caso de un error en la solicitud.
 
      ```jsx
+     import useSWR from "swr";
+     import axios from "axios";
+
+     const fetcher = (url) => axios.get(url).then((res) => res.data);
      const { data } = useSWR('https://www.api.com/endpoint', fetcher, { shouldRetryOnError: true });
      ```
 
@@ -4872,6 +4916,10 @@
      Controla el intervalo mínimo (en milisegundos) entre dos solicitudes de datos idénticas.
 
      ```jsx
+     import useSWR from "swr";
+     import axios from "axios";
+
+     const fetcher = (url) => axios.get(url).then((res) => res.data);
      const { data } = useSWR('https://www.api.com/endpoint', fetcher, { dedupingInterval: 2000 });
      ```
 
@@ -4880,14 +4928,22 @@
      Define el tiempo mínimo (en milisegundos) entre dos solicitudes cuando el componente obtiene foco.
 
      ```jsx
+     import useSWR from "swr";
+     import axios from "axios";
+
+     const fetcher = (url) => axios.get(url).then((res) => res.data);
      const { data } = useSWR('https://www.api.com/endpoint', fetcher, { focusThrottleInterval: 3000 });
      ```
 
    - **loadingTimeout**:
    
-     Establece el tiempo de espera (en milisegundos) antes de mostrar el estado de carga.
+     Establece el tiempo de espera (en milisegundos) antes de mostrar el estado de carga. Es uno de los más utilizados.
 
      ```jsx
+     import useSWR from "swr";
+     import axios from "axios";
+
+     const fetcher = (url) => axios.get(url).then((res) => res.data);
      const { data } = useSWR('https://www.api.com/endpoint', fetcher, { loadingTimeout: 3000 });
      ```
 
@@ -4896,6 +4952,10 @@
      Una función de retorno de llamada que se ejecuta cuando una solicitud toma más tiempo del configurado en `loadingTimeout`.
 
      ```jsx
+     import useSWR from "swr";
+     import axios from "axios";
+
+     const fetcher = (url) => axios.get(url).then((res) => res.data);
      const { data } = useSWR('https://www.api.com/endpoint', fetcher, {
        onLoadingSlow: key => {
          console.warn(`La solicitud ${key} está tomando demasiado tiempo.`);
@@ -4908,6 +4968,10 @@
      Define el intervalo (en milisegundos) entre los intentos de revalidación después de un error.
 
      ```jsx
+     import useSWR from "swr";
+     import axios from "axios";
+
+     const fetcher = (url) => axios.get(url).then((res) => res.data);
      const { data } = useSWR('https://www.api.com/endpoint', fetcher, { errorRetryInterval: 5000 });
      ```
 
@@ -4917,7 +4981,14 @@
 
    `SWR` se integra fácilmente con otros hooks de React. Por ejemplo, puedes combinarlo con `useState` y `useEffect` para realizar tareas adicionales según sea necesario.
 
+   También se integra con librerías como `Axios` o `Fetch API`.
+
    ```jsx
+   import useSWR from "swr";
+   import { useState, useEffect } from "react";
+   import axios from "axios";
+   
+   const fetcher = (url) => axios.get(url).then((res) => res.data);
    const { data } = useSWR('https://www.api.com/endpoint', fetcher);
    const [isActive, setIsActive] = useState(false);
 
@@ -4928,11 +4999,56 @@
    }, [data]);
    ```
 
-11. #### **`Consideraciones y Alternativas`**:
+11. #### **`SWRConfig`**:
 
-   `SWR` es una poderosa herramienta, pero es importante recordar que no es la única solución para la gestión de datos en React. Otras bibliotecas y patrones, como `Redux`, `Context API` y `Apollo Client`, también son populares y tienen sus propios casos de uso.
+   `SWRConfig` es un componente proporcionado por la biblioteca `SWR` que te permite configurar opciones globales para todos los hooks `useSWR()` en tu aplicación. Esto es especialmente útil cuando deseas establecer un comportamiento predeterminado para todos tus llamados a API. Como por ejemplo pasarle un mismo `fetcher` (el proceso de llamada a la api) a todos tus `useSWR()`.
 
-12. #### **`Conclusión`**:
+   ```jsx
+   // En tu archivo `App.jsx` o `App.js`
+   import { SWRConfig } from 'swr';
+   import axios from "axios";
+
+   const fetcher = (url) => axios.get(url).then((res) => res.data);
+
+   function App() {
+     return (
+       // Le damos a todos los `useSWR()` el acceso al fetcher
+       <SWRConfig value={{ fetcher }}>
+         {/* Aquí va el resto de tu aplicación */}
+       </SWRConfig>
+     );
+   }
+   ```
+   
+   ```jsx
+   // En el archivo de tu componente
+   import { useParams } from "react-router-dom";
+   import useSWR from "swr";
+   
+   export const useGitHubUser = () => {
+     const { username } = useParams();
+     const { data, error, mutate } = useSWR(
+       `https://api.github.com/users/${username}`,
+     );
+   
+     const reFetch = () => {
+       mutate();
+     };
+     return {
+       data,
+       loading: !data && !error,
+       error,
+       reFetch,
+     };
+   };
+   ```
+
+
+12. #### **`Consideraciones y Alternativas`**:
+
+   `SWR` es una poderosa herramienta y se puede utilizar también junto con `Fetch API` y `Axios`, pero es importante recordar que no es la única solución para la gestión de datos en React. Otras bibliotecas y patrones, como `Redux`, `Context API` y `Apollo Client`, también son populares y tienen sus propios casos de uso.
+
+13. #### **`Conclusión`**:
 
    `SWR` y las funciones relacionadas proporcionan una forma efectiva de gestionar y actualizar datos en aplicaciones React. Su capacidad para mantener los datos actualizados en tiempo real y su integración sencilla con otros hooks hacen de SWR una elección poderosa para proyectos modernos.
 
