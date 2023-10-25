@@ -888,24 +888,39 @@ export const LanguageConsumer = () => {
   );
 };
 
+export const useGitHubUser = () => {
+  const { username } = useParams();
+  const url = `https://api.github.com/users/${username}`;
+  const { data, error, mutate } = useSWR(url, { loadingTimeout: 2000 });
+
+  const reFetch = () => {
+    mutate();
+  };
+  return {
+    data,
+    isLoading: !data && !error,
+    error,
+    reFetch,
+  };
+};
+
 export const GitHubUser = ({ username }) => {
-/*   const [data, loading, error] = useFetch(
+  /*   const [data, loading, error] = useFetch(
     `https://api.github.com/users/${username}`,
   ); */
 
-  const url = `https://api.github.com/users/${username}`;
-  
   const fetcher = (url) => fetch(url).then((res) => res.json());
-  const { data, error, mutate } = useSWR(url, fetcher);
-  
+
+  const url = `https://api.github.com/users/${username}`;
+  const { data, error } = useSWR(url, fetcher);
+
   if (error) return <h2>{error.message}</h2>;
   if (!data) return <h2>Is Loading...</h2>;
   if (!username) return null;
-  
+
   return (
     <>
       {/* {!data && <h2>Is Loading...</h2>} */}
-      {mutate()}
       {data && (
         <div
           style={{
