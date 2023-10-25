@@ -4823,6 +4823,7 @@
 
    ```jsx
    const { mutate } = useSWR('https://www.api.com/datos', fetcher);
+   
    // Llamada para forzar una revalidación
    mutate();
    ```
@@ -4835,7 +4836,7 @@
 
    - **revalidateOnMount**:
    
-     Determina si SWR debe volver a obtener los datos cuando un componente se monta por primera vez.
+     Determina si `SWR` debe volver a obtener los datos cuando un componente se monta por primera vez.
 
      ```jsx
      const { data } = useSWR('https://www.api.com/datos', fetcher, { revalidateOnMount: true });
