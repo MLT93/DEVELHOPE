@@ -632,6 +632,10 @@
 11. #### **`Hooks en React`**:
    
    Los Hooks son una adición en React 16.8 que permiten asignar un estado y otras características de React en componentes funcionales, lo que antes solo era posible en componentes de clase. Los Hooks tienen una convención y es utilizar siempre `use` delante del nombre del hook. A demás hay que recordar que los Hooks sólo se pueden llamar en en el nivel superior de tu componente funcional, por lo tanto no podrás llamarlo dentro de un ciclo for, de un gestor de un gestor de eventos, de un if-else statement, etc... `Los hooks sólo pueden llamarse dentro del cuerpo del componente funcional y no de forma anidada`.
+
+   `Todos los Hooks deben estar siempre en el nivel superior de tu componente`. La razón es que los Hooks en React deben ser llamados en el mismo orden en cada renderizado. Esto significa que no deben estar dentro de bucles, condicionales o cualquier bloque de código que no se ejecute en cada renderizado. `Esto asegura que React pueda rastrear y mantener el estado interno del Hook de manera efectiva`.
+
+   Colocar los Hooks en el nivel superior de tu componente `permite que React pueda "recordar" el estado y la lógica entre re-renderizaciones`. Si colocas un Hook dentro de un bloque condicional y ese bloque no se ejecuta en un renderizado posterior, React no sabrá qué hacer con ese Hook y podría resultar en comportamientos inesperados o errores.
    
    Los más comunes son:
    
@@ -4439,7 +4443,7 @@
        <Route index exact path="/" element={<Home />} />
        <Route exact path="/about" render={() => <About />} />
        <Route path="/user/:id" element={<UserProfile />}>
-         /* subrutas */
+         /* sub-rutas */
          <Route path="/user/:id/setting" element={<UserSetting>}>
          <Route path="/user/:id/shopping-cart" element={<UserCart>}>
        </Route>
@@ -4469,17 +4473,21 @@
 
    - **element o render**:
 
-     `element` especifica qué componente o elemento JSX debe renderizarse cuando la ruta coincide.
+     `element`:
+     
+       Especifica qué componente o elemento JSX debe renderizarse cuando la ruta coincide.
 
-     ```jsx
-     <Route path="/about" element={<About someProp="value" />} />
-     ```
+       ```jsx
+       <Route path="/about" element={<About someProp="value" />} />
+       ```
      
-     `render` es otra forma de especificar qué componente renderizar cuando una ruta coincide. En lugar de proporcionar un nombre de componente, proporcionas una función que devuelve un componente de React. Esto es útil cuando necesitas pasar props adicionales al componente que se renderizará. Es utilizado en versiones anteriores a `react-router-dom` (5+1).
+     `render`:
      
-     ```jsx
-     <Route path="/about" render={() => <About someProp="value" />} />
-     ```
+       Es otra forma de especificar qué componente renderizar cuando una ruta coincide. En lugar de proporcionar un nombre de componente, proporcionas una función que devuelve un componente de React. Esto es útil cuando necesitas pasar props adicionales al componente que se renderizará. Es utilizado en versiones anteriores a `react-router-dom` (5+1).
+     
+       ```jsx
+       <Route path="/about" render={() => <About someProp="value" />} />
+       ```
      
 7. #### **`Redirect`**:
 
@@ -4501,7 +4509,7 @@
 
 8. #### **`Outlet`**:
 
-   El componente `Outlet` se utiliza en React Router v6 para renderizar sub-rutas anidadas dentro de una ruta principal. Es especialmente útil cuando se tienen rutas secundarias dentro de una ruta principal y se desea que se rendericen en un punto específico del componente padre.
+   El componente `Outlet` se utiliza en React Router v6 para renderizar `sub-rutas` anidadas dentro de una ruta principal. Es especialmente útil cuando se tienen rutas secundarias dentro de una ruta principal y se desea que se rendericen en un punto específico del componente padre.
 
    Supongamos que tienes una estructura de rutas como esta:
 
@@ -4509,7 +4517,7 @@
    <Routes>
      <Route path="/" element={<Home />} />
      <Route path="/dashboard" element={<Dashboard />}>
-       /* subrutas */
+       /* sub-rutas */
        <Route index element={<DashboardHome />} />
        <Route path="/settings" element={<Settings />} />
      </Route>
@@ -4736,6 +4744,8 @@
 
    En aplicaciones modernas, es común trabajar con datos que pueden cambiar con el tiempo, como actualizaciones en una base de datos o información de un API externo. SWR simplifica este proceso al ofrecer una solución sencilla para manejar las solicitudes de datos y su actualización.
 
+   Recuerda que como todos los hooks, `SWR` debe de estar en el nivel superior de tu componente.
+
 3. #### **`Sintaxis y Uso Básico de SWR`**:
 
    Para comenzar a usar este framework, primero necesitas instalarlo y luego importarlo en tu archivo. Luego, puedes utilizar la función `useSWR` para obtener y gestionar tus datos.
@@ -4750,10 +4760,10 @@
    function Componente() {
      const { data, error } = useSWR('https://www.api.com/datos', fetcher);
    
-     if (error) return <div>Error al cargar los datos</div>;
-     if (!data) return <div>Cargando...</div>;
+     if (error) return <h2>{error.message}</h2>;
+     if (!data) return <h2>Is Loading...</h2>;
    
-     return <div>Los datos son: {data}</div>;
+     return <p>Data: {data}</p>;
    }
    ```
    
