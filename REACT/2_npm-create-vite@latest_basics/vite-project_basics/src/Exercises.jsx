@@ -896,7 +896,7 @@ export const GitHubUser = ({ username }) => {
   const url = `https://api.github.com/users/${username}`;
   
   const fetcher = (url) => fetch(url).then((res) => res.json());
-  const { data, error } = useSWR(url, fetcher);
+  const { data, error, mutate } = useSWR(url, fetcher);
   
   if (error) return <h2>{error.message}</h2>;
   if (!data) return <h2>Is Loading...</h2>;
@@ -905,6 +905,7 @@ export const GitHubUser = ({ username }) => {
   return (
     <>
       {/* {!data && <h2>Is Loading...</h2>} */}
+      {mutate()}
       {data && (
         <div
           style={{
