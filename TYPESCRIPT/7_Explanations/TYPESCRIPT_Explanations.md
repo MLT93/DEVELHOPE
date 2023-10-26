@@ -255,7 +255,7 @@
    
    - **Type**:
      
-     Puede usarse para crear tipos más complejos.
+     Puede usarse para crear tipos customizados más complejos.
 
      ```typescript
      type Usuario = {
@@ -270,6 +270,18 @@
        edad: 30,
        email: "juan@example.com",
      };
+     ```
+     
+     O crear un tipo único para varias ocasiones
+
+     ```typescript
+     type Country = string;
+     
+     const country1: Country = "Nigeria";
+     
+     const country2: Country = "Italy";
+     
+     const country3: Country = "China";
      ```
 
    `Ambos permiten definir estructuras de datos`, pero hay algunas diferencias sutiles entre ellos. Por lo general, `se prefiere interface para definir formas de objetos`, ya que es más adecuada para describir la forma de los objetos y puede ser extendida o implementada en otras interface. `type es más flexible y puede ser usado con uniones y tipos condicionales`.
