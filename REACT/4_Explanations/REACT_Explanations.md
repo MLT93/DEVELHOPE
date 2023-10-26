@@ -3129,7 +3129,9 @@
      npx tailwindcss init -p
      ```
      
-     `-p` es un argumento que se pasa al comando init. En este caso, `-p indica que Tailwind debe agregar una configuración de preprocesador a la configuración inicial`. Por lo tanto, si estás utilizando un preprocesador como `Sass` o `Less` en tu proyecto, este comando configurará Tailwind para trabajar con él.
+     - `-p`:
+     
+       Es un argumento que se pasa al comando init. En este caso, `-p indica que Tailwind debe agregar una configuración de preprocesador a la configuración inicial`. Por lo tanto, si estás utilizando un preprocesador como `Sass` o `Less` en tu proyecto, este comando configurará Tailwind para trabajar con él.
      
      Esto creará un archivo `tailwind.config.js` y un archivo `postcss.config.js` en tu directorio.
       
