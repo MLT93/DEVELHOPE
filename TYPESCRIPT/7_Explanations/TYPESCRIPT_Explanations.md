@@ -178,53 +178,53 @@
      export {};
      ```
 
-     - **`Aserción de tipos`**:
-
-       Las aserciones de tipo, también conocidas como `type assertions` en inglés, son una característica de TypeScript que te `permite decirle al compilador el tipo de un valor cuando TypeScript no puede inferirlo automáticamente`. `Esto es útil cuando estás seguro de que cierto valor tiene un tipo específico`.
-
-       - `Cuando Usar Aserciones de Tipo?`:
-
-         Si tú, como programador, tienes información sobre el tipo de un valor que TypeScript no puede determinar por sí mismo, puedes utilizar una aserción de tipo para indicarle a TypeScript qué tipo debe considerar.
-
-       - `Las Aserciones si Trabajas con Tipos Union e Intersection`:
-
-         Las aserciones de tipo pueden ser necesarias cuando trabajas con `tipos unión` (`|`) e `intersección` (`&`). En algunos casos, necesitarás decirle a TypeScript cuál es el tipo específico que estás tratando.
-
-       - `Sintaxis de Aserción de Tipo`:
-
-         Para formar una aserción deberás utilizar la palabra reservada `as`.
-
-         ```typescript
-         const valor: any = "pancho fue a jugar";
-         const longitudCadena: number = (valor as string).length;
-         ```
-         
-         Aquí, `(valor as string)` es una aserción de tipo que indica que `valor` debe tratarse como un `string`.
-
-         Es importante recordar que `las aserciones de tipo no realizan una transformación en tiempo de ejecución`; `simplemente le dicen al compilador cómo interpretar un valor en particular durante la fase de desarrollo`. Por lo tanto, si la aserción es incorrecta, aún podrían ocurrir errores en tiempo de ejecución. Por esta razón, se debe tener cuidado al usar aserciones de tipo y asegurarse de que sean correctas y necesarias.
-
-       - `Tipo Any`:
-
-         Las aserciones de tipo son especialmente útiles cuando estás trabajando con valores de tipo `any`, ya que TypeScript no puede proporcionar verificaciones de tipo en estos casos.
-
-       - `El DOM`:
-
-         Al interactuar con el DOM en TypeScript, a menudo necesitas asertar el tipo de un elemento del DOM para acceder a sus propiedades y métodos específicos.
-
-       - `Conversiones entre tipos`:
-
-         Por ejemplo, si estás recibiendo datos de una API y necesitas convertirlos a tipos específicos, puedes usar aserciones de tipo para indicar a TypeScript qué tipo esperas.
-
-       - `No Engañes al Compilador`:
-
-         Las aserciones de tipo te permiten `decirle` al compilador qué tipo debe considerar un valor. Sin embargo, si te equivocas en la aserción, es posible que obtengas errores en tiempo de ejecución.
-
-       - `Debes Estar Seguro del Tipo`:
-
-         Antes de usar una aserción de tipo, asegúrate de que estás completamente seguro de que el valor es del tipo que afirmas. Si cometes un error, podrías introducir errores difíciles de depurar en tu código.
-
+   - **`Aserción de tipos`**:
+  
+     Las aserciones de tipo, también conocidas como `type assertions` en inglés, son una característica de TypeScript que te `permite decirle al compilador el tipo de un valor cuando TypeScript no puede inferirlo automáticamente`. `Esto es útil cuando estás seguro de que cierto valor tiene un tipo específico`.
+   
+     - `Cuando Usar Aserciones de Tipo?`:
+   
+       Si tú, como programador, tienes información sobre el tipo de un valor que TypeScript no puede determinar por sí mismo, puedes utilizar una aserción de tipo para indicarle a TypeScript qué tipo debe considerar.
+    
+     - `Las Aserciones si Trabajas con Tipos Union e Intersection`:
+   
+       Las aserciones de tipo pueden ser necesarias cuando trabajas con `tipos unión` (`|`) e `intersección` (`&`). En algunos casos, necesitarás decirle a TypeScript cuál es el tipo específico que estás tratando.
+   
+     - `Sintaxis de Aserción de Tipo`:
+   
+       Para formar una aserción deberás utilizar la palabra reservada `as`.
+   
+       ```typescript
+       const valor: any = "pancho fue a jugar";
+       const longitudCadena: number = (valor as string).length;
+       ```
+       
+       Aquí, `(valor as string)` es una aserción de tipo que indica que `valor` debe tratarse como un `string`.
+   
+       Es importante recordar que `las aserciones de tipo no realizan una transformación en tiempo de ejecución`; `simplemente le dicen al compilador cómo interpretar un valor en particular durante la fase de desarrollo`. Por lo tanto, si la aserción es incorrecta, aún podrían ocurrir errores en tiempo de ejecución. Por esta razón, se debe tener cuidado al usar aserciones de tipo y asegurarse de que sean correctas y necesarias.
+   
+     - **Tipo `Any`**:
+   
+       Las aserciones de tipo son especialmente útiles cuando estás trabajando con valores de tipo `any`, ya que TypeScript no puede proporcionar verificaciones de tipo en estos casos.
+    
+     - **El `DOM`**:
+    
+       Al interactuar con el DOM en TypeScript, a menudo necesitas asertar el tipo de un elemento del DOM para acceder a sus propiedades y métodos específicos.
+    
+     - **Conversiones entre tipos**:
+   
+       Por ejemplo, si estás recibiendo datos de una API y necesitas convertirlos a tipos específicos, puedes usar aserciones de tipo para indicar a TypeScript qué tipo esperas.
+   
+     - **No Engañes al Compilador**:
+   
+       Las aserciones de tipo te permiten `decirle` al compilador qué tipo debe considerar un valor. Sin embargo, si te equivocas en la aserción, es posible que obtengas errores en tiempo de ejecución.
+   
+     - **Debes Estar Seguro del Tipo**:
+   
+       Antes de usar una aserción de tipo, asegúrate de que estás completamente seguro de que el valor es del tipo que afirmas. Si cometes un error, podrías introducir errores difíciles de depurar en tu código.
+      
    En resumen, las aserciones de tipo en TypeScript te proporcionan una forma de comunicarte con el compilador sobre el tipo de un valor cuando TypeScript no puede determinarlo por sí mismo. Sin embargo, debes usarlas con precaución y asegurarte de que estás seguro del tipo del valor que estás asertando.
-
+     
 5. #### **`Interface & Type`**:
 
    Existe la posibilidad de `crear tipos personalizados` utilizando las palabras reservadas `interface` o `type`.
