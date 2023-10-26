@@ -3090,6 +3090,10 @@
      ```jsx
      npm install --global yarn
      ```
+
+     ```jsx
+     npm i -g yarn
+     ```
      
    - **`Inicia un nuevo proyecto` (si no lo has hecho ya)**:
      
@@ -3164,11 +3168,11 @@
      Si también deseas utilizar SASS, instálalo y agrega el cargador de SASS para Webpack:
      
      ```jsx
-     npm install sass sass-loader
+     npm install --save-dev sass sass-loader
      ```
      
      ```jsx
-     yarn add sass sass-loader
+     yarn add sass sass-loader --dev
      ```
      
      Luego, agrega el siguiente código en tu archivo `webpack.config.js` para configurar el cargador de SASS:
@@ -3195,8 +3199,6 @@
      
      Si deseas utilizar Vite como bundler en vez de webpack, instala los plugins con el siguiente comando:
      
-     **https://www.npmjs.com/package/vite-plugin-sass-dts**
-     
      ```jsx
      npm install vite-plugin-sass-dts vite-plugin-sass --save-dev
      ```
@@ -3204,15 +3206,26 @@
      ```jsx
      npm i -D vite-plugin-sass-dts vite-plugin-sass
      ```
-     `i` o `install`: Esto indica que se debe instalar el paquete.
      
-     `-D` o `--save-dev`: Esto indica que el paquete se instalará como una dependencia de desarrollo. Esto significa que el paquete no será necesario para la ejecución normal del proyecto, sino solo durante el desarrollo.
+     **https://www.npmjs.com/package/vite-plugin-sass-dts**
+     
+     - `i` o `install`:
+     
+       Esto indica que se debe instalar el paquete.
+     
+     - `-D` o `--save-dev`:
+     
+       Esto indica que el paquete se instalará como una dependencia de desarrollo. Esto significa que el paquete no será necesario para la ejecución normal del proyecto, sino solo durante el desarrollo. No será incluido si alguien más instala o clona tu proyecto.
+     
+     ```jsx
+     yarn add vite-plugin-sass-dts vite-plugin-sass --dev
+     ```
      
      **https://classic.yarnpkg.com/en/package/vite-plugin-sass-dts**
      
-     ```jsx
-     yarn add vite-plugin-sass-dts vite-plugin-sass
-     ```
+     - `--dev`:
+       
+       Esto en `yarn` es equivalente al `-D` de `NPM`.
      
      Ahora configura Vite para que trabaje con SASS.
      Abre tu archivo `vite.config.js` en la raíz de tu proyecto y agrega el plugin de SASS:

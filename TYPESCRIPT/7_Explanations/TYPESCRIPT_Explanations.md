@@ -1,3 +1,4 @@
+
 # **TYPESCRIPT**
 
 ## The TypeScript Language y Funciones Relacionadas: Una Explicación Detallada
@@ -5,7 +6,7 @@
 1. #### **`Introducción a TypeScript`**:
 
    `TypeScript` es un lenguaje de programación desarrollado por `Microsoft` que se basa en `JavaScript`. Su principal objetivo es proporcionar un `sistema de tipos estáticos`, lo que significa que puedes definir el tipo de datos de las variables y parámetros de una función de antemano. Esto ayuda a detectar errores en tiempo de desarrollo y facilita el trabajo en proyectos grandes y colaborativos.
-
+   
 2. #### **`Importancia de TypeScript`**:
 
    TypeScript se ha vuelto `crucial en el desarrollo web` y de aplicaciones `debido a su capacidad para detectar errores` en tiempo de desarrollo. Esto significa que puedes atrapar problemas antes de que tu código llegue a producción, lo que ahorra tiempo y recursos. Además, `al ser un superset de JavaScript, puedes usar todas las características de este último, lo que facilita la transición a TypeScript`.
@@ -20,7 +21,7 @@
    let esProgramador: boolean = true;
    ```
 
-   Los tipos de datos comunes en TypeScript incluyen:
+   Los tipos de datos más comunes en TypeScript incluyen:
 
    - **number**:
 
@@ -151,7 +152,7 @@
 
 5. #### **`Interface & Type`**:
 
-   Existe la posibilidad de `crear tipos personalizados` utilizando `interface` o `type`., mientras que `type` puede usarse para crear tipos más complejos.
+   Existe la posibilidad de `crear tipos personalizados` utilizando las palabras reservadas `interface` o `type`.
    
 
    - **interface**:
@@ -243,30 +244,33 @@
 
    Las principales bibliotecas y frameworks, como `Angular`, `React` y `Vue.js`, `tienen soporte para TypeScript`. Esto permite escribir aplicaciones más robustas y mantenibles.
 
-10. #### **`Herramientas de Compilación`**:
+10. #### **`Instalación, Herramientas de Compilación y Running Code`**:
    
    `Para utilizar TypeScript en proyectos, necesitas un proceso de compilación que convierta tu código TypeScript en JavaScript`, ya que los navegadores solo entienden JavaScript. Típicamente, `se utiliza el compilador de TypeScript (tsc) o herramientas de construcción como Webpack junto con loaders de TypeScript` para automatizar este proceso.
-   
-   - **Compilador de TypeScript `tsc`**:
-       
-     `TypeScript proporciona su propio compilador` de línea de comandos llamado `tsc`. Puedes utilizar este compilador para compilar tus archivos TypeScript. Por ejemplo, si tienes un archivo `archivo.ts`, puedes compilarlo ejecutando `tsc archivo.ts` en la terminal.
+
+   - **Instalar TypeScript**:
+
+     Antes de nada debes asegurarte que tienes TypeScript instalado en tu proyecto.
+
+     Puedes instalarlo como una dependencia de desarrollo en tu proyecto utilizando el siguiente comando:
 
      ```bash
-     <!-- este comando ejecutará la compilación -->
-     tsc archivo.ts
+     npm i -D typescript
      ```
 
-     Este comando ejecutará la compilación, pero debes estar dentro del directorio del proyecto que contiene el archivo `tsconfig.json`. El compilador buscará ese archivo de configuración y comenzará a compilar tus archivos TypeScript.
-     
-   - **Herramienta de Construcción `Build Tools`**:
-     
-     También puedes usar herramientas de construcción como `Webpack junto con loaders de TypeScript`. Estas herramientas ofrecen ventajas adicionales como la capacidad de gestionar dependencias, optimizar el código y automatizar tareas de construcción.
-     
-     `Si estás utilizando una herramienta de construcción como Webpack, asegúrate de tener un loader de TypeScript configurado. Esto permitirá a Webpack compilar tus archivos TypeScript como parte de su proceso de construcción`.
+     ```bash
+     yarn add typescript --dev
+     ```
      
    - **Configuración del Proyecto para Compilación `tsconfig.json`**:
 
      `Para tu proyecto TypeScript necesitas` una configuración adecuada. Esto se logra mediante `un archivo de configuración`. `tsconfig.json` es el archivo que contiene la información sobre cómo se debe realizar la compilación, qué archivos incluir, qué versión de ECMAScript (ES) se debe generar, entre otras opciones.
+
+     Si no tienes uno en tu proyecto, puedes crearlo ejecutando el siguiente comando en la raíz de tu proyecto:
+
+     ```bash
+     tsc --init
+     ```
 
      Un ejemplo de un archivo `tsconfig.json básico`:
      
@@ -298,12 +302,92 @@
        Habilita las configuraciones estrictas para un código más robusto y sin errores.
 
      `La configuración adecuada del tsconfig.json es crucial para el éxito de la compilación`. Asegúrate de entender cada opción y cómo afecta el proceso de compilación.
+   
+   - **Compilador de TypeScript `tsc`**:
+       
+     `TypeScript proporciona su propio compilador` de línea de comandos llamado `tsc`. Puedes utilizar este compilador para compilar tus archivos TypeScript.
      
-11. #### **`Consideraciones y Ventajas`**:
+     Puedes compilarlo en la terminal con este comando:
+
+     ```bash
+     tsc archivo.ts
+     ```
+     
+     Este comando ejecutará la compilación, pero debes estar dentro del directorio del proyecto que contiene el archivo `tsconfig.json`. El compilador buscará ese archivo de configuración y comenzará a compilar tus archivos TypeScript.
+     
+   - **Herramienta de Construcción `Build Tools`**:
+     
+     También puedes usar herramientas de construcción como `Webpack junto con loaders de TypeScript`. Estas herramientas ofrecen ventajas adicionales como la capacidad de gestionar dependencias, optimizar el código y automatizar tareas de construcción.
+     
+     `Si estás utilizando una herramienta de construcción como Webpack, asegúrate de tener un loader de TypeScript configurado. Esto permitirá a Webpack compilar tus archivos TypeScript como parte de su proceso de construcción`.
+
+   - **Scripts en `package.json`**:
+
+     Puedes definir scripts en el archivo `package.json` para facilitar la compilación y ejecución de tu código TypeScript. Por ejemplo, puedes definir un script de compilación que utilice `tsc` para compilar tus archivos TypeScript.
+
+     Abre tu archivo `package.json` y agrega o modifica el campo `scripts` para incluir un script de compilación. Puedes usar el siguiente ejemplo:
+     
+     ```json
+     "scripts": {
+       "build": "tsc",
+       "start": "node src/index.js",
+       "dev": "node index.js",
+     }
+     ```
+
+     - `build`:
+
+       Este es el script. Se ejecuta utilizando el comando `npm run build`.
+
+     - `start`:
+
+       Este es el nombre del script. Se puede ejecutar utilizando el comando `npm start`.
+
+     - `dev`:
+
+       Script que se ejecuta a través del comando `npm run dev`.
+
+     - `node`:
+       
+       Es el comando para ejecutar código JavaScript en el entorno de `Node.js`.
+
+     - `dist/index.js` o `src/index.js`:
+       
+       Es la ruta al archivo JavaScript que deseas ejecutar.
+       `Normalmente se destina una carpeta` llamada `dist`, que se utiliza `para` almacenar `los archivos de salida después de la compilación de TypeScript`. Si no tienes una, créala.
+     
+     Ahora puedes compilar tu código TypeScript ejecutando el siguiente comando:
+
+     ```bash
+     npm run build
+     ```
+     
+     Por último ejecuta tu aplicación en `create-react-app`:
+
+     ```bash
+     npm start
+     ```
+     
+     O en tu aplicación `Vite` / `Next.js`:
+
+     ```bash
+     npm run dev
+     ```
+     
+     ¡Listo! Ahora tienes un script de compilación configurado para tu proyecto TypeScript. Este script te permitirá compilar tu código TypeScript en JavaScript para su ejecución. Recuerda que puedes ajustar las configuraciones según las necesidades de tu proyecto.
+
+
+11. #### **`Librerías y Frameworks de Ejecución de TypeScript`**
+
+   Algunos frameworks y librerías, como `Angular`, `NestJS`, y `Deno`, están diseñados para ejecutar código TypeScript directamente. Esto significa que no es necesario compilar manualmente el código antes de ejecutarlo.
+     
+12. #### **`Consideraciones y Ventajas`**:
 
     `TypeScript agrega complejidad adicional a tus proyectos, pero las ventajas de detección temprana de errores y herramientas de desarrollo mejoradas hacen que el esfuerzo valga la pena`. Además, la comunidad de desarrolladores de TypeScript es activa y proporciona recursos y librerías que facilitan su adopción.
 
-12. #### **`Conclusiones`**:
+    También `posee la ventaja de proporcionar sugerencias sobre el código`. Esto está `integrado en` editores de texto como `Visual Studio Code` o `WebStorm`, `mientras que otros` editores `como` `Atom` o `Vim`, `tienen extensiones` que soportan TypeScript.
+
+13. #### **`Conclusiones`**:
 
     TypeScript es una herramienta poderosa en el mundo del desarrollo web y de aplicaciones. `Proporciona una forma más segura y estructurada de escribir código JavaScript, lo que resulta en aplicaciones más robustas y mantenibles`. Su capacidad para detectar errores en tiempo de desarrollo es especialmente valiosa en proyectos grandes y colaborativos. Si bien puede requerir un esfuerzo adicional, las ventajas que ofrece hacen que TypeScript sea una elección sólida para muchos desarrolladores y equipos de desarrollo.
 
@@ -319,7 +403,7 @@
 
 3. #### **`Sintaxis de Declaración de Tipos`**:
 
-   En TypeScript, los tipos se pueden declarar de varias maneras. Por ejemplo, utilizando los tipos primitivos como `number`, `string`, `boolean`, entre otros. También es posible definir tipos personalizados mediante interfaces o tipos union.
+   En TypeScript, los tipos se pueden declarar de varias maneras. Por ejemplo, utilizando los tipos primitivos como `number`, `string`, `boolean`, entre otros, como explicamos arriba. También es posible definir tipos personalizados mediante interfaces o tipos union.
 
    ```typescript
    // Declaración de tipos
