@@ -443,10 +443,6 @@
 
      ```typescript
      type Punto = { latitud: number; longitud: number };
-     ```
-
-     ```typescript
-     type Punto = { latitud: number; longitud: number };
 
      let coordenada: Punto = { latitud: 31.4201; longitud: 64.1888 };
      ```
