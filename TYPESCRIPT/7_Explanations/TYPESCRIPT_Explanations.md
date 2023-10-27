@@ -489,6 +489,17 @@
        email: "john@example.com"
      };
      ```
+
+   - **No exageres creando Alias**:
+
+     La creación de demasiados Alias puede llevar a un código complicado y difícil de mantener a la larga.
+     
+   En resumen, `los Type Alias son una herramienta poderosa en TypeScript que te permite asignar nombres descriptivos a tipos de datos existentes o combinar tipos para crear estructuras más complejas`. Esto mejora la legibilidad y reutilización del código.
+
+<!-- ! ACABAR DE ESCRIBIR ESTA PARTE -->
+8. #### **`Optional & Readonly Properties`**:
+
+   Estas dos propiedades son muy utilizadas en TypeScript para definir   
           
 8. #### **`Funciones en TypeScript`**:
 
