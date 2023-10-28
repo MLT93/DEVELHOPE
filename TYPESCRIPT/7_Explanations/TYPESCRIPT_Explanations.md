@@ -167,6 +167,8 @@
 
    - **Uso de la `extensión Code Runner` en Visual Studio Code**:
 
+     Un dato interesante es que Visual Studio Code está desarrollado con TypeScript.
+
      Para facilitar el desarrollo, Visual Studio Code posee varias extensiones y una de ellas es `Code Runner`. Esta extensión `nos permite de ejecutar y testear (debug) el código que realizamos sin la necesidad de posicionarnos en el directorio del proyecto y utilizar el comando node, de Node.js, para ejecutar el debug`.
 
      Para utilizar esta extensión con TypeScript, debemos instalar a través de nuestra terminal favorita un paquete llamado `ts-node`, con el siguiente comando:
@@ -325,7 +327,7 @@
      }
      ```
    
-   Estos son algunos de los tipos de datos más comunes en TypeScript. Recuerda que `TypeScript también te permite crear tipos personalizados` y definir `template union type` e `intersections` de tipos para adaptarse a las necesidades específicas de tu proyecto.
+   Estos son algunos de los tipos de datos más comunes en TypeScript. Recuerda que `TypeScript también te permite crear tipos personalizados` y definir `union type` e `intersections` de tipos para adaptarse a las necesidades específicas de tu proyecto.
 
 5. #### **`Inferencia de tipos`**:
 
@@ -395,7 +397,7 @@
      
 6. #### **Tipos personalizados `Interface` & `Type`**:
 
-   Existe la posibilidad de crear tipos personalizados utilizando las palabras reservadas `interface` (objetos y extends) o `type` (template union types y conditional types).
+   Existe la posibilidad de crear tipos personalizados utilizando las palabras reservadas `interface` (objetos y extends) o `type` (union types y conditional types).
    
    - **interface**:
      
@@ -478,7 +480,7 @@
      const country3: Country = "China";
      ```
 
-   `Ambos permiten definir estructuras de datos`, pero hay algunas diferencias sutiles entre ellos. Por lo general, `se prefiere interface para definir formas de objetos`, ya que es más adecuada para describir la forma de los objetos y `porque puede ser extends` o implementada `en otras interface`. `type es más flexible y puede ser usado con template union types y conditional types`.
+   `Ambos permiten definir estructuras de datos`, pero hay algunas diferencias sutiles entre ellos. Por lo general, `se prefiere interface para definir formas de objetos`, ya que es más adecuada para describir la forma de los objetos y `porque puede ser extends` o implementada `en otras interface`. `type es más flexible y puede ser usado con union types y conditional types`.
 
 7. #### **`Type Assertion`**:
   
@@ -488,9 +490,9 @@
   
      Si tú, como programador, tienes información sobre el tipo de un valor que TypeScript no puede determinar por sí mismo, puedes utilizar una aserción de tipo para indicarle a TypeScript qué tipo debe considerar.
   
-   - **Funcionamiento de las Aserciones si Trabajas con `Template Union Type` e `Intersection`**:
+   - **Funcionamiento de las Aserciones si Trabajas con `Union Type` e `Intersection`**:
   
-     Las aserciones de tipo pueden ser necesarias cuando trabajas con `template union type` (`|`) e `intersection` (`&`). En algunos casos, necesitarás decirle a TypeScript cuál es el tipo específico que estás tratando.
+     Las aserciones de tipo pueden ser necesarias cuando trabajas con `union type` (`|`) e `intersection` (`&`). En algunos casos, necesitarás decirle a TypeScript cuál es el tipo específico que estás tratando.
   
    - **Sintaxis de Assertion**:
   
@@ -717,19 +719,19 @@
 
    Esta es una característica útil para asegurarse de que ciertos valores no cambien después de su inicialización, lo que puede ser importante en situaciones donde la inmutabilidad es esencial para el diseño del programa.
 
-11. #### **`Template Union Type`**:
+11. #### **`Template Union Type / Union Type / Intersection Type`**:
 
    Los Template Union Types, también conocidos como Template Literal Types, son una característica poderosa de TypeScript que permite crear tipos basados en patrones de cadenas de texto. Esta característica combina plantillas literales con tipos de unión para crear tipos que pueden representar patrones específicos de cadenas.
 
-   - **Sintaxis Básica**:
+   - **Template Union Type**:
 
-     La sintaxis básica de un Template Union Type es la siguiente:
+     La sintaxis básica de un `Template Union Type` es la siguiente:
 
      ```typescript
      type NombreTipo = `patrón${Tipo1 | Tipo2}`;
      ```
 
-     - Las comillas graves (``) se utilizan para definir el inicio y el final del patrón de cadena.
+     - Las comillas graves o backticks `` se utilizan para definir el inicio y el final del patrón de cadena en `Template Union Type`.
 
      - `Tipo1` y `Tipo2` son tipos que pueden ser parte del patrón.
 
@@ -744,27 +746,159 @@
      Ahora imagínate que deseas preservar una forma de escritura estandarizada para guardar las variables de colores escritos en forma hexadecimal. Podrías hacerlo así:
 
      ```typescript
-     type Hexadecimal = `#${string}`; // Esto hará que el tipo `Hexadecimal` siempre deberá ser escrito de una determinada manera
+     type Hexadecimal = `#${string}`; // Esto hará que el tipo `Hexadecimal` siempre deberá ser escrito de una manera determinada
      
      const color1: Hexadecimal = "0033ff"; // Esto dará un error, porque no está escrito según la forma estructurada en el tipo `Hexadecimal`
-     const color2: Hexadecimal = "#FF2490";
-     ```
-     
-   - **Uso en Funciones Genéricas**:
 
-     Los Template Union Types son especialmente útiles cuando se utilizan en funciones genéricas para inferir y aplicar restricciones de tipo a argumentos de cadena de texto.
+     const color2: Hexadecimal = "#FF2490"; // Correcto
+     ```
+
+     `Los Template Union Types son especialmente útiles cuando se utilizan en funciones genéricas para inferir y aplicar restricciones de tipo a argumentos de cadena de texto`.
      
      ```typescript
-     function procesarCadena<T extends string>(cadena: T): `¡Hola, ${T}!` {
-       return `¡Hola, ${cadena}!`;
+     function procesarCadena<T extends string>(texto: T): `¡Hola, ${T}!` {
+       return `¡Hola, ${texto}!`;
      }
      
      let resultado = procesarCadena("Mundo"); // resultado tiene el tipo "¡Hola, Mundo!"
      ```
      
-     En este ejemplo, la función `procesarCadena` toma un argumento de tipo `T` que debe ser una cadena de texto. El tipo de retorno se infiere como una cadena de texto que comienza con "¡Hola, " seguido del tipo de `T` y termina con "!".
+     En este ejemplo, la función `procesarCadena` toma un argumento de tipo `T` que será una cadena de texto. El tipo de `return` se infiere como una cadena de texto que comienza con `¡Hola, ` seguido del tipo de `T` (que es un string) y termina con `!`.
 
-   En resumen, los Template Union Types son extremadamente útiles para crear tipos específicos basados en patrones de cadenas de texto. Pueden combinarse con otras características de TypeScript, como condicionales y genéricos, para crear tipos aún más complejos y personalizados.
+     En resumen, `los Template Union Types son extremadamente útiles para crear tipos específicos basados en patrones de cadenas de texto. Pueden combinarse con otras características de TypeScript, como condicionales y genéricos`, para crear tipos aún más complejos y personalizados.
+
+   - **Union Type**:
+
+     En TypeScript, `los Union Types son una característica que te permite combinar dos o más tipos en uno solo`. Esto significa que una variable con un Union Type puede tener uno de varios tipos diferentes.
+
+     La sintaxis para definir un `Union Type` utiliza el operador de tubería `|` entre los tipos que se están uniendo.
+
+     ```typescript  
+     let miVariable: Tipo1 | Tipo2 | Tipo3; // La variable puede ser de un tipo o de otro
+     
+     type Tipo = Tipo1 | Tipo2; // `Tipo` puede tener un tipo u otro
+     ```
+     
+     Ejemplo:
+
+     ```typescript
+     // Este tipo puede ser de tipo `string` o de tipo `boolean`    
+     type Type_StringOrBoolean = string | boolean;
+     
+     let resultadoDelExamen: Type_StringOrBoolean = `Usted sacó un 10`; // No hay error porque le pasamos un string
+     let isGraduated: Type_StringOrBoolean = false;
+     let notaDelExamen: Type_StringOrBoolean = 23; // Type 23 is not assignable to type `Type_StringOrBoolean`
+     ```
+     
+     Supongamos que queremos definir una función que acepte un argumento que pueda ser de tipo número o cadena de texto:
+     
+     ```typescript
+     function imprimirID(id: number | string) {
+         console.log("ID:", id);
+     }
+     ```
+     
+     En este ejemplo, `id` puede ser de tipo `number` o de tipo `string`. Puedes   pasar tanto un número como una cadena a esta función.
+     
+     También puedes utilizar Union Types en la definición de interfaces y tipos   personalizados:
+     
+     ```typescript
+     type Resultado = number | string;
+     
+     interface Producto {
+         nombre: string;
+         precio: number;
+         estado: "disponible" | "agotado";
+     }
+     
+     let miResultado: Resultado = 10; // `miResultado` es de tipo number
+     let otroResultado: Resultado = "Hola"; // `otroResultado` es de tipo string
+     
+     let miProducto: Producto = {
+         nombre: "Camisa",
+         precio: 29.99,
+         estado: "disponible"
+     };
+     ```
+   
+     - `Proporcionan flexibilidad al permitir que una variable o parámetro acepte múltiples tipos`.
+  
+     - `Ayudan a manejar diferentes casos de uso en una función o estructura de datos`.
+  
+     En resumen, Union Types en TypeScript son una herramienta valiosa para manejar diferentes tipos de datos en situaciones donde un valor puede ser de uno de varios tipos. Esto proporciona una mayor flexibilidad en el diseño y el desarrollo de tus programas.
+
+   - **Intersection Type**:
+     
+     En TypeScript, `los Intersection Types permiten combinar múltiples tipos en uno solo. A diferencia de los Union Types, donde una variable puede ser de uno de varios tipos, en un Intersection Type, una variable debe tener todas las propiedades de los tipos combinados`.
+     
+     Es parecido a los `extends` de las `class`.
+     
+     La sintaxis para definir un `Intersection Type` utiliza el operador de intersección `&`.
+     
+     ```typescript
+     type Tipos = Tipo1 & Tipo2 & Tipo3;
+
+     let miVariable: Tipos = //... Se deben cumplir todos los tipos
+     ```
+     
+     Ejemplo:
+
+     ```typescript
+     type Tipo1 = {
+         propiedad1: string;
+     }
+     
+     type Tipo2 = {
+         propiedad2: number;
+     }
+     
+     type Tipo3 = {
+         propiedad3: boolean;
+     }
+     
+     type Tipos = Tipo1 & Tipo2 & Tipo3;
+     
+     let miVariable: Tipos = {
+         propiedad1: "Hola",
+         propiedad2: 42,
+         propiedad3: true
+     };
+     ```
+     
+     Supongamos que queremos crear un tipo que represente a un estudiante que también es un atleta. Esto significa que el objeto debe tener tanto propiedades de estudiante como de atleta.
+     
+     ```typescript
+     type Estudiante = {
+         nombre: string;
+         edad: number;
+         grado: string;
+     };
+     
+     type Atleta = {
+         deporte: string;
+         medallas: number;
+     };
+     
+     type EstudianteAtleta = Estudiante & Atleta;
+     
+     let miEstudianteAtleta: EstudianteAtleta = {
+         nombre: "Juan",
+         edad: 20,
+         grado: "Universidad",
+         deporte: "Natación",
+         medallas: 3
+     };
+     ```
+     
+     En este ejemplo, `EstudianteAtleta` es un tipo que tiene todas las propiedades de `Estudiante` y todas las propiedades de `Atleta`.
+     
+     - `Permiten crear tipos complejos que tienen todas las características de los tipos combinados`.
+
+     - `Son útiles en situaciones donde se necesita que un objeto cumpla con múltiples criterios`.
+     
+     - `Recordar que los Intersection Types requieren que el objeto cumpla con todas las propiedades de los tipos combinados. Si alguna propiedad falta, se producirá un error`.
+     
+     En resumen, Intersection Types en TypeScript te permiten combinar múltiples tipos para crear tipos más complejos y específicos. Esto es útil cuando necesitas representar objetos que deben cumplir con múltiples criterios o tener múltiples funcionalidades.
    
 12. #### **`Funciones en TypeScript`**:
 
