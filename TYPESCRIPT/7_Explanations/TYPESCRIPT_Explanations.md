@@ -4,11 +4,19 @@
 ## The TypeScript Language y Funciones Relacionadas: Una Explicación Detallada
 
 1. #### **`Introducción a TypeScript`**:
+   
+   `TypeScript es un lenguaje de programación desarrollado por Microsoft basado en JavaScript`.
 
-   `TypeScript` es un lenguaje de programación desarrollado por `Microsoft` que se basa en `JavaScript`. Su principal objetivo es proporcionar un `sistema de tipos estáticos`, lo que significa que puedes definir el tipo de datos de las variables y parámetros de una función de antemano. Esto ayuda a detectar errores en tiempo de desarrollo y facilita el trabajo en proyectos grandes y colaborativos.
+   `Su` principal `objetivo es proporcionar un sistema de tipos estáticos`, permitiendo definir el tipo de datos de variables y parámetros de funciones de antemano. Esto ayuda a detectar errores en tiempo de desarrollo y facilita el trabajo en proyectos grandes y colaborativos.
+   
+   `TypeScript ayuda a fortalecer el tipado débil de JavaScript, proporcionando un tipado más fuerte y seguro`.
+
+   `Este lenguaje se compila a JavaScript en tiempo de ejecución`.
+
+   `Es importante destacar que TypeScript funciona principalmente en tiempo de desarrollo y no en tiempo de ejecución`. El navegador o `el entorno de ejecución finalmente interpretará y ejecutará código JavaScript` realmente.
    
 2. #### **`Importancia de TypeScript`**:
-
+   
    TypeScript se ha vuelto `crucial en el desarrollo web` y de aplicaciones `debido a su capacidad para detectar errores` en tiempo de desarrollo. Esto significa que puedes atrapar problemas antes de que tu código llegue a producción, lo que ahorra tiempo y recursos. Además, `al ser un superset de JavaScript, puedes usar todas las características de este último, lo que facilita la transición a TypeScript`.
 
 3. #### **`Instalación, Herramientas de Compilación y Running Code`**:
@@ -253,7 +261,7 @@
 
    - **any**:
 
-     Puede ser cualquier tipo de dato y no tiene restricciones de tipo. Es el valor por defecto.
+     Es el valor por defecto. Puede ser cualquier tipo de dato y no tiene restricciones de tipo y le dice a TypeScript que IGNORE el tipado de datos que haya.
 
      ```typescript
      let dato: any = "Hola";
@@ -263,7 +271,7 @@
 
    - **void**:
 
-     Indica que una función no devuelve ningún valor.
+     Indica que una función, cuando llega a la parte del return, no devuelve ningún valor y, si devolviera algo, no importaría lo que fuere. `El código sí llega hasta el return de la función.`
 
      ```typescript
      function saludar(): void {
@@ -282,7 +290,7 @@
 
    - **never**:
 
-     Representa un tipo de valor que nunca ocurre. `Es utilizado principalmente para funciones que nunca retornan un valor o que lanzan errores`. También es inferido por TypeScript cuando una función siempre lanza una excepción o tiene un bucle infinito.
+     Representa un tipo de valor que nunca se retorna. `Es utilizado principalmente para funciones que nunca retornarán un valor o que lanzan errores`. También es inferido por TypeScript cuando una función siempre lanza una excepción o tiene un bucle infinito. `El código no llega hasta el return de la función`.
 
      ```typescript
      function error(mensaje: string): never {
@@ -317,15 +325,82 @@
      }
      ```
    
-   Estos son algunos de los tipos de datos más comunes en TypeScript. Recuerda que `TypeScript también te permite crear tipos personalizados` y definir `union` e `intersections` de tipos para adaptarse a las necesidades específicas de tu proyecto.
-     
-5. #### **Tipos personalizados `Interface` & `Type`**:
+   Estos son algunos de los tipos de datos más comunes en TypeScript. Recuerda que `TypeScript también te permite crear tipos personalizados` y definir `template union type` e `intersections` de tipos para adaptarse a las necesidades específicas de tu proyecto.
 
-   Existe la posibilidad de crear tipos personalizados utilizando las palabras reservadas `interface` o `type`.
+5. #### **`Inferencia de tipos`**:
+
+   La inferencia de tipos en TypeScript es la capacidad del compilador para deducir automáticamente el tipo de una variable basándose en su valor inicial. Esto significa que no siempre es necesario especificar explícitamente el tipo de una variable, ya que TypeScript puede determinarlo por sí mismo.
+
+   Ejemplo:
+
+   ```typescript
+   let nombre = "Juan"; // TypeScript infiere que nombre es de tipo string
+   let edad = 30; // TypeScript infiere que edad es de tipo number
+   ```
+
+   - **Cómo Funciona**:
+
+     La inferencia de tipos en TypeScript se basa en la asignación de tipos. Cuando asignas un valor a una variable, TypeScript analiza el tipo de ese valor y lo asigna como el tipo de la variable.
+     
+     ```typescript
+     let mensaje = "Hola"; // TypeScript infiere que mensaje es de tipo string
+     ```
+
+   - **Contextos de Inferencia**:
+
+     La inferencia de tipos ocurre en varios contextos:
+
+     - `Declaraciones de Variables`:
+
+       ```typescript
+       let x = 10; // TypeScript infiere que x es de tipo number
+       ```
+
+     - `Argumentos de Funciones`:
+
+       ```typescript
+       function duplicar(n: number) {
+         return n * 2;
+       }
+       
+       let resultado = duplicar(5); // TypeScript infiere que resultado es de tipo number
+       ```
+
+     - `Valores de Retorno de Funciones`:
+
+       ```typescript
+       function obtenerNombre() {
+         return "Juan";
+       }
+        
+       let nombre = obtenerNombre(); // TypeScript infiere que nombre es de tipo string
+       ```
+
+     - `Expresiones de Arrays y Objetos`:
+       
+       ```typescript
+       let colores = ["rojo", "verde", "azul"]; // TypeScript infiere que colores es de tipo string[]
+       let punto = { x: 10, y: 20 }; // TypeScript infiere que punto es de tipo { x: number, y: number }
+       ```
+       
+   - **Ventajas y Consideraciones**:
+
+     - La inferencia de tipos mejora la legibilidad del código al reducir la necesidad de escribir tipos explícitos.
+
+     - Sin embargo, a veces es útil proporcionar tipos explícitos para mejorar la documentación y la comprensión del código.
+
+     - La inferencia de tipos no siempre es perfecta y puede haber situaciones en las que sea necesario proporcionar tipos explícitos para evitar comportamientos inesperados.
+     
+   En resumen, la inferencia de tipos es una característica poderosa de TypeScript que permite escribir código más limpio y legible al tiempo que proporciona un alto nivel de seguridad de tipos. Sin embargo, es importante comprender cómo funciona y cuándo es apropiado utilizarla en tus programas.
+     
+6. #### **Tipos personalizados `Interface` & `Type`**:
+
+   Existe la posibilidad de crear tipos personalizados utilizando las palabras reservadas `interface` (objetos y extends) o `type` (template union types y conditional types).
    
    - **interface**:
-
-     `Define la estructura de un objeto`.
+     
+     Las interfaces son como contratos que especifican qué propiedades y métodos debe tener un objeto.
+     `Define la estructura de un objeto y puede ser extendida en otras interfaces`.
 
      ```typescript
      interface Producto {
@@ -345,7 +420,32 @@
        },
      };
      ```
-   
+
+     En este ejemplo, se define la estructura de un `interface` creando un objeto con el nombre declarativo `Producto`. Ahora siempre que se defina un objeto que se considere un tipo de producto, tendrá todas esas propiedades y el método, obligatoriamente.
+
+     ```typescript
+     interface Forma {
+       color: string;
+       area: () => number;
+     }
+     
+     // `Circulo` recibe todas las propiedades de `Forma` y agrega la prop `radio`
+     interface Circulo extends Forma {
+       radio: number;
+     }
+     
+     let miCirculo: Circulo = {
+       color: "rojo",
+       area: () => Math.PI * miCirculo.radio ** 2, // Función de flecha que toma directamente el contexto `this` del ámbito donde es declarada
+       radio: 5
+     };
+     ```
+
+     En este ejemplo, se ilustra cómo se puede usar `interface` y `herencia de interface` en TypeScript.
+     Se definen dos interfaces en TypeScript: `Forma` y `Circulo`.
+     La interfaz `Circulo extiende la interfaz Forma heredando sus propiedades y métodos`. Después `añade su propia propiedad radio con tipo number`.
+     Por último `se define el objeto miCirculo que tiene todas las props y métodos de las dos interfaces`.
+
    - **Type**:
      
      `Puede usarse para crear tipos customizados más complejos`.
@@ -378,9 +478,9 @@
      const country3: Country = "China";
      ```
 
-   `Ambos permiten definir estructuras de datos`, pero hay algunas diferencias sutiles entre ellos. Por lo general, `se prefiere interface para definir formas de objetos`, ya que es más adecuada para describir la forma de los objetos y `porque puede ser extends` o implementada `en otras interface`. `type es más flexible y puede ser usado con union y conditional type`.
+   `Ambos permiten definir estructuras de datos`, pero hay algunas diferencias sutiles entre ellos. Por lo general, `se prefiere interface para definir formas de objetos`, ya que es más adecuada para describir la forma de los objetos y `porque puede ser extends` o implementada `en otras interface`. `type es más flexible y puede ser usado con template union types y conditional types`.
 
-6. #### **`Type Assertion`**:
+7. #### **`Type Assertion`**:
   
    Las aserciones de tipo, también conocidas como `type assertions` en inglés, son una característica de TypeScript que te `permite decirle al compilador el tipo de un valor cuando TypeScript no puede inferirlo automáticamente`. `Esto es útil cuando estás seguro de que cierto valor tiene un tipo específico`.
   
@@ -388,9 +488,9 @@
   
      Si tú, como programador, tienes información sobre el tipo de un valor que TypeScript no puede determinar por sí mismo, puedes utilizar una aserción de tipo para indicarle a TypeScript qué tipo debe considerar.
   
-   - **Funcionamiento de las Aserciones si Trabajas con Type `Union` e `Intersection`**:
+   - **Funcionamiento de las Aserciones si Trabajas con `Template Union Type` e `Intersection`**:
   
-     Las aserciones de tipo pueden ser necesarias cuando trabajas con `type union` (`|`) e `intersection` (`&`). En algunos casos, necesitarás decirle a TypeScript cuál es el tipo específico que estás tratando.
+     Las aserciones de tipo pueden ser necesarias cuando trabajas con `template union type` (`|`) e `intersection` (`&`). En algunos casos, necesitarás decirle a TypeScript cuál es el tipo específico que estás tratando.
   
    - **Sintaxis de Assertion**:
   
@@ -427,7 +527,7 @@
       
    En resumen, las aserciones de tipo en TypeScript te proporcionan una forma de comunicarte con el compilador sobre el tipo de un valor cuando TypeScript no puede determinarlo por sí mismo. Sin embargo, debes usarlas con precaución y asegurarte de que estás seguro del tipo del valor que estás asertando.
 
-7. #### **`Type Alias`**:
+8. #### **`Type Alias`**:
 
    `Un Type Alias es una forma de asignar un nombre a un tipo existente o a una combinación de tipos`. Puedes pensar en ello como un apodo que le das a un tipo de dato para hacer más claro su propósito o para abstraer su complejidad.
 
@@ -496,7 +596,7 @@
      
    En resumen, `los Type Alias son una herramienta poderosa en TypeScript que te permite asignar nombres descriptivos a tipos de datos existentes o combinar tipos para crear estructuras más complejas`. Esto mejora la legibilidad y reutilización del código.
 
-8. #### **`Optional Properties`**:
+9. #### **`Optional Properties`**:
    
    Las propiedades opcionales en TypeScript proporcionan flexibilidad al permitir que una propiedad no sea obligatoria en una estructura de datos, ya sea en una `interface`, un `type`, en un `class`, en `índices de un array` o en `parámetros de funciones`.
    Esto significa que `al interno de un objeto o en los parámetros de una función podemos asignar propiedades opcionales en la creación de su estructura, y no será necesaria su presencia a la hora de su asignación o en la creación de instancias`.
@@ -595,7 +695,7 @@
 
    Este último ejemplo es un ejemplo mixto, para que puedas ver cómo utilizar una prop opcional y trabajar con ella.
 
-9. #### **`Readonly Properties`**:
+10. #### **`Readonly Properties`**:
 
    Una propiedad de solo lectura `read-only property` en TypeScript es una propiedad cuyo valor no puede ser modificado una vez que se le ha asignado un valor. `Esto significa que una vez que se inicializa la propiedad, no puede ser modificado su valor`.
 
@@ -617,7 +717,56 @@
 
    Esta es una característica útil para asegurarse de que ciertos valores no cambien después de su inicialización, lo que puede ser importante en situaciones donde la inmutabilidad es esencial para el diseño del programa.
 
-8. #### **`Funciones en TypeScript`**:
+11. #### **`Template Union Type`**:
+
+   Los Template Union Types, también conocidos como Template Literal Types, son una característica poderosa de TypeScript que permite crear tipos basados en patrones de cadenas de texto. Esta característica combina plantillas literales con tipos de unión para crear tipos que pueden representar patrones específicos de cadenas.
+
+   - **Sintaxis Básica**:
+
+     La sintaxis básica de un Template Union Type es la siguiente:
+
+     ```typescript
+     type NombreTipo = `patrón${Tipo1 | Tipo2}`;
+     ```
+
+     - Las comillas graves (``) se utilizan para definir el inicio y el final del patrón de cadena.
+
+     - `Tipo1` y `Tipo2` son tipos que pueden ser parte del patrón.
+
+     Supongamos que queremos crear un tipo que represente diferentes formatos de fecha. Podríamos hacerlo de la siguiente manera:
+     
+     ```typescript
+     type FormatoFecha = `dd/mm/yyyy` | `mm/dd/yyyy` | `yyyy-mm-dd`;
+     ```
+     
+     `FormatoFecha` solo podrá ser una de las tres cadenas de texto especificadas.
+
+     Ahora imagínate que deseas preservar una forma de escritura estandarizada para guardar las variables de colores escritos en forma hexadecimal. Podrías hacerlo así:
+
+     ```typescript
+     type Hexadecimal = `#${string}`; // Esto hará que el tipo `Hexadecimal` siempre deberá ser escrito de una determinada manera
+     
+     const color1: Hexadecimal = "0033ff"; // Esto dará un error, porque no está escrito según la forma estructurada en el tipo `Hexadecimal`
+     const color2: Hexadecimal = "#FF2490";
+     ```
+     
+   - **Uso en Funciones Genéricas**:
+
+     Los Template Union Types son especialmente útiles cuando se utilizan en funciones genéricas para inferir y aplicar restricciones de tipo a argumentos de cadena de texto.
+     
+     ```typescript
+     function procesarCadena<T extends string>(cadena: T): `¡Hola, ${T}!` {
+       return `¡Hola, ${cadena}!`;
+     }
+     
+     let resultado = procesarCadena("Mundo"); // resultado tiene el tipo "¡Hola, Mundo!"
+     ```
+     
+     En este ejemplo, la función `procesarCadena` toma un argumento de tipo `T` que debe ser una cadena de texto. El tipo de retorno se infiere como una cadena de texto que comienza con "¡Hola, " seguido del tipo de `T` y termina con "!".
+
+   En resumen, los Template Union Types son extremadamente útiles para crear tipos específicos basados en patrones de cadenas de texto. Pueden combinarse con otras características de TypeScript, como condicionales y genéricos, para crear tipos aún más complejos y personalizados.
+   
+12. #### **`Funciones en TypeScript`**:
 
    En TypeScript se permite definir funciones de manera similar a `JavaScript`, `pero con tipos de datos explícitos en los parámetros y en el valor de retorno`.
 
@@ -745,7 +894,7 @@
      ```
     
      
-9. #### **`Clases en TypeScript`**:
+13. #### **`Clases en TypeScript`**:
 
    Typescript `soporta la programación orientada a objetos` y te permite definir clases con propiedades y métodos.
 
@@ -767,11 +916,11 @@
 
    Las `clases` en TypeScript son una `herramienta poderosa para crear objetos con estructura definida`.
 
-10. #### **`Módulos y Encapsulación`**:
+14. #### **`Módulos y Encapsulación`**:
 
    `TypeScript admite la modularización, permitiendo dividir el código en partes más pequeñas y reutilizables`. Puedes exportar e importar elementos entre módulos para mantener tu código organizado y modular.
 
-11. #### **`Generics`**:
+15. #### **`Generics`**:
 
    Los `generics` son una característica importante que `permite escribir código reutilizable con tipos dinámicos`. Puedes crear funciones y clases que trabajen con diferentes tipos de datos de manera segura.
 
@@ -786,20 +935,20 @@
 
    En este ejemplo, `T` es un tipo genérico que se adapta al tipo de datos del array que se pasa como argumento.
 
-12. #### **`TypeScript y Desarrollo Web`**:
+16. #### **`TypeScript y Desarrollo Web`**:
 
    Las principales bibliotecas y frameworks, como `Angular`, `React` y `Vue.js`, `tienen soporte para TypeScript`. Esto permite escribir aplicaciones más robustas y mantenibles.
 
-13. #### **`Librerías y Frameworks de Ejecución de TypeScript`**
+17. #### **`Librerías y Frameworks de Ejecución de TypeScript`**
 
    Algunos frameworks y librerías, como `Angular`, `NestJS`, y `Deno`, están diseñados para ejecutar código TypeScript directamente. Esto significa que no es necesario compilar manualmente el código antes de ejecutarlo.
      
-14. #### **`Consideraciones y Ventajas`**:
+18. #### **`Consideraciones y Ventajas`**:
 
     `TypeScript agrega complejidad adicional a tus proyectos, pero las ventajas de detección temprana de errores y herramientas de desarrollo mejoradas hacen que el esfuerzo valga la pena`. Además, la comunidad de desarrolladores de TypeScript es activa y proporciona recursos y librerías que facilitan su adopción.
 
     También `posee la ventaja de proporcionar sugerencias sobre el código`. Esto está `integrado en` editores de texto como `Visual Studio Code` o `WebStorm`, `mientras que otros` editores `como` `Atom` o `Vim`, `tienen extensiones` que soportan TypeScript.
 
-15. #### **`Conclusiones`**:
+19. #### **`Conclusiones`**:
 
     TypeScript es una herramienta poderosa en el mundo del desarrollo web y de aplicaciones. `Proporciona una forma más segura y estructurada de escribir código JavaScript, lo que resulta en aplicaciones más robustas y mantenibles`. Su capacidad para detectar errores en tiempo de desarrollo es especialmente valiosa en proyectos grandes y colaborativos. Si bien puede requerir un esfuerzo adicional, las ventajas que ofrece hacen que TypeScript sea una elección sólida para muchos desarrolladores y equipos de desarrollo.
