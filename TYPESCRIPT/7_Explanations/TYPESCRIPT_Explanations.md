@@ -496,11 +496,127 @@
      
    En resumen, `los Type Alias son una herramienta poderosa en TypeScript que te permite asignar nombres descriptivos a tipos de datos existentes o combinar tipos para crear estructuras más complejas`. Esto mejora la legibilidad y reutilización del código.
 
-<!-- ! ACABAR DE ESCRIBIR ESTA PARTE -->
-8. #### **`Optional & Readonly Properties`**:
+8. #### **`Optional Properties`**:
+   
+   Las propiedades opcionales en TypeScript proporcionan flexibilidad al permitir que una propiedad no sea obligatoria en una estructura de datos, ya sea en una `interface`, un `type`, en un `class`, en `índices de un array` o en `parámetros de funciones`.
+   Esto significa que `al interno de un objeto o en los parámetros de una función podemos asignar propiedades opcionales en la creación de su estructura, y no será necesaria su presencia a la hora de su asignación o en la creación de instancias`.
 
-   Estas dos propiedades son muy utilizadas en TypeScript para definir   
-          
+   ```typescript
+   interface Persona {
+     nombre: string; // La propiedad `nombre` no es opcional
+     edad?: number; // La propiedad `edad?` es opcional
+   }
+
+   let persona1: Persona = { nombre: "Juan" }; // No da un error porque edad es opcional
+   let persona2: Persona = { nombre: "María", edad: 30 }; // Esto también es válido, incluye la propiedad edad
+   ```
+
+   En este caso, `la propiedad edad es opcional porque tiene un signo de interrogación ? después de su nombre`. Esto indica que un objeto que implemente esta interfaz puede tener o no la propiedad edad.
+
+   ```typescript
+   type Usuario = {
+     nombre: string;
+     edad: number;
+     correoElectronico?: string; // Correo electrónico es una propiedad opcional
+   }
+   
+   // Ejemplo de uso
+   const usuario1: Usuario = {
+     nombre: "Juan",
+     edad: 30,
+     correoElectronico: "juan@example.com" // La propiedad correoElectronico está presente
+   }
+   
+   const usuario2: Usuario = {
+     nombre: "María",
+     edad: 25
+     // La propiedad correoElectronico no está presente
+   }
+   ```
+
+   En este ejemplo, `Usuario` es un `type` que tiene tres propiedades: `nombre`, `edad` y `correoElectronico`. La última propiedad está marcada como opcional con el uso del símbolo `?`.
+
+   ```typescript
+   class Producto {
+     nombre: string;
+     precio: number;
+     descripcion?: string; // Descripción es una propiedad opcional
+     
+     constructor(nombre: string, precio: number, descripcion?: string) {
+       this.nombre = nombre;
+       this.precio = precio;
+       this.descripcion = descripcion;
+     }
+   }
+   
+   const producto1 = new Producto("Laptop", 1200); // Sin asignación de la prop opcional `descripcion`
+   const producto2 = new Producto("Teléfono", 800, "Nuevo modelo 2023");
+   
+   console.log(producto1);
+   console.log(producto2);
+   ```
+
+   En este ejemplo, la propiedad `descripcion` es definida como opcional, por lo que no es obligatoria su definición a la hora de crear una instancia de `Producto`.
+
+   ```typescript
+   let arrayMixto: (string | number)[] = ["uno", 23, "tres"];
+   
+   arrayMixto.forEach((element, index) => {
+     if (typeof element === 'number') {
+       console.log(`Elemento en la posición ${index} es de tipo number: ${element}`);
+     } else {
+       console.log(`Elemento en la posición ${index} es de tipo string: ${element}`);
+     }
+   });
+   ```
+
+   En este ejemplo, vemos cómo es posible utilizar índices opcionales en la creación de un array con TypeScript.
+
+   ```typescript
+   interface Producto {
+     nombre: string;
+     precio: number;
+     descripcion?: string; // Descripción es una propiedad opcional
+   }
+   
+   const productos: Producto[] = [
+     { nombre: "Laptop", precio: 1200 },
+     { nombre: "Teléfono", precio: 800, descripcion: "Nuevo modelo 2023" },
+     { nombre: "Tablet", precio: 500 },
+   ];
+   
+   productos.forEach(producto => {
+     console.log(`Producto: ${producto.nombre}, Precio: ${producto.precio}`);
+     if (producto.descripcion) {
+       console.log(`Descripción: ${producto.descripcion}`);
+     }
+   });
+   ```
+
+   Este último ejemplo es un ejemplo mixto, para que puedas ver cómo utilizar una prop opcional y trabajar con ella.
+
+9. #### **`Readonly Properties`**:
+
+   Una propiedad de solo lectura `read-only property` en TypeScript es una propiedad cuyo valor no puede ser modificado una vez que se le ha asignado un valor. `Esto significa que una vez que se inicializa la propiedad, no puede ser modificado su valor`.
+
+   Para definir una propiedad como de solo lectura, se utiliza la palabra clave `readonly` antes del nombre de la propiedad. Esto se puede hacer en `interface` y en `clases`.
+
+   ```typescript
+   interface Punto {
+     readonly x: number;
+     y: number;
+   }
+
+   let punto: Punto = { x: 10, y: 20 };
+
+   punto.x = 30; // Error, no se puede modificar el valor a una propiedad de solo lectura
+   punto.y = 23 // No da error y se puede modificar porque no tiene `readonly` en la creación de su estructura
+   ```
+
+   En este ejemplo, cuando intentas asignar un nuevo valor a punto.x, TypeScript arroja un error porque la propiedad x está marcada como de solo lectura y no se puede modificar una vez que se ha asignado.
+
+   Esta es una característica útil para asegurarse de que ciertos valores no cambien después de su inicialización, lo que puede ser importante en situaciones donde la inmutabilidad es esencial para el diseño del programa.
+
 8. #### **`Funciones en TypeScript`**:
 
    En TypeScript se permite definir funciones de manera similar a `JavaScript`, `pero con tipos de datos explícitos en los parámetros y en el valor de retorno`.
