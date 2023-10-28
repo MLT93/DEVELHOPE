@@ -378,7 +378,7 @@
      const country3: Country = "China";
      ```
 
-   `Ambos permiten definir estructuras de datos`, pero hay algunas diferencias sutiles entre ellos. Por lo general, `se prefiere interface para definir formas de objetos`, ya que es más adecuada para describir la forma de los objetos y puede ser extendida o implementada en otras interface. `type es más flexible y puede ser usado con uniones y tipos condicionales`.
+   `Ambos permiten definir estructuras de datos`, pero hay algunas diferencias sutiles entre ellos. Por lo general, `se prefiere interface para definir formas de objetos`, ya que es más adecuada para describir la forma de los objetos y `porque puede ser extends` o implementada `en otras interface`. `type es más flexible y puede ser usado con union y conditional type`.
 
 6. #### **`Type Assertion`**:
   
@@ -388,9 +388,9 @@
   
      Si tú, como programador, tienes información sobre el tipo de un valor que TypeScript no puede determinar por sí mismo, puedes utilizar una aserción de tipo para indicarle a TypeScript qué tipo debe considerar.
   
-   - **Funcionamiento de las Aserciones si Trabajas con Types `Union` e `Intersection`**:
+   - **Funcionamiento de las Aserciones si Trabajas con Type `Union` e `Intersection`**:
   
-     Las aserciones de tipo pueden ser necesarias cuando trabajas con `tipos unión` (`|`) e `intersección` (`&`). En algunos casos, necesitarás decirle a TypeScript cuál es el tipo específico que estás tratando.
+     Las aserciones de tipo pueden ser necesarias cuando trabajas con `type union` (`|`) e `intersection` (`&`). En algunos casos, necesitarás decirle a TypeScript cuál es el tipo específico que estás tratando.
   
    - **Sintaxis de Assertion**:
   
@@ -403,7 +403,7 @@
      
      Aquí, `(valor as string)` es una aserción de tipo que indica que `valor` debe tratarse como un `string`.
   
-     Es importante recordar que `las aserciones de tipo no realizan una transformación en tiempo de ejecución`; `simplemente le dicen al compilador cómo interpretar un valor en particular durante la fase de desarrollo`. Por lo tanto, si la aserción es incorrecta, aún podrían ocurrir errores en tiempo de ejecución. Por esta razón, se debe tener cuidado al usar aserciones de tipo y asegurarse de que sean correctas y necesarias.
+     Es importante recordar que `las aserciones de tipo no realizan una transformación en tiempo de ejecución`, `simplemente le dicen al compilador cómo interpretar un valor en particular durante la fase de desarrollo`. Por lo tanto, si la aserción es incorrecta, aún podrían ocurrir errores en tiempo de ejecución. Por esta razón, se debe tener cuidado al usar aserciones de tipo y asegurarse de que sean correctas y necesarias.
   
    - **Aserciones y Type `Any`**:
   
