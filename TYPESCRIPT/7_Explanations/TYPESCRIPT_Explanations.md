@@ -246,24 +246,113 @@
      ```typescript
      let coordenadas: [number, number] = [10, 20];
      ```
+
    - **enum**:
 
-      Permite definir un conjunto de valores con nombre.
+      Permite definir un conjunto de valores con un ID asignado automáticamente o manualmente. Este ID será numérico por defecto, pero podemos asignarle un nombre con tipo string si deseamos.
 
      ```typescript
-       enum Direccion {
-        Arriba,
-        Abajo,
-        Izquierda,
-        Derecha
-      }
+     enum Direccion {
+       // Si no se le asigna ningún nombre, se le asignará un ID como el índice de un array automáticamente
+       Arriba, // 0
+       Abajo, // 1
+       Izquierda, // 2
+       Derecha // 3
+     }
      
      let direccionActual: Direccion = Direccion.Arriba;
      ```
 
+     Hay dos formas de declarar un enum, con `const` o sin él.
+     
+     - `Con const`:
+
+       `El utilizo de const permite crear un código menos pesado a la hora de compilar`, porque realiza una "transpilación" más ligera en código JavaScript.
+
+       ```typescript
+       // Con el `const`
+       const enum ERROR_TYPES {
+         // Esta asignación del ID se introduce manualmente a través de un nombre con tipo string
+         NOT_FOUND = 'Not-Found',
+         UNAUTHORIZED = 'Unauthorized',
+         FORBIDDEN = 'Forbidden'
+       }
+
+       function mostrarMensaje (elError: ERROR_TYPES) {
+         if(elError === ERROR_TYPES.NOT_FOUND ){
+           console.log('No se encuentra el recurso')
+         } else if(elError === ERROR_TYPES.UNAUTHORIZED) {
+           console.log('No tienes permisos')
+         } else if(elError === ERROR_TYPES.FORBIDDEN) {
+           console.log('Permisos perdidos')
+         }
+       }
+       ```
+
+       En la compilación el código de JavaScript `con el const`, se verá de la siguiente forma:
+
+       ```javascript
+       "use strict";
+       function mostrarMensaje(elError) {
+         if(elError === 'Not-Found' /* ERROR_TYPES.NOT_FOUND */){
+           console.log('No se encuentra el recurso')
+         } else if(elError === 'Unauthorized' /* ERROR_TYPES.UNAUTHORIZED */) {
+           console.log('No tienes permisos')
+         } else if(elError === 'Forbidden' /* ERROR_TYPES.FORBIDDEN */) {
+           console.log('Permisos perdidos')
+         }
+       }
+       ```
+
+     - `Sin const`:
+
+       `Sin el uso de const, tendríamos un código más pesado pero también tendríamos la posibilidad de exportarlo fuera de nuestra aplicación` y utilizarlo en otros lados, por ejemplo, en JavaScript.
+
+       ```typescript
+       // Sin el `const`
+       enum ERROR_TYPES {
+         NOT_FOUND = 'Not-Found',
+         UNAUTHORIZED = 'Unauthorized',
+         FORBIDDEN = 'Forbidden'
+       }
+
+       function mostrarMensaje (elError: ERROR_TYPES) {
+         if(elError === ERROR_TYPES.NOT_FOUND ){
+           console.log('No se encuentra el recurso')
+         } else if(elError === ERROR_TYPES.UNAUTHORIZED) {
+           console.log('No tienes permisos')
+         } else if(elError === ERROR_TYPES.FORBIDDEN) {
+           console.log('Permisos perdidos')
+         }
+       }
+       ```
+
+       En la compilación, el código de JavaScript `sin el const` se vería así:
+
+       ```javascript
+       "use strict";
+       var ERROR_TYPES;
+       (function (ERROR_TYPES {
+         ERROR_TYPES["NOT_FOUND"] = 'notFound';
+         ERROR_TYPES["UNAUTHORIZED"] = 'unauthorized';
+         ERROR_TYPES["FORBIDDEN"] = 'forbidden';
+       }))(ERROR_TYPES || (ERROR_TYPES 0 {}));
+       function mostrarMensaje(elError) {
+         if(elError === ERROR_TYPES.NOT_FOUND ){
+           console.log('No se encuentra el recurso')
+         } else if(elError === ERROR_TYPES.UNAUTHORIZED) {
+           console.log('No tienes permisos')
+         } else if(elError === ERROR_TYPES.FORBIDDEN) {
+           console.log('Permisos perdidos')
+         }
+       }
+       ```
+
    - **any**:
 
-     Es el valor por defecto. Puede ser cualquier tipo de dato y no tiene restricciones de tipo y le dice a TypeScript que IGNORE el tipado de datos que haya.
+     Es el valor por defecto. Puede ser cualquier tipo de dato, no tiene restricciones de tipo y le dice a TypeScript que IGNORE el tipado de datos que haya.
+
+     Se aconseja evitar que las estructuras que trabajemos tengan el tipo `Any`.
 
      ```typescript
      let dato: any = "Hola";
