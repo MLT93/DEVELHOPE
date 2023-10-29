@@ -498,7 +498,11 @@
    
    - **interface**:
      
-     Las interfaces son como contratos que especifican qué propiedades y métodos debe tener un objeto.
+     Las interfaces son como contratos que especifican qué propiedades y métodos debe tener un `object` o una `class`.
+
+     `Puedes tener 2 interface con el mismo nombre y se extienden automáticamente la una dentro de la otra. Es como el var de JavaScript`.
+
+     Las interfaces no pueden declarar un tipo primitivo.
 
      `Define la estructura de un objeto, puede ser anidada dentro de otras interfaces y también pueden ser extendida de otras interfaces`.
 
@@ -578,6 +582,10 @@
    - **Type**:
      
      `Puede usarse para crear tipos customizados más complejos`.
+
+     Utilizan tipos primitivos.
+     
+     `Es similar a interface pero no puede "duplicarse" su nombre. No puedes tener dos types iguales. Es como el let de JavaScript`.
 
      ```typescript
      type Usuario = {
