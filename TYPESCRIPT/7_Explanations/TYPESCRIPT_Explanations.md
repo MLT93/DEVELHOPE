@@ -249,8 +249,8 @@
 
    - **enum**:
 
-      Permite definir un conjunto de valores con un ID asignado automáticamente o manualmente. Este ID será numérico por defecto, pero podemos asignarle un nombre con tipo string si deseamos.
-
+     Permite definir un conjunto de valores con un ID asignado automáticamente o manualmente. Este ID será numérico por defecto, pero podemos asignarle un nombre con tipo string, si deseamos. Esto es muy importante a la hora de trabajar con bases de datos, ya que nos permitiría encadenar las claves asignadas a los tipos de error dentro de la base de datos al ID de nuestro código, por ejemplo.
+     
      ```typescript
      enum Direccion {
        // Si no se le asigna ningún nombre, se le asignará un ID como el índice de un array automáticamente
@@ -267,7 +267,7 @@
      
      - `Con const`:
 
-       `El utilizo de const permite crear un código menos pesado a la hora de compilar`, porque realiza una "transpilación" más ligera en código JavaScript.
+       `El utilizo de const permite crear un código menos pesado a la hora de compilar` porque realiza una "transpilación" más ligera en código JavaScript, lo que provoca un mejor rendimiento.
 
        ```typescript
        // Con el `const`
