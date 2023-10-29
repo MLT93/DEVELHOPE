@@ -185,6 +185,12 @@
 
      Posteriormente de ejecutar el comando y realzar la instalación, cerraremos nuestro editor de texto (VS Code) y lo volveremos a abrir para que se realicen las actualizaciones.
 
+   - **`.ts y .mts`**:
+     
+     En TypeScript, los archivos poseen la extensión `.ts` (TypeScript), que son los archivos fuente. Esta extensión de forma nativa no posee la capacidad de exportar o importar archivos. Para modularizar los archivos y poder utilizar los `export` e `import`, debemos cambiar la extensión del archivo `.ts` a `.mts`.
+
+     Esto no hace falta si trabajamos con `Vite`, `Webpack` porque lo hacen de manera automática. Sin embargo `Node.js` no lo hace.
+
 4. #### **`Sintaxis Básica de TypeScript`**:
 
    Puedes `declarar variables con tipos explícitos` para prevenir errores.
@@ -493,7 +499,7 @@
    - **interface**:
      
      Las interfaces son como contratos que especifican qué propiedades y métodos debe tener un objeto.
-     `Define la estructura de un objeto y puede ser extendida en otras interfaces`.
+     `Define la estructura de un objeto y puede ser anidada dentro de otras interfaces y también extendida de ellas`.
 
      ```typescript
      interface Producto {
@@ -539,6 +545,35 @@
      La interfaz `Circulo extiende la interfaz Forma heredando sus propiedades y métodos`. Después `añade su propia propiedad radio con tipo number`.
      Por último `se define el objeto miCirculo que tiene todas las props y métodos de las dos interfaces`.
 
+     ```typescript
+     interface Item {
+       id: string,
+       nombre: string,
+       precio: number,
+       quantity: number
+     }
+
+     interface CarritoDeCompras {
+       totalPrice: number,
+       products: Item[]
+     }
+
+     const miCarrito: CarritoDeCompras = {
+       totalPrice: 110,
+       products: [
+         {
+           id: 'XY-083', 
+           nombre: 'Camisa Beige',
+           precio: 54.90,
+           quantity: 1
+         }
+       ]
+     }
+     ```
+
+     En este ejemplo, `Item` define las propiedades de un producto (`id`, `nombre`, `precio` y `cantidad`), y `CarritoDeCompras` describe un carrito que tiene un precio total (`totalPrice`) y después (`products`), que sigue la estructura de un array de objetos definida en la interfaz `Item`, que `viene anidada dentro de CarritoDeCompras`.
+     Luego, creamos un objeto `miCarrito` que cumple con la estructura definida en la interfaz CarritoDeCompras.
+
    - **Type**:
      
      `Puede usarse para crear tipos customizados más complejos`.
@@ -579,7 +614,7 @@
   
    - **Cuando Usar las Aserciones?**:
   
-     Si tú, como programador, tienes información sobre el tipo de un valor que TypeScript no puede determinar por sí mismo, puedes utilizar una aserción de tipo para indicarle a TypeScript qué tipo debe considerar.
+     Si tú como programador, tienes información sobre el tipo de un valor que TypeScript no puede determinar por sí mismo, puedes utilizar una aserción de tipo para indicarle a TypeScript qué tipo debe considerar.
   
    - **Funcionamiento de las Aserciones si Trabajas con `Union Type` e `Intersection`**:
   
@@ -597,7 +632,7 @@
      Aquí, `(valor as string)` es una aserción de tipo que indica que `valor` debe tratarse como un `string`.
   
      Es importante recordar que `las aserciones de tipo no realizan una transformación en tiempo de ejecución`, `simplemente le dicen al compilador cómo interpretar un valor en particular durante la fase de desarrollo`. Por lo tanto, si la aserción es incorrecta, aún podrían ocurrir errores en tiempo de ejecución. Por esta razón, se debe tener cuidado al usar aserciones de tipo y asegurarse de que sean correctas y necesarias.
-  
+     
    - **Aserciones y Type `Any`**:
   
      Las aserciones de tipo son especialmente útiles cuando estás trabajando con valores de tipo `any`, ya que TypeScript no puede proporcionar verificaciones de tipo en estos casos.
@@ -605,6 +640,43 @@
    - **Aserciones y el `DOM`**:
   
      Al interactuar con el DOM en TypeScript, a menudo necesitas asertar el tipo de un elemento del DOM para acceder a sus propiedades y métodos específicos.
+     
+     La aserciones son comúnmente utilizadas para asignar el tipo de un elemento HTML del DOM dentro de nuestro código TypeScript.
+     
+     Todos los elementos del DOM tienen sus propios métodos y atributos a los cuales quizás necesitamos acceder.
+
+     TypeScript no sabe de qué tipo es un elemento del DOM. Por ejemplo, un canvas:
+
+     ```typescript
+     const canvas = document.getElementById('canvas');
+
+     // Esto nos devuelve:
+     // `null` si no lo encuentra
+     // `HTMLElement` si lo encuentra
+     ```
+     
+     Podríamos utilizar la palabra reservada `as` para "obligar" a TypeScript a tratar el tipo de una determinada manera, tal que así:
+
+     ```typescript
+     // Aquí estamos obligando a TypeScript a fiarse de nosotros mientras nos hemos confundido a escribir el ID
+     const canvas = document.getElementById('span') as HTMLCanvasElement; 
+     ```
+
+     En el ejemplo de arriba, si no se encontrara el elemento con el ID canvas, nos saldría un error, y si escribiéramos mal (cosa muy probable) el nombre del ID o nos confundiéramos al hacerlo, también se nos arruinaría todo. Por lo tanto, no podemos obligar a TypeScript a hacernos caso porque trataría el dato como nosotros le decimos, pero no haría ninguna validación del mismo.
+
+     `Si como somos seres humanos y nos podemos equivocar, es mejor realizar una validación en vez de una aserción la mayor parte de veces, porque así hacemos que TypeScript realice una inferencia automática de los tipos y evitamos posibles errores humanos`.
+     
+     Lo podríamos hacer de la siguiente forma:
+     
+     ```typescript
+     // Cómo sabe TypeScript que realmente estás recuperando un elemento <canvas /> ???
+     const canvas = document.getElementById('canvas');
+
+     // Tendremos que realizar una validación para realizar una inferencia automática:
+     if (canvas instanceof HTMLCanvasElement) {
+       const ctx = canvas.getContext('2d');
+     }
+     ```
   
    - **Aserciones y las Conversiones entre Types**:
   
