@@ -840,7 +840,7 @@
 
      let miVariable: Tipos = //... Se deben cumplir todos los tipos
      ```
-     
+
      Ejemplo:
 
      ```typescript
@@ -863,8 +863,18 @@
          propiedad2: 42,
          propiedad3: true
      };
+     
+     // El siguiente código mostrará un error porque `miVariableIncorrecta` no tiene la propiedad `propiedad3`, que es requerida por el tipo `Tipos`
+     let miVariableIncorrecta: Tipos = {
+         propiedad1: "Hola",
+         propiedad2: 42
+     };
      ```
      
+     En este ejemplo, `miVariable` es una variable que cumple con todas las propiedades definidas en `Tipo1`, `Tipo2` y `Tipo3`, ya que tiene `propiedad1`, `propiedad2` y `propiedad3` con los tipos correctos.
+
+     Si intentas asignar un valor que no cumple con alguna de las propiedades, TypeScript te mostrará un error.
+
      Supongamos que queremos crear un tipo que represente a un estudiante que también es un atleta. Esto significa que el objeto debe tener tanto propiedades de estudiante como de atleta.
      
      ```typescript
@@ -900,6 +910,285 @@
      
      En resumen, Intersection Types en TypeScript te permiten combinar múltiples tipos para crear tipos más complejos y específicos. Esto es útil cuando necesitas representar objetos que deben cumplir con múltiples criterios o tener múltiples funcionalidades.
    
+12. #### **`Type Indexing`**:
+
+   Type Indexing en TypeScript es una característica que te permite acceder a los miembros de un tipo utilizando un índice, similar a como lo harías con un array. Esto es útil cuando tienes tipos que representan estructuras de datos indexables, como arrays o objetos.
+   
+   La sintaxis básica para el Type Indexing es usar corchetes `[]` para indicar el tipo del índice que se utilizará para acceder a los miembros del tipo.
+   
+   Ejemplo:
+   
+   ```typescript
+   type Empleado = {
+       nombre: string;
+       edad: number;
+       cargo: string;
+   }
+   
+   type InfoEmpleado = Empleado['nombre']; // Reutilizamos el tipo de dato de la prop'nombre' estructurada en Empleado, para usarla en `InfoEmpleado`
+   ```
+   
+   En este ejemplo, `Empleado` es un tipo que representa la estructura de un empleado con propiedades como `nombre`, `edad` y `cargo`. Luego, creamos un nuevo tipo `InfoEmpleado` utilizando `Type Indexing` para acceder al tipo de dato de la propiedad `nombre` en el tipo `Empleado`.
+   
+   - **Uso con Arrays**:
+   
+     El Type Indexing también es útil para trabajar con arrays:
+     
+     ```typescript
+     type Numeros = number[];
+     type PrimerElemento = Numeros[0]; // Tipo de dato del primer elemento en el array
+     ```
+     
+     En este caso, `Numeros` es un tipo que representa un array de números. Luego, utilizamos Type Indexing para acceder al tipo del primer elemento en el array.
+   
+   - **Uso con Objetos**:
+     
+     También puedes utilizar Type Indexing con objetos:
+     
+     ```typescript
+     type Coche = {
+         marca: string;
+         modelo: string;
+         año: number;
+     }
+     
+     type Propiedad = 'marca' | 'modelo' | 'año';
+     type TipoDeDato = Coche[Propiedad]; // Tipo de dato de una propiedad específica en Coche
+     ```
+     
+     Aquí, `Coche` es un tipo que representa la estructura de un coche. Luego, creamos un tipo `Propiedad` que es una unión de las claves (propiedades) del tipo `Coche`. Después, utilizamos Type Indexing para acceder al tipo de dato de una propiedad específica en `Coche`.
+   
+   Es importante tener en cuenta que el `Type Indexing solo funciona con tipos que tienen propiedades indexables`. No puedes utilizar Type Indexing en tipos que no tienen esta característica.
+   
+   Además, ten en cuenta que TypeScript realiza comprobaciones de tipos en tiempo de compilación, por lo que si intentas acceder a una propiedad que no existe en el tipo, obtendrás un error.
+   
+   En resumen, `Type Indexing` es una poderosa herramienta en TypeScript que `te permite acceder a los miembros de un tipo de manera dinámica utilizando índices`. Esto es útil para trabajar con estructuras de datos indexables como arrays y objetos.
+
+13. #### **`Type From Value`**:
+
+   En TypeScript, `typeof` es un operador que te permite extraer el tipo de un valor o una variable en tiempo de compilación. Esto es útil cuando quieres utilizar el tipo de una variable o un valor existente para definir otros tipos.
+
+   `typeof` es un operador que permite sacar el tipo de cualquier cosa en TypeScript.
+   
+   Ejemplo:
+   
+   Supongamos que tenemos una variable `numero` con el valor `42`:
+   
+   ```typescript
+   let numero = 42;
+   ```
+   
+   Si queremos crear un tipo que represente el tipo de `numero`, podemos usar `typeof` de la siguiente manera:
+   
+   ```typescript
+   type TipoNumero = typeof numero;
+   ```
+   
+   En este caso, `TipoNumero` será inferido como el tipo `number` porque `numero` es de tipo `number`.
+
+   ```typescript
+   const address : {
+     planet: "Earth",
+     city: "Madrid",
+   }
+
+   type Address = typeof address; // Esto infiere el tipo `Object` de `address`, en el tipo `Address`
+
+   const addressFarFromHome: Address = {
+     planet: "Mart", 
+     city: "Lun" // Ahora el objeto `addressFarFromHome` esperará todas las props del objeto `address` porque le asignamos el tipo `Address`
+   }
+   ```
+   
+   - **`typeof` con Funciones**:
+   
+     También puedes utilizar `typeof` con funciones para obtener el tipo de la función. Por ejemplo:
+     
+     ```typescript
+     function saludar(nombre: string): string {
+       return `¡Hola, ${nombre}!`;
+     }
+     
+     type TipoSaludo = typeof saludar;
+     ```
+     
+     En este caso, `TipoSaludo` será inferido como el tipo de la función `saludar`, que es `(nombre: string) => string`.
+     
+   - **`typeof` con Objetos**:
+   
+     Puedes utilizar `typeof` para obtener el tipo de un objeto existente:
+     
+     ```typescript
+     const persona = {
+       nombre: "Juan",
+       edad: 30,
+     };
+     
+     type TipoPersona = typeof persona;
+     ```
+     
+     Aquí, `TipoPersona` será inferido como el tipo que representa la estructura del objeto `persona`.
+
+   - **`typeof` from function return**:
+
+     Este operador, también nos permite recuperar el tipo que se devuelve al interno de una función.
+
+     ```typescript
+     const createAddress = () => {
+       return {
+         planet: "",
+         city: "",
+       }
+     }
+
+     type Address = ReturnType<typeof createAddress>; // El tipo `Address` tendrá el tipo que se devuelve en la función
+     ```
+
+     En este ejemplo, conseguimos el tipo que devuelve la función `createAddress` con todas sus propiedades usando `ReturnType` y `typeof`, y lo guardamos dentro del nuevo tipo `Address`.
+     
+     `ReturnType` es una utilidad incorporada en TypeScript que permite obtener el tipo de retorno de una función.
+
+     Esta utilidad es especialmente útil cuando trabajas con funciones genéricas o cuando necesitas manipular tipos de datos de manera dinámica en tu código.
+   
+   Es importante tener en cuenta que `typeof solo puede ser usado con expresiones y no con tipos de datos primitivos o literales`. Por ejemplo, esto no funcionará:
+   
+   ```typescript
+   type TipoNumero = typeof 42; // Error: no puedes usar typeof con un valor literal
+   ```
+   
+   En resumen, `typeof` en TypeScript te permite obtener el tipo de un valor o una variable en tiempo de compilación. Esto es útil cuando quieres utilizar el tipo de una variable o un valor existente para definir otros tipos, lo cual puede ser especialmente útil en situaciones donde la información del tipo está disponible en tiempo de ejecución.
+
+14. #### **`Los Types en los Arrays`**:
+
+   Los arrays en TypeScript pueden tener tipos específicos. Esto significa que puedes definir qué tipo de datos pueden contener los elementos de un array. Aquí está una explicación detallada sobre los tipos en los arrays de TypeScript:
+   
+   - **Arrays Homogéneos**
+     
+     Un array homogéneo es aquel en el que todos los elementos tienen el mismo tipo de dato.
+     
+     Puedes definir el tipo de dato que contendrá un array de la siguiente manera:
+     
+     ```typescript
+     let numeros: number[] = [1, 2, 3, 4, 5]; // `numeros` es un array que solo puede contener números
+     ```
+     
+     También puedes utilizar los tipos genéricos para definir el tipo de un array. Se define de la siguiente forma:
+     
+     ```typescript
+     let lista: Array<number> = [1, 2, 3, 4, 5]; // También `lista` es un array solo de números
+     ```
+     
+   - **Arrays Multi-Type**
+     
+     También puedes tener arrays que contengan varios tipos de datos. Esto se logra utilizando `Union Types` (`|`).
+     
+     ```typescript
+     let mixto: (string | number)[] = ["Hola", 42, "Mundo"];
+     ```
+     
+     En este caso, `mixto` es un array que puede contener tanto cadenas de texto como números.
+     
+   - **Tuple Arrays**
+   
+     `Un tuple array es un tipo especial de array donde el type y la cantidad de elementos son específicos e invariables`.
+     
+     ```typescript
+     let persona: [string, number] = ["Juan", 30];
+     ```
+     
+     En este caso, `persona` es un array que debe contener exactamente dos elementos: un string y un número, en ese orden.
+
+     `Existe un problema con los Tuples, y es que son mutables`.
+
+     ```typescript
+     type RGB = [number, number, number];
+
+     const white: RGB = [255, 255, 255];
+
+     white.push(3); // Esto no provoca error porque los Tuples son mutables     
+     ```
+     
+     `Para resolver este problema se aconseja añadir siempre readonly para que queden siempre fijas e inmutables`.
+
+     ```typescript
+     type RGB = readonly [number, number, number];
+     
+     const white: RGB = [255, 255, 255];
+     const black: RGB = [0, 0, 0];
+
+     const color1: RGB = [1, 2]; // Esto está mal porque hay menos elementos que los estipulados en la estructura
+     const color2: RGB = [233, 123, 233, 182]; // Esto también estaría mal
+
+     white.push(3); // Esto ahora nos da un error gracias al utilizo de `readonly`
+     ```
+
+     En este ejemplo, `se crea un type RGB que representa la escala de colores red, green, blue y se define con 3 type number`. Esto `es un tuple porque no puede tener ninguna otra tipología de tipos en su interior y tampoco puede tener otra cantidad de elementos que no sean los estrictamente definidos en la estructura`. A demás se le añade un `readonly` para evitar posibles mutaciones.
+     
+   - **Arrays de Objetos**
+     
+     Puedes crear arrays que contengan objetos de cierto tipo.
+     
+     ```typescript
+     interface Persona {
+         nombre: string;
+         edad: number;
+     }
+     
+     let personas: Persona[] = [
+         { nombre: "Juan", edad: 30 },
+         { nombre: "María", edad: 25 },
+         { nombre: "Carlos", edad: 35 }
+     ];
+     ```
+     
+     En este ejemplo, `personas` es un array que solo puede contener objetos que cumplan con la estructura definida en la interfaz `Persona`.
+
+   - **Array de Arrays o Matriz**  
+
+     También puedes definir una `Matriz` (array de arrays) para varias aplicaciones.
+
+     ```typescript
+     type ArrayValue = string | number;
+     
+     const ArrayDeArrays_3x3: readonly [
+       [ArrayValue, ArrayValue, ArrayValue],
+       [ArrayValue, ArrayValue, ArrayValue],
+       [ArrayValue, ArrayValue, ArrayValue],
+     ] = [
+       ["X", 0, 22],
+       ["pancho", 1, 22],
+       ["pancho", 22, true] // Error. El tipo no es ni `string`, ni `number`
+     ];
+     ```
+     
+     En este ejemplo, se define un type llamado `ArrayValue` que puede ser una cadena de texto (string) o un número (number). Luego, se declara una variable llamada `ArrayDeArrays_3x3` que es una matriz de 3x3 donde cada elemento puede ser de type string o number, pero no podrá tener más de 3 elementos por array y tampoco podrá tener más de 3 array dentro del array "padre".
+
+     Se puede hacer aún más específico:
+
+     ```typescript
+     type ArrayValue = 'X' | 0 | '';
+     
+     const ArrayDeArrays_3x3: readonly [
+       [ArrayValue, ArrayValue, ArrayValue],
+       [ArrayValue, ArrayValue, ArrayValue],
+       [ArrayValue, ArrayValue, ArrayValue],
+     ] = [
+       ['X', 0, 'X'],
+       ['X', '', 0],
+       ['X', 0, 'ña'] // Error. El tipo introducido no es ni `X`, ni `0`, ni `''`
+     ];
+     ```
+     
+   - **Arrays Readonly**
+     
+     Puedes hacer que un array sea de solo lectura usando la palabra clave `readonly`. Esto significa que no se pueden realizar modificaciones en el array después de su inicialización:
+     
+     ```typescript
+     let numeros: readonly number[] = [1, 2, 3, 4, 5];
+     ```
+     
+   Estos son los conceptos fundamentales sobre los tipos en los arrays de TypeScript. Al definir el tipo de datos que un array puede contener, puedes mejorar la robustez y la claridad de tu código.
+     
 12. #### **`Funciones en TypeScript`**:
 
    En TypeScript se permite definir funciones de manera similar a `JavaScript`, `pero con tipos de datos explícitos en los parámetros y en el valor de retorno`.
