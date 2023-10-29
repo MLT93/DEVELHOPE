@@ -499,7 +499,8 @@
    - **interface**:
      
      Las interfaces son como contratos que especifican qué propiedades y métodos debe tener un objeto.
-     `Define la estructura de un objeto y puede ser anidada dentro de otras interfaces y también extendida de ellas`.
+
+     `Define la estructura de un objeto, puede ser anidada dentro de otras interfaces y también pueden ser extendida de otras interfaces`.
 
      ```typescript
      interface Producto {
