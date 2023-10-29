@@ -1166,6 +1166,7 @@
      Se puede hacer aún más específico:
 
      ```typescript
+     // Introducimos exactamente los valores que deseamos que aparezcan
      type ArrayValue = 'X' | 0 | '';
      
      const ArrayDeArrays_3x3: readonly [
@@ -1175,7 +1176,7 @@
      ] = [
        ['X', 0, 'X'],
        ['X', '', 0],
-       ['X', 0, 'ña'] // Error. El tipo introducido no es ni `X`, ni `0`, ni `''`
+       ['X', 0, 1] // Error. El tipo introducido no es ni `X`, ni `0`, ni `''`
      ];
      ```
      
