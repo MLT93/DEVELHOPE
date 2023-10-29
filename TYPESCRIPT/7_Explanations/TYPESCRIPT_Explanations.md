@@ -269,6 +269,8 @@
 
        `El utilizo de const permite crear un código menos pesado a la hora de compilar` porque realiza una "transpilación" más ligera en código JavaScript, lo que provoca un mejor rendimiento.
 
+       Se aconseja utilizar en mayor medida esta forma, para ahorrar líneas de código.
+
        ```typescript
        // Con el `const`
        const enum ERROR_TYPES {
