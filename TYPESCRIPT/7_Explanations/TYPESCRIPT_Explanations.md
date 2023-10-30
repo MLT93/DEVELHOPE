@@ -494,7 +494,7 @@
      
 6. #### **Tipos personalizados `Interface` & `Type`**:
 
-   Existe la posibilidad de crear tipos personalizados utilizando las palabras reservadas `interface` (objetos y extends) o `type` (union types y conditional types).
+   Existe la posibilidad de crear tipos personalizados utilizando las palabras reservadas `interface` (objects, class y extends) o `type` (union types y conditional types).
    
    - **interface**:
      
@@ -615,11 +615,11 @@
      const country3: Country = "China";
      ```
 
-   `Ambos permiten definir estructuras de datos`, pero hay algunas diferencias sutiles entre ellos. Por lo general, `se prefiere interface para definir formas de objetos`, ya que es más adecuada para describir la forma de los objetos y `porque puede ser extends` o implementada `en otras interface`. `type es más flexible y puede ser usado con union types y conditional types`.
+   `Ambos permiten definir estructuras de datos`, pero hay algunas diferencias sutiles entre ellos. Por lo general, `se prefiere interface para definir formas de objetos o clases`, ya que es más adecuada para describir la forma de los objetos y `porque puede ser extends` o implementada `en otras interface`. `type es más flexible y puede ser usado con union types y conditional types`.
 
 7. #### **`Type Assertion`**:
   
-   Las aserciones de tipo, también conocidas como `type assertions` en inglés, son una característica de TypeScript que te `permite decirle al compilador el tipo de un valor cuando TypeScript no puede inferirlo automáticamente`. `Esto es útil cuando estás seguro de que cierto valor tiene un tipo específico`.
+   Las aserciones de tipo, también conocidas en inglés como `type assertions`, son una característica de TypeScript que te `permite decirle al compilador el tipo de un valor cuando TypeScript no puede inferirlo (deducirlo automáticamente)`. `Esto es útil cuando estás seguro de que cierto valor tiene un tipo específico`.
   
    - **Cuando Usar las Aserciones?**:
   
@@ -925,7 +925,7 @@
      const color2: Hexadecimal = "#FF2490"; // Correcto
      ```
 
-     `Los Template Union Types son especialmente útiles cuando se utilizan en funciones genéricas para inferir y aplicar restricciones de tipo a argumentos de cadena de texto`.
+     `Los Template Union Types son especialmente útiles cuando se utilizan en funciones genéricas para inferir (deducirlo por sí solo) y aplicar restricciones de tipo a argumentos de cadena de texto`.
      
      ```typescript
      function procesarCadena<T extends string>(texto: T): `¡Hola, ${T}!` {
@@ -1516,20 +1516,272 @@
 
    `TypeScript admite la modularización, permitiendo dividir el código en partes más pequeñas y reutilizables`. Puedes exportar e importar elementos entre módulos para mantener tu código organizado y modular.
 
-15. #### **`Generics`**:
+15. #### **`Generics Types`**:
 
    Los `generics` son una característica importante que `permite escribir código reutilizable con tipos dinámicos`. Puedes crear funciones y clases que trabajen con diferentes tipos de datos de manera segura.
 
+   Son fundamentales para escribir código flexible y reutilizable en TypeScript, ya que permiten que una parte del código pueda adaptarse a diferentes tipos de datos sin sacrificar la inferencia de tipos. Esto es especialmente valioso en situaciones donde necesitamos que una clase o función pueda trabajar con una amplia gama de tipos. Utilizar los angular brackets `<>` para definir y utilizar generics es una práctica común y poderosa en TypeScript.
+   
+   `Los generics types nos brindan la posibilidad de crear una variable en la estructura de nuestro código al puesto de los type primitivos, dándonos la ventaja de poderlos usar todos indistintamente. En pocas palabras, esto le dice a TypeScript que puede recibir la tipología del type que nosotros queramos asignarle esplicitamente o que lo infiera (deduzca) automáticamente, lo cual nos permite trabajar types diferentes cada vez que lo necesitemos sin provocar errores`. `Esta variable se crea utilizando los angular brackets <> y puede tener el nombre que desees, normalmente se utiliza T (Type)`. `Esto es especialmente útil para classes y functions, dado que pueden recibir varios tipos distintos de types`.
+
    ```typescript
-   function primeroDe<T>(array: T[]): T {
+   // La variable se pone dentro de los `angular brackets` y concede a TypeScript la posibilidad de recibir esplicitamente o inferir (deducir) automáticamente, los types que nosotros usemos.
+   function primeroDe<Type>(array: Type[]): Type {
      return array[0];
-   }
+   };
 
    const numeros: number[] = [1, 2, 3];
    const primerNumero: number = primeroDe(numeros);
    ```
 
-   En este ejemplo, `T` es un tipo genérico que se adapta al tipo de datos del array que se pasa como argumento.
+   En este ejemplo, `Type` es la variable de un tipo genérico que se adapta al tipo de datos que viene especificado en la inicialización del código.
+
+   ```typescript
+   const identity = <T>(value: T): T => value;
+   
+   // Aquí estamos estamos asignando el type que nosotros deseamos trabajar esplicitamente y TypeScript lo aceptará tal cual
+   let output1 = identity<string>("");
+   
+   // Acá TypeScript está infiriendo el type `number` por sí solo, gracias a los `generics`
+   let output2 = identity(2310);
+
+   // Inferencia del type
+   let output3 = identity(true);
+   ```
+
+   ```typescript
+   // También se puede usar más de una variable
+   const identityMultiple = <T1, T2>(value1: T1, value2: T2): [value1: T1, value2: T2] => {
+     return [value1, value2];
+   };
+   
+   // La inferencia nos dirá que output4 recibe un array de valores con los tipos `string` y `number`
+   let output4 = identity("Marcos", 32);
+
+   // También podemos hacerlo de manera esplicita
+   let output5 = identity<boolean, string>(true, "");
+   ```
+
+   ```typescript
+   interface This<Type> {
+     currency: Type;
+   }
+   
+   // Aquí estamos obligados a definir esplicitamente el tipo que le asignamos al Type de la propiedad `currency`, del objeto `currencyObj`, porque le estamos asignando el tipo de la interfaz `Currency` a `currencyObj`. En pocas palabras, le debemos decir a `currencyObj` la tipología que le estamos pasando a su misma prop para que no haya errores, dado que le estamos pasando el type `Currency`
+   const currencyObj1: This<string> = { currency: "Marcos" };
+   
+   const currencyObj2: This<{ name: string; surname: string }> = {
+     currency: {
+       name: "Marcos",
+       surname: "González",
+     },
+   };
+   ```
+   
+   Este es otro ejemplo interesante que aplica `interface` genéricas.
+   
+   Sin embargo, recuerda que `.length` sólo existirá si trabajamos con array. Porque lo que definimos en el proceso de desarrollo (TypeScript) no es lo mismo que se devuelve en el proceso de ejecución (JavaScript).
+
+   ```typescript
+   function loggingIdentity<Type>(arg: Type): Type {
+     console.log(arg.length); /* Error: Property 'length' does not exist on type 'Type'. */
+     return arg;
+   };
+
+   function loggingIdentity<Type>(arg: Type[]): Type[] {
+     console.log(arg.length); // No error
+     return arg;
+   };
+   
+   // Alternativa
+   function loggingIdentity<Type>(arg: Array<Type>): Array<Type> {
+     console.log(arg.length); // Array has a .length, so no more error
+     return arg;
+   };
+   ```
+   
+   Otra forma de definir otra forma de definir un tipo genérico es escribirlo como una `firma de llamada de un tipo literal de objeto` y para entender este concepto vamos a explicar primero qué es una `firma de llamada`.
+
+   - **firma de llamada**:
+
+     `Una firma de llamada en TypeScript se refiere a la forma en que un tipo o una estructura puede ser invocada o utilizada`.
+
+     Es una descripción de cómo interactuar con una entidad en términos de los tipos de entrada que acepta y el tipo de salida que produce. Esto proporciona un nivel de abstracción que permite definir interfaces y tipos de manera más genérica, sin tener que detallar la implementación subyacente. Esto es fundamental para la creación de código flexible y reutilizable en TypeScript.
+     
+     Ejemplo:
+
+     ```typescript
+     Copy code
+     function suma(a: number, b: number): number {
+         return a + b;
+     }
+     // En este caso, la firma de llamada de la función suma es (a: number, b: number) => number. Esto indica que la función acepta dos argumentos, ambos de tipo number, y devuelve un valor de tipo number.
+     ```
+
+     En este caso se refiere a la estructura y los tipos de los parámetros que una función acepta, así como el tipo de valor que devuelve. Es una forma de describir la forma y el comportamiento de una función sin proporcionar la implementación real. De todas formas, una firma de llamada no se limita solo a funciones, también puede aplicarse a objetos o clases que tengan una estructura similar a una función.
+
+     En términos más genéricos, una firma de llamada describe la estructura y los tipos de entrada y salida que se esperan en una operación específica. Esto puede aplicarse a:
+     
+     - `Funciones`: Como ya vimos, la firma de llamada de una función especifica los tipos de sus argumentos y el tipo de retorno que se espera.
+     
+     - `Métodos de Objetos o Clases`: Pueden tener firmas de llamada que describan cómo se invocan.
+     
+     - `Constructores`: La firma de llamada de un constructor de clase especifica los tipos de los argumentos que debe recibir.
+     
+     - `Interfaces y Tipos de Objeto`: Pueden tener firmas de llamada para definir qué métodos o propiedades deben estar presentes en un objeto que implemente esa interfaz o tipo.
+     
+     -  `Funciones de Callback`: En situaciones donde se espera una función de retorno como argumento, la firma de llamada especifica cómo se debe ver esa función.
+
+   `Entonces cuando hablamos de firma de llamada de un tipo literal de objeto, nos referimos a una forma de definir un tipo genérico que representa una función. Este tipo de función acepta un argumento con una estructura específica (un tipo literal de objeto) y devuelve otro objeto con una estructura también específica`.
+   
+   Supongamos que queremos definir un tipo genérico que represente una función que toma un objeto con una propiedad `nombre` de tipo `string` y devuelve un objeto con la misma propiedad `nombre`, pero de tipo `number`. Podríamos hacerlo de la siguiente manera:
+   
+   ```typescript
+   type FuncionCambiaTipo = <T extends { nombre: string }>(objeto: T) => { nombre: number };
+   ```
+   
+   En este ejemplo, `FuncionCambiaTipo` es el nombre del tipo genérico que estamos definiendo.`<T extends { nombre: string }>` significa que este tipo genérico `T` debe tener una propiedad `nombre` de tipo `string` y `(objeto: T) => { nombre: number }` es la firma de la función. Significa que esta función toma un argumento de tipo `T` y devuelve un objeto con una propiedad `nombre` de tipo `number`.
+   Entonces, cuando utilizamos `FuncionCambiaTipo`, estamos diciendo que esperamos una función que cumpla con esta firma específica.
+   
+   ```typescript
+   type MiTipoGenerico<T> = (arg: T) => T;
+   ```
+   
+   En este ejemplo, `MiTipoGenerico es un tipo que representa una función que toma un argumento de tipo T y devuelve un valor del mismo tipo T`.
+   
+   ```typescript
+   function identity<Type>(arg: Type): Type {
+     return arg;
+   }
+   
+   let myIdentity: { <Type>(arg: Type): Type } = identity;
+   ```
+   
+   En este fragmento de código estás definiendo una función genérica llamada `identity`. Esta función toma un argumento de tipo `Type` y devuelve el mismo tipo.
+   Luego, estás declarando una variable `myIdentity` de tipo objeto que tiene una firma de llamada de función. Esta firma de llamada es una función que también es genérica y tiene la misma estructura que la función `identity`.
+   En resumen, `myIdentity` es una variable que puede almacenar cualquier función que tenga la misma estructura que la función `identity`.
+   Este tipo de notación es especialmente útil cuando trabajamos con funciones genéricas y queremos definir tipos que acepten funciones con una estructura específica.
+   
+   Estas son otras formas poderosas de utilizar generics en TypeScript, y pueden ser especialmente útiles en situaciones donde necesitemos definir tipos de funciones o métodos que sean flexibles con respecto a los tipos de datos que manejan. 
+   
+   - **Generic Interface**:
+
+   Tomando el objeto literal del ejemplo anterior, lo recreamos en una interfaz
+
+     ```typescript
+     interface GenericIdentityFn {
+       <Type>(arg: Type): Type;
+     }
+     
+     function identity<Type>(arg: Type): Type {
+       return arg;
+     }
+     
+     let myIdentity: GenericIdentityFn = identity;
+     ```
+
+     Si quisiéramos mover el parámetro genérico `<Type>` para que sea un parámetro de toda la interfaz, deberíamos moverlo al final del nombre de la misma `interface`. Esto nos permite ver sobre qué tipo(s) somos genéricos (por ejemplo, `Dictionary<string>` en lugar de solo `Dictionary`). Esto hace que el parámetro de tipo sea visible para todos los demás miembros de la interfaz.
+
+     ```typescript
+     interface GenericIdentityFn<Type> {
+       (arg: Type): Type;
+     }
+     
+     function identity<Type>(arg: Type): Type {
+       return arg;
+     }
+     
+     let myIdentity: GenericIdentityFn<number> = identity;
+     ```
+
+     Ahora nuestro ejemplo ha cambiado para ser algo ligeramente distinto. En lugar de describir una función genérica, `ahora tenemos una firma de función no genérica que forma parte de un tipo genérico`. `Cuando usemos GenericIdentityFn, ahora también necesitaremos especificar el argumento de tipo correspondiente (aquí: number)`, bloqueando efectivamente lo que usará la firma de llamada subyacente. `Comprender cuándo colocar el parámetro de tipo directamente en la firma de llamada y cuándo colocarlo en la interfaz misma será útil para describir qué aspectos de un tipo son genéricos y cuales no`.
+
+   - **Generic Class**:
+
+     Una clase genérica tiene una forma similar a una interfaz genérica. Las clases genéricas tienen una lista de parámetros de tipo genérico entre corchetes angulares `<>` después del nombre de la clase.
+
+     ```typescript
+     class GenericNumber<NumType> {
+       zeroValue: NumType;
+       add: (x: NumType, y: NumType) => NumType;
+     };
+     
+     let myGenericNumber = new GenericNumber<number>();
+     myGenericNumber.zeroValue = 0;
+     myGenericNumber.add = function (x, y) {
+       return x + y;
+     };
+     ```
+
+     `Al igual que con la interfaz, poner el parámetro de tipo en la clase misma nos permite asegurarnos de que todas las propiedades de la clase funcionen con el mismo tipo.`
+
+     `Una clase tiene dos lados en su tipo: el lado estático y el lado de instancia. Las clases genéricas solo son genéricas en su lado de instancia en lugar de en su lado estático, por lo que cuando se trabaja con clases, los miembros estáticos no pueden usar el parámetro de tipo de la clase.`
+
+   - **Generic Restrictions**:
+
+     En TypeScript, `Generic Restrictions` se refiere a las restricciones que se pueden aplicar a los tipos genéricos para limitar el conjunto de tipos que pueden ser utilizados como argumentos genéricos. Estas restricciones permiten especificar qué tipos de datos son válidos para ser utilizados en lugar de un tipo genérico.
+
+     `Las restricciones genéricas se aplican utilizando la palabra clave extends seguida del tipo o interfaz que se utilizará como restricción. Esto significa que el tipo genérico debe extender o cumplir con la restricción especificada`.
+     
+     En el ejemplo de nuestro `loggingIdentity`, queríamos poder acceder a la propiedad `.length` de `arg`, pero el compilador no pudo probar que cada tipo tuviera esa prop, por lo que nos advierte que no podemos hacer esta suposición.
+     
+     ```typescript
+     function loggingIdentity<Type>(arg: Type): Type {
+       console.log(arg.length); // Error: Property 'length' does not exist on type 'Type'.
+       return arg;
+     }
+     ```
+     
+     En lugar de trabajar con todos y cada uno de los tipos, nos gustaría restringir esta función para que funcione con todos y cada uno de los tipos que también tengan la propiedad `.length`. Siempre que el tipo tenga esta prop, lo permitiremos, pero es necesario que la tenga y para esto, debemos crear una restricción de lo que `Type` puede ser.
+     
+     Para hacerlo, crearemos una interfaz que describa nuestra restricción. Aquí, crearemos una interfaz que tiene una sola `.length` prop y luego usaremos esta interfaz y la palabra clave `extends` para indicar nuestra restricción:
+     
+     ```typescript
+     interface Lengthwise {
+       length: number;
+     }
+     
+     function loggingIdentity<Type extends Lengthwise>(arg: Type): Type {
+       console.log(arg.length); // Now we know it has a .length property, so no more error
+       return arg;
+     }
+     ```
+     
+     Debido a que la función genérica ahora está restringida, ya no funcionará en todos los tipos:
+     
+     ```typescript
+     loggingIdentity(3); // Error: Argument of type 'number' is not assignable to parameter of type 'Lengthwise'.
+     ```
+     
+     En lugar de ello, necesitamos pasar valores cuyo tipo tenga todas las propiedades requeridas:
+     
+     ```typescript
+     loggingIdentity({ length: 10, value: 3 });
+     ```
+
+     Aquí ponemos otro ejemplo:
+
+     ```typescript
+     interface Animal {
+       name: string;
+     }
+     
+     function printName<Type extends Animal>(animal: Type): void {
+       console.log(animal.name);
+     }
+     
+     // Esto es válido, ya que Cat es un subtipo de Animal
+     const cat: Animal = { name: "Whiskers" };
+     printName(cat);
+     
+     // Esto dará un error, ya que string no es un subtipo de Animal
+     const stringName = "Fluffy";
+     printName(stringName); // Error
+     ```
+     
+     En este ejemplo, la función `printName` acepta un argumento genérico `Type` que debe `extends` la `interface` `Animal`. Esto asegura que el argumento proporcionado tenga un `object` con una propiedad `name` de tipo `string`.
+
+   Las restricciones genéricas son útiles para escribir código más seguro y proporcionar más información sobre los tipos que se utilizan en una función o clase genérica. Permiten restringir los tipos que pueden ser utilizados como argumentos genéricos, lo que puede mejorar la seguridad y la claridad del código.
 
 16. #### **`TypeScript y Desarrollo Web`**:
 
