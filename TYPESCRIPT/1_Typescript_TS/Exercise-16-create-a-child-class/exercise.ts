@@ -3,7 +3,7 @@
  */
 
 class Currency {
-  private name: string;
+  public name: string;
   private code: string;
   private symbol: string;
 
@@ -32,18 +32,25 @@ class DetailedCurrency extends Currency {
 
   // Add a `banknotes` parameter with the same type as the `banknotes` field.
 
-  constructor(name: string, code: string, symbol: string) {
+  constructor(
+    name: string,
+    code: string,
+    symbol: string,
+    bankonotes: number[],
+  ) {
     // Fix this call to the parent constructor.
 
     super(name, code, symbol);
 
     // Store the value of the `banknotes` parameter in the corresponding field.
+
+    this.bankonotes = bankonotes;
   }
 
   // Change the visibility modifier on this method so it can be called
   // by code outside of this class.
 
-  static describeBankNotes() {
+  public describeBankNotes(): void {
     // Change the visibility of the parent class `name` field so
     // that its value can be read here in this child class method.
 
@@ -51,7 +58,7 @@ class DetailedCurrency extends Currency {
 
     // Replace `null` with the value of the `banknotes` field.
 
-    description += null;
+    description += this.bankonotes;
 
     console.log(description);
   }
