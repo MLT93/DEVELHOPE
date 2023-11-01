@@ -1676,9 +1676,10 @@
    Ahora, `si desearas poder reutilizar los tipos que adopta la interface This en los objetos declarados en el ejemplo precedente, deberías utilizar los type y extraer el tipo definido en el objeto currencyObj1 y currencyObj2`. `De esta forma, tendremos acceso a estos tipos en todo nuestro código`. Puedes hacerlo de la siguiente manera:
 
    ```typescript
-      interface This<Type> {
+   // (También se podría hacer con `type` en vez de `interface`)
+   interface This<Type> {
      currency: Type;
-   }
+   };
 
    type CurrencyString = This<string>;
    type CurrencyObject = This<{ name: string; surname: string }>;
