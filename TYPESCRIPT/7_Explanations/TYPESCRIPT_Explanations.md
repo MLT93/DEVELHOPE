@@ -1637,7 +1637,7 @@
    };
    ```
    
-   Otra forma de definir otra forma de definir un tipo genérico es escribirlo como una `firma de llamada de un tipo literal de objeto` y para entender este concepto vamos a explicar primero qué es una `firma de llamada`.
+   Otra forma de definir un tipo genérico es escribirlo como una `firma de llamada de un tipo literal de objeto` y para entender este concepto vamos a explicar primero qué es una `firma de llamada`:
 
    - **firma de llamada**:
 
