@@ -5,7 +5,7 @@
 
 1. #### **`Introducción a TypeScript`**:
    
-   `TypeScript es un lenguaje de programación desarrollado por Microsoft basado en JavaScript`.
+   `TypeScript es un lenguaje de programación desarrollado por Microsoft basado en JavaScript, Java y C#`.
 
    `Su` principal `objetivo es proporcionar un sistema de tipos estáticos`, permitiendo definir el tipo de datos de variables y parámetros de funciones de antemano. Esto ayuda a detectar errores en tiempo de desarrollo y facilita el trabajo en proyectos grandes y colaborativos.
    
@@ -532,7 +532,7 @@
        ```typescript
        function duplicar(n: number) {
          return n * 2;
-       }
+       };
        
        let resultado = duplicar(5); // TypeScript infiere que resultado es de tipo number
        ```
@@ -542,7 +542,7 @@
        ```typescript
        function obtenerNombre() {
          return "Juan";
-       }
+       };
         
        let nombre = obtenerNombre(); // TypeScript infiere que nombre es de tipo string
        ```
@@ -584,7 +584,7 @@
        precio: number;
        disponible: boolean;
        calcularImpuesto: (impuesto: number) => number;
-     }
+     };
      
      // Implementación de la interface
      let producto: Producto = {
@@ -603,12 +603,12 @@
      interface Forma {
        color: string;
        area: () => number;
-     }
+     };
      
      // `Circulo` recibe todas las propiedades de `Forma` y agrega la prop `radio`
      interface Circulo extends Forma {
        radio: number;
-     }
+     };
      
      let miCirculo: Circulo = {
        color: "rojo",
@@ -617,7 +617,7 @@
      };
      ```
 
-     En este ejemplo, se ilustra cómo se puede usar `interface` y `herencia de interface` en TypeScript.
+     En este ejemplo, se ilustra cómo se puede usar `interface` y `herencia de interface` en TypeScript con la palabra clave `extends`.
      Se definen dos interfaces en TypeScript: `Forma` y `Circulo`.
      La interfaz `Circulo extiende la interfaz Forma heredando sus propiedades y métodos`. Después `añade su propia propiedad radio con tipo number`.
      Por último `se define el objeto miCirculo que tiene todas las props y métodos de las dos interfaces`.
@@ -628,12 +628,12 @@
        nombre: string,
        precio: number,
        quantity: number
-     }
+     };
 
      interface CarritoDeCompras {
        totalPrice: number,
        products: Item[]
-     }
+     };
 
      const miCarrito: CarritoDeCompras = {
        totalPrice: 110,
@@ -645,7 +645,7 @@
            quantity: 1
          }
        ]
-     }
+     };
      ```
 
      En este ejemplo, `Item` define las propiedades de un producto (`id`, `nombre`, `precio` y `cantidad`), y `CarritoDeCompras` describe un carrito que tiene un precio total (`totalPrice`) y después (`products`), que sigue la estructura de un array de objetos definida en la interfaz `Item`, que `viene anidada dentro de CarritoDeCompras`.
@@ -745,7 +745,7 @@
 
      En el ejemplo de arriba, si no se encontrara el elemento con el ID canvas, nos saldría un error, y si escribiéramos mal (cosa muy probable) el nombre del ID o nos confundiéramos al hacerlo, también se nos arruinaría todo. Por lo tanto, no podemos obligar a TypeScript a hacernos caso porque trataría el dato como nosotros le decimos, pero no haría ninguna validación del mismo.
 
-     `Si como somos seres humanos y nos podemos equivocar, es mejor realizar una validación en vez de una aserción la mayor parte de veces, porque así hacemos que TypeScript realice una inferencia automática de los tipos y evitamos posibles errores humanos`.
+     `Si como somos seres humanos y nos podemos equivocar, es mejor realizar una validación en vez de una aserción la mayor parte de veces, porque así hacemos que TypeScript realice una inferencia automática de los tipos y evitamos posibles errores humanos`. `A esto se le llama narrowing también`.
      
      Lo podríamos hacer de la siguiente forma:
      
@@ -756,7 +756,7 @@
      // Tendremos que realizar una validación para realizar una inferencia automática:
      if (canvas instanceof HTMLCanvasElement) {
        const ctx = canvas.getContext('2d');
-     }
+     };
      ```
   
    - **Aserciones y las Conversiones entre Types**:
@@ -773,6 +773,102 @@
       
    En resumen, las aserciones de tipo en TypeScript te proporcionan una forma de comunicarte con el compilador sobre el tipo de un valor cuando TypeScript no puede determinarlo por sí mismo. Sin embargo, debes usarlas con precaución y asegurarte de que estás seguro del tipo del valor que estás asertando.
 
+9. #### **`Type Intersection`**:
+
+   `La intersección de tipos en TypeScript te permite combinar múltiples tipos para formar uno solo`. `Se denota utilizando el operador &`. `Esto significa que el valor resultante tendrá todas las propiedades y características de los tipos combinados`.
+   
+   Por ejemplo, si tienes un tipo `A` con ciertas propiedades y un tipo `B` con otras propiedades, puedes crear un tipo `C` que incluya ambas propiedades utilizando una intersección de tipos.
+   
+   ```typescript
+   type A = { propA: number };
+   type B = { propB: string };
+   
+   type C = A & B;
+   
+   const objetoC: C = {
+     propA: 10,
+     propB: "Hola"
+   };
+   ```
+   
+   En este ejemplo, el tipo `C` es una intersección de `A` y `B`, lo que significa que un objeto de tipo `C` debe tener tanto la propiedad `propA` como la propiedad `propB`.
+   
+   Es importante mencionar que las intersecciones son útiles cuando necesitas combinar diferentes conjuntos de propiedades de varios tipos.
+   
+   Por ejemplo, si estás trabajando en un sistema que requiere que un objeto tenga ciertas características de diferentes fuentes, puedes usar intersecciones para combinar estos requisitos.
+   
+   ```typescript
+   type Requisitos1 = { propA: number; propB: string };
+   type Requisitos2 = { propC: boolean; propD: number };
+   
+   type ObjetoCumpleRequisitos = Requisitos1 & Requisitos2;
+   
+   const objeto: ObjetoCumpleRequisitos = {
+     propA: 42,
+     propB: "Hola",
+     propC: true,
+     propD: 10
+   };
+   ```
+   
+   En este caso, `ObjetoCumpleRequisitos` debe tener tanto las propiedades de `Requisitos1` como las de `Requisitos2`.
+   
+   `También se pueden usar para extender un tipo con otro tipo. Esto permite combinar las propiedades y características de varios tipos en uno solo`.
+
+   Por ejemplo, si tienes un tipo `A` con ciertas propiedades y un tipo `B` con otras propiedades, puedes crear un nuevo tipo `C` que incluya todas las propiedades de `A` y `B` utilizando una intersección de tipos.
+   
+   ```typescript
+   type A = { propA: number };
+   type B = { propB: string };
+   
+   type C = A & B;
+   
+   const objetoC: C = {
+     propA: 10,
+     propB: "Hola"
+   };
+   ```
+   
+   En este ejemplo, el tipo `C` tiene tanto la propiedad `propA` como la propiedad `propB`, lo que significa que un objeto de tipo `C` debe tener ambas propiedades.
+   
+   ```typescript
+   type Animal = { name: string };
+   type Bear = Animal & { hasFur: boolean, hibernates: boolean };
+   
+   const myBear: Bear = { name: "Yogi", hasFur: true, hibernates: true };
+   ```
+   
+   En este ejemplo, el tipo `Bear` se crea extendiendo el tipo `Animal` con las propiedades adicionales `hasFur` (que indica si el oso tiene pelaje) y `hibernates` (que indica si el oso hiberna). Luego, se crea un objeto `myBear` que cumple con el tipo `Bear`, incluyendo todas las propiedades requeridas.
+   
+   Esto es útil cuando deseas crear un nuevo tipo que herede características de otros tipos existentes, permitiendo una mayor flexibilidad en la definición de tipos en TypeScript.
+   Recuerda que las intersecciones son una herramienta poderosa para combinar tipos, pero también pueden llevar a tipos muy complejos si no se usan con moderación. Es importante mantener un equilibrio para mantener la legibilidad y la mantenibilidad del código.
+   
+9. #### **`Narrowing`**:
+
+   El `narrowing en TypeScript se refiere al proceso en el que el compilador es capaz de deducir (inferir) el tipo de una variable en función de ciertas comprobaciones de flujo del código`. Esto significa que después de realizar ciertas verificaciones, TypeScript puede determinar con mayor precisión el tipo de una variable.
+
+   Proceso mediante el cual el compilador puede reducir el rango de posibles valores para un tipo específico en función de ciertas comprobaciones o condiciones.
+   
+   Un ejemplo común de `narrowing es cuando utilizas condicionales if o switch y realizas verificaciones sobre una variable. Si el compilador puede determinar que ciertas condiciones son siempre verdaderas o falsas en función del flujo de código, entonces puede inferir el tipo de la variable` dentro del bloque condicional.
+   
+   Aquí hay un ejemplo para ilustrar el concepto de "narrowing":
+   
+   ```typescript
+   function mostrarMensaje(valor: string | number) {
+     if (typeof valor === "string") {
+       // En este bloque, TypeScript sabe que 'valor' es de tipo 'string'
+       console.log(`El valor es una cadena: ${valor.toUpperCase()}`);
+     } else {
+       // En este bloque, TypeScript sabe que 'valor' es de tipo 'number'
+       console.log(`El valor es un número: ${valor.toFixed(2)}`);
+     }
+   };
+   ```
+   
+   En este ejemplo, la función `mostrarMensaje` acepta un parámetro `valor` que puede ser tanto `string` como `number`. Dentro del bloque `if`, TypeScript "narrowea" el tipo de `valor` a `string`, ya que ha comprobado que la condición `typeof valor === "string"` es verdadera. De manera similar, dentro del bloque `else`, `valor` se "narrowea" a `number`.
+   
+   El narrowing es una característica importante de TypeScript que ayuda a aumentar la precisión de los tipos y proporciona herramientas adicionales para el desarrollo seguro y eficiente de código.
+   
 9. #### **`Type Alias`**:
 
    `Un Type Alias es una forma de asignar un nombre a un tipo existente o a una combinación de tipos`. Puedes pensar en ello como un apodo que le das a un tipo de dato para hacer más claro su propósito o para abstraer su complejidad.
@@ -851,7 +947,7 @@
    interface Persona {
      nombre: string; // La propiedad `nombre` no es opcional
      edad?: number; // La propiedad `edad?` es opcional
-   }
+   };
 
    let persona1: Persona = { nombre: "Juan" }; // No da un error porque edad es opcional
    let persona2: Persona = { nombre: "María", edad: 30 }; // Esto también es válido, incluye la propiedad edad
@@ -864,20 +960,20 @@
      nombre: string;
      edad: number;
      correoElectronico?: string; // Correo electrónico es una propiedad opcional
-   }
+   };
    
    // Ejemplo de uso
    const usuario1: Usuario = {
      nombre: "Juan",
      edad: 30,
      correoElectronico: "juan@example.com" // La propiedad correoElectronico está presente
-   }
+   };
    
    const usuario2: Usuario = {
      nombre: "María",
      edad: 25
      // La propiedad correoElectronico no está presente
-   }
+   };
    ```
 
    En este ejemplo, `Usuario` es un `type` que tiene tres propiedades: `nombre`, `edad` y `correoElectronico`. La última propiedad está marcada como opcional con el uso del símbolo `?`.
@@ -893,7 +989,7 @@
        this.precio = precio;
        this.descripcion = descripcion;
      }
-   }
+   };
    
    const producto1 = new Producto("Laptop", 1200); // Sin asignación de la prop opcional `descripcion`
    const producto2 = new Producto("Teléfono", 800, "Nuevo modelo 2023");
@@ -923,7 +1019,7 @@
      nombre: string;
      precio: number;
      descripcion?: string; // Descripción es una propiedad opcional
-   }
+   };
    
    const productos: Producto[] = [
      { nombre: "Laptop", precio: 1200 },
@@ -951,7 +1047,7 @@
    interface Punto {
      readonly x: number;
      y: number;
-   }
+   };
 
    let punto: Punto = { x: 10, y: 20 };
 
@@ -1002,7 +1098,7 @@
      ```typescript
      function procesarCadena<T extends string>(texto: T): `¡Hola, ${T}!` {
        return `¡Hola, ${texto}!`;
-     }
+     };
      
      let resultado = procesarCadena("Mundo"); // resultado tiene el tipo "¡Hola, Mundo!"
      ```
@@ -1039,7 +1135,7 @@
      ```typescript
      function imprimirID(id: number | string) {
          console.log("ID:", id);
-     }
+     };
      ```
      
      En este ejemplo, `id` puede ser de tipo `number` o de tipo `string`. Puedes   pasar tanto un número como una cadena a esta función.
@@ -1053,7 +1149,7 @@
          nombre: string;
          precio: number;
          estado: "disponible" | "agotado";
-     }
+     };
      
      let miResultado: Resultado = 10; // `miResultado` es de tipo number
      let otroResultado: Resultado = "Hola"; // `otroResultado` es de tipo string
@@ -1090,15 +1186,15 @@
      ```typescript
      type Tipo1 = {
          propiedad1: string;
-     }
+     };
      
      type Tipo2 = {
          propiedad2: number;
-     }
+     };
      
      type Tipo3 = {
          propiedad3: boolean;
-     }
+     };
      
      type Tipos = Tipo1 & Tipo2 & Tipo3;
      
@@ -1167,7 +1263,7 @@
        nombre: string;
        edad: number;
        cargo: string;
-   }
+   };
    
    type InfoEmpleado = Empleado['nombre']; // Reutilizamos el tipo de dato de la prop'nombre' estructurada en Empleado, para usarla en `InfoEmpleado`
    ```
@@ -1194,7 +1290,7 @@
          marca: string;
          modelo: string;
          año: number;
-     }
+     };
      
      type Propiedad = 'marca' | 'modelo' | 'año';
      type TipoDeDato = Coche[Propiedad]; // Tipo de dato de una propiedad específica en Coche
@@ -1234,14 +1330,14 @@
    const address : {
      planet: "Earth",
      city: "Madrid",
-   }
+   };
 
    type Address = typeof address; // Esto infiere el tipo `Object` de `address`, en el tipo `Address`
 
    const addressFarFromHome: Address = {
      planet: "Mart", 
      city: "Lun" // Ahora el objeto `addressFarFromHome` esperará todas las props del objeto `address` porque le asignamos el tipo `Address`
-   }
+   };
    ```
    
    - **`typeof` con Funciones**:
@@ -1251,7 +1347,7 @@
      ```typescript
      function saludar(nombre: string): string {
        return `¡Hola, ${nombre}!`;
-     }
+     };
      
      type TipoSaludo = typeof saludar;
      ```
@@ -1283,7 +1379,7 @@
          planet: "",
          city: "",
        }
-     }
+     };
 
      type Address = ReturnType<typeof createAddress>; // El tipo `Address` tendrá el tipo que se devuelve en la función
      ```
@@ -1301,6 +1397,141 @@
    ```
    
    En resumen, `typeof` en TypeScript te permite obtener el tipo de un valor o una variable en tiempo de compilación. Esto es útil cuando quieres utilizar el tipo de una variable o un valor existente para definir otros tipos, lo cual puede ser especialmente útil en situaciones donde la información del tipo está disponible en tiempo de ejecución.
+
+15. #### **`Mapped Types`**:
+
+   `Los Mapped Types` en TypeScript son una característica poderosa que te permite crear nuevos tipos basados en la estructura de un tipo existente. Básicamente, `te permiten transformar cada propiedad de un tipo de una cierta manera, y así obtener un nuevo tipo`.
+   
+   ```typescript
+   type NuevoTipo = {
+     [Propiedad existente]: Tipo de transformación;
+   };
+   ```
+
+   Iterando sobre Propiedades:
+
+   `[Propiedad existente]` representa cada una de las propiedades en el tipo original que estás transformando. Esto te permite iterar sobre cada propiedad (`key`).
+
+   Tipo de Transformación:
+
+   `Tipo de transformación` especifica qué tipo tendrán las propiedades en el nuevo tipo. Puede ser el mismo tipo que el original `(Type[Property])`, o puedes aplicar modificadores y hacerlo opcional `(Type[Property]?)`, de solo lectura `(readonly Type[Property])`, que devuelva un tipo distinto por completo `(string)`, o incluso crear un nuevo tipo basado en la propiedad.
+   
+   Aquí hay algunos ejemplos para ilustrar cómo funcionan los "Mapped Types":
+   
+   - **Readonly**
+   
+     ```typescript
+     type Readonly<Type> = {
+       readonly [Property in keyof Type]: Type[Property];
+     };
+     
+     // Uso:
+     type Usuario = {
+       nombre: string;
+       edad: number;
+     };
+     
+     type UsuarioReadOnly = Readonly<Usuario>;
+     // Esto hace que todas las propiedades de `Usuario` sean de solo lectura.
+     ```
+
+     Este mapea sobre todas las propiedades `Property` de `Type` y las hace de solo lectura, gracias al `keyof`.
+   
+   - **Partial**
+   
+     ```typescript
+     type Partial<T> = {
+       [P in keyof T]?: T[P];
+     };
+     
+     // Uso:
+     type Coche = {
+       marca: string;
+       modelo: string;
+       año: number;
+     };
+     
+     type CocheParcial = Partial<Coche>;
+     // Esto hace que todas las propiedades de `Coche` sean opcionales.
+     ```
+
+     Este hace que todas las propiedades de `T` sean opcionales (`?` al final de cada prop).
+   
+   - **Pick**
+   
+     ```typescript
+     type Pick<T, K extends keyof T> = {
+       [P in K]: T[P];
+     };
+     
+     // Uso:
+     type Animal = {
+       nombre: string;
+       tipo: string;
+       edad: number;
+     };
+     
+     type InfoAnimal = Pick<Animal, "nombre" | "tipo">;
+     // Esto crea un tipo que solo tiene las propiedades `nombre` o `tipo` de `Animal`.
+     ```
+
+     Este permite seleccionar un subconjunto de propiedades de `T` especificado por `K`.
+   
+   - **Record**
+   
+     ```typescript
+     type Record<K extends string | number | symbol, T> = {
+       [P in K]: T;
+     };
+     
+     // Uso:
+     type DiasSemana = "Lunes" | "Martes" | "Miércoles" | "Jueves" | "Viernes";
+     type Horarios = Record<DiasSemana, string>;
+     // Esto crea un tipo donde las claves son los días de la semana y los valores son strings.
+     ```
+
+     Este crea un nuevo tipo donde las claves son del tipo `K` y los valores son de tipo `T`. Esto representará los pares `(Key: Value,)` de un objeto, por ejemplo.
+
+   - **Omit**:
+
+     ```typescript
+     type Omit<T, K extends keyof T> = {
+       [P in Exclude<keyof T, K>]: T[P];
+     };
+     
+     // Uso:
+     type Coche = {
+       marca: string;
+       modelo: string;
+       año: number;
+     };
+     
+     type CocheSinModelo = Omit<Coche, "modelo">;
+     // Esto crea un tipo que tiene todas las propiedades de Coche excepto `modelo`.
+     ```
+     
+     `T` es el tipo del que deseamos omitir propiedades. `K` es un conjunto de las claves a omitir.
+
+   - **Required**:
+
+     ```typescript
+     type Required<T> = {
+       [P in keyof T]-?: T[P];
+     };
+     
+     // Uso:
+     type Usuario = {
+       nombre?: string;
+       edad?: number;
+     };
+     
+     type UsuarioRequerido = Required<Usuario>;
+     // Esto hace que todas las propiedades de Usuario sean requeridas.
+     ```
+     
+     El tipo `Required` hace que todas las propiedades del tipo sean obligatorias.
+
+   `Los Mapped Types son una característica que te permite trabajar con tipos de datos de manera más dinámica y expresiva. Puedes crear tipos complejos y personalizados con facilidad, lo que te da un mayor control sobre la estructura de tus datos. Esto es especialmente útil en situaciones donde necesitas manipular y transformar tipos de manera programática.`
 
 15. #### **`Los Types en los Arrays`**:
 
@@ -1862,8 +2093,6 @@
      `Una firma de llamada en TypeScript se refiere a la forma en que un tipo o una estructura puede ser invocada o utilizada`.
 
      Es una descripción de cómo interactuar con una entidad en términos de los tipos de entrada que acepta y el tipo de salida que produce. Esto proporciona un nivel de abstracción que permite definir interfaces y tipos de manera más genérica, sin tener que detallar la implementación subyacente. Esto es fundamental para la creación de código flexible y reutilizable en TypeScript.
-     
-     Ejemplo:
 
      ```typescript
      Copy code
