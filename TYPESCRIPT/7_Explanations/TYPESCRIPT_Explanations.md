@@ -183,27 +183,9 @@
 
      Al instalar este paquete se habilita la ejecución directa de archivos TypeScript dentro de Visual Studio Code.
 
-     Posteriormente de ejecutar el comando y realzar la instalación, cerraremos nuestro editor de texto (VS Code) y lo volveremos a abrir para que se realicen las actualizaciones.
+     Posteriormente de ejecutar el comando y realzar la instalación, cerraremos nuestro editor de texto (Visual Studio Code) y lo volveremos a abrir para que se realicen las actualizaciones.
 
-   - **`.ts y .mts`**:
-     
-     En TypeScript, los archivos poseen la extensión `.ts` (TypeScript), que son los archivos fuente. Esta extensión de forma nativa no posee la capacidad de exportar o importar archivos. Para modularizar los archivos y poder utilizar los `export` e `import`, deberíamos cambiar la extensión del archivo `.ts` a `.mts`.
-
-     Sin embargo, esto no hace falta si trabajamos con `Vite` o `Webpack` porque lo hacen de manera automática. `Node.js` no lo hace.
-
-     Para más información sobre los módulos presentamos algunos links:
-      
-       - What are .mjs, .cjs, .mts, and .cts extensions?
-       
-         - **https://www.totaltypescript.com/concepts/mjs-cjs-mts-and-cts-extensions**
-            
-       - The module compiler option
-      
-         - **https://www.typescriptlang.org/docs/handbook/modules/reference.html#node16-nodenext**
-      
-       - .mts is a cool file extension (TypeScript ES modules)
-      
-         - **https://mtsknn.fi/blog/mts-file-extension/**
+     ¡Listo! Ya podemos utilizar la extensión Code Runner.
      
 4. #### **`Sintaxis Básica de TypeScript`**:
 
@@ -440,7 +422,83 @@
    
    Estos son algunos de los tipos de datos más comunes en TypeScript. Recuerda que `TypeScript también te permite crear tipos personalizados` y definir `union type` e `intersections` de tipos para adaptarse a las necesidades específicas de tu proyecto.
 
-5. #### **`Inferencia de tipos`**:
+5. #### **`Palabras Clave y Utilidades`**:
+
+   A continuación hacemos una lista de algunas de las principales palabras clave y utilidades con una breve descripción:
+   
+   **Typeof**: Permite obtener el tipo de una variable o una expresión en tiempo de compilación.
+   
+   **Keyof**: Devuelve unión de las claves de un tipo.
+   
+   **In**: Itera sobre los miembros de un tipo.
+   
+   **As**: Permite realizar "type assertions" para decirle al compilador que confíe en tu conocimiento sobre el tipo de una variable.
+   
+   **Extends**: Se usa en contextos genéricos para establecer restricciones en los tipos.
+   
+   **Infer**: Se utiliza en contextos genéricos para inferir tipos.
+   
+   **Partial**: Una utilidad de tipo predefinida que convierte todas las propiedades de un tipo en opcionales.
+   
+   **Required**: Una utilidad de tipo predefinida que convierte todas las propiedades opcionales de un tipo en requeridas.
+   
+   **Readonly**: Una utilidad de tipo predefinida que hace todas las propiedades de un tipo como de solo lectura.
+   
+   **Pick**: Una utilidad de tipo predefinida que selecciona un subconjunto de propiedades de un tipo.
+   
+   **Omit**: Una utilidad de tipo predefinida que omite un subconjunto de propiedades de un tipo.
+   
+   **Record**: Una utilidad de tipo predefinida que crea un tipo con un conjunto de claves y tipos dados.
+   
+   **Exclude**: Una utilidad de tipo predefinida que excluye un conjunto de tipos de otro.
+   
+   **Extract**: Una utilidad de tipo predefinida que extrae un conjunto de tipos de otro.
+   
+   **NonNullable**: Una utilidad de tipo predefinida que elimina null y undefined de un tipo.
+
+   **Mapped Types**: Permite crear nuevos tipos a partir de otros tipos existentes.
+   
+   **ReturnType**: Devuelve el tipo de retorno de una función.
+   
+   **Parameters**: Obtiene el tipo de los parámetros de una función.
+   
+   **ConstructorParameters**: Obtiene el tipo de los parámetros del constructor de una clase.
+   
+   **InstanceType**: Obtiene el tipo de una instancia creada a partir de una clase.
+   
+   **ThisType**: Permite especificar el tipo de `this` dentro de una función.
+   
+   **GlobalThis**: Representa el contexto global en cualquier entorno (como el navegador o Node.js).
+   
+   **AsyncReturnType**: Devuelve el tipo de retorno de una función asíncrona.
+   
+   **PromiseType**: Obtiene el tipo de un objeto `Promise`.
+   
+   **Iterable**: Verifica si un tipo es iterable.
+   
+   **AsyncIterable**: Verifica si un tipo es async iterable.
+   
+   **UnwrapPromise**: Desenvuelve el tipo de una promesa.
+   
+   **ReadonlyArray**: Hace que un array sea de solo lectura.
+   
+   **RequiredKeys**: Obtiene las claves requeridas de un tipo.
+   
+   **OptionalKeys**: Obtiene las claves opcionales de un tipo.
+   
+   **NonFunctionKeys**: Obtiene las claves que no son funciones de un tipo.
+   
+   **FunctionKeys**: Obtiene las claves que son funciones de un tipo.
+   
+   **WritableKeys**: Obtiene las claves modificables de un tipo.
+   
+   **DeepReadonly**: Hace que todas las propiedades de un objeto sean de solo lectura de manera profunda.
+   
+   **DeepPartial**: Hace que todas las propiedades de un objeto sean opcionales de manera profunda.
+      
+   Cada una tiene su propio propósito y puede ser útil en diferentes situaciones.
+
+6. #### **`Inferencia de tipos`**:
 
    La inferencia de tipos en TypeScript es la capacidad del compilador para deducir automáticamente el tipo de una variable basándose en su valor inicial. Esto significa que no siempre es necesario especificar explícitamente el tipo de una variable, ya que TypeScript puede determinarlo por sí mismo.
 
@@ -506,7 +564,7 @@
      
    En resumen, la inferencia de tipos es una característica poderosa de TypeScript que permite escribir código más limpio y legible al tiempo que proporciona un alto nivel de seguridad de tipos. Sin embargo, es importante comprender cómo funciona y cuándo es apropiado utilizarla en tus programas.
      
-6. #### **Tipos personalizados `Interface` & `Type`**:
+7. #### **Tipos personalizados `Interface` & `Type`**:
 
    Existe la posibilidad de crear tipos personalizados utilizando las palabras reservadas `interface` (objects, class y extends) o `type` (union types y conditional types).
    
@@ -631,7 +689,7 @@
 
    `Ambos permiten definir estructuras de datos`, pero hay algunas diferencias sutiles entre ellos. Por lo general, `se prefiere interface para definir formas de objetos o clases`, ya que es más adecuada para describir la forma de los objetos y `porque puede ser extends` o implementada `en otras interface`. `type es más flexible y puede ser usado con union types y conditional types`.
 
-7. #### **`Type Assertion`**:
+8. #### **`Type Assertion`**:
   
    Las aserciones de tipo, también conocidas en inglés como `type assertions`, son una característica de TypeScript que te `permite decirle al compilador el tipo de un valor cuando TypeScript no puede inferirlo (deducirlo automáticamente)`. `Esto es útil cuando estás seguro de que cierto valor tiene un tipo específico`.
   
@@ -715,7 +773,7 @@
       
    En resumen, las aserciones de tipo en TypeScript te proporcionan una forma de comunicarte con el compilador sobre el tipo de un valor cuando TypeScript no puede determinarlo por sí mismo. Sin embargo, debes usarlas con precaución y asegurarte de que estás seguro del tipo del valor que estás asertando.
 
-8. #### **`Type Alias`**:
+9. #### **`Type Alias`**:
 
    `Un Type Alias es una forma de asignar un nombre a un tipo existente o a una combinación de tipos`. Puedes pensar en ello como un apodo que le das a un tipo de dato para hacer más claro su propósito o para abstraer su complejidad.
 
@@ -784,7 +842,7 @@
      
    En resumen, `los Type Alias son una herramienta poderosa en TypeScript que te permite asignar nombres descriptivos a tipos de datos existentes o combinar tipos para crear estructuras más complejas`. Esto mejora la legibilidad y reutilización del código.
 
-9. #### **`Optional Properties`**:
+10. #### **`Optional Properties`**:
    
    Las propiedades opcionales en TypeScript proporcionan flexibilidad al permitir que una propiedad no sea obligatoria en una estructura de datos, ya sea en una `interface`, un `type`, en un `class`, en `índices de un array` o en `parámetros de funciones`.
    Esto significa que `al interno de un objeto o en los parámetros de una función podemos asignar propiedades opcionales en la creación de su estructura, y no será necesaria su presencia a la hora de su asignación o en la creación de instancias`.
@@ -883,7 +941,7 @@
 
    Este último ejemplo es un ejemplo mixto, para que puedas ver cómo utilizar una prop opcional y trabajar con ella.
 
-10. #### **`Readonly Properties`**:
+11. #### **`Readonly Properties`**:
 
    Una propiedad de solo lectura `read-only property` en TypeScript es una propiedad cuyo valor no puede ser modificado una vez que se le ha asignado un valor. `Esto significa que una vez que se inicializa la propiedad, no puede ser modificado su valor`.
 
@@ -905,7 +963,7 @@
 
    Esta es una característica útil para asegurarse de que ciertos valores no cambien después de su inicialización, lo que puede ser importante en situaciones donde la inmutabilidad es esencial para el diseño del programa.
 
-11. #### **`Template Union Type / Union Type / Intersection Type`**:
+12. #### **`Template Union Type / Union Type / Intersection Type`**:
 
    Los Template Union Types, también conocidos como Template Literal Types, son una característica poderosa de TypeScript que permite crear tipos basados en patrones de cadenas de texto. Esta característica combina plantillas literales con tipos de unión para crear tipos que pueden representar patrones específicos de cadenas.
 
@@ -1096,7 +1154,7 @@
      
      En resumen, Intersection Types en TypeScript te permiten combinar múltiples tipos para crear tipos más complejos y específicos. Esto es útil cuando necesitas representar objetos que deben cumplir con múltiples criterios o tener múltiples funcionalidades.
    
-12. #### **`Type Indexing`**:
+13. #### **`Type Indexing`**:
 
    Type Indexing en TypeScript es una característica que te permite acceder a los miembros de un tipo utilizando un índice, similar a como lo harías con un array. Esto es útil cuando tienes tipos que representan estructuras de datos indexables, como arrays o objetos.
    
@@ -1150,7 +1208,7 @@
    
    En resumen, `Type Indexing` es una poderosa herramienta en TypeScript que `te permite acceder a los miembros de un tipo de manera dinámica utilizando índices`. Esto es útil para trabajar con estructuras de datos indexables como arrays y objetos.
 
-13. #### **`Type From Value`**:
+14. #### **`Type From Value`**:
 
    En TypeScript, `typeof` es un operador que te permite extraer el tipo de un valor o una variable en tiempo de compilación. Esto es útil cuando quieres utilizar el tipo de una variable o un valor existente para definir otros tipos.
 
@@ -1244,7 +1302,7 @@
    
    En resumen, `typeof` en TypeScript te permite obtener el tipo de un valor o una variable en tiempo de compilación. Esto es útil cuando quieres utilizar el tipo de una variable o un valor existente para definir otros tipos, lo cual puede ser especialmente útil en situaciones donde la información del tipo está disponible en tiempo de ejecución.
 
-14. #### **`Los Types en los Arrays`**:
+15. #### **`Los Types en los Arrays`**:
 
    Los arrays en TypeScript pueden tener tipos específicos. Esto significa que puedes definir qué tipo de datos pueden contener los elementos de un array. Aquí está una explicación detallada sobre los tipos en los arrays de TypeScript:
    
@@ -1376,7 +1434,7 @@
      
    Estos son los conceptos fundamentales sobre los tipos en los arrays de TypeScript. Al definir el tipo de datos que un array puede contener, puedes mejorar la robustez y la claridad de tu código.
      
-12. #### **`Funciones en TypeScript`**:
+16. #### **`Funciones en TypeScript`**:
 
    En TypeScript se permite definir funciones de manera similar a `JavaScript`, `pero con tipos de datos explícitos en los parámetros y en el valor de retorno`.
 
@@ -1504,7 +1562,7 @@
      ```
     
      
-13. #### **`Clases en TypeScript`**:
+17. #### **`Clases en TypeScript`**:
 
    Typescript `soporta la programación orientada a objetos` y te permite definir clases con propiedades y métodos.
 
@@ -1526,11 +1584,31 @@
 
    Las `clases` en TypeScript son una `herramienta poderosa para crear objetos con estructura definida`.
 
-14. #### **`Módulos y Encapsulación`**:
+18. #### **`Módulos y Encapsulación`**:
 
    `TypeScript admite la modularización, permitiendo dividir el código en partes más pequeñas y reutilizables`. Puedes exportar e importar elementos entre módulos para mantener tu código organizado y modular.
 
-15. #### **`Generics Types`**:
+    - **`.ts y .mts`**:
+   
+   En TypeScript, los archivos poseen la extensión `.ts` (TypeScript), que son los archivos fuente. Esta extensión de forma nativa no posee la capacidad de exportar o importar archivos. Para modularizar los archivos y poder utilizar los `export` e `import`, deberíamos cambiar la extensión del archivo `.ts` a `.mts`.
+  
+   Sin embargo, esto no hace falta si trabajamos con `Vite` o `Webpack` porque lo hacen de manera automática. `Node.js` no lo hace.
+  
+   Para más información sobre los módulos presentamos algunos links:
+    
+     - What are `.mjs`, `.cjs`, `.mts`, and `.cts` extensions?
+     
+       - **https://www.totaltypescript.com/concepts/mjs-cjs-mts-and-cts-extensions**
+          
+     - The module compiler option:
+    
+       - **https://www.typescriptlang.org/docs/handbook/modules/reference.html#node16-nodenext**
+    
+     - `.mts` is a cool file extension (TypeScript ES modules):
+    
+       - **https://mtsknn.fi/blog/mts-file-extension/**
+   
+19. #### **`Generics Types`**:
 
    Los `generics` son una característica importante que `permite escribir código reutilizable con tipos dinámicos`. Puedes crear funciones y clases que trabajen con diferentes tipos de datos de manera segura.
 
@@ -1652,7 +1730,7 @@
      function suma(a: number, b: number): number {
          return a + b;
      };
-     // En este caso, la firma de llamada de la función suma es (a: number, b: number) => number. Esto indica que la función acepta dos argumentos, ambos de tipo number, y devuelve un valor de tipo number.
+     // En este caso, la firma de llamada de la función `suma` es `(a: number, b: number) => number`. Esto indica que la función acepta dos argumentos, ambos de tipo `number`, y devuelve un valor de tipo `number`.
      ```
 
      En este caso se refiere a la estructura y los tipos de los parámetros que una función acepta, así como el tipo de valor que devuelve. Es una forma de describir la forma y el comportamiento de una función sin proporcionar la implementación real. De todas formas, una firma de llamada no se limita solo a funciones, también puede aplicarse a objetos o clases que tengan una estructura similar a una función.
@@ -1677,8 +1755,18 @@
    type FuncionCambiaTipo = <T extends { nombre: string }>(objeto: T) => { nombre: number };
    ```
    
-   En este ejemplo, `FuncionCambiaTipo` es el nombre del tipo genérico que estamos definiendo.`<T extends { nombre: string }>` significa que este tipo genérico `T` debe tener una propiedad `nombre` de tipo `string` y `(objeto: T) => { nombre: number }` es la firma de la función. Significa que esta función toma un argumento de tipo `T` y devuelve un objeto con una propiedad `nombre` de tipo `number`.
+   En este ejemplo, `FuncionCambiaTipo` es el nombre del tipo genérico que estamos definiendo.`<T extends { nombre: string }>` significa que este tipo genérico `T`, que es un objeto, debe tener una propiedad `nombre` de tipo `string` y `(objeto: T) => { nombre: number }` es la firma de llamada de la función. Significa que esta función toma un argumento de tipo `T` y devuelve un objeto con una propiedad `nombre` de tipo `number`.
    Entonces, cuando utilizamos `FuncionCambiaTipo`, estamos diciendo que esperamos una función que cumpla con esta firma específica.
+   
+   `extends` en este contexto indica una restricción en el tipo genérico.
+
+   Estamos definiendo un tipo llamado `FuncionCambiaTipo`. `Este tipo es una función que toma un argumento objeto de tipo T y devuelve un objeto con una propiedad nombre de tipo number`.
+
+   `<T extends { nombre: string }> es la declaración del tipo genérico T. Esto significa que T puede ser cualquier tipo, pero está restringido a tipos que tengan una propiedad nombre de tipo string`.
+   
+   Por lo tanto, `cuando se utiliza esta función, el argumento objeto debe ser de un tipo que tenga una propiedad nombre de tipo string. Esto proporciona cierta garantía de tipo y permite que la función trabaje con objetos que tienen una estructura específica`.
+   
+   `extends` en este contexto significa que el tipo genérico `T` debe extender (o ser un subtipo de) un tipo que tenga una propiedad `nombre` de tipo `string`.
    
    ```typescript
    type MiTipoGenerico<T> = (arg: T) => T;
@@ -1694,12 +1782,12 @@
    let myIdentity: { <Type>(arg: Type): Type } = identity;
    ```
    
-   En este fragmento de código estás definiendo una función genérica llamada `identity`. Esta función toma un argumento de tipo `Type` y devuelve el mismo tipo.
+   En este fragmento de código estás definiendo una función genérica llamada `identity`. Esta función toma un argumento de tipo `Type` y devuelve el mismo tipo. Básicamente, esta función simplemente devuelve lo que se le pasa.
    Luego, estás declarando una variable `myIdentity` de tipo objeto que tiene una firma de llamada de función. Esta firma de llamada es una función que también es genérica y tiene la misma estructura que la función `identity`.
-   En resumen, `myIdentity` es una variable que puede almacenar cualquier función que tenga la misma estructura que la función `identity`.
-   Este tipo de notación es especialmente útil cuando trabajamos con funciones genéricas y queremos definir tipos que acepten funciones con una estructura específica.
+   En resumen, `myIdentity` es un objeto que tiene una función genérica con la misma firma que la función identity. Puedes usar `myIdentity` como si fuera la función `identity`.
+   Este tipo de notación puede ser útil en situaciones donde necesitas definir un tipo de función de manera más precisa y detallada, especialmente cuando trabajas con funciones genéricas o con funciones de alto orden (que aceptan funciones como argumentos o devuelven funciones).
    
-   Estas son otras formas poderosas de utilizar generics en TypeScript, y pueden ser especialmente útiles en situaciones donde necesitemos definir tipos de funciones o métodos que sean flexibles con respecto a los tipos de datos que manejan. 
+   Estas son otras formas poderosas de utilizar `generics` en TypeScript, y pueden ser especialmente útiles en situaciones donde necesitemos definir tipos de funciones o métodos que sean flexibles con respecto a los tipos de datos que manejan. 
    
    - **Generic Interface**:
 
@@ -1820,20 +1908,20 @@
 
    Las restricciones genéricas son útiles para escribir código más seguro y proporcionar más información sobre los tipos que se utilizan en una función o clase genérica. Permiten restringir los tipos que pueden ser utilizados como argumentos genéricos, lo que puede mejorar la seguridad y la claridad del código.
 
-16. #### **`TypeScript y Desarrollo Web`**:
+20. #### **`TypeScript y Desarrollo Web`**:
 
    Las principales bibliotecas y frameworks, como `Angular`, `React` y `Vue.js`, `tienen soporte para TypeScript`. Esto permite escribir aplicaciones más robustas y mantenibles.
 
-17. #### **`Librerías y Frameworks de Ejecución de TypeScript`**
+21. #### **`Librerías y Frameworks de Ejecución de TypeScript`**
 
    Algunos frameworks y librerías, como `Angular`, `NestJS`, y `Deno`, están diseñados para ejecutar código TypeScript directamente. Esto significa que no es necesario compilar manualmente el código antes de ejecutarlo.
      
-18. #### **`Consideraciones y Ventajas`**:
+22. #### **`Consideraciones y Ventajas`**:
 
     `TypeScript agrega complejidad adicional a tus proyectos, pero las ventajas de detección temprana de errores y herramientas de desarrollo mejoradas hacen que el esfuerzo valga la pena`. Además, la comunidad de desarrolladores de TypeScript es activa y proporciona recursos y librerías que facilitan su adopción.
 
     También `posee la ventaja de proporcionar sugerencias sobre el código`. Esto está `integrado en` editores de texto como `Visual Studio Code` o `WebStorm`, `mientras que otros` editores `como` `Atom` o `Vim`, `tienen extensiones` que soportan TypeScript.
 
-19. #### **`Conclusiones`**:
+23. #### **`Conclusiones`**:
 
     TypeScript es una herramienta poderosa en el mundo del desarrollo web y de aplicaciones. `Proporciona una forma más segura y estructurada de escribir código JavaScript, lo que resulta en aplicaciones más robustas y mantenibles`. Su capacidad para detectar errores en tiempo de desarrollo es especialmente valiosa en proyectos grandes y colaborativos. Si bien puede requerir un esfuerzo adicional, las ventajas que ofrece hacen que TypeScript sea una elección sólida para muchos desarrolladores y equipos de desarrollo.
