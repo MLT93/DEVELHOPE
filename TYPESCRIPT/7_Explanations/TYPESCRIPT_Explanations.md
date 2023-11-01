@@ -1594,8 +1594,30 @@
    ```
    
    Este es otro ejemplo interesante que aplica `interface` genéricas.
+
+   Ahora, `si desearas poder reutilizar los tipos que adopta la interface This en los objetos declarados en el ejemplo precedente, deberías utilizar los type y extraer el tipo definido en el objeto currencyObj1 y currencyObj2`. `De esta forma, tendremos acceso a estos tipos en todo nuestro código`. Puedes hacerlo de la siguiente manera:
+
+   ```typescript
+      interface This<Type> {
+     currency: Type;
+   }
+
+   type CurrencyString = This<string>;
+   type CurrencyObject = This<{ name: string; surname: string }>;
    
-   Sin embargo, recuerda que `.length` sólo existirá si trabajamos con arrays. Porque lo que definimos en el proceso de desarrollo (TypeScript) no es lo mismo que se devuelve en el proceso de ejecución (JavaScript).
+   const currencyObj1: CurrencyString = { currency: "Marcos" };
+   
+   const currencyObj2: CurrencyObject = {
+     currency: {
+       name: "Marcos",
+       surname: "González",
+     },
+   };
+   ```
+
+   En este ejemplo, tenemos acceso a los tipos reutilizables `CurrencyString` y `CurrencyObject` de forma generalizada en nuestro código.
+   
+   Recuerda que la propiedad `.length` sólo existirá si trabajamos con arrays, porque lo que definimos en el proceso de desarrollo (TypeScript) no es lo mismo que se devuelve en el proceso de ejecución (JavaScript).
 
    ```typescript
    function loggingIdentity<Type>(arg: Type): Type {

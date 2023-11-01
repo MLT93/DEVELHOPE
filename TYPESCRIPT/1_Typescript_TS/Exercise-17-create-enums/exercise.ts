@@ -8,8 +8,8 @@
 // Hint: Use the string values in the `currency` properties as the enum members.
 
 const enum Currency {
-	dollar,
-	euro,
+	dollar = "Dollar",
+	euro = "Euro",
 }
 
 // Update the type for the `currency` property in this interface to use
