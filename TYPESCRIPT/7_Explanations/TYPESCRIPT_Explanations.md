@@ -187,10 +187,24 @@
 
    - **`.ts y .mts`**:
      
-     En TypeScript, los archivos poseen la extensión `.ts` (TypeScript), que son los archivos fuente. Esta extensión de forma nativa no posee la capacidad de exportar o importar archivos. Para modularizar los archivos y poder utilizar los `export` e `import`, debemos cambiar la extensión del archivo `.ts` a `.mts`.
+     En TypeScript, los archivos poseen la extensión `.ts` (TypeScript), que son los archivos fuente. Esta extensión de forma nativa no posee la capacidad de exportar o importar archivos. Para modularizar los archivos y poder utilizar los `export` e `import`, deberíamos cambiar la extensión del archivo `.ts` a `.mts`.
 
-     Esto no hace falta si trabajamos con `Vite`, `Webpack` porque lo hacen de manera automática. Sin embargo `Node.js` no lo hace.
+     Sin embargo, esto no hace falta si trabajamos con `Vite` o `Webpack` porque lo hacen de manera automática. `Node.js` no lo hace.
 
+     Para más información sobre los módulos presentamos algunos links:
+      
+       - What are .mjs, .cjs, .mts, and .cts extensions?
+       
+         - **https://www.totaltypescript.com/concepts/mjs-cjs-mts-and-cts-extensions**
+            
+       - The module compiler option
+      
+         - **https://www.typescriptlang.org/docs/handbook/modules/reference.html#node16-nodenext**
+      
+       - .mts is a cool file extension (TypeScript ES modules)
+      
+         - **https://mtsknn.fi/blog/mts-file-extension/**
+     
 4. #### **`Sintaxis Básica de TypeScript`**:
 
    Puedes `declarar variables con tipos explícitos` para prevenir errores.
@@ -1522,7 +1536,7 @@
 
    Son fundamentales para escribir código flexible y reutilizable en TypeScript, ya que permiten que una parte del código pueda adaptarse a diferentes tipos de datos sin sacrificar la inferencia de tipos. Esto es especialmente valioso en situaciones donde necesitamos que una clase o función pueda trabajar con una amplia gama de tipos. Utilizar los angular brackets `<>` para definir y utilizar generics es una práctica común y poderosa en TypeScript.
    
-   `Los generics types nos brindan la posibilidad de crear una variable en la estructura de nuestro código al puesto de los type primitivos, dándonos la ventaja de poderlos usar todos indistintamente. En pocas palabras, esto le dice a TypeScript que puede recibir la tipología del type que nosotros queramos asignarle esplicitamente o que lo infiera (deduzca) automáticamente, lo cual nos permite trabajar types diferentes cada vez que lo necesitemos sin provocar errores`. `Esta variable se crea utilizando los angular brackets <> y puede tener el nombre que desees, normalmente se utiliza T (Type)`. `Esto es especialmente útil para classes y functions, dado que pueden recibir varios tipos distintos de types`.
+   `Los generics types nos brindan la posibilidad de crear una variable en la estructura de nuestro código al puesto de los type primitivos, dándonos la ventaja de poder usarlos todos indistintamente. En pocas palabras, esto le dice a TypeScript que puede recibir la tipología del type que nosotros queramos asignarle esplicitamente o que lo infiera (deduzca) automáticamente, lo cual nos permite trabajar types diferentes cada vez que lo necesitemos, sin provocar errores`. `Esta variable se crea utilizando los angular brackets <> y puede tener el nombre que desees, normalmente se utiliza T (Type)`. `Esto es especialmente útil para classes y functions, dado que pueden recibir varios tipos distintos de types`.
 
    ```typescript
    // La variable se pone dentro de los `angular brackets` y concede a TypeScript la posibilidad de recibir esplicitamente o inferir (deducir) automáticamente, los types que nosotros usemos.
@@ -1542,7 +1556,7 @@
    // Aquí estamos estamos asignando el type que nosotros deseamos trabajar esplicitamente y TypeScript lo aceptará tal cual
    let output1 = identity<string>("");
    
-   // Acá TypeScript está infiriendo el type `number` por sí solo, gracias a los `generics`
+   // Acá TypeScript está asignando el type `number` por sí solo, gracias a la inferencia de tipos
    let output2 = identity(2310);
 
    // Inferencia del type
@@ -1550,7 +1564,7 @@
    ```
 
    ```typescript
-   // También se puede usar más de una variable
+   // También podemos usar más de una variable
    const identityMultiple = <T1, T2>(value1: T1, value2: T2): [value1: T1, value2: T2] => {
      return [value1, value2];
    };
@@ -1558,16 +1572,17 @@
    // La inferencia nos dirá que output4 recibe un array de valores con los tipos `string` y `number`
    let output4 = identity("Marcos", 32);
 
-   // También podemos hacerlo de manera esplicita
+   // O podemos hacerlo de manera esplicita
    let output5 = identity<boolean, string>(true, "");
    ```
 
    ```typescript
+   // Aquí estamos obligados a definir esplicitamente el tipo que corresponderá a `<Type>` de la `interface` `This`, en la creación del objeto `currencyObj1` y `currencyObj2`. Si no lo hacemos, obtendremos un error. En pocas palabras, le debemos decir a `currencyObj1` y `currencyObj2` qué tipo trabajará la prop `currency` (u otras props si las hubiera)
+
    interface This<Type> {
      currency: Type;
    }
    
-   // Aquí estamos obligados a definir esplicitamente el tipo que le asignamos al Type de la propiedad `currency`, del objeto `currencyObj`, porque le estamos asignando el tipo de la interfaz `Currency` a `currencyObj`. En pocas palabras, le debemos decir a `currencyObj` la tipología que le estamos pasando a su misma prop para que no haya errores, dado que le estamos pasando el type `Currency`
    const currencyObj1: This<string> = { currency: "Marcos" };
    
    const currencyObj2: This<{ name: string; surname: string }> = {
@@ -1580,7 +1595,7 @@
    
    Este es otro ejemplo interesante que aplica `interface` genéricas.
    
-   Sin embargo, recuerda que `.length` sólo existirá si trabajamos con array. Porque lo que definimos en el proceso de desarrollo (TypeScript) no es lo mismo que se devuelve en el proceso de ejecución (JavaScript).
+   Sin embargo, recuerda que `.length` sólo existirá si trabajamos con arrays. Porque lo que definimos en el proceso de desarrollo (TypeScript) no es lo mismo que se devuelve en el proceso de ejecución (JavaScript).
 
    ```typescript
    function loggingIdentity<Type>(arg: Type): Type {
@@ -1614,7 +1629,7 @@
      Copy code
      function suma(a: number, b: number): number {
          return a + b;
-     }
+     };
      // En este caso, la firma de llamada de la función suma es (a: number, b: number) => number. Esto indica que la función acepta dos argumentos, ambos de tipo number, y devuelve un valor de tipo number.
      ```
 
@@ -1652,7 +1667,7 @@
    ```typescript
    function identity<Type>(arg: Type): Type {
      return arg;
-   }
+   };
    
    let myIdentity: { <Type>(arg: Type): Type } = identity;
    ```
@@ -1671,11 +1686,11 @@
      ```typescript
      interface GenericIdentityFn {
        <Type>(arg: Type): Type;
-     }
+     };
      
      function identity<Type>(arg: Type): Type {
        return arg;
-     }
+     };
      
      let myIdentity: GenericIdentityFn = identity;
      ```
@@ -1685,11 +1700,11 @@
      ```typescript
      interface GenericIdentityFn<Type> {
        (arg: Type): Type;
-     }
+     };
      
      function identity<Type>(arg: Type): Type {
        return arg;
-     }
+     };
      
      let myIdentity: GenericIdentityFn<number> = identity;
      ```
@@ -1729,7 +1744,7 @@
      function loggingIdentity<Type>(arg: Type): Type {
        console.log(arg.length); // Error: Property 'length' does not exist on type 'Type'.
        return arg;
-     }
+     };
      ```
      
      En lugar de trabajar con todos y cada uno de los tipos, nos gustaría restringir esta función para que funcione con todos y cada uno de los tipos que también tengan la propiedad `.length`. Siempre que el tipo tenga esta prop, lo permitiremos, pero es necesario que la tenga y para esto, debemos crear una restricción de lo que `Type` puede ser.
@@ -1739,12 +1754,12 @@
      ```typescript
      interface Lengthwise {
        length: number;
-     }
+     };
      
      function loggingIdentity<Type extends Lengthwise>(arg: Type): Type {
        console.log(arg.length); // Now we know it has a .length property, so no more error
        return arg;
-     }
+     };
      ```
      
      Debido a que la función genérica ahora está restringida, ya no funcionará en todos los tipos:
@@ -1764,11 +1779,11 @@
      ```typescript
      interface Animal {
        name: string;
-     }
+     };
      
      function printName<Type extends Animal>(animal: Type): void {
        console.log(animal.name);
-     }
+     };
      
      // Esto es válido, ya que Cat es un subtipo de Animal
      const cat: Animal = { name: "Whiskers" };
