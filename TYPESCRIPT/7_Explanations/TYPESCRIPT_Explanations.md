@@ -1515,6 +1515,7 @@
      ```typescript
      type OperacionMatematica = (a: number, b: number) => number;
      
+     // Declaración en forma de Arrow Function
      let suma: OperacionMatematica = (a, b) => a + b;
      let resta: OperacionMatematica = (a, b) => a - b;
      ```
@@ -1548,7 +1549,7 @@
      let suma = (a: number, b: number): number => a + b;
      ```
 
-   - **`Sobrecarga de Funciones`**:
+   - **`Sobrecarga de Funciones (Overloads)`**:
 
      `TypeScript permite definir múltiples versiones de una función con diferentes parámetros y tipos`. Esto se conoce como `sobrecarga de funciones` y es útil cuando una función puede aceptar diferentes tipos de argumentos.
      
@@ -1567,6 +1568,39 @@
      let b = obtenerInfo("Hola"); // b es de tipo number
      ```
     
+   - **`Generic Functions`**:
+
+     `Una función genérica es una función que puede trabajar con varios tipos de datos al mismo tiempo`.
+
+     ```typescript
+     function outputCountryData<T1, T2>(country: T1, data: T2): void {
+       console.log(`The data for ${country} is: ${data}`);
+     }
+
+     outputCountryData("Italy", 60_317_116);
+
+     outputCountryData("Nigeria", "Naira");
+
+     outputCountryData("United States of America", "English");
+
+     outputCountryData("India", 1_352_642_280);
+     ```
+
+   - **`Union Type Functions`**:
+
+     `Puedes usar union types para indicar que un parámetro puede aceptar más de un tipo si lo deseas`.
+
+     ```typescript
+     function outputCountryData(country: string | number, data: string | number): void {
+       console.log(`The data for ${country} is: ${data}`);
+     }
+
+     outputCountryData("United States of America", "English");
+
+     outputCountryData("India", 1_352_642_280);
+
+     outputCountryData("India", true); // Error: Argument of type 'boolean' is not assignable to parameter of type 'string | number'
+     ```    
      
 17. #### **`Clases en TypeScript`**:
 
@@ -1578,7 +1612,7 @@
      // `readonly` es asignable soltanto 1 vez, en la clase o en la declaración
      // `private` es accesible unicamente desde su clase, ni en instancias, ni en `extends` de esa clase
      // `protected` es igual a `private`, pero puede ser utilizado dentro en un `extends` de la clase base
-     
+
      public nombre: string;
      readonly id: string;
      private code: number;
