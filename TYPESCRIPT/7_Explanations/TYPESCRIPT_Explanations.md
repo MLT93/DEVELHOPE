@@ -1490,7 +1490,7 @@
      // Esto crea un tipo donde las claves son los días de la semana y los valores son strings.
      ```
 
-     Este crea un nuevo tipo donde las claves son del tipo `K` y los valores son de tipo `T`. Esto representará los pares `(Key: Value,)` de un objeto, por ejemplo.
+     Este crea un nuevo tipo donde las claves son del tipo `K` y los valores son de tipo `T`. Esto representará los pares `(Key: Value)` de un objeto, por ejemplo.
 
    - **Omit**:
 
