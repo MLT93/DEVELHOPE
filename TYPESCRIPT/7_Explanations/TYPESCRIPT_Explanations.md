@@ -1319,7 +1319,7 @@
      También puedes utilizar los tipos genéricos para definir el tipo de un array. Se define de la siguiente forma:
      
      ```typescript
-     let lista: Array<number> = [1, 2, 3, 4, 5]; // También `lista` es un array solo de números
+     let lista: Array<number> = [1, 2, 3, 4, 5]; // También `lista` es un array de solo números
      ```
      
    - **Arrays Multi-Type**
@@ -1328,6 +1328,9 @@
      
      ```typescript
      let mixto: (string | number)[] = ["Hola", 42, "Mundo"];
+
+     // Alternativa
+     let mixto: Array<string | number> = ["Hola", 42, "Mundo"];
      ```
      
      En este caso, `mixto` es un array que puede contener tanto cadenas de texto como números.
@@ -1430,6 +1433,9 @@
      
      ```typescript
      let numeros: readonly number[] = [1, 2, 3, 4, 5];
+
+     // Alternativa
+     let numeros: ReadonlyArray<number> = [1, 2, 3, 4, 5];
      ```
      
    Estos son los conceptos fundamentales sobre los tipos en los arrays de TypeScript. Al definir el tipo de datos que un array puede contener, puedes mejorar la robustez y la claridad de tu código.
@@ -1568,19 +1574,118 @@
 
    ```typescript
    class Empleado {
-     nombre: string;
-     salario: number;
-
-     constructor(nombre: string, salario: number) {
+     // `public` es accesible desde cualquier parte del código
+     // `readonly` es asignable soltanto 1 vez, en la clase o en la declaración
+     // `private` es accesible unicamente desde su clase, ni en instancias, ni en `extends` de esa clase
+     // `protected` es igual a `private`, pero puede ser utilizado dentro en un `extends` de la clase base
+     
+     public nombre: string;
+     readonly id: string;
+     private code: number;
+     protected salario: number;
+   
+     constructor(nombre: string, id: string, code: number, salario: number) {
        this.nombre = nombre;
+       this.id = id;
+       this.code = code;
        this.salario = salario;
      }
-
-     mostrarInformacion() {
-       console.log(`Nombre: ${this.nombre}, Salario: ${this.salario}`);
+   
+     // Method
+     public describe(): void {
+       let description = `${this.nombre} `;
+       description += `has the private code ${this.code}. `;
+       description += `Has the ID: ${this.id} `;
+       description += `and the salary is ${this.salario}.`;
+   
+       console.log(description);
      }
    }
+   
+   // Instancia
+   const alberto = new Empleado("Alberto", "A-2350-#Y", 5341, 1250);
+   
+   alberto.describe();
+   
+   // Extends
+   class EmpleadoDelMes extends Empleado {
+     public isMejorDelMes: boolean;
+   
+     constructor(
+       nombre: string,
+       id: string,
+       code: number,
+       salario: number,
+       isMejorDelMes: boolean,
+     ) {
+       super(nombre, id, code, salario);
+   
+       this.isMejorDelMes = isMejorDelMes;
+     }
+   
+     public describeElMejorDelMes(): void {
+       let description = `${this.nombre} is the best worker this month? `;
+       description += `The answer is: ${this.isMejorDelMes}. `;
+       description += `The award is 250$ more on salary = ${this.salario + 250}.`;
+   
+       console.log(description);
+     }
+   }
+   
+   // Instancia
+   const juan = new EmpleadoDelMes("Juan", "X-2351-#R", 4412, 1250, true);
+   
+   juan.describe();
+   juan.describeElMejorDelMes();
+   
+   juan.id = "asd"; // Error: Cannot assign to 'id' because it is a read-only property
+   juan.code = 2133; // Error: Property 'code' is private and only accessible within class 'Empleado'
+   juan.salario = 2800; // Error: Property 'salario' is protected and only accessible within class 'Empleado' and its subclasses
    ```
+
+   En TypeScript, existen cuatro tipos de modificadores de acceso que se pueden aplicar a los miembros de una clase: `public`, `private`, `protected` y `readonly`. Cada uno tiene un impacto diferente en cómo los miembros de la clase pueden ser accedidos dentro y fuera de la misma. Vamos a explicar cada uno de ellos en el contexto de la clase `Empleado` proporcionada:
+
+   - **`public`**:
+
+     - `Descripción`: 
+     
+        Cuando un miembro se declara como público, puede ser accesible desde cualquier parte del código, ya sea dentro de la propia clase, desde una instancia de la clase o desde clases que heredan de esta.
+     
+     - `Ejemplo`: 
+      
+         En la clase `Empleado`, `nombre` es un miembro público. Esto significa que se puede acceder y modificar desde cualquier parte del código.
+   
+   - **`readonly`**:
+
+     - `Descripción`: 
+     
+       Un miembro marcado como `readonly` sólo puede ser asignado una vez, ya sea en el momento de la declaración o dentro del constructor de la clase. Después de eso, su valor no puede ser modificado.
+
+     - `Ejemplo`: 
+     
+       En la clase `Empleado`, `id` es un miembro de solo lectura. Esto significa que una vez que se le asigna un valor en el constructor, no puede ser cambiado posteriormente.
+   
+   - **`private`**:
+
+     - `Descripción`: 
+     
+       Un miembro marcado como `private` sólo puede ser accedido dentro de la misma clase donde se definió. No puede ser accedido desde instancias de la clase ni desde clases que heredan de ella.
+
+     - `Ejemplo`: 
+     
+       En la clase `Empleado`, `card` es un miembro privado. Esto significa que sólo puede ser accedido y modificado dentro de la propia clase.
+   
+   - **`protected`**:
+
+     - `Descripción`: 
+     
+       Un miembro marcado como `protected` es similar a uno privado, pero con una diferencia clave: puede ser accedido por clases que heredan de la clase donde se definió el miembro.
+
+     - `Ejemplo`: 
+     
+       En la clase `Empleado`, `salario` es un miembro protegido. Esto significa que puede ser accedido y modificado por la clase `Empleado` y por cualquier clase que herede de `Empleado`.
+
+   En el contexto de la clase `Empleado`, los modificadores de acceso se utilizan para controlar qué partes del código pueden interactuar con los miembros de la clase y cómo pueden hacerlo. Esto es fundamental para la encapsulación y la seguridad de los datos en un programa.
 
    Las `clases` en TypeScript son una `herramienta poderosa para crear objetos con estructura definida`.
 
