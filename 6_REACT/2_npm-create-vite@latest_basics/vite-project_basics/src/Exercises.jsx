@@ -16,7 +16,6 @@ import { Module } from "./components/Module/Module.jsx";
 import { Toggle } from "./components/Toggle/Toggle.jsx";
 import { PruebaCustomHook } from "./components/PruebaConCustomHook/PruebaCustomHook.jsx";
 import { Contenedor } from "./components/Children/ChildrenExample.jsx";
-import axios from "axios";
 import { useParams, Link, Outlet } from "react-router-dom";
 import useSWR from "swr";
 
@@ -851,12 +850,12 @@ export const Container = ({ children, title }) => {
 export const LanguageContext = createContext("en-GB");
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState("en-GB");
+/*   const [language, setLanguage] = useState("en-GB");
 
   const changeLanguage = (language) => {
     setLanguage(language);
   };
-
+ */
   return (
     <div
       style={{
