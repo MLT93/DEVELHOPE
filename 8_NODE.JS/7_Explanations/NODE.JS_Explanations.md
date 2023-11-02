@@ -655,6 +655,91 @@
 
    En resumen, `global` se utiliza en Node.js para representar el contexto global, `window` se utiliza en el entorno del navegador para el mismo propósito, y `globalThis` es una adición estándar de ES11 que proporciona una forma de acceder al objeto global en cualquier entorno, ya sea Node.js o un navegador. Todos ellos aunque se puedan utilizar en un entorno u otro, `son los objetos que contienen todos los métodos y variables que vienen por defecto en el lenguaje de programación como console.log(), Math.floor(), variable.join(""), variable.map(), Array, Object, Boolean, etc...`
 
+## Ejecutar el REPL de Node.js: Una Explicación Detallada
+
+1. #### **`Introducción al REPL de Node.js`**:
+
+   El REPL (Read-Eval-Print Loop) de Node.js es una interfaz de línea de comandos que permite interactuar con Node.js de forma interactiva. Permite escribir y ejecutar código JavaScript en tiempo real, lo que lo convierte en una herramienta valiosa para probar y experimentar con código.
+
+2. #### **`Cómo Abrir el REPL`**:
+
+   Para abrir el REPL de Node.js, simplemente abre tu terminal o línea de comandos y escribe `node` seguido de la tecla Enter. Esto iniciará el REPL y verás un prompt (`>` o `...`).
+
+3. #### **`Usando el REPL`**:
+
+   Una vez en el REPL, puedes escribir código JavaScript y presionar Enter para ejecutarlo. El resultado se imprimirá inmediatamente. Por ejemplo, si escribes `console.log('Hola Mundo')` y presionas Enter, verás `Hola Mundo` impreso en la pantalla.
+
+4. #### **`Múltiples Líneas de Código`**:
+
+   Si el código que deseas escribir es demasiado largo para una sola línea, el REPL te proporcionará un prompt continuo (`...`) para que puedas seguir escribiendo. Esto te permite escribir y ejecutar código en múltiples líneas.
+
+   Por ejemplo, si deseas escribir una función más larga, puedes hacerlo y luego presionar Enter al final de cada línea. El REPL compilará y ejecutará el código cuando presiones Enter después de la última línea.
+
+5. #### **`Acceso al Historial`**:
+
+   El REPL de Node.js también mantiene un historial de los comandos que has ejecutado durante la sesión actual. Puedes navegar por este historial utilizando las teclas de flecha hacia arriba y hacia abajo en tu teclado.
+
+   Esto te permite volver a ejecutar comandos anteriores sin tener que volver a escribirlos desde cero.
+
+6. #### **`Comandos Especiales del REPL`**:
+
+   El REPL de Node.js también proporciona algunos comandos especiales que pueden ser útiles:
+
+   - `.help`: Muestra una lista de comandos especiales del REPL.
+
+   - `.break`: Sale de una expresión de múltiples líneas.
+
+   - `.clear`: Restablece el estado del REPL.
+
+   - `.exit` o `.ctrl + C`: Sale del REPL.
+
+   - `.load <nombre_archivo>`: Carga y ejecuta un archivo en REPL.
+
+   - `.save <nombre_archivo>`: Guarda el historial de comandos en un archivo.
+
+   - `.history`: Muestra el historial de comandos ejecutados durante la sesión actual.
+
+7. #### **`Variables Globales`**:
+
+   En el REPL de Node.js, puedes acceder a las mismas variables y objetos globales que tendrías en un entorno de Node.js regular. Esto incluye `console`, `process`, `module`, `require`, entre otros.
+
+   Por ejemplo, puedes usar `console.log()` para imprimir en la consola, o `require()` para importar módulos.
+
+8. #### **`Ejecución de Archivos Externos`**:
+
+   Puedes ejecutar archivos JavaScript externos en el REPL utilizando el comando `.load nombre_archivo.js`. Esto ejecutará el código del archivo y te permitirá interactuar con las variables y funciones definidas en él.
+
+9. #### **`Ventajas del REPL`**:
+
+   - **Prueba Rápida**:
+
+     El REPL proporciona un entorno rápido y interactivo para probar y experimentar con código JavaScript.
+
+   - **Depuración Rápida**:
+
+     Puedes probar pequeños fragmentos de código para verificar su comportamiento antes de integrarlos en tu aplicación.
+
+   - **Aprendizaje y Exploración**:
+
+     Es útil para aprender nuevas características de JavaScript o explorar APIs sin tener que crear un archivo separado.
+
+10. #### **`Limitaciones`**:
+
+   - **No es un Entorno de Ejecución Real**: 
+    
+     Aunque el REPL es útil para probar código, no es un entorno de ejecución real como un navegador web o un servidor Node.js. Algunas características del navegador o del entorno de ejecución de Node.js pueden no estar disponibles en el REPL.
+
+   - **No es Ideal para Códigos Largos o Complejos**:
+   
+     Aunque puedes escribir código de varias líneas en el REPL, no es el entorno ideal para escribir código largo y complejo. Es mejor utilizar un editor de código para proyectos más grandes.
+
+   - **No Es Persistente**:
+   
+     Una vez que cierras el terminal, el historial y las variables definidas en el REPL se pierden.
+
+11. #### **`Conclusión`**:
+
+   El REPL de Node.js es una herramienta poderosa para interactuar con JavaScript de forma interactiva. Es especialmente útil para pruebas rápidas, experimentación y aprendizaje. Sin embargo, es importante recordar que no es un entorno de ejecución real y tiene sus limitaciones. Para proyectos más grandes y complejos, es mejor utilizar un editor de código adecuado.
 
 
 
