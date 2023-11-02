@@ -337,7 +337,7 @@
 
 4. #### **`Extensiones Esenciales para Desarrollo en Node.js`**:
 
-   VS Code tiene un rico ecosistema de extensiones que pueden mejorar tu experiencia de desarrollo en Node.js. Algunas extensiones populares para el desarrollo en Node.js incluyen "Node.js", "NPM", "ESLint", "Prettier" y "Debugger for Chrome". Estas extensiones proporcionan funcionalidades adicionales y herramientas de depuración que facilitan el desarrollo en Node.js.
+   VS Code tiene un rico ecosistema de extensiones que pueden mejorar tu experiencia de desarrollo en Node.js. Algunas extensiones populares para el desarrollo en Node.js incluyen "Node.js", "NPM", "Node.js Modules Intellisense", "ESLint", "Prettier" y "Debugger for Chrome", entre otras. Estas extensiones proporcionan funcionalidades adicionales y herramientas de depuración que facilitan el desarrollo en Node.js.
 
 5. #### **`Depuración de Aplicaciones Node.js`**:
 
@@ -451,30 +451,30 @@
      // modulo.js
      const os = require('node:os');
 
-     module.exports = function obtenerInfoSistema () {
+     module.exports = function obtenerInfoSistema() {
        return {
-         nombre: console.log('Nombre del sistema operativo', os.platform()),
-         version: console.log('Versión del sistema operativo', os.release()),
-         arquitectura: console.log('La arquitectura del sistema operativo es de', os.arch()),
-         cpus: console.log('CPUs', os.cpus()),
-         memoriaLibre: console.log('Memoria libre', os.freemem() / 1024 / 1024),
-       }
-     }
+         nombre: os.platform(),
+         version: os.release(),
+         arquitectura: os.arch(),
+         cpus: os.cpus(),
+         memoriaLibre: os.freemem(),
+       };
+     };
 
-     // El `node:` al inicio del nombre del módulo que se desea importar es obligatorio en los que son nativos de Node.js.
+     // El `node:` al inicio del nombre del módulo que se desea importar es obligatorio en los módulos nativos de Node.js.
      ```
 
      ```javascript
      // script.js / app.js
      const obtenerInfoSistema = require('./modulo.js');
      const infoSistema = obtenerInfoSistema();
-     
-     console.log('Información del sistema:');
-     console.log(infoSistema.nombre);
-     console.log(infoSistema.version);
-     console.log(infoSistema.arquitectura);
-     console.log(infoSistema.cpus);
-     console.log(infoSistema.memoriaLibre);
+
+     console.log("@@@ ------ INFORMACIÓN DEL SISTEMA ------ @@@");
+     console.log("Sistema operativo:", infoSistema.nombre);
+     console.log("Versión:", infoSistema.version);
+     console.log("Arquitectura:", infoSistema.arquitectura);
+     console.log("Memoria libre (MB):", Math.ceil(infoSistema.memoriaLibre / (1024 ** 2)));
+     console.log("CPUs:", infoSistema.cpus.map((element) => element.model));
      ```
 
      Otro ejemplo:
@@ -530,7 +530,7 @@
      // modulo.mjs
      import os from 'os';
 
-     export function obtenerInfoSistema () {
+     function obtenerInfoSistema () {
        return {
          nombre: console.log('Nombre del sistema operativo', os.platform()),
          version: console.log('Versión del sistema operativo', os.release()),
@@ -539,11 +539,14 @@
          memoriaLibre: console.log('Memoria libre', os.freemem() / 1024 / 1024),
        }
      }
+     
+     // Esta forma de exportación es válida si se desea exportar una única función del archivo, no puede exportar más. La otra sí
+     export default obtenerInfoSistema;
      ```
 
      ```javascript
      // script.mjs / app.mjs
-     import { obtenerInfoSistema } from './modulo.mjs';
+     import obtenerInfoSistema from './modulo.mjs';
      
      const infoSistema = obtenerInfoSistema();
      
@@ -741,7 +744,207 @@
 
    El REPL de Node.js es una herramienta poderosa para interactuar con JavaScript de forma interactiva. Es especialmente útil para pruebas rápidas, experimentación y aprendizaje. Sin embargo, es importante recordar que no es un entorno de ejecución real y tiene sus limitaciones. Para proyectos más grandes y complejos, es mejor utilizar un editor de código adecuado.
 
+## Crear un Servidor HTTP: Una Explicación Detallada
 
+1. #### **`Introducción a la Creación de Servidores HTTP`**:
+
+   La creación de un servidor HTTP es un paso fundamental en el desarrollo web. Permite que las aplicaciones web sirvan contenido a través del protocolo HTTP, lo que significa que pueden responder a solicitudes de navegadores web y otras aplicaciones.
+
+2. #### **`Node.js y el Módulo HTTP`**:
+
+   Node.js es una plataforma basada en el motor V8 de Google Chrome que permite ejecutar JavaScript en el lado del servidor. Incluye un módulo llamado `http` que proporciona todas las herramientas necesarias para crear un servidor HTTP.
+
+3. #### **`Requerir y Crear un Servidor HTTP`**:
+
+   Para crear un servidor HTTP en Node.js, primero necesitamos requerir el módulo `http`. Esto se hace con la siguiente línea de código:
+
+   ```javascript
+   const http = require('http');
+   ```
+
+   Una vez que el módulo está cargado, podemos utilizarlo para crear un servidor. Esto se hace utilizando el método `createServer`, que toma como argumento una función de devolución de llamada que se ejecutará cada vez que el servidor reciba una solicitud.
+
+   ```javascript
+   const servidor = http.createServer((solicitud, respuesta) => {
+     // Lógica de manejo de la solicitud y generación de la respuesta
+   });
+   ```
+
+4. #### **`Manejo de Solicitudes y Respuestas`**:
+
+   La función de devolución de llamada que proporcionamos a `createServer` toma dos argumentos: `solicitud` y `respuesta`. 
+
+   - `solicitud`:
+   
+     Es un objeto que contiene información sobre la solicitud realizada al servidor, como la URL, los encabezados y el método HTTP utilizado (GET, POST, etc.).
+
+   - `respuesta`:
+
+     Es un objeto que utilizamos para enviar una respuesta al navegador o cliente que hizo la solicitud. Esto incluye el contenido de la respuesta, los encabezados y el código de estado HTTP.
+
+5. #### **`Configuración de Respuestas y Envío al Cliente`**:
+
+   Una vez que tenemos acceso a los objetos de solicitud y respuesta, podemos configurar la respuesta que queremos enviar al cliente. Esto generalmente implica establecer el código de estado, los encabezados y el contenido de la respuesta.
+
+   ```javascript
+   respuesta.writeHead(200, {'Content-Type': 'text/plain'});
+   respuesta.end('¡Hola, mundo!\n');
+   ```
+
+   En este ejemplo, estamos configurando una respuesta con un código de estado 200 (que significa "OK") y un tipo de contenido de texto plano. Luego, enviamos el mensaje "¡Hola, mundo!" al cliente.
+
+6. #### **`Iniciando el Servidor y Escuchando en un Puerto`**:
+
+   Una vez que hemos configurado nuestro servidor, necesitamos iniciarlo y hacer que escuche en un puerto específico. Esto se hace utilizando el método `listen`:
+
+   ```javascript
+   const puerto = 3000;
+   servidor.listen(puerto, () => {
+     console.log(`Servidor en funcionamiento en el puerto ${puerto}`);
+   });
+   ```
+
+   En este ejemplo, estamos haciendo que el servidor escuche en el puerto 3000. Una vez que el servidor está en funcionamiento, imprimirá un mensaje en la consola para indicar que está listo para recibir solicitudes.
+
+7. #### **`Ejecutando el Servidor y Accediendo a la Aplicación`**:
+
+   Para ejecutar el servidor, simplemente ejecutamos el archivo JavaScript con Node.js desde la línea de comandos. Si todo está configurado correctamente, deberías ver el mensaje de confirmación de que el servidor está en funcionamiento.
+
+   Luego, puedes abrir un navegador web y acceder a `http://localhost:3000` para ver la respuesta del servidor.
+
+8. #### **`Consideraciones Adicionales`**:
+
+   - **Enrutamiento y Manejo de Rutas**:
+
+     A medida que las aplicaciones web se vuelven más complejas, a menudo se requiere un enrutamiento más avanzado para manejar diferentes rutas y recursos. Esto puede hacerse utilizando bibliotecas como Express.js.
+
+   - **Seguridad y Optimización**:
+
+     La seguridad y la optimización son consideraciones importantes al crear servidores web. Esto puede incluir la implementación de HTTPS, la protección contra ataques de inyección de SQL, la optimización de recursos y más.
+
+   - **Despliegue en un Entorno de Producción**:
+
+     Para que una aplicación web sea accesible públicamente, necesitas desplegarla en un servidor en la nube o en un proveedor de alojamiento web. Hay varias opciones disponibles, como Heroku, AWS, y muchos más.
+
+   - **Uso de Frameworks y Bibliotecas**:
+
+     A medida que los requisitos de tu aplicación crezcan, es posible que desees considerar el uso de frameworks y bibliotecas como Express.js, Koa.js o Hapi.js, que facilitan la creación de aplicaciones web complejas.
+
+   - **Mantenimiento y Actualizaciones**:
+
+     Una vez que tu aplicación está en funcionamiento, es importante realizar un mantenimiento regular y aplicar actualizaciones de seguridad para asegurarse de que esté protegida contra vulnerabilidades conocidas.
+
+   - **Monitoreo y Escalabilidad**:
+
+     Si tu aplicación experimenta un aumento en el tráfico, es posible que necesites escalar tu servidor o implementar estrategias de equilibrio de carga para garantizar un rendimiento óptimo.
+
+## Test the HTTP server: Una Explicación Detallada
+
+1. #### **`Introducción a la Prueba del Servidor HTTP`**
+
+   La prueba del servidor HTTP es un proceso crucial en el desarrollo web. Consiste en verificar si el servidor puede responder adecuadamente a las solicitudes HTTP que recibe. Esto asegura que la aplicación web funcione correctamente y brinde una experiencia fluida a los usuarios.
+
+2. #### **`Herramientas para Probar un Servidor HTTP`**
+
+   Hay varias herramientas disponibles para probar un servidor HTTP. Algunas de las más comunes incluyen:
+
+   - **Postman**:
+   
+     Una plataforma de colaboración para el desarrollo de API que permite enviar solicitudes HTTP y analizar las respuestas.
+
+   - **curl**:
+   
+     Una herramienta de línea de comandos que permite enviar solicitudes HTTP y ver las respuestas.
+
+   - **Herramientas de Desarrollo del Navegador**:
+   
+     Los navegadores web modernos tienen herramientas de desarrollo integradas que permiten enviar solicitudes y ver las respuestas.
+
+3. #### **`Métodos de Prueba de Servidor HTTP`**
+
+   - **Solicitudes GET**:
+   
+     Comprueban si el servidor puede manejar solicitudes de lectura de recursos.
+   
+   - **Solicitudes POST**:
+   
+     Verifican si el servidor puede recibir y procesar datos enviados a través de un formulario.
+   
+   - **Solicitudes PUT y DELETE**:
+   
+     Se utilizan para actualizar y eliminar recursos en el servidor, respectivamente.
+   
+   - **Pruebas de Rendimiento**:
+   
+     Evalúan la capacidad del servidor para manejar un gran número de solicitudes simultáneamente.
+
+4. #### **`Herramientas de Automatización de Pruebas`**
+
+   Para pruebas más avanzadas y automatizadas, se pueden utilizar herramientas como:
+
+   - **Jest**:
+   
+     Un marco de pruebas de JavaScript que permite escribir y ejecutar pruebas automatizadas para código JavaScript y Node.js.
+   
+   - **Selenium**:
+   
+     Una herramienta para la automatización de navegadores web que se utiliza para escribir scripts de pruebas que interactúan con una aplicación web.
+
+5. #### **`Pasos para Probar un Servidor HTTP`**
+
+   1. **Establecer el Ambiente de Pruebas**:
+   
+     Asegurarse de tener acceso al servidor y conocer la URL a la que se realizarán las solicitudes.
+   
+   2. **Seleccionar la Herramienta de Pruebas**:
+   
+     Elegir la herramienta que mejor se adapte a tus necesidades (Postman, curl, herramientas de desarrollo del navegador, etc.).
+   
+   3. **Configurar las Solicitudes**:
+   
+     Configurar las solicitudes HTTP según los métodos que deseas probar (GET, POST, PUT, DELETE, etc.).
+   
+   4. **Enviar las Solicitudes**:
+   
+     Ejecutar las solicitudes y observar las respuestas del servidor.
+   
+   5. **Analizar las Respuestas**:
+     
+     Verificar que el servidor responda correctamente y que la información proporcionada sea la esperada.
+   
+   6. **Realizar Pruebas Automatizadas (Opcional)**:
+   
+     Si es necesario, crear y ejecutar pruebas automatizadas utilizando herramientas como Jest o Selenium.
+
+6. #### **`Consideraciones Importantes`**
+
+   - **Manejo de Errores**:
+   
+     Es importante probar también escenarios de error para asegurarse de que el servidor responda adecuadamente en situaciones inesperadas.
+   
+   - **Seguridad**:
+   
+     Siempre ten en cuenta la seguridad al realizar pruebas en un servidor en producción. Evita realizar pruebas destructivas o que puedan afectar el funcionamiento normal del sistema.
+
+   - **Documentación y Registro**:
+   
+     Lleva un registro de las pruebas realizadas y documenta los resultados para futuras referencias.
+
+   - **Escenarios de Prueba Exhaustivos**:
+   
+     Intenta cubrir una amplia gama de escenarios de prueba para garantizar que el servidor funcione de manera confiable en diferentes situaciones.
+
+   - **Pruebas Continuas**:
+   
+     Es una buena práctica incorporar pruebas automatizadas en el proceso de desarrollo para garantizar la integridad del servidor con cada actualización.
+
+   - **Monitoreo en Producción**:
+   
+     Asegúrate de tener herramientas de monitoreo en producción para detectar y corregir problemas en tiempo real.
+
+7. #### **`Resumen`**:
+
+   La prueba del servidor HTTP es esencial para garantizar un rendimiento óptimo y una experiencia de usuario sin problemas en una aplicación web. Al utilizar las herramientas y técnicas adecuadas, puedes identificar y solucionar problemas antes de que afecten a los usuarios finales.
 
 
 
