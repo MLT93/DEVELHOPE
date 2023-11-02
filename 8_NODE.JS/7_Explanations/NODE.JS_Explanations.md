@@ -415,47 +415,155 @@
 
    En tu script, `process.argv` contendrá un array con los argumentos, donde `process.argv[0]` será la ruta al ejecutable de Node.js, `process.argv[1]` será la ruta al archivo JavaScript y los argumentos reales comenzarán a partir de `process.argv[2]`.
 
-6. **`Módulos, require() o Import y Export`**:
-   
+6. **`Módulos, require('') o Import y Export`**:
+
    - **CommonJS**:
-   
+
      Node.js utiliza un sistema de módulos para organizar y reutilizar el código. Puedes dividir tu código en múltiples archivos y luego usar `require()` para cargar esos módulos en tu script principal. Este es el formato `Common JS` y todos los archivos deberán tener la extensión `.js`.
-   
-     Por ejemplo, si tienes un módulo `modulo` con una función llamada `saludar`, en un archivo `modulo.js`, puedes usarlo en tu script principal de la siguiente manera:
-   
+
+     Por ejemplo, si tienes un módulo con dos funciones llamadas `saludar` y `despedir`, en un archivo `modulo.js`, puedes usarlo en tu script o app de la siguiente manera:
+
      ```javascript
-     const modulo = require('node:./modulo');
-
-     modulo.saludar('Hola Mundo!');
+     // modulo.js
+     module.exports = {
+       saludar: function(nombre) {
+         return `¡Hola, ${nombre}!`;
+       },
+       despedir: function(nombre) {
+         return `¡Hasta luego, ${nombre}!`;
+       }
+     }
      ```
-     
-     El `node:` al inicio del nombre del módulo (archivo que se desea importar) es obligatorio.
 
-     El `./` indica que el módulo se encuentra en el mismo directorio que tu script principal.
+     ```javascript
+     // script.js / app.js
+     const funcionesSaludo = require('./modulo.js');
+
+     console.log(funcionesSaludo.saludar('Maria'));
+     console.log(funcionesSaludo.despedir('Carlos'));
+
+     // El `./` indica que el módulo se encuentra en el mismo directorio que el script a importar. Si se encuentra en una carpeta previa, usamos `../`. Esta última forma la podemos usar tantas veces como carpetas previas haya
+     ```
+
+     Si en cambio deseas importar `módulos propios de Node.js`, lo puedes hacer así:
+
+     ```javascript
+     // modulo.js
+     const os = require('node:os');
+
+     module.exports = function obtenerInfoSistema () {
+       return {
+         nombre: console.log('Nombre del sistema operativo', os.platform()),
+         version: console.log('Versión del sistema operativo', os.release()),
+         arquitectura: console.log('La arquitectura del sistema operativo es de', os.arch()),
+         cpus: console.log('CPUs', os.cpus()),
+         memoriaLibre: console.log('Memoria libre', os.freemem() / 1024 / 1024),
+       }
+     }
+
+     // El `node:` al inicio del nombre del módulo que se desea importar es obligatorio en los que son nativos de Node.js.
+     ```
+
+     ```javascript
+     // script.js / app.js
+     const obtenerInfoSistema = require('./modulo.js');
+     const infoSistema = obtenerInfoSistema();
+     
+     console.log('Información del sistema:');
+     console.log(infoSistema.nombre);
+     console.log(infoSistema.version);
+     console.log(infoSistema.arquitectura);
+     console.log(infoSistema.cpus);
+     console.log(infoSistema.memoriaLibre);
+     ```
+
+     Otro ejemplo:
+
+     ```javascript
+     // modulo.js
+     class Persona {
+       constructor(nombre) {
+         this.nombre = nombre;
+       }
+     
+       saludar() {
+         return `¡Hola, soy ${this.nombre}!`;
+       }
+     }
+     
+     module.exports = Persona;
+     ```
+
+     ```javascript
+     // script.js / app.js
+     const Persona = require('./modulo.js');
+     const juan = new Persona('Juan');
+     console.log(juan.saludar());
+     ```
 
    - **ES6**:
 
      A partir de ECMAScript (ES) 6, la forma de utilizar los módulos para organizar y reutilizar el código cambia. Ahora para dividir tu código en múltiples archivos, utilizarás las palabras reservadas `export` e `import` para exportar y cargar esos módulos en tu script principal. Este es el formato `ES6` y todos los archivos deberán tener la extensión `.mjs` para que Node.js pueda reconocerlos correctamente.
    
-     Por ejemplo, si tienes un módulo `modulo` con una función llamada `saludar`, en un archivo `modulo.mjs`, puedes usarlo en tu script principal de la siguiente manera:
+     Por ejemplo, si tienes un módulo con una función llamada `saludar`, en un archivo `modulo.mjs`, puedes usarlo en tu script o app de la siguiente manera:
    
      ```javascript
-     import { modulo } from "node:modulo";
+     // modulo.mjs
+     export const saludar = (nombre) => {
+       return `¡Hola, ${nombre}!`;
+     };     
+     ```
 
-     export nuevoModulo() {
-       modulo.saludar('Hola mundo!');
+     ```javascript
+     // script.mjs / app.mjs
+     import { saludar } from './modulo.mjs';
+     
+     const nombre = 'Juan';
+     const mensajeSaludo = saludar(nombre);
+     
+     console.log(mensajeSaludo);
+     ```
+
+     `Si el módulo pertenece al núcleo de Node.js`, podrías hacerlo así:
+
+     ```javascript
+     // modulo.mjs
+     import os from 'os';
+
+     export function obtenerInfoSistema () {
+       return {
+         nombre: console.log('Nombre del sistema operativo', os.platform()),
+         version: console.log('Versión del sistema operativo', os.release()),
+         arquitectura: console.log('La arquitectura del sistema operativo es de', os.arch()),
+         cpus: console.log('CPUs', os.cpus()),
+         memoriaLibre: console.log('Memoria libre', os.freemem() / 1024 / 1024),
+       }
      }
-     ``` 
+     ```
 
-7. **Uso de NPM (Node Package Manager)**:
+     ```javascript
+     // script.mjs / app.mjs
+     import { obtenerInfoSistema } from './modulo.mjs';
+     
+     const infoSistema = obtenerInfoSistema();
+     
+     console.log('Información del sistema:');
+     console.log(infoSistema.nombre);
+     console.log(infoSistema.version);
+     console.log(infoSistema.arquitectura);
+     console.log(infoSistema.cpus);
+     console.log(infoSistema.memoriaLibre);
+     ```
+
+7. **`Uso de NPM (Node Package Manager)`**:
 
    NPM es el gestor de paquetes de Node.js que te permite instalar y gestionar bibliotecas y herramientas de terceros. Puedes instalar paquetes usando el comando `npm install nombre_del_paquete`.
 
-8. **Manejo de Dependencias y package.json**:
+8. **`Manejo de Dependencias y package.json`**:
 
    Cuando instalas paquetes con NPM, se registran en un archivo llamado `package.json`. Este archivo contiene información sobre tu proyecto, incluidas las dependencias que necesita para ejecutarse. Puedes compartir este archivo con otros para que puedan instalar las mismas dependencias.
 
-9. **Ejecución de Scripts Personalizados**:
+9. **`Ejecución de Scripts Personalizados`**:
 
    Puedes definir tus propios scripts personalizados en el archivo `package.json` bajo la propiedad `scripts`. Esto te permite definir comandos personalizados que puedes ejecutar con `npm run`.
 
@@ -474,6 +582,7 @@
    ```
 
    Esto ejecutará el comando definido en el script `start`.
+   Desglosándolo, sería la acción del comando `npm run` y el nombre del atributo en el objeto `scripts` de `package.json`. En este caso es `start`.
 
 10. **Conclusiones**:
 
@@ -481,7 +590,70 @@
 
     ¡Ahora estás listo para comenzar a crear tus propios scripts con Node.js! Recuerda que la práctica y la exploración de recursos adicionales te ayudarán a familiarizarte aún más con esta potente plataforma. ¡Diviértete programando con Node.js!
 
+## Global, Window y GlobalThis: Una Explicación Detallada
 
+1. ### `global`:
+
+   - **En Node.js**:
+   
+     `global` es un objeto especial que proporciona un contexto global en el entorno de Node.js. Es similar al objeto `window` en un navegador, pero en el entorno de Node.js. Puedes usar `global` para definir variables o funciones que estarán disponibles en todos los módulos de Node.js.
+
+   - **Ejemplo de Node.js**:
+
+     ```javascript
+     // En Node.js
+     global.miVariable = 'Hola desde el contexto global en Node.js';
+     
+     console.log(miVariable); // Imprime: 'Hola desde el contexto global en Node.js'
+     ```
+
+   - **En un navegador**:
+
+     `global` no está disponible directamente en el entorno de un navegador. En su lugar, el objeto global es `window`.
+
+2. ### `window`:
+
+   - **En un navegador**:
+
+     `window` es el objeto global en el contexto de un navegador. Contiene todas las variables y funciones globales y representa el entorno de ejecución del navegador.
+
+   - **Ejemplo**:
+
+     ```javascript
+     // En un navegador
+     window.miVariable = 'Hola desde el objeto window';
+     
+     console.log(miVariable); // Imprime: 'Hola desde el objeto window'
+     ```
+
+3. ### `globalThis`:
+
+   - **En cualquier entorno (Node.js y navegadores)**:
+
+     `globalThis` es un estándar del lenguaje JavaScript introducido en ECMAScript 11 (ES11) que proporciona una forma de acceder al objeto global independientemente del entorno en el que se esté ejecutando el código. Esto significa que puedes usar `globalThis` tanto en Node.js como en navegadores para acceder al objeto global.
+
+   - **Ejemplo**:
+
+     ```javascript
+     // En Node.js o en un navegador
+     globalThis.miVariable = 'Hola desde el objeto globalThis';
+     
+     console.log(miVariable); // Imprime: 'Hola desde el objeto globalThis'
+     ```
+ 
+4. #### **`Observaciones`**:
+
+   - `window` es específico del entorno del navegador y no está disponible en Node.js.
+  
+   - `global` es específico del entorno de Node.js.
+  
+   - `globalThis` puede acceder en ambos entornos.
+  
+   - En un entorno de navegador, puedes acceder a `window` directamente o simplemente usando `miVariable` (si no ha sido declarada dentro de una función).
+
+5. #### **`Conclusión`**:
+
+   En resumen, `global` se utiliza en Node.js para representar el contexto global, `window` se utiliza en el entorno del navegador para el mismo propósito, y `globalThis` es una adición estándar de ES11 que proporciona una forma de acceder al objeto global en cualquier entorno, ya sea Node.js o un navegador. Todos ellos aunque se puedan utilizar en un entorno u otro, `son los objetos que contienen todos los métodos y variables que vienen por defecto en el lenguaje de programación como console.log(), Math.floor(), variable.join(""), variable.map(), Array, Object, Boolean, etc...`
 
 
 

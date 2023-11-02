@@ -29,6 +29,7 @@
   "prettier.bracketSameLine": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.tabSize": 2,
+  "editor.insertSpaces": true,
   "cSpell.userWords": [
     "actualizer",
     "agrúpalos",
@@ -242,11 +243,10 @@
   "workbench.colorCustomizations": {},
   "typescript.format.semicolons": "insert",
   "editor.autoIndent": "full",
-  "editor.inlineSuggest.showToolbar": "always",
+  "editor.inlineSuggest.showToolbar": "onHover",
   "editor.quickSuggestions": {
-    "other": "inline",
-    "comments": "inline",
-    "strings": "inline"
+    "comments": "on",
+    "strings": "on"
   },
   "auto-rename-tag.activationOnLanguage": ["*"],
   "auto-close-tag.SublimeText3Mode": true,
@@ -274,7 +274,7 @@
   "editor.autoClosingOvertype": "always",
   "editor.autoClosingBrackets": "always",
   "editor.autoSurround": "languageDefined",
-  "editor.renderWhitespace": "selection",
+  "editor.renderWhitespace": "all",
   "cSpell.words": [
     "alberto",
     "algun",
@@ -282,11 +282,13 @@
     "bankonotes",
     "bloqueantes",
     "colombia",
+    "cpus",
     "cuadraditos",
     "descripcion",
     "direccion",
     "Direccion",
     "Electronico",
+    "freemem",
     "Funcion",
     "indian",
     "Informacion",
@@ -300,5 +302,15 @@
     "raidanes",
     "Renminbi",
     "tlsv"
-  ]
+  ],
+  "editor.suggest.preview": true,
+  "versionlens.suggestions.indicators": {
+    "Directory": "📁 ",
+    "Error": "🔴",
+    "Latest": "🟢",
+    "NoMatch": "⚪",
+    "Match": "🟡",
+    "Updateable": "↑ "
+  },
+  "editor.fontLigatures": false
 }
