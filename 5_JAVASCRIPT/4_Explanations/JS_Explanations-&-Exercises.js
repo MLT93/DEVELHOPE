@@ -9,7 +9,7 @@ console.log(variable);
 let ageMarc = 30;
 // Ternary Operator. Válido únicamente para hacer comparaciones y evaluaciones simples, con respuestas como: true, false.
 console.log(
-  ageMarc >= 18 ? `You can drive a car` : `You are too young to drive`
+  ageMarc >= 18 ? `You can drive a car` : `You are too young to drive`,
 );
 
 // --------------------------------------------
@@ -32,7 +32,7 @@ console.log(hola[3]); // Print A.
 const obj = {
   a: "a = " + true,
   b: "b = " + true,
-}
+};
 const { a, b } = obj;
 
 const c = "c = " + false;
@@ -156,7 +156,6 @@ const objetivo2 = 8;
 const resultado2 = encontrarSuma(num, objetivo2);
 console.log(resultado2); // Output esperado: "No se encontraron dos números que sumen 8"
 
-
 /**
  * **Enunciado del ejercicio:**
  *
@@ -197,7 +196,6 @@ const filtrarCadenas = (arr) => {
 };
 const stringsFiltrados = filtrarCadenas(datos);
 console.log(stringsFiltrados);
-
 
 // ------------------- ITERACIONES FOR...IN \ FOR IN \ FOR-IN \ Object.entries: PARA OBJETO --------------------------------------
 
@@ -240,12 +238,12 @@ iterarEnObjeto(car);
 
 /* `Object.entries`: crea un array de arrays [['key', 'value'], ['key', 'value'], ['key', '{ value }']]. Tiene un hermano gemelo que hace lo mismo, pero al revés `Object.fromEntries()`, o sea que convierte un array de arrays (key-value) en objeto. */
 
-const persona = {                               
-  nombre: "Juan",                                     
-  edad: 30,                                     
+const persona = {
+  nombre: "Juan",
+  edad: 30,
   dirección: {
-    calle: "Calle Principal",                   
-    ciudad: "Ciudad Ejemplo",                     
+    calle: "Calle Principal",
+    ciudad: "Ciudad Ejemplo",
   },
 };
 
@@ -288,7 +286,6 @@ Imprimimos el contenido del array arrFromEntries en la consola, que muestra cóm
 En resumen, el código demuestra cómo modificar valores dentro del objeto persona utilizando el array arrFromEntries que fue creado a partir del objeto original utilizando Object.entries(). Sin embargo, ten en cuenta que los cambios se realizan indirectamente a través del array, no directamente en el objeto original.
 */
 
-
 // ------------------- ITERACIONES FOR...OF \ FOR OF \ FOR-OF \ .forEach() \ FOR \ .map() \ .filter() : PARA ARRAY --------------------------------------
 
 /* 
@@ -330,9 +327,7 @@ const cuadrados = misNumeros.map((numero) => numero * numero); // el nuevo array
 
 // `.filter()`: sirve para reducir un array a partir del cumplimiento de una condición proporcionada a través de una función callback. A menudo se utiliza en conjunto con .map()
 var misNumeros = [1, 2, 3, 4, 5];
-const losPares = misNumeros.filter(numero => numero % 2 === 0); // losPares contendrá: [2, 4]
-
-
+const losPares = misNumeros.filter((numero) => numero % 2 === 0); // losPares contendrá: [2, 4]
 
 //---------------- FORMAS DE USAR UN OBJETO CON FUNCIÓN AGREGADA, BUSCAR LAS PROPIEDADES Y LOS MODOS ---------------------
 
@@ -420,7 +415,7 @@ console.log(
   String(nombree)
     .concat(" ha completado ")
     .concat(yearsCompleted)
-    .concat(" años.")
+    .concat(" años."),
 );
 
 let array1 = [1, 2, 3, 4, 5];
@@ -455,7 +450,7 @@ let anguloInDegrees = 180;
 let anguloInRadians = (anguloInDegrees * Math.PI) / 180; // Fórmula para convertir los ángulos en grados a radianes
 console.log(Math.cos(anguloInRadians)); // Imprime -1.
 
-Math.tan(); // Siempre calcula en radianes. Por lo tanto, el dato dentro de las paréntesis es en raidanes. La conversión de radianes a grados sería:
+Math.tan(); // Siempre calcula en radianes. Por lo tanto, el dato dentro de las paréntesis es en radianes. La conversión de radianes a grados sería:
 let anguloEnGrados = 210;
 let anguloEnRadianes = (anguloEnGrados * Math.PI) / 180; // Convierto mi ángulo escrito en radianes a grados.
 console.log(Math.tan(anguloEnRadianes)); // El resultado impreso en la consola será aprox 0.36397023426620234, que es la tangente de 210 grados (o 7π/6 radianes).
@@ -724,22 +719,19 @@ let numbers = [1, 2, 3, 4, 5, 11, 12, 22, 0.7];
 
 console.log(
   "Accedo al último elemento utilizando el .slice:",
-  numbers.slice(-1)[0]
-);   
+  numbers.slice(-1)[0],
+);
 // Array: El array original del cual se desea extraer una porción.
 // Inicio (opcional): El índice donde se iniciará la extracción. Si no se especifica, se asume un valor de 0, lo que significa que se comenzará desde el primer elemento del array.
 // Fin (opcional): El índice donde finalizará la extracción. El método .slice() extraerá los elementos hasta fin - 1. Si no se especifica, se extraerán todos los elementos hasta el final del array.
-
-
-
 
 // El método .splice(indice de inicio(inclusive), cantidad de elementos a eliminar, item a añadir) permite modificar el contenido de un array eliminando, reemplazando o agregando elementos. Acepta varios argumentos. Puedes utilizarlo para quitar una parte del array especificando el índice de inicio (inclusive) y la cantidad de elementos a eliminar en elementos a eliminar.
 let numbers2 = [1, 2, 3, 4, 5, 11, 12, 22, 0.7];
 
 console.log(
   "Con .splice éstos son los números que quito: ",
-  numbers2.splice(0, 5, 55)
-); 
+  numbers2.splice(0, 5, 55),
+);
 console.log("Este es mi array después de pasarle el .splice:", numbers2);
 
 // Sintaxis y explicación:
@@ -747,7 +739,7 @@ array.splice(
   0 /*inicio*/,
   2 /*deleteCount*/,
   7 /*añadirItem1*/,
-  40 /*añadirItem1*/
+  40 /*añadirItem1*/,
 );
 // inicio: Es el índice en el cual comenzar a realizar las modificaciones en el array.
 // deleteCount: Es el número de elementos a eliminar a partir del índice start. Si se establece en 0, no se eliminará ningún elemento.
@@ -759,13 +751,10 @@ let numeritos = [1, 2, 3, 4, 5];
 let removedElements = numeritos.splice(
   2 /* inicio incluido */,
   2 /* elementos a eliminar */,
-  32 /* elementos a añadir */
+  32 /* elementos a añadir */,
 ); // Elimina 2 elementos a partir del índice 2
 console.log("Array modificado:", numeritos); // Resultado: [1, 2, 32, 5]
 console.log("Elementos eliminados:", removedElements); // Resultado: [3, 4]
-
-
-
 
 /* En JavaScript, el método .reduce() se utiliza para recorrer/iterar un arreglo/array y acumular sus elementos en un único valor. Se usa frecuentemente para realizar operaciones como sumar números, encontrar el valor máximo o mínimo, o cualquier otra operación que involucre combinar elementos del arreglo. */
 /* La sintaxis básica del método .reduce() es la siguiente: */
@@ -801,17 +790,22 @@ const numeroMasGrande = numb.reduce((acumulador, valorActual) => {
 
 console.log(`El número más grande es: ${numeroMasGrande}`);
 
-
 /* Aquí tienes un ejemplo de cómo podrías usar .reduce() para encontrar la suma de un arreglo de números: */
 const numeros = [1, 2, 3, 4, 5];
-const suma = numeros.reduce((acumulador, valorActual) => acumulador + valorActual, 0);
+const suma = numeros.reduce(
+  (acumulador, valorActual) => acumulador + valorActual,
+  0,
+);
 
 console.log(suma); // Salida: 15
 /* En este ejemplo, el acumulador comienza en 0, y por cada elemento en el arreglo numeros, se suma el valorActual al acumulador, resultando en la suma de todos los números. */
 
 /* También puedes usar .reduce() para operaciones más complejas, como encontrar el valor máximo en un arreglo: */
 const numerols = [8, 3, 11, 6, 4];
-const maximo = numerols.reduce((acumulador, valorActual) => Math.max(acumulador, valorActual), -Infinity);
+const maximo = numerols.reduce(
+  (acumulador, valorActual) => Math.max(acumulador, valorActual),
+  -Infinity,
+);
 
 console.log(maximo); // Salida: 11
 /* Recuerda que .reduce() puede ser poderoso, pero otros métodos de arreglo como .map(), .filter() y .forEach() podrían ser más apropiados para ciertas tareas. Es importante elegir el método adecuado según la operación específica que deseas realizar. */
@@ -843,10 +837,10 @@ Ejemplos: */
 const nmbers = [1, 2, 3];
 
 // Ejemplo de .map() - creando un nuevo array
-const duplicados = nmbers.map(numero => numero * 2); // [2, 4, 6]
+const duplicados = nmbers.map((numero) => numero * 2); // [2, 4, 6]
 
 // Ejemplo de .forEach() - efecto secundario
-nmbers.forEach(numero => console.log(numero * 2)); // Imprime 2, 4, 6
+nmbers.forEach((numero) => console.log(numero * 2)); // Imprime 2, 4, 6
 
 /* En resumen, utiliza `.map()` cuando necesitas transformar elementos y crear un nuevo array basado en esas transformaciones, y utiliza `.forEach()` cuando deseas ejecutar una función en cada elemento del array sin necesariamente crear un nuevo array. Ambos métodos tienen sus propios casos de uso específicos dependiendo de tus necesidades. */
 
@@ -1291,7 +1285,7 @@ const question4 = 4 <= 4; // Print true
 console.log(
   `
 1º variable ${question1},`,
-  `2ª variable ${question2},`
+  `2ª variable ${question2},`,
   // `3ª variable ${question3},`,
   // `4ª variable ${question4},
   // `,
@@ -1299,11 +1293,11 @@ console.log(
 
 console.log(
   "Primera comparación || con la 1º variable y la 2ª variable =" + "",
-  question1 || question2
+  question1 || question2,
 ); //the result must be true ♦ Con || si las dos condiciones son true, dará TRUE. Si la primera es true y la segunda es false, dará TRUE. Si la primera es false y la segunda es false, será FALSE. Si la primera es false y la segunda es true, será TRUE.
 console.log(
   "Segunda comparación && con la 1º variable y la 2ª variable =" + "",
-  question1 && question2
+  question1 && question2,
 ); //the result must be false ♦ Con && si las dos condiciones son true, dará TRUE. Si la primera es true y la segunda es false, dará FALSE. Si la primera es false y la segunda es false, será FALSE. Si la primera es false y la segunda es ture, será FALSE.
 // console.log("Tercera comparación" + "", question3 || question2) //the result must be true
 // console.log("Cuarta comparación" + "", question4 != question4) //the result must be false ♦ Acá creo una negación con el <!=> para que NO sea <==>
@@ -1327,7 +1321,7 @@ console.log(laEdad >= 18 ? "you can drive a car" : "NO PUEDES");
 
 let losAños = 22;
 console.log(
-  losAños >= 18 ? `You can drive a car` : `You are too young to drive`
+  losAños >= 18 ? `You can drive a car` : `You are too young to drive`,
 );
 
 let age2 = 15;
@@ -1342,7 +1336,7 @@ console.log(edad);
 // Lau
 let miEdad = 17;
 console.log(
-  miEdad >= 18 ? "Puedes conducir un coche" : "No puedes conducir un coche"
+  miEdad >= 18 ? "Puedes conducir un coche" : "No puedes conducir un coche",
 );
 
 // function d () {
@@ -1370,7 +1364,9 @@ console.log(
 let diaDeVerano = true;
 let deberesHechos = true;
 console.log(
-  diaDeVerano && deberesHechos ? "Jesse can go out to play" : "Jesse stays home"
+  diaDeVerano && deberesHechos
+    ? "Jesse can go out to play"
+    : "Jesse stays home",
 );
 
 //luisa
@@ -1426,7 +1422,7 @@ let numerico = 7;
 // } else console.log("The numerico is negative");
 
 console.log(
-  numerico > 0 ? "the numerico is positive" : "the numerico is negative"
+  numerico > 0 ? "the numerico is positive" : "the numerico is negative",
 );
 
 // Variable a comparar.
@@ -1458,7 +1454,9 @@ if (nombre === "Mario" && surName === "Rossi") {
 
 let fullNamer = nombre + surName;
 console.log(
-  nombre === "Mario" && surName === "Rossi" ? fullNamer : `Full name is invalid`
+  nombre === "Mario" && surName === "Rossi"
+    ? fullNamer
+    : `Full name is invalid`,
 );
 
 // -----------------------------------------------
@@ -1528,7 +1526,7 @@ const passWord = "Hi560";
 console.log(
   passWord.length > 4 && passWord.length < 6
     ? "Password length is correct"
-    : "Password not valid"
+    : "Password not valid",
 );
 
 if (passWord.length > 4 && passWord.length < 6) {
@@ -1687,7 +1685,7 @@ switch (priceRoom[0]) {
   case 50: {
     // Los "case" acceden al valor que tengo guardado dentro de una variable, siempre que sea <String> o <Number>. Por lo tanto, deberé seleccionar directamente el dato que deseo analizar, en este caso equivale a 50, que corresponde al valor de la variable precioBasicoDeEneroAMayo.
     d(
-      `The price of Basic Room from January to May is ${priceRoom[0].precioBasicoDeEneroAMayo} euros.`
+      `The price of Basic Room from January to May is ${priceRoom[0].precioBasicoDeEneroAMayo} euros.`,
     );
     // selectionOfRooms.push(priceRoom[0].precioBasicoDeEneroAMayo)
     break; // El "break;" detiene la ejecución del switch, cuando encuentra un "case" que corresponde a la expresión evaluada. En éste caso, 50 es la expresión evaluada.
@@ -1695,7 +1693,7 @@ switch (priceRoom[0]) {
   case 80: {
     // Acá el dato al cual deseo acceder trámite el "case", es el 80, que es el valor de la variable precioJovenDeEneroAMayo.
     d(
-      `The price of Junior Room from January to May is ${priceRoom[0].precioJovenDeEneroAMayo} euros.`
+      `The price of Junior Room from January to May is ${priceRoom[0].precioJovenDeEneroAMayo} euros.`,
     );
     // selectionOfRooms.push(priceRoom[0].precioJovenDeEneroAMayo)
     break;
@@ -1703,7 +1701,7 @@ switch (priceRoom[0]) {
   case 100: {
     // Con este "case" accedo al valor de mi variable precioMasterDeEneroAMayo.
     d(
-      `The price of Master Suite from January to May is ${priceRoom[0].precioMasterDeEneroAMayo} euros.`
+      `The price of Master Suite from January to May is ${priceRoom[0].precioMasterDeEneroAMayo} euros.`,
     );
     // selectionOfRooms.push(priceRoom[0].precioMasterDeEneroAMayo)
     break;
@@ -1895,150 +1893,157 @@ console.log("La suma de los números = " + cajaDeNumeros);
         Print if there are some members with the same name (name). */
 
 let teamMembers = [
-    {
-      name: "Marcos",
-      surname: "Lambir Torres",
-      age: 30,
-      city: "Franchuski",
-      hobby: "Rascarme",
-      favoriteFood: "Pasta",
-      favoriteVideoGame: "Lol",
-      favoriteFilm: "Titanic",
-      favoriteBook: "Memorias del Agua",
-      petName: "Turi",
-    },
-    {
-      name: "Esteve",
-      surname: "Mogas Silva",
-      age: 28,
-      city: "Granollers",
-      hobby: "Escalar",
-      favoriteFood: "Croquetas",
-      favoriteVideoGame: "LOL",
-      favoriteFilm: "Origen",
-      favoriteBook: "",
-      petName: "",
-    },
-    {
-      name: "Manuel",
-      surname: "Benitez",
-      age: 29,
-      city: "Palma",
-      hobby: "Ski",
-      favoriteFood: "Empanadas",
-      favoriteVideoGame: "Catan",
-      favoriteFilm: "",
-      favoriteBook: "Shantaram",
-      petName: "Shaka, Shiva, Mechi",
-    },
-    {
-      name: "Marta",
-      surname: "Miras Méndez",
-      age: 21,
-      city: "Madrid",
-      hobby: "Papiroflexia",
-      favoriteFood: "Sushi",
-      favoriteVideoGame: "PUBG",
-      favoriteFilm: "Avatar",
-      favoriteBook: "Loco por ella",
-      petName: "Mochi",
-    },
-  ];
-  
-  /* La función .sort() se utiliza en el array (teamMembers) para ordenar sus elementos. Recibe una función de comparación como argumento para determinar el orden de los elementos, que sería la arrow function (prev, next) => { ... } que utilizamos para comparar los atributos/elementos "prev" y "next".
+  {
+    name: "Marcos",
+    surname: "Lambir Torres",
+    age: 30,
+    city: "Franchuski",
+    hobby: "Rascarme",
+    favoriteFood: "Pasta",
+    favoriteVideoGame: "Lol",
+    favoriteFilm: "Titanic",
+    favoriteBook: "Memorias del Agua",
+    petName: "Turi",
+  },
+  {
+    name: "Esteve",
+    surname: "Mogas Silva",
+    age: 28,
+    city: "Granollers",
+    hobby: "Escalar",
+    favoriteFood: "Croquetas",
+    favoriteVideoGame: "LOL",
+    favoriteFilm: "Origen",
+    favoriteBook: "",
+    petName: "",
+  },
+  {
+    name: "Manuel",
+    surname: "Benitez",
+    age: 29,
+    city: "Palma",
+    hobby: "Ski",
+    favoriteFood: "Empanadas",
+    favoriteVideoGame: "Catan",
+    favoriteFilm: "",
+    favoriteBook: "Shantaram",
+    petName: "Shaka, Shiva, Mechi",
+  },
+  {
+    name: "Marta",
+    surname: "Miras Méndez",
+    age: 21,
+    city: "Madrid",
+    hobby: "Papiroflexia",
+    favoriteFood: "Sushi",
+    favoriteVideoGame: "PUBG",
+    favoriteFilm: "Avatar",
+    favoriteBook: "Loco por ella",
+    petName: "Mochi",
+  },
+];
+
+/* La función .sort() se utiliza en el array (teamMembers) para ordenar sus elementos. Recibe una función de comparación como argumento para determinar el orden de los elementos, que sería la arrow function (prev, next) => { ... } que utilizamos para comparar los atributos/elementos "prev" y "next".
   Luego comparamos las variables fa y fb, que contienen los atributos/elementos (a) con las propiedades de los apellidos (.surname) escritas en minúsculas (.toLowerCase).
   Si (if) (prevSurname) es menor (<) que (nextSurname), se retorna (return) (-1), lo que indica que a se pondrá antes de b en el ordenamiento de los elementos. Si (if) (prevSurname) es mayor (>) que (nextSurname), se retorna (return) (1), lo que indica que a debe ubicarse después de b en el ordenamiento. En el caso de que nada de lo anterior se cumpla, se devuelve (return) (0), lo que indica que no hay diferencia en el orden relativo de prev y next. */
-  teamMembers.sort((prev, next) => {
-    /* .toLowerCase() convierte todas las letras a minúsculas. */
-      const prevSurname = prev.surname.toLowerCase(), 
-            nextSurname = next.surname.toLowerCase();
-  
-      if (prevSurname < nextSurname) { return -1; }
-  
-      if (prevSurname > nextSurname) { return 1; } 
-  
-      return 0;
-  });
-  /* Imprimo por consola un titulo relativo a la función, para mejorar su lectura */
-  console.log("Los miembros del grupo son:")
+teamMembers.sort((prev, next) => {
+  /* .toLowerCase() convierte todas las letras a minúsculas. */
+  const prevSurname = prev.surname.toLowerCase(),
+    nextSurname = next.surname.toLowerCase();
 
-  /* Por cada (.forEach) atributo/elemento (element) que hay en el array (teamMembers), devuelve (return) e imprime por consola (console.log()) la propiedad (.surname) del elemento (element) y también la propiedad nombre del mismo elemento (element.name)*/
-  teamMembers.forEach(element => {
-  console.log(`   ${element.surname} ${element.name} `)
-  });
-  
-  /* Imprimo por consola un titulo relativo a la función, para mejorar su lectura */
-  console.log("La edad de los miembros del grupo es:")
+  if (prevSurname < nextSurname) {
+    return -1;
+  }
 
-  /* El (.sort) nos compara los atributos/elementos al interno del array, ordenándolos y nos devuelve (return) el mismo arreglo de forma ordenada, después de hacer una comparación entre el parametro "a" y el parametro "b" */
-  teamMembers.sort((edadA, edadB) => {
-    /* La comparación se realiza restando los atributos (edadA y edadB) con el valor asignado de la propiedad correspondiente (.age):
+  if (prevSurname > nextSurname) {
+    return 1;
+  }
+
+  return 0;
+});
+/* Imprimo por consola un titulo relativo a la función, para mejorar su lectura */
+console.log("Los miembros del grupo son:");
+
+/* Por cada (.forEach) atributo/elemento (element) que hay en el array (teamMembers), devuelve (return) e imprime por consola (console.log()) la propiedad (.surname) del elemento (element) y también la propiedad nombre del mismo elemento (element.name)*/
+teamMembers.forEach((element) => {
+  console.log(`   ${element.surname} ${element.name} `);
+});
+
+/* Imprimo por consola un titulo relativo a la función, para mejorar su lectura */
+console.log("La edad de los miembros del grupo es:");
+
+/* El (.sort) nos compara los atributos/elementos al interno del array, ordenándolos y nos devuelve (return) el mismo arreglo de forma ordenada, después de hacer una comparación entre el parametro "a" y el parametro "b" */
+teamMembers.sort((edadA, edadB) => {
+  /* La comparación se realiza restando los atributos (edadA y edadB) con el valor asignado de la propiedad correspondiente (.age):
      Si la propiedad (.age) del primer parametro (edadA) es mas pequeña que la otra (edadB.age), el resultado de la resta nos dará un número negativo, lo que indica que ese atributo (edadA) debe ser colocado antes que el otro elemento (edadB) dentro de la lista.
      Si (edadA.age) es mas grande que (edadB.age), el resultado de la resta será positivo, lo que indica que el elemento (edadA) debe ser colocado después de (edadB).
      Si las edades son iguales, el resultado de la resta será 0, lo que significa que no hay diferencia en la posición relativa de los elemento edadA y edadB. */
-    return edadA.age - edadB.age;
-  });
-  /* Por cada (.forEach) atributo/elemento (elemento) dentro del array (teamMembers) imprime por consola (console.log) el nombre del elemento (elemento.name) y su edad (elemento.age) */
-  teamMembers.forEach(elemento => {
-    console.log(`   La edad de ${elemento.name} es ${elemento.age} `)
-  });
-  
-  /* Creo dos variables, una con la longitud (.length) del array (teamMembers) y la otra la inicializo en 0 para guardar la suma total de todas las edades */
-  let cantidadDeEdadesEnElArray = teamMembers.length;
-  let sumaDeEdades = 0;
-  /* Por cada atributo/elemento del array sumo las edades entre sí mismas y devuelvo su suma. */
-  teamMembers.forEach(atributo => {
-    return sumaDeEdades = sumaDeEdades + atributo.age /* también se puede escribir así: sumarEdades += atributo.age */
-  });
-  /* creo una variable para guardar el valor de la media de edades (una media se realiza sumando todos los valores entre sí y dividiendo el resultado entre la cantidad de valores dados) y finalmente imprimo el resultado por consola */
-  console.log("La edad media del equipo es:", sumaDeEdades / cantidadDeEdadesEnElArray);
-  
+  return edadA.age - edadB.age;
+});
+/* Por cada (.forEach) atributo/elemento (elemento) dentro del array (teamMembers) imprime por consola (console.log) el nombre del elemento (elemento.name) y su edad (elemento.age) */
+teamMembers.forEach((elemento) => {
+  console.log(`   La edad de ${elemento.name} es ${elemento.age} `);
+});
 
-  /* Imprimo por consola un titulo relativo a la función, para mejorar su lectura */
-  console.log("Quién es fanático de League Of Legends?")
+/* Creo dos variables, una con la longitud (.length) del array (teamMembers) y la otra la inicializo en 0 para guardar la suma total de todas las edades */
+let cantidadDeEdadesEnElArray = teamMembers.length;
+let sumaDeEdades = 0;
+/* Por cada atributo/elemento del array sumo las edades entre sí mismas y devuelvo su suma. */
+teamMembers.forEach((atributo) => {
+  return (sumaDeEdades =
+    sumaDeEdades +
+    atributo.age); /* también se puede escribir así: sumarEdades += atributo.age */
+});
+/* creo una variable para guardar el valor de la media de edades (una media se realiza sumando todos los valores entre sí y dividiendo el resultado entre la cantidad de valores dados) y finalmente imprimo el resultado por consola */
+console.log(
+  "La edad media del equipo es:",
+  sumaDeEdades / cantidadDeEdadesEnElArray,
+);
 
-  /* Por cada atributo/elemento del array: 
+/* Imprimo por consola un titulo relativo a la función, para mejorar su lectura */
+console.log("Quién es fanático de League Of Legends?");
+
+/* Por cada atributo/elemento del array: 
   creo una variable (let juegoFavorito) para almacenar las propiedades (.favoriteVideoGame) del atributo/elemento (attribute) del array
   Después digo, Si (if) la variable (let juegoFavorito) sin importar si está escrito en mayúsculas o minúsculas (.toLowerCase) es estrictamente equivalente (===) a "lol" o (||) "league of legends"
   devuelve (return) e imprime por consola (console.log()) que se juega a ese juego */
-  teamMembers.forEach(attribute => {
-    let juegoFavorito = attribute.favoriteVideoGame
-    if (
-      juegoFavorito.toLowerCase() === "lol" || juegoFavorito.toLowerCase() === "league of legends"
-      ) {
-        console.log(`   ${attribute.name} es un fanático del Lol`);
-    } 
-    if (
-        juegoFavorito.toLowerCase() !== "lol" && juegoFavorito.toLowerCase() !== "league of legends"
-    ) {
-        console.log(`   ${attribute.name} no pierde la vida en el Lol`)
-    }
-  });
+teamMembers.forEach((attribute) => {
+  let juegoFavorito = attribute.favoriteVideoGame;
+  if (
+    juegoFavorito.toLowerCase() === "lol" ||
+    juegoFavorito.toLowerCase() === "league of legends"
+  ) {
+    console.log(`   ${attribute.name} es un fanático del Lol`);
+  }
+  if (
+    juegoFavorito.toLowerCase() !== "lol" &&
+    juegoFavorito.toLowerCase() !== "league of legends"
+  ) {
+    console.log(`   ${attribute.name} no pierde la vida en el Lol`);
+  }
+});
 
-  /* Imprimo por consola un titulo relativo a la función, para mejorar su lectura */
-  console.log("Mascota o mascotas que tienen los participantes del grupo:")
-  
-  /* Creo una función con un parametro (function petAtribute (arr)) para saber qué mascotas tiene cada miembro del team y si ha rellenado la casilla de petName */
-  function petAtribute(arr) {
-    /* Recorro el array completo utilizando un bucle (for) */
-    for (let i = 0; i < arr.length; i++) {
-      /* Inicializo una variable con el valor de todas las mascotas de un array */
-      let saberPetName = arr[i].petName;
-      /* Si (if) la condición de comprobar (typeof()) si la variable (const saberPetName) es equivalente (===) a una cadena de texto ("string") y (&&) si la condición de la variable (saberPetName) posee una longitud (.length) distinta (!==) a 0
+/* Imprimo por consola un titulo relativo a la función, para mejorar su lectura */
+console.log("Mascota o mascotas que tienen los participantes del grupo:");
+
+/* Creo una función con un parametro (function petAtribute (arr)) para saber qué mascotas tiene cada miembro del team y si ha rellenado la casilla de petName */
+function petAtribute(arr) {
+  /* Recorro el array completo utilizando un bucle (for) */
+  for (let i = 0; i < arr.length; i++) {
+    /* Inicializo una variable con el valor de todas las mascotas de un array */
+    let saberPetName = arr[i].petName;
+    /* Si (if) la condición de comprobar (typeof()) si la variable (const saberPetName) es equivalente (===) a una cadena de texto ("string") y (&&) si la condición de la variable (saberPetName) posee una longitud (.length) distinta (!==) a 0
       entonces imprimo por consola (console.log()) el nombre de la/las mascota/s que se puedan tener
       Si no (else) imprimo por consola (console.log()) que no tiene mascota. */
-      if (
-        typeof(saberPetName === "string") &&
-        saberPetName.length !== 0
-      ) {
-        console.log(`   ${arr[i].name} tiene a: ${saberPetName}`);
-      } else {
-        console.log(saberPetName = `   ${arr[i].name} tiene a: N/A`);
-      };
-    };
-  };
-  petAtribute(teamMembers);
-  /** Las lineas de código desde la linea #135 hasta la linea #154 pueden ser reemplazadas por algo mas simple: 
+    if (typeof (saberPetName === "string") && saberPetName.length !== 0) {
+      console.log(`   ${arr[i].name} tiene a: ${saberPetName}`);
+    } else {
+      console.log((saberPetName = `   ${arr[i].name} tiene a: N/A`));
+    }
+  }
+}
+petAtribute(teamMembers);
+/** Las lineas de código desde la linea #135 hasta la linea #154 pueden ser reemplazadas por algo mas simple: 
   
    * teamMembers.forEach((member) => {
         if(member.petName){
@@ -2047,67 +2052,127 @@ let teamMembers = [
         })
 
    */
-  
-  /* Creo una función para saber si hay nombre repetidos en el array */
-  function hayNombresRepetidosEnElArray(array) {
-    /* Creo un array vacío para guardar probables nombres repetidos */
-    let nombresRepetidos = [];
-    /* Creo un bucle (for) que inicializa en el primer índice del array y va avanzando hasta que llega a su fin */
-    for (let primerIndex = 0; primerIndex < array.length; primerIndex++) {
-      /* Necesito crear otro bucle para tener otra referencia. Así podré compararlas entre ellas. Por esa misma razón, inicializamos la variable del segundo bucle con la variable del primero más 1, así podemos comparar el primer elemento del array con el segundo. */
-      for (let segundoIndex = primerIndex + 1; segundoIndex < array.length; segundoIndex++) {
-        /* Si el índice del primer array es equivalente al segundo, añadimos (.push) el nombre del segundo índice al array vacío (let nombresRepetidos = [];) */
-        if (array[primerIndex].name === array[segundoIndex].name) {
-          nombresRepetidos.push(array[primerIndex].name);
-        };    
-      };
-    };
-    /* Si (if) el array (nombresRepetidos) tiene una longitud (.length) mayor (>) que zero (0), quiere decir que hay algún nombre al interno del array */
-    if (nombresRepetidos.length > 0) {
-      console.log("Los nombres que se repiten son:", nombresRepetidos);
-      /* Si no (else), no posee ninguna longitud, por lo tanto seguirá vacío */
-    } else {
-      console.log("No hay nombres repetidos");
-    }
-    /* Devuelvo el array (nombresRepetidos) que utilicé para guardar los nombres que se repiten */
-    return nombresRepetidos;
-  };
-  hayNombresRepetidosEnElArray(teamMembers);
 
+/* Creo una función para saber si hay nombre repetidos en el array */
+function hayNombresRepetidosEnElArray(array) {
+  /* Creo un array vacío para guardar probables nombres repetidos */
+  let nombresRepetidos = [];
+  /* Creo un bucle (for) que inicializa en el primer índice del array y va avanzando hasta que llega a su fin */
+  for (let primerIndex = 0; primerIndex < array.length; primerIndex++) {
+    /* Necesito crear otro bucle para tener otra referencia. Así podré compararlas entre ellas. Por esa misma razón, inicializamos la variable del segundo bucle con la variable del primero más 1, así podemos comparar el primer elemento del array con el segundo. */
+    for (
+      let segundoIndex = primerIndex + 1;
+      segundoIndex < array.length;
+      segundoIndex++
+    ) {
+      /* Si el índice del primer array es equivalente al segundo, añadimos (.push) el nombre del segundo índice al array vacío (let nombresRepetidos = [];) */
+      if (array[primerIndex].name === array[segundoIndex].name) {
+        nombresRepetidos.push(array[primerIndex].name);
+      }
+    }
+  }
+  /* Si (if) el array (nombresRepetidos) tiene una longitud (.length) mayor (>) que zero (0), quiere decir que hay algún nombre al interno del array */
+  if (nombresRepetidos.length > 0) {
+    console.log("Los nombres que se repiten son:", nombresRepetidos);
+    /* Si no (else), no posee ninguna longitud, por lo tanto seguirá vacío */
+  } else {
+    console.log("No hay nombres repetidos");
+  }
+  /* Devuelvo el array (nombresRepetidos) que utilicé para guardar los nombres que se repiten */
+  return nombresRepetidos;
+}
+hayNombresRepetidosEnElArray(teamMembers);
 
 /** Otra forma de encontrar los nombres repetidos:
  * Function para encontrar nombres repetidos entre los miembros del equipo
- * 
+ *
  * @param {teamMembers} array - array de miembros del equipo
  */
 function hayNombresRepetidosEnElArray(array) {
-    
-    let nombresRepetidos = [];
+  let nombresRepetidos = [];
+  /**
+   * Recorro el array
+   */
+  for (let primerIndex = 0; primerIndex < array.length; primerIndex++) {
     /**
-     * Recorro el array
+     * Segundo bucle para comparar el proximo miembro del equipo
      */
-    for (let primerIndex = 0; primerIndex < array.length; primerIndex++) {
+    for (
+      let segundoIndex = primerIndex + 1;
+      segundoIndex < array.length;
+      segundoIndex++
+    ) {
       /**
-       * Segundo bucle para comparar el proximo miembro del equipo
+       * Si los nombres son iguales, lo guardo en el array
        */
-      for (
-        let segundoIndex = primerIndex + 1;
-        segundoIndex < array.length;
-        segundoIndex++
-      ) {
-        /**
-         * Si los nombres son iguales, lo guardo en el array
-         */
-        if (array[primerIndex].name === array[segundoIndex].name) {
-          nombresRepetidos.push(array[primerIndex].name);
-        }
+      if (array[primerIndex].name === array[segundoIndex].name) {
+        nombresRepetidos.push(array[primerIndex].name);
       }
     }
-    if (nombresRepetidos.length > 0)
-      console.log("Los nombres que se repiten son:", nombresRepetidos);
-    else console.log("No hay nombres repetidos");
   }
-  hayNombresRepetidosEnElArray(teamMembers);
-  
-// ----------------------------------------------
+  if (nombresRepetidos.length > 0)
+    console.log("Los nombres que se repiten son:", nombresRepetidos);
+  else console.log("No hay nombres repetidos");
+}
+hayNombresRepetidosEnElArray(teamMembers);
 
+// --------------------HEXADECIMAL -> ID or COLOR--------------------------
+
+/* Crea 3 códigos para ID y Colors, deben ser hechos en forma `Hexadecimal` y con `randomUUID()` */
+
+/* 1. Código Hexadecimal random ID */
+const randomHexID = () => {
+  const randomNumber = Math.floor(Math.random() * 1000000);
+  const hexadecimalNumber = [];
+
+  for (let hex = randomNumber; hex > 0; hex = Math.floor(hex / 16)) {
+    const remainder = hex % 16;
+
+    hexadecimalNumber.push(remainder.toString(16));
+  }
+
+  const toID = hexadecimalNumber.join("-").toLocaleUpperCase();
+
+  const aleatoryHexID = `#${toID}`;
+
+  return aleatoryHexID;
+};
+console.log(randomHexID());
+
+
+/* 2. Código Hexadecimal random Color */
+const randomHexColor = () => {
+  const hexadecimalNumbers = [];
+
+  for (let i = 0; i < 3; i++) {
+    const randomNumber = Math.floor(Math.random() * 16);
+    hexadecimalNumbers.push(randomNumber.toString(16));
+  }
+
+  const toHex = hexadecimalNumbers.join("").toUpperCase();
+  const aleatoryHexColor = `#${toHex}`;
+
+  return aleatoryHexColor;
+};
+console.log(randomHexColor());
+
+
+/* 3. Código UUID (Identificador Único Universal). Para utilizar randomUUID() debemos utilizar librerías externas porque no es un método estándar en JavaScript */
+const crypto = require("node:crypto");
+
+const randomID = crypto.randomUUID();
+
+console.log(randomID);
+
+/* 4. Código UUID (Identificador Único Universal) formateado. */
+function generateFormattedUUID() {
+  const randomID = crypto.randomUUID();
+  const formattedUUID = randomID
+    .replace(/-/g, "")
+    .match(/.{1,4}/g)
+    .join("-#");
+  return `#${formattedUUID}`;
+}
+
+const formattedUUID = generateFormattedUUID();
+console.log(formattedUUID);
