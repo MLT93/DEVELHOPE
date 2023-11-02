@@ -3721,20 +3721,20 @@
    
    - **Consumer**:
    
-     Es la función o componente que nos permite acceder al valor del proveedor, `useContext()` y/o `.Provider`.
+     Es la función o componente que nos permite acceder al valor del proveedor con `useContext()` y/o `.Provider`.
 
-   ```jsx
-   import { createContext } from 'react';
-   import React from 'react';
-
-   const MiContexto = React.createContext("valor por defecto");
-   ```
-
-   ```jsx
-   import { createContext } from 'react';
-
-   const MiContexto = createContext("valor por defecto");
-   ```
+     ```jsx
+     import { createContext, useContext } from 'react';
+     import React from 'react';
+   
+     const MiContexto = React.createContext("valor por defecto");
+     ```
+   
+     ```jsx
+     import { createContext } from 'react';
+   
+     const MiContexto = createContext("valor por defecto");
+     ```
 
 3. #### **`Provider`**:
 
@@ -3752,7 +3752,7 @@
 
    ```jsx
    <MiContexto.Consumer>
-     {(valor) => /* Renderizar algo basado en el contexto */}
+     {(valor) => {return /* Renderizar algo basado en el contexto */}}
    </MiContexto.Consumer>
    ```
 
@@ -3775,35 +3775,44 @@
    Cambio de theme:
 
    ```jsx
-   // Crear el Provider (aquí se crea el componente padre y los useState necesarios)
+   // Crear el Provider (aquí se crea el componente padre y los useState necesarios para hacer las modificaciones)
    import { createContext } from 'react';
    
    // Creación del contexto (en este caso tiene un valor por defecto)
    export const ThemeContext = createContext('light');
 
    export const ThemeProvider = ({ children }) => {
-     const theme = 'light';
-   
+     const [theme, setTheme] = useState('light');
+     
+     const changeTheme = (theme) => {
+       setTheme(theme);
+     };
+     
      return (
-       <ThemeContext.Provider value={theme}>
+       <ThemeContext.Provider value={{ theme, changeTheme }}>
          {children}
        </ThemeContext.Provider>
      );
    };
    ```
-
+   
    ```jsx
    // Crear el Consumer (aquí se desarrolla la parte relevante del código)
    import { useContext } from 'react';
    import { ThemeContext } from './ThemeContext';
-
-   export const ThemeConsumer = () => {
-     const theme = useContext(ThemeContext);
    
-     return <div>El tema actual es: {theme}</div>;
+   export const ThemeConsumer = () => {
+     const { theme, changeTheme } = useContext(ThemeContext);
+   
+     return (
+       <>
+         <button value={theme} onClick={() => changeTheme('dark')}>El tema actual es oscuro</button>
+         <button value={theme} onClick={() => changeTheme('light')}>El tema actual es claro</button>
+       </>  
+     );
    };
    ```
-
+   
    ```jsx
    // Renderizado
    import { ThemeProvider } from './ThemeProvider';
