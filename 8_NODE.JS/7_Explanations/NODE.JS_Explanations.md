@@ -836,6 +836,55 @@
 
    Luego, puedes abrir un navegador web y acceder a `http://localhost:3000` para ver la respuesta del servidor.
 
+8. #### **`Ejemplo Completo`**:
+
+   ```javascript
+   import { createServer } from "node:http";
+   import { parse } from "node:querystring";
+   
+   const server = createServer((request, response) => {
+     if (request.method === "POST") {
+       let body = "";
+   
+       request.on("data", (chunk) => {
+         body += chunk.toString();
+       });
+   
+       request.on("end", () => {
+         const parsedData = parse(body);
+         const userInput = parsedData.userInput || "Sin datos ingresados";
+   
+         response.statusCode = 200;
+         response.setHeader("Content-Type", "text/html");
+         response.end(
+           `<html><body><h1>Contenido ingresado por el usuario:</h1><p>${userInput}</p></body></html>`
+         );
+       });
+     } else if (request.url === "/") {
+       response.statusCode = 200;
+       response.setHeader("Content-Type", "text/html");
+       response.end(
+         `<html><body><form method="post"><input type="text" name="userInput"><button type="submit">Enviar</button></form></body></html>`
+       );
+     } else {
+       response.statusCode = 404;
+       response.setHeader("Content-Type", "text/html");
+       response.end("<html><body><h1>404 - Not Found</h1></body></html>");
+     }
+   });
+   
+   server.listen(3000, () => {
+     console.log(`Server running at http://localhost:3000`);
+   });
+   ```
+
+   Se importan los módulos `createServer` y `parse` de Node.js. `createServer` se utiliza para crear un servidor HTTP, y `parse` es una función para analizar datos de una solicitud POST.
+   Se crea un servidor usando `createServer` y se pasa una función de callback que se ejecutará cada vez que se reciba una solicitud. Dentro de la función de callback, se verifica el método de la solicitud usando `request.method`.
+   Si es un POST, se procesa el cuerpo de la solicitud. Para procesar el cuerpo de la solicitud, se escucha el evento `'data'` y se acumulan los datos en la variable `body`. Luego, cuando se emite el evento `'end'`, se analizan los datos usando `parse` para obtener el valor del campo `userInput`.
+   Si la solicitud es un POST, se responde con una página HTML que muestra el contenido ingresado por el usuario.
+   Si la URL es la raíz (`'/'`), se responde con un formulario HTML que contiene un campo de texto y un botón de envío.
+   Si la URL no es la raíz ni se trata de un POST, se responde con un código de estado 404 (Not Found) y un mensaje correspondiente. El servidor se inicia en el puerto 3000 y se imprime un mensaje en la consola para indicar que está en funcionamiento.
+
 8. ### **`Peticiones HTTP Usando Curl`**:
 
    Claro, puedo explicarte cómo hacer una solicitud utilizando `curl` a través de la terminal. `curl` es una herramienta de línea de comandos que te permite enviar y recibir datos utilizando varios protocolos, incluido HTTP.
