@@ -832,7 +832,13 @@
 
 7. #### **`Ejecutando el Servidor y Accediendo a la Aplicación`**:
 
-   Para ejecutar el servidor, simplemente ejecutamos el archivo JavaScript con Node.js desde la línea de comandos. Si todo está configurado correctamente, deberías ver el mensaje de confirmación de que el servidor está en funcionamiento.
+   Para ejecutar el servidor, simplemente ejecutamos el archivo JavaScript con Node.js desde la línea de comandos:
+
+   ```bash
+   node <nombre_del_archivo>
+   ```
+   
+   Si todo está configurado correctamente, deberías ver el mensaje de confirmación de que el servidor está en funcionamiento.
 
    Luego, puedes abrir un navegador web y acceder a `http://localhost:3000` para ver la respuesta del servidor.
 
