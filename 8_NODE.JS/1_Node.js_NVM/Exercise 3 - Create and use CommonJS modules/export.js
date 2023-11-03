@@ -1,4 +1,5 @@
 const os = require("node:os");
+
 /* Exercise 3 - Create and use CommonJS modules
 
 Create a script that uses module.exports to export a function.

@@ -1,8 +1,9 @@
+import { createServer } from "node:http";
+
 /* Exercise - 5 Change the HTML response
 
 Replace the text in the HTML with your own message. Run the server and use your web browser to test your changes. */
 
-import { createServer } from "node:http";
 
 const server = createServer((request, response) => {
   console.log("request received");
