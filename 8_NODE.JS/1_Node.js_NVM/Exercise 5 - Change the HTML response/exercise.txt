@@ -1,0 +1,9 @@
+Returned request with command Curl:
+
+Command:
+
+curl -X GET http://localhost:3000
+
+Response:
+
+<html><body><h1>Hello, World!</h1></body></html>
