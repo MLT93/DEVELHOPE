@@ -528,7 +528,7 @@
 
      ```javascript
      // modulo.mjs
-     import os from 'os';
+     import os from 'node:os';
 
      function obtenerInfoSistema () {
        return {
@@ -540,7 +540,7 @@
        }
      }
      
-     // Esta forma de exportación es válida si se desea exportar una única función del archivo, no puede exportar más. La otra sí
+     // Esta forma de exportación es válida si se desea exportar una única función del archivo, no puede exportar más. Con la otra forma expuesta arriba si se puede
      export default obtenerInfoSistema;
      ```
 
@@ -759,39 +759,63 @@
    Para crear un servidor HTTP en Node.js, primero necesitamos requerir el módulo `http`. Esto se hace con la siguiente línea de código:
 
    ```javascript
-   const http = require('http');
+   // CommonJS
+   const http = require('node:http');
+   ```
+
+   ```javascript
+   // ES6
+   import { createServer } from 'node:http';
    ```
 
    Una vez que el módulo está cargado, podemos utilizarlo para crear un servidor. Esto se hace utilizando el método `createServer`, que toma como argumento una función de devolución de llamada que se ejecutará cada vez que el servidor reciba una solicitud.
 
    ```javascript
-   const servidor = http.createServer((solicitud, respuesta) => {
+   // CommonJS
+   const server = http.createServer((request, response) => {
+     console.log('Request received');
      // Lógica de manejo de la solicitud y generación de la respuesta
    });
    ```
 
+   ```javascript
+   // ES6
+   const server = createServer((request, response) => {
+     console.log('Request received');
+     // Lógica...
+   })
+   ```
+
 4. #### **`Manejo de Solicitudes y Respuestas`**:
 
-   La función de devolución de llamada que proporcionamos a `createServer` toma dos argumentos: `solicitud` y `respuesta`. 
+   La función de devolución de llamada que proporcionamos a `createServer` toma dos argumentos: `request` y `response`. 
 
-   - `solicitud`:
+   - `request`:
    
      Es un objeto que contiene información sobre la solicitud realizada al servidor, como la URL, los encabezados y el método HTTP utilizado (GET, POST, etc.).
 
-   - `respuesta`:
+   - `response`:
 
      Es un objeto que utilizamos para enviar una respuesta al navegador o cliente que hizo la solicitud. Esto incluye el contenido de la respuesta, los encabezados y el código de estado HTTP.
 
 5. #### **`Configuración de Respuestas y Envío al Cliente`**:
 
-   Una vez que tenemos acceso a los objetos de solicitud y respuesta, podemos configurar la respuesta que queremos enviar al cliente. Esto generalmente implica establecer el código de estado, los encabezados y el contenido de la respuesta.
+   Una vez que tenemos acceso a los objetos de solicitud y respuesta, podemos configurar la lógica de solicitud y la respuesta que queremos enviar al cliente. Esto generalmente implica establecer el código de estado, los encabezados y el contenido de la respuesta.
 
    ```javascript
-   respuesta.writeHead(200, {'Content-Type': 'text/plain'});
-   respuesta.end('¡Hola, mundo!\n');
+   response.writeHead(200, {'Content-Type': 'text/plain'});
+   response.end('¡Hola, mundo!\n');
    ```
 
    En este ejemplo, estamos configurando una respuesta con un código de estado 200 (que significa "OK") y un tipo de contenido de texto plano. Luego, enviamos el mensaje "¡Hola, mundo!" al cliente.
+
+   También lo podemos hacer así:
+
+   ```javascript
+   response.statusCode = 200;
+   response.setHeader({"Content-Type": "text/html"});
+   response.end("<html><body><h1>This page was served with Node.js</h1></body></html>");
+   ```
 
 6. #### **`Iniciando el Servidor y Escuchando en un Puerto`**:
 
@@ -799,8 +823,8 @@
 
    ```javascript
    const puerto = 3000;
-   servidor.listen(puerto, () => {
-     console.log(`Servidor en funcionamiento en el puerto ${puerto}`);
+   server.listen(puerto, () => {
+     console.log(`Server running at http://localhost:${puerto}`);
    });
    ```
 
@@ -811,6 +835,100 @@
    Para ejecutar el servidor, simplemente ejecutamos el archivo JavaScript con Node.js desde la línea de comandos. Si todo está configurado correctamente, deberías ver el mensaje de confirmación de que el servidor está en funcionamiento.
 
    Luego, puedes abrir un navegador web y acceder a `http://localhost:3000` para ver la respuesta del servidor.
+
+8. ### **`Peticiones HTTP Usando Curl`**:
+
+   Claro, puedo explicarte cómo hacer una solicitud utilizando `curl` a través de la terminal. `curl` es una herramienta de línea de comandos que te permite enviar y recibir datos utilizando varios protocolos, incluido HTTP.
+
+   Supongamos que deseas realizar una solicitud GET a una URL específica, por ejemplo, "https://api.example.com/endpoint" o el servidor que acabamos de crear arriba "http://localhoset:3000".
+   
+   Abre tu terminal y sigue estos pasos:
+   
+   - **Abre la Terminal**:
+   
+     Abre la terminal en tu sistema operativo o en VS Code. Puedes buscar "Terminal" en el menú de aplicaciones o utilizar el atajo de teclado correspondiente.
+   
+   - **Escribe el Comando `curl`**:
+   
+     Escribe el comando `curl` seguido de la URL a la que deseas hacer la solicitud. En este caso, será una solicitud GET.
+   
+     ```bash
+     curl https://api.example.com/endpoint
+     ```
+   
+     Esto enviará una solicitud GET a la URL proporcionada.
+   
+   - **Recibirás la Respuesta**:
+   
+     `curl` imprimirá la respuesta del servidor en tu terminal. Esto incluirá tanto el encabezado de la respuesta HTTP como el cuerpo de la respuesta. Si la solicitud fue exitosa, deberías ver el contenido que el servidor respondió.
+   
+     Si deseas guardar la respuesta en un archivo, puedes redirigir la salida a un archivo utilizando `>`. Por ejemplo:
+   
+     ```bash
+     curl https://api.example.com/endpoint > respuesta.txt
+     ```
+   
+     Esto guardará la respuesta en un archivo llamado "respuesta.txt".
+   
+   - **Más Opciones**:
+   
+     `curl` tiene muchas opciones adicionales para personalizar tu solicitud. Por ejemplo:
+     
+     Puedes especificar el método de solicitud con `-X` y el nombre del método en mayúsculas:
+
+     ```bash
+     curl -X GET http://localhost:3000
+     ```
+
+     ```bash
+     curl -X POST http://localhost:3000
+     ```
+
+     ```bash
+     curl -X PUT http://localhost:3000
+     ```
+
+     ```bash
+     curl -X DELETE http://localhost:3000
+     ```
+     
+     Puedes enviar datos en el cuerpo de la solicitud con `-d` seguida de los datos que deseas enviar:
+
+     ```bash
+     curl -X POST https://api.example.com/endpoint -d 'param1=value1&param2=value2'
+     ```
+
+     Puedes agregar encabezados personalizados con `-H` y `-d` a una solicitud HTTP, por ejemplo, cambiando el formato a JSON:
+
+     ```bash
+     curl -X POST https://api.example.com/endpoint -d '{"key1": "value1", "key2": "value2"}' -H 'Content-Type: application/json'
+     ```
+     
+     Puedes realizar autenticaciones `Basic`, `Bearer` o `OAuth`:
+
+     ```bash
+     curl -X GET https://api.example.com/endpoint -H 'Authorization: Basic <base64-encoded-credentials>'
+     ```
+
+     ```bash
+     curl -X GET https://api.example.com/endpoint -H 'Authorization: Bearer <token_de_acceso>'
+     ```
+
+     ```bash
+     curl -X POST "https://oauth.ejemplo.com/token" \
+     -H "Content-Type: application/x-www-form-urlencoded" \
+     -d "grant_type=password&username=tu_usuario&password=tu_contraseña&client_id=tu_cliente_id&client_secret=tu_cliente_secret"
+     ```
+
+     Puedes consultar la documentación de `curl` para obtener más detalles sobre estas opciones en **https://curl.se/docs/httpscripting.html**
+
+     Además, también puedes acceder a la documentación directamente desde la línea de comandos utilizando el siguiente comando:
+
+     ```bash
+     man curl
+     ```
+
+   Recuerda que este es un ejemplo básico y hay muchas más cosas que puedes hacer con `curl`. Si necesitas realizar solicitudes más complejas o realizar pruebas más detalladas, `curl` es una herramienta muy potente para eso.
 
 8. #### **`Consideraciones Adicionales`**:
 
