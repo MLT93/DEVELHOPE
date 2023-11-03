@@ -946,6 +946,12 @@
      ```bash
      curl -X DELETE http://localhost:3000
      ```
+
+     Puedes hacer una solicitud super detallada con `-v` o `--verbose` que nos ayuda a depurar también:
+
+     ```bash
+     curl -v http://localhost:3000
+     ```
      
      Puedes enviar datos en el cuerpo de la solicitud con `-d` seguida de los datos que deseas enviar:
 
@@ -983,7 +989,7 @@
      man curl
      ```
 
-   Recuerda que este es un ejemplo básico y hay muchas más cosas que puedes hacer con `curl`. Si necesitas realizar solicitudes más complejas o realizar pruebas más detalladas, `curl` es una herramienta muy potente para eso.
+   Recuerda que estos son ejemplos básicos y hay muchas más cosas que puedes hacer con `curl`. Si necesitas realizar solicitudes más complejas o realizar pruebas más detalladas, `curl` es una herramienta muy potente para eso.
 
 8. #### **`Consideraciones Adicionales`**:
 
