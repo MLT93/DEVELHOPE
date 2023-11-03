@@ -1,0 +1,23 @@
+Esto es lo que devuelve la solicitud con el comando `curl -v http://localhost:3000 > exercise.txt`:
+
+{"location":"Mars"}
+
+El comando `curl -v http://localhost:3000` devuelve esto en la consola:
+
+*   Trying 127.0.0.1:3000...
+* Connected to localhost (127.0.0.1) port 3000 (#0)
+> GET / HTTP/1.1
+> Host: localhost:3000
+> User-Agent: curl/7.81.0
+> Accept: */*
+> 
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< Content-Type: application/json
+< Date: Fri, 03 Nov 2023 12:27:42 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< Content-Length: 19
+< 
+* Connection #0 to host localhost left intact
+{"location":"Mars"}
