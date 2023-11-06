@@ -9,7 +9,7 @@ import {
   useMemo,
 } from "react";
 import { TresEnRaya } from "./components/TresEnRaya/TresEnRaya.jsx";
-import { Prueba } from "./components/prueba-tecnica/Prueba-tecnica.jsx";
+import { Prueba } from "./components/Fetch/Prueba-tecnica.jsx";
 import styles from "./App.module.scss";
 import { Button, Form, Collapse, Card } from "react-bootstrap";
 import { Module } from "./components/Module/Module.jsx";
