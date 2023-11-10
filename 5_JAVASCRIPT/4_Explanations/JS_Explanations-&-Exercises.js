@@ -1567,7 +1567,7 @@ switch (typeof primitive) {
 }
 
 // Marcos
-function d(variable) {
+function c(variable) {
   return console.log(variable);
 }
 
@@ -1575,19 +1575,19 @@ let primitivos = 23;
 
 switch (typeof primitivos) {
   case "string":
-    d("Esto es un String.");
+    c("Esto es un String.");
     break;
   case "number":
-    d("Esto es un Number.");
+    c("Esto es un Number.");
     break;
   case "boolean":
-    d("Esto es un Boolean.");
+    c("Esto es un Boolean.");
     break;
   case "undefined":
-    d("No hay ningún valor asignado.");
+    c("No hay ningún valor asignado.");
     break;
   default:
-    d("No conozco aún ese valor.");
+    c("No conozco aún ese valor.");
 }
 
 // Lau
@@ -2116,7 +2116,7 @@ function hayNombresRepetidosEnElArray(array) {
 }
 hayNombresRepetidosEnElArray(teamMembers);
 
-// --------------------HEXADECIMAL -> ID or COLOR--------------------------
+// -------------------- HEXADECIMAL -> ID or COLOR --------------------------
 
 /* Crea 3 códigos para ID y Colors, deben ser hechos en forma `Hexadecimal` y con `randomUUID()` */
 
@@ -2176,3 +2176,21 @@ function generateFormattedUUID() {
 
 const formattedUUID = generateFormattedUUID();
 console.log(formattedUUID);
+
+// -------------------- CONVERTIR DECIMAL A HEXADECIMAL --------------------------
+
+// 1. Convertir decimal a hexadecimal para dirección IP
+const decimalIP = 3232235778; // Ejemplo de dirección IP en formato decimal
+const hexadecimalIP = decimalIP.toString(16);
+console.log("Dirección IP en hexadecimal:", hexadecimalIP);
+
+// 2. Convertir decimal a hexadecimal para número de puerto
+const decimalPort = 8080; // Ejemplo de número de puerto en formato decimal
+const hexadecimalPort = decimalPort.toString(16);
+console.log("Número de puerto en hexadecimal:", hexadecimalPort);
+
+// 3. Convierte el número decimal a hexadecimal
+const decimalNumber = 42; // Reemplaza con tu número decimal
+const hexString = "0x" + decimalNumber.toString(16);
+console.log("Número decimal:", decimalNumber);
+console.log("Número hexadecimal:", hexString);

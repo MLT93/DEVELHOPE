@@ -1748,38 +1748,122 @@
    
    Recuerda que elegir el enfoque adecuado depende del tipo de tarea y de cómo quieres manejar el flujo de ejecución en tu aplicación. Cada enfoque tiene sus ventajas y desventajas, y es importante elegir el que mejor se adapte a las necesidades específicas de tu proyecto.
 
-## Callbacks as Middleware en Node.js: Una Explicación Detallada
+## Callback as Middleware en Node.js y Express: Una Explicación Detallada
 
 1. #### **`Introducción a Middleware`**
 
    El middleware en Node.js se refiere a una capa de software que se encuentra entre el sistema operativo y la aplicación, permitiendo la comunicación y la gestión de las solicitudes entrantes y salientes. En el contexto de Node.js, los middleware se utilizan comúnmente para manipular y modificar solicitudes HTTP, así como para realizar tareas adicionales antes de que una solicitud llegue a su destino final.
+
+   En Express, un "middleware" es una función que tiene acceso a los objetos de solicitud (`req`), respuesta (`res`) y a la siguiente función en la cadena de middleware (`next`). En otras palabras, es una función intermedia que puede modificar la solicitud y respuesta o realizar acciones antes de que lleguen a la ruta final o a la siguiente función de middleware.
+
+   El middleware es una parte esencial del flujo de ejecución en Express y se utiliza para realizar tareas como la validación de datos, la autenticación, el manejo de sesiones, la compresión de respuestas, el registro de solicitudes, y muchas otras operaciones comunes en aplicaciones web.
+
+   Antes de empezar, crea un nuevo directorio para el proyecto:
+   
+   ```bash
+   mkdir express-middleware-example
+   cd express-middleware-example
+   ```
+   
+   Inicializa un nuevo proyecto de Node.js:
+   
+   ```bash
+   npm init -y
+   ```
+   
+   Asegúrate de tener Express instalado en tu proyecto:
+   
+   ```bash
+   npm i -D express
+   ```
 
 2. #### **`Callbacks en Middleware`**
 
    En Node.js, el uso de callbacks es una forma común de manejar operaciones asíncronas. Los callbacks como middleware permiten ejecutar código en el medio de la solicitud y la respuesta HTTP. Esto es especialmente útil para realizar tareas adicionales, como autenticación, autorización, validación de datos, entre otras cosas, antes de que una solicitud alcance su controlador final.
 
 3. #### **`Estructura de un Middleware con Callback`**
-
-   Un middleware con callback generalmente tiene la siguiente estructura:
+   
+   Un middleware es simplemente una función en Express. Puede tener tres argumentos: `req` (request, objeto de solicitud), `res` (response, objeto de respuesta) y `next` (función que indica que el middleware ha terminado y que Express debe pasar al siguiente middleware o ruta). Por ejemplo:
    
    ```javascript
+   // CommonJS
+   const express = require('express');
+   // ES6
+   import * as express from 'express';
+   
+   const app = express();
+
    function miMiddleware(req, res, next) {
+
      // Realizar alguna operación antes de pasar la solicitud al siguiente middleware o controlador
      // Puede incluir autenticación, validación, manipulación de datos, etc.
    
      // Si es necesario, se puede modificar el objeto `req` o `res`
    
-     // Llamar a `next()` pasa la solicitud al siguiente middleware en la cadena
+     // Llamar a `next()` para pasar a la solicitud siguiente
      next();
    }
    ```
+
+   Ejemplo:
+   
+   ```javascript
+   // CommonJS
+   const express = require('express');
+   // ES6
+   import * as express from 'express';
+   
+   const app = express();
+   
+   // Middleware personalizado
+   function loggerMiddleware(req, res, next) {
+     console.log(`Solicitud recibida en fecha: ${new Date()}`);
+     next();
+   }
+   
+   // Aplicar el middleware a todas las rutas
+   app.use(loggerMiddleware);
+   
+   // Ruta de envío
+   app.get('/', (req, res) => {
+     res.send('¡Hola desde Express!');
+   });
+   
+   // Iniciar el servidor
+   const PORT = process.env.PORT || 3000;
+   app.listen(PORT, () => {
+     console.log(`Servidor en funcionamiento en el puerto ${PORT}`);
+   });
+   ```
+
+   En este código Importamos Express y lo inicializamos.
+   Definimos un middleware personalizado llamado loggerMiddleware que imprime un mensaje en la consola y luego llama a next() para continuar el flujo de ejecución.
+   `Aplicamos el middleware a todas las rutas usando app.use(loggerMiddleware)`.
+   Creamos una ruta de ejemplo que responde con un mensaje "¡Hola desde Express!" cuando se accede a la raíz (/).
+   Iniciamos el servidor en el puerto 3000 (o en el puerto definido por la variable de entorno PORT si está presente).
+
+   `La definición de app en el contexto de una aplicación Express sirve para crear una instancia de la aplicación`. `Entonces esa variable se convierte en un objeto que proporciona un conjunto de métodos que te permiten` configurar rutas, manejar solicitudes y respuestas. De este modo podrás `definir el comportamiento de tu aplicación`.
+
+   Luego, en la terminal ejecutamos el servidor:
+
+   ```bash
+   node archivo.js
+   ```
+
+   Abre tu navegador y ve a http://localhost:3000. Verás el mensaje "¡Hola desde Express!" en tu navegador y en la consola verás el mensaje del middleware indicando que se recibió una solicitud.
+
+   Este es un ejemplo simple de cómo usar un middleware en Express. Puedes expandir y personalizar los middlewares para implementar funcionalidades adicionales en tu aplicación, como la autenticación, la manipulación de datos de solicitud y respuesta, y mucho más.
 
 4. #### **`Uso de Middleware en una Aplicación Express`**
 
    En una aplicación Express, los middleware se utilizan para manipular las solicitudes y respuestas. Por ejemplo, si deseamos autenticar una solicitud antes de que llegue al controlador final, podemos hacerlo de la siguiente manera:
    
    ```javascript
+   // CommonJS
    const express = require('express');
+   // ES6
+   import * as express from 'express';
+   
    const app = express();
    
    function miMiddleware(req, res, next) {
@@ -1843,14 +1927,271 @@
    }
    ```
 
-7. #### **`Conclusión`**
+   Te proporcionaré un ejemplo real de una aplicación Express que incluye un middleware para el manejo de errores. En este caso, crearé una aplicación muy simple que tiene una ruta para dividir dos números. Si se intenta dividir por cero, se lanzará un error y se manejará correctamente usando un middleware de manejo de errores.
+
+   ```javascript
+   // CommonJS
+   const express = require('express');
+   // ES6
+   import * as express from 'express';
+   
+   
+   const app = express();
+   
+   // Middleware para parsear JSON
+   app.use(express.json());
+   
+   // Ruta para la división
+   app.post('/dividir', (req, res, next) => {
+     const { num1, num2 } = req.body;
+   
+     if (num2 === 0) {
+       // Lanzamos un error si el segundo número es cero
+       const error = new Error('No se puede dividir por cero');
+       error.status = 400;
+       next(error); // Pasamos el error al siguiente middleware
+     } else {
+       const resultado = num1 / num2;
+       res.json({ resultado });
+     }
+   });
+   
+   // Middleware para manejar errores
+   app.use((error, req, res, next) => {
+     res.status(error.status || 500).json({ error: error.message });
+   });
+   
+   // Iniciamos el servidor
+   const PORT = process.env.PORT || 3000;
+   app.listen(PORT, () => {
+     console.log(`Servidor Express iniciado en el puerto ${PORT}`);
+   });
+   ```
+   
+   En este ejemplo, hemos creado una aplicación Express con una ruta POST `/dividir` que espera un objeto JSON con dos propiedades: `num1` y `num2`. Si `num2` es cero, lanzamos un error. En caso contrario, realizamos la división y devolvemos el resultado.
+   
+   El middleware de manejo de errores se encuentra al final de nuestra aplicación y captura cualquier error que se haya lanzado en el código. En este caso, enviamos un mensaje de error JSON con el mensaje del error.
+   
+   Para probar esta aplicación, puedes usar herramientas como Postman o hacer una solicitud POST desde tu código.
+   
+   Recuerda que este es solo un ejemplo simple y en una aplicación real, los errores deberían manejarse de manera más completa y segura.
+   
+7. #### **`Methods in Express`**:
+
+   La instancia de `express()` crea una aplicación Express. La variable `app` se convierte en el punto central para configurar rutas, middleware y realizar otras operaciones relacionadas con la aplicación Express. Aquí hay algunos de los métodos más comunes asociados con la instancia `app`:
+
+   - **app.use([ruta], función de middleware)**:
+
+     Monta la función de middleware especificada en la ruta especificada. Si no se especifica ninguna ruta, se aplica a todas las solicitudes.
+
+     ```javascript
+     app.use(express.static('public'));
+     ```
+
+     Este ejemplo utiliza el middleware `express.static` para servir archivos estáticos desde el directorio 'public'.
+   
+   - **app.get(ruta, callback [, callback ...])**:
+
+     Define una ruta y una devolución de llamada para las solicitudes HTTP GET.
+     
+     ```javascript
+     app.get('/', (req, res) => {
+       res.send('¡Hola desde Express!');
+     });
+     ```
+     Este ejemplo responde a las solicitudes GET en la ruta '/' con el mensaje '¡Hola desde Express!'.
+
+   - **app.post(ruta, callback [, callback ...])**:
+
+     Define una ruta y una devolución de llamada para las solicitudes HTTP POST.
+    
+     ```javascript
+     app.post('/usuarios', (req, res) => {
+       res.send('¡Usuario creado!');
+     });
+     ```
+     Este ejemplo responde a las solicitudes POST en la ruta '/usuarios' con el mensaje '¡Usuario creado!'.
+
+   - **app.put(ruta, callback [, callback ...])**:
+
+     Define una ruta y una devolución de llamada para las solicitudes HTTP PUT.
+
+     ```javascript
+     app.put('/usuarios/:id', (req, res) => {
+       res.send(`¡Usuario actualizado! ID: ${req.params.id}`);
+     });
+     ```
+     Este ejemplo responde a las solicitudes PUT en la ruta '/usuarios/:id' con un mensaje que incluye el ID del usuario.
+
+   - **app.delete(ruta, callback [, callback ...])**:
+
+     Define una ruta y una devolución de llamada para las solicitudes HTTP DELETE.
+
+     ```javascript
+     app.delete('/usuarios/:id', (req, res) => {
+       res.send(`¡Usuario eliminado! ID: ${req.params.id}`);
+     });
+     ```
+     Este ejemplo responde a las solicitudes DELETE en la ruta '/usuarios/:id' con un mensaje que incluye el ID del usuario.
+
+   - **app.all(ruta, callback [, callback ...])**:
+
+     Define una ruta y una devolución de llamada que se aplica a todos los métodos HTTP.
+
+     ```javascript
+     app.all('/admin', (req, res, next) => {
+       // Realizar alguna acción para todas las solicitudes a '/admin'
+       next();
+     });
+     ```
+     Este ejemplo realiza alguna acción para todas las solicitudes a '/admin', independientemente del método HTTP.
+
+   - **app.route(path)**:
+
+     Devuelve una instancia única de una única ruta para encadenar rutas HTTP con métodos de ruta.
+
+     ```javascript
+     app.route('/libros')
+       .get((req, res) => {
+         res.send('Obtener todos los libros');
+       })
+       .post((req, res) => {
+         res.send('Crear un nuevo libro');
+       })
+       .put((req, res) => {
+         res.send('Actualizar todos los libros');
+       })
+       .delete((req, res) => {
+         res.send('Eliminar todos los libros');
+       });
+     ```
+     Este ejemplo utiliza `app.route` para encadenar múltiples métodos de ruta para la ruta '/libros'.
+
+   - **app.param([nombre], callback)**:
+
+     Añade middleware de parámetro donde `[nombre]` es el nombre del parámetro y `callback` es la función de middleware.
+
+     ```javascript
+     app.param('id', (req, res, next, id) => {
+       // Realizar alguna acción con el parámetro 'id'
+       next();
+     });
+     ```
+     Este ejemplo utiliza `app.param` para ejecutar middleware específico antes de las rutas que tienen el parámetro 'id'.
+
+   - **app.use([ruta,] función)**:
+
+     Monta middleware en la aplicación. Si no se especifica la ruta, el middleware se ejecuta para todas las solicitudes.
+
+     ```javascript
+     app.use((req, res, next) => {
+       console.log('Middleware global');
+       next();
+     });
+     ```
+     Este ejemplo utiliza `app.use` para aplicar middleware global que se ejecutará para todas las solicitudes.
+
+   - **app.locals**:
+
+     Un objeto que contiene variables locales que están disponibles en todas las vistas renderizadas durante el ciclo de vida de una aplicación.
+
+     ```javascript
+     app.locals.titulo = 'Mi Aplicación';
+     ```
+     Este ejemplo define una variable local que estará disponible en todas las vistas renderizadas.
+
+   - **app.set(nombre, valor)**:
+
+     Asigna configuraciones de aplicación.
+  
+     ```javascript
+     app.set('port', process.env.PORT || 3000);
+     ```
+     Este ejemplo configura el puerto de la aplicación.
+
+   Estos son solo algunos de los métodos disponibles en la instancia de `app`. Puedes explorar más opciones y métodos en la documentación oficial de Express **https://expressjs.com/**. Cada método proporciona una forma de definir el comportamiento de la aplicación para solicitudes específicas y métodos HTTP.
+
+8. #### **`Conclusión`**
 
    Los callbacks como middleware en Node.js y Express son una herramienta poderosa para manejar y modificar solicitudes HTTP antes de que alcancen su destino final. Permiten agregar capas de funcionalidad adicional a una aplicación y son esenciales para la creación de aplicaciones web robustas y seguras.
    
    El concepto de middleware no se limita únicamente a Express, pero es en este framework para Node.js donde es más comúnmente utilizado. Express ha popularizado y estandarizado el uso de middleware en aplicaciones web de Node.js.
 
-   Sin embargo, el concepto de middleware en sí mismo es más amplio y puede aplicarse en otros contextos. Por ejemplo, en frameworks y bibliotecas similares o para otros lenguajes de programación, así como en otros entornos donde se manejan solicitudes y respuestas de manera similar a las aplicaciones web (como en servidores de APIs, por ejemplo).
+   Sin embargo, el concepto de middleware en sí mismo es más amplio y puede aplicarse en otros contextos. Por ejemplo, en frameworks y bibliotecas similares como `NestJS` o para otros lenguajes de programación, así como en otros entornos donde se manejan solicitudes y respuestas de manera similar a las aplicaciones web (como en servidores de APIs, por ejemplo).
 
-   Un tip interesante es el hecho de usar Axios en conjunto con Express si necesitas comunicarte entre el cliente y el servidor al interno de una aplicación web.
+   Un tip interesante es el hecho de usar `Axios` en conjunto con Express si necesitas comunicarte entre el cliente y el servidor al interno de una aplicación web.
 
    Recuerda que los ejemplos y la estructura de código proporcionados son simplificados y se utilizan con fines didácticos. En aplicaciones reales, es importante implementar medidas de seguridad y considerar prácticas de desarrollo seguras.
+
+
+
+
+
+
+
+1. **Definición de Middleware**:
+
+
+
+2. **Uso de Middleware**:
+
+   Para utilizar un middleware, simplemente lo incluimos en la cadena de middlewares usando `app.use()` o lo asociamos a una ruta específica con `app.use()` o `app.METHOD()`, donde `METHOD` es el método HTTP (GET, POST, etc.). Por ejemplo:
+
+   ```javascript
+   app.use(miMiddleware);
+   ```
+
+   O para una ruta específica:
+
+   ```javascript
+   app.get('/ruta', miMiddleware, (req, res) => {
+     // Código de manejo de la ruta
+   });
+   ```
+
+3. **Orden de Ejecución**:
+
+   Los middlewares se ejecutan en el orden en el que se definen en el código. Es importante tener en cuenta que si un middleware no llama a `next()`, el flujo de ejecución se detendrá y la respuesta no llegará al cliente.
+
+4. **Middleware de Aplicación vs. Middleware de Ruta**:
+
+   - **Middleware de Aplicación**:
+
+     Se aplica a todas las rutas y métodos. Se define usando `app.use()` sin especificar una ruta. Por ejemplo:
+
+     ```javascript
+     app.use(miMiddleware);
+     ```
+
+   - **Middleware de Ruta**:
+
+     Se aplica solo a una ruta y un método específicos. Se define junto a la ruta. Por ejemplo:
+
+     ```javascript
+     app.get('/ruta', miMiddleware, (req, res) => {
+       // Código de manejo de la ruta
+     });
+     ```
+
+5. **Middleware de Terceros**:
+
+   Express proporciona una amplia gama de middlewares de terceros que pueden ayudar en diversas tareas como la autenticación, manejo de cookies, compresión de respuestas, etc. Estos middlewares se pueden integrar fácilmente en una aplicación Express.
+
+   Ejemplos de middleware de terceros populares incluyen `body-parser` para el análisis de cuerpo de solicitud, `cors` para habilitar la política de mismo origen (CORS), `helmet` para mejorar la seguridad y muchos más.
+
+6. **Ejemplo de Middleware**:
+
+   A continuación, te muestro un ejemplo simple de middleware que imprime un mensaje en la consola cada vez que se realiza una solicitud:
+
+   ```javascript
+   function loggerMiddleware(req, res, next) {
+     console.log(`Solicitud recibida en: ${new Date()}`);
+     next();
+   }
+
+   app.use(loggerMiddleware);
+   ```
+
+   En este caso, `loggerMiddleware` se ejecutará para cada solicitud y registrará la fecha y hora en la consola antes de pasar al siguiente middleware o ruta.
+
+El uso de middlewares es una parte fundamental en la construcción de aplicaciones web con Express, ya que proporciona un mecanismo flexible y poderoso para manejar el flujo de ejecución y la manipulación de solicitudes y respuestas. Esto permite a los desarrolladores implementar una amplia variedad de funcionalidades y características en sus aplicaciones web de manera modular y organizada.
