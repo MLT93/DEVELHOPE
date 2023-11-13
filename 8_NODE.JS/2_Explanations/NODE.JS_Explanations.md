@@ -2414,7 +2414,7 @@
      emitter.removeAllListeners(); // Remueve todos los escuchadores para todos los eventos
      ```
    
-   - **emit(eventName[, ...args])**:
+   - **emit(event, [arg1], [arg2], [...])**:
    
      Este método emite el evento especificado, ejecutando todos los escuchadores asociados a ese evento. Los argumentos adicionales después del nombre del evento se pasan a los escuchadores.
    
@@ -2495,7 +2495,7 @@
 4. #### **`Uso Básico de EventEmitter`**:
 
    ```javascript
-   const EventEmitter = require('events');
+   const EventEmitter = require('node:events');
 
    // Crear una instancia de EventEmitter
    const miEmitter = new EventEmitter();
@@ -2540,7 +2540,7 @@
    Node.js proporciona una serie de módulos integrados que utilizan eventos. Por ejemplo, el módulo `http` emite eventos relacionados con solicitudes y respuestas HTTP.
 
    ```javascript
-   const http = require('http');
+   const http = require('node:http');
 
    const servidor = http.createServer();
 
@@ -2569,7 +2569,7 @@
    Puedes extender la clase EventEmitter en tus propias clases para aprovechar la funcionalidad de eventos en tus propias implementaciones.
 
    ```javascript
-   const EventEmitter = require('events');
+   const EventEmitter = require('node:events');
 
    class MiClase extends EventEmitter {
      realizarAccion() {
@@ -2598,7 +2598,7 @@
    Los eventos son especialmente útiles cuando trabajas con operaciones asíncronas. Puedes emitir eventos cuando una operación asíncrona se completa y los escuchadores pueden manejar los resultados.
 
    ```javascript
-   const fs = require('fs');
+   const fs = require('node:fs');
 
    const miEmitter = new EventEmitter();
 
@@ -2626,3 +2626,357 @@
    Eventos personalizados permiten una arquitectura modular y mantenible en aplicaciones Node.js.
 
    El manejo adecuado de errores en eventos es crítico para evitar cierres inesperados de la aplicación.
+
+## Streams en Node.js: Una Explicación Detallada
+
+1. #### **`¿Qué son los Streams?`**
+   
+   En Node.js, los `Streams` son una parte fundamental de la API de manejo de datos y se utilizan para leer o escribir datos de manera eficiente, especialmente cuando se trata de conjuntos grandes de datos. Los streams permiten trabajar con datos de manera incremental, en lugar de cargar todo el conjunto de datos en la memoria.
+   
+   En términos simples, un `stream` es una secuencia de datos que se lee o se escribe de manera secuencial. Los streams en Node.js son implementados mediante cuatro tipos principales:
+   
+   - **Readable Streams**: Para la lectura de datos.
+
+   - **Writable Streams**: Para la escritura de datos.
+
+   - **Duplex Streams**: Para la lectura y escritura, como una conexión de red.
+   
+   - **Transform Streams**: Una modificación de los datos mientras se leen o escriben.
+   
+2. #### **`Ventajas de los Streams`**:
+   
+   - **Eficiencia de Memoria**:
+   
+     Los streams permiten trabajar con grandes conjuntos de datos sin cargar todo en la memoria.
+     
+   - **Rendimiento**:
+   
+     Son ideales para operaciones asíncronas y operaciones en tiempo real, ya que permiten procesar datos a medida que llegan.
+   
+   - **Encadenamiento**:
+   
+     Los streams pueden encadenarse para formar una canalización (*pipeline*), donde la salida de un stream se convierte automáticamente en la entrada del siguiente.
+   
+3. #### **`Tipos de Streams`**:
+   
+   - **Readable Streams**:
+
+     Emiten eventos como `'data'` cuando hay datos disponibles y `'end'` cuando se ha completado la lectura. Pero también `error` si hubiese errores.
+     Se crean con `fs.createReadStream` para leer archivos o mediante `http.ServerRequest` para datos HTTP.
+   
+     ```javascript
+     const fs = require('node:fs');
+     
+     // Ruta al archivo que deseas leer
+     const rutaArchivo = 'archivo.txt';
+     
+     // Crear un stream de lectura desde el archivo
+     const readStream = fs.createReadStream(rutaArchivo, { encoding: 'utf8' });
+     
+     // Manejar el evento 'data' cuando se lee un fragmento de datos
+     readStream.on('data', (chunk) => {
+       console.log('Fragmento de datos leído:');
+       console.log(chunk);
+     });
+     
+     // Manejar el evento 'end' cuando se completa la lectura del archivo
+     readStream.on('end', () => {
+       console.log('Lectura del archivo completa.');
+     });
+     
+     // Manejar el evento 'error' en caso de que ocurra un error durante la lectura
+     readStream.on('error', (error) => {
+       console.error('Error durante la lectura del archivo:', error.message);
+     });
+     ```
+   
+   - **Writable Streams**:
+
+     Se utilizan para escribir datos.
+     Emiten eventos como `'drain'` cuando se ha vaciado el buffer de escritura y `'finish'` cuando se ha completado la escritura.
+
+     ```javascript
+     const fs = require('node:fs');
+     
+     const rutaArchivo = 'salida.txt';
+     const datos = 'Esto es un ejemplo de Writable Stream en Node.js.\nEspero que encuentres útil esta explicación.';
+     
+     // Crear un stream de escritura hacia el archivo
+     const writeStream = fs.createWriteStream(rutaArchivo, { encoding: 'utf8' });
+     
+     // Manejar el evento 'drain' para controlar el flujo de escritura
+     writeStream.on('drain', () => {
+       console.log('El buffer se ha vaciado y está listo para más datos.');
+       // Puedes continuar escribiendo más datos aquí si es necesario
+     });
+     
+     // Escribir datos en el stream
+     const exito = writeStream.write(datos, 'utf8');
+     
+     if (exito) {
+       console.log('Datos escritos en el archivo.');
+       writeStream.end(); // Finalizar el stream después de escribir los datos
+     } else {
+       console.log('El buffer está lleno. Esperando al evento "drain".');
+     }
+     
+     // Manejar el evento 'finish' cuando se completa la escritura
+     writeStream.on('finish', () => {
+       console.log('Escritura en el archivo completada.');
+     });
+     
+     // Manejar el evento 'error' en caso de que ocurra un error durante la escritura
+     writeStream.on('error', (err) => {
+       console.error('Error durante la escritura en el archivo:', err.message);
+     });
+     ```
+   
+   - **Duplex Streams**:
+
+     Permiten la lectura y escritura. Un ejemplo común es una conexión de red.
+     Pueden ser creados extendiendo `Duplex`.
+
+     ```javascript
+     const { Duplex } = require('stream');
+
+     class EchoDuplex extends Duplex {
+       constructor(options) {
+         super(options);
+       }
+     
+       _write(chunk, encoding, callback) {
+         // Implementación del método _write: se ejecuta cuando se escribe en el stream
+         console.log(`Recibido: ${chunk.toString()}`);
+         // Reflejar los datos escribiéndolos de nuevo en el stream
+         this.push(chunk);
+         callback();
+       }
+     
+       _read(size) {
+         // Implementación del método _read: se ejecuta cuando se lee del stream
+         // No es necesario en este ejemplo, pero podría usarse para leer datos adicionales
+       }
+     }
+     
+     // Crear una instancia del stream.Duplex
+     const echoStream = new EchoDuplex();
+     
+     // Conectar el stream a la consola
+     echoStream.pipe(process.stdout);
+     
+     // Escribir datos en el stream
+     echoStream.write('Hola, ');
+     echoStream.write('esto es un ');
+     echoStream.write('ejemplo de ');
+     echoStream.write('stream.Duplex');
+     echoStream.end(); // Finalizar el stream
+     
+     // Salida esperada:
+     // Recibido: Hola, esto es un ejemplo de stream.Duplex
+     // Hola, esto es un ejemplo de stream.Duplex
+     ```
+   
+   - **Transform Streams**:
+
+     Modifican los datos mientras se transfieren de un stream a otro.
+     Se crean extendiendo `Transform`.
+   
+     ```javascript
+     const { Transform } = require('node:stream');
+     
+     // Definir una clase que extiende Transform
+     class MayusculasTransform extends Transform {
+       _transform(chunk, encoding, callback) {
+         // Transformar el chunk (dato) a mayúsculas
+         const chunkEnMayusculas = chunk.toString().toUpperCase();
+         // Llamar a la función callback con el resultado transformado
+         callback(null, chunkEnMayusculas);
+       }
+     }
+     
+     // Crear una instancia del stream de transformación
+     const transformStream = new MayusculasTransform();
+     
+     // Manejar el evento 'data' en el stream transformado
+     transformStream.on('data', (dato) => {
+       console.log('Dato transformado:', dato.toString());
+     });
+     
+     // Escribir datos en el stream de transformación
+     transformStream.write('Hola, mundo!');
+     transformStream.write(' Esto es un ejemplo.');
+     
+     // Finalizar el stream de transformación
+     transformStream.end();
+     ```
+   
+4. #### **`Flujo de Datos con Pipe`**:
+   
+   El método `pipe` es una característica clave de los streams que simplifica el manejo de la transferencia de datos entre streams. Permite conectar la salida de un stream directamente a la entrada de otro.
+   
+   ```javascript
+   const fs = require('node:fs');
+   
+   const readableStream = fs.createReadStream('entrada.txt');
+   const writableStream = fs.createWriteStream('salida.txt');
+   
+   // Pipe para transferir datos de readable a writable
+   readableStream.pipe(writableStream);
+   
+   // También se puede encadenar con transform streams
+   readableStream.pipe(transformStream).pipe(writableStream);
+   ```
+   
+5. #### **`Manejo de Eventos y Operaciones Asíncronas`**:
+   
+   Los streams en Node.js son eficaces en situaciones asíncronas, ya que trabajan con eventos. Puedes manejar eventos como `'data'` o `'end'` para realizar operaciones a medida que los datos están disponibles o cuando se completa la lectura.
+   
+6. #### **`Conclusión`**:
+   
+   En resumen, los streams en Node.js proporcionan una manera eficiente de trabajar con grandes conjuntos de datos, facilitando el procesamiento incremental de la información. Ya sea para leer archivos, recibir datos de red o modificar flujos de datos, la API de streams en Node.js es poderosa y versátil. Su uso adecuado puede mejorar significativamente la eficiencia y el rendimiento de las aplicaciones.
+
+## Streams y Events en Node.js: Una Explicación Detallada
+
+1. #### **`Introducción a Streams y Events en Node.js`**:
+
+   En el contexto de Node.js, los streams y los eventos son conceptos fundamentales para trabajar con datos de manera eficiente y gestionar operaciones asíncronas. Los streams permiten la manipulación de datos en trozos, ideal para archivos grandes o transmisiones en tiempo real. Por otro lado, los eventos proporcionan un modelo asincrónico para manejar situaciones y acciones específicas.
+
+   Aquí hay algunas razones por las que los streams y los eventos suelen utilizarse juntos:
+
+   - **Procesamiento Asincrónico**:
+
+     Los eventos en Node.js permiten un modelo de programación asincrónica. Cuando trabajas con streams, puedes escuchar eventos como 'data', 'end', 'error', etc. Esto te permite realizar acciones específicas cuando ocurren eventos, como procesar datos a medida que se leen desde un archivo.
+
+   - **Eficiencia de Memoria**:
+
+     Los streams trabajan con trozos de datos en lugar de cargar todo el contenido en la memoria de una vez. Esto es esencial para manejar archivos grandes sin agotar los recursos del sistema. Al utilizar eventos, puedes gestionar de manera eficiente la llegada y el procesamiento de cada trozo de datos.
+
+   - **Control Detallado del Flujo de Datos**:
+
+     Los eventos proporcionan un control detallado sobre el flujo de datos en un stream. Puedes realizar acciones específicas cuando se detecta el inicio o fin de la lectura, o manejar situaciones de error. Esto es fundamental para garantizar un comportamiento preciso en diferentes situaciones.
+
+   - **Interoperabilidad**:
+
+     Muchas bibliotecas y módulos en Node.js utilizan tanto streams como eventos. Al seguir esta convención, se logra una mayor interoperabilidad y coherencia en el ecosistema de Node.js. Por ejemplo, el módulo `http` utiliza streams y emite eventos para manejar las solicitudes y respuestas HTTP.
+
+   - **Flujos Continuos**:
+
+     La combinación de streams y eventos permite la creación de flujos continuos de datos. Esto es esencial en casos como la transmisión de archivos o la manipulación de secuencias de eventos en tiempo real.
+
+2. #### **`EventEmitter, createReadStream y pipe en Node.js`**:
+
+     - **EventEmitter**: es una clase en Node.js que facilita la implementación de patrones de diseño basados en eventos. Permite la asignación de eventos y la emisión de señales cuando ocurren acciones específicas.
+
+     - **createReadStream**: es una función proporcionada por el módulo `fs` (sistema de archivos) en Node.js. Su propósito principal es crear un objeto `Readable Stream`. Es útil cuando necesitas leer grandes cantidades de datos desde un archivo. En vez de cargar todo el contenido del archivo en la memoria, lee el archivo en trozos `chunks`, procesándolos a medida que llegan.
+
+     - **pipe**: es una característica clave de los streams que simplifica el manejo de la transferencia de datos entre streams. Permite conectar la salida de un stream directamente a la entrada de otro. Esto permite automatizar el control de flujo, entre otras cosas.
+
+3. **`Uso en Conjunto Events, Stream y Pipe`**:
+  
+   Vamos a crear un ejemplo práctico que utiliza `EventEmitter`, `createReadStream` y `pipe` en Node.js.
+   
+   Supongamos que queremos monitorear un archivo en busca de cambios y emitir eventos cada vez que se añade nueva información al archivo. Para ello, utilizaremos un `Readable Stream` para leer el archivo y un `EventEmitter` para emitir eventos cuando se detecten cambios, a demás de utilizar `pipe` para conectar archivos.
+
+   ```javascript
+   const fs = require('node:fs');
+   const { EventEmitter, Transform } = require('node:events');
+   
+   class UppercaseTransform extends Transform {
+     _transform(chunk, encoding, callback) {
+       // Convertir los datos a mayúsculas y enviarlos al siguiente stream
+       this.push(chunk.toString().toUpperCase());
+       callback();
+     }
+   }
+   
+   class FileMonitor extends EventEmitter {
+     constructor(filePath) {
+       super();
+       this.filePath = filePath;
+     }
+   
+     startMonitoring() {
+       // Crear un Readable Stream para el archivo
+       const fileStream = fs.createReadStream(this.filePath, { encoding: 'utf8' });
+   
+       // Crear un Transform Stream para convertir los datos a mayúsculas
+       const uppercaseTransform = new UppercaseTransform();
+   
+       // Conectar el Readable Stream al Transform Stream usando pipe
+       fileStream.pipe(uppercaseTransform);
+   
+       // Escuchar el evento 'data' del Transform Stream
+       uppercaseTransform.on('data', (transformedData) => {
+         // Emitir un evento personalizado cuando se detecta nueva información
+         this.emit('newData', transformedData);
+       });
+   
+       // Escuchar el evento 'end' del Transform Stream
+       uppercaseTransform.on('end', () => {
+         // Emitir un evento cuando se completa la lectura del archivo
+         this.emit('endOfFile');
+       });
+   
+       // Escuchar el evento 'error' del Readable Stream
+       fileStream.on('error', (error) => {
+         // Emitir un evento en caso de error
+         this.emit('error', error);
+       });
+     }
+   }
+   
+   // Uso del FileMonitor
+   const filePath = 'mi-archivo.txt';
+   const fileMonitor = new FileMonitor(filePath);
+   
+   // Escuchar eventos personalizados
+   fileMonitor.on('newData', (data) => {
+     console.log(`Nueva información detectada: ${data}`);
+   });
+   
+   fileMonitor.on('endOfFile', () => {
+     console.log('Fin del archivo alcanzado.');
+   });
+   
+   fileMonitor.on('error', (error) => {
+     console.error(`Error en el monitoreo del archivo: ${error.message}`);
+   });
+   
+   // Iniciar el monitoreo
+   fileMonitor.startMonitoring();
+   ```
+
+   
+   En este ejemplo:
+   
+   Creamos una clase `FileMonitor` que extiende `EventEmitter`. Esta clase toma la ruta de un archivo como parámetro en su constructor.
+   
+   La clase `FileMonitor` tiene un método `startMonitoring` que crea un `Readable Stream` usando `fs.createReadStream` para el archivo especificado.
+
+   Se crea una nueva clase `UppercaseTransform` que extiende `Transform`. Esta clase implementa el método `_transform`, que convierte los datos a mayúsculas y los pasa al siguiente stream usando `this.push()`.
+
+   Se instancia un objeto `UppercaseTransform` llamado `uppercaseTransform`.
+
+   Usamos el método `pipe()` para conectar el `Readable Stream` (`fileStream`) al `Transform Stream` (`uppercaseTransform`). Esto significa que los datos leídos del archivo pasarán a través del `Transform Stream` antes de ser emitidos como eventos.
+
+   Escuchamos los eventos `'data'` y `'end'` del `Transform Stream` (`uppercaseTransform`), y emitimos eventos personalizados `'newData'` y `'endOfFile'` respectivamente.
+   
+   Se añaden escuchadores de eventos al `Readable Stream` para los eventos `'data'`, `'end'`, y `'error'`. Cuando se detecta nueva información, se emite un evento personalizado `'newData'`. Cuando se alcanza el final del archivo, se emite un evento personalizado `'endOfFile'`. En caso de error, se emite un evento personalizado `'error'`.
+   
+   Se instancia un objeto `FileMonitor` con la ruta del archivo y se añaden escuchadores para los eventos personalizados `'newData'`, `'endOfFile'`, y `'error'`.
+   
+   Finalmente, se inicia el monitoreo del archivo llamando al método `startMonitoring` en el objeto `FileMonitor`.
+   
+   Este ejemplo muestra cómo usar `EventEmitter` y `createReadStream` para monitorear un archivo en busca de cambios y emitir eventos correspondientes. Después conectamos files modificados utilizando `pipe`. Es importante tener en cuenta que este es un ejemplo simple, y en aplicaciones del mundo real, se pueden implementar lógicas más avanzadas según los requisitos específicos.
+
+5. #### **`Conclusiones`**:
+
+   Los streams y los eventos en Node.js son herramientas poderosas para trabajar con datos de manera eficiente y manejar operaciones asíncronas.
+   
+   Los streams permiten la manipulación de datos en trozos, ideal para archivos grandes o transmisiones en tiempo real.
+   
+   EventEmitter facilita la implementación de patrones de diseño basados en eventos, proporcionando una estructura para asignar y emitir eventos.
+
+   La combinación de streams y eventos es común en Node.js, ya que muchos módulos y operaciones asincrónicas utilizan esta sinergia para proporcionar un código eficiente y fácil de mantener.
+
+   La función pipe en Node.js es una forma de conectar la salida de un Readable Stream (flujo de lectura) a la entrada de un Writable Stream (flujo de escritura). Esto facilita la transferencia de datos, permitiendo una programación más modular y eficiente en términos de memoria.
