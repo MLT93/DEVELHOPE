@@ -2989,6 +2989,8 @@
 
    La programación reactiva se basa en expresar la lógica en términos de flujos de datos y reacciones a eventos, ofreciendo una alternativa más declarativa y eficiente a la programación imperativa tradicional.
 
+   Visita la página oficial en: **https://rxjs.dev/guide/overview**
+
 2. #### **`Observables en RxJS`**:
 
    - **Concepto de Observables**:
@@ -3008,8 +3010,6 @@
 4. #### **`Operadores en RxJS`**:
 
    RxJS proporciona una variedad de operadores que permiten transformar, combinar, filtrar y manipular secuencias de eventos de manera declarativa. Estos operadores incluyen `map`, `filter`, `merge`, `concat`, `switchMap`, entre otros.
-
-   Visita la página oficial en: **https://rxjs.dev/guide/overview**
 
 5. #### **`Sujeto (Subject) en RxJS`**:
 
