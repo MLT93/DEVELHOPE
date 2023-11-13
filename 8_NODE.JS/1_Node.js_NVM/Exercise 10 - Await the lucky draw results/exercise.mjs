@@ -19,7 +19,7 @@ function luckyDraw(player) {
 }
 
 async function getResults() {
-  const arr = ["Tina", "Jorge", "Julien"];
+  const arr = ["Tina", "Jorge", "Julien", "Manuel"];
 
   try {
     for (const element of arr) {
