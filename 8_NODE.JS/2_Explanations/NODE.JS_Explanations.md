@@ -3057,11 +3057,11 @@
        filter(requestEvent => requestEvent instanceof Object),
        map(requestEvent => `Solicitud recibida en la URL: ${requestEvent.url}`)
      )
-     .subscribe(
-       message => console.log(message),
-       error => console.error('Error:', error),
-       () => console.log('Observable completado')
-     );
+     .subscribe({
+       message: (message) => console.log(message),
+       error: (err) => console.error('Error:', err.message),
+       complete: () => console.log('Observable completado')
+     });
    ```
 
    Utilizamos el módulo `http` para crear un servidor HTTP básico que responde con un mensaje simple.
