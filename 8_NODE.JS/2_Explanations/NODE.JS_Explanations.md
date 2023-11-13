@@ -2969,7 +2969,7 @@
    
    Este ejemplo muestra cómo usar `EventEmitter` y `createReadStream` para monitorear un archivo en busca de cambios y emitir eventos correspondientes. Después conectamos files modificados utilizando `pipe`. Es importante tener en cuenta que este es un ejemplo simple, y en aplicaciones del mundo real, se pueden implementar lógicas más avanzadas según los requisitos específicos.
 
-5. #### **`Conclusiones`**:
+4. #### **`Conclusiones`**:
 
    Los streams y los eventos en Node.js son herramientas poderosas para trabajar con datos de manera eficiente y manejar operaciones asíncronas.
    
