@@ -415,11 +415,19 @@
 
    En tu script, `process.argv` contendrá un array con los argumentos, donde `process.argv[0]` será la ruta al ejecutable de Node.js, `process.argv[1]` será la ruta al archivo JavaScript y los argumentos reales comenzarán a partir de `process.argv[2]`.
 
-6. **`Módulos, require('') o Import y Export`**:
+6. **`Módulos: CommonJS o ECMAScript`**:
+   
+   Es importante mencionar el utilizo de los módulos en Node.js porque son fundamentales al interno de la importación, exportación o simplemente en el trabajo diario de un programador, porque definen la forma de uso que se va a utilizar al interno de cada archivo.
+
+   Los módulos en Node.js permiten encapsular funcionalidades específicas en archivos separados, lo que ayuda a mantener la coherencia y la legibilidad del código.
+
+   Recuerda que el utilizo de `node:` al inicio del nombre del módulo que se desea importar es obligatorio en los módulos nativos de Node.js, independientemente que sean en formato `Common  JS` o `ECMAScript`.
+
+   Otra cosa importante para saber antes de empezar es que `./` indica que el módulo se encuentra en el mismo directorio que el script a importar. Si se encuentra en una carpeta previa, usamos `../`. Esta última forma la podemos usar tantas veces como carpetas previas haya antes de encontrar el directorio que contiene el archivo que buscamos.
 
    - **CommonJS**:
 
-     Node.js utiliza un sistema de módulos para organizar y reutilizar el código. Puedes dividir tu código en múltiples archivos y luego usar `require()` para cargar esos módulos en tu script principal. Este es el formato `Common JS` y todos los archivos deberán tener la extensión `.js`.
+     Node.js utiliza un sistema de módulos para organizar y reutilizar el código. Puedes exportar funciones, objetos o variables desde un módulo utilizando `module.exports` y luego usar la función `require()` para cargar esos módulos en tu script principal. Este es el formato `Common JS` y todos los archivos deberán tener la extensión `.js`.
 
      Por ejemplo, si tienes un módulo con dos funciones llamadas `saludar` y `despedir`, en un archivo `modulo.js`, puedes usarlo en tu script o app de la siguiente manera:
 
@@ -441,8 +449,6 @@
 
      console.log(funcionesSaludo.saludar('Maria'));
      console.log(funcionesSaludo.despedir('Carlos'));
-
-     // El `./` indica que el módulo se encuentra en el mismo directorio que el script a importar. Si se encuentra en una carpeta previa, usamos `../`. Esta última forma la podemos usar tantas veces como carpetas previas haya
      ```
 
      Si en cambio deseas importar `módulos propios de Node.js`, lo puedes hacer así:
@@ -460,8 +466,6 @@
          memoriaLibre: os.freemem(),
        };
      };
-
-     // El `node:` al inicio del nombre del módulo que se desea importar es obligatorio en los módulos nativos de Node.js.
      ```
 
      ```javascript
@@ -501,9 +505,9 @@
      console.log(juan.saludar());
      ```
 
-   - **ES6**:
+   - **ECMAScript**:
 
-     A partir de ECMAScript (ES) 6, la forma de utilizar los módulos para organizar y reutilizar el código cambia. Ahora para dividir tu código en múltiples archivos, utilizarás las palabras reservadas `export` e `import` para exportar y cargar esos módulos en tu script principal. Este es el formato `ES6` y todos los archivos deberán tener la extensión `.mjs` para que Node.js pueda reconocerlos correctamente.
+     A partir de ECMAScript (ES) 6, la forma de utilizar los módulos para organizar y reutilizar el código cambia. Ahora para dividir tu código en múltiples archivos, utilizarás las palabras reservadas `export` e `import` para exportar y cargar esos módulos en tu script principal. Este es el formato `ECMAScript` y todos los archivos deberán tener la extensión `.mjs` para que Node.js pueda reconocerlos correctamente.
    
      Por ejemplo, si tienes un módulo con una función llamada `saludar`, en un archivo `modulo.mjs`, puedes usarlo en tu script o app de la siguiente manera:
    
@@ -620,7 +624,7 @@
 
      `window` es el objeto global en el contexto de un navegador. Contiene todas las variables y funciones globales y representa el entorno de ejecución del navegador.
 
-   - **Ejemplo**:
+   - **Ejemplo en un navegador**:
 
      ```javascript
      // En un navegador
@@ -635,7 +639,7 @@
 
      `globalThis` es un estándar del lenguaje JavaScript introducido en ECMAScript 11 (ES11) que proporciona una forma de acceder al objeto global independientemente del entorno en el que se esté ejecutando el código. Esto significa que puedes usar `globalThis` tanto en Node.js como en navegadores para acceder al objeto global.
 
-   - **Ejemplo**:
+   - **Ejemplo en ambas formas**:
 
      ```javascript
      // En Node.js o en un navegador
@@ -674,7 +678,7 @@
 
 4. #### **`Múltiples Líneas de Código`**:
 
-   Si el código que deseas escribir es demasiado largo para una sola línea, el REPL te proporcionará un prompt continuo (`...`) para que puedas seguir escribiendo. Esto te permite escribir y ejecutar código en múltiples líneas.
+   Si el código que deseas escribir es demasiado largo para una sola línea, el REPL te proporcionará un prompt continuo (`>` o `...`) para que puedas seguir escribiendo. Esto te permite escribir y ejecutar código en múltiples líneas.
 
    Por ejemplo, si deseas escribir una función más larga, puedes hacerlo y luego presionar Enter al final de cada línea. El REPL compilará y ejecutará el código cuando presiones Enter después de la última línea.
 
@@ -764,7 +768,7 @@
    ```
 
    ```javascript
-   // ES6
+   // ECMAScript
    import { createServer } from 'node:http';
    ```
 
@@ -779,7 +783,7 @@
    ```
 
    ```javascript
-   // ES6
+   // ECMAScript
    const server = createServer((request, response) => {
      console.log('Request received');
      // Lógica...
@@ -917,13 +921,21 @@
    
      `curl` imprimirá la respuesta del servidor en tu terminal. Esto incluirá tanto el encabezado de la respuesta HTTP como el cuerpo de la respuesta. Si la solicitud fue exitosa, deberías ver el contenido que el servidor respondió.
    
-     Si deseas guardar la respuesta en un archivo, puedes redirigir la salida a un archivo utilizando `>`. Por ejemplo:
+     Si deseas guardar la respuesta en un archivo, puedes redirigir la salida a un archivo utilizando `>`. Esta la opción, seguida del nombre del archivo donde deseas guardar la información sirve para crear archivo. Por ejemplo:
    
      ```bash
      curl https://api.example.com/endpoint > respuesta.txt
      ```
    
-     Esto guardará la respuesta en un archivo llamado "respuesta.txt".
+     Esto guardará la respuesta en un archivo llamado `respuesta.txt`.
+
+     También puedes escribir simplemente texto utilizando `echo` y guardarlo en un archivo de la misma forma:
+
+     ```bash
+     echo 'Tu texto aquí' > archivo.txt
+     ```
+
+     Esto creará el texto descrito entre comillas y lo guardará en un archivo creado a partir del símbolo descrito precedentemente.
    
    - **Más Opciones**:
    
@@ -957,6 +969,12 @@
 
      ```bash
      curl -X POST https://api.example.com/endpoint -d 'param1=value1&param2=value2'
+     ```
+
+     Puedes elegir un archivo en el que deseas guardar la respuesta del servidor con `-o` seguido del nombre del archivo donde deseas guardar la información y de la URL del servidor:
+
+     ```bash
+     curl -d 'Tu mensaje aquí' -o respuesta.txt https://example.com/api/endpoint
      ```
 
      Puedes agregar encabezados personalizados con `-H` y `-d` a una solicitud HTTP, por ejemplo, cambiando el formato a JSON:
@@ -1379,7 +1397,7 @@
    La convención común es colocar el callback como último argumento en una función. Esto mejora la legibilidad, facilita el encadenamiento de llamadas y proporciona un flujo de código más natural.
 
    ```javascript
-   // ES6
+   // ECMAScript
    import * as fs from 'node:fs';
    
    function operacionCompleja(arg1, arg2, callback) {
@@ -1537,6 +1555,7 @@
    - **Ejemplo**:
 
      ```javascript
+     // Sync
      console.log("Inicio");
      for (let i = 0; i <= 3; i++) {
        console.log(i);
