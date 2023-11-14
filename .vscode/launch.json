@@ -24,6 +24,13 @@
       "type": "chrome",
       "url": "http://localhost:8000",
       "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": "Launch Chrome localhost 8075",
+      "request": "launch",
+      "type": "chrome",
+      "url": "http://localhost:8075",
+      "webRoot": "${workspaceFolder}"
     }
   ]
 }

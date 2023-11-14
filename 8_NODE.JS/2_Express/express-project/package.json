@@ -16,6 +16,7 @@
     "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
+    "dotenv": "^16.3.1",
     "eslint": "^8.53.0",
     "ts-node": "^10.9.1",
     "tsc-watch": "^5.0.3",

@@ -1143,7 +1143,12 @@
 
    - **Union Type**:
 
-     En TypeScript, `los Union Types son una característica que te permite combinar dos o más tipos en uno solo`. Esto significa que una variable con un Union Type puede tener uno de varios tipos diferentes.
+     En TypeScript, `los Union Types son una característica que te permite combinar dos o más tipos en uno solo`. Esto significa que el valor de una variable con un Union Type, puede recibir unicamente uno de los distintos tipos que se le asignan.
+
+     ```javascript
+     // Acá la variable `PORT` puede recibir un `string` o un `number` como valor
+     const PORT: string | number = process.env.PORT || 3000;
+     ```
 
      La sintaxis para definir un `Union Type` utiliza el operador de tubería `|` entre los tipos que se están uniendo.
 
