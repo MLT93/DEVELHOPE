@@ -1,24 +1,13 @@
+/* require("express-async-errors"); */
 import express from "express";
-import "express-async-errors";
 import morgan from "morgan";
 import "dotenv/config";
 
+/* Variables */
 const server = express();
-
 const PORT: string | number = process.env.PORT || 3000;
 
-server.use(morgan("dev"));
-
-server.get("/", (req, res) => {
-  res.statusCode = 200;
-  res.setHeader("Content-Type", "text/html");
-  res.status(200).json({ message: "Hello World!" });
-});
-
-server.listen(PORT, () => {
-  console.log(`Example app listening on port http://localhost:${PORT}`);
-});
-
+/* Tipos e Interfaces */
 interface Planet {
   id: number;
   name: string;
@@ -26,6 +15,7 @@ interface Planet {
 
 type Planets = Planet[];
 
+// eslint-disable-next-line prefer-const
 let planets: Planets = [
   {
     id: 1,
@@ -72,3 +62,19 @@ let planets: Planets = [
     name: "Pluton",
   },
 ];
+
+/* Lógica */
+server.use(morgan("dev"));
+
+server.get("/", (req, res) => {
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/html");
+  res.status(200).json({
+    message: "Hello World!",
+    planets: planets
+  });
+});
+
+server.listen(PORT, () => {
+  console.log(`App listening on port http://localhost:${PORT}`);
+});

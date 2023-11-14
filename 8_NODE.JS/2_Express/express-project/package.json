@@ -7,7 +7,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "start": "tsc-watch --noClear -p ./tsconfig.json --outDir ./dist --onSuccess \"node ./dist/server.js\""
+    "dev": "tsc-watch --noClear -p ./tsconfig.json --outDir ./dist --onSuccess \"node ./dist/server.js\""
   },
   "devDependencies": {
     "@tsconfig/node18": "^1.0.3",
