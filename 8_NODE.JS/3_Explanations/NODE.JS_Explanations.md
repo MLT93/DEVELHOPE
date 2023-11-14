@@ -3308,7 +3308,7 @@
 
 1. #### **`Introducción a dotenv`**:
 
-   La librería `dotenv` es una herramienta útil en el desarrollo de aplicaciones web y de servidor en JavaScript. Su objetivo principal es cargar variables de entorno desde un archivo `.env` a la aplicación, facilitando la gestión de configuraciones sensibles y la separación de estas del código fuente.
+   La librería `dotenv` es una herramienta útil en el desarrollo de aplicaciones web y de servidor en JavaScript. `Su objetivo principal es cargar variables de entorno desde un archivo` `.env` a la aplicación, facilitando la gestión de configuraciones sensibles y la separación de estas del código fuente.
 
 2. #### **`Importancia de dotenv`**:
 
@@ -3378,7 +3378,7 @@
    });
    ```
    
-   Ejemplo con consejo de uso para facilitar la carga de las variables de entrono del archivo `.env` utilizando ECMAScript:
+   Ejemplo ECMAScript y consejo de uso para facilitar la carga de las variables de entrono del archivo `.env` en tu aplicación:
 
    ```javascript
    // Importa los módulos necesarios en ECMAScript
@@ -3437,7 +3437,7 @@
      Puedes proporcionar valores por defecto para tus variables de entorno en caso de que no estén definidas:
 
      ```javascript
-     const apiTimeout = process.env.API_TIMEOUT || 5000; // 5000 es el valor por defecto
+     const apiTimeout = process.env.API_TIMEOUT || 5000; // 5000 sería el valor por defecto
      ```
 
 7. #### **`Ventajas de Usar dotenv`**:
