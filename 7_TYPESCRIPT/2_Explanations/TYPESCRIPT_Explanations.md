@@ -88,10 +88,10 @@
        
        En este caso, `./src/**/*.ts` significa que:
        
-       - `./src`: Nos ubicamos dentro de ese directorio del proyecto.
-       - `/**`: Seleccionamos todas las carpetas.
+       - `./src`: Nos ubicamos dentro de ese directorio del proyecto en específico.
+       - `/**`: Seleccionamos todas las carpetas que haya dentro del directorio.
        - `/*`: Elegimos todos los archivos sin importar la extensión.
-       - `.ts`: Filtramos la extensión que deseamos buscar en particular.
+       - `.ts`: Asignamos la extensión que deseamos buscar en particular (opcional).
 
        En Webpack, puede ser utilizado en el archivo de configuración `webpack.config.js` para especificar qué archivos deben ser procesados durante la construcción del proyecto.
 
