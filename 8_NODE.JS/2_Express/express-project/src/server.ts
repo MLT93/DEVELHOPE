@@ -1,3 +1,14 @@
-const TODO: string = "start writing your Express API server here :)";
+import express from "express";
 
-console.log(TODO);
+const server = express();
+const port = 3000;
+
+server.get("/", (req, res) => {
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/html");
+  res.send("Hello World!");
+});
+
+server.listen(port, () => {
+  console.log(`Example app listening on port http://localhost:${port}`);
+});

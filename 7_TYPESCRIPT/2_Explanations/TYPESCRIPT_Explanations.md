@@ -67,7 +67,7 @@
 
      - `extends`:
 
-       Se utiliza para heredar la configuración de otro archivo `tsconfig.json`. Esto es útil cuando tienes una configuración base que deseas compartir entre varios proyectos o cuando deseas organizar tu configuración en módulos reutilizables. Cuando se utiliza una ruta que comienza con `@`, TypeScript asume que se trata de un paquete y busca el paquete correspondiente en el sistema de archivos o en los módulos Node.js.
+       Se utiliza para heredar la configuración de otro archivo `tsconfig.json`. Esto es útil cuando tienes una configuración base que deseas compartir entre varios proyectos o cuando deseas organizar tu configuración en módulos reutilizables. Cuando se utiliza una ruta que comienza con `@`, TypeScript asume que se trata de un paquete y busca el paquete correspondiente en el sistema de archivos o en los módulos Node.js `package.json`.
      
      - `target`:
      
@@ -75,7 +75,7 @@
      
      - `outDir`:
        
-       Especifica la carpeta de salida donde se colocarán los archivos JavaScript compilados. Estos archivos estarán listos para ser ejecutados en un navegador o en un entorno de ejecución de JavaScript. Comúnmente se compila en un archivo llamado `index.js` o `app.js`, situado en una carpeta con el nombre `dist` que reside en la raíz del proyecto.
+       Especifica la carpeta de salida donde se colocarán los archivos JavaScript compilados. Estos archivos estarán listos para ser ejecutados en un navegador o en un entorno de ejecución de JavaScript. Comúnmente se compila en un archivo llamado `index.js`, `app.js` o `server.js`, situado en una carpeta con el nombre `dist` que reside en la raíz del proyecto.
      
      - `rootDir`:
      
