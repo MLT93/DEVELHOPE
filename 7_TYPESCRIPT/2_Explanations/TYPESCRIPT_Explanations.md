@@ -41,6 +41,8 @@
 
      `Para tu proyecto TypeScript necesitas` una configuración adecuada. Esto se logra mediante `un archivo de configuración`. `tsconfig.json` es el archivo que contiene la información sobre cómo se debe realizar la compilación, qué archivos incluir, qué versión de ECMAScript (ES) se debe generar, entre otras opciones.
 
+     Visita la web oficial en: **https://www.typescriptlang.org/tsconfig**
+
      Si no tienes uno en tu proyecto, puedes crearlo ejecutando el siguiente comando en la raíz de tu proyecto:
 
      ```bash
@@ -52,17 +54,19 @@
      ```json
           {
        "compilerOptions": {
-         "target": "ES5",
+         "target": "ES6",
          "outDir": "./dist",
          "rootDir": "./src",
          "strict": true
-       }
+       },
+       "include": ["./src/**/*.ts"],
+       "exclude": ["./src/**/*.test.js"],
      }
      ```
      
      - `target`:
      
-       Indica la versión de ECMAScript a la que se debe compilar. En este caso, se compila a ECMAScript 5.
+       Indica la versión de ECMAScript a la que se debe compilar. En este caso, se compila a ECMAScript (ES) 6.
      
      - `outDir`:
        
@@ -75,6 +79,31 @@
      - `strict`:
        
        Habilita las configuraciones estrictas para un código más robusto y sin errores.
+
+     - `include`:
+
+       se utiliza en archivos de configuración de herramientas de construcción, como Webpack, TypeScript, o linters como ESLint. Esta declaración especifica qué archivos deben ser incluidos en ciertos procesos, como la compilación o análisis estático.
+
+       Es un patrón de inclusión que describe la ubicación de los archivos que se deben incluir.
+       
+       En este caso, `./src/**/*.ts` significa que:
+       
+       - `./src`: Nos ubicamos dentro de ese directorio del proyecto.
+       - `/**`: Seleccionamos todas las carpetas.
+       - `/*`: Elegimos todos los archivos sin importar la extensión.
+       - `.ts`: Filtramos la extensión que deseamos buscar en particular.
+
+       En Webpack, puede ser utilizado en el archivo de configuración `webpack.config.js` para especificar qué archivos deben ser procesados durante la construcción del proyecto.
+
+       En TypeScript, dentro del archivo `tsconfig.json` esta declaración puede usarse para indicar qué archivos TypeScript deben ser compilados.
+
+       En ESLint, en el `archivo de configuración de ESLint` esto podría usarse para especificar qué archivos deben ser analizados estáticamente en busca de problemas de estilo o errores.
+
+     - `exclude`:
+
+       se utiliza para especificar qué archivos y carpetas deben excluirse de un proceso específico. Este es un mecanismo para indicar qué partes del código o del proyecto no deben ser consideradas durante ciertos procesos, como la compilación, análisis estático, o cualquier otra tarea automatizada.
+
+       En este caso, `./src/**/*.test.js` significa que en el directorio `src`, dentro de todas las carpetas y dentro de todos los archivos, se excluyen los files con extensión `.test.js` para el proceso que sea.
 
      `La configuración adecuada del tsconfig.json es crucial para el éxito de la compilación`. Asegúrate de entender cada opción y cómo afecta el proceso de compilación.
    

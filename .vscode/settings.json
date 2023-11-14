@@ -292,6 +292,7 @@
     "direccion",
     "Direccion",
     "Electronico",
+    "estáticamente",
     "freemem",
     "Funcion",
     "indian",
@@ -317,7 +318,8 @@
     "reactivamente",
     "renderizadas",
     "Renminbi",
-    "tlsv"
+    "tlsv",
+    "tsbuildinfo"
   ],
   "editor.suggest.preview": true,
   "versionlens.suggestions.indicators": {
