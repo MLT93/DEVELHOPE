@@ -1,3 +1,3 @@
-const ToDo: string = "start writing your Express API server here :)";
+const TODO: string = "start writing your Express API server here :)";
 
-console.log(ToDo);
+console.log(TODO);

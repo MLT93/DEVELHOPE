@@ -52,7 +52,8 @@
      Un ejemplo de un archivo `tsconfig.json básico`:
      
      ```json
-          {
+     {
+       "extends": "@tsconfig/node18/tsconfig.json",
        "compilerOptions": {
          "target": "ES6",
          "outDir": "./dist",
@@ -63,14 +64,18 @@
        "exclude": ["./src/**/*.test.js"],
      }
      ```
+
+     - `extends`:
+
+       Se utiliza para heredar la configuración de otro archivo `tsconfig.json`. Esto es útil cuando tienes una configuración base que deseas compartir entre varios proyectos o cuando deseas organizar tu configuración en módulos reutilizables. Cuando se utiliza una ruta que comienza con `@`, TypeScript asume que se trata de un paquete y busca el paquete correspondiente en el sistema de archivos o en los módulos Node.js.
      
      - `target`:
      
-       Indica la versión de ECMAScript a la que se debe compilar. En este caso, se compila a ECMAScript (ES) 6.
+       Indica la versión de JavaScript a la que se debe compilar. En este caso, se compila a ECMAScript (ES) 6.
      
      - `outDir`:
        
-       Especifica la carpeta de salida donde se colocarán los archivos JavaScript compilados. Estos archivos estarán listos para ser ejecutados en un navegador o en un entorno de ejecución de JavaScript.
+       Especifica la carpeta de salida donde se colocarán los archivos JavaScript compilados. Estos archivos estarán listos para ser ejecutados en un navegador o en un entorno de ejecución de JavaScript. Comúnmente se compila en un archivo llamado `index.js` o `app.js`, situado en una carpeta con el nombre `dist` que reside en la raíz del proyecto.
      
      - `rootDir`:
      
