@@ -1,7 +1,7 @@
-require("express-async-errors");
 import express from "express";
 import morgan from "morgan";
 import "dotenv/config";
+import "express-async-errors";
 
 /* Variables */
 const server = express();
