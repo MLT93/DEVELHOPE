@@ -72,8 +72,27 @@ server.get("/", (req, res) => {
   res.setHeader("Content-Type", "text/html");
   res.status(200).json({
     message: "Hello World!",
-    planets: planets
   });
+});
+
+server.get("/planets/", (req, res) => {
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/html");
+  res.status(200).json({ location: planets });
+});
+
+server.get("/planets/:id", (req, res) => {
+  const { id } = req.params;
+  const fixedPlanetId = Number(id);
+  const queryParamPlanet = planets.find(
+    (element) => element.id === fixedPlanetId,
+  );
+  if (queryParamPlanet) {
+    res.status(200).json(queryParamPlanet);
+  } else {
+    const error = new Error("404 - Not Found");
+    res.status(404).send(error.message);
+  }
 });
 
 server.listen(PORT, () => {

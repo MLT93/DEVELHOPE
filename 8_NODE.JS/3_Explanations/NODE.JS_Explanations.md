@@ -1808,7 +1808,7 @@
    // CommonJS
    const express = require('express');
    // ES6
-   import * as express from 'express';
+   import express from 'express';
    
    // Creamos una instancia de Express para obtener sus métodos
    const app = express();
@@ -1845,7 +1845,7 @@
    // CommonJS
    const express = require('express');
    // ES6
-   import * as express from 'express';
+   import express from 'express';
    
    // Creamos una instancia de Express para obtener sus métodos
    const app = express();
@@ -1897,7 +1897,7 @@
    // CommonJS
    const express = require('express');
    // ES6
-   import * as express from 'express';
+   import express from 'express';
    
    // Creamos una instancia de Express para obtener sus métodos
    const app = express();
@@ -1959,6 +1959,8 @@
    ```javascript
    function miMiddleware(err, req, res, next) {
      // Manejar el error
+     if (!test) console.error(err.stack);
+
      res.status(500).send('Error interno del servidor');
    }
    ```
@@ -1969,7 +1971,7 @@
    // CommonJS
    const express = require('express');
    // ES6
-   import * as express from 'express';
+   import express from 'express';
    
    // Creamos una instancia de Express para obtener sus métodos
    const app = express();
@@ -2011,10 +2013,81 @@
    Para probar esta aplicación, puedes usar herramientas como Postman o hacer una solicitud POST desde tu código.
    
    Recuerda que este es solo un ejemplo simple y en una aplicación real, los errores deberían manejarse de manera más completa y segura.
+
+   ```javascript
+   import express from "express";
+   import logger from "morgan";
+   
+   const app = express();
+   const test = app.get("env") === "test"; // Accediendo a la propiedad `env` de la aplicación
+   
+   // si no estamos en un entorno de prueba `(test es false)`,
+   // el middleware `logger` se agrega a la aplicación 
+   // para realizar un seguimiento detallado de las solicitudes entrantes y salientes.
+   if (!test) app.use(logger("dev"));
+   
+   // Los middlewares de manejo de errores tienen una aridad de 4
+   // en lugar de la típica `(req, res, next)`,
+   // de lo contrario, se comportan exactamente como middlewares regulares,
+   // puedes tener varios de ellos,
+   // en diferentes órdenes, etc...
+   
+   function error(err, req, res, next) {
+     // Regístralo
+     if (!test) console.error(err.stack); // El stack trace proporciona información detallada sobre la ubicación y la secuencia de llamadas que llevaron al error. Utilízalo unicamente en entorno de desarrollo. No deseas que el cliente reciba esta información
+   
+     // Responde con 500 "Error Interno del Servidor".
+     res.status(500).send("Error Interno del Servidor");
+   }
+   
+   app.get("/", function () {
+     // Atrapado y enviado al middleware `error`
+     throw new Error("¡Algo se rompió!");
+   });
+   
+   app.get("/next", function (req, res, next) {
+     // También podemos pasar excepciones a `next()`
+     // El motivo de usar `process.nextTick()` es mostrar que
+     // `next()` se puede llamar dentro de una operación asíncrona,
+     // en la vida real, podría ser una lectura de BD o una solicitud HTTP.
+     process.nextTick(function () {
+       next(new Error("¡Oh no!"));
+     });
+   });
+   
+   // El middleware de manejo de errores se coloca después de las rutas
+   // si estuviera arriba, no recibiría errores
+   // de `app.get()`, etc.
+   app.use(error); // Usando app.use en lugar de use
+   
+   // Verifica si el módulo se ejecuta directamente (no importado por otro módulo)
+   if (require.main === module) {
+     const PORT = process.env.PORT || 3000;
+     app.listen(PORT, () => {
+       console.log(`Express iniciado en el puerto ${PORT}`);
+     });
+   }
+   ```
+
+   En este ejemplo, se explica detalladamente el proceso.
    
 7. #### **`Methods in Express`**:
 
-   La instancia de `express()` crea una aplicación Express. La variable `app` se convierte en el punto central para configurar rutas, middleware y realizar otras operaciones relacionadas con la aplicación Express. Aquí hay algunos de los métodos más comunes asociados con la instancia `app`:
+   La instancia de `express()` crea una aplicación Express. La variable `app` se convierte en el punto central para configurar rutas, middleware y realizar otras operaciones relacionadas con la aplicación Express.
+
+   Antes de empezar, la definición dentro de los corchetes `[, callback ...]`, en algunas de las sintaxis de los métodos expuestos abajo, indica que los callbacks son opcionales y pueden ser uno solo o varios. La definición del arreglo para integrar los callbacks es opcional. Entonces, cuando ves la coma dentro de los corchetes, esto indica que puedes proporcionar múltiples callbacks dentro de un arreglo. Por ejemplo:
+
+   ```javascript
+   app.method('/ruta', callback1, callback2, callback3);
+   ```
+
+   O también:
+
+   ```javascript
+   app.method('/ruta', [callback1, callback2, callback3]);
+   ```
+
+   Ahora te muestro algunos de los métodos más comunes asociados con la instancia `app`:
 
    - **app.use([ruta], función de middleware)**:
 
@@ -2026,7 +2099,7 @@
 
      Este ejemplo utiliza el middleware `express.static` para servir archivos estáticos desde el directorio 'public'.
    
-   - **app.get(ruta, callback [, callback ...])**:
+   - **app.get([ruta], callback [, callback ...])**:
 
      Define una ruta y una devolución de llamada para las solicitudes HTTP GET.
      
@@ -2037,7 +2110,7 @@
      ```
      Este ejemplo responde a las solicitudes GET en la ruta '/' con el mensaje '¡Hola desde Express!'.
 
-   - **app.post(ruta, callback [, callback ...])**:
+   - **app.post([ruta], callback [, callback ...])**:
 
      Define una ruta y una devolución de llamada para las solicitudes HTTP POST.
     
@@ -2048,7 +2121,7 @@
      ```
      Este ejemplo responde a las solicitudes POST en la ruta '/usuarios' con el mensaje '¡Usuario creado!'.
 
-   - **app.put(ruta, callback [, callback ...])**:
+   - **app.put([ruta], callback [, callback ...])**:
 
      Define una ruta y una devolución de llamada para las solicitudes HTTP PUT.
 
@@ -2059,7 +2132,7 @@
      ```
      Este ejemplo responde a las solicitudes PUT en la ruta '/usuarios/:id' con un mensaje que incluye el ID del usuario.
 
-   - **app.delete(ruta, callback [, callback ...])**:
+   - **app.delete([ruta], callback [, callback ...])**:
 
      Define una ruta y una devolución de llamada para las solicitudes HTTP DELETE.
 
@@ -2070,7 +2143,7 @@
      ```
      Este ejemplo responde a las solicitudes DELETE en la ruta '/usuarios/:id' con un mensaje que incluye el ID del usuario.
 
-   - **app.all(ruta, callback [, callback ...])**:
+   - **app.all([ruta], callback [, callback ...])**:
 
      Define una ruta y una devolución de llamada que se aplica a todos los métodos HTTP.
 
@@ -2103,9 +2176,9 @@
      ```
      Este ejemplo utiliza `app.route` para encadenar múltiples métodos de ruta para la ruta '/libros'.
 
-   - **app.param([nombre], callback)**:
+   - **app.param([nombre], callback [, callback ...])**:
 
-     Añade middleware de parámetro donde `[nombre]` es el nombre del parámetro y `callback` es la función de middleware.
+     Añade el nombre del query-param al puesto de `[nombre]` y el `callback` es la función de middleware.
 
      ```javascript
      app.param('id', (req, res, next, id) => {
@@ -2115,7 +2188,7 @@
      ```
      Este ejemplo utiliza `app.param` para ejecutar middleware específico antes de las rutas que tienen el parámetro 'id'.
 
-   - **app.use([ruta,] función)**:
+   - **app.use([ruta], callback [, callback ...])**:
 
      Monta middleware en la aplicación. Si no se especifica la ruta, el middleware se ejecuta para todas las solicitudes.
 
@@ -2125,7 +2198,33 @@
        next();
      });
      ```
-     Este ejemplo utiliza `app.use` para aplicar middleware global que se ejecutará para todas las solicitudes.
+     
+     ```javascript
+     // Middleware para manejar solicitudes y obtener información sobre un planeta específico
+     app.use("/api/planets/:id", (req, res, next) => {
+       const { id } = req.params;
+       const fixedPlanetId = Number(id);
+     
+       // Busca el planeta con el ID proporcionado en la ruta
+       const queryParamPlanet = planets.find(
+         (element) => element.id === fixedPlanetId
+       );
+     
+       // Si el planeta se encuentra, responde con la información del planeta
+       if (queryParamPlanet) {
+         res.status(200).json(queryParamPlanet);
+       } else {
+         // Si el ID del planeta no existe, envía un error 404
+         const error = new Error("404 - Not Found");
+         res.status(404).send(error.message);
+       }
+     
+       // Llama a next() para pasar al siguiente middleware
+       next();
+     });
+     ```
+
+     En los ejemplos se utiliza `app.use` para aplicar middleware global que se ejecutará para todas las solicitudes o en una ruta específica que producirá un error en el caso que no encuentre la query-param especificada.
 
    - **app.locals**:
 
@@ -2145,7 +2244,7 @@
      ```
      Este ejemplo configura el puerto de la aplicación.
 
-   Estos son solo algunos de los métodos disponibles en la instancia de `app`. Puedes explorar más opciones y métodos en la documentación oficial de Express **https://expressjs.com/**. Cada método proporciona una forma de definir el comportamiento de la aplicación para solicitudes específicas y métodos HTTP.
+   Estos son solo algunos de los métodos disponibles en la instancia de `app`. Puedes explorar más opciones y métodos en la documentación oficial de Express **https://expressjs.com/en/guide/routing.html**. Cada método proporciona una forma de definir el comportamiento de la aplicación para solicitudes específicas y métodos HTTP.
 
 8. **Middleware de Terceros**:
 
