@@ -977,13 +977,12 @@
      
      ```jsx
      import { createContext } from 'react';
-     
      const MiContexto = createContext()
      
-     const ComponentePadre = () => {
+     const ComponentePadreProvider = ({children}) => {
        return (
          <MiContexto.Provider value={'Valor del contexto'}>
-           <ComponenteHijo />
+           {children}
          </MiContexto.Provider>
        );
      };
@@ -993,12 +992,148 @@
      import { useContext } from 'react';
      import { MiContexto } from './MiContexto';
 
-     const ComponenteHijo = () => {
+     const ComponenteHijoConsumer = () => {
        const valorDelContexto = useContext(MiContexto);
 
        // Acá se harían todas las modificaciones pertinentes para renderizar cosas distintas con el valor del contexto
        return <div>{valorDelContexto}</div>;
      };
+     ```
+
+     ```jsx
+     const App = () => {
+       return (
+         <ComponentePadreProvider>
+           <ComponenteHijoConsumer />
+         </ComponentePadreProvider>
+       );
+     };
+     
+     export default App;
+     ```
+
+     En este ejemplo se ve como se utiliza el `createContext` para crear el contexto, después se aplica al componente que proveerá de ese contexto, el `provider`. Posteriormente se utiliza el hook `useContext` para utilizar el contexto creado dentro de otro componente funcional, que será quien utilice ese contexto, este es el `consumer`. Al final se utilizan ambos en el componente de la aplicación principal.
+     
+     Ejemplo2:
+
+     ```jsx
+     import { createContext } from 'react';
+
+     // Crear el contexto
+     const ConnectWalletContext = createContext();
+
+     // Crear el proveedor
+     const WalletProvider = ({ children }) => {
+       const [miEstado, setMiEstado] = useState("Valor inicial");
+     
+       return (
+         <ConnectWalletContext.Provider value={{ miEstado, setMiEstado }}>
+           {children}
+         </ConnectWalletContext.Provider>
+       );
+     };
+     ```
+
+     ```jsx
+     import { useContext } from 'react';
+
+     // Crear el hook personalizado para poder aplicar el estado y modificarlo
+     const useProviderHook = () => {
+       const context = useContext(ConnectWalletContext);
+       if (!context) {
+         throw new Error("useProviderHook debe ser usado dentro de WalletProvider");
+       }
+       return context;
+     };
+     ```
+
+     ```jsx
+     import { useProviderHook } from './useProviderHook';
+     import { WalletProvider } from './WalletProvider';
+
+     // Uso en un componente
+     const MiComponente = () => {
+       const { miEstado, setMiEstado } = useProviderHook();
+     
+       return (
+         <div>
+           <p>Estado: {miEstado}</p>
+           <button onClick={() => setMiEstado("Nuevo valor")}>
+             Actualizar Estado
+           </button>
+         </div>
+       );
+     };
+     ```
+
+     ```jsx
+     // En el componente principal, envuelve la aplicación con el proveedor
+     const App = () => {
+       return (
+         <WalletProvider>
+           <MiComponente />
+         </WalletProvider>
+       );
+     };
+     
+     export default App;
+     ```
+
+     Este código ilustra la creación de un contexto, un proveedor que utiliza ese contexto para proporcionar datos a sus descendientes, un hook personalizado para acceder a esos datos, y un componente que utiliza ese hook para mostrar y actualizar el estado proporcionado por el contexto.
+
+     Ejemplo 3:
+     
+     ```jsx
+     import React, { createContext, useContext, useState } from 'react';
+     
+     // Crear el contexto con valor por defecto
+     const MiContexto = createContext({
+       miEstado: 'Valor por defecto',
+       setMiEstado: () => {},
+     });
+     
+     // Crear el proveedor
+     const MiProveedor = ({ children }) => {
+       const [miEstado, setMiEstado] = useState('Valor inicial');
+     
+       return (
+         <MiContexto.Provider value={{ miEstado, setMiEstado }}>
+           {children}
+         </MiContexto.Provider>
+       );
+     };
+     
+     // Crear el hook personalizado
+     const useMiHook = () => {
+       const context = useContext(MiContexto);
+       if (!context) {
+         throw new Error('useMiHook debe ser usado dentro de MiProveedor');
+       }
+       return context;
+     };
+     
+     // Uso en un componente
+     const MiComponente = () => {
+       const { miEstado, setMiEstado } = useMiHook();
+     
+       return (
+         <div>
+           <p>Estado: {miEstado}</p>
+           <button onClick={() => setMiEstado('Nuevo valor')}>Actualizar Estado</button>
+         </div>
+       );
+     };
+     
+     // En el componente principal, envuelve la aplicación con el proveedor
+     const App = () => {
+       return (
+         <MiProveedor>
+           <MiComponente />
+         </MiProveedor>
+       );
+     };
+     
+     export default App;
      ```
      
    - **useRef hook**:
@@ -1259,7 +1394,7 @@
    
      return (
        <div style={{ background: tema === 'oscuro' ? '#333' : '#fff', color: tema === 'oscuro' ? '#fff' : '#000' }}>
-         Componente Consumidor
+         <p>Componente Consumidor</p>p>
        </div>
      );
    };
