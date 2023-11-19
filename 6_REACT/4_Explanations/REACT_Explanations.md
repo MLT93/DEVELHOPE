@@ -1135,6 +1135,8 @@
      
      export default App;
      ```
+
+     Este ejemplo en un solo apartado muestra el uso de un `crateContext` con un `valor por defecto`.
      
    - **useRef hook**:
      
@@ -1213,6 +1215,7 @@
        );
      }
      ```
+
      En este código de ejemplo, el color del elemento de entrada cambia según el número que ingrese en el cuadro de entrada. Primero, asigna el resultado del hook `useRef()` a la variable de conteo. Hay dos elementos: uno de entrada y el botón. El elemento de entrada tiene el valor del número y la propiedad ref de la etiqueta de entrada cuenta para coincidir con la variable.
      Cuando se hace clic en el botón, se llama a la función `checkNumber()`. Esta función verifica si el valor del número es mayor que 10 para luego establecer el color de fondo del elemento de entrada usando la propiedad `count.current.style.backgroundColor`.
        
