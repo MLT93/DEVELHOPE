@@ -16,8 +16,7 @@ interface Planet {
 type Planets = Planet[];
 
 /* Data */
-// eslint-disable-next-line prefer-const
-let planets: Planets = [
+const planets: Planets = [
   {
     id: 1,
     name: "Sun",
@@ -66,19 +65,36 @@ let planets: Planets = [
 
 /* Lógica */
 server.use(morgan("dev"));
+server.use(express.json());
 
 server.get("/", (req, res) => {
-  res.statusCode = 200;
-  res.setHeader("Content-Type", "text/html");
+  res.setHeader("Content-Type", "application/json");
   res.status(200).json({
     message: "Hello World!",
   });
 });
 
 server.get("/planets/", (req, res) => {
-  res.statusCode = 200;
-  res.setHeader("Content-Type", "text/html");
-  res.status(200).json({ location: planets });
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).json({ allPlanets: planets });
+});
+
+server.post("/planets", (req, res) => {
+  const { id, name } = req.body;
+  const newPlanet: Planet = { id: id, name: name };
+  const newArrOfPlanets: Planets = [...planets, newPlanet];
+
+  if (newPlanet.id && newPlanet.name) {
+    res.setHeader("Content-Type", "application/json");
+    res.status(201).json({
+      message: "Create new planet",
+      create: newPlanet,
+      newPlanets: newArrOfPlanets,
+    });
+  } else {
+    const error = new Error("501 - Server Error");
+    res.status(501).send(error.message);
+  }
 });
 
 server.get("/planets/:id", (req, res) => {
@@ -88,7 +104,55 @@ server.get("/planets/:id", (req, res) => {
     (element) => element.id === fixedPlanetId,
   );
   if (queryParamPlanet) {
-    res.status(200).json(queryParamPlanet);
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).json({
+      message: "Read planet",
+      read: queryParamPlanet,
+    });
+  } else {
+    const error = new Error("404 - Not Found");
+    res.status(404).send(error.message);
+  }
+});
+
+server.put("/planets/:id", (req, res) => {
+  const { id } = req.params;
+  const fixedPlanetId = Number(id);
+  const { name } = req.body;
+  const newUpdatedPlanets = planets.map((element) =>
+    element.id === fixedPlanetId ? { ...element, name } : element,
+  );
+
+  if (newUpdatedPlanets) {
+    res.setHeader("Content-Type", "application/json");
+    res.status(201).json({
+      message: "Update new planet",
+      update: newUpdatedPlanets,
+    });
+  } else {
+    const error = new Error("501 - Server Error");
+    res.status(501).send(error.message);
+  }
+});
+
+server.delete("/planets/:id", (req, res) => {
+  const { id } = req.params;
+  const fixedPlanetId = Number(id);
+
+  const indexToDelete = planets.findIndex(
+    (planet) => planet.id === fixedPlanetId,
+  );
+
+  if (indexToDelete !== -1) {
+    const deletedPlanet = planets.splice(indexToDelete, 1);
+    const remainingPlanets = planets;
+
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).json({
+      message: "Delete planet",
+      delete: deletedPlanet,
+      remaining: remainingPlanets,
+    });
   } else {
     const error = new Error("404 - Not Found");
     res.status(404).send(error.message);
