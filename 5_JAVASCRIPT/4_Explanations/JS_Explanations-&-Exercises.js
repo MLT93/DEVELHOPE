@@ -725,7 +725,7 @@ console.log(
 // Inicio (opcional): El índice donde se iniciará la extracción. Si no se especifica, se asume un valor de 0, lo que significa que se comenzará desde el primer elemento del array.
 // Fin (opcional): El índice donde finalizará la extracción. El método .slice() extraerá los elementos hasta fin - 1. Si no se especifica, se extraerán todos los elementos hasta el final del array.
 
-// El método .splice(indice de inicio(inclusive), cantidad de elementos a eliminar, item a añadir) permite modificar el contenido de un array eliminando, reemplazando o agregando elementos. Acepta varios argumentos. Puedes utilizarlo para quitar una parte del array especificando el índice de inicio (inclusive) y la cantidad de elementos a eliminar en elementos a eliminar.
+// El método .splice(indice de inicio(inclusive), cantidad de elementos a eliminar, item para añadir) permite modificar el contenido de un array eliminando, reemplazando o agregando elementos. Acepta varios argumentos. Puedes utilizarlo para quitar una parte del array especificando el índice de inicio (inclusive) y la cantidad de elementos a eliminar en elementos a eliminar.
 let numbers2 = [1, 2, 3, 4, 5, 11, 12, 22, 0.7];
 
 console.log(
