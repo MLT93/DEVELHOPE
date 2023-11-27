@@ -1242,7 +1242,7 @@
      "name": "mi-proyecto",
      "version": "1.0.0",
      "dependencies": {
-       "express": "^4.17.1",
+       "express": "4.17.1",
        "lodash": "^4.17.21"
      },
      "scripts": {
@@ -1303,7 +1303,19 @@
 
    Esto permitirá el uso de `figlet` en cualquier proyecto sin tener que instalarlo localmente en cada uno.
 
-8. #### **`Conclusiones y Buenas Prácticas`**:
+8. #### **`npm install -E`**:
+
+   Además de instalar dependencias a nivel de proyecto con la versión compatible más reciente, `npm` también permite instalar paquetes de forma exacta en el `package.json`. Esto se consigue con la opción `-E` que nos quita el `caret`, lo cual indica que la versión especificada se registrará sin permitir actualizaciones automáticas a versiones posteriores.
+
+   Por ejemplo, `express` es una dependencia de producción, por lo tanto deberemos instalarlo con el comando:
+
+   ```bash
+   npm i -E express
+   ```
+
+   Esto permitirá el uso de `express` con una versión en específico, lo cual nos ayuda a mantener estable la dependencia de producción, evitando actualizaciones automáticas a versiones posteriores que podrían introducir cambios no deseados.
+
+9. #### **`Conclusiones y Buenas Prácticas`**:
 
    - Es una buena práctica incluir siempre un `package.json` en tus proyectos Node.js para mantener un registro de las dependencias y configuraciones del proyecto.
 
