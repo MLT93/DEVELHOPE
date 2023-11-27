@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+/* import joi from "joi"; */
 import "dotenv/config";
 import "express-async-errors";
 
@@ -68,33 +69,19 @@ server.use(morgan("dev"));
 server.use(express.json());
 
 server.get("/", (req, res) => {
-  res.setHeader("Content-Type", "application/json");
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.status(200).json({
     message: "Hello World!",
+    request: req.url,
   });
 });
 
 server.get("/planets/", (req, res) => {
-  res.setHeader("Content-Type", "application/json");
-  res.status(200).json({ allPlanets: planets });
-});
-
-server.post("/planets", (req, res) => {
-  const { id, name } = req.body;
-  const newPlanet: Planet = { id: id, name: name };
-  const newArrOfPlanets: Planets = [...planets, newPlanet];
-
-  if (newPlanet.id && newPlanet.name) {
-    res.setHeader("Content-Type", "application/json");
-    res.status(201).json({
-      message: "Create new planet",
-      create: newPlanet,
-      newPlanets: newArrOfPlanets,
-    });
-  } else {
-    const error = new Error("501 - Server Error");
-    res.status(501).send(error.message);
-  }
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.status(200).json({
+    allPlanets: planets,
+    request: req.url,
+  });
 });
 
 server.get("/planets/:id", (req, res) => {
@@ -104,14 +91,33 @@ server.get("/planets/:id", (req, res) => {
     (element) => element.id === fixedPlanetId,
   );
   if (queryParamPlanet) {
-    res.setHeader("Content-Type", "application/json");
+    res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.status(200).json({
       message: "Read planet",
-      read: queryParamPlanet,
+      get: queryParamPlanet,
+      remaining: planets,
     });
   } else {
     const error = new Error("404 - Not Found");
     res.status(404).send(error.message);
+  }
+});
+
+server.post("/planets", (req, res) => {
+  const { id, name } = req.body;
+  const newPlanet: Planet = { id: id, name: name };
+  const newArrOfPlanets: Planets = [...planets, newPlanet];
+
+  if (newPlanet.id && newPlanet.name) {
+    res.setHeader("Content-Type", "application/json; charset=utf-8");
+    res.status(201).json({
+      message: "Create new planet",
+      create: newPlanet,
+      remaining: newArrOfPlanets,
+    });
+  } else {
+    const error = new Error("501 - Server Error");
+    res.status(501).send(error.message);
   }
 });
 
@@ -124,10 +130,11 @@ server.put("/planets/:id", (req, res) => {
   );
 
   if (newUpdatedPlanets) {
-    res.setHeader("Content-Type", "application/json");
+    res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.status(201).json({
       message: "Update new planet",
-      update: newUpdatedPlanets,
+      update: { id, name },
+      remaining: newUpdatedPlanets,
     });
   } else {
     const error = new Error("501 - Server Error");
@@ -147,7 +154,7 @@ server.delete("/planets/:id", (req, res) => {
     const deletedPlanet = planets.splice(indexToDelete, 1);
     const remainingPlanets = planets;
 
-    res.setHeader("Content-Type", "application/json");
+    res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.status(200).json({
       message: "Delete planet",
       delete: deletedPlanet,
