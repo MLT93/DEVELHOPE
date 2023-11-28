@@ -1,3 +1,4 @@
+import * as fs from "node:fs";
 import express from "express";
 import morgan from "morgan";
 /* import joi from "joi"; */
@@ -7,6 +8,8 @@ import "express-async-errors";
 /* Variables */
 const server = express();
 const PORT: string | number = process.env.PORT || 3000;
+const rutaDelArchivo =
+  "/home/marko/Development/DEVELHOPE/8_NODE.JS/2_Express/express-project/src/db.json";
 
 /* Tipos e Interfaces */
 interface Planet {
@@ -76,6 +79,7 @@ server.get("/", (req, res) => {
   });
 });
 
+/* CRUD SIMPLE */
 server.get("/planets/", (req, res) => {
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.status(200).json({
@@ -147,7 +151,7 @@ server.delete("/planets/:id", (req, res) => {
   const fixedPlanetId = Number(id);
 
   const indexToDelete = planets.findIndex(
-    (planet) => planet.id === fixedPlanetId,
+    (element) => element.id === fixedPlanetId,
   );
 
   if (indexToDelete !== -1) {
@@ -163,6 +167,201 @@ server.delete("/planets/:id", (req, res) => {
   } else {
     const error = new Error("404 - Not Found");
     res.status(404).send(error.message);
+  }
+});
+
+/* CRUD CON BADE DE DATOS LOCAL */
+server.get("/json", async (req, res) => {
+  try {
+    const contenidoDelArchivo = await fs.promises.readFile(
+      rutaDelArchivo,
+      "utf-8",
+    );
+    const fixedBuffer = contenidoDelArchivo.toString();
+    const parsedData = JSON.parse(fixedBuffer);
+    if (parsedData) {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      res.status(200).json({
+        request: req.url,
+        message: "Get All",
+        data: parsedData,
+      });
+    }
+  } catch (err) {
+    if (err instanceof Error) {
+      res.status(404).send(`404 - Not Found: ${err.message}`);
+      console.error(err.name);
+      throw err;
+    }
+  }
+});
+
+server.get("/json/:id", async (req, res) => {
+  try {
+    const contenidoDelArchivo = await fs.promises.readFile(
+      rutaDelArchivo,
+      "utf-8",
+    );
+    const fixedBuffer = contenidoDelArchivo.toString();
+    const parsedData = JSON.parse(fixedBuffer);
+
+    if (parsedData) {
+      const { id } = req.params;
+      const fixedQueryParamId = Number(id);
+      const singleQueryParamElement = parsedData.find(
+        (element: { id: number; title: string }) => element.id === fixedQueryParamId,
+      );
+      if (singleQueryParamElement) {
+        res.setHeader("Content-Type", "application/json; charset=utf-8");
+        res.status(200).json({
+          request: req.url,
+          message: "Read",
+          data: parsedData,
+        });
+      }
+    }
+  } catch (err) {
+    if (err instanceof Error) {
+      res.status(404).send(`404 - Not Found: ${err.message}`);
+      console.error(err.name);
+      throw err;
+    }
+  }
+});
+
+server.post("/json", async (req, res) => {
+  try {
+    const contenidoDelArchivo = await fs.promises.readFile(
+      rutaDelArchivo,
+      "utf-8",
+    );
+    const fixedBuffer = contenidoDelArchivo.toString();
+    const parsedData = JSON.parse(fixedBuffer);
+
+    if (parsedData) {
+      const { id, title } = req.body;
+      const updateArchivo = [...parsedData, { id: id, title: title }];
+
+      if (updateArchivo) {
+        const stringifyUpdateArchivo = JSON.stringify(updateArchivo, null, 2);
+        await fs.promises.writeFile(
+          rutaDelArchivo,
+          stringifyUpdateArchivo,
+          "utf-8",
+        );
+
+        res.setHeader("Content-Type", "application/json; charset=utf-8");
+        res.status(201).json({
+          request: req.url,
+          message: "Create",
+          data: updateArchivo,
+        });
+      }
+    }
+  } catch (err) {
+    if (err instanceof Error) {
+      res.status(404).send(`404 - Not Found: ${err.message}`);
+      console.error(err.name);
+      throw err;
+    }
+  }
+});
+
+server.put("/json/:id", async (req, res) => {
+  try {
+    const contenidoDelArchivo = await fs.promises.readFile(
+      rutaDelArchivo,
+      "utf-8",
+    );
+    const fixedBuffer = contenidoDelArchivo.toString();
+    const parsedData = JSON.parse(fixedBuffer);
+
+    if (parsedData) {
+      const { id } = req.params;
+      const fixedQueryParamId = Number(id);
+      const { title } = req.body;
+      const newArrayWithUpdatedElement = parsedData.map(
+        (element: { id: number; title: string }) =>
+          element.id === fixedQueryParamId ? { id: id, title: title } : element,
+      );
+
+      if (newArrayWithUpdatedElement) {
+        const stringifyUpdateArchivo = JSON.stringify(
+          newArrayWithUpdatedElement,
+          null,
+          2,
+        );
+        await fs.promises.writeFile(
+          rutaDelArchivo,
+          stringifyUpdateArchivo,
+          "utf-8",
+        );
+
+        res.setHeader("Content-Type", "application/json; charset=utf-8");
+        res.status(201).json({
+          request: req.url,
+          message: "Update",
+          update: { id, title },
+          data: newArrayWithUpdatedElement,
+        });
+      }
+    }
+  } catch (err) {
+    if (err instanceof Error) {
+      res.status(404).send(`404 - Not Found: ${err.message}`);
+      console.error(err.name);
+      throw err;
+    }
+  }
+});
+
+server.delete("/json/:id", async (req, res) => {
+  try {
+    const contenidoDelArchivo = await fs.promises.readFile(
+      rutaDelArchivo,
+      "utf-8",
+    );
+    const fixedBuffer = contenidoDelArchivo.toString();
+    const parsedData = JSON.parse(fixedBuffer);
+
+    if (parsedData) {
+      const { id } = req.params;
+      const fixedQueryParamId = Number(id);
+      const { title } = req.body;
+
+      const newArrayWithDeletedElement = parsedData.map(
+        (element: { id: number; title: string }) =>
+          element.id === fixedQueryParamId
+            ? parsedData.splice(element.id, 1)
+            : element,
+      );
+
+      if (newArrayWithDeletedElement) {
+        const stringifyDeleteIntoArchivo = JSON.stringify(
+          newArrayWithDeletedElement,
+          null,
+          2,
+        );
+        await fs.promises.writeFile(
+          rutaDelArchivo,
+          stringifyDeleteIntoArchivo,
+          "utf-8",
+        );
+
+        res.status(200).json({
+          request: req.url,
+          message: "Delete",
+          delete: { id, title },
+          data: newArrayWithDeletedElement,
+        });
+      }
+    }
+  } catch (err) {
+    if (err instanceof Error) {
+      res.status(404).send(`404 - Not Found: ${err.message}`);
+      console.error(err.name);
+      throw err;
+    }
   }
 });
 
