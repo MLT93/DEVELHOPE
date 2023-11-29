@@ -173,12 +173,14 @@ server.delete("/planets/:id", (req, res) => {
 /* CRUD CON BADE DE DATOS LOCAL */
 server.get("/json", async (req, res) => {
   try {
+    // leer el archivo, fixear el buffer y parsear la data
     const contenidoDelArchivo = await fs.promises.readFile(
       rutaDelArchivo,
       "utf-8",
     );
     const fixedBuffer = contenidoDelArchivo.toString();
     const parsedData = JSON.parse(fixedBuffer);
+    // crear la información del servidor
     if (parsedData) {
       res.setHeader("Content-Type", "application/json; charset=utf-8");
       res.status(200).json({
@@ -188,6 +190,7 @@ server.get("/json", async (req, res) => {
       });
     }
   } catch (err) {
+    // manejo de errores
     if (err instanceof Error) {
       res.status(404).send(`404 - Not Found: ${err.message}`);
       console.error(err.name);
@@ -198,14 +201,16 @@ server.get("/json", async (req, res) => {
 
 server.get("/json/:id", async (req, res) => {
   try {
+    // leer archivo, fixear y parsear
     const contenidoDelArchivo = await fs.promises.readFile(
       rutaDelArchivo,
       "utf-8",
     );
     const fixedBuffer = contenidoDelArchivo.toString();
     const parsedData = JSON.parse(fixedBuffer);
-
+    // con la data parseada podemos trabajar
     if (parsedData) {
+      // recibimos info de los parámetros de la url de la página
       const { id } = req.params;
       const fixedQueryParamId = Number(id);
       // encontrar (find) lo que se encuentra en los query param (id)
@@ -213,6 +218,7 @@ server.get("/json/:id", async (req, res) => {
         (element: { id: number; title: string }) =>
           element.id === fixedQueryParamId,
       );
+      // crear información del servidor
       res.setHeader("Content-Type", "application/json; charset=utf-8");
       res.status(200).json({
         request: req.url,
@@ -221,6 +227,7 @@ server.get("/json/:id", async (req, res) => {
       });
     }
   } catch (err) {
+    // manejo de errores
     if (err instanceof Error) {
       res.status(404).send(`404 - Not Found: ${err.message}`);
       console.error(err.name);
@@ -231,25 +238,28 @@ server.get("/json/:id", async (req, res) => {
 
 server.post("/json", async (req, res) => {
   try {
+    // leer archivo, fix buffer y parsear data
     const contenidoDelArchivo = await fs.promises.readFile(
       rutaDelArchivo,
       "utf-8",
     );
     const fixedBuffer = contenidoDelArchivo.toString();
     const parsedData = JSON.parse(fixedBuffer);
-
+    // con la data parseada podemos trabajar
     if (parsedData) {
+      // recibimos info del contenido del body de la página
       const { id, title } = req.body;
       // crear copia de lo que se recibe del body
       const updateData = [...parsedData, { id: id, title: title }];
 
+      // escribir en el archivo el nuevo objeto
       const stringifyUpdateArchivo = JSON.stringify(updateData, null, 2);
       await fs.promises.writeFile(
         rutaDelArchivo,
         stringifyUpdateArchivo,
         "utf-8",
       );
-
+      // mandamos la nueva info al servidor
       res.setHeader("Content-Type", "application/json; charset=utf-8");
       res.status(201).json({
         request: req.url,
