@@ -331,7 +331,7 @@ server.delete("/json/:id", async (req, res) => {
         (element: { id: number; title: string }) =>
           element.id !== fixedQueryParamId,
       );
-
+      
       const stringifyDeleteIntoArchivo = JSON.stringify(
         newArrayWithDeletedElement,
         null,
