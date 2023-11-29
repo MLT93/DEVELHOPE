@@ -183,7 +183,7 @@ server.get("/json", async (req, res) => {
       res.setHeader("Content-Type", "application/json; charset=utf-8");
       res.status(200).json({
         request: req.url,
-        message: "Get All",
+        message: "Read All",
         data: parsedData,
       });
     }
@@ -208,17 +208,17 @@ server.get("/json/:id", async (req, res) => {
     if (parsedData) {
       const { id } = req.params;
       const fixedQueryParamId = Number(id);
+      // encontrar (find) lo que se encuentra en los query param (id)
       const singleQueryParamElement = parsedData.find(
-        (element: { id: number; title: string }) => element.id === fixedQueryParamId,
+        (element: { id: number; title: string }) =>
+          element.id === fixedQueryParamId,
       );
-      if (singleQueryParamElement) {
-        res.setHeader("Content-Type", "application/json; charset=utf-8");
-        res.status(200).json({
-          request: req.url,
-          message: "Read",
-          data: parsedData,
-        });
-      }
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      res.status(200).json({
+        request: req.url,
+        message: "Read One",
+        data: singleQueryParamElement,
+      });
     }
   } catch (err) {
     if (err instanceof Error) {
@@ -240,23 +240,22 @@ server.post("/json", async (req, res) => {
 
     if (parsedData) {
       const { id, title } = req.body;
-      const updateArchivo = [...parsedData, { id: id, title: title }];
+      // crear copia de lo que se recibe del body
+      const updateData = [...parsedData, { id: id, title: title }];
 
-      if (updateArchivo) {
-        const stringifyUpdateArchivo = JSON.stringify(updateArchivo, null, 2);
-        await fs.promises.writeFile(
-          rutaDelArchivo,
-          stringifyUpdateArchivo,
-          "utf-8",
-        );
+      const stringifyUpdateArchivo = JSON.stringify(updateData, null, 2);
+      await fs.promises.writeFile(
+        rutaDelArchivo,
+        stringifyUpdateArchivo,
+        "utf-8",
+      );
 
-        res.setHeader("Content-Type", "application/json; charset=utf-8");
-        res.status(201).json({
-          request: req.url,
-          message: "Create",
-          data: updateArchivo,
-        });
-      }
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      res.status(201).json({
+        request: req.url,
+        message: "Create",
+        data: updateData,
+      });
     }
   } catch (err) {
     if (err instanceof Error) {
@@ -280,31 +279,31 @@ server.put("/json/:id", async (req, res) => {
       const { id } = req.params;
       const fixedQueryParamId = Number(id);
       const { title } = req.body;
+      // Mapea (map) a través del query param (id) y modifica el contenido. Primero copia el elemento encontrado, y después modifica las propiedades
       const newArrayWithUpdatedElement = parsedData.map(
         (element: { id: number; title: string }) =>
-          element.id === fixedQueryParamId ? { id: id, title: title } : element,
+          element.id === fixedQueryParamId
+            ? { ...element, title: title }
+            : element,
       );
 
-      if (newArrayWithUpdatedElement) {
-        const stringifyUpdateArchivo = JSON.stringify(
-          newArrayWithUpdatedElement,
-          null,
-          2,
-        );
-        await fs.promises.writeFile(
-          rutaDelArchivo,
-          stringifyUpdateArchivo,
-          "utf-8",
-        );
+      const stringifyUpdateArchivo = JSON.stringify(
+        newArrayWithUpdatedElement,
+        null,
+        2,
+      );
+      await fs.promises.writeFile(
+        rutaDelArchivo,
+        stringifyUpdateArchivo,
+        "utf-8",
+      );
 
-        res.setHeader("Content-Type", "application/json; charset=utf-8");
-        res.status(201).json({
-          request: req.url,
-          message: "Update",
-          update: { id, title },
-          data: newArrayWithUpdatedElement,
-        });
-      }
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      res.status(201).json({
+        request: req.url,
+        message: "Update",
+        data: newArrayWithUpdatedElement,
+      });
     }
   } catch (err) {
     if (err instanceof Error) {
@@ -327,34 +326,28 @@ server.delete("/json/:id", async (req, res) => {
     if (parsedData) {
       const { id } = req.params;
       const fixedQueryParamId = Number(id);
-      const { title } = req.body;
 
-      const newArrayWithDeletedElement = parsedData.map(
+      const newArrayWithDeletedElement = parsedData.filter(
         (element: { id: number; title: string }) =>
-          element.id === fixedQueryParamId
-            ? parsedData.splice(element.id, 1)
-            : element,
+          element.id !== fixedQueryParamId,
       );
 
-      if (newArrayWithDeletedElement) {
-        const stringifyDeleteIntoArchivo = JSON.stringify(
-          newArrayWithDeletedElement,
-          null,
-          2,
-        );
-        await fs.promises.writeFile(
-          rutaDelArchivo,
-          stringifyDeleteIntoArchivo,
-          "utf-8",
-        );
+      const stringifyDeleteIntoArchivo = JSON.stringify(
+        newArrayWithDeletedElement,
+        null,
+        2,
+      );
+      await fs.promises.writeFile(
+        rutaDelArchivo,
+        stringifyDeleteIntoArchivo,
+        "utf-8",
+      );
 
-        res.status(200).json({
-          request: req.url,
-          message: "Delete",
-          delete: { id, title },
-          data: newArrayWithDeletedElement,
-        });
-      }
+      res.status(200).json({
+        request: req.url,
+        message: "Delete",
+        data: newArrayWithDeletedElement,
+      });
     }
   } catch (err) {
     if (err instanceof Error) {
