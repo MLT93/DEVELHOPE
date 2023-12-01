@@ -9,8 +9,6 @@ import axios from "axios";
 /* Variables */
 const server = express();
 const PORT: string | number = process.env.PORT || 3000;
-const rutaDelArchivo =
-  "/home/marko/Development/DEVELHOPE/8_NODE.JS/2_Express/express-project/src/db.json";
 
 /* Tipos e Interfaces */
 interface Obj {
@@ -173,6 +171,9 @@ server.delete("/planets/:id", (req, res) => {
 });
 
 /* CRUD CON BADE DE DATOS LOCAL */
+const rutaDelArchivo =
+  "/home/marko/Development/DEVELHOPE/8_NODE.JS/2_Express/express-project/src/db.json";
+  
 server.get("/json", async (req, res) => {
   try {
     // leer el archivo, fixear el buffer y parsear la data
