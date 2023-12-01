@@ -5,7 +5,6 @@ import "dotenv/config";
 import "express-async-errors";
 import axios from "axios";
 import { create, deleteById, getAll, getOneById, updateById } from "./planets";
-/* import joi from "joi"; */
 
 /* Variables */
 const server = express();

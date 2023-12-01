@@ -1,10 +1,17 @@
 import { Request, Response } from "express";
+import joi from "joi";
+
 type Planet = {
   id: number;
   name: string;
 };
 
 type Planets = Planet[];
+
+const planetScheme = joi.object({
+  id: joi.number().integer().required(),
+  name: joi.string().required(),
+});
 
 let planets: Planets = [
   {
@@ -65,9 +72,16 @@ const getOneById = (req: Request, res: Response) => {
 const create = (req: Request, res: Response) => {
   const { id, name } = req.body;
   const newPlanet: Planet = { id: id, name: name };
-  planets = [...planets, newPlanet];
+  const validateNewPlanet = planetScheme.validate(newPlanet);
 
-  res.status(201).json({ msg: "The planet was created" });
+  if (validateNewPlanet.error) {
+    return res
+      .status(404)
+      .json({ msg: validateNewPlanet.error.details[0].message });
+  } else {
+    planets = [...planets, newPlanet];
+    res.status(201).json({ msg: "The planet was created" });
+  }
 };
 
 const updateById = (req: Request, res: Response) => {
