@@ -173,7 +173,7 @@ server.delete("/planets/:id", (req, res) => {
 /* CRUD CON BADE DE DATOS LOCAL */
 const rutaDelArchivo =
   "/home/marko/Development/DEVELHOPE/8_NODE.JS/2_Express/express-project/src/db.json";
-  
+
 server.get("/json", async (req, res) => {
   try {
     // leer el archivo, fixear el buffer y parsear la data
@@ -216,7 +216,7 @@ server.get("/json/:id", async (req, res) => {
       // recibimos info de los parámetros de la url de la página
       const { id } = req.params;
       const fixedQueryParamId = Number(id);
-      // encontrar (find) lo que se encuentra en los query param (id)
+      // encontrar (find) lo que se encuentra en los query param (id). Find devuelve el primer elemento encontrado que corresponda con la condición.
       const singleQueryParamElement = parsedData.find(
         (element: { id: number; title: string }) =>
           element.id === fixedQueryParamId,
@@ -252,7 +252,7 @@ server.post("/json", async (req, res) => {
     if (parsedData) {
       // recibimos info del contenido del body de la página
       const { id, title } = req.body;
-      // crear copia de lo que se recibe del body
+      // crear copia de lo que se recibe del body. El spread operator realiza una copia total de arrays u objetos.
       const updateData = [...parsedData, { id: id, title: title }];
 
       // escribir en el archivo el nuevo objeto
@@ -292,7 +292,7 @@ server.put("/json/:id", async (req, res) => {
       const { id } = req.params;
       const fixedQueryParamId = Number(id);
       const { title } = req.body;
-      // Mapea (map) a través del query param (id) y modifica el contenido. Primero copia el elemento encontrado, y después modifica las propiedades
+      // Mapea (map) a través del query param (id) y modifica el contenido. Primero copia el elemento encontrado, y después modifica sus propiedades. Map devuelve un nuevo array con uno o varios elementos modificados.
       const newArrayWithUpdatedElement = parsedData.map(
         (element: { id: number; title: string }) =>
           element.id === fixedQueryParamId
@@ -341,7 +341,7 @@ server.delete("/json/:id", async (req, res) => {
       // requerimos el id de los params de la url
       const { id } = req.params;
       const fixedQueryParamId = Number(id);
-      // filtramos el array para que nos devuelva todos los elementos que sean distintos al encontrado encontrado en el array
+      // filtramos (filter) el array para que nos devuelva todos los elementos que sean distintos al encontrado encontrado en el array. Filter devuelve un nuevo array con todos los elementos que cumplan una condición. Si es true, se incluye. Si es false, no se incluye en el nuevo array.
       const newArrayWithDeletedElement = parsedData.filter(
         (element: { id: number; title: string }) =>
           element.id !== fixedQueryParamId,
