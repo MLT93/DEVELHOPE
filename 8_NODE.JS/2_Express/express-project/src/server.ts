@@ -376,6 +376,8 @@ server.delete("/json/:id", async (req, res) => {
 
 /* CRUD con llamada a una API y escritura de los datos en un archivo */
 const url = "https://my-json-server.typicode.com/typicode/demo/posts";
+const rutaDelArchivoAPI =
+  "/home/marko/Development/DEVELHOPE/8_NODE.JS/2_Express/express-project/src/db-API.json";
 
 ((url) => {
   axios
@@ -384,7 +386,7 @@ const url = "https://my-json-server.typicode.com/typicode/demo/posts";
       console.log(response.data);
       const data: ArrObj = response.data;
       const stringifyData = JSON.stringify(data);
-      fs.promises.writeFile("./db-API.json", stringifyData, "utf-8");
+      fs.promises.writeFile(rutaDelArchivoAPI, stringifyData, "utf-8");
     })
     .catch((err) => {
       console.error(err.message);
@@ -392,11 +394,44 @@ const url = "https://my-json-server.typicode.com/typicode/demo/posts";
     .finally(() => console.log("proceso finalizado"));
 })(url);
 
-/* CRUD... */
+server.post("/api", async (req, res) => {
+  try {
+    const contenidoDelArchivo = await fs.promises.readFile(
+      rutaDelArchivoAPI,
+      "utf-8",
+    );
+    const fixedBufferArchivo = contenidoDelArchivo.toString();
+    const parsedArchivo = JSON.parse(fixedBufferArchivo);
+
+    if (parsedArchivo) {
+      const { id, title } = req.body;
+      const newArrPosted = [...parsedArchivo, { id: id, title: title }];
+      const stringifyNewArrPosted = JSON.stringify(newArrPosted, null, 2);
+      await fs.promises.writeFile(
+        rutaDelArchivoAPI,
+        stringifyNewArrPosted,
+        "utf-8",
+      );
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      res.status(201).json({
+        request: req.url,
+        msg: "Create",
+        response: newArrPosted,
+      });
+    }
+  } catch (err) {
+    if (err instanceof Error) {
+      console.error(err.cause);
+      res.status(404).send(`404 - Not Found ${err.message}`);
+      throw err;
+    }
+  }
+});
+
 server.get("/api", async (req, res) => {
   try {
     const contenidoDelArchivo = await fs.promises.readFile(
-      rutaDelArchivo,
+      rutaDelArchivoAPI,
       "utf-8",
     );
     const fixedBufferArchivo = contenidoDelArchivo.toString();
@@ -423,7 +458,7 @@ server.get("/api", async (req, res) => {
 server.get("/api/:id", async (req, res) => {
   try {
     const contenidoDelArchivo = await fs.promises.readFile(
-      rutaDelArchivo,
+      rutaDelArchivoAPI,
       "utf-8",
     );
     const fixedBufferArchivo = contenidoDelArchivo.toString();
@@ -450,44 +485,10 @@ server.get("/api/:id", async (req, res) => {
   }
 });
 
-server.post("/api", async (req, res) => {
-  try {
-    const contenidoDelArchivo = await fs.promises.readFile(
-      rutaDelArchivo,
-      "utf-8",
-    );
-    const fixedBufferArchivo = contenidoDelArchivo.toString();
-    const parsedArchivo = JSON.parse(fixedBufferArchivo);
-
-    if (parsedArchivo) {
-      const { id, title } = req.body;
-      const newArrPosted = [...parsedArchivo, { id: id, title: title }];
-      const stringifyNewArrPosted = JSON.stringify(newArrPosted, null, 2);
-      await fs.promises.writeFile(
-        rutaDelArchivo,
-        stringifyNewArrPosted,
-        "utf-8",
-      );
-      res.setHeader("Content-Type", "application/json; charset=utf-8");
-      res.status(201).json({
-        request: req.url,
-        msg: "Create",
-        response: newArrPosted,
-      });
-    }
-  } catch (err) {
-    if (err instanceof Error) {
-      console.error(err.cause);
-      res.status(404).send(`404 - Not Found ${err.message}`);
-      throw err;
-    }
-  }
-});
-
 server.put("/api/:id", async (req, res) => {
   try {
     const contenidoDelArchivo = await fs.promises.readFile(
-      rutaDelArchivo,
+      rutaDelArchivoAPI,
       "utf-8",
     );
     const fixedBufferArchivo = contenidoDelArchivo.toString();
@@ -503,7 +504,7 @@ server.put("/api/:id", async (req, res) => {
       );
       const stringifyNewArrUpdated = JSON.stringify(newArrUpdated);
       await fs.promises.writeFile(
-        rutaDelArchivo,
+        rutaDelArchivoAPI,
         stringifyNewArrUpdated,
         "utf-8",
       );
@@ -526,7 +527,7 @@ server.put("/api/:id", async (req, res) => {
 server.delete("/api/:id", async (req, res) => {
   try {
     const contenidoDelArchivo = await fs.promises.readFile(
-      rutaDelArchivo,
+      rutaDelArchivoAPI,
       "utf-8",
     );
     const fixedBufferArchivo = contenidoDelArchivo.toString();
@@ -540,7 +541,7 @@ server.delete("/api/:id", async (req, res) => {
       );
       const stringifyNewArrDeleted = JSON.stringify(newArrDeleted, null, 2);
       await fs.promises.writeFile(
-        rutaDelArchivo,
+        rutaDelArchivoAPI,
         stringifyNewArrDeleted,
         "utf-8",
       );
