@@ -18,9 +18,7 @@ server.use(express.json());
 server.get("/api/plantes", getAll);
 server.get("/api/plantes/:id", getOneById);
 server.post("/api/planets", create);
-
 server.put("api/planets/:id", updateById);
-
 server.delete("/api/planets/:id", deleteById);
 
 /* CRUD CON BADE DE DATOS LOCAL */
