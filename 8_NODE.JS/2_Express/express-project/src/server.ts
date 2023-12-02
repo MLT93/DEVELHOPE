@@ -4,7 +4,7 @@ import morgan from "morgan";
 import "dotenv/config";
 import "express-async-errors";
 import axios from "axios";
-import { create, deleteById, getAll, getOneById, updateById } from "./planets";
+import { create, deleteById, getAll, getOneById, updateById } from "./controllers/planets";
 
 /* Variables */
 const server = express();
