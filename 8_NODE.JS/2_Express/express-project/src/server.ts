@@ -4,24 +4,47 @@ import morgan from "morgan";
 import "dotenv/config";
 import "express-async-errors";
 import axios from "axios";
-import { create, deleteById, getAll, getOneById, updateById } from "./controllers/planets";
+import {
+  create,
+  deleteById,
+  getAll,
+  getOneById,
+  updateById,
+} from "../dist/controllers/planets.js";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-/* Variables */
+//* VARIABLES */
+// Creación del servidor con Express
 const server = express();
+// Puerto de escucha
 const PORT: string | number = process.env.PORT || 3000;
+// Conseguimiento de la ruta completa del archivo actual, incluyendo el nombre del archivo
+const __filename = fileURLToPath(import.meta.url);
+// Conexión con el directorio del archivo actual utilizando la función path.dirname()
+const __dirname = path.dirname(__filename);
+// Creación del archivo de registro
+const nombreArchivo = "access.log";
+// Realización de un flujo de escritura para el archivo de registro con configuración flags en modo adicción. Añade siempre archivos en la última fila
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname, nombreArchivo),
+  {
+    flags: "a",
+  },
+);
 
-/* Middlewares */
-server.use(morgan("dev"));
+//* MIDDLEWARES */
+server.use(morgan("dev", { stream: accessLogStream }));
 server.use(express.json());
 
-/* CRUD SIMPLE CON IMPORTACIÓN DE FUNCIONES */
+//* CRUD SIMPLE CON IMPORTACIÓN DE FUNCIONES */
 server.get("/api/plantes", getAll);
 server.get("/api/plantes/:id", getOneById);
 server.post("/api/planets", create);
 server.put("api/planets/:id", updateById);
 server.delete("/api/planets/:id", deleteById);
 
-/* CRUD CON BADE DE DATOS LOCAL */
+//* CRUD CON BADE DE DATOS LOCAL */
 const rutaDelArchivo =
   "/home/marko/Development/DEVELHOPE/8_NODE.JS/2_Express/express-project/src/db.json";
 
@@ -226,7 +249,7 @@ server.delete("/json/:id", async (req, res) => {
   }
 });
 
-/* CRUD CON LLAMADA A UNA API Y ESCRITURA DE DATOS EN UN ARCHIVO */
+//* CRUD CON LLAMADA A UNA API Y ESCRITURA DE DATOS EN UN ARCHIVO */
 const url = "https://my-json-server.typicode.com/typicode/demo/posts";
 const rutaDelArchivoAPI =
   "/home/marko/Development/DEVELHOPE/8_NODE.JS/2_Express/express-project/src/db-API.json";
@@ -236,7 +259,7 @@ interface Obj {
   title: string;
 }
 
-type ArrObj = Obj[]
+type ArrObj = Obj[];
 
 ((url) => {
   axios
@@ -420,6 +443,7 @@ server.delete("/api/:id", async (req, res) => {
   }
 });
 
+//* ESCUCHA DEL PUERTO */
 server.listen(PORT, () => {
   console.log(`App listening on port http://localhost:${PORT}`);
 });
