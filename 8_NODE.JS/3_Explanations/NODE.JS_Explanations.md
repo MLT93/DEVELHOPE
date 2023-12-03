@@ -66,7 +66,7 @@
 
 12. #### **`Frameworks Adicionales`**:
 
-   Además de Express.js, hay otros marcos populares en el ecosistema de Node.js, como Koa, Hapi y Nest.js, cada uno con sus propias características y enfoques.
+   Además de `Express.js`, hay otros marcos populares en el ecosistema de Node.js, como `Koa`, `Hapi` y `Nest.js`, cada uno con sus propias características y enfoques.
 
 13. #### **`Ventajas y Consideraciones`**:
 
@@ -169,7 +169,7 @@
 
 ## Node Version Manager (NVM) y Fast Node Manager (FNM) en Node.js: Una Explicación Detallada
 
-1. ### **N`ode Version Manager (NVM)`**:
+1. ### **`Node Version Manager (NVM)`**:
 
    **Introducción a NVM**:
 
@@ -1163,9 +1163,11 @@
 
      Para instalar un paquete desde el repositorio de NPM, se utiliza el comando `npm install nombre_del_paquete`. Esto descargará e instalará el paquete en tu proyecto, y también actualizará el archivo `package.json` con la dependencia.
 
+     Por ejemplo, a la hora de trabajar con Node.js, a veces se dificulta el manejo de errores. Esto lo podemos resolver instalando un paquete de tipos para Node.js:
+
    - **Guardar Dependencias**:
 
-     Si deseas que una dependencia sea parte de tu proyecto, puedes usar la bandera `--save` o `--save-dev` al instalar el paquete. `--save` agrega la dependencia como una dependencia regular, mientras que `--save-dev` la agrega como una dependencia de desarrollo (por ejemplo, herramientas de construcción o pruebas).
+     Si deseas que una dependencia sea parte de tu proyecto, puedes usar la bandera `--save` (abreviado `-E`), o `--save-dev` (abreviado `-D`) al instalar el paquete. `--save` agrega la dependencia como una dependencia regular, mientras que `--save-dev` la agrega como una dependencia de desarrollo (por ejemplo, herramientas de construcción o pruebas).
 
    - **Eliminar un Paquete**:
 
