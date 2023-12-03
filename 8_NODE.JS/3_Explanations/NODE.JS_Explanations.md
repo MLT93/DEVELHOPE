@@ -3092,7 +3092,7 @@
 
    La función pipe en Node.js es una forma de conectar la salida de un Readable Stream (flujo de lectura) a la entrada de un Writable Stream (flujo de escritura). Esto facilita la transferencia de datos, permitiendo una programación más modular y eficiente en términos de memoria.
 
-## **RxJS Reactive Extensions for JavaScript en Node.js: Una Explicación Detallada**
+## **RxJS librería Reactive Extensions for JavaScript para Node.js: Una Explicación Detallada**
 
 1. #### **`Introducción a RxJS en Node.js`**:
 
@@ -3527,7 +3527,7 @@
 
    Postman es una herramienta esencial para el desarrollo y prueba de API, facilitando la colaboración entre equipos, la automatización de pruebas y la creación eficiente de API. Su interfaz intuitiva y amplias funcionalidades lo convierten en una elección popular entre los desarrolladores de software.
 
-## Dotenv library: Una Explicación Detallada
+## Dotenv librería para Node.js: Una Explicación Detallada
 
 1. #### **`Introducción a dotenv`**:
 
@@ -3681,7 +3681,7 @@
 
    En resumen, `dotenv` es una herramienta esencial para cualquier proyecto que maneje configuraciones sensibles. Su uso proporciona una capa adicional de seguridad y flexibilidad en el desarrollo de aplicaciones web y de servidor en JavaScript. La facilidad de configuración y su impacto positivo en la seguridad hacen que sea una elección práctica para proyectos de cualquier escala.
 
-## Morgan HTTP Request Logger Middleware para Node.js: Una Explicación Detallada
+## Morgan librería HTTP Request Logger Middleware para Node.js: Una Explicación Detallada
 
 1. #### **`Introducción a Morgan`**:
 
@@ -3895,7 +3895,7 @@
 
    Morgan es un middleware esencial para el desarrollo y la depuración de aplicaciones web Node.js, brindando flexibilidad y personalización en la forma en que registramos y analizamos las solicitudes HTTP. Su integración sencilla y su capacidad para adaptarse a diversos formatos lo convierten en una herramienta valiosa para cualquier desarrollador web.
 
-## express-async-errors para Node.js: Una Explicación Detallada
+## express-async-errors librería para Node.js: Una Explicación Detallada
 
 1. #### **`Introducción a express-async-errors`**:
 
