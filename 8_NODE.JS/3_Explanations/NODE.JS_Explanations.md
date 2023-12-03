@@ -3824,20 +3824,25 @@
    import morgan from "morgan";
    import * as fs from "node:fs";
    import path from "node:path";
+   import { fileURLToPath } from "node:url";
    
    // Iniciar servidor con Express
-   const server = express();
-   
-   // Crear flujo de escritura
+   const app = express();
+   // Conseguimiento de la ruta completa del archivo actual, incluyendo el nombre del archivo
+   const __filename = fileURLToPath(import.meta.url);
+   // Conexión con el directorio del archivo actual utilizando la función path.dirname()
+   const __dirname = path.dirname(__filename);
+   // Creación del archivo de registro
+   const nombreArchivo = "access.log";
+   // Realización de un flujo de escritura para el archivo de registro con configuración flags en modo adicción. Añade siempre archivos en la última fila
    const accessLogStream = fs.createWriteStream(
-     path.join(__dirname, "access.log"),
+     path.join(__dirname, nombreArchivo),
      {
        flags: "a",
      },
    );
-   
-   // Enviar los tipos de información al flujo especificado
-   server.use(morgan("dev", { stream: accessLogStream }));
+
+   app.use(morgan("dev", { stream: accessLogStream }));
    ```
 
    - **Importando bibliotecas:**
@@ -3865,7 +3870,7 @@
      El código crea un flujo de escritura utilizando la función `fs.createWriteStream()`. Este flujo se utilizará para escribir entradas de registro en el archivo `access.log`.
    
      ```javascript
-     var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
+     var accessLogStream = fs.createWriteStream(path.join(__dirname, nombreArchivo), { flags: 'a' });
      ```
    
      La función `path.join()` se utiliza para construir la ruta completa al archivo `access.log`. La opción `flags: 'a'` indica que el archivo debe abrirse en modo de anexión, lo que significa que las nuevas entradas de registro se agregarán al final del archivo existente.
