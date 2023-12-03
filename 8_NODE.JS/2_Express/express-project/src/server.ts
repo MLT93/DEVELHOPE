@@ -1,8 +1,10 @@
-import * as fs from "node:fs";
 import express from "express";
+import "express-async-errors";
 import morgan from "morgan";
 import "dotenv/config";
-import "express-async-errors";
+import * as fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import axios from "axios";
 import {
   create,
@@ -11,8 +13,6 @@ import {
   getOneById,
   updateById,
 } from "../dist/controllers/planets.js";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 
 //* VARIABLES */
 // Creación del servidor con Express
