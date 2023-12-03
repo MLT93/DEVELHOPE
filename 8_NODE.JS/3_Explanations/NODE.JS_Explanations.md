@@ -4199,3 +4199,98 @@
 11. #### **`Conclusión`**:
 
    `Joi` simplifica el proceso de validación de datos en aplicaciones Node.js, proporcionando una sintaxis clara y flexible. Su capacidad para integrarse con Express y su soporte para validaciones personalizadas lo convierten en una herramienta valiosa para garantizar la integridad y la seguridad de los datos en tus aplicaciones.
+
+## tsc-watch librería para TypeScript: Una Explicación Detallada
+
+1. #### **`Introducción a tsc-watch`**:
+
+   `tsc-watch` es una librería que mejora la experiencia de compilación de TypeScript al proporcionar un mecanismo para observar cambios en los archivos TypeScript y volver a compilarlos automáticamente. Esto es especialmente útil durante el desarrollo, ya que elimina la necesidad de ejecutar manualmente el compilador TypeScript (`tsc`) cada vez que se modifica un archivo.
+
+2. #### **`Importancia de tsc-watch`**:
+
+   En un flujo de trabajo de desarrollo, especialmente en proyectos más grandes, la capacidad de volver a compilar automáticamente los archivos TypeScript al realizar cambios es crucial. `tsc-watch` simplifica este proceso, ahorrando tiempo a los desarrolladores y asegurando que la aplicación esté actualizada con los últimos cambios de código.
+
+   Esto puede ser útil para desarrollar aplicaciones TypeScript de manera eficiente y sin tener que compilar el código manualmente cada vez que se realiza un cambio.
+
+3. #### **`Instalación y Configuración`**:
+
+   Para usar `tsc-watch`, debes instalarlo como dependencia de desarrollo usando NPM:
+
+   ```bash
+   npm i -D tsc-watch
+   ```
+
+   Una vez instalado, puedes añadirlo a un script del `package.json` para que compile archivos TypeScript según la configuración del archivo `tsconfig.json`, y después ejecutarlo con un comando `npm run`:
+
+   ```json
+   "scripts": {
+    "dev:1": "tsc-watch --noClear -p ./tsconfig.json --outDir ./dist --onSuccess \"node ./dist/app.js\"",
+    },
+   ```
+
+   - **tsc-watch**:
+     
+     Invoca la herramienta `tsc-watch`, que es un observador de cambios para TypeScript.
+
+   - **--noClear**:
+   
+     Evita borrar la pantalla después de cada compilación. Esto puede ser útil para mantener la consola más limpia y ver los mensajes de compilación sin que se borren.
+   
+   - **-p ./tsconfig.json**:
+   
+     Especifica la ubicación del archivo de configuración TypeScript `tsconfig.json`. Este archivo contiene las opciones de configuración para el compilador TypeScript.
+   
+   - **--outDir ./dist**:
+   
+     Indica el directorio de salida para los archivos compilados. En este caso, los archivos JavaScript resultantes se colocarán en el directorio `./dist`.
+   
+   - **--onSuccess "node ./dist/app.js"**:
+   
+     Después de una compilación exitosa, ejecuta el comando especificado entre comillas. En este caso, ejecuta el archivo `app.js` que está en el directorio `./dist` utilizando Node.js.
+
+   Ahora puedes ejecutarlo con:
+
+   ```bash
+   npm run dev:1
+   ```
+
+   Este comando ejecuta el script `dev:1` con toda su configuración.
+   
+   Para `ver todos los scripts disponibles en el package.json a través de la terminal`, puedes utilizar el siguiente comando:
+
+   ```bash
+   npm run
+   ```
+
+4. #### **Recompilación Automática**:
+
+   `tsc-watch` monitorea los archivos TypeScript en busca de cambios. Cuando se modifica un archivo, desencadena una nueva compilación, asegurando que el código JavaScript compilado esté siempre sincronizado con el código fuente TypeScript.
+
+5. #### **Configuración de tsc-watch**:
+
+   `tsc-watch` se puede configurar a través del archivo `tsconfig.json`, en el cual puedes especificar los archivos a incluir o excluir, el directorio de destino para los archivos compilados y otras opciones del compilador TypeScript.
+
+6. #### **`Consideraciones y Alternativas`**:
+
+   Aunque `tsc-watch` es una herramienta conveniente para el desarrollo, es esencial considerar alternativas para escenarios más complejos. En proyectos más grandes, herramientas de construcción como `Webpack` o ejecutores de tareas como `Gulp` pueden ofrecer características adicionales y opciones de personalización.
+
+   También existen otras dos librerías interesantes: `ts-node` y `ts-node-dev`.
+
+   Aquí una breve comparativa:
+
+   - **tsc-watch**:
+
+     Observar archivos TypeScript y compilarlos automáticamente. Compila los archivos TypeScript automáticamente cuando se realizan cambios. No reinicia el servidor. Ejecutar `tsc-watch`
+
+   - **ts-node**:
+
+     Ejecutar archivos TypeScript. No compila los archivos TypeScript antes de ejecutarlos. No reinicia el servidor. Ejecutar `ts-node <archivo>.ts`
+
+   - **ts-node-dev**:
+
+     Iniciar un servidor de desarrollo para aplicaciones TypeScript. Compila el código TypeScript antes de ejecutarlo y cuando se realizan cambios, al igual que tsc-watch. Sin embargo, ts-node-dev también reinicia el servidor de desarrollo cuando se realizan cambios en el código TypeScript. Ejecutar `ts-node-dev`
+
+
+7. #### **`Conclusión`**:
+
+   `tsc-watch` simplifica el flujo de trabajo de desarrollo al volver a compilar automáticamente los archivos TypeScript al realizar cambios. Facilita el proceso de mantener el código compilado sincronizado con el código fuente, mejorando la experiencia general de desarrollo en proyectos TypeScript.

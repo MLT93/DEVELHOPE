@@ -30,11 +30,11 @@
      Puedes instalarlo como una dependencia de desarrollo en tu proyecto utilizando el siguiente comando:
 
      ```bash
-     npm i typescript
+     npm i -D typescript
      ```
 
      ```bash
-     yarn add typescript
+     yarn add typescript --dev
      ```
      
    - **Configuración del Proyecto para Compilación `tsconfig.json`**:

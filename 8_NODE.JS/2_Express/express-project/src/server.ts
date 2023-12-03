@@ -303,7 +303,7 @@ server.post("/api", async (req, res) => {
     }
   } catch (err) {
     if (err instanceof Error) {
-      console.error(err.cause);
+      console.error(err.message);
       res.status(404).send(`404 - Not Found ${err.message}`);
       throw err;
     }
@@ -329,7 +329,7 @@ server.get("/api", async (req, res) => {
   } catch (err) {
     if (err instanceof Error) {
       res.status(404).send(`404 - Not Found: ${err.message}`);
-      console.error(err.cause);
+      console.error(err.message);
       throw err;
     }
   } finally {
@@ -360,7 +360,7 @@ server.get("/api/:id", async (req, res) => {
     }
   } catch (err) {
     if (err instanceof Error) {
-      console.error(err.cause);
+      console.error(err.message);
       res.status(404).send(`404 - Not Found: ${err.message}`);
       throw err;
     }
@@ -399,7 +399,7 @@ server.put("/api/:id", async (req, res) => {
     }
   } catch (err) {
     if (err instanceof Error) {
-      console.error(err.cause);
+      console.error(err.message);
       res.status(404).send(`404 - Not Found: ${err.message}`);
       throw err;
     }
@@ -436,7 +436,7 @@ server.delete("/api/:id", async (req, res) => {
     }
   } catch (err) {
     if (err instanceof Error) {
-      console.error(err.cause);
+      console.error(err.message);
       res.status(404).send(`404 - Not Found ${err.message}`);
       throw err;
     }
