@@ -4308,13 +4308,9 @@
 
    En los enlaces siguientes te dejo toda la información para instalar paso a paso PostgreSQL en Windows, Mac o APT.
 
-   - **APT**:
-   
-     [PostgreSQL](https://www.webhi.com/how-to/how-to-install-pgadmin4-on-ubuntu-18-04-20-04-22-04/)
+   - **[PostgreSQL APT](https://www.webhi.com/how-to/install-postgresql-in-ubuntu-18-04-20-4-22-04/)**
 
-   - **Mac y Windows**:
-   
-     [PostgreSQL](https://winter-bush-e31.notion.site/Postgres-install-manual-1faeb9aa852f4b56a2d097f40e5b80fe)
+   - **[PostgreSQL Mac y Windows](https://winter-bush-e31.notion.site/Postgres-install-manual-1faeb9aa852f4b56a2d097f40e5b80fe)**
 
 3. #### **`Conexión a PostgreSQL con pg-promise desde Node.js`**:
 
@@ -4391,13 +4387,19 @@
 
    En resumen, pg-promise es una herramienta poderosa que simplifica el acceso a bases de datos PostgreSQL desde Node.js. Su enfoque en la seguridad, la facilidad de uso y la gestión de transacciones hace que sea una opción sólida para el desarrollo de aplicaciones basadas en Node.js que interactúan con bases de datos PostgreSQL. Al integrar pg-promise con pgAdmin, puedes lograr un flujo de trabajo integral para el desarrollo y administración de bases de datos PostgreSQL.
 
-4. #### **`PostgreSQL y pgAdmin para Desarrollo y Administración de Bases de Datos`**:
+4. #### **`Instalación de pgAdmin para Desarrollo y Administración de Bases de Datos`**:
 
-   [pgAdmin](https://www.pgadmin.org/) es una herramienta de administración y desarrollo de código abierto para PostgreSQL. Proporciona una interfaz gráfica para realizar tareas administrativas, consultas y visualización de datos.
+   **[pgAdmin](https://www.pgadmin.org/)** es una herramienta de administración y desarrollo de código abierto para PostgreSQL. Proporciona una interfaz gráfica para realizar tareas administrativas, consultas y visualización de datos.
 
-   - **Instalación de pgAdmin**:
+   Descarga e instala pgAdmin desde el **[sitio oficial](https://www.pgadmin.org/download/)**. Una vez instalado, puedes acceder a pgAdmin a través de un navegador web.
 
-     Descarga e instala pgAdmin desde el [sitio oficial](https://www.pgadmin.org/download/). Una vez instalado, puedes acceder a pgAdmin a través de un navegador web.
+   - **[pgAdmin 4 APT](https://www.webhi.com/how-to/how-to-install-pgadmin4-on-ubuntu-18-04-20-04-22-04/)**
+
+   - **[pgAdmin 4 Mac](https://www.pgadmin.org/download/pgadmin-4-macos/)**
+
+   - **[pgAdmin 4 Windows](https://www.pgadmin.org/download/pgadmin-4-windows/)**
+
+   Estas son las principales formas para instalar pgAdmin 4, con el cual tendremos acceso a las siguientes posibilidades:
 
    - **Conexión de pgAdmin a PostgreSQL**:
 
