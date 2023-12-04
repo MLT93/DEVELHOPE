@@ -4331,9 +4331,35 @@
      Configurar pg-promise es sencillo. Puedes establecer una conexión a tu base de datos y configurar instancias de pg-promise con opciones específicas.
    
      ```javascript
+     // CommonJS
      const pgp = require('pg-promise')();
      const connectionString = 'postgres://usuario:contraseña@localhost:5432/nombreBaseDatos';
      const db = pgp(connectionString);
+     ```
+
+     ```javascript
+     // ECMAScript
+     import pgPromise from "pg-promise";
+     // Primer paréntesis es dedicado a las opciones, el segundo es el enlace a la base de datos real.
+     const db = pgPromise()("postgres://postgres:postgres@localhost:5432/psql"); // Forma de escritura -> "postgres://usuario:contraseña@localhost:puerto/nombreBaseDeDatos"
+     console.log(db);
+     
+     // Creación de una tabla
+     const setupDb = async () => {
+       await db.none(`
+       DROP TABLE IF EXISTS planets;
+     
+       CREATE TABLE planets(
+       id SERIAL NOT NULL PRIMARY KEY,
+       name TEXT NOT NULL)`);
+       await db.none(`INSERT INTO planets (name) VALUES ('Earth')`);
+       await db.none(`INSERT INTO planets (name) VALUES ('Mars')`);
+       await db.none(`INSERT INTO planets (name) VALUES ('Jupiter')`);
+     
+       const planets = await db.many(`SELECT * FROM planets;`);
+       console.log(planets);
+     };
+     setupDb();
      ```
    
    - **Ejecución de Consultas SQL**:
@@ -4383,6 +4409,58 @@
      .catch(error => {
          console.error(error); // Manejo de errores
      });
+     ```
+
+   - **CRUD**:
+
+     ```javascript
+     // GET
+     const getAll = async (req: Request, res: Response) => {
+       const planets = await db.many(`SELECT * FROM planets;`);
+       res.status(200).json(planets);
+     };
+     
+     // GET by ID
+     const getOneById = async (req: Request, res: Response) => {
+       const { id } = req.params;
+       const planet = await db.oneOrNone(`SELECT * FROM planets WHERE id=$1;`, Number(id));
+       res.status(200).json(planet);
+     };
+
+     // POST
+     const create = async (req: Request, res: Response) => {
+       const { name } = req.body;
+       const newPlanet: Planet = { name: name };
+     
+       const validateNewPlanet = planetScheme.validate(newPlanet);
+       if (validateNewPlanet.error) {
+         return res
+           .status(404)
+           .json({ msg: validateNewPlanet.error.details[0].message });
+       } else {
+         await db.none(`INSERT INTO planets (name) VALUES ($1)`, name)
+         res.status(201).json({ msg: "The planet was created" });
+       }
+     };
+     
+     // PUT
+     const updateById = async (req: Request, res: Response) => {
+       const { id } = req.params;
+       const { name } = req.body;
+       await db.none(`UPDATE planets SET name=$2 WHERE id=$1`, [id, name]);
+     
+       res.status(200).json({ msg: "The planet was updated" });
+     };
+     
+     // DELETE
+     const deleteById = async (req: Request, res: Response) => {
+       const { id } = req.params;
+       await db.none(`DELETE FROM planets WHERE id=$1`, Number(id));
+     
+       res.status(200).json({ msg: "The planet was deleted" });
+     };
+     
+     export { getAll, getOneById, create, updateById, deleteById };
      ```
 
    En resumen, pg-promise es una herramienta poderosa que simplifica el acceso a bases de datos PostgreSQL desde Node.js. Su enfoque en la seguridad, la facilidad de uso y la gestión de transacciones hace que sea una opción sólida para el desarrollo de aplicaciones basadas en Node.js que interactúan con bases de datos PostgreSQL. Al integrar pg-promise con pgAdmin, puedes lograr un flujo de trabajo integral para el desarrollo y administración de bases de datos PostgreSQL.
@@ -4535,3 +4613,134 @@
 10. #### **`Conclusiones`**:
 
    Integrar PostgreSQL con Node.js proporciona una potente capacidad de manejo de bases de datos en aplicaciones web. La elección de usar `client` o `pool`, así como el manejo de transacciones, dependerá de la complejidad y necesidades específicas de tu aplicación. Recuerda siempre manejar errores y cerrar conexiones de manera adecuada para evitar problemas potenciales.
+
+## Multer para Node.js: Una Explicación Detallada
+
+1. #### **Introducción a Multer**:
+
+   **Multer es un middleware para Node.js que facilita la manipulación de datos de formularios en formato `multipart/form-data`**. Este formato es comúnmente utilizado para el envío de archivos a través de formularios HTML. Multer simplifica el proceso de manejo de archivos en servidores Node.js, permitiendo cargar fácilmente archivos desde formularios.
+
+2. #### **Importancia de Multer**:
+
+   - **Manejo de Archivos en Formularios**:
+   
+     Multer es especialmente útil cuando se construyen aplicaciones que requieren la carga de archivos, como imágenes o documentos, a través de formularios web. Proporciona una interfaz sencilla para procesar y almacenar estos archivos en el servidor.
+
+   - **Compatibilidad con `multipart/form-data`**:
+   
+     Algunas aplicaciones web necesitan permitir a los usuarios cargar archivos junto con otros datos del formulario. Multer simplifica el manejo de este tipo de datos, asegurando que la información del formulario y los archivos se procesen correctamente.
+
+   - **Flexibilidad y Configuración**:
+   
+     Multer es configurable y ofrece flexibilidad en términos de cómo se almacenan y nombran los archivos cargados. Esto permite adaptar su comportamiento a los requisitos específicos de la aplicación.
+
+3. #### **Sintaxis y Ejemplo Básico de Uso**:
+
+   - **Instalación de Multer**:
+   
+     Antes de usar Multer, es necesario instalarlo a través de npm. Esto se hace con el siguiente comando:
+
+     ```bash
+     npm install multer
+     ```
+
+   - **Uso Básico**:
+   
+     ```javascript
+     const express = require('express');
+     const multer = require('multer');
+
+     const app = express();
+     const puerto = 3000;
+
+     // Configuración de Multer
+     const almacenamiento = multer.diskStorage({
+       destination: (req, file, cb) => {
+         cb(null, './uploads'); // Directorio de destino para almacenar archivos
+       },
+       filename: (req, file, cb) => {
+         cb(null, Date.now() + '-' + file.originalname); // Nombre de archivo único
+       }
+     });
+
+     const upload = multer({ storage: almacenamiento });
+
+     // Ruta que utiliza Multer para cargar un solo archivo
+     app.post('/subir-archivo', upload.single('miArchivo'), (req, res) => {
+       res.send('Archivo subido exitosamente');
+     });
+
+     app.listen(puerto, () => {
+       console.log(`Servidor escuchando en el puerto ${puerto}`);
+     });
+     ```
+
+4. #### **Configuración de Multer**:
+
+   - **Disk Storage**:
+   
+     Multer permite configurar el almacenamiento del archivo mediante `multer.diskStorage`. Aquí se define la ubicación (`destination`) y el nombre del archivo (`filename`). En el ejemplo anterior, los archivos se almacenan en el directorio `./uploads` con nombres únicos basados en la fecha y el nombre original del archivo.
+
+   - **Memory Storage**:
+   
+     Multer también puede almacenar temporalmente los archivos en memoria antes de guardarlos en el sistema de archivos. Esto puede ser útil para archivos pequeños. La configuración se realiza con `multer.memoryStorage`.
+
+   - **Límites y Filtros**:
+   
+     Multer permite configurar límites y filtros para los archivos. Esto incluye limitar el tamaño del archivo, filtrar tipos de archivos permitidos y más. Estos límites ayudan a prevenir abusos y mejorar la seguridad de la aplicación.
+
+5. #### **Manejo de Múltiples Archivos**:
+
+   Multer también puede manejar la carga de múltiples archivos. La configuración para esto es similar, pero en lugar de `upload.single`, se utiliza `upload.array` o `upload.fields` según la necesidad. Aquí hay un ejemplo básico con `upload.array`:
+
+   ```javascript
+   app.post('/subir-archivos', upload.array('archivos', 3), (req, res) => {
+     res.send('Archivos subidos exitosamente');
+   });
+   ```
+
+   En este caso, se espera que el formulario contenga un campo llamado `archivos` que contenga hasta 3 archivos.
+
+6. #### **Manejo de Errores y Validación**:
+
+   Es importante manejar posibles errores durante la carga de archivos. Multer facilita esto proporcionando una función de devolución de llamada que puede manejar los errores. Además, se puede agregar validación adicional para verificar que los archivos cumplen con ciertos criterios.
+
+   ```javascript
+   const upload = multer({
+     storage: almacenamiento,
+     limits: {
+       fileSize: 1024 * 1024 // Límite de tamaño del archivo (en bytes)
+     },
+     fileFilter: (req, file, cb) => {
+       if (file.mimetype.startsWith('image/')) {
+         cb(null, true); // Aceptar archivos de imagen
+       } else {
+         cb(new Error('Solo se permiten archivos de imagen'), false);
+       }
+     }
+   });
+   ```
+
+7. #### **Integración con Express y Uso en Rutas**:
+
+   Multer se integra fácilmente con Express y se puede utilizar en rutas específicas. En el ejemplo de uso básico, se ve cómo se integra Multer con Express para manejar la carga de un solo archivo en la ruta `/subir-archivo`. Esto se logra utilizando `upload.single('miArchivo')` como middleware.
+
+8. #### **Consideraciones y Alternativas**:
+
+   - **Alternativas a Multer**:
+
+     Aunque Multer es una opción popular, existen otras alternativas para manejar la carga de archivos en Node.js, como `formidable`, `busboy`, y `cloudinary` (para almacenamiento en la nube). La elección depende de los requisitos específicos del proyecto.
+
+   - **Seguridad**:
+
+     Cuando se permite a los usuarios cargar archivos, es fundamental implementar medidas de seguridad. Multer ofrece límites de tamaño y filtros, pero también se deben considerar otras precauciones, como la validación del tipo de archivo y la desinfección del nombre del archivo.
+
+   - **Almacenamiento en la Nube**:
+
+     Para aplicaciones que manejan grandes cantidades de archivos o requieren escalabilidad, puede ser beneficioso considerar soluciones de almacenamiento en la nube, como Amazon S3 o Google Cloud Storage, en lugar de almacenamiento local.
+
+9. #### **Conclusiones y Recomendaciones**:
+
+   - **Facilidad de Uso**:
+   
+     Multer facilita la carga y manipulación de archivos en aplicaciones Node.js. Su sintaxis y configuración sencillas lo convierten en

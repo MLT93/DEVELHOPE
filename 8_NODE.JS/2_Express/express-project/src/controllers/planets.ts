@@ -89,7 +89,10 @@ const getAll = async (req: Request, res: Response) => {
 
 const getOneById = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const planet = await db.oneOrNone(`SELECT * FROM planets WHERE id=$1;`, Number(id));
+  const planet = await db.oneOrNone(
+    `SELECT * FROM planets WHERE id=$1;`,
+    Number(id),
+  );
   res.status(200).json(planet);
 };
 const create = async (req: Request, res: Response) => {
@@ -103,7 +106,7 @@ const create = async (req: Request, res: Response) => {
       .json({ msg: validateNewPlanet.error.details[0].message });
   } else {
     // planets = [...planets, newPlanet];
-    await db.none(`INSERT INTO planets (name) VALUES ($1)`, name)
+    await db.none(`INSERT INTO planets (name) VALUES ($1)`, name);
     res.status(201).json({ msg: "The planet was created" });
   }
 };
