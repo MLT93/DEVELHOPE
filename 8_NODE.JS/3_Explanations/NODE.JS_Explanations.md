@@ -4316,7 +4316,7 @@
 
    `pg-promise` es una biblioteca para Node.js que proporciona un marco para interactuar con bases de datos PostgreSQL de manera eficiente y segura. Permite escribir consultas SQL con parámetros de manera segura, gestionar transacciones y simplificar las operaciones en bases de datos.
 
-   Conéctate a su página: **[pg-promise](https://vitaly-t.github.io/pg-promise/)**
+   Para más información, visita el repositorio de **[pg-promise](https://github.com/vitaly-t/pg-promise)**
 
    - **Instalación de pg-promise**:
    
