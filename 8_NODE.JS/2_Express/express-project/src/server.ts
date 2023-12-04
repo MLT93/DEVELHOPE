@@ -38,10 +38,10 @@ server.use(morgan("dev", { stream: accessLogStream }));
 server.use(express.json());
 
 //* CRUD SIMPLE CON IMPORTACIÓN DE FUNCIONES */
-server.get("/api/plantes", getAll);
-server.get("/api/plantes/:id", getOneById);
+server.get("/api/planets", getAll);
+server.get("/api/planets/:id", getOneById);
 server.post("/api/planets", create);
-server.put("api/planets/:id", updateById);
+server.put("/api/planets/:id", updateById);
 server.delete("/api/planets/:id", deleteById);
 
 //* CRUD CON BADE DE DATOS LOCAL */

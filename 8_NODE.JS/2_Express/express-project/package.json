@@ -25,6 +25,7 @@
     "joi": "^17.11.0",
     "joi-to-typescript": "^4.10.0",
     "nodemon": "^3.0.1",
+    "pg-promise": "^11.5.4",
     "rxjs": "^7.8.1",
     "ts-node": "^10.9.1",
     "tsc-watch": "^5.0.3",
