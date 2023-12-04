@@ -4616,17 +4616,23 @@
 
 ## Multer para Node.js: Una Explicación Detallada
 
-1. #### **Introducción a Multer**:
+1. #### **`Introducción a Multer`**:
 
-   **Multer es un middleware para Node.js que facilita la manipulación de datos de formularios en formato `multipart/form-data`**. Este formato es comúnmente utilizado para el envío de archivos a través de formularios HTML. Multer simplifica el proceso de manejo de archivos en servidores Node.js, permitiendo cargar fácilmente archivos desde formularios.
+   Multer es un middleware para Node.js que facilita la manipulación de datos de formularios en formato `multipart/form-data`. Este formato es comúnmente utilizado para el envío de archivos a través de formularios HTML. Multer simplifica el proceso de manejo de archivos en servidores Node.js, permitiendo cargar fácilmente archivos desde formularios.
 
-2. #### **Importancia de Multer**:
+   Antes de usar Multer, es necesario instalarlo a través de npm. Esto se hace con el siguiente comando:
+
+    ```bash
+    npm i -D multer
+    ```
+
+2. #### **`Importancia de Multer`**:
 
    - **Manejo de Archivos en Formularios**:
    
      Multer es especialmente útil cuando se construyen aplicaciones que requieren la carga de archivos, como imágenes o documentos, a través de formularios web. Proporciona una interfaz sencilla para procesar y almacenar estos archivos en el servidor.
 
-   - **Compatibilidad con `multipart/form-data`**:
+   - **Compatibilidad con multipart/form-data**:
    
      Algunas aplicaciones web necesitan permitir a los usuarios cargar archivos junto con otros datos del formulario. Multer simplifica el manejo de este tipo de datos, asegurando que la información del formulario y los archivos se procesen correctamente.
 
@@ -4634,62 +4640,110 @@
    
      Multer es configurable y ofrece flexibilidad en términos de cómo se almacenan y nombran los archivos cargados. Esto permite adaptar su comportamiento a los requisitos específicos de la aplicación.
 
-3. #### **Sintaxis y Ejemplo Básico de Uso**:
-
-   - **Instalación de Multer**:
+3. #### **`Configuración de Multer y Ejemplos`**:
    
-     Antes de usar Multer, es necesario instalarlo a través de npm. Esto se hace con el siguiente comando:
+   ```javascript
+   const express = require('express');
+   const multer = require('multer');
 
-     ```bash
-     npm install multer
-     ```
+   const app = express();
+   const puerto = 3000;
 
-   - **Uso Básico**:
-   
-     ```javascript
-     const express = require('express');
-     const multer = require('multer');
+   // Configuración de Multer
+   const almacenamiento = multer.diskStorage({
+     destination: (req, file, cb) => {
+       cb(null, './uploads'); // Directorio de destino para almacenar archivos
+     },
+     filename: (req, file, cb) => {
+       cb(null, Date.now() + '-' + file.originalname); // Nombre de archivo único
+     }
+   });
 
-     const app = express();
-     const puerto = 3000;
+   const upload = multer({ storage: almacenamiento });
 
-     // Configuración de Multer
-     const almacenamiento = multer.diskStorage({
-       destination: (req, file, cb) => {
-         cb(null, './uploads'); // Directorio de destino para almacenar archivos
-       },
-       filename: (req, file, cb) => {
-         cb(null, Date.now() + '-' + file.originalname); // Nombre de archivo único
-       }
-     });
+   // Ruta que utiliza Multer para cargar un solo archivo
+   app.post('/subir-archivo', upload.single('miArchivo'), (req, res) => {
+     res.send('Archivo subido exitosamente');
+   });
 
-     const upload = multer({ storage: almacenamiento });
-
-     // Ruta que utiliza Multer para cargar un solo archivo
-     app.post('/subir-archivo', upload.single('miArchivo'), (req, res) => {
-       res.send('Archivo subido exitosamente');
-     });
-
-     app.listen(puerto, () => {
-       console.log(`Servidor escuchando en el puerto ${puerto}`);
-     });
-     ```
-
-4. #### **Configuración de Multer**:
+   app.listen(puerto, () => {
+     console.log(`Servidor escuchando en el puerto ${puerto}`);
+   });
+   ```
 
    - **Disk Storage**:
    
-     Multer permite configurar el almacenamiento del archivo mediante `multer.diskStorage`. Aquí se define la ubicación (`destination`) y el nombre del archivo (`filename`). En el ejemplo anterior, los archivos se almacenan en el directorio `./uploads` con nombres únicos basados en la fecha y el nombre original del archivo.
+     Multer permite configurar el almacenamiento del archivo mediante `storage: multer.diskStorage({})`. Aquí se define la ubicación (`destination`) y el nombre del archivo (`filename`). En el ejemplo anterior, los archivos se almacenan en el directorio `./uploads` con nombres únicos basados en la fecha y el nombre original del archivo.
+
+     Esta opción especifica cómo se almacenarán los archivos en el disco. Puedes usar una función de callback para especificar tu propia implementación de almacenamiento, o usar una de las opciones integradas de Multer.
+
+     ```javascript
+     const multer = new Multer({
+       storage: multer.diskStorage({
+         destination: './uploads',
+         filename: (req, file, cb) => {
+           cb(null, file.originalname);
+         }
+       })
+     });
+     ```
+
+     En este ejemplo, los archivos se almacenarán en la carpeta `./uploads` con el `nombre original del archivo`.
 
    - **Memory Storage**:
    
      Multer también puede almacenar temporalmente los archivos en memoria antes de guardarlos en el sistema de archivos. Esto puede ser útil para archivos pequeños. La configuración se realiza con `multer.memoryStorage`.
 
-   - **Límites y Filtros**:
+   - **Limits**:
    
-     Multer permite configurar límites y filtros para los archivos. Esto incluye limitar el tamaño del archivo, filtrar tipos de archivos permitidos y más. Estos límites ayudan a prevenir abusos y mejorar la seguridad de la aplicación.
+     Multer permite configurar límites para los archivos. Esto incluye limitar el tamaño del archivo, la cantidad y más. Estos límites ayudan a prevenir abusos y mejorar la seguridad de la aplicación.
 
-5. #### **Manejo de Múltiples Archivos**:
+     ```javascript
+     const multer = new Multer({
+       limits: {
+         fileSize: 1000000 // 1 MB
+       }
+     });
+     ```
+
+     En este ejemplo, los archivos `no podrán superar los 1 MB` de tamaño.
+
+   - **fileFilter**:
+   
+     Esta opción especifica una función de callback que se usa para filtrar los archivos que se pueden subir.
+
+     ```javascript
+     const multer = new Multer({
+       fileFilter: (req, file, cb) => {
+         if (file.mimetype === 'image/jpeg') {
+           cb(null, true);
+         } else {
+           cb(new Error('Solo se permiten imágenes JPEG'));
+         }
+       }
+     });
+     ```
+
+     En este ejemplo, `solo se permitirán archivos JPEG`.
+
+4. #### **`Funciones de ayuda de Multer`**:
+
+   Multer proporciona varias funciones de ayuda que pueden simplificar el uso de la librería. A continuación, se muestran algunas de las funciones de ayuda más comunes:
+
+   - **multer.single()**: 
+     
+     Esta función devuelve un objeto de Multer que solo permite subir un archivo a la vez.
+     
+   - **multer.array()**:
+   
+     Esta función devuelve un objeto de Multer que permite subir varios archivos a la vez.
+
+   - **multer.any()**:
+   
+     Esta función devuelve un objeto de Multer que permite subir cualquier tipo de archivo.
+
+
+5. #### **`Manejo de Múltiples Archivos`**:
 
    Multer también puede manejar la carga de múltiples archivos. La configuración para esto es similar, pero en lugar de `upload.single`, se utiliza `upload.array` o `upload.fields` según la necesidad. Aquí hay un ejemplo básico con `upload.array`:
 
@@ -4701,7 +4755,7 @@
 
    En este caso, se espera que el formulario contenga un campo llamado `archivos` que contenga hasta 3 archivos.
 
-6. #### **Manejo de Errores y Validación**:
+6. #### **`Manejo de Errores y Validación`**:
 
    Es importante manejar posibles errores durante la carga de archivos. Multer facilita esto proporcionando una función de devolución de llamada que puede manejar los errores. Además, se puede agregar validación adicional para verificar que los archivos cumplen con ciertos criterios.
 
@@ -4721,11 +4775,11 @@
    });
    ```
 
-7. #### **Integración con Express y Uso en Rutas**:
+7. #### **`Integración con Express y Uso en Rutas`**:
 
    Multer se integra fácilmente con Express y se puede utilizar en rutas específicas. En el ejemplo de uso básico, se ve cómo se integra Multer con Express para manejar la carga de un solo archivo en la ruta `/subir-archivo`. Esto se logra utilizando `upload.single('miArchivo')` como middleware.
 
-8. #### **Consideraciones y Alternativas**:
+8. #### **`Consideraciones y Alternativas`**:
 
    - **Alternativas a Multer**:
 
@@ -4739,8 +4793,6 @@
 
      Para aplicaciones que manejan grandes cantidades de archivos o requieren escalabilidad, puede ser beneficioso considerar soluciones de almacenamiento en la nube, como Amazon S3 o Google Cloud Storage, en lugar de almacenamiento local.
 
-9. #### **Conclusiones y Recomendaciones**:
+9. #### **`Conclusiones y Recomendaciones`**:
 
-   - **Facilidad de Uso**:
-   
-     Multer facilita la carga y manipulación de archivos en aplicaciones Node.js. Su sintaxis y configuración sencillas lo convierten en
+   Multer facilita la carga y manipulación de archivos en aplicaciones Node.js. Su sintaxis y configuración sencillas lo convierten en
