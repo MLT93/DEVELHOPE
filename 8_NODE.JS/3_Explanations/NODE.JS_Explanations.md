@@ -3554,7 +3554,7 @@
 
    Este proceso será útil a la hora de trabajar con `Multer`, por ejemplo. Seguir este consejo ayudará a tener todo configurado para poder crear posts y subir archivos a un database dentro del proyecto más facilmente.
 
-6. #### **`Conclusión`**:
+7. #### **`Conclusión`**:
 
    Postman es una herramienta esencial para el desarrollo y prueba de API, facilitando la colaboración entre equipos, la automatización de pruebas y la creación eficiente de API. Su interfaz intuitiva y amplias funcionalidades lo convierten en una elección popular entre los desarrolladores de software.
 
