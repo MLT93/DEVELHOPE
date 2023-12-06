@@ -336,7 +336,8 @@
     "Renminbi",
     "requiérelo",
     "tlsv",
-    "tsbuildinfo"
+    "tsbuildinfo",
+    "YOURNAME"
   ],
   "editor.suggest.preview": true,
   "versionlens.suggestions.indicators": {

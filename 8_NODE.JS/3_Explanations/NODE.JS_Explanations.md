@@ -3546,6 +3546,14 @@
 
    Aunque Postman es una herramienta poderosa, existen alternativas como `Insomnia` y `Paw`, o también extensiones como `REST Client` de Visual Studio Code. La elección entre ellas depende de las preferencias individuales y los requisitos específicos del proyecto.
 
+6. #### **`Consejo útil`**:
+
+   El siguiente consejo está redactado en **[StackOverflow](https://stackoverflow.com/questions/60036239/upload-file-failed-postman)** y es relevante a la hora de cargar archivos para realizar posts utilizando Postman:
+
+   "...*The Postman "Working directory" is set to "~/Postman/files" ~ mean your home folder (means your C:/Users/YOURNAME) However Postman does not create a folder name "Postman" there but instead creating folder name "Postman Agent" which different from your "Working Directory" Moreover Postman program disable you to edit "Working directory", therefore you can only rename your folder name. Then rename "Postman Agent" to "Postman" . It will be all set.*..."
+
+   Este proceso será útil a la hora de trabajar con `Multer`, por ejemplo. Seguir este consejo ayudará a tener todo configurado para poder crear posts y subir archivos a un database dentro del proyecto más facilmente.
+
 6. #### **`Conclusión`**:
 
    Postman es una herramienta esencial para el desarrollo y prueba de API, facilitando la colaboración entre equipos, la automatización de pruebas y la creación eficiente de API. Su interfaz intuitiva y amplias funcionalidades lo convierten en una elección popular entre los desarrolladores de software.
@@ -4620,11 +4628,15 @@
 
    Multer es un middleware para Node.js que facilita la manipulación de datos de formularios en formato `multipart/form-data`. Este formato es comúnmente utilizado para el envío de archivos a través de formularios HTML. Multer simplifica el proceso de manejo de archivos en servidores Node.js, permitiendo cargar fácilmente archivos desde formularios.
 
-   Antes de usar Multer, es necesario instalarlo a través de npm. Esto se hace con el siguiente comando:
+   Antes de usar Multer, es necesario instalarlo a través de npm. Esto se hace con los siguientes comandos:
 
-    ```bash
-    npm i -D multer
-    ```
+   ```bash
+   npm i -E multer
+   ```
+
+   ```bash
+   npm i -D @types/multer
+   ```
 
 2. #### **`Importancia de Multer`**:
 
