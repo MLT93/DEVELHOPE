@@ -3554,7 +3554,7 @@
 
    Este proceso será útil a la hora de trabajar con `Multer`, por ejemplo.
    
-   Seguir este consejo ayudará a tener todo configurado para poder crear posts y subir archivos a una base de datos del proyecto más facilmente. Por lo tanto, cambia la carpeta con el nombre `Postman Agent` a `Postman` simplemente, y después configura el directorio de trabajo dentro de la opción `Settings` en Postman, para que sea `C:/Users/YOURNAME` simplemente, en vez de todo el directorio que viene por defecto.
+   Seguir el siguiente consejo ayudará a tener todo configurado para poder crear posts y subir archivos a una base de datos del proyecto más facilmente. Por lo tanto, cambia la carpeta con el nombre `Postman Agent` a `Postman` simplemente, y después configura el directorio de trabajo dentro de la opción `Settings` en Postman, para que sea `C:/Users/YOURNAME` simplemente, en vez de todo el directorio que viene por defecto.
 
 7. #### **`Conclusión`**:
 
