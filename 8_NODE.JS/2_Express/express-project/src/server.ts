@@ -12,7 +12,9 @@ import {
   getAll,
   getOneById,
   updateById,
-} from "../dist/controllers/planets.js";
+  createImage,
+} from "./controllers/planets.js";
+import multer from "multer";
 
 //* VARIABLES */
 // Creación del servidor con Express
@@ -32,17 +34,35 @@ const accessLogStream = fs.createWriteStream(
     flags: "a",
   },
 );
+// Crear un archivo para guardar información con Multer
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, "./uploads");
+  },
+  filename: (req, file, callback) => {
+    callback(null, file.originalname);
+  },
+});
+// Actualizar información de Multer
+const uploadMulter = multer({ storage });
 
 //* MIDDLEWARES */
 server.use(morgan("dev", { stream: accessLogStream }));
 server.use(express.json());
 
-//* CRUD SIMPLE CON IMPORTACIÓN DE FUNCIONES */
+//* CRUD SIMPLE CON IMPORTACIÓN DE FUNCIONES Y CONEXIÓN A BASE DE DATOS */
 server.get("/api/planets", getAll);
 server.get("/api/planets/:id", getOneById);
 server.post("/api/planets", create);
 server.put("/api/planets/:id", updateById);
 server.delete("/api/planets/:id", deleteById);
+
+//* CRUD CON MULTER, CREACIÓN DE ARCHIVOS Y CONEXIÓN A ELLOS */
+server.post(
+  "/api/planets/:id/image",
+  uploadMulter.single("image"), // `image` corresponderá a la `key` que hay que escribir en la parte de `form-data`. Una vez que abierto `Postman`, elegimos la `ruta`, seleccionamos `post`, vamos a `Body`, elegimos `form-data` y, debajo de `Key`, elegimos `file` en vez de `text`, volvemos a `Key` para escribir la ID que elegimos para `uploadMulter`, que en este caso es `image`. Modificamos la ruta de selección de archivos en los `Settings` de Postman, para que pueda buscar todos los archivos desde la raíz del PC, como por ejemplo: `home/user`. Agregamos el archivo y le damos al botón `Send`
+  createImage,
+);
 
 //* CRUD CON BADE DE DATOS LOCAL */
 const rutaDelArchivo =
