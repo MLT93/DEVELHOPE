@@ -3552,7 +3552,9 @@
 
    "...*The Postman "Working directory" is set to "~/Postman/files" ~ mean your home folder (means your C:/Users/YOURNAME) However Postman does not create a folder name "Postman" there but instead creating folder name "Postman Agent" which different from your "Working Directory" Moreover Postman program disable you to edit "Working directory", therefore you can only rename your folder name. Then rename "Postman Agent" to "Postman" . It will be all set.*..."
 
-   Este proceso será útil a la hora de trabajar con `Multer`, por ejemplo. Seguir este consejo ayudará a tener todo configurado para poder crear posts y subir archivos a un database dentro del proyecto más facilmente.
+   Este proceso será útil a la hora de trabajar con `Multer`, por ejemplo.
+   
+   Seguir este consejo ayudará a tener todo configurado para poder crear posts y subir archivos a una base de datos del proyecto más facilmente. Por lo tanto, cambia la carpeta con el nombre `Postman Agent` a `Postman` simplemente, y después configura el directorio de trabajo dentro de la opción `Settings` en Postman, para que sea `C:/Users/YOURNAME` simplemente, en vez de todo el directorio que viene por defecto.
 
 7. #### **`Conclusión`**:
 
