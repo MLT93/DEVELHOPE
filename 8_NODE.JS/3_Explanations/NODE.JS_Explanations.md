@@ -3546,7 +3546,7 @@
 
    Aunque Postman es una herramienta poderosa, existen alternativas como `Insomnia` y `Paw`, o también extensiones como `REST Client` de Visual Studio Code. La elección entre ellas depende de las preferencias individuales y los requisitos específicos del proyecto.
 
-6. #### **`Consejo útil`**:
+6. #### **`Consejo Útil`**:
 
    El siguiente consejo está redactado en **[StackOverflow](https://stackoverflow.com/questions/60036239/upload-file-failed-postman)** y es relevante a la hora de cargar archivos para realizar posts utilizando Postman:
 
