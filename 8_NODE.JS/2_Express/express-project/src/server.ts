@@ -60,7 +60,7 @@ server.delete("/api/planets/:id", deleteById);
 //* CRUD CON MULTER, CREACIÓN DE ARCHIVOS Y CONEXIÓN A ELLOS */
 server.post(
   "/api/planets/:id/image",
-  uploadMulter.single("image"), // `image` corresponderá a la `key` que hay que escribir en la parte de `form-data`. Una vez que abierto `Postman`, elegimos la `ruta`, seleccionamos `post`, vamos a `Body`, elegimos `form-data` y, debajo de `Key`, elegimos `file` en vez de `text`, volvemos a `Key` para escribir la ID que elegimos para `uploadMulter`, que en este caso es `image`. Modificamos la ruta de selección de archivos en los `Settings` de Postman, para que pueda buscar todos los archivos desde la raíz del PC, como por ejemplo: `home/user`. Agregamos el archivo y le damos al botón `Send`
+  uploadMulter.single("image"), // Una vez que abierto `Postman`, introducimos la `ruta`, seleccionamos `post`, vamos a `Body`, elegimos `form-data` y, debajo de la primer celda `Key` (en la cual no es posible escribir), en la parte derecha elegimos `file` en vez de `text`, luego volvemos a `Key` para escribir la ID que elegimos para `uploadMulter.single()` (en este caso es `image` la `key` correspondiente). Modificamos la ruta de selección de archivos en los `Settings` de Postman, para que pueda buscar todos los archivos desde la raíz del PC (por ejemplo: `home/user`). Agregamos el archivo y le damos al botón `Send`
   createImage,
 );
 
