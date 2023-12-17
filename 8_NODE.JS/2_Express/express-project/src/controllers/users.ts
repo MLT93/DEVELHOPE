@@ -25,4 +25,22 @@ const logIn = async (req: Request, res: Response) => {
   }
 };
 
-export { logIn };
+const signUp = async (req: Request, res: Response) => {
+  const { username, password } = req.body;
+  const user = await db.oneOrNone(
+    `SELECT * FROM users WHERE username=$1`,
+    username,
+  );
+
+  if (user) {
+    res.status(409).json({ msg: `Username already exist` });
+  } else {
+    const { id } = await db.one(
+      `INSERT INTO users (username, password) VALUES ($1, $2) RETURNING id`,
+      [username, password],
+    );
+    res.status(201).json({ id: id, msg: `User create successfully` });
+  }
+};
+
+export { logIn, signUp };
