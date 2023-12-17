@@ -14,8 +14,10 @@ import {
   updateById,
   createImage,
 } from "./controllers/planets.js";
-import { logIn, signUp } from "./controllers/users.js";
 import multer from "multer";
+import { logIn, signUp, logOut } from "./controllers/users.js";
+import authorize from "./authorize.js";
+import "./passport.js"
 
 //* VARIABLES */
 // Creación del servidor con Express
@@ -61,6 +63,7 @@ server.delete("/api/planets/:id", deleteById);
 //* AUTENTICACIÓN, LOGIN, SIGNUP y LOGOUT CON PASSPORT & JWT */
 server.post("/api/users/login", logIn);
 server.post("/api/users/signup", signUp);
+server.get("/api/users/logout", authorize, logOut);
 
 //* CRUD CON MULTER, CREACIÓN DE ARCHIVOS Y CONEXIÓN A ELLOS */
 server.post(
