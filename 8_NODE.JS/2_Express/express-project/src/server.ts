@@ -14,6 +14,7 @@ import {
   updateById,
   createImage,
 } from "./controllers/planets.js";
+import { logIn } from "./controllers/users.js";
 import multer from "multer";
 
 //* VARIABLES */
@@ -57,6 +58,9 @@ server.post("/api/planets", create);
 server.put("/api/planets/:id", updateById);
 server.delete("/api/planets/:id", deleteById);
 
+//* AUTENTICACIÓN Y LOGIN PASSPORT & JWT */
+server.post("/api/users/login", logIn);
+
 //* CRUD CON MULTER, CREACIÓN DE ARCHIVOS Y CONEXIÓN A ELLOS */
 server.post(
   "/api/planets/:id/image",
@@ -64,7 +68,7 @@ server.post(
   createImage,
 );
 
-//* CRUD CON BADE DE DATOS LOCAL */
+//* CRUD CON MÓDULO FS */
 const rutaDelArchivo =
   "/home/marko/Development/DEVELHOPE/8_NODE.JS/2_Express/express-project/src/db.json";
 
@@ -269,7 +273,7 @@ server.delete("/json/:id", async (req, res) => {
   }
 });
 
-//* CRUD CON LLAMADA A UNA API Y ESCRITURA DE DATOS EN UN ARCHIVO */
+//* CRUD CON LLAMADA A UNA API Y ESCRITURA DE DATOS EN UN ARCHIVO CON FS */
 const url = "https://my-json-server.typicode.com/typicode/demo/posts";
 const rutaDelArchivoAPI =
   "/home/marko/Development/DEVELHOPE/8_NODE.JS/2_Express/express-project/src/db-API.json";
