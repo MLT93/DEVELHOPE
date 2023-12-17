@@ -4633,7 +4633,7 @@
    Antes de usar Multer, es necesario instalarlo a través de npm. Esto se hace con los siguientes comandos:
 
    ```bash
-   npm i -E multer
+   npm i multer
    ```
 
    ```bash
@@ -4810,3 +4810,192 @@
 9. #### **`Conclusiones y Recomendaciones`**:
 
    Multer facilita la carga y manipulación de archivos en aplicaciones Node.js. Su sintaxis y configuración sencillas lo convierten en
+
+## Passport y JWT (JSON Web Tokens) en Node.js: Una Explicación Detallada
+
+1. #### **`Introducción a Passport y JWT`**:
+
+   Passport es un middleware de autenticación de terceros para Node.js que permite a los desarrolladores autenticar usuarios en aplicaciones web a través de proveedores como Facebook, Google, GitHub, etc. 
+
+   JWT (Tokens Web JSON) es un estándar abierto para el intercambio de información segura entre aplicaciones. Los tokens JWT son pequeños fragmentos de texto que contienen datos de autenticación.
+   
+   En conjunto, Passport y JWT son utilizados para gestionar la autenticación de usuarios de manera segura y eficiente en aplicaciones Node.js.
+
+2. #### **`Importancia de Passport y JWT`**:
+
+   En el desarrollo de aplicaciones web, la autenticación es un aspecto crítico para garantizar la seguridad y la protección de datos sensibles. Passport simplifica el proceso de autenticación al proporcionar estrategias configurables y flexibles. JWT, por su parte, ofrece un mecanismo seguro para transmitir información de manera compacta entre partes, lo que es esencial en entornos distribuidos.
+
+3. #### **`Sintaxis y Ejecución de Passport y JWT`**:
+
+   - **Instalación de dependencias**:
+
+     Antes de comenzar, es necesario instalar las dependencias utilizando npm:
+
+     ```bash
+     npm i passport passport-local passport-jwt jsonwebtoken
+     ```
+
+     ```bash
+     npm i -D @types/passport @types/passport-jwt
+     ```
+
+   - **Configuración de Passport**:
+
+     Para configurar Passport, debes crear un objeto Strategy que especifique el proveedor de autenticación que deseas usar.
+
+     ```javascript
+     const passport = require('passport');
+     const LocalStrategy = require('passport-local').Strategy;
+
+     passport.use(new LocalStrategy(
+       (username, password, done) => {
+         // Lógica de autenticación local
+       }
+     ));
+     ```
+
+     ```javascript
+     const passport = require('passport');
+     const FacebookStrategy = require('passport-facebook');
+     
+     passport.use(new FacebookStrategy({
+       clientID: '<Tu ID de cliente de Facebook>',
+       clientSecret: '<Tu secreto de cliente de Facebook>',
+       callbackURL: '<Tu URL de devolución de llamada de Facebook>',
+     }, (accessToken, refreshToken, profile, done) => {
+       // Haz algo con el perfil del usuario
+       done(null, profile);
+     }));
+     ```
+
+     ```javascript
+     import "dotenv/config";
+     import passport from "passport";
+     import passportJWT from "passport-jwt";
+     import { db } from "./db";
+     
+     const { SECRET } = process.env;
+     
+     passport.use(
+       new passportJWT.Strategy(
+         {
+           secretOrKey: SECRET,
+           jwtFromRequest: passportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
+         },
+         async (payload, done) => {
+           const user = db.one(`SELECT * FROM users WHERE id=$1`, payload.id);
+           console.log(user);
+     
+           try {
+             return user ? done(null, user) : done(new Error(`User not found.`));
+           } catch (error) {
+             done(error);
+           }
+         },
+       ),
+     );
+     ```
+
+   - **Configuración de JWT**:
+
+     Para crear un token JWT, usa la función `jwt.sign()`. Esta función toma los siguientes parámetros:
+
+     - `datos`:
+     
+       Los datos que deseas incluir en el token como el usuario, el rol que posee, etc. El primer argumento espera siempre un objeto.
+
+     - `secreto JWT`:
+     
+       El secreto que se utilizará para firmar el token.
+
+     - `algorithm`:
+     
+       El algoritmo que se utilizará para firmar el token.
+
+     - `expiresIn`:
+     
+       Tiempo de expiración del token.
+
+     ```javascript
+     import jwt from "jsonwebtoken";
+     
+     let userAdmin = {
+       username: "usuario",
+       role: "admin"
+     };
+     
+     const generarToken = (user) => {
+       return jwt.sign(user, "<Secreto de JWT>", {
+         algorithm: "HS256",
+         expiresIn: "1h",
+       });
+     };
+     
+     const token = generarToken(userAdmin);
+     console.log(token);
+     ```
+
+4. #### **`Uso de Passport para Autenticación Local`**:
+
+   Passport permite la implementación de diversas estrategias de autenticación. En este ejemplo, se utiliza la estrategia local:
+
+   ```javascript
+   const passport = require('passport');
+   const LocalStrategy = require('passport-local').Strategy;
+
+   passport.use(new LocalStrategy(
+     (username, password, done) => {
+       // Lógica de autenticación local
+       // Comprobar las credenciales y llamar a done con el usuario autenticado
+     }
+   ));
+   ```
+
+5. #### **`Uso de JWT para Generar Tokens`**:
+
+   JWT se utiliza para generar tokens que pueden ser enviados y verificados posteriormente para autenticar a un usuario. En este ejemplo, se genera un token con la firma 'secreto' y una duración de 1 hora:
+
+   ```javascript
+   const jwt = require('jsonwebtoken');
+
+   const generarToken = (usuario) => {
+     return jwt.sign(usuario, 'secreto', { expiresIn: '1h' });
+   };
+   ```
+
+6. #### **`Implementación de Rutas Protegidas`**:
+
+   Una vez que el usuario se autentica utilizando Passport y se genera un token JWT, se pueden implementar rutas protegidas que requieren el token para acceder:
+
+   ```javascript
+   const passport = require('passport');
+   const jwt = require('jsonwebtoken');
+
+   // Middleware para proteger la ruta
+   const protegerRuta = (req, res, next) => {
+     passport.authenticate('local', { session: false }, (err, usuario) => {
+       if (err || !usuario) {
+         return res.status(401).json({ mensaje: 'Autenticación fallida' });
+       }
+       req.login(usuario, { session: false }, (err) => {
+         if (err) res.send(err);
+         const token = generarToken(usuario);
+         // Enviar el token como respuesta o almacenarlo en cookies
+         res.json({ token });
+       });
+     })(req, res);
+   };
+
+   // Ruta protegida
+   app.get('/rutaProtegida', protegerRuta, (req, res) => {
+     res.json({ mensaje: 'Acceso permitido' });
+   });
+   ```
+
+7. #### **`Consideraciones de Seguridad y Alternativas`**:
+
+   Al implementar Passport y JWT, es crucial considerar las mejores prácticas de seguridad, como el almacenamiento seguro de claves secretas y la gestión adecuada de tokens expirados. Además, existen alternativas como OAuth 2.0 y OpenID Connect que proporcionan capas adicionales de seguridad y funcionalidades avanzadas.
+
+8. #### **`Conclusiones`**:
+
+   Passport y JWT ofrecen una solución robusta para la autenticación en aplicaciones Node.js. La combinación de Passport para la autenticación y JWT para la generación de tokens proporciona una forma eficiente y segura de gestionar la identidad de los usuarios. Sin embargo, es esencial comprender y aplicar las mejores prácticas de seguridad al implementar estos componentes en un proyecto.

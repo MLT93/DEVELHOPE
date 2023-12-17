@@ -1,4 +1,4 @@
-Realiza una explicación igual a la que te expongo a continuación, con la misma cantidad de detalles y explicando `Ejemplos de cómo realizar un CRUD con pg-promise en Node.js: Una Explicación Detallada` de la misma forma:
+Realiza una explicación igual a la que te expongo a continuación, con la misma cantidad de detalles y explicando `...: Una Explicación Detallada` de la misma forma:
 
 ## Async code - callbacks y Funciones Relacionadas en JavaScript: Una Explicación Detallada**
 
