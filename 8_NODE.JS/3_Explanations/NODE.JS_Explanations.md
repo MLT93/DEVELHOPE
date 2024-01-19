@@ -294,7 +294,7 @@
      ```
 
      ```bash
-     nvm use <nombre o número de la versión>
+     fnm use <nombre o número de la versión>
      ```
 
    - **Uso Global o Local**:
