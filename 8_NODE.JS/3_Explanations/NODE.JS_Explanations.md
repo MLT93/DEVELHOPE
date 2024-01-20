@@ -4318,7 +4318,7 @@
 
    En los enlaces siguientes te dejo toda la información para instalar paso a paso PostgreSQL en Windows, Mac o APT.
 
-   - **[PostgreSQL APT](https://www.webhi.com/how-to/install-postgresql-in-ubuntu-18-04-20-4-22-04/)**
+   - **[PostgreSQL APT](https://www.postgresql.org/download/linux/ubuntu/)**
 
    - **[PostgreSQL Mac y Windows](https://winter-bush-e31.notion.site/Postgres-install-manual-1faeb9aa852f4b56a2d097f40e5b80fe)**
 
