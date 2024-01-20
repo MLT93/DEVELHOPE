@@ -1,7 +1,9 @@
 import pgPromise from "pg-promise";
 
-// Primer paréntesis es dedicado a las opciones, el segundo es el enlace a la base de datos real.
-const db = pgPromise()("postgres://postgres:postgres@localhost:5432/psql"); // Forma de escritura -> "postgres://usuario:contraseña@localhost:puerto/nombreBaseDeDatos"
+// Primer paréntesis es dedicado a las opciones
+// El segundo es el enlace a la base de datos real
+// Forma de escritura dentro del segundo paréntesis -> "postgres://usuario:contraseña@localhost:puerto/nombreBaseDeDatos"
+const db = pgPromise()("postgres://postgres:postgres@localhost:5432/postgres"); 
 console.log(db);
 
 // Creación de una tabla

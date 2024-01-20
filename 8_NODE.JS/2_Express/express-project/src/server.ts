@@ -74,7 +74,7 @@ server.post(
 
 //* CRUD CON MÓDULO FS */
 const rutaDelArchivo =
-  "/home/marko/Development/DEVELHOPE/8_NODE.JS/2_Express/express-project/src/db.json";
+  "/home/marcoslt93/Dev/DEVELHOPE/8_NODE.JS/2_Express/express-project/src/db.json";
 
 server.get("/json", async (req, res) => {
   try {
@@ -280,7 +280,7 @@ server.delete("/json/:id", async (req, res) => {
 //* CRUD CON LLAMADA A UNA API Y ESCRITURA DE DATOS EN UN ARCHIVO CON FS */
 const url = "https://my-json-server.typicode.com/typicode/demo/posts";
 const rutaDelArchivoAPI =
-  "/home/marko/Development/DEVELHOPE/8_NODE.JS/2_Express/express-project/src/db-API.json";
+  "/home/marcoslt93/Dev/DEVELHOPE/8_NODE.JS/2_Express/express-project/src/db-API.json";
 
 interface Obj {
   id: number;
