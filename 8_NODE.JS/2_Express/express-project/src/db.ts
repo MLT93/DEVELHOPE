@@ -2,7 +2,7 @@ import pgPromise from "pg-promise";
 
 // Primer paréntesis es dedicado a las opciones
 // El segundo es el enlace a la base de datos real
-// Forma de escritura dentro del segundo paréntesis -> "postgres://usuario:contraseña@localhost:puerto/nombreBaseDeDatos"
+// Forma de escritura dentro del segundo paréntesis -> "postgres://USER:PASSWORD@localhost:PORT/DATABASE-NAME"
 const db = pgPromise()("postgres://postgres:postgres@localhost:5432/postgres"); 
 console.log(db);
 

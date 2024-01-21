@@ -17,7 +17,7 @@ import {
 import multer from "multer";
 import { logIn, signUp, logOut } from "./controllers/users.js";
 import authorize from "./authorize.js";
-import "./passport.js"
+import "./passport.js";
 
 //* VARIABLES */
 // Creación del servidor con Express
@@ -37,6 +37,7 @@ const accessLogStream = fs.createWriteStream(
     flags: "a",
   },
 );
+//* MULTER *//
 // Crear un archivo para guardar información con Multer
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
