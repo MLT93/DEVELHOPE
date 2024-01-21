@@ -20,7 +20,7 @@ import authorize from "./authorize.js";
 import "./passport.js";
 
 //* VARIABLES */
-// Creación del servidor con Express
+// Creación del servidor con Express e inicialización del mismo
 const server = express();
 // Puerto de escucha
 const PORT: string | number = process.env.PORT || 3000;
@@ -30,13 +30,18 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 // Creación del archivo de registro
 const nombreArchivo = "access.log";
-// Realización de un flujo de escritura para el archivo de registro con configuración flags en modo adicción. Añade siempre archivos en la última fila
+// Realización de un flujo de escritura para el archivo de registro con la configuración de los flags en modo adicción (añade siempre archivos en la última fila)
 const accessLogStream = fs.createWriteStream(
   path.join(__dirname, nombreArchivo),
   {
     flags: "a",
   },
 );
+
+//* MIDDLEWARES */
+server.use(morgan("dev", { stream: accessLogStream }));
+server.use(express.json());
+
 //* MULTER *//
 // Crear un archivo para guardar información con Multer
 const storage = multer.diskStorage({
@@ -49,10 +54,6 @@ const storage = multer.diskStorage({
 });
 // Actualizar información de Multer
 const uploadMulter = multer({ storage });
-
-//* MIDDLEWARES */
-server.use(morgan("dev", { stream: accessLogStream }));
-server.use(express.json());
 
 //* CRUD SIMPLE CON IMPORTACIÓN DE FUNCIONES Y CONEXIÓN A BASE DE DATOS */
 server.get("/api/planets", getAll);
