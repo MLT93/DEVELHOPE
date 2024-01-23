@@ -75,6 +75,7 @@ const getOneById = async (req: Request, res: Response) => {
   );
   res.status(200).json(planet);
 };
+
 const create = async (req: Request, res: Response) => {
   const { /* id, */ name } = req.body;
   const newPlanet: Planet = { /* id: id, */ name: name };
