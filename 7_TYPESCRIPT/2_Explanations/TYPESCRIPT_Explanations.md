@@ -123,6 +123,12 @@
      ```
      
      Este comando ejecutará la compilación, pero debes estar dentro del directorio del proyecto que contiene el archivo `tsconfig.json`. El compilador buscará ese archivo de configuración y comenzará a compilar tus archivos TypeScript.
+
+     También se puede compilar todo el proyecto con el comando:
+
+     ```bash
+     tsc
+     ```
      
    - **Herramienta de Construcción `Build Tools`**:
      
@@ -155,6 +161,8 @@
        "build": "tsc",
        "start": "node src/index.js",
        "dev": "node index.js",
+       "dev:2": "tsc-watch --noClear -p ./tsconfig.json --outDir ./dist --onSuccess \"node ./dist/index.js\"",
+       "dev:2": "nodemon index.js"
      }
      ```
 
@@ -169,6 +177,16 @@
      - `dev`:
 
        Script que se ejecuta a través del comando `npm run dev`.
+
+     - `dev:2`:
+
+       Script que ejecutamos a través del comando `npm run dev:2`.
+       Para este comando debes configurar el archivo de configuración de TypeScript a `outDir: ./dist`.
+
+     - `dev:3`:
+
+       Script que lanza a través del comando `npm run dev:3`.
+       Para esta opción debes instalar la dependencia Nodemon.
 
      - `node`:
        
@@ -185,19 +203,86 @@
      npm run build
      ```
      
-     Por último ejecuta tu aplicación en `create-react-app`:
+     Por último ejecuta tu aplicación de `create-react-app`:
 
      ```bash
      npm start
      ```
      
-     O en tu aplicación `Vite` / `Next.js`:
+     O en tu aplicación de `Vite` / `Next.js`:
 
      ```bash
-     npm run dev
+     npm run dev:2
      ```
+
+     Consejo: utiliza siempre la opción `dev:2` e instala un Linter de TypeScript:
+
+     ```bash
+     npm i -D @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-standard-react eslint-config-standard-with-typescript eslint-plugin-react eslint-plugin-import eslint-plugin-promise eslint-plugin-node
+     ```
+
+     ```json
+     "devDependencies": {
+       "@typescript-eslint/eslint-plugin": "^6.11.0",
+       "@typescript-eslint/parser": "^6.11.0",
+       "eslint": "^8.56.0",
+       "eslint-config-standard-react": "^13.0.0",
+       "eslint-config-standard-with-typescript": "^43.0.1",
+       "eslint-plugin-react": "^7.33.2",
+       "eslint-plugin-import": "^2.29.1",
+       "eslint-plugin-promise": "^6.1.1",
+       "eslint-plugin-node": "^8.56.0",
+     }
+     ```
+
+     Posteriormente a esto, crea un archivo `.eslintrc.cjs` y añade lo siguiente dentro de él:
+
+     ```cjs
+     module.exports = {
+       env: {
+         browser: true,
+         es2021: true,
+         node: true,
+       },
+       extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+       overrides: [
+         {
+           env: {
+             node: true,
+           },
+           files: [".eslintrc.{js,cjs}"],
+           parserOptions: {
+             sourceType: "script",
+           },
+         },
+       ],
+       parser: "@typescript-eslint/parser",
+       requireConfigFile: false,
+       parserOptions: {
+         ecmaVersion: "latest",
+         sourceType: "module",
+       },
+       plugins: ["@typescript-eslint", "import", "promise", "react"],
+       rules: {},
+     };
+     ```
+
+     Otra forma de utilizar o instalar un Linter es de la siguiente manera:
+
+     - `Instala la dependencia`:
+
+       ```
+       npm i -D eslint
+       ```
      
-     ¡Listo! Ahora tienes un script de compilación configurado para tu proyecto TypeScript. Este script te permitirá compilar tu código TypeScript en JavaScript para su ejecución. Recuerda que puedes ajustar las configuraciones según las necesidades de tu proyecto.
+     - `Inicia la configuración por defecto`:
+
+
+       ```
+       npx init-eslint-config
+       ```
+
+     ¡Listo! Ahora tienes un script de compilación configurado para tu proyecto TypeScript y un Eslint para tu proyecto. Los scripts te permitirán compilar tu código TypeScript en JavaScript para su ejecución, y el Eslint te permitirá trabajar de una manera correcta, avisándote de posibles errores. Recuerda que puedes ajustar las configuraciones según las necesidades de tu proyecto.
 
    - **Uso de la `extensión Code Runner` en Visual Studio Code**:
 
