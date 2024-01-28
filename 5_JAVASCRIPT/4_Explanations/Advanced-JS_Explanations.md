@@ -1748,10 +1748,10 @@ const receivedDate = new Date(parsedData.date);
 console.log("Deserialized Date:", receivedDate); // Deserialized Date: 2023-08-24T12:30:45.000Z
 ```
 
-7. Por último formateamos la fecha según las preferencias regionales del usuario con toLocaleString():
+7. Por último formateamos la fecha según las preferencias regionales del usuario con toLocaleString() o con toLocaleDateString():
 
 ```javascript
-const localDate = receivedDate.toLocaleString(); // Muestra la fecha en formato localizado
+const localDate = receivedDate.toLocaleString() | receivedDate.toLocaleDateString(); // Muestra la fecha en formato del país local
 console.log("Local Date Zone:", localDate);
 ```
 
