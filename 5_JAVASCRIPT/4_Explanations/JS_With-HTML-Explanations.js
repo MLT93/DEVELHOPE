@@ -3,15 +3,15 @@
 /* El alert() muestra una pantalla emergente dentro de la página web donde estemos, con el mensaje que escribamos al interno de las paréntesis.*/
 
 // alert("Hello world") <- Ejercicio hecho
-function showAlert(message) {
-  let name = "world";
+let word = "world";
+function showAlert(params) {
   return console.log(
-    `Hello ${name}.`
+    `Hello ${params}.`
   ); /* En este caso no utilizo el alert(), si no el console.log()
     para poder ver el mensaje en consola, si no, da error.*/
 }
 
-showAlert();
+showAlert(word);
 
 /* ♦♦♦ EJEMPLO ♦♦♦
 En este ejemplo, hemos creado una función mostrarSaludo() que se ejecuta cuando el usuario hace clic en un botón.
@@ -52,15 +52,13 @@ Para utilizar document.write(), simplemente necesitas llamar al método y pasarl
 al documento.*/
 
 // document.write("Hello World") <- Ejercicio hecho
-function showDocumentWrite(message) {
-  let name = "world";
-  return console.log(
-    `Hello ${name}.`
-  ); /* En este caso no utilizo el document.write(), si no el console.log()
+let word2 = "world";
+function showDocumentWrite(params) {
+  console.log(`Hello ${params}!`); /* En este caso no utilizo el document.write(), si no el console.log()
     para poder ver el mensaje en consola, si no, da error.*/
 }
 
-showDocumentWrite();
+showDocumentWrite(word2);
 
 /*♦♦♦ EJEMPLO ♦♦♦
 document.write("¡Hola, mundo!");
