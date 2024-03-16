@@ -290,11 +290,11 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
 3. #### **`Tipos de Declaraciones Condicionales`**:
 
    En JavaScript, hay varias formas de expresar declaraciones condicionales. Los más comunes son:
-   
+
    - **`if`**:
-   
+
      La declaración `if` evalúa una condición y ejecuta un bloque de código si esa condición es verdadera.
-     
+
      ```javascript
      if (condition) {
        // Código a ejecutar si la condición es verdadera
@@ -304,7 +304,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
    - **`if-else`**:
 
      La declaración `if-else` evalúa una condición y ejecuta un bloque de código si la condición es verdadera, y otro bloque de código si la condición es falsa.
-     
+
      ```javascript
      if (condition) {
        // Código a ejecutar si la condición es verdadera
@@ -316,7 +316,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
    - **`else if`**:
 
      La declaración `if-else if-else` permite evaluar múltiples condiciones secuenciales y ejecutar diferentes bloques de código según el resultado de esas condiciones.
-     
+
      ```javascript
      if (condition1) {
        // Código a ejecutar si la condición1 es verdadera
@@ -330,7 +330,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
    - **`Operador ternario`**:
 
      El operador ternario (Ternary Operator) es una forma abreviada de expresar una declaración condicional con una sola línea.
-     
+
      ```javascript
      condition ? expr1 : expr2;
      ```
@@ -354,7 +354,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
    - **AND lógico `&&`**:
 
      Este operador evalúa dos condiciones y devuelve `true` solo si ambas condiciones son verdaderas.
-     
+
      ```javascript
      if (condition1 && condition2) {
        // Código a ejecutar si ambas condiciones son verdaderas
@@ -364,7 +364,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
    - **OR lógico `||`**:
 
      Este operador evalúa dos condiciones y devuelve `true` si al menos una de las condiciones es verdadera.
-     
+
      ```javascript
      if (condition1 || condition2) {
        // Código a ejecutar si al menos una de las condiciones es verdadera
@@ -374,7 +374,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
    - **NOT lógico `!`**:
 
      Este operador niega una condición, es decir, devuelve `true` si la condición es falsa y `false` si la condición es verdadera.
-     
+
      ```javascript
      if (!condition) {
        // Código a ejecutar si la condición es falsa
@@ -402,6 +402,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
 8. #### **`Ventajas y Desventajas de las Declaraciones Condicionales`**:
 
    - **Ventajas**:
+
      - Permiten controlar el flujo del programa de manera flexible.
      - Son fáciles de entender y utilizar para tomar decisiones basadas en condiciones.
      - Se pueden combinar con operadores lógicos para expresar condiciones más complejas.
@@ -414,9 +415,9 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
 9. #### **`Ejemplos de Uso de Declaraciones Condicionales`**:
 
    - **Validación de Formularios**:
-   
+
      Las declaraciones condicionales se utilizan para verificar si los campos de un formulario están completos antes de enviar los datos al servidor.
-   
+
      ```javascript
      if (nombre && email && mensaje) {
        // Enviar formulario
@@ -428,9 +429,9 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
    - **Control de Acceso**:
 
      Se pueden utilizar para determinar si un usuario tiene acceso a ciertas partes de una aplicación web.
-   
+
      ```javascript
-     if (usuario.tipo === 'admin') {
+     if (usuario.tipo === "admin") {
        // Mostrar opciones de administrador
      } else {
        // Mostrar opciones estándar
@@ -440,7 +441,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
    - **Animaciones y Efectos Visuales**:
 
      Las declaraciones condicionales pueden controlar la aparición y desaparición de elementos en la interfaz de usuario.
-   
+
      ```javascript
      if (mostrarModal) {
        // Mostrar modal de inicio de sesión
@@ -452,6 +453,181 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
 10. #### **`Conclusión`**:
 
     Las declaraciones condicionales son una herramienta poderosa en JavaScript que permite controlar el flujo del programa y tomar decisiones dinámicas en función de condiciones específicas. Es importante comprender cómo utilizar eficazmente las declaraciones condicionales para escribir código limpio, legible y mantenible en tus proyectos de desarrollo web y aplicaciones. Además, es útil explorar alternativas y técnicas avanzadas para manejar la lógica condicional de manera más eficiente en casos de código complejo o escenarios de gran escala.
+
+## **Switch en JavaScript: Una Explicación Detallada**
+
+1. #### **`Introducción a Switch`**:
+
+   El `switch` es una estructura de control en JavaScript que permite tomar decisiones basadas en el valor de una expresión. Es una alternativa al uso de múltiples `if-else` cuando se necesita evaluar una expresión contra varios valores posibles.
+
+2. #### **`Importancia de Switch`**:
+
+   El `switch` es útil cuando se tienen múltiples casos posibles para una sola expresión y se necesita ejecutar un bloque de código diferente para cada caso. Ayuda a escribir un código más limpio y legible al evitar la repetición de múltiples bloques `if-else`.
+
+3. #### **`Sintaxis de Switch`**:
+
+   La sintaxis básica de un `switch` en JavaScript es la siguiente:
+
+   ```javascript
+   switch (key) {
+     case value1:
+       // Bloque de código si key es igual a value1
+       break;
+     case value2:
+       // Bloque de código si key es igual a value2
+       break;
+     // Más casos
+     default:
+     // Bloque de código si ninguno de los casos anteriores se cumple
+   }
+   ```
+
+   - La expresión (`key`) se evalúa una vez, y el valor que posee se compara con los casos posibles (`value1`, `value2`).
+   - Cada `case` es una opción posible que la expresión puede tener.
+   - `break` se utiliza para salir del switch después de que se cumpla un caso y se ejecute el código correspondiente. Si se omite, la ejecución continuará al siguiente caso.
+   - `default` es opcional y se ejecutará si ninguno de los casos coincide con el valor de la expresión.
+
+4. #### **`Ejemplo de Switch`**:
+
+   ```javascript
+   let dia = 3;
+   let nombreDia;
+
+   switch (dia) {
+     case 1:
+       nombreDia = "Lunes";
+       break;
+     case 2:
+       nombreDia = "Martes";
+       break;
+     case 3:
+       nombreDia = "Miércoles";
+       break;
+     // Más casos para otros días
+     default:
+       nombreDia = "Día no válido";
+   }
+
+   console.log(nombreDia); // Resultado: "Miércoles"
+   ```
+
+5. #### **`Uso de Switch en lugar de 'else if'`**:
+
+   El `switch` es especialmente útil cuando se tienen múltiples opciones para una expresión y se necesita ejecutar un bloque de código diferente para cada opción. A menudo es más legible y fácil de entender que una serie de declaraciones `else if` anidadas.
+
+   ```javascript
+   let tipoFruta = "manzana";
+   let mensaje;
+
+   switch (tipoFruta) {
+     case "manzana":
+       mensaje = "Las manzanas son rojas";
+       break;
+     case "plátano":
+       mensaje = "Los plátanos son amarillos";
+       break;
+     case "naranja":
+       mensaje = "Las naranjas son naranjas";
+       break;
+     default:
+       mensaje = "No conozco esa fruta";
+   }
+
+   console.log(mensaje);
+   ```
+
+6. #### **`Múltiples Opciones por Caso`**:
+
+   En JavaScript, puedes agrupar varios casos que deberían ejecutar el mismo bloque de código.
+
+   ```javascript
+   let code = "B";
+   let mensaje;
+
+   switch (code) {
+     case "A":
+     case "B":
+     case "C":
+       mensaje = "Código válido";
+       break;
+     default:
+       mensaje = "Código inválido";
+   }
+
+   console.log(mensaje); // Resultado: "Código válido"
+   ```
+
+7. #### **`La Comparación Estricta '===' en Switch`**:
+
+   El `switch` utiliza la comparación estricta (`===`) por defecto. Esto significa que también compara el tipo de datos, no solo el valor. Esto puede afectar el comportamiento si se esperan tipos de datos diferentes.
+
+   ```javascript
+   let valor = 42;
+   let resultado;
+
+   switch (valor) {
+     case "42":
+       resultado = "Cadena";
+       break;
+     case 42:
+       resultado = "Número";
+       break;
+     default:
+       resultado = "Otro tipo";
+   }
+
+   console.log(resultado); // Resultado: "Número"
+   ```
+
+8. #### **`Utilizar Switch con booleanos al estilo 'if-else'`**:
+
+   También existe la posibilidad de utilizar el Switch para evaluar posibles casos booleanos como si fuera un `if-else`.
+   En el siguiente código, esta estructura de control se usa de una manera un tanto inusual, pero válida en JavaScript. En lugar de usar expresiones estáticas en cada caso, como es más común, se utiliza `switch (true)`, lo que significa que `switch` evaluará la verdad de cada `case` basándose en la evaluación de la expresión booleana `true`, lo cual implica que cada caso deba utilizar realizar una condición para resolverse en truthy o falsy.
+
+   Aquí hay una explicación paso a paso de cómo funciona:
+
+   - **Prompt para ingresar la edad**:
+
+     ```javascript
+     let edad = prompt("¿Cuál es tu edad?");
+     ```
+
+     El usuario ingresa su edad a través de un cuadro de diálogo de prompt, y este valor se asigna a la variable `edad`.
+
+   - **Convertir la entrada a un número**:
+
+     ```javascript
+     edad = Number(edad);
+     ```
+
+     La entrada de `edad` se convierte a un número usando la función constructora `Number()`. Esto asegura que las comparaciones posteriores en el `switch` sean numéricas.
+
+   - **Switch con expresión `true`**:
+
+     ```javascript
+     switch (true) {
+       case edad >= 18:
+         console.log(`Tu edad es: ${edad}. Sos mayor de edad!`);
+         break;
+       case edad < 18:
+         console.log(`Tu edad es: ${edad}. Volvete a casa!`);
+         break;
+
+       default:
+         console.log(`No has introducido tu edad correctamente.`);
+         break;
+     }
+     ```
+
+   Al usar `switch (true)`, estamos diciendo que el `switch` evaluará cada `case` basándose en la verdad de la expresión `true`. En otras palabras, cada `case` se evaluará como `true` o `false` según la evaluación de su condición.
+
+9. #### **`Uso de Switch en Situaciones Específicas`**:
+
+   El `switch` es ideal cuando se tiene una sola expresión con múltiples opciones claras y específicas. Sin embargo, puede ser menos adecuado cuando se necesita lógica más compleja o condiciones más flexibles. En esos casos, es posible que desees considerar el uso de otras estructuras de control.
+
+10. #### **`Resumen`**:
+
+El `switch` en JavaScript es una estructura de control poderosa que permite tomar decisiones basadas en el valor de una expresión. Proporciona una forma clara y concisa de manejar múltiples casos posibles. Sin embargo, es importante entender su sintaxis y considerar cuándo es más apropiado usarlo en comparación con otras estructuras de control disponibles en JavaScript.
 
 ## Bucles en JavaScript: Una Explicación Detallada
 
@@ -470,9 +646,9 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
    El operador `++` incrementa el valor de una variable en una unidad.
    Puede ser utilizado antes (`++variable`) o después (`variable++`) del nombre de la variable. La diferencia radica en cuándo se realiza el incremento:
 
-     - Cuando se utiliza antes (`++variable`), el incremento se realiza antes de que se evalúe la expresión en la que se encuentra la variable.
+   - Cuando se utiliza antes (`++variable`), el incremento se realiza antes de que se evalúe la expresión en la que se encuentra la variable.
 
-     - Cuando se utiliza después (`variable++`), el incremento se realiza después de que se evalúe la expresión en la que se encuentra la variable.
+   - Cuando se utiliza después (`variable++`), el incremento se realiza después de que se evalúe la expresión en la que se encuentra la variable.
 
    ```javascript
    let x = 5;
@@ -502,6 +678,16 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
 
    - **Bucle `for`**:
 
+     
+     ```javascript
+     for (let index = 0; index < array.length; index++) {
+       const element = array[index];
+       // Tu código aquí
+     }
+     ```
+
+     Ejemplo:
+
      ```javascript
      for (let i = 0; i < 5; i++) {
        console.log(i);
@@ -511,6 +697,17 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
      En este ejemplo, el bucle `for` se ejecuta mientras la variable `i` sea menor que 5. En cada iteración, se incrementa el valor de `i` en 1.
 
    - **Bucle `while`**:
+
+     
+     ```javascript
+     let aux = 0;
+     while (condition) {
+       // Tu código aquí
+       aux++;
+     }
+     ```
+
+     Ejemplo:
 
      ```javascript
      let i = 0;
@@ -525,6 +722,16 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
    - **Bucle `do-while`**:
 
      ```javascript
+     let aux = 0;
+     do {
+       // Tu código aquí
+       aux++;
+     } while (condition);
+     ```
+
+     Ejemplo:
+
+     ```javascript
      let i = 0;
      do {
        console.log(i);
@@ -532,9 +739,9 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
      } while (i < 5);
      ```
 
-     Este bucle se ejecuta al menos una vez, ya que primero se ejecuta el bloque de código y luego se verifica la condición. Si la condición es verdadera, se repite el bucle.
+     `Este bucle se ejecuta al menos una vez`, ya que primero se ejecuta el bloque de código y luego se verifica la condición. Si la condición es verdadera, se repite el bucle.
 
-6. #### **`Control de Bucles y Palabras Clave Relacionadas`**:
+6. #### **`Control de Bucles y Palabras Clave Relacionadas 'continue' y 'break'`**:
 
    En JavaScript, existen palabras clave que permiten controlar el flujo de un bucle, como `break` y `continue`.
 
@@ -620,30 +827,6 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
      console.log("Entrada válida:", entrada);
      ```
 
-10. #### **`Explicación del Uso de Palabras Clave 'break' y 'continue'`**:
-
-   - **Uso de `break` para Salir de un Bucle**:
-
-     ```javascript
-     for (let i = 0; i < 10; i++) {
-       if (i === 5) {
-         break;
-       }
-       console.log(i);
-     }
-     ```
-
-   - **Uso de `continue` para Saltar una Iteración**:
-
-     ```javascript
-     for (let i = 0; i < 5; i++) {
-       if (i === 2) {
-         continue;
-       }
-       console.log(i);
-     }
-     ```
-
-11. #### **`Consideraciones Finales sobre Bucles en JavaScript`**:
+10. #### **`Consideraciones Finales sobre Bucles en JavaScript`**:
 
    Los bucles son una herramienta poderosa en JavaScript para automatizar tareas repetitivas y procesar datos de manera eficiente. Sin embargo, es importante utilizarlos con cuidado y considerar alternativas más modernas y funcionales cuando sea posible, para escribir un código más limpio y legible. Además, comprender el comportamiento del contexto `this` dentro de los bucles es crucial para evitar errores de referencia y comportamientos inesperados.
