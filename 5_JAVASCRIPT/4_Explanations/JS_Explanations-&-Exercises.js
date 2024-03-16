@@ -207,13 +207,21 @@ console.log(stringsFiltrados);
 
 let elObjeto = {
   a: 1,
-  b: 2,
+  b: "Pancho",
   c: 3,
 };
 
 for (let propiedadKeyDeMiObjeto in elObjeto) {
   console.log(propiedadKeyDeMiObjeto); // Imprime: 'a', 'b', 'c'
-  console.log(elObjeto[propiedadKeyDeMiObjeto]); // Imprime: 1, 2, 3
+  console.log(elObjeto[propiedadKeyDeMiObjeto]); // Imprime: 1, Pancho, 3
+}
+
+for (const key in elObjeto) {
+  if (Object.hasOwnProperty.call(elObjeto, key)) {
+    const element = elObjeto[key];
+    console.log(element); // Imprime: 'a', 'b', 'c'
+    console.log(key); // Imprime: 1, Pancho, 3
+  }
 }
 
 // Otra forma
@@ -234,7 +242,7 @@ function iterarEnObjeto(object) {
   }
 }
 
-iterarEnObjeto(car);
+iterarEnObjeto(elObjeto);
 
 /* `Object.entries`: crea un array de arrays [['key', 'value'], ['key', 'value'], ['key', '{ value }']]. Tiene un hermano gemelo que hace lo mismo, pero al revés `Object.fromEntries()`, o sea que convierte un array de arrays (key-value) en objeto. */
 
@@ -294,7 +302,7 @@ Recuerda que: el ciclo `for of` itera sobre las `values`.
 Por esta razón se usan más para arrays/arreglos/matrices 
 */
 
-// `FOR...OF`: pertenece al ECMAScript 2015, ES6. Se utiliza para iterar sobre arrays, strings (que es un array de letras), array de objetos y todo aquello que es iterable. Lo que hace, es pasar por cada elemento de un array (itera sobre de él) y trabaja el código que yo le introduzca.
+// `FOR...OF`: pertenece al ECMAScript 2015, ES6. Se utiliza para iterar sobre arrays, strings (que es un array de letras), array de objetos y todo aquello que es iterable o sigue un índice. Lo que hace, es pasar por cada elemento de un array (itera sobre de él) y trabaja el código que yo le introduzca.
 var misNumeros = [1, 2, 3, 4, 5];
 for (let cadaNumero of misNumeros) {
   let multiplication = cadaNumero * 2; // Código introducido.
@@ -302,9 +310,12 @@ for (let cadaNumero of misNumeros) {
 }
 
 let array = [1, 2, 3];
-for (let elemento of array) {
-  console.log(elemento); // Imprime: 1, 2, 3
-  console.log();
+for (const iterator of array) {
+  console.log(iterator); // Imprime: 1, 2, 3
+}
+
+for (const iterator of object) {
+  
 }
 
 // `.forEach()`: quiere decir -> .porCada(lo que haya dentro de los paréntesis.En éste caso, un arrow function).
@@ -758,6 +769,7 @@ console.log("Elementos eliminados:", removedElements); // Resultado: [3, 4]
 
 /* En JavaScript, el método .reduce() se utiliza para recorrer/iterar un arreglo/array y acumular sus elementos en un único valor. Se usa frecuentemente para realizar operaciones como sumar números, encontrar el valor máximo o mínimo, o cualquier otra operación que involucre combinar elementos del arreglo. */
 /* La sintaxis básica del método .reduce() es la siguiente: */
+let valorInicial = 0;
 const miValorFinal = array.reduce((acumulador, valorActual) => {
   // operaciones del código
 }, valorInicial);
@@ -1550,9 +1562,9 @@ if (password.length >= 4 && password.length <= 6) {
 
 // Rewrite the exercise 20, by using a Switch statement.
 
-primitive = false;
+let primitivi = false;
 
-switch (typeof primitive) {
+switch (typeof primitivi) {
   case "string":
     console.log("es una string");
     break;
@@ -1567,27 +1579,23 @@ switch (typeof primitive) {
 }
 
 // Marcos
-function c(variable) {
-  return console.log(variable);
-}
-
 let primitivos = 23;
 
 switch (typeof primitivos) {
   case "string":
-    c("Esto es un String.");
+    console.log("Esto es un String.");
     break;
   case "number":
-    c("Esto es un Number.");
+    console.log("Esto es un Number.");
     break;
   case "boolean":
-    c("Esto es un Boolean.");
+    console.log("Esto es un Boolean.");
     break;
   case "undefined":
-    c("No hay ningún valor asignado.");
+    console.log("No hay ningún valor asignado.");
     break;
   default:
-    c("No conozco aún ese valor.");
+    console.log("No conozco aún ese valor.");
 }
 
 // Lau
@@ -1684,7 +1692,7 @@ let priceRoom = [
 switch (priceRoom[0]) {
   case 50: {
     // Los "case" acceden al valor que tengo guardado dentro de una variable, siempre que sea <String> o <Number>. Por lo tanto, deberé seleccionar directamente el dato que deseo analizar, en este caso equivale a 50, que corresponde al valor de la variable precioBasicoDeEneroAMayo.
-    d(
+    console.log(
       `The price of Basic Room from January to May is ${priceRoom[0].precioBasicoDeEneroAMayo} euros.`,
     );
     // selectionOfRooms.push(priceRoom[0].precioBasicoDeEneroAMayo)
@@ -1692,7 +1700,7 @@ switch (priceRoom[0]) {
   } // Si le quitamos el "break;", el código, sigue funcionando, hasta que encuentra un "break;"
   case 80: {
     // Acá el dato al cual deseo acceder trámite el "case", es el 80, que es el valor de la variable precioJovenDeEneroAMayo.
-    d(
+    console.log(
       `The price of Junior Room from January to May is ${priceRoom[0].precioJovenDeEneroAMayo} euros.`,
     );
     // selectionOfRooms.push(priceRoom[0].precioJovenDeEneroAMayo)
@@ -1700,7 +1708,7 @@ switch (priceRoom[0]) {
   }
   case 100: {
     // Con este "case" accedo al valor de mi variable precioMasterDeEneroAMayo.
-    d(
+    console.log(
       `The price of Master Suite from January to May is ${priceRoom[0].precioMasterDeEneroAMayo} euros.`,
     );
     // selectionOfRooms.push(priceRoom[0].precioMasterDeEneroAMayo)
@@ -1708,7 +1716,7 @@ switch (priceRoom[0]) {
   }
 
   default: {
-    d(`You don't have select your room.`);
+    console.log(`You don't have select your room.`);
     break;
   }
 }
@@ -2139,7 +2147,6 @@ const randomHexID = () => {
 };
 console.log(randomHexID());
 
-
 /* 2. Código Hexadecimal random Color */
 const randomHexColor = () => {
   const hexadecimalNumbers = [];
@@ -2156,26 +2163,36 @@ const randomHexColor = () => {
 };
 console.log(randomHexColor());
 
-
 /* 3. Código UUID (Identificador Único Universal). Para utilizar randomUUID() debemos utilizar librerías externas porque no es un método estándar en JavaScript */
-const crypto = require("node:crypto");
 
-const randomID = crypto.randomUUID();
-
-console.log(randomID);
+/**
+ *
+ * const crypto = require("node:crypto");
+ *
+ * const randomID = crypto.randomUUID();
+ *
+ * console.log(randomID);
+ *
+ */
 
 /* 4. Código UUID (Identificador Único Universal) formateado. */
-function generateFormattedUUID() {
-  const randomID = crypto.randomUUID();
-  const formattedUUID = randomID
-    .replace(/-/g, "")
-    .match(/.{1,4}/g)
-    .join("-#");
-  return `#${formattedUUID}`;
-}
 
-const formattedUUID = generateFormattedUUID();
-console.log(formattedUUID);
+/**
+ * 
+ * function generateFormattedUUID() {
+ * const randomID = crypto.randomUUID();
+ * const formattedUUID = randomID
+ *   .replace(/-/g, "")
+ *   .match(/.{1,4}/g)
+ *   .join("-#");
+ * return `#${formattedUUID}`;
+ * }
+ * 
+ * const formattedUUID = generateFormattedUUID();
+ * console.log(formattedUUID);
+ * 
+ */
+
 
 // -------------------- CONVERTIR DECIMAL A HEXADECIMAL --------------------------
 
