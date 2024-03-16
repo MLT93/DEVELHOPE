@@ -6,7 +6,7 @@
 let word = "world";
 function showAlert(params) {
   return console.log(
-    `Hello ${params}.`
+    `Hello ${params}.`,
   ); /* En este caso no utilizo el alert(), si no el console.log()
     para poder ver el mensaje en consola, si no, da error.*/
 }
@@ -54,7 +54,9 @@ al documento.*/
 // document.write("Hello World") <- Ejercicio hecho
 let word2 = "world";
 function showDocumentWrite(params) {
-  console.log(`Hello ${params}!`); /* En este caso no utilizo el document.write(), si no el console.log()
+  console.log(
+    `Hello ${params}!`,
+  ); /* En este caso no utilizo el document.write(), si no el console.log()
     para poder ver el mensaje en consola, si no, da error.*/
 }
 
@@ -93,7 +95,7 @@ console.log(3 + 5); // Realizo directamente la suma dentro del console.log() sin
 
 let nombreUsuario =
   prompt(
-    `Cuál es tu nombre?`
+    `Cuál es tu nombre?`,
   ); /* El prompt solicita al usuario que ingrese información de cualquier tipo,
 dentro de la página web. Hay que tener cuidado con el prompt porque puede ser sujeto a entrada de código malicioso.*/
 alert(`¡Hola ${nombreUsuario}!`); // alert me genera una ventana emergente en la página web.
@@ -150,17 +152,17 @@ function devuelveElNumeroMayorDeLosNumerosSolicitados() {
   // Mostrar los el array de numeros ingresados por consola
   console.log(
     "Los números que se utilizarán para la comparación son:",
-    numerosParaGuardar
+    numerosParaGuardar,
   );
 
   // Creo que hay que desarrollar un for sobre el array de numerosParaGuardar para que busque y compare los números mayores
   if (numerosParaGuardar[0] >= 0 && numerosParaGuardar[1] < 0) {
     return console.log(
-      `El número ${numerosParaGuardar[0]} es mayor que el número ${numerosParaGuardar[1]}`
+      `El número ${numerosParaGuardar[0]} es mayor que el número ${numerosParaGuardar[1]}`,
     );
   } else if (numerosParaGuardar[1] >= 0 && numerosParaGuardar[0] < 0) {
     return console.log(
-      `El número ${numerosParaGuardar[1]} es mayor que el número ${numerosParaGuardar[0]}`
+      `El número ${numerosParaGuardar[1]} es mayor que el número ${numerosParaGuardar[0]}`,
     );
   } else if (numerosParaGuardar[0] >= 0 && numerosParaGuardar[1] >= 0) {
     return console.log(`Ambos números son positivos`);
@@ -171,7 +173,7 @@ function devuelveElNumeroMayorDeLosNumerosSolicitados() {
   }
 }
 
-// Ingreso números en la funcion que los solicita
+// Ingreso números en la función que los solicita
 solicitarNumeros(10, -12);
 
 // Llamo mi función para devolver el número mayor

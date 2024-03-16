@@ -678,7 +678,6 @@ El `switch` en JavaScript es una estructura de control poderosa que permite toma
 
    - **Bucle `for`**:
 
-     
      ```javascript
      for (let index = 0; index < array.length; index++) {
        const element = array[index];
@@ -698,7 +697,6 @@ El `switch` en JavaScript es una estructura de control poderosa que permite toma
 
    - **Bucle `while`**:
 
-     
      ```javascript
      let aux = 0;
      while (condition) {
@@ -789,14 +787,72 @@ El `switch` en JavaScript es una estructura de control poderosa que permite toma
 
    Este ejemplo muestra un bucle `for` anidado dentro de otro. Se ejecuta el bucle exterior para `i` desde 0 hasta 2, y dentro de cada iteración del bucle exterior, se ejecuta el bucle interior para `j` desde 0 hasta 2.
 
-8. #### **`Especificaciones sobre el Contexto 'this' en Bucles`**:
+8. #### **`Bucles Particulares`**
 
-   El contexto `this` en JavaScript puede comportarse de manera diferente dentro de bucles, especialmente al utilizar 'funciones regulares' en lugar de 'funciones flecha'. En bucles anidados, el contexto `this` puede cambiar en cada nivel de anidamiento, lo que puede llevar a errores de referencia, ten cuidado.
+   Los bucles `for...in` y `for...of` son estructuras de control que nos permiten recorrer elementos en JavaScript, pero tienen diferencias importantes en cuanto a su funcionamiento y los tipos de objetos sobre los que pueden iterar.
 
-9. #### **`Ejemplos de Uso de Bucles Paso a Paso`**:
+   - **Bucle `for...in`**:
+
+     ```javascript
+     for (const key in object) {
+       if (Object.hasOwnProperty.call(object, key)) {
+         const element = object[key];
+         // Tu código aquí
+       }
+     }
+     ```
+
+     Ejemplo:
+
+     ```javascript
+     let miObjeto = {
+       a: 1,
+       b: "Pancho",
+       c: 3,
+     };
+
+     for (const key in miObjeto) {
+       if (Object.hasOwnProperty.call(miObjeto, key)) {
+         const value = miObjeto[key];
+         console.log(value);
+         console.log(key);
+       }
+     }
+     ```
+
+     En este ejemplo, el bucle `for...in` recorre todas las propiedades del objeto objeto e imprime tanto el nombre de la propiedad como su valor.
+
+     `No es adecuado para recorrer arrays`, ya que puede tener comportamientos inesperados debido a la enumeración de todas las propiedades, incluyendo las propiedades del prototipo.
+
+   - **Bucle `for...of`**:
+
+     ```javascript
+     for (const iterator of object) {
+       // Tu código aquí
+     }
+     ```
+
+     Ejemplo:
+
+     ```javascript
+     let array = [1, 2, 3];
+     for (const iterator of array) {
+       console.log(iterator);
+     }
+     ```
+
+     En este ejemplo, el bucle `for...of` es una forma concisa y legible de recorrer los elementos del array, ya que simplifica el código al evitar la necesidad de rastrear índices o preocuparse por el tamaño del array.
+
+     `No itera sobre las propiedades de un objeto`, por lo que no se pueden usar directamente con objetos normales. Itera sobre los valores de un objeto iterable, en lugar de sobre las propiedades.
+
+9. #### **`Especificaciones sobre el Contexto 'this' en Bucles`**:
+
+   El contexto `this` en JavaScript puede comportarse de manera diferente dentro de bucles, especialmente al utilizar "funciones regulares" en lugar de "funciones flecha". En bucles anidados, el contexto `this` puede cambiar en cada nivel de anidamiento, lo que puede llevar a errores de referencia, ten cuidado.
+
+10. #### **`Ejemplos de Uso de Bucles Paso a Paso`**:
 
    - **Bucle `for` para Imprimir Números Pares**:
-
+   
      ```javascript
      for (let i = 0; i <= 10; i++) {
        if (i % 2 === 0) {
@@ -806,7 +862,7 @@ El `switch` en JavaScript es una estructura de control poderosa que permite toma
      ```
 
    - **Bucle `while` para Calcular Factorial**:
-
+   
      ```javascript
      let numero = 5;
      let factorial = 1;
@@ -818,7 +874,7 @@ El `switch` en JavaScript es una estructura de control poderosa que permite toma
      ```
 
    - **Bucle `do-while` para Validar Entradas del Usuario**:
-
+   
      ```javascript
      let entrada;
      do {
@@ -827,6 +883,45 @@ El `switch` en JavaScript es una estructura de control poderosa que permite toma
      console.log("Entrada válida:", entrada);
      ```
 
-10. #### **`Consideraciones Finales sobre Bucles en JavaScript`**:
+   - **Bucle `for...in` para Ver Propiedades Heredadas de un Objeto**:
+     
+     ```javascript
+     const persona = {
+       nombre: 'Juan',
+       edad: 30
+     };
+     
+     const empleado = Object.create(persona);
+     empleado.puesto = 'Desarrollador';
+     
+     for (const key in empleado) {
+       console.log(`Propiedad: ${key}, Valor: ${empleado[key]}`);
+     }
+     ```
 
-   Los bucles son una herramienta poderosa en JavaScript para automatizar tareas repetitivas y procesar datos de manera eficiente. Sin embargo, es importante utilizarlos con cuidado y considerar alternativas más modernas y funcionales cuando sea posible, para escribir un código más limpio y legible. Además, comprender el comportamiento del contexto `this` dentro de los bucles es crucial para evitar errores de referencia y comportamientos inesperados.
+   - **Bucle `for...of` para \_\_\_**
+   
+     ```javascript
+     const palabra = 'JavaScript';
+     
+     const letraBuscada = 'a';
+     
+     let posicion = -1;
+     
+     for (const [indice, caracter] of palabra.split('').entries()) {
+       if (caracter.toLowerCase() === letraBuscada.toLowerCase()) {
+         posicion = indice;
+         break;
+       }
+     }
+     
+     if (posicion !== -1) {
+       console.log(`La letra '${letraBuscada}' se encontró en la posición ${posicion} de la palabra.`);
+     } else {
+       console.log(`La letra '${letraBuscada}' no se encontró en la palabra.`);
+     }
+     ```
+
+1.  #### **`Consideraciones Finales sobre Bucles en JavaScript`**:
+
+Los bucles son una herramienta poderosa en JavaScript para automatizar tareas repetitivas y procesar datos de manera eficiente. Sin embargo, es importante utilizarlos con cuidado y considerar alternativas más modernas y funcionales cuando sea posible, para escribir un código más limpio y legible. Además, comprender el comportamiento del contexto `this` dentro de los bucles es crucial para evitar errores de referencia y comportamientos inesperados.

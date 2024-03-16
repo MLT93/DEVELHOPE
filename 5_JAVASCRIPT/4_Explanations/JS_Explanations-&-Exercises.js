@@ -212,15 +212,15 @@ let elObjeto = {
 };
 
 for (let propiedadKeyDeMiObjeto in elObjeto) {
-  console.log(propiedadKeyDeMiObjeto); // Imprime: 'a', 'b', 'c'
-  console.log(elObjeto[propiedadKeyDeMiObjeto]); // Imprime: 1, Pancho, 3
+  console.log(propiedadKeyDeMiObjeto); // Imprime -> primero: a | después: b | después: c
+  console.log(elObjeto[propiedadKeyDeMiObjeto]); // Imprime -> primero: 1 | después: Pancho | después: 3
 }
 
 for (const key in elObjeto) {
   if (Object.hasOwnProperty.call(elObjeto, key)) {
     const element = elObjeto[key];
     console.log(element); // Imprime: 'a', 'b', 'c'
-    console.log(key); // Imprime: 1, Pancho, 3
+    console.log(key); // Imprime: 1, 'Pancho', 3
   }
 }
 
@@ -315,7 +315,7 @@ for (const iterator of array) {
 }
 
 for (const iterator of object) {
-  
+  // Tu código aquí
 }
 
 // `.forEach()`: quiere decir -> .porCada(lo que haya dentro de los paréntesis.En éste caso, un arrow function).
