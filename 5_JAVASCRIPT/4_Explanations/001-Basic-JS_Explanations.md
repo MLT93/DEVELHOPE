@@ -925,3 +925,5 @@ El `switch` en JavaScript es una estructura de control poderosa que permite toma
 1.  #### **`Consideraciones Finales sobre Bucles en JavaScript`**:
 
 Los bucles son una herramienta poderosa en JavaScript para automatizar tareas repetitivas y procesar datos de manera eficiente. Sin embargo, es importante utilizarlos con cuidado y considerar alternativas más modernas y funcionales cuando sea posible, para escribir un código más limpio y legible. Además, comprender el comportamiento del contexto `this` dentro de los bucles es crucial para evitar errores de referencia y comportamientos inesperados.
+
+<!-- ToDo: Seguir con Arrays, Objects y después con funciones -->
