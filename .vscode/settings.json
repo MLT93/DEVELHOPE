@@ -314,6 +314,8 @@
     "monitoreo",
     "Monitoreo",
     "Mueang",
+    "multidimensionales",
+    "Multidimensionales",
     "narnia",
     "narrowea",
     "operacion",
@@ -338,6 +340,7 @@
     "requiérelo",
     "tlsv",
     "tsbuildinfo",
+    "unshift",
     "YOURNAME"
   ],
   "editor.suggest.preview": true,
@@ -355,7 +358,6 @@
   "editor.stickyScroll.enabled": false,
   "editor.unicodeHighlight.ambiguousCharacters": true,
   "launch": {
-  
     "configurations": [],
     "compounds": []
   }
