@@ -19,7 +19,7 @@
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.cursorWidth": 3,
   "terminal.integrated.cursorBlinking": true,
-  "editor.cursorBlinking": "blink",
+  "editor.cursorBlinking": "expand",
   "editor.cursorWidth": 3,
   "editor.bracketPairColorization.enabled": true,
   "[jsonc]": {
@@ -221,7 +221,7 @@
   "editor.formatOnPaste": true,
   "files.insertFinalNewline": true,
   "workbench.settings.applyToAllProfiles": ["files.insertFinalNewline"],
-  "editor.minimap.enabled": false,
+  "editor.minimap.enabled": true,
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -350,5 +350,13 @@
     "Updateable": "↑ "
   },
   "editor.fontLigatures": false,
-  "liveServer.settings.port": 5501
+  "liveServer.settings.port": 5501,
+  "editor.cursorStyle": "line",
+  "editor.stickyScroll.enabled": false,
+  "editor.unicodeHighlight.ambiguousCharacters": true,
+  "launch": {
+  
+    "configurations": [],
+    "compounds": []
+  }
 }

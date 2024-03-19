@@ -2178,7 +2178,7 @@ console.log(randomHexColor());
 /* 4. Código UUID (Identificador Único Universal) formateado. */
 
 /**
- * 
+ *
  * function generateFormattedUUID() {
  * const randomID = crypto.randomUUID();
  * const formattedUUID = randomID
@@ -2187,12 +2187,11 @@ console.log(randomHexColor());
  *   .join("-#");
  * return `#${formattedUUID}`;
  * }
- * 
+ *
  * const formattedUUID = generateFormattedUUID();
  * console.log(formattedUUID);
- * 
+ *
  */
-
 
 // -------------------- CONVERTIR DECIMAL A HEXADECIMAL --------------------------
 
