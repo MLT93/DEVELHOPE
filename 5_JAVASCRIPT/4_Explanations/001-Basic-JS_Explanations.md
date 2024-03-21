@@ -162,7 +162,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
    - **Nada o Null**: Representa la ausencia intencional de algún valor.
    - **Indefinido**: Indica que una variable ha sido declarada pero no definida.
    - **Símbolos**: Son valores únicos e inmutables introducidos en ES6, generalmente utilizados como identificadores únicos de propiedades de objetos.
-   - **Números muy grandes BigInt**: Introducido en ES6, permite representar números enteros muy grandes que van más allá del límite seguro de los números del tipo "number" regular.
+   - **Números muy grandes BigInt**: Introducido en ES6, permite representar números enteros muy grandes e inmutables que van más allá del límite seguro de los números del tipo "number" regular.
 
 3. #### **`Características de los Primitivos`**:
 
@@ -232,7 +232,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
    - **Null**: Indica la ausencia intencional de un valor.
    - **Undefined**: Indica que una variable ha sido declarada pero no inicializada.
    - **Symbol**: Representan un identificador único e inmutable, introducido en ES6.
-   - **BigInt**: Representa un número regular muy grande, introducido en ES6. Se caracteriza por una `n` distintiva, al final del número.
+   - **BigInt**: Representa un número muy grande e inmutable con precisión arbitraria, introducido en ES6. Su creación se caracteriza por una `n` distintiva al final del número.
 
 3. #### **`Operaciones con Números`**:
 
