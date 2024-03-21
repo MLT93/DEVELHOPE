@@ -156,12 +156,13 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
 
    Los tipos de primitivos en JavaScript son los siguientes:
 
-   - **Cadenas (Strings)**: Representan texto y se escriben entre comillas simples o dobles. También se pueden escribir con backticks (acento grave).
-   - **Números**: Representan valores numéricos, ya sean enteros o de punto flotante.
-   - **Booleanos**: Representan valores lógicos de verdadero o falso.
-   - **Null**: Representa la ausencia intencional de algún valor.
-   - **Undefined**: Indica que una variable ha sido declarada pero no definida.
-   - **Símbolos (Symbols)**: Son valores únicos e inmutables introducidos en ES6, generalmente utilizados como identificadores únicos de propiedades de objetos.
+   - **Cadenas de texto**: Representan texto y se escriben entre comillas simples o dobles. También se pueden escribir con backticks (acento grave).
+   - **Números regulares**: Representan valores numéricos, ya sean enteros o de punto flotante.
+   - **Valores Booleanos**: Representan valores lógicos de verdadero o falso.
+   - **Nada o Null**: Representa la ausencia intencional de algún valor.
+   - **Indefinido**: Indica que una variable ha sido declarada pero no definida.
+   - **Símbolos**: Son valores únicos e inmutables introducidos en ES6, generalmente utilizados como identificadores únicos de propiedades de objetos.
+   - **Números muy grandes BigInt**: Introducido en ES6, permite representar números enteros muy grandes que van más allá del límite seguro de los números del tipo "number" regular.
 
 3. #### **`Características de los Primitivos`**:
 
@@ -178,6 +179,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
    const nulo = null;
    let indefinido;
    const simbolo = Symbol("foo");
+   const bigInt = 9007199254740991n;
    ```
 
 5. #### **`Operaciones con Primitivos`**:
@@ -190,7 +192,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
 6. #### **`Coerción Implícita y Explícita`**:
 
    - **Coerción Implícita**: JavaScript intenta convertir automáticamente un tipo de dato en otro cuando sea necesario, por ejemplo, al realizar operaciones entre tipos diferentes.
-   - **Coerción Explícita**: También es posible forzar la conversión de tipos de datos de manera explícita utilizando funciones como `String()`, `Number()`, `Boolean()`, etc.
+   - **Coerción Explícita**: También es posible forzar la conversión de tipos de datos de manera explícita utilizando funciones constructoras como `String()`, `Number()`, `Boolean()`, `BigInt()` etc.
 
 7. #### **`Funciones y Primitivos`**:
 
@@ -224,18 +226,19 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
 
 2. #### **`Tipos de Primitivos`**:
 
-   - **Números (Number)**: Representan valores numéricos, ya sea enteros o de punto flotante.
-   - **Cadenas de texto (String)**: Secuencias de caracteres, encerradas entre comillas simples ('') o dobles ("").
-   - **Booleanos (Boolean)**: Representan un valor de verdad, es decir, `true` o `false`.
-   - **null**: Indica la ausencia intencional de un valor.
-   - **undefined**: Indica que una variable ha sido declarada pero no inicializada.
-   - **Símbolos (Symbol)**: Representan un identificador único e inmutable, introducido en ES6.
+   - **Number**: Representan valores numéricos, ya sea enteros o de punto flotante.
+   - **String**: Secuencias de caracteres, encerradas entre comillas simples ('') o dobles ("").
+   - **Boolean**: Representan un valor de verdad, es decir, `true` o `false`.
+   - **Null**: Indica la ausencia intencional de un valor.
+   - **Undefined**: Indica que una variable ha sido declarada pero no inicializada.
+   - **Symbol**: Representan un identificador único e inmutable, introducido en ES6.
+   - **BigInt**: Representa un número regular muy grande, introducido en ES6. Se caracteriza por una `n` distintiva, al final del número.
 
 3. #### **`Operaciones con Números`**:
 
-   - **Operadores Aritméticos**: Permiten realizar operaciones matemáticas básicas como suma (+), resta (-), multiplicación (\*), división (/) y módulo (%).
+   - **Operadores Aritméticos**: Permiten realizar operaciones matemáticas básicas como `suma (+)`, `resta (-)`, `multiplicación (*)`, `división (/)` y `módulo (%)`.
 
-   - **Operadores de Comparación**: Como dijimos previamente permiten comparar números utilizando operadores como igual (==) que compara solo el valor, no igual (!=) que compara solo el valor", mayor que (>), menor que (<), mayor o igual que (>=), menor o igual que (<=), igualdad estricta (===) que compara valor y tipo y desigualdad estricta (!==) que compara valor y tipo.
+   - **Operadores de Comparación**: Como dijimos previamente permiten comparar números utilizando operadores como `igualdad de valor (==)` que compara solo el valor, `no igualdad de valor (!=)` que compara solo el valor, `mayor que (>)`, `menor que (<)`, `mayor o igual que (>=)`, `menor o igual que (<=)`, `igualdad estricta de valor y tipo (===)` y `desigualdad estricta de valor y tipo (!==)`.
 
    - **Operadores de Asignación**: Se utilizan para asignar valores a variables. Por ejemplo, el operador de asignación simple (=) asigna un valor a una variable.
 
@@ -249,7 +252,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
 
 5. #### **`Operaciones con Booleanos`**:
 
-   - **Operadores Lógicos**: Permiten realizar operaciones lógicas como AND (&&), OR (||) y NOT (!).
+   - **Operadores Lógicos**: Permiten realizar operaciones lógicas como `AND (&&)`, `OR (||)` y `NOT (!)`.
 
    - **Conversión a Booleano**: En JavaScript, cualquier valor se puede convertir a un valor booleano. Valores como `0`, `null`, `undefined`, `NaN`, `''` (cadena de texto vacía) y `false` se consideran falsy, mientras que todos los demás valores se consideran truthy.
 
@@ -851,76 +854,78 @@ El `switch` en JavaScript es una estructura de control poderosa que permite toma
 
 10. #### **`Ejemplos de Uso de Bucles Paso a Paso`**:
 
-   - **Bucle `for` para Imprimir Números Pares**:
-   
-     ```javascript
-     for (let i = 0; i <= 10; i++) {
-       if (i % 2 === 0) {
-         console.log(i);
-       }
-     }
-     ```
+- **Bucle `for` para Imprimir Números Pares**:
 
-   - **Bucle `while` para Calcular Factorial**:
-   
-     ```javascript
-     let numero = 5;
-     let factorial = 1;
-     while (numero >= 1) {
-       factorial *= numero;
-       numero--;
-     }
-     console.log(factorial);
-     ```
+  ```javascript
+  for (let i = 0; i <= 10; i++) {
+    if (i % 2 === 0) {
+      console.log(i);
+    }
+  }
+  ```
 
-   - **Bucle `do-while` para Validar Entradas del Usuario**:
-   
-     ```javascript
-     let entrada;
-     do {
-       entrada = prompt("Ingrese un número mayor que 10:");
-     } while (entrada <= 10);
-     console.log("Entrada válida:", entrada);
-     ```
+- **Bucle `while` para Calcular Factorial**:
 
-   - **Bucle `for...in` para Ver Propiedades Heredadas de un Objeto**:
-     
-     ```javascript
-     const persona = {
-       nombre: 'Juan',
-       edad: 30
-     };
-     
-     const empleado = Object.create(persona);
-     empleado.puesto = 'Desarrollador';
-     
-     for (const key in empleado) {
-       console.log(`Propiedad: ${key}, Valor: ${empleado[key]}`);
-     }
-     ```
+  ```javascript
+  let numero = 5;
+  let factorial = 1;
+  while (numero >= 1) {
+    factorial *= numero;
+    numero--;
+  }
+  console.log(factorial);
+  ```
 
-   - **Bucle `for...of` para \_\_\_**
-   
-     ```javascript
-     const palabra = 'JavaScript';
-     
-     const letraBuscada = 'a';
-     
-     let posicion = -1;
-     
-     for (const [indice, caracter] of palabra.split('').entries()) {
-       if (caracter.toLowerCase() === letraBuscada.toLowerCase()) {
-         posicion = indice;
-         break;
-       }
-     }
-     
-     if (posicion !== -1) {
-       console.log(`La letra '${letraBuscada}' se encontró en la posición ${posicion} de la palabra.`);
-     } else {
-       console.log(`La letra '${letraBuscada}' no se encontró en la palabra.`);
-     }
-     ```
+- **Bucle `do-while` para Validar Entradas del Usuario**:
+
+  ```javascript
+  let entrada;
+  do {
+    entrada = prompt("Ingrese un número mayor que 10:");
+  } while (entrada <= 10);
+  console.log("Entrada válida:", entrada);
+  ```
+
+- **Bucle `for...in` para Ver Propiedades Heredadas de un Objeto**:
+
+  ```javascript
+  const persona = {
+    nombre: "Juan",
+    edad: 30,
+  };
+
+  const empleado = Object.create(persona);
+  empleado.puesto = "Desarrollador";
+
+  for (const key in empleado) {
+    console.log(`Propiedad: ${key}, Valor: ${empleado[key]}`);
+  }
+  ```
+
+- **Bucle `for...of` para \_\_\_**
+
+  ```javascript
+  const palabra = "JavaScript";
+
+  const letraBuscada = "a";
+
+  let posicion = -1;
+
+  for (const [indice, caracter] of palabra.split("").entries()) {
+    if (caracter.toLowerCase() === letraBuscada.toLowerCase()) {
+      posicion = indice;
+      break;
+    }
+  }
+
+  if (posicion !== -1) {
+    console.log(
+      `La letra '${letraBuscada}' se encontró en la posición ${posicion} de la palabra.`,
+    );
+  } else {
+    console.log(`La letra '${letraBuscada}' no se encontró en la palabra.`);
+  }
+  ```
 
 1.  #### **`Consideraciones Finales sobre Bucles en JavaScript`**:
 
@@ -962,17 +967,17 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
    ```javascript
    const miArray = [1, 2, 3, 4, 5];
-   
+
    // Utilizando un bucle for
    for (let i = 0; i < miArray.length; i++) {
      console.log(miArray[i]); // Imprime cada elemento del array
    }
-   
+
    // Utilizando forEach
-   miArray.forEach(elemento => {
+   miArray.forEach((elemento) => {
      console.log(elemento); // Imprime cada elemento del array
    });
-   
+
    // Utilizando for...of
    for (const elemento of miArray) {
      console.log(elemento); // Imprime cada elemento del array
@@ -1001,9 +1006,9 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
    const matriz = [
      [1, 2, 3],
      [4, 5, 6],
-     [7, 8, 9]
+     [7, 8, 9],
    ];
-   
+
    console.log(matriz[0][1]); // Imprime: 2 (el segundo elemento de la primera fila)
    ```
 
