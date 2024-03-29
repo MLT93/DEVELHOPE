@@ -2286,7 +2286,9 @@ priceWithMonthlyDiscount(16, 70, 0);
 
 // ------------------------------------------------------------------------------
 
+console.log("a" <= "b"); // true
 console.log("a" >= "b"); // false
-console.log("a" > "b"); // false
-console.log("1" > "0"); // true
-console.log("1" > "0"); // true
+console.log("a" < "b"); // true
+console.log("1" != 1); // false
+/* console.log("1" > "0"); // true
+console.log("1" > "0"); // true */

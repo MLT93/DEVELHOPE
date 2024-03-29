@@ -318,7 +318,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
        ```javascript
        console.log(1 > 0); // true
        console.log("1" > "0"); // true
-       console.log("a" > "b"); // true
+       console.log("a" > "b"); // false
        ```
 
      - `Mayor o igual que (>=)`
