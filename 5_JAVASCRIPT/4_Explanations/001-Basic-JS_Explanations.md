@@ -241,10 +241,10 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
      - `Operaciones básicas`
 
        ```javascript
-       1 + 1 // => 2
+       1 + 1; // => 2
        2 - 1.5; // => 0.5
        19 / 2; // => 9.5
-       2 * 5 // => 10
+       2 * 5; // => 10
        ```
 
      - `Módulo`
@@ -268,7 +268,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
      - `Ejemplo`
 
        ```javascript
-       const result = 3 ** 3 + 9 * 4 / (3 - 1);
+       const result = 3 ** 3 + (9 * 4) / (3 - 1);
        // => 3 ** 3 + 9 * 4/2
        // => 27 + 9 * 4/2
        // => 27 + 18
@@ -281,7 +281,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
 
        ```javascript
        /* No es sensible al tipo de dato. Comprueba solo el valor */
-       
+
        console.log(1 == 1); // true
        console.log("1" == 1); // true
        ```
@@ -353,10 +353,15 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
    - **Operadores de Asignación**: Se utilizan para asignar valores a variables. Por ejemplo, el `operador de asignación simple (=)` asigna un valor a una variable. También existen `operadores de asignación abreviada (+=)` para facilitar la asignación de valores nuevos a valores viejos utilizando una misma variable para la asignación del valor actualizado.
 
    - `Asignación simple`
-   
 
+     ```javascript
+     /* Se utiliza para inicializar una variable y asignarle un valor */
+
+     let x = 10;
+     ```
 
    - `Asignación abreviada`
+
      ```javascript
      /* Se utiliza frecuentemente para guardar valores actualizados en una misma variable */
 
@@ -369,9 +374,37 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
 
 4. #### **`Operaciones con Cadenas de Texto`**:
 
-   - **Concatenación**: `Se realiza utilizando el operador de suma (+) y un espacio vacío usando ("")` para simular las separaciones entre palabras, para que nos una dos cadenas de texto en una sola.
+   - **Concatenación**: `Se realiza utilizando el operador de suma (+) y un espacio vacío usando ("")` para simular las separaciones entre palabras, para que nos una dos cadenas de texto en una sola. También es posible concatenar con ` backticks o acento grave (``) para escribir las cadenas de texto y al interno se pueden concatenar variables utilizando la expresión (${}) `
 
-   - **Longitud de la Cadena**: Se puede obtener la longitud de una cadena utilizando la propiedad `length`.
+   - `Concatenación simple`
+
+   ```javascript
+   let hello = "Hola";
+   let name = "Pepe";
+
+   let badConcat = hello + name; // => HolaPepe
+   let goodConcat = hello + "" + name; // => Hola Pepe
+   ```
+
+   - `Template string`
+
+   ```javascript
+   let welcome = "Bienvenido";
+   let name_2 = "Juan";
+
+   let templateString = `${welcome} ${name_2}`; // => Bienvenido Juan
+   ```
+
+   - `Recursos adicionales`
+
+     - [Template literals](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Template_literals)
+
+   - **Longitud de la Cadena**: Se puede obtener la longitud de una cadena utilizando la propiedad `length`. También se utiliza en Arrays.
+
+     ```javascript
+     let theString = "ciao"
+     console.log(theString.length); // => 4
+     ```
 
    - **Métodos de Manipulación de Cadenas**: JavaScript proporciona una variedad de métodos para manipular cadenas, como `toUpperCase()`, `toLowerCase()`, `charAt()`, `substring()`, `indexOf()`, `slice()`, entre otros.
 
@@ -1072,7 +1105,7 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
 3. #### **`Sintaxis y Manipulación de Arrays`**:
 
-   La sintaxis básica para crear un array en JavaScript es mediante corchetes `[]`, dentro de los cuales se colocan los elementos separados por comas. Por ejemplo:
+   La sintaxis básica para crear un array en JavaScript es mediante corchetes `[]`, dentro de los cuales se colocan los elementos separados por comas.
 
    ```javascript
    const miArray = [1, 2, 3, 4, 5];
@@ -1159,10 +1192,324 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
    En resumen, los Arrays en JavaScript son una herramienta poderosa y versátil para almacenar y manipular conjuntos de datos de manera eficiente. Su flexibilidad y numerosos métodos integrados los hacen indispensables en el desarrollo web y de aplicaciones para una amplia gama de tareas y aplicaciones. Con una comprensión sólida de su sintaxis y funcionalidades, los desarrolladores pueden aprovechar al máximo el potencial de los Arrays en sus proyectos.
 
-<!-- 
+<!--
 
-## Ejemplos y comparaciones de operadores de comparación en JavaScript:
+## **Métodos Array y Explicación del contexto This en JavaScript: Una Explicación Detallada**
 
 
+1. #### **`Callback en Métodos Array`**:
+
+   Algunos métodos Array, como `map()`, `filter()`, `forEach()`, entre otros, aceptan una función de callback como argumento. Esta función se ejecuta una vez por cada elemento del array y puede tomar parámetros adicionales, como el índice del elemento o el propio array.
+
+   ```javascript
+   const numeros = [1, 2, 3, 4, 5];
+
+   // Ejemplo de método forEach() con índice
+   numeros.forEach((numero, indice) => {
+     console.log(`Número ${numero} en el índice ${indice}`);
+   });
+   ```
+
+   En este ejemplo, la función de callback recibe el valor del elemento y su índice en cada iteración.
+
+2. #### **`Arrow Functions como Callbacks`**:
+
+   Las arrow functions son comúnmente utilizadas como callbacks en los métodos Array debido a su sintaxis concisa y a la manera en que manejan el contexto de `this`.
+
+   ```javascript
+   const numeros = [1, 2, 3, 4, 5];
+
+   // Ejemplo de arrow function como callback en map()
+   const cuadrados = numeros.map(numero => numero * numero);
+   ```
+
+   Las arrow functions son especialmente útiles en situaciones donde se desea preservar el contexto de `this` del ámbito circundante.
+
+3. #### **`Contexto this en Arrow Functions`**:
+
+   En las arrow functions, el contexto `this` está determinado por el ámbito léxico en el que se encuentran, en contraposición a las funciones regulares donde `this` puede variar dependiendo de cómo se llame la función.
+
+   ```javascript
+   const objeto = {
+     propiedad: "valor",
+     functionNormal: function() {
+       console.log(this.propiedad);
+     },
+     functionArrow: () => {
+       console.log(this.propiedad); // this se refiere al contexto externo, no al objeto
+     }
+   };
+
+   objeto.functionNormal(); // Imprime: "valor"
+   objeto.functionArrow(); // Imprime: undefined (dependiendo del contexto global)
+   ```
+
+   En este ejemplo, `this` dentro de `functionArrow`
+
+ se refiere al contexto externo (global), mientras que `this` dentro de `functionNormal` se refiere al objeto `objeto`.
+
+10. #### **`Especificaciones sobre el contexto this`**:
+
+    El contexto `this` en JavaScript es un concepto fundamental que se refiere al objeto al que hace referencia en un momento dado dentro de una función. El valor de `this` depende de cómo se llama la función y en qué contexto se ejecuta.
+
+    - **En una función normal**:
+      El valor de `this` en una función normal depende de cómo se llama la función. Puede ser el objeto global (`window` en un navegador), el objeto que llama la función o el objeto al que se adjunta el método.
+
+    - **En una función de objeto (método)**:
+      El `this` en una función de objeto se refiere al objeto que contiene el método.
+
+    - **En una función constructora**:
+      El `this` dentro de un constructor se refiere a la instancia del objeto que se está creando.
+
+    - **En funciones flecha**:
+      En las funciones flecha, `this` se hereda del contexto en el que se definió la función.
 
  -->
+
+## **Métodos Array en JavaScript: Una Explicación Detallada**
+
+1. #### **`Introducción a los Métodos Array`**:
+
+   Los métodos Array son funciones integradas en JavaScript que permiten realizar operaciones y manipulaciones en Arrays de manera eficiente y fácil de entender. Estos métodos proporcionan funcionalidades como agregar o eliminar elementos, recorrer Array y transformar datos.
+
+2. #### **`Importancia de los Métodos Array`**:
+
+   En JavaScript, los arreglos son estructuras de datos fundamentales que se utilizan ampliamente para almacenar colecciones de elementos. Los métodos Array son esenciales porque simplifican las operaciones comunes en este tipo de estructuras, lo que hace que el código sea más legible, mantenible y eficiente.
+
+3. #### **`Sintaxis y Uso de los Métodos Array`**:
+
+   Los métodos se invocan en un Array existente utilizando la notación de punto `.` como con los objetos, y en los argumentos de estas funciones normalmente se utiliza una `Arrow Function` para ejecutar el código deseado.
+
+   ```javascript
+   // Ejemplo de uso de método Array: forEach()
+   const numeros = [1, 2, 3, 4, 5];
+   
+   numeros.forEach((element) => {
+     console.log(element);
+   });
+   ```
+
+   En este ejemplo, `forEach()` es un método que itera sobre cada elemento del Array `numeros` y ejecuta una función que imprime por consola cada elemento de ese arreglo.
+
+4. #### **`Métodos de Iteración`**:
+
+   Los métodos de iteración son aquellos que recorren los elementos del Array y realizan alguna acción en cada elemento. Todos estos métodos pueden recibir en sus argumentos ("element", "index" y "array")
+
+   - `forEach()`:
+
+     Ejecuta una función para cada elemento del Array sin devolver nada.
+
+     ```javascript
+     theArray.forEach((element, index, array) => {
+       // Your code
+     });
+     ```
+
+   - `map()`: 
+
+     Crea un nuevo Array con los resultados de llamar a una función para cada elemento. También vale para ordenar y transformar.
+
+     ```javascript
+     const newArray = theArray.map((element, index, array) => {
+       // Your code
+       return // elements into newArray
+     });
+     ```
+
+   - `filter()`:
+
+     Crea un nuevo Array con todos los elementos que pasan una prueba condicional.
+
+     ```javascript
+     const newArray = theArray.filter((element, index, array) => {
+       // Your code
+       return // elements into newArray
+     });
+     ```
+
+   - `reduce()`: 
+
+     Aplica una función a un `accumulator` y a los elementos del Array en cada iteración para reducir el mismo arreglo a un solo valor.
+
+     ```javascript
+     theArray.reduce((accumulator, element, index, array) => {
+       // Your code
+     }, initialValue);
+     ```
+
+   - `some()`:
+
+     Verifica si al menos un elemento en el Array cumple con cierta condición especificada por una función de prueba, devolviendo `true` o `false`.
+
+     ```javascript
+     const result = theArray.some((element, index, array) => {
+       // Your code
+     });
+     console.log(result); // => true o false
+     ```
+
+   - `every()`:
+   
+     Verifica si todos los elementos del array cumplen con la función de prueba proporcionada, devolviendo `true` o `false`.
+
+     ```javascript
+     const result = theArray.every((element, index, array) => {
+       // Tu código aquí
+     });
+     console.log(result); // => true o false
+     ```
+
+5. #### **`Métodos de Modificación`**:
+
+   Los métodos de modificación alteran el Array original o devuelven un nuevo arreglo modificado. Algunos de los métodos de modificación comunes incluyen:
+
+   - `push()`:
+
+     Agrega uno o más elementos al final de un Array y devuelve la nueva longitud del arreglo.
+
+     ```javascript
+     const array = [];
+     array.push(element1, element2, ..., elementN);
+     console.log(array); // => array with elements added
+     ```
+
+   - `pop()`:
+
+     Elimina el último elemento del Array y lo devuelve.
+
+     ```javascript
+     const lastElement = theArray.pop();
+     console.log(lastElement); // => last element deleted of theArray
+     ```
+
+   - `splice()`:
+
+     Cambia el contenido de un Array eliminando o reemplazando elementos existentes y/o agregando nuevos elementos en su lugar.
+
+     ```javascript
+     const removedElements = theArray.splice(indexStart, numOfElementsToDelete, addingItem1, addingItem2, ...);
+     console.log(removedElements) // => every element deleted
+     ```
+
+   - `unshift()`:
+
+     Añade uno o más elementos al inicio de un array y devuelve la nueva longitud del array.
+
+     ```javascript
+     const newLength = theArray.unshift(element1, element2, ...);
+     console.log(newLength) // => array length number
+     ```
+
+   - `shift()`:
+
+     Elimina el primer elemento de un array y lo devuelve.
+
+     ```javascript
+
+     ```
+
+   - `concat()`:
+
+     Combina dos o más arrays creando una Matriz.
+
+     ```javascript
+
+     ```
+
+
+1. #### **`Métodos de Búsqueda`**:
+
+   Estos métodos se utilizan para buscar elementos específicos en un Array o para filtrar elementos que cumplan ciertas condiciones.
+
+   - `find()`:
+
+     Devuelve el primer elemento del Array que satisface una condición proporcionada por una función.
+
+     ```javascript
+
+     ```
+
+   - `indexOf()`:
+
+     Devuelve el `index` del primer elemento que coincide con el valor especificado, o -1 si no se encuentra.
+
+     ```javascript
+
+     ```
+
+   - `includes()`:
+
+     Se utiliza para verificar si un array contiene un elemento específico, devolviendo `true` o `false` según corresponda.
+
+     ```javascript
+
+     ```
+
+   - `findIndex()`:
+
+     Devuelve el `index` del primer elemento del Array que cumple con la función de prueba proporcionada.
+
+     ```javascript
+
+     ```
+
+2. #### **`Métodos de Ordenamiento y Transformación`**:
+
+   Estos métodos se utilizan para ordenar los elementos de un Array o para transformar el mismo arreglo de alguna manera.
+
+   - `sort()`:
+
+     Ordena los elementos de un Array localmente y devuelve el mismo arreglo ordenado.
+
+     ```javascript
+
+     ```
+
+   - `reverse()`:
+
+     Invierte el orden de los elementos de un Array.
+
+     ```javascript
+
+     ```
+
+3. #### **`Encadenamiento de Métodos`**:
+
+   Una de las características poderosas de los métodos Array en JavaScript es la capacidad de encadenar múltiples métodos para realizar operaciones complejas en una sola línea de código. Esto mejora la legibilidad y la eficiencia del código.
+
+   ```javascript
+   const numeros = [1, 2, 3, 4, 5];
+   
+   const resultado = numeros
+     .filter(numero => numero % 2 === 0) // Filtra los números pares
+     .map(numero => numero * 2) // Duplica cada número
+     .reduce((total, numero) => total + numero, 0); // Suma todos los números
+   
+   console.log(resultado); // Resultado: 12 (2*2 + 4*2)
+   ```
+
+4. #### **`Consejos`**:
+
+   A continuación se aconsejarán formas de uso en lo que respecta los arrays, para facilitar la comprensión y el uso.
+
+   ```javascript
+   const theArray = [1, 2, 3, 4];
+   const newArray = [];
+   for (let index = 0; index < theArray.length; index++) {
+     const element = theArray[index];
+     if (element % 2 === 0) {
+       newArray.push(element);
+     }
+   }
+   console.log(newArray); // => [2, 4]
+   ```
+
+5.  #### **`Consideraciones y Alternativas`**:
+
+   Aunque los métodos Array son muy útiles, es importante tener en cuenta que pueden haber situaciones en las que otras estructuras de datos, como los `Sets` o los `Maps`, sean más apropiadas. Además, en entornos más modernos de JavaScript, las funciones flecha (`Arrow Functions`) y las expresiones lambda (`Lambda Expressions`) también ofrecen formas más concisas y expresivas de trabajar con arreglos y matrices.
+
+   Recuerda que muchas veces utilizar un `bucle for` para recorrer un Array obtiene más resultados, aunque conlleve más código.
+
+6.  #### **`Resumen`**:
+
+    En resumen, los métodos Array son una parte fundamental de JavaScript y proporcionan una amplia gama de funcionalidades para trabajar con arreglos de manera efectiva. Desde la iteración y modificación hasta la búsqueda y transformación, estos métodos ofrecen herramientas poderosas para manipular datos de manera flexible y eficiente en JavaScript. Con una comprensión sólida de estos métodos, puedes escribir código más limpio, conciso y mantenible en tus proyectos JavaScript.

@@ -2290,5 +2290,17 @@ console.log("a" <= "b"); // true
 console.log("a" >= "b"); // false
 console.log("a" < "b"); // true
 console.log("1" != 1); // false
-/* console.log("1" > "0"); // true
-console.log("1" > "0"); // true */
+console.log("1" > "0"); // true
+console.log("1" > "0"); // true
+
+// ------------------------------------------------------------------------------
+
+const theArray = [1, 2, 3, 4];
+const newArray = [];
+for (let index = 0; index < theArray.length; index++) {
+  const element = theArray[index];
+  if (element % 2 === 0) {
+    newArray.push(element);
+  }
+}
+console.log(newArray);
