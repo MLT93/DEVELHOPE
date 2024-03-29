@@ -152,9 +152,9 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
 
    En JavaScript, los primitivos son tipos de datos simples y básicos que representan valores individuales. Estos tipos de datos son inmutables, lo que significa que una vez creados, no pueden modificarse. Los primitivos incluyen cadenas (strings), números, booleanos, null, undefined, y símbolos (introducidos en ECMAScript 6).
 
-2. #### **`Tipos de Primitivos`**:
+2. #### **`Introducción a los Primitivos`**:
 
-   Los tipos de primitivos en JavaScript son los siguientes:
+   Los tipos de primitivos en JavaScript son valores fijos los siguientes:
 
    - **Cadenas de texto**: Representan texto y se escriben entre comillas simples o dobles. También se pueden escribir con backticks (acento grave).
    - **Números regulares**: Representan valores numéricos, ya sean enteros o de punto flotante.
@@ -184,7 +184,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
 
 5. #### **`Operaciones con Primitivos`**:
 
-   - **Concatenación de Cadenas**: Para unir dos cadenas, se utiliza el operador (+) y un espacio vacío (""). También se puede agregar todo dentro de backticks (``) sin necesidad de agregar espacios, ni operadores.
+   - **Concatenación de Cadenas**: Para unir dos cadenas, se utiliza el operador (+) y un espacio vacío ("") para simular el espacio entre palabras. También se puede agregar todo dentro de backticks o acentos graves (``) sin necesidad de agregar espacios, ni operadores.
    - **Operaciones Numéricas**: Se pueden realizar operaciones matemáticas con números.
    - **Operaciones Lógicas**: Se pueden realizar operaciones lógicas con booleanos.
    - **Comparaciones**: Se pueden comparar valores utilizando operadores de comparación como `==`, `===`, `!=`, `!==`, `<`, `<=`, `>`, `>=`.
@@ -222,7 +222,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
 
 1. #### **`Introducción a los Primitivos`**:
 
-   Los primitivos son tipos de datos simples en JavaScript que representan valores básicos. Estos incluyen números, cadenas de texto, booleanos, `null`, `undefined`, y símbolos (introducidos en ECMAScript 6).
+   Los primitivos son tipos de datos simples en JavaScript que representan valores básicos. Estos incluyen `números`, `cadenas de texto`, `booleanos`, `null` y `undefined`. Después también encontramos `bigInt` y `símbolos` (introducidos en ECMAScript 6).
 
 2. #### **`Tipos de Primitivos`**:
 
@@ -236,15 +236,140 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
 
 3. #### **`Operaciones con Números`**:
 
-   - **Operadores Aritméticos**: Permiten realizar operaciones matemáticas básicas como `suma (+)`, `resta (-)`, `multiplicación (*)`, `división (/)` y `módulo (%)`.
+   - **Operadores Aritméticos**: Permiten realizar operaciones matemáticas básicas como `suma (+)`, `resta (-)`, `multiplicación (*)`, `división (/)`, `exponenciación (**)` es el exponente de un número y `módulo (%)` es el resto de la división entre dos números.
+
+     - `Operaciones básicas`
+
+       ```javascript
+       1 + 1 // => 2
+       2 - 1.5; // => 0.5
+       19 / 2; // => 9.5
+       2 * 5 // => 10
+       ```
+
+     - `Módulo`
+
+       ```javascript
+       /* Es el resto o residuo que queda después de dividir dos números */
+
+       40 % 4; // => 0
+       -11 % 4; // => -3
+       ```
+
+     - `Exponenciación`
+
+       ```javascript
+       /* El exponente nos dice cuántas veces hay que multiplicar la base por sí misma */
+
+       4 ** 3; // => 64
+       4 ** 1 / 2; // => 2
+       ```
+
+     - `Ejemplo`
+
+       ```javascript
+       const result = 3 ** 3 + 9 * 4 / (3 - 1);
+       // => 3 ** 3 + 9 * 4/2
+       // => 27 + 9 * 4/2
+       // => 27 + 18
+       // => 45
+       ```
 
    - **Operadores de Comparación**: Como dijimos previamente permiten comparar números utilizando operadores como `igualdad de valor (==)` que compara solo el valor, `no igualdad de valor (!=)` que compara solo el valor, `mayor que (>)`, `menor que (<)`, `mayor o igual que (>=)`, `menor o igual que (<=)`, `igualdad estricta de valor y tipo (===)` y `desigualdad estricta de valor y tipo (!==)`.
 
-   - **Operadores de Asignación**: Se utilizan para asignar valores a variables. Por ejemplo, el operador de asignación simple (=) asigna un valor a una variable.
+     - `Igualdad (==)`
+
+       ```javascript
+       /* No es sensible al tipo de dato. Comprueba solo el valor */
+       
+       console.log(1 == 1); // true
+       console.log("1" == 1); // true
+       ```
+
+     - `Igualdad estricta (===)`
+
+       ```javascript
+       /* Si es sensible al tipo de dato. Comprueba valor y tipo */
+
+       console.log(1 === 1); // true
+       console.log("1" === 1); // false
+       ```
+
+     - `Desigualdad (!=)`
+
+       ```javascript
+       /* No es sensible al tipo de dato. Comprueba solo el valor */
+
+       console.log(1 != 1); // false
+       console.log("1" != 1); // false
+       ```
+
+     - `Desigualdad estricta (!==)`
+
+       ```javascript
+       /* Si es sensible al tipo de dato. Comprueba valor y tipo */
+
+       console.log(1 !== 1); // false
+       console.log("1" !== 1); // true
+       ```
+
+     - `Mayor que (>)`
+
+       ```javascript
+       console.log(1 > 0); // true
+       console.log("1" > "0"); // true
+       console.log("a" > "b"); // true
+       ```
+
+     - `Mayor o igual que (>=)`
+
+       ```javascript
+       console.log(1 >= 0); // true
+       console.log(1 >= 1); // true
+       console.log("a" >= "b"); // false
+       ```
+
+     - `Menor que (<)`
+
+       ```javascript
+       console.log(0 < 1); // true
+       console.log("0" < "1"); // true
+       console.log("a" < "b"); // true
+       ```
+
+     - `Menor o igual que (<=)`
+
+       ```javascript
+       console.log(0 <= 1); // true
+       console.log(1 <= 1); // true
+       console.log("a" <= "b"); // true
+       ```
+
+     - `Recursos adicionales`
+
+       - Operadores en JavaScript: [Mozilla Developers](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Expressions_and_operators)
+       - Comparaciones en JavaScript: [JavaScript Info](https://es.javascript.info/comparison)
+
+   - **Operadores de Asignación**: Se utilizan para asignar valores a variables. Por ejemplo, el `operador de asignación simple (=)` asigna un valor a una variable. También existen `operadores de asignación abreviada (+=)` para facilitar la asignación de valores nuevos a valores viejos utilizando una misma variable para la asignación del valor actualizado.
+
+   - `Asignación simple`
+   
+
+
+   - `Asignación abreviada`
+     ```javascript
+     /* Se utiliza frecuentemente para guardar valores actualizados en una misma variable */
+
+     let x = 5;
+     x += 25; // x ahora vale 30. Es igual a x = x + 25
+
+     let y = 31;
+     y %= 3; // y ahora vale 1. Es igual a y = y % 3
+     ```
 
 4. #### **`Operaciones con Cadenas de Texto`**:
 
-   - **Concatenación**: Se realiza utilizando el operador de suma (+), que une dos cadenas de texto en una sola.
+   - **Concatenación**: `Se realiza utilizando el operador de suma (+) y un espacio vacío usando ("")` para simular las separaciones entre palabras, para que nos una dos cadenas de texto en una sola.
 
    - **Longitud de la Cadena**: Se puede obtener la longitud de una cadena utilizando la propiedad `length`.
 
@@ -1033,3 +1158,11 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 9. #### **`Resumen`**:
 
    En resumen, los Arrays en JavaScript son una herramienta poderosa y versátil para almacenar y manipular conjuntos de datos de manera eficiente. Su flexibilidad y numerosos métodos integrados los hacen indispensables en el desarrollo web y de aplicaciones para una amplia gama de tareas y aplicaciones. Con una comprensión sólida de su sintaxis y funcionalidades, los desarrolladores pueden aprovechar al máximo el potencial de los Arrays en sus proyectos.
+
+<!-- 
+
+## Ejemplos y comparaciones de operadores de comparación en JavaScript:
+
+
+
+ -->
