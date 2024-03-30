@@ -2304,3 +2304,10 @@ for (let index = 0; index < theArray.length; index++) {
   }
 }
 console.log(newArray);
+
+// ------------------------------------------------------------------------------
+
+const arrayA = [1, 2, 3];
+const arrayB = [4, 5, 6];
+const newArray_AB = arrayA.concat(arrayB);
+console.log(newArray_AB); // => [1, 2, 3, 4, 5, 6]

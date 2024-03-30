@@ -233,7 +233,7 @@
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
   "git.autofetch": true,
-  "breadcrumbs.enabled": true,
+  "breadcrumbs.enabled": false,
   "workbench.editor.enablePreview": false,
   "javascript.format.semicolons": "insert",
   "editor.indentSize": "tabSize",
@@ -361,5 +361,7 @@
   "launch": {
     "configurations": [],
     "compounds": []
-  }
+  },
+  "code-runner.runInTerminal": true,
+  "code-runner.saveFileBeforeRun": true
 }

@@ -1359,7 +1359,7 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
      console.log(result); // => true o false
      ```
 
-5. #### **`Métodos de Modificación`**:
+5. #### **`Métodos de Modificación (Mutables)`**:
 
    Los métodos de modificación alteran el Array original o devuelven un nuevo arreglo modificado. Algunos de los métodos de modificación comunes incluyen:
 
@@ -1405,19 +1405,22 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
      Elimina el primer elemento de un array y lo devuelve.
 
      ```javascript
-
+     const firstElement = theArray.shift();
+     console.log(firstElement); // => first element deleted
      ```
 
    - `concat()`:
 
-     Combina dos o más arrays creando una Matriz.
+     Combina dos o más arrays creando un único arreglo con todos los elementos. Si los elementos son a su vez arrays, se creará una Matriz.
 
      ```javascript
-
+     const arrayA = [1, 2, 3];
+     const arrayB = [4, 5, 6];
+     const newArray_AB = arrayA.concat(arrayB);
+     console.log(newArray_AB); // => [1, 2, 3, 4, 5, 6]
      ```
 
-
-1. #### **`Métodos de Búsqueda`**:
+6. #### **`Métodos de Búsqueda`**:
 
    Estos métodos se utilizan para buscar elementos específicos en un Array o para filtrar elementos que cumplan ciertas condiciones.
 
@@ -1453,7 +1456,7 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
      ```
 
-2. #### **`Métodos de Ordenamiento y Transformación`**:
+7. #### **`Métodos de Ordenamiento y Transformación`**:
 
    Estos métodos se utilizan para ordenar los elementos de un Array o para transformar el mismo arreglo de alguna manera.
 
@@ -1473,7 +1476,7 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
      ```
 
-3. #### **`Encadenamiento de Métodos`**:
+8. #### **`Encadenamiento de Métodos`**:
 
    Una de las características poderosas de los métodos Array en JavaScript es la capacidad de encadenar múltiples métodos para realizar operaciones complejas en una sola línea de código. Esto mejora la legibilidad y la eficiencia del código.
 
@@ -1488,7 +1491,7 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
    console.log(resultado); // Resultado: 12 (2*2 + 4*2)
    ```
 
-4. #### **`Consejos`**:
+9. #### **`Consejos`**:
 
    A continuación se aconsejarán formas de uso en lo que respecta los arrays, para facilitar la comprensión y el uso.
 
@@ -1504,12 +1507,12 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
    console.log(newArray); // => [2, 4]
    ```
 
-5.  #### **`Consideraciones y Alternativas`**:
+10.  #### **`Consideraciones y Alternativas`**:
 
    Aunque los métodos Array son muy útiles, es importante tener en cuenta que pueden haber situaciones en las que otras estructuras de datos, como los `Sets` o los `Maps`, sean más apropiadas. Además, en entornos más modernos de JavaScript, las funciones flecha (`Arrow Functions`) y las expresiones lambda (`Lambda Expressions`) también ofrecen formas más concisas y expresivas de trabajar con arreglos y matrices.
 
    Recuerda que muchas veces utilizar un `bucle for` para recorrer un Array obtiene más resultados, aunque conlleve más código.
 
-6.  #### **`Resumen`**:
+11.  #### **`Resumen`**:
 
     En resumen, los métodos Array son una parte fundamental de JavaScript y proporcionan una amplia gama de funcionalidades para trabajar con arreglos de manera efectiva. Desde la iteración y modificación hasta la búsqueda y transformación, estos métodos ofrecen herramientas poderosas para manipular datos de manera flexible y eficiente en JavaScript. Con una comprensión sólida de estos métodos, puedes escribir código más limpio, conciso y mantenible en tus proyectos JavaScript.
