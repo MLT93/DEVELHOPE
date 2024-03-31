@@ -402,7 +402,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
    - **Longitud de la Cadena**: Se puede obtener la longitud de una cadena utilizando la propiedad `length`. También se utiliza en Arrays.
 
      ```javascript
-     let theString = "ciao"
+     let theString = "ciao";
      console.log(theString.length); // => 4
      ```
 
@@ -1283,7 +1283,7 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
    ```javascript
    // Ejemplo de uso de método Array: forEach()
    const numeros = [1, 2, 3, 4, 5];
-   
+
    numeros.forEach((element) => {
      console.log(element);
    });
@@ -1305,14 +1305,14 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
      });
      ```
 
-   - `map()`: 
+   - `map()`:
 
      Crea un nuevo Array con los resultados de llamar a una función para cada elemento. También vale para ordenar y transformar.
 
      ```javascript
      const newArray = theArray.map((element, index, array) => {
        // Your code
-       return // elements into newArray
+       return; // elements into newArray
      });
      ```
 
@@ -1323,11 +1323,11 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
      ```javascript
      const newArray = theArray.filter((element, index, array) => {
        // Your code
-       return // elements into newArray
+       return; // elements after code, saved into newArray
      });
      ```
 
-   - `reduce()`: 
+   - `reduce()`:
 
      Aplica una función a un `accumulator` y a los elementos del Array en cada iteración para reducir el mismo arreglo a un solo valor.
 
@@ -1349,12 +1349,12 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
      ```
 
    - `every()`:
-   
+
      Verifica si todos los elementos del array cumplen con la función de prueba proporcionada, devolviendo `true` o `false`.
 
      ```javascript
      const result = theArray.every((element, index, array) => {
-       // Tu código aquí
+       // Your code
      });
      console.log(result); // => true o false
      ```
@@ -1429,7 +1429,10 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
      Devuelve el primer elemento del Array que satisface una condición proporcionada por una función.
 
      ```javascript
-
+     const foundElement = theArray.find((element, index, array) => {
+       // Your code
+       return // First founded element after code, saved into foundElement
+     });
      ```
 
    - `indexOf()`:
@@ -1437,7 +1440,8 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
      Devuelve el `index` del primer elemento que coincide con el valor especificado, o -1 si no se encuentra.
 
      ```javascript
-
+     const indexOfElement = theArray.indexOf(searchElement, startIndex);
+     console.log(indexOfElement) // => index of first founded searchElement. If return -1, don't exist searchElement
      ```
 
    - `includes()`:
@@ -1445,15 +1449,19 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
      Se utiliza para verificar si un array contiene un elemento específico, devolviendo `true` o `false` según corresponda.
 
      ```javascript
-
+     const isIncluded = theArray.includes(searchElement, fromIndex);
+     console.log(isIncluded); // => true o false
      ```
 
    - `findIndex()`:
 
-     Devuelve el `index` del primer elemento del Array que cumple con la función de prueba proporcionada.
+     Devuelve el `index` del primer elemento del Array que cumple con la función de prueba proporcionada. Si ningún elemento cumple con la condición, se devuelve -1.
 
      ```javascript
-
+     const index = theArray.findIndex((element, index, array) => {
+       // Your code
+       return; // => Index element after code, saved into index. If return -1, don't exist element
+     });
      ```
 
 7. #### **`Métodos de Ordenamiento y Transformación`**:
@@ -1482,12 +1490,12 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
    ```javascript
    const numeros = [1, 2, 3, 4, 5];
-   
+
    const resultado = numeros
-     .filter(numero => numero % 2 === 0) // Filtra los números pares
-     .map(numero => numero * 2) // Duplica cada número
+     .filter((numero) => numero % 2 === 0) // Filtra los números pares
+     .map((numero) => numero * 2) // Duplica cada número
      .reduce((total, numero) => total + numero, 0); // Suma todos los números
-   
+
    console.log(resultado); // Resultado: 12 (2*2 + 4*2)
    ```
 
@@ -1507,12 +1515,13 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
    console.log(newArray); // => [2, 4]
    ```
 
-10.  #### **`Consideraciones y Alternativas`**:
+10. #### **`Consideraciones y Alternativas`**:
 
-   Aunque los métodos Array son muy útiles, es importante tener en cuenta que pueden haber situaciones en las que otras estructuras de datos, como los `Sets` o los `Maps`, sean más apropiadas. Además, en entornos más modernos de JavaScript, las funciones flecha (`Arrow Functions`) y las expresiones lambda (`Lambda Expressions`) también ofrecen formas más concisas y expresivas de trabajar con arreglos y matrices.
+Aunque los métodos Array son muy útiles, es importante tener en cuenta que pueden haber situaciones en las que otras estructuras de datos, como los `Sets` o los `Maps`, sean más apropiadas. Además, en entornos más modernos de JavaScript, las funciones flecha (`Arrow Functions`) y las expresiones lambda (`Lambda Expressions`) también ofrecen formas más concisas y expresivas de trabajar con arreglos y matrices.
 
-   Recuerda que muchas veces utilizar un `bucle for` para recorrer un Array obtiene más resultados, aunque conlleve más código.
+Recuerda que muchas veces utilizar un `bucle for` para recorrer un Array obtiene más resultados, aunque conlleve más código.
 
-11.  #### **`Resumen`**:
+11. #### **`Resumen`**:
+
 
     En resumen, los métodos Array son una parte fundamental de JavaScript y proporcionan una amplia gama de funcionalidades para trabajar con arreglos de manera efectiva. Desde la iteración y modificación hasta la búsqueda y transformación, estos métodos ofrecen herramientas poderosas para manipular datos de manera flexible y eficiente en JavaScript. Con una comprensión sólida de estos métodos, puedes escribir código más limpio, conciso y mantenible en tus proyectos JavaScript.
