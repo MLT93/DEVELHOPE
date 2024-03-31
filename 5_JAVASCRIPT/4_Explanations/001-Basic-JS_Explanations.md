@@ -406,27 +406,28 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
      console.log(theString.length); // => 4
      ```
 
+<!-- ToDo: Añadir explicación de cada método -->
    - **Métodos de Manipulación de Cadenas**: JavaScript proporciona una variedad de métodos para manipular cadenas, como `toUpperCase()`, `toLowerCase()`, `charAt()`, `substring()`, `indexOf()`, `slice()`, entre otros.
 
-5. #### **`Operaciones con Booleanos`**:
+1. #### **`Operaciones con Booleanos`**:
 
    - **Operadores Lógicos**: Permiten realizar operaciones lógicas como `AND (&&)`, `OR (||)` y `NOT (!)`.
 
    - **Conversión a Booleano**: En JavaScript, cualquier valor se puede convertir a un valor booleano. Valores como `0`, `null`, `undefined`, `NaN`, `''` (cadena de texto vacía) y `false` se consideran falsy, mientras que todos los demás valores se consideran truthy.
 
-6. #### **`Operaciones con null y undefined`**:
+2. #### **`Operaciones con null y undefined`**:
 
    - **Comparación y Coerción**: `null` y `undefined` son considerados iguales en valor pero no en tipo. Sin embargo, ambos son considerados falsy.
 
    - **Evitar Errores**: Es importante verificar si una variable es `null` o `undefined` antes de realizar operaciones con ellas para evitar errores de referencia no definida.
 
-7. #### **`Operaciones con Símbolos`**:
+3. #### **`Operaciones con Símbolos`**:
 
    - **Creación de Símbolos**: Se crean utilizando la función `Symbol()` y pueden ser utilizados como identificadores únicos para propiedades de objetos.
 
    - **Identificación de Símbolos**: Cada símbolo creado es único e inmutable, lo que significa que dos símbolos nunca serán iguales, incluso si tienen el mismo nombre.
 
-8. #### **`Consideraciones Importantes`**:
+4. #### **`Consideraciones Importantes`**:
 
    - **Inmutabilidad de los Primitivos**: Los valores primitivos son inmutables, lo que significa que una vez que se crean, no se pueden cambiar. Cualquier operación que parezca modificar un valor primitivo en realidad está creando un nuevo valor.
 
@@ -434,7 +435,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
 
    - **Operaciones y Métodos Específicos de Tipo**: Cada tipo de primitivo tiene sus propias operaciones y métodos específicos que pueden ser aplicados a ellos.
 
-9. #### **`Resumen`**:
+5. #### **`Resumen`**:
 
    Las operaciones entre primitivos en JavaScript son esenciales para el desarrollo de aplicaciones web y se utilizan ampliamente en la manipulación y procesamiento de datos. Es importante comprender los diferentes tipos de primitivos y las operaciones que se pueden realizar con ellos para escribir un código efectivo y eficiente. Desde operaciones numéricas simples hasta manipulación de cadenas de texto y comparaciones booleanas, la comprensión de estas operaciones es fundamental para cualquier desarrollador de JavaScript.
 
@@ -1501,6 +1502,7 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
 9. #### **`Consejos`**:
 
+<!-- ToDo: añadir consejos de manipulación de arrays con variables fuera de iteraciones y/o métodos -->
    A continuación se aconsejarán formas de uso en lo que respecta los arrays, para facilitar la comprensión y el uso.
 
    ```javascript
