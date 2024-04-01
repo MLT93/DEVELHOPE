@@ -95,7 +95,7 @@
 
 10. #### **`Conclusión`**:
 
-Las variables son elementos fundamentales en la programación en JavaScript. Permiten almacenar y manipular datos durante la ejecución de un programa, lo que proporciona flexibilidad y capacidad de respuesta en el desarrollo de aplicaciones web y otras aplicaciones basadas en JavaScript. Es importante entender los diferentes tipos de variables, su alcance, su inicialización y reasignación, así como seguir las convenciones de nomenclatura para escribir un código claro y legible.
+   Las variables son elementos fundamentales en la programación en JavaScript. Permiten almacenar y manipular datos durante la ejecución de un programa, lo que proporciona flexibilidad y capacidad de respuesta en el desarrollo de aplicaciones web y otras aplicaciones basadas en JavaScript. Es importante entender los diferentes tipos de variables, su alcance, su inicialización y reasignación, así como seguir las convenciones de nomenclatura para escribir un código claro y legible.
 
 ## El uso de 'const' y 'let' en JavaScript: Una Explicación Detallada
 
@@ -124,7 +124,6 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
    - `let` se utiliza para declarar variables cuyos valores pueden cambiar a lo largo del tiempo.
    - A diferencia de `const`, el valor de una variable `let` puede ser reasignado.
    - Tiene un alcance de bloque, lo que significa que solo es accesible dentro del bloque en el que se declara.
-   - Ejemplo:
 
      ```javascript
      let contador = 0;
@@ -282,8 +281,8 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
        ```javascript
        /* No es sensible al tipo de dato. Comprueba solo el valor */
 
-       console.log(1 == 1); // true
-       console.log("1" == 1); // true
+       console.log(1 == 1); // => True
+       console.log("1" == 1); // => True
        ```
 
      - `Igualdad estricta (===)`
@@ -291,8 +290,8 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
        ```javascript
        /* Si es sensible al tipo de dato. Comprueba valor y tipo */
 
-       console.log(1 === 1); // true
-       console.log("1" === 1); // false
+       console.log(1 === 1); // => True
+       console.log("1" === 1); // => False
        ```
 
      - `Desigualdad (!=)`
@@ -300,8 +299,8 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
        ```javascript
        /* No es sensible al tipo de dato. Comprueba solo el valor */
 
-       console.log(1 != 1); // false
-       console.log("1" != 1); // false
+       console.log(1 != 1); // => False
+       console.log("1" != 1); // => False
        ```
 
      - `Desigualdad estricta (!==)`
@@ -309,40 +308,40 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
        ```javascript
        /* Si es sensible al tipo de dato. Comprueba valor y tipo */
 
-       console.log(1 !== 1); // false
-       console.log("1" !== 1); // true
+       console.log(1 !== 1); // => False
+       console.log("1" !== 1); // => True
        ```
 
      - `Mayor que (>)`
 
        ```javascript
-       console.log(1 > 0); // true
-       console.log("1" > "0"); // true
-       console.log("a" > "b"); // false
+       console.log(1 > 0); // => True
+       console.log("1" > "0"); // => True
+       console.log("a" > "b"); // => False
        ```
 
      - `Mayor o igual que (>=)`
 
        ```javascript
-       console.log(1 >= 0); // true
-       console.log(1 >= 1); // true
-       console.log("a" >= "b"); // false
+       console.log(1 >= 0); // => True
+       console.log(1 >= 1); // => True
+       console.log("a" >= "b"); // => False
        ```
 
      - `Menor que (<)`
 
        ```javascript
-       console.log(0 < 1); // true
-       console.log("0" < "1"); // true
-       console.log("a" < "b"); // true
+       console.log(0 < 1); // => True
+       console.log("0" < "1"); // => True
+       console.log("a" < "b"); // => True
        ```
 
      - `Menor o igual que (<=)`
 
        ```javascript
-       console.log(0 <= 1); // true
-       console.log(1 <= 1); // true
-       console.log("a" <= "b"); // true
+       console.log(0 <= 1); // => True
+       console.log(1 <= 1); // => True
+       console.log("a" <= "b"); // => True
        ```
 
      - `Recursos adicionales`
@@ -352,52 +351,52 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
 
    - **Operadores de Asignación**: Se utilizan para asignar valores a variables. Por ejemplo, el `operador de asignación simple (=)` asigna un valor a una variable. También existen `operadores de asignación abreviada (+=)` para facilitar la asignación de valores nuevos a valores viejos utilizando una misma variable para la asignación del valor actualizado.
 
-   - `Asignación simple`
+     - `Asignación simple`
 
-     ```javascript
-     /* Se utiliza para inicializar una variable y asignarle un valor */
+       ```javascript
+       /* Se utiliza para inicializar una variable y asignarle un valor */
 
-     let x = 10;
-     ```
+       let x = 10;
+       ```
 
-   - `Asignación abreviada`
+     - `Asignación abreviada`
 
-     ```javascript
-     /* Se utiliza frecuentemente para guardar valores actualizados en una misma variable */
+       ```javascript
+       /* Se utiliza frecuentemente para guardar valores actualizados en una misma variable */
 
-     let x = 5;
-     x += 25; // x ahora vale 30. Es igual a x = x + 25
+       let x = 5;
+       x += 25; // x ahora vale 30. Es igual a x = x + 25
 
-     let y = 31;
-     y %= 3; // y ahora vale 1. Es igual a y = y % 3
-     ```
+       let y = 31;
+       y %= 3; // y ahora vale 1. Es igual a y = y % 3
+       ```
 
 4. #### **`Operaciones con Cadenas de Texto`**:
 
    - **Concatenación**: `Se realiza utilizando el operador de suma (+) y un espacio vacío usando ("")` para simular las separaciones entre palabras, para que nos una dos cadenas de texto en una sola. También es posible concatenar con ` backticks o acento grave (``) para escribir las cadenas de texto y al interno se pueden concatenar variables utilizando la expresión (${}) `
 
-   - `Concatenación simple`
+     - `Concatenación simple`
 
-   ```javascript
-   let hello = "Hola";
-   let name = "Pepe";
+       ```javascript
+       let hello = "Hola";
+       let name = "Pepe";
 
-   let badConcat = hello + name; // => HolaPepe
-   let goodConcat = hello + "" + name; // => Hola Pepe
-   ```
+       let badConcat = hello + name; // => HolaPepe
+       let goodConcat = hello + "" + name; // => Hola Pepe
+       ```
 
-   - `Template string`
+     - `Template string`
 
-   ```javascript
-   let welcome = "Bienvenido";
-   let name_2 = "Juan";
+       ```javascript
+       let welcome = "Bienvenido";
+       let name_2 = "Juan";
 
-   let templateString = `${welcome} ${name_2}`; // => Bienvenido Juan
-   ```
+       let templateString = `${welcome} ${name_2}`; // => Bienvenido Juan
+       ```
 
-   - `Recursos adicionales`
+     - `Recursos adicionales`
 
-     - [Template literals](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Template_literals)
+       - [Template literals](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Template_literals)
 
    - **Longitud de la Cadena**: Se puede obtener la longitud de una cadena utilizando la propiedad `length`. También se utiliza en Arrays.
 
@@ -570,6 +569,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
      - Se pueden combinar con operadores lógicos para expresar condiciones más complejas.
 
    - **Desventajas**:
+
      - Pueden conducir a código duplicado si se repiten las mismas condiciones en múltiples lugares.
      - Las declaraciones anidadas pueden hacer que el código sea difícil de entender y mantener.
      - En grandes proyectos, un exceso de declaraciones condicionales puede afectar negativamente la legibilidad y la escalabilidad del código.
@@ -781,7 +781,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
      }
      ```
 
-   Al usar `switch (true)`, estamos diciendo que el `switch` evaluará cada `case` basándose en la verdad de la expresión `true`. En otras palabras, cada `case` se evaluará como `true` o `false` según la evaluación de su condición.
+     Al usar `switch (true)`, estamos diciendo que el `switch` evaluará cada `case` basándose en la verdad de la expresión `true`. En otras palabras, cada `case` se evaluará como `true` o `false` según la evaluación de su condición.
 
 9. #### **`Uso de Switch en Situaciones Específicas`**:
 
@@ -789,7 +789,7 @@ Las variables son elementos fundamentales en la programación en JavaScript. Per
 
 10. #### **`Resumen`**:
 
-El `switch` en JavaScript es una estructura de control poderosa que permite tomar decisiones basadas en el valor de una expresión. Proporciona una forma clara y concisa de manejar múltiples casos posibles. Sin embargo, es importante entender su sintaxis y considerar cuándo es más apropiado usarlo en comparación con otras estructuras de control disponibles en JavaScript.
+   El `switch` en JavaScript es una estructura de control poderosa que permite tomar decisiones basadas en el valor de una expresión. Proporciona una forma clara y concisa de manejar múltiples casos posibles. Sin embargo, es importante entender su sintaxis y considerar cuándo es más apropiado usarlo en comparación con otras estructuras de control disponibles en JavaScript.
 
 ## Bucles en JavaScript: Una Explicación Detallada
 
@@ -808,9 +808,9 @@ El `switch` en JavaScript es una estructura de control poderosa que permite toma
    El operador `++` incrementa el valor de una variable en una unidad.
    Puede ser utilizado antes (`++variable`) o después (`variable++`) del nombre de la variable. La diferencia radica en cuándo se realiza el incremento:
 
-   - Cuando se utiliza antes (`++variable`), el incremento se realiza antes de que se evalúe la expresión en la que se encuentra la variable.
+   Cuando se utiliza antes (`++variable`), el incremento se realiza antes de que se evalúe la expresión en la que se encuentra la variable.
 
-   - Cuando se utiliza después (`variable++`), el incremento se realiza después de que se evalúe la expresión en la que se encuentra la variable.
+   Cuando se utiliza después (`variable++`), el incremento se realiza después de que se evalúe la expresión en la que se encuentra la variable.
 
    ```javascript
    let x = 5;
@@ -819,7 +819,7 @@ El `switch` en JavaScript es una estructura de control poderosa que permite toma
    console.log(y); // Resultado: 6
    ```
 
-4. #### **`Operador de decremento '--'`**:
+1. #### **`Operador de decremento '--'`**:
 
    El operador `--` decrementa el valor de una variable en una unidad.
    Al igual que el operador de incremento, puede ser utilizado antes (`--variable`) o después (`variable--`) del nombre de la variable.
@@ -834,7 +834,7 @@ El `switch` en JavaScript es una estructura de control poderosa que permite toma
 
    Estos operadores son útiles en bucles, cálculos aritméticos y otras situaciones donde necesitas aumentar o disminuir el valor de una variable en una unidad. Sin embargo, es importante entender cómo funcionan en diferentes contextos para evitar confusiones en el código.
 
-5. #### **`Sintaxis y Ejecución de Bucles`**:
+2. #### **`Sintaxis y Ejecución de Bucles`**:
 
    Los bucles en JavaScript se pueden implementar utilizando diferentes estructuras, como `for`, `while`, y `do-while`. Estas estructuras permiten repetir un bloque de código mientras se cumpla una condición. Veamos ejemplos de cada una:
 
@@ -901,7 +901,7 @@ El `switch` en JavaScript es una estructura de control poderosa que permite toma
 
      `Este bucle se ejecuta al menos una vez`, ya que primero se ejecuta el bloque de código y luego se verifica la condición. Si la condición es verdadera, se repite el bucle.
 
-6. #### **`Control de Bucles y Palabras Clave Relacionadas 'continue' y 'break'`**:
+3. #### **`Control de Bucles y Palabras Clave Relacionadas 'continue' y 'break'`**:
 
    En JavaScript, existen palabras clave que permiten controlar el flujo de un bucle, como `break` y `continue`.
 
@@ -935,7 +935,7 @@ El `switch` en JavaScript es una estructura de control poderosa que permite toma
 
      Aquí, cuando `i` es igual a 2, se salta esa iteración y se pasa a la siguiente.
 
-7. #### **`Bucles Anidados y su Utilidad`**:
+4. #### **`Bucles Anidados y su Utilidad`**:
 
    Los bucles anidados son bucles dentro de otros bucles, y son útiles para realizar operaciones en estructuras de datos multidimensionales, como matrices bidimensionales.
 
@@ -949,7 +949,7 @@ El `switch` en JavaScript es una estructura de control poderosa que permite toma
 
    Este ejemplo muestra un bucle `for` anidado dentro de otro. Se ejecuta el bucle exterior para `i` desde 0 hasta 2, y dentro de cada iteración del bucle exterior, se ejecuta el bucle interior para `j` desde 0 hasta 2.
 
-8. #### **`Bucles Particulares`**
+5. #### **`Bucles Particulares`**
 
    Los bucles `for...in` y `for...of` son estructuras de control que nos permiten recorrer elementos en JavaScript, pero tienen diferencias importantes en cuanto a su funcionamiento y los tipos de objetos sobre los que pueden iterar.
 
@@ -989,7 +989,7 @@ El `switch` en JavaScript es una estructura de control poderosa que permite toma
    - **Bucle `for...of`**:
 
      ```javascript
-     for (const iterator of object) {
+     for (const iterator of iterableObject) {
        // Tu código aquí
      }
      ```
@@ -1007,90 +1007,88 @@ El `switch` en JavaScript es una estructura de control poderosa que permite toma
 
      `No itera sobre las propiedades de un objeto`, por lo que no se pueden usar directamente con objetos normales. Itera sobre los valores de un objeto iterable, en lugar de sobre las propiedades.
 
-9. #### **`Especificaciones sobre el Contexto 'this' en Bucles`**:
+6. #### **`Especificaciones sobre el Contexto 'this' en Bucles`**:
 
    El contexto `this` en JavaScript puede comportarse de manera diferente dentro de bucles, especialmente al utilizar "funciones regulares" en lugar de "funciones flecha". En bucles anidados, el contexto `this` puede cambiar en cada nivel de anidamiento, lo que puede llevar a errores de referencia, ten cuidado.
 
-10. #### **`Ejemplos de Uso de Bucles Paso a Paso`**:
+7.  #### **`Ejemplos de Uso de Bucles Paso a Paso`**:
 
-- **Bucle `for` para Imprimir Números Pares**:
+   - **Bucle `for` para Imprimir Números Pares**:
 
-  ```javascript
-  for (let i = 0; i <= 10; i++) {
-    if (i % 2 === 0) {
-      console.log(i);
-    }
-  }
-  ```
+     ```javascript
+     for (let i = 0; i <= 10; i++) {
+       if (i % 2 === 0) {
+         console.log(i);
+       }
+     }
+     ```
 
-- **Bucle `while` para Calcular Factorial**:
+   - **Bucle `while` para Calcular Factorial**:
 
-  ```javascript
-  let numero = 5;
-  let factorial = 1;
-  while (numero >= 1) {
-    factorial *= numero;
-    numero--;
-  }
-  console.log(factorial);
-  ```
+     ```javascript
+     let numero = 5;
+     let factorial = 1;
+     while (numero >= 1) {
+       factorial *= numero;
+       numero--;
+     }
+     console.log(factorial);
+     ```
 
-- **Bucle `do-while` para Validar Entradas del Usuario**:
+   - **Bucle `do-while` para Validar Entradas del Usuario**:
 
-  ```javascript
-  let entrada;
-  do {
-    entrada = prompt("Ingrese un número mayor que 10:");
-  } while (entrada <= 10);
-  console.log("Entrada válida:", entrada);
-  ```
+     ```javascript
+     let entrada;
+     do {
+       entrada = prompt("Ingrese un número mayor que 10:");
+     } while (entrada <= 10);
+     console.log("Entrada válida:", entrada);
+     ```
 
-- **Bucle `for...in` para Ver Propiedades Heredadas de un Objeto**:
+   - **Bucle `for...in` para Ver Propiedades Heredadas de un Objeto**:
 
-  ```javascript
-  const persona = {
-    nombre: "Juan",
-    edad: 30,
-  };
+     ```javascript
+     const persona = {
+       nombre: "Juan",
+       edad: 30,
+     };
 
-  const empleado = Object.create(persona);
-  empleado.puesto = "Desarrollador";
+     const empleado = Object.create(persona);
+     empleado.puesto = "Desarrollador";
 
-  for (const key in empleado) {
-    console.log(`Propiedad: ${key}, Valor: ${empleado[key]}`);
-  }
-  ```
+     for (const key in empleado) {
+       console.log(`Propiedad: ${key}, Valor: ${empleado[key]}`);
+     }
+     ```
 
-- **Bucle `for...of` para \_\_\_**
+   - **Bucle `for...of` para \_\_\_**
 
-  ```javascript
-  const palabra = "JavaScript";
+     ```javascript
+     const palabra = "JavaScript";
 
-  const letraBuscada = "a";
+     const letraBuscada = "a";
 
-  let posicion = -1;
+     let posicion = -1;
 
-  for (const [indice, caracter] of palabra.split("").entries()) {
-    if (caracter.toLowerCase() === letraBuscada.toLowerCase()) {
-      posicion = indice;
-      break;
-    }
-  }
+     for (const [indice, caracter] of palabra.split("").entries()) {
+       if (caracter.toLowerCase() === letraBuscada.toLowerCase()) {
+         posicion = indice;
+         break;
+       }
+     }
 
-  if (posicion !== -1) {
-    console.log(
-      `La letra '${letraBuscada}' se encontró en la posición ${posicion} de la palabra.`,
-    );
-  } else {
-    console.log(`La letra '${letraBuscada}' no se encontró en la palabra.`);
-  }
-  ```
+     if (posicion !== -1) {
+       console.log(
+         `La letra '${letraBuscada}' se encontró en la posición ${posicion} de la palabra.`,
+       );
+     } else {
+       console.log(`La letra '${letraBuscada}' no se encontró en la palabra.`);
+     }
+     ```
 
-1.  #### **`Consideraciones Finales sobre Bucles en JavaScript`**:
+8.  #### **`Consideraciones Finales sobre Bucles en JavaScript`**:
 
-Los bucles son una herramienta poderosa en JavaScript para automatizar tareas repetitivas y procesar datos de manera eficiente. Sin embargo, es importante utilizarlos con cuidado y considerar alternativas más modernas y funcionales cuando sea posible, para escribir un código más limpio y legible. Además, comprender el comportamiento del contexto `this` dentro de los bucles es crucial para evitar errores de referencia y comportamientos inesperados.
-
-<!-- ToDo: Seguir con Arrays, Objects y después con funciones -->
+   Los bucles son una herramienta poderosa en JavaScript para automatizar tareas repetitivas y procesar datos de manera eficiente. Sin embargo, es importante utilizarlos con cuidado y considerar alternativas más modernas y funcionales cuando sea posible, para escribir un código más limpio y legible. Además, comprender el comportamiento del contexto `this` dentro de los bucles es crucial para evitar errores de referencia y comportamientos inesperados.
 
 ## **Array, Matriz, Arreglo en JavaScript: Una Explicación Detallada**
 
@@ -1127,17 +1125,17 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
    ```javascript
    const miArray = [1, 2, 3, 4, 5];
 
-   // Utilizando un bucle for
+   // Utilizando el bucle for
    for (let i = 0; i < miArray.length; i++) {
      console.log(miArray[i]); // Imprime cada elemento del array
    }
 
-   // Utilizando forEach
+   // Utilizando métodos como forEach
    miArray.forEach((elemento) => {
      console.log(elemento); // Imprime cada elemento del array
    });
 
-   // Utilizando for...of
+   // Utilizando el bucle for...of
    for (const elemento of miArray) {
      console.log(elemento); // Imprime cada elemento del array
    }
@@ -1171,7 +1169,7 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
    console.log(matriz[0][1]); // Imprime: 2 (el segundo elemento de la primera fila)
    ```
 
-7. #### **`Ejemplos de Uso de Arrays`**:
+7. #### **`Consideraciones para el Uso de Arrays`**:
 
    Los Arrays son utilizados en una variedad de escenarios en el desarrollo web y de aplicaciones. Algunos ejemplos de uso incluyen:
 
@@ -1184,15 +1182,15 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 8. #### **`Consideraciones y Mejores Prácticas`**:
 
    Al trabajar con Arrays en JavaScript, es importante tener en cuenta algunas consideraciones y seguir mejores prácticas para escribir un código limpio y eficiente:
-
+   
    - **Evitar la mutación directa de Arrays**: En lugar de modificar un array existente, es preferible crear un nuevo array utilizando métodos como `map`, `filter` o `reduce`.
    - **Usar nombres descriptivos para variables y funciones**: Utilizar nombres que reflejen claramente el propósito y contenido del array.
    - **Documentar el código**: Agregar comentarios que expliquen el propósito y funcionamiento del array y cualquier operación realizada en él.
-
-9. #### **`Resumen`**:
-
+   
+9.  #### **`Resumen`**:
+   
    En resumen, los Arrays en JavaScript son una herramienta poderosa y versátil para almacenar y manipular conjuntos de datos de manera eficiente. Su flexibilidad y numerosos métodos integrados los hacen indispensables en el desarrollo web y de aplicaciones para una amplia gama de tareas y aplicaciones. Con una comprensión sólida de su sintaxis y funcionalidades, los desarrolladores pueden aprovechar al máximo el potencial de los Arrays en sus proyectos.
-
+   
 <!--
 
 ## **Métodos Array y Explicación del contexto This en JavaScript: Una Explicación Detallada**
@@ -1267,7 +1265,7 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
  -->
 
-## **Métodos Array en JavaScript: Una Explicación Detallada**
+## **Métodos de Arrays en JavaScript: Una Explicación Detallada**
 
 1. #### **`Introducción a los Métodos Array`**:
 
@@ -1302,7 +1300,7 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
      ```javascript
      theArray.forEach((element, index, array) => {
-       // Your code
+       // Tu código aquí
      });
      ```
 
@@ -1312,8 +1310,8 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
      ```javascript
      const newArray = theArray.map((element, index, array) => {
-       // Your code
-       return; // elements into newArray
+       // Tu código aquí
+       return; // Elementos en newArray
      });
      ```
 
@@ -1323,8 +1321,8 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
      ```javascript
      const newArray = theArray.filter((element, index, array) => {
-       // Your code
-       return; // elements after code, saved into newArray
+       // Tu código aquí
+       return; // Elementos después del código, guardados en newArray
      });
      ```
 
@@ -1334,7 +1332,7 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
      ```javascript
      theArray.reduce((accumulator, element, index, array) => {
-       // Your code
+       // Tu código aquí
      }, initialValue);
      ```
 
@@ -1344,9 +1342,9 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
      ```javascript
      const result = theArray.some((element, index, array) => {
-       // Your code
+       // Tu código aquí
      });
-     console.log(result); // => true o false
+     console.log(result); // => True o False
      ```
 
    - `every()`:
@@ -1355,9 +1353,9 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
      ```javascript
      const result = theArray.every((element, index, array) => {
-       // Your code
+       // Tu código aquí
      });
-     console.log(result); // => true o false
+     console.log(result); // => True o False
      ```
 
 5. #### **`Métodos de Modificación (Mutables)`**:
@@ -1371,7 +1369,7 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
      ```javascript
      const array = [];
      array.push(element1, element2, ..., elementN);
-     console.log(array); // => array with elements added
+     console.log(array); // => Array con los elementos agregados al final
      ```
 
    - `pop()`:
@@ -1380,7 +1378,7 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
      ```javascript
      const lastElement = theArray.pop();
-     console.log(lastElement); // => last element deleted of theArray
+     console.log(lastElement); // => Último elemento borrado
      ```
 
    - `splice()`:
@@ -1389,7 +1387,7 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
      ```javascript
      const removedElements = theArray.splice(indexStart, numOfElementsToDelete, addingItem1, addingItem2, ...);
-     console.log(removedElements) // => every element deleted
+     console.log(removedElements) // => Cada elemento quitado
      ```
 
    - `unshift()`:
@@ -1398,7 +1396,7 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
      ```javascript
      const newLength = theArray.unshift(element1, element2, ...);
-     console.log(newLength) // => array length number
+     console.log(newLength) // => Número de longitud del array modificado
      ```
 
    - `shift()`:
@@ -1407,7 +1405,7 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
      ```javascript
      const firstElement = theArray.shift();
-     console.log(firstElement); // => first element deleted
+     console.log(firstElement); // => Primer elemento del array borrado
      ```
 
    - `concat()`:
@@ -1431,8 +1429,8 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
      ```javascript
      const foundElement = theArray.find((element, index, array) => {
-       // Your code
-       return // First founded element after code, saved into foundElement
+       // Tu código aquí
+       return; // Primer elemento encontrado del array
      });
      ```
 
@@ -1442,7 +1440,7 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
      ```javascript
      const indexOfElement = theArray.indexOf(searchElement, startIndex);
-     console.log(indexOfElement) // => index of first founded searchElement. If return -1, don't exist searchElement
+     console.log(indexOfElement); // => Índice del primer elemento encontrado. Si devuelve -1, el elemento no existe
      ```
 
    - `includes()`:
@@ -1451,7 +1449,7 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
      ```javascript
      const isIncluded = theArray.includes(searchElement, fromIndex);
-     console.log(isIncluded); // => true o false
+     console.log(isIncluded); // => True o False
      ```
 
    - `findIndex()`:
@@ -1460,8 +1458,8 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
      ```javascript
      const index = theArray.findIndex((element, index, array) => {
-       // Your code
-       return; // => Index element after code, saved into index. If return -1, don't exist element
+       // Tu código aquí
+       return; // => Índice del elemento después del código de comprobación. Si devuelve -1, el elemento no existe
      });
      ```
 
@@ -1471,10 +1469,23 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
 
    - `sort()`:
 
-     Ordena los elementos de un Array localmente y devuelve el mismo arreglo ordenado.
+     Ordena los elementos de un Array localmente y devuelve el mismo arreglo ordenado. Se puede proporcionar una función de comparación que toma dos parámetros, `a` y `b`, que representan dos elementos que se comparan entre sí. La función debe devolver un valor negativo si `a` debe ir antes que `b`, un valor positivo si `a` debe ir después que `b`, o `0` si son iguales.
 
      ```javascript
+     theArray.sort(); // => Array ordenado
 
+     theArray.sort((a, b) => {
+       
+       // Tu código aquí
+     
+       if (a < b) {
+         return -1;
+       }
+       if (a > b) {
+         return 1;
+       }
+       return 0;
+     });
      ```
 
    - `reverse()`:
@@ -1482,7 +1493,7 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
      Invierte el orden de los elementos de un Array.
 
      ```javascript
-
+     theArray.reverse(); // => Array al revés
      ```
 
 8. #### **`Encadenamiento de Métodos`**:
@@ -1500,30 +1511,59 @@ Los bucles son una herramienta poderosa en JavaScript para automatizar tareas re
    console.log(resultado); // Resultado: 12 (2*2 + 4*2)
    ```
 
-9. #### **`Consejos`**:
+9. #### **`Consejos y buenas prácticas`**:
 
-<!-- ToDo: añadir consejos de manipulación de arrays con variables fuera de iteraciones y/o métodos -->
+   <!-- ToDo: añadir consejos de manipulación de arrays con variables fuera de iteraciones y/o métodos -->
+   
    A continuación se aconsejarán formas de uso en lo que respecta los arrays, para facilitar la comprensión y el uso.
 
-   ```javascript
-   const theArray = [1, 2, 3, 4];
-   const newArray = [];
-   for (let index = 0; index < theArray.length; index++) {
-     const element = theArray[index];
-     if (element % 2 === 0) {
-       newArray.push(element);
+   - Es una buena práctica declarar las variables fuera del bucle o método cuando necesitas almacenar un valor a lo largo de la iteración. Si la variable se declara dentro del bucle, se reiniciará en cada iteración, lo que no es deseado si necesitas mantener su valor acumulado o procesado. Además, definir las variables fuera del bucle también es beneficioso en términos de ámbito `scope`, ya que pueden ser accedidas y utilizadas en otras partes del código si es necesario. Esto garantiza una mayor claridad y mantenibilidad del código.
+   
+     ```javascript
+     const theArray = [1, 2, 3, 4];
+     const newArray = []; // => Guardar los datos afuera de la iteración
+     for (let index = 0; index < theArray.length; index++) {
+       const element = theArray[index];
+       if (element % 2 === 0) {
+         newArray.push(element);
+       }
      }
-   }
-   console.log(newArray); // => [2, 4]
-   ```
+     console.log(newArray); // => [2, 4]
+     ```
+
+     ```javascript
+     const theArray = [1, 2, 3, 4];
+     for (let index = 0; index < theArray.length; index++) {
+       let newArray = [];
+       const element = theArray[index];
+       if (element % 2 === 0) {
+         newArray.push(element);
+       }
+     }
+     console.log(newArray); // => Error: "newArray is not defined"
+     ```
+
+     ```javascript
+     const theArray = [1, 2, 3, 4];
+     for (let index = 0; index < theArray.length; index++) {
+       var newArray = [];
+       const element = theArray[index];
+       if (element % 2 === 0) {
+         newArray.push(element);
+       }
+     }
+     console.log(newArray); // => Mal: devuelve sólo el último elemento 4
+     ```
 
 10. #### **`Consideraciones y Alternativas`**:
 
-Aunque los métodos Array son muy útiles, es importante tener en cuenta que pueden haber situaciones en las que otras estructuras de datos, como los `Sets` o los `Maps`, sean más apropiadas. Además, en entornos más modernos de JavaScript, las funciones flecha (`Arrow Functions`) y las expresiones lambda (`Lambda Expressions`) también ofrecen formas más concisas y expresivas de trabajar con arreglos y matrices.
-
-Recuerda que muchas veces utilizar un `bucle for` para recorrer un Array obtiene más resultados, aunque conlleve más código.
-
+   Aunque los métodos Array son muy útiles, es importante tener en cuenta que pueden haber situaciones en las que otras estructuras de datos, como los `Sets` o los `Maps`, sean más apropiadas. Además, en entornos más modernos de JavaScript, las funciones flecha (`Arrow Functions`) y las expresiones lambda (`Lambda Expressions`) también ofrecen formas más concisas y expresivas de trabajar con arreglos y matrices.
+   
+   Recuerda que muchas veces utilizar un `bucle for` para recorrer un Array obtiene más resultados, aunque conlleve más código.
+   
 11. #### **`Resumen`**:
 
-
     En resumen, los métodos Array son una parte fundamental de JavaScript y proporcionan una amplia gama de funcionalidades para trabajar con arreglos de manera efectiva. Desde la iteración y modificación hasta la búsqueda y transformación, estos métodos ofrecen herramientas poderosas para manipular datos de manera flexible y eficiente en JavaScript. Con una comprensión sólida de estos métodos, puedes escribir código más limpio, conciso y mantenible en tus proyectos JavaScript.
+
+
+<!-- ToDo: Seguir con Objects y después con funciones -->
