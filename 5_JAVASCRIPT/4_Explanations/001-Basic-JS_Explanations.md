@@ -1515,7 +1515,7 @@
 
    <!-- ToDo: añadir consejos de manipulación de arrays con variables fuera de iteraciones y/o métodos -->
    
-   A continuación se aconsejarán formas de uso en lo que respecta los arrays, para facilitar la comprensión y el uso.
+   A continuación se aconsejarán formas de uso en lo que respecta las iteraciones sobre arrays, ya sean con bucles o métodos, para facilitar la comprensión y el uso.
 
    - Es una buena práctica declarar las variables fuera del bucle o método cuando necesitas almacenar un valor a lo largo de la iteración. Si la variable se declara dentro del bucle, se reiniciará en cada iteración, lo que no es deseado si necesitas mantener su valor acumulado o procesado. Además, definir las variables fuera del bucle también es beneficioso en términos de ámbito `scope`, ya que pueden ser accedidas y utilizadas en otras partes del código si es necesario. Esto garantiza una mayor claridad y mantenibilidad del código.
    
@@ -1563,7 +1563,7 @@
    
 11. #### **`Resumen`**:
 
-    En resumen, los métodos Array son una parte fundamental de JavaScript y proporcionan una amplia gama de funcionalidades para trabajar con arreglos de manera efectiva. Desde la iteración y modificación hasta la búsqueda y transformación, estos métodos ofrecen herramientas poderosas para manipular datos de manera flexible y eficiente en JavaScript. Con una comprensión sólida de estos métodos, puedes escribir código más limpio, conciso y mantenible en tus proyectos JavaScript.
+   En resumen, los métodos Array son una parte fundamental de JavaScript y proporcionan una amplia gama de funcionalidades para trabajar con arreglos de manera efectiva. Desde la iteración y modificación hasta la búsqueda y transformación, estos métodos ofrecen herramientas poderosas para manipular datos de manera flexible y eficiente en JavaScript. Con una comprensión sólida de estos métodos, puedes escribir código más limpio, conciso y mantenible en tus proyectos JavaScript.
 
 
 <!-- ToDo: Seguir con Objects y después con funciones -->
