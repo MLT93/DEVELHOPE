@@ -112,7 +112,6 @@
    - `const` se utiliza para declarar variables cuyos valores no cambiarán después de la inicialización.
    - Una vez que se asigna un valor a una variable `const`, no se puede cambiar.
    - Es útil para declarar constantes y valores que no deben cambiar a lo largo del tiempo.
-   - Ejemplo:
 
      ```javascript
      const PI = 3.14159;
@@ -189,7 +188,7 @@
    - **Comparaciones**: Se pueden comparar valores utilizando operadores de comparación como `==`, `===`, `!=`, `!==`, `<`, `<=`, `>`, `>=`.
 
 6. #### **`Coerción Implícita y Explícita`**:
-
+   
    - **Coerción Implícita**: JavaScript intenta convertir automáticamente un tipo de dato en otro cuando sea necesario, por ejemplo, al realizar operaciones entre tipos diferentes.
    - **Coerción Explícita**: También es posible forzar la conversión de tipos de datos de manera explícita utilizando funciones constructoras como `String()`, `Number()`, `Boolean()`, `BigInt()` etc.
 
@@ -210,12 +209,12 @@
 
 10. #### **`Inmutabilidad y Mutabilidad`**:
 
-    - **Inmutabilidad de los Primitivos**: Los primitivos son inmutables, lo que significa que no se pueden modificar directamente después de su creación.
-    - **Mutabilidad en Objetos y Referencias**: A diferencia de los primitivos, los objetos y las referencias son mutables y pueden ser modificados después de su creación.
+   - **Inmutabilidad de los Primitivos**: Los primitivos son inmutables, lo que significa que no se pueden modificar directamente después de su creación.
+   - **Mutabilidad en Objetos y Referencias**: A diferencia de los primitivos, los objetos y las referencias son mutables y pueden ser modificados después de su creación.
 
 11. #### **`Resumen`**:
 
-    Los primitivos en JavaScript son tipos de datos simples e inmutables que representan valores individuales. Comprenden cadenas, números, booleanos, null, undefined y símbolos (introducidos en ES6). Los primitivos se copian por valor, se comparan por valor y son inmutables. Aunque no tienen métodos ni propiedades, JavaScript envuelve temporalmente los primitivos en objetos para permitir el acceso a métodos y propiedades cuando sea necesario. Entender los primitivos es fundamental para comprender el comportamiento de JavaScript y cómo interactúan los diferentes tipos de datos en un programa.
+   Los primitivos en JavaScript son tipos de datos simples e inmutables que representan valores individuales. Comprenden cadenas, números, booleanos, null, undefined y símbolos (introducidos en ES6). Los primitivos se copian por valor, se comparan por valor y son inmutables. Aunque no tienen métodos ni propiedades, JavaScript envuelve temporalmente los primitivos en objetos para permitir el acceso a métodos y propiedades cuando sea necesario. Entender los primitivos es fundamental para comprender el comportamiento de JavaScript y cómo interactúan los diferentes tipos de datos en un programa.
 
 ## Las operaciones entre primitivos: Una Explicación Detallada
 
@@ -405,28 +404,34 @@
      console.log(theString.length); // => 4
      ```
 
-<!-- ToDo: Añadir explicación de cada método -->
+   <!-- ToDo: Añadir explicación de cada método -->
    - **Métodos de Manipulación de Cadenas**: JavaScript proporciona una variedad de métodos para manipular cadenas, como `toUpperCase()`, `toLowerCase()`, `charAt()`, `substring()`, `indexOf()`, `slice()`, entre otros.
 
-1. #### **`Operaciones con Booleanos`**:
+     - `toUpperCase() or toLocaleUpperCase()`
+
+       ```javascript
+
+       ```
+
+5. #### **`Operaciones con Booleanos`**:
 
    - **Operadores Lógicos**: Permiten realizar operaciones lógicas como `AND (&&)`, `OR (||)` y `NOT (!)`.
 
    - **Conversión a Booleano**: En JavaScript, cualquier valor se puede convertir a un valor booleano. Valores como `0`, `null`, `undefined`, `NaN`, `''` (cadena de texto vacía) y `false` se consideran falsy, mientras que todos los demás valores se consideran truthy.
 
-2. #### **`Operaciones con null y undefined`**:
+6. #### **`Operaciones con null y undefined`**:
 
    - **Comparación y Coerción**: `null` y `undefined` son considerados iguales en valor pero no en tipo. Sin embargo, ambos son considerados falsy.
 
    - **Evitar Errores**: Es importante verificar si una variable es `null` o `undefined` antes de realizar operaciones con ellas para evitar errores de referencia no definida.
 
-3. #### **`Operaciones con Símbolos`**:
+7. #### **`Operaciones con Símbolos`**:
 
    - **Creación de Símbolos**: Se crean utilizando la función `Symbol()` y pueden ser utilizados como identificadores únicos para propiedades de objetos.
 
    - **Identificación de Símbolos**: Cada símbolo creado es único e inmutable, lo que significa que dos símbolos nunca serán iguales, incluso si tienen el mismo nombre.
 
-4. #### **`Consideraciones Importantes`**:
+8. #### **`Consideraciones Importantes`**:
 
    - **Inmutabilidad de los Primitivos**: Los valores primitivos son inmutables, lo que significa que una vez que se crean, no se pueden cambiar. Cualquier operación que parezca modificar un valor primitivo en realidad está creando un nuevo valor.
 
@@ -434,7 +439,7 @@
 
    - **Operaciones y Métodos Específicos de Tipo**: Cada tipo de primitivo tiene sus propias operaciones y métodos específicos que pueden ser aplicados a ellos.
 
-5. #### **`Resumen`**:
+9. #### **`Resumen`**:
 
    Las operaciones entre primitivos en JavaScript son esenciales para el desarrollo de aplicaciones web y se utilizan ampliamente en la manipulación y procesamiento de datos. Es importante comprender los diferentes tipos de primitivos y las operaciones que se pueden realizar con ellos para escribir un código efectivo y eficiente. Desde operaciones numéricas simples hasta manipulación de cadenas de texto y comparaciones booleanas, la comprensión de estas operaciones es fundamental para cualquier desarrollador de JavaScript.
 
@@ -614,7 +619,7 @@
 
 10. #### **`Conclusión`**:
 
-    Las declaraciones condicionales son una herramienta poderosa en JavaScript que permite controlar el flujo del programa y tomar decisiones dinámicas en función de condiciones específicas. Es importante comprender cómo utilizar eficazmente las declaraciones condicionales para escribir código limpio, legible y mantenible en tus proyectos de desarrollo web y aplicaciones. Además, es útil explorar alternativas y técnicas avanzadas para manejar la lógica condicional de manera más eficiente en casos de código complejo o escenarios de gran escala.
+   Las declaraciones condicionales son una herramienta poderosa en JavaScript que permite controlar el flujo del programa y tomar decisiones dinámicas en función de condiciones específicas. Es importante comprender cómo utilizar eficazmente las declaraciones condicionales para escribir código limpio, legible y mantenible en tus proyectos de desarrollo web y aplicaciones. Además, es útil explorar alternativas y técnicas avanzadas para manejar la lógica condicional de manera más eficiente en casos de código complejo o escenarios de gran escala.
 
 ## **Switch en JavaScript: Una Explicación Detallada**
 
@@ -694,7 +699,6 @@
      default:
        mensaje = "No conozco esa fruta";
    }
-
    console.log(mensaje);
    ```
 
@@ -715,7 +719,6 @@
      default:
        mensaje = "Código inválido";
    }
-
    console.log(mensaje); // Resultado: "Código válido"
    ```
 
@@ -737,7 +740,6 @@
      default:
        resultado = "Otro tipo";
    }
-
    console.log(resultado); // Resultado: "Número"
    ```
 
@@ -819,7 +821,7 @@
    console.log(y); // Resultado: 6
    ```
 
-1. #### **`Operador de decremento '--'`**:
+4. #### **`Operador de decremento '--'`**:
 
    El operador `--` decrementa el valor de una variable en una unidad.
    Al igual que el operador de incremento, puede ser utilizado antes (`--variable`) o después (`variable--`) del nombre de la variable.
@@ -834,7 +836,7 @@
 
    Estos operadores son útiles en bucles, cálculos aritméticos y otras situaciones donde necesitas aumentar o disminuir el valor de una variable en una unidad. Sin embargo, es importante entender cómo funcionan en diferentes contextos para evitar confusiones en el código.
 
-2. #### **`Sintaxis y Ejecución de Bucles`**:
+5. #### **`Sintaxis y Ejecución de Bucles`**:
 
    Los bucles en JavaScript se pueden implementar utilizando diferentes estructuras, como `for`, `while`, y `do-while`. Estas estructuras permiten repetir un bloque de código mientras se cumpla una condición. Veamos ejemplos de cada una:
 
@@ -901,7 +903,7 @@
 
      `Este bucle se ejecuta al menos una vez`, ya que primero se ejecuta el bloque de código y luego se verifica la condición. Si la condición es verdadera, se repite el bucle.
 
-3. #### **`Control de Bucles y Palabras Clave Relacionadas 'continue' y 'break'`**:
+6. #### **`Control de Bucles y Palabras Clave Relacionadas 'continue' y 'break'`**:
 
    En JavaScript, existen palabras clave que permiten controlar el flujo de un bucle, como `break` y `continue`.
 
@@ -935,7 +937,7 @@
 
      Aquí, cuando `i` es igual a 2, se salta esa iteración y se pasa a la siguiente.
 
-4. #### **`Bucles Anidados y su Utilidad`**:
+7. #### **`Bucles Anidados y su Utilidad`**:
 
    Los bucles anidados son bucles dentro de otros bucles, y son útiles para realizar operaciones en estructuras de datos multidimensionales, como matrices bidimensionales.
 
@@ -949,7 +951,7 @@
 
    Este ejemplo muestra un bucle `for` anidado dentro de otro. Se ejecuta el bucle exterior para `i` desde 0 hasta 2, y dentro de cada iteración del bucle exterior, se ejecuta el bucle interior para `j` desde 0 hasta 2.
 
-5. #### **`Bucles Particulares`**
+8. #### **`Bucles Particulares`**
 
    Los bucles `for...in` y `for...of` son estructuras de control que nos permiten recorrer elementos en JavaScript, pero tienen diferencias importantes en cuanto a su funcionamiento y los tipos de objetos sobre los que pueden iterar.
 
@@ -1007,11 +1009,11 @@
 
      `No itera sobre las propiedades de un objeto`, por lo que no se pueden usar directamente con objetos normales. Itera sobre los valores de un objeto iterable, en lugar de sobre las propiedades.
 
-6. #### **`Especificaciones sobre el Contexto 'this' en Bucles`**:
+9. #### **`Especificaciones sobre el Contexto 'this' en Bucles`**:
 
    El contexto `this` en JavaScript puede comportarse de manera diferente dentro de bucles, especialmente al utilizar "funciones regulares" en lugar de "funciones flecha". En bucles anidados, el contexto `this` puede cambiar en cada nivel de anidamiento, lo que puede llevar a errores de referencia, ten cuidado.
 
-7.  #### **`Ejemplos de Uso de Bucles Paso a Paso`**:
+10. #### **`Ejemplos de Uso de Bucles Paso a Paso`**:
 
    - **Bucle `for` para Imprimir Números Pares**:
 
@@ -1086,7 +1088,7 @@
      }
      ```
 
-8.  #### **`Consideraciones Finales sobre Bucles en JavaScript`**:
+11.  #### **`Consideraciones Finales sobre Bucles en JavaScript`**:
 
    Los bucles son una herramienta poderosa en JavaScript para automatizar tareas repetitivas y procesar datos de manera eficiente. Sin embargo, es importante utilizarlos con cuidado y considerar alternativas más modernas y funcionales cuando sea posible, para escribir un código más limpio y legible. Además, comprender el comportamiento del contexto `this` dentro de los bucles es crucial para evitar errores de referencia y comportamientos inesperados.
 
@@ -1182,15 +1184,15 @@
 8. #### **`Consideraciones y Mejores Prácticas`**:
 
    Al trabajar con Arrays en JavaScript, es importante tener en cuenta algunas consideraciones y seguir mejores prácticas para escribir un código limpio y eficiente:
-   
+
    - **Evitar la mutación directa de Arrays**: En lugar de modificar un array existente, es preferible crear un nuevo array utilizando métodos como `map`, `filter` o `reduce`.
    - **Usar nombres descriptivos para variables y funciones**: Utilizar nombres que reflejen claramente el propósito y contenido del array.
    - **Documentar el código**: Agregar comentarios que expliquen el propósito y funcionamiento del array y cualquier operación realizada en él.
-   
-9.  #### **`Resumen`**:
-   
+
+9. #### **`Resumen`**:
+
    En resumen, los Arrays en JavaScript son una herramienta poderosa y versátil para almacenar y manipular conjuntos de datos de manera eficiente. Su flexibilidad y numerosos métodos integrados los hacen indispensables en el desarrollo web y de aplicaciones para una amplia gama de tareas y aplicaciones. Con una comprensión sólida de su sintaxis y funcionalidades, los desarrolladores pueden aprovechar al máximo el potencial de los Arrays en sus proyectos.
-   
+
 <!--
 
 ## **Métodos Array y Explicación del contexto This en JavaScript: Una Explicación Detallada**
@@ -1475,9 +1477,8 @@
      theArray.sort(); // => Array ordenado
 
      theArray.sort((a, b) => {
-       
        // Tu código aquí
-     
+
        if (a < b) {
          return -1;
        }
@@ -1514,11 +1515,11 @@
 9. #### **`Consejos y buenas prácticas`**:
 
    <!-- ToDo: añadir consejos de manipulación de arrays con variables fuera de iteraciones y/o métodos -->
-   
+
    A continuación se aconsejarán formas de uso en lo que respecta las iteraciones sobre arrays, ya sean con bucles o métodos, para facilitar la comprensión y el uso.
 
-   - Es una buena práctica declarar las variables fuera del bucle o método cuando necesitas almacenar un valor a lo largo de la iteración. Si la variable se declara dentro del bucle, se reiniciará en cada iteración, lo que no es deseado si necesitas mantener su valor acumulado o procesado. Además, definir las variables fuera del bucle también es beneficioso en términos de ámbito `scope`, ya que pueden ser accedidas y utilizadas en otras partes del código si es necesario. Esto garantiza una mayor claridad y mantenibilidad del código.
-   
+   - Es una buena práctica declarar las variables fuera del bucle cuando necesitas almacenar un valor a lo largo de la iteración. Si la variable se declara dentro del bucle, se reiniciará en cada iteración, lo que no es deseado si necesitas mantener su valor acumulado o procesado. Además, definir las variables fuera del bucle también es beneficioso en términos de ámbito `scope`, ya que pueden ser accedidas y utilizadas en otras partes del código si es necesario. Esto garantiza una mayor claridad y mantenibilidad del código.
+
      ```javascript
      const theArray = [1, 2, 3, 4];
      const newArray = []; // => Guardar los datos afuera de la iteración
@@ -1555,15 +1556,32 @@
      console.log(newArray); // => Mal: devuelve sólo el último elemento 4
      ```
 
+   - Muchos métodos de array se suelen utilizar directamente dentro de una variable con una sintaxis funcional más compacta para aprovechar su resultado. En estos casos, es importante recordar incluir el `return` dentro de la función de callback si deseas que el método devuelva un valor específico en cada iteración.
+
+     ```javascript
+     const array = [2, 4, 6];
+     const newArray = array.map((element) => {
+       return element * 2; // Transforma cada elemento y devuelve un nuevo array con los resultados
+     });
+     console.log(newArray); // => [4, 8, 16]
+     ```
+
+     ```javascript
+     const array = [2, 4, 6];
+     const newArray = array.map((element) => {
+       element * 2;
+     });
+     console.log(newArray); // => Mal: [undefined, undefined, undefined]
+     ```
+
 10. #### **`Consideraciones y Alternativas`**:
 
    Aunque los métodos Array son muy útiles, es importante tener en cuenta que pueden haber situaciones en las que otras estructuras de datos, como los `Sets` o los `Maps`, sean más apropiadas. Además, en entornos más modernos de JavaScript, las funciones flecha (`Arrow Functions`) y las expresiones lambda (`Lambda Expressions`) también ofrecen formas más concisas y expresivas de trabajar con arreglos y matrices.
-   
+
    Recuerda que muchas veces utilizar un `bucle for` para recorrer un Array obtiene más resultados, aunque conlleve más código.
-   
+
 11. #### **`Resumen`**:
 
    En resumen, los métodos Array son una parte fundamental de JavaScript y proporcionan una amplia gama de funcionalidades para trabajar con arreglos de manera efectiva. Desde la iteración y modificación hasta la búsqueda y transformación, estos métodos ofrecen herramientas poderosas para manipular datos de manera flexible y eficiente en JavaScript. Con una comprensión sólida de estos métodos, puedes escribir código más limpio, conciso y mantenible en tus proyectos JavaScript.
-
 
 <!-- ToDo: Seguir con Objects y después con funciones -->

@@ -2311,3 +2311,12 @@ const arrayA = [1, 2, 3];
 const arrayB = [4, 5, 6];
 const newArray_AB = arrayA.concat(arrayB);
 console.log(newArray_AB); // => [1, 2, 3, 4, 5, 6]
+
+// ------------------------------------------------------------------------------
+
+const ar = [2, 4, 6];
+const nArr = array.map((element) => {
+  element * 2; // Transforma cada elemento y devuelve un nuevo array con los resultados
+});
+console.log(nArr); // => [4, 8, 16]
+// => Mal: [ undefined, undefined, undefined ]
