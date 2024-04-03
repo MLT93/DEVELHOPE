@@ -1005,7 +1005,7 @@
      }
      ```
 
-     En este ejemplo, el bucle `for...of` es una forma concisa y legible de recorrer los elementos del array, ya que simplifica el código al evitar la necesidad de rastrear índices o preocuparse por el tamaño del array.
+     En este ejemplo, el bucle `for...of` es una forma concisa y legible de recorrer los elementos del array, y de otros objetos iterables como `Strings`, `Sets` y `Maps`, ya que simplifica el código al evitar la necesidad de rastrear índices o preocuparse por el tamaño del array.
 
      `No itera sobre las propiedades de un objeto`, por lo que no se pueden usar directamente con objetos normales. Itera sobre los valores de un objeto iterable, en lugar de sobre las propiedades.
 
@@ -1438,7 +1438,7 @@
 
    - `indexOf()`:
 
-     Devuelve el `index` del primer elemento que coincide con el valor especificado, o -1 si no se encuentra.
+     Devuelve el `index` del primer elemento que coincide con el valor especificado, o -1 si no se encuentra. Recuerda que ste método compara el valor y el tipo en la búsqueda que realiza.
 
      ```javascript
      const indexOfElement = theArray.indexOf(searchElement, startIndex);
