@@ -449,6 +449,8 @@
 
    Las declaraciones condicionales son estructuras fundamentales en JavaScript que permiten ejecutar diferentes bloques de código según ciertas condiciones. Estas condiciones pueden evaluar expresiones booleanas y determinar qué acciones tomar en función de si la condición es verdadera o falsa.
 
+   Lee esto **https://es.javascript.info/ifelse**
+
 2. #### **`Importancia de las Declaraciones Condicionales`**:
 
    En el desarrollo de aplicaciones, las declaraciones condicionales son esenciales para controlar el flujo del programa y tomar decisiones basadas en diferentes escenarios. Permiten ejecutar código de manera selectiva, lo que es fundamental para la lógica de la aplicación y la interactividad con el usuario.
