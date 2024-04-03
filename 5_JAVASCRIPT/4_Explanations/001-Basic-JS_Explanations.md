@@ -394,7 +394,7 @@
 
      - `Recursos adicionales`
 
-       - [Template literals](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Template_literals)
+       - [**Template literals**](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Template_literals)
 
    - **Longitud de la Cadena**: Se puede obtener la longitud de una cadena utilizando la propiedad `length`. También se utiliza en Arrays.
 
