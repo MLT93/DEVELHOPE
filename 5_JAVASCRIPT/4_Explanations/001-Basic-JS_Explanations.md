@@ -796,9 +796,7 @@
 
 1. #### **`Introducción a los Bucles`**:
 
-   Los bucles son estructuras de control fundamentales en JavaScript que permiten ejecutar repetidamente un bloque de código mientras se cumpla una condición específica. Estas estructuras son esenciales para automatizar tareas repetitivas y procesar datos de manera eficiente.
-
-   Lee esto **https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Loops_and_iteration**
+   Los bucles son estructuras de control fundamentales en JavaScript que permiten ejecutar repetidamente un bloque de código mientras se cumpla una condición específica. Estas estructuras son esenciales para automatizar tareas repetitivas y procesar datos de manera eficiente. Lee esto [**Loops & iteration**](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Loops_and_iteration)
 
 2. #### **`Importancia de los Bucles`**:
 
