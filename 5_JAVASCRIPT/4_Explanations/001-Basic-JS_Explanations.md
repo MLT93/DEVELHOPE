@@ -273,7 +273,7 @@
        // => 45
        ```
 
-   - **Operadores de Comparación**: Como dijimos previamente permiten comparar números utilizando operadores como `igualdad de valor (==)` que compara solo el valor, `no igualdad de valor (!=)` que compara solo el valor, `mayor que (>)`, `menor que (<)`, `mayor o igual que (>=)`, `menor o igual que (<=)`, `igualdad estricta de valor y tipo (===)` y `desigualdad estricta de valor y tipo (!==)`.
+   - **Operadores de Comparación**: Como dijimos previamente permiten comparar números utilizando operadores como `igualdad de valor (==)` que compara solo el valor, `no igualdad de valor (!=)` que compara solo el valor, `mayor que (>)`, `menor que (<)`, `mayor o igual que (>=)`, `menor o igual que (<=)`, `igualdad estricta de valor y tipo (===)` y `desigualdad estricta de valor y tipo (!==)`. Lee esto **https://es.javascript.info/comparison**
 
      - `Igualdad (==)`
 
