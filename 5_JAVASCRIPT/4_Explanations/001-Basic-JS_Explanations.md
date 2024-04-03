@@ -1585,7 +1585,7 @@
 
    Recuerda que muchas veces utilizar un `bucle for` para recorrer un Array obtiene más resultados, aunque conlleve más código.
 
-   Si deseas profundizar más **https://www.youtube.com/watch?v=LYF4FeJyccc**
+   Si deseas profundizar más [**YouTube video of arrays methods**](https://www.youtube.com/watch?v=LYF4FeJyccc)
 
 11. #### **`Resumen`**:
 
