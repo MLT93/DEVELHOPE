@@ -627,6 +627,8 @@
 
    El `switch` es una estructura de control en JavaScript que permite tomar decisiones basadas en el valor de una expresión. Es una alternativa al uso de múltiples `if-else` cuando se necesita evaluar una expresión contra varios valores posibles.
 
+   Lee esto **https://es.javascript.info/switch**
+
 2. #### **`Importancia de Switch`**:
 
    El `switch` es útil cuando se tienen múltiples casos posibles para una sola expresión y se necesita ejecutar un bloque de código diferente para cada caso. Ayuda a escribir un código más limpio y legible al evitar la repetición de múltiples bloques `if-else`.
