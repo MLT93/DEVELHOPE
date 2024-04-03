@@ -345,8 +345,7 @@
 
      - `Recursos adicionales`
 
-       - Operadores en JavaScript: [Mozilla Developers](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Expressions_and_operators)
-       - Comparaciones en JavaScript: [JavaScript Info](https://es.javascript.info/comparison)
+       - Operadores en JavaScript: **https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Expressions_and_operators**
 
    - **Operadores de Asignación**: Se utilizan para asignar valores a variables. Por ejemplo, el `operador de asignación simple (=)` asigna un valor a una variable. También existen `operadores de asignación abreviada (+=)` para facilitar la asignación de valores nuevos a valores viejos utilizando una misma variable para la asignación del valor actualizado.
 
