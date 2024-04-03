@@ -190,7 +190,7 @@
 6. #### **`Coerción Implícita y Explícita`**:
    
    - **Coerción Implícita**: JavaScript intenta convertir automáticamente un tipo de dato en otro cuando sea necesario, por ejemplo, al realizar operaciones entre tipos diferentes.
-   - **Coerción Explícita**: También es posible forzar la conversión de tipos de datos de manera explícita utilizando funciones constructoras como `String()`, `Number()`, `Boolean()`, `BigInt()` etc. Lee esto **https://es.javascript.info/type-conversions**
+   - **Coerción Explícita**: También es posible forzar la conversión de tipos de datos de manera explícita utilizando funciones constructoras como `String()`, `Number()`, `Boolean()`, `BigInt()` etc. Lee esto [**Type Conversions**](https://es.javascript.info/type-conversions)
 
 7. #### **`Funciones y Primitivos`**:
 
