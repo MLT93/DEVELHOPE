@@ -1095,9 +1095,7 @@
 
 1. #### **`Introducción a los Arrays en JavaScript`**:
 
-   Los Arrays, también conocidos como matrices o arreglos, son estructuras de datos fundamentales en JavaScript que permiten almacenar múltiples valores en una sola variable. Pueden contener cualquier tipo de datos, incluidos números, cadenas, objetos e incluso otros arrays.
-
-   Lee esto **https://es.javascript.info/array**
+   Los Arrays, también conocidos como matrices o arreglos, son estructuras de datos fundamentales en JavaScript que permiten almacenar múltiples valores en una sola variable. Pueden contener cualquier tipo de datos, incluidos números, cadenas, objetos e incluso otros arrays. Lee esto [**Array**](https://es.javascript.info/array)
 
 2. #### **`Importancia de los Arrays`**:
 
