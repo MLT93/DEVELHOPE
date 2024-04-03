@@ -1098,7 +1098,7 @@
 
    Los Arrays, también conocidos como matrices o arreglos, son estructuras de datos fundamentales en JavaScript que permiten almacenar múltiples valores en una sola variable. Pueden contener cualquier tipo de datos, incluidos números, cadenas, objetos e incluso otros arrays.
 
-   **https://es.javascript.info/array**
+   Lee esto **https://es.javascript.info/array**
 
 2. #### **`Importancia de los Arrays`**:
 
@@ -1579,6 +1579,8 @@
    Aunque los métodos Array son muy útiles, es importante tener en cuenta que pueden haber situaciones en las que otras estructuras de datos, como los `Sets` o los `Maps`, sean más apropiadas. Además, en entornos más modernos de JavaScript, las funciones flecha (`Arrow Functions`) y las expresiones lambda (`Lambda Expressions`) también ofrecen formas más concisas y expresivas de trabajar con arreglos y matrices.
 
    Recuerda que muchas veces utilizar un `bucle for` para recorrer un Array obtiene más resultados, aunque conlleve más código.
+
+   Si deseas profundizar más **https://www.youtube.com/watch?v=LYF4FeJyccc**
 
 11. #### **`Resumen`**:
 
