@@ -415,7 +415,7 @@
 
 5. #### **`Operaciones con Booleanos`**:
 
-   - **Operadores Lógicos**: Permiten realizar operaciones lógicas como `AND (&&)`, `OR (||)` y `NOT (!)`.
+   - **Operadores Lógicos**: Permiten realizar operaciones lógicas como `AND (&&)`, `OR (||)` y `NOT (!)`. Lee esto **https://es.javascript.info/logical-operators**
 
    - **Conversión a Booleano**: En JavaScript, cualquier valor se puede convertir a un valor booleano. Valores como `0`, `null`, `undefined`, `NaN`, `''` (cadena de texto vacía) y `false` se consideran falsy, mientras que todos los demás valores se consideran truthy.
 
