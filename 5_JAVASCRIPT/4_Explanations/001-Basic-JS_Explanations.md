@@ -405,7 +405,7 @@
      ```
 
    <!-- ToDo: Añadir explicación de cada método -->
-   - **Métodos de Manipulación de Cadenas**: JavaScript proporciona una variedad de métodos para manipular cadenas, como `toUpperCase()`, `toLowerCase()`, `charAt()`, `substring()`, `indexOf()`, `slice()`, entre otros.
+   - **Métodos de Manipulación de Cadenas**: JavaScript proporciona una variedad de métodos para manipular cadenas, como `toUpperCase()`, `toLowerCase()`, `charAt()`, `substring()`, entre otros. A continuación se explicarán los directamente relacionados con a las cadenas de texto porque los demás métodos se explicarán detalladamente en el apartado de `Arrays` o "cadenas", dado que al fin y al cabo un `String` no es más que una "cadena de texto". 
 
      - `toUpperCase() or toLocaleUpperCase()`
 
@@ -1503,6 +1503,14 @@
      theArray.reverse(); // => Array al revés
      ```
 
+   - `slice()`:
+
+     Asd
+
+     ```javascript
+     // ToDo: explicar el método slice()
+     ```
+
 8. #### **`Encadenamiento de Métodos`**:
 
    Una de las características poderosas de los métodos Array en JavaScript es la capacidad de encadenar múltiples métodos para realizar operaciones complejas en una sola línea de código. Esto mejora la legibilidad y la eficiencia del código.
@@ -1520,7 +1528,7 @@
 
 9. #### **`Consejos y buenas prácticas`**:
 
-   <!-- ToDo: añadir consejos de manipulación de arrays con variables fuera de iteraciones y/o métodos -->
+   <!-- ToDo: Revisar consejos de manipulación de arrays con variables fuera de iteraciones y/o métodos -->
 
    A continuación se aconsejarán formas de uso en lo que respecta las iteraciones sobre arrays, ya sean con bucles o métodos, para facilitar la comprensión y el uso.
 
