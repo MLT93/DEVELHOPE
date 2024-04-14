@@ -1310,7 +1310,7 @@
 
      ```javascript
      theArray.forEach((element, index, array) => {
-       // Tu código aquí
+       // Tu código aquí por cada uno de los elementos
      });
      ```
 
@@ -1320,19 +1320,19 @@
 
      ```javascript
      const newArray = theArray.map((element, index, array) => {
-       // Tu código aquí
-       return; // Elementos en newArray
+       // Tu código aquí para cada elemento
+       return; // Elementos en newArray después de pasar por una función precedente
      });
      ```
 
    - `filter()`:
 
-     Crea un nuevo Array con todos los elementos que pasan una prueba condicional.
+     Crea un nuevo Array con todos los elementos que pasan una prueba condicional con éxito (devolviendo true).
 
      ```javascript
      const newArray = theArray.filter((element, index, array) => {
-       // Tu código aquí
-       return; // Elementos después del código, guardados en newArray
+       // Tu código aquí para realizar una condición
+       return; // Elementos en newArray después de cumplir la prueba con un true
      });
      ```
 
@@ -1341,8 +1341,9 @@
      Aplica una función a un `accumulator` y a los elementos del Array en cada iteración para reducir el mismo arreglo a un solo valor.
 
      ```javascript
-     theArray.reduce((accumulator, element, index, array) => {
-       // Tu código aquí
+     const result = theArray.reduce((accumulator, elementCurrentValue, index, array) => {
+       // Tu código aquí para reducir los elementos del array a uno solo
+       return accumulator; // La acumulación del array reducido
      }, initialValue);
      ```
 
@@ -1352,18 +1353,18 @@
 
      ```javascript
      const result = theArray.some((element, index, array) => {
-       // Tu código aquí
+       // Tu código aquí para verificar si al menos uno cumple
      });
      console.log(result); // => True o False
      ```
 
    - `every()`:
 
-     Verifica si todos los elementos del array cumplen con la función de prueba proporcionada, devolviendo `true` o `false`.
+     Comprueba si todos los elementos del array cumplen con la condición proporcionada, devolviendo `true` o `false`.
 
      ```javascript
      const result = theArray.every((element, index, array) => {
-       // Tu código aquí
+       // Tu código aquí para comprobar si todos cumplen
      });
      console.log(result); // => True o False
      ```
@@ -1435,21 +1436,21 @@
 
    - `find()`:
 
-     Devuelve el primer elemento del Array que satisface una condición proporcionada por una función.
+     Devuelve el primer elemento del Array que satisface una condición proporcionada. Devuelve `undefined` si ningún elemento cumple con la condición especificada.
 
      ```javascript
      const foundElement = theArray.find((element, index, array) => {
        // Tu código aquí
-       return; // Primer elemento encontrado del array
+       return; // Primer elemento encontrado después de la condición
      });
      ```
 
    - `indexOf()`:
 
-     Devuelve el `index` del primer elemento que coincide con el valor especificado, o -1 si no se encuentra. Recuerda que ste método compara el valor y el tipo en la búsqueda que realiza.
+     Devuelve el `index` del primer elemento que coincide con el valor especificado, o -1 si no se encuentra. Recuerda que este método compara el valor y el tipo en la búsqueda que realiza. Se le puede añadir un índice de inicio para comenzar la búsqueda.
 
      ```javascript
-     const indexOfElement = theArray.indexOf(searchElement, startIndex);
+     const indexOfElement = theArray.indexOf(searchElement, indexStartingSearch);
      console.log(indexOfElement); // => Índice del primer elemento encontrado. Si devuelve -1, el elemento no existe
      ```
 
@@ -1468,7 +1469,7 @@
 
      ```javascript
      const index = theArray.findIndex((element, index, array) => {
-       // Tu código aquí
+       // Tu código aquí para comprobar
        return; // => Índice del elemento después del código de comprobación. Si devuelve -1, el elemento no existe
      });
      ```
@@ -1485,7 +1486,7 @@
      theArray.sort(); // => Array ordenado
 
      theArray.sort((a, b) => {
-       // Tu código aquí
+       // Tu código aquí para ordenar
 
        if (a < b) {
          return -1;
@@ -1507,10 +1508,11 @@
 
    - `slice()`:
 
-     Asd
+     Devuelve una copia de una porción de un array. Se proporciona un inicio (inclusive), y un fin (exclusivo). Si no se proporciona el fin, se extraerá hasta el final del array.
 
      ```javascript
-     // ToDo: explicar el método slice()
+     const slicedArray = theArray.slice(indexStart, indexEnd); 
+     console.log(slicedArray); // => Nuevo array con la porción recortada
      ```
 
 8. #### **`Encadenamiento de Métodos`**:
