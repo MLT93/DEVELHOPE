@@ -201,7 +201,7 @@
 6. #### **`Coerción Implícita y Explícita`**:
    
    - **Coerción Implícita**: JavaScript intenta convertir automáticamente un tipo de dato en otro cuando sea necesario, por ejemplo, al realizar operaciones entre tipos diferentes.
-   - **Coerción Explícita**: También es posible forzar la conversión de tipos de datos de manera explícita utilizando funciones constructoras como `String()`, `Number()`, `Boolean()`, `BigInt()` etc.
+   - **Coerción Explícita**: También es posible forzar la conversión de tipos de datos de manera explícita utilizando funciones constructoras como `String()`, `Number()`, `Boolean()`, `BigInt()` etc. Lee esto [**Type Conversions**](https://es.javascript.info/type-conversions)
 
 7. #### **`Funciones y Primitivos`**:
 
@@ -284,7 +284,7 @@
        // => 45
        ```
 
-   - **Operadores de Comparación**: Como dijimos previamente permiten comparar números utilizando operadores como `igualdad de valor (==)` que compara solo el valor, `no igualdad de valor (!=)` que compara solo el valor, `mayor que (>)`, `menor que (<)`, `mayor o igual que (>=)`, `menor o igual que (<=)`, `igualdad estricta de valor y tipo (===)` y `desigualdad estricta de valor y tipo (!==)`.
+   - **Operadores de Comparación**: Como dijimos previamente permiten comparar números utilizando operadores como `igualdad de valor (==)` que compara solo el valor, `no igualdad de valor (!=)` que compara solo el valor, `mayor que (>)`, `menor que (<)`, `mayor o igual que (>=)`, `menor o igual que (<=)`, `igualdad estricta de valor y tipo (===)` y `desigualdad estricta de valor y tipo (!==)`. Lee esto [**Comparison**](https://es.javascript.info/comparison)
 
      - `Igualdad (==)`
 
@@ -356,8 +356,7 @@
 
      - `Recursos adicionales`
 
-       - Operadores en JavaScript: [Mozilla Developers](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Expressions_and_operators)
-       - Comparaciones en JavaScript: [JavaScript Info](https://es.javascript.info/comparison)
+       - Operadores en JavaScript: [**Expressions and operators**](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Expressions_and_operators)
 
    - **Operadores de Asignación**: Se utilizan para asignar valores a variables. Por ejemplo, el `operador de asignación simple (=)` asigna un valor a una variable. También existen `operadores de asignación abreviada (+=)` para facilitar la asignación de valores nuevos a valores viejos utilizando una misma variable para la asignación del valor actualizado.
 
@@ -406,7 +405,7 @@
 
      - `Recursos adicionales`
 
-       - [Template literals](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Template_literals)
+       - [**Template literals**](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Template_literals)
 
    - **Longitud de la Cadena**: Se puede obtener la longitud de una cadena utilizando la propiedad `length`. También se utiliza en Arrays.
 
@@ -416,7 +415,7 @@
      ```
 
    <!-- ToDo: Añadir explicación de cada método -->
-   - **Métodos de Manipulación de Cadenas**: JavaScript proporciona una variedad de métodos para manipular cadenas, como `toUpperCase()`, `toLowerCase()`, `charAt()`, `substring()`, `indexOf()`, `slice()`, entre otros.
+   - **Métodos de Manipulación de Cadenas**: JavaScript proporciona una variedad de métodos para manipular cadenas, como `toUpperCase()`, `toLowerCase()`, `charAt()`, `substring()`, entre otros. A continuación se explicarán los directamente relacionados con a las cadenas de texto porque los demás métodos se explicarán detalladamente en el apartado de `Arrays` o "cadenas", dado que al fin y al cabo un `String` no es más que una "cadena de texto". 
 
      - `toUpperCase() or toLocaleUpperCase()`
 
@@ -426,7 +425,7 @@
 
 5. #### **`Operaciones con Booleanos`**:
 
-   - **Operadores Lógicos**: Permiten realizar operaciones lógicas como `AND (&&)`, `OR (||)` y `NOT (!)`.
+   - **Operadores Lógicos**: Permiten realizar operaciones lógicas como `AND (&&)`, `OR (||)` y `NOT (!)`. Lee esto [**Logical operators**](https://es.javascript.info/logical-operators)
 
    - **Conversión a Booleano**: En JavaScript, cualquier valor se puede convertir a un valor booleano. Valores como `0`, `null`, `undefined`, `NaN`, `''` (cadena de texto vacía) y `false` se consideran falsy, mientras que todos los demás valores se consideran truthy.
 
@@ -458,7 +457,7 @@
 
 1. #### **`Introducción a las Declaraciones Condicionales`**:
 
-   Las declaraciones condicionales son estructuras fundamentales en JavaScript que permiten ejecutar diferentes bloques de código según ciertas condiciones. Estas condiciones pueden evaluar expresiones booleanas y determinar qué acciones tomar en función de si la condición es verdadera o falsa.
+   Las declaraciones condicionales son estructuras fundamentales en JavaScript que permiten ejecutar diferentes bloques de código según ciertas condiciones. Estas condiciones pueden evaluar expresiones booleanas y determinar qué acciones tomar en función de si la condición es verdadera o falsa. Lee esto [**Conditional operators**](https://es.javascript.info/ifelse)
 
 2. #### **`Importancia de las Declaraciones Condicionales`**:
 
@@ -636,7 +635,7 @@
 
 1. #### **`Introducción a Switch`**:
 
-   El `switch` es una estructura de control en JavaScript que permite tomar decisiones basadas en el valor de una expresión. Es una alternativa al uso de múltiples `if-else` cuando se necesita evaluar una expresión contra varios valores posibles.
+   El `switch` es una estructura de control en JavaScript que permite tomar decisiones basadas en el valor de una expresión. Es una alternativa al uso de múltiples `if-else` cuando se necesita evaluar una expresión contra varios valores posibles. Lee esto [**Switch operator**](https://es.javascript.info/switch)
 
 2. #### **`Importancia de Switch`**:
 
@@ -808,7 +807,7 @@
 
 1. #### **`Introducción a los Bucles`**:
 
-   Los bucles son estructuras de control fundamentales en JavaScript que permiten ejecutar repetidamente un bloque de código mientras se cumpla una condición específica. Estas estructuras son esenciales para automatizar tareas repetitivas y procesar datos de manera eficiente.
+   Los bucles son estructuras de control fundamentales en JavaScript que permiten ejecutar repetidamente un bloque de código mientras se cumpla una condición específica. Estas estructuras son esenciales para automatizar tareas repetitivas y procesar datos de manera eficiente. Lee esto [**Loops & iteration**](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Loops_and_iteration)
 
 2. #### **`Importancia de los Bucles`**:
 
@@ -1016,7 +1015,7 @@
      }
      ```
 
-     En este ejemplo, el bucle `for...of` es una forma concisa y legible de recorrer los elementos del array, ya que simplifica el código al evitar la necesidad de rastrear índices o preocuparse por el tamaño del array.
+     En este ejemplo, el bucle `for...of` es una forma concisa y legible de recorrer los elementos del array, y de otros objetos iterables como `Strings`, `Sets` y `Maps`, ya que simplifica el código al evitar la necesidad de rastrear índices o preocuparse por el tamaño del array.
 
      `No itera sobre las propiedades de un objeto`, por lo que no se pueden usar directamente con objetos normales. Itera sobre los valores de un objeto iterable, en lugar de sobre las propiedades.
 
@@ -1107,9 +1106,7 @@
 
 1. #### **`Introducción a los Arrays en JavaScript`**:
 
-   Los Arrays, también conocidos como matrices o arreglos, son estructuras de datos fundamentales en JavaScript que permiten almacenar múltiples valores en una sola variable. Pueden contener cualquier tipo de datos, incluidos números, cadenas, objetos e incluso otros arrays.
-
-   **https://es.javascript.info/array**
+   Los Arrays, también conocidos como matrices o arreglos, son estructuras de datos fundamentales en JavaScript que permiten almacenar múltiples valores en una sola variable. Pueden contener cualquier tipo de datos, incluidos números, cadenas, objetos e incluso otros arrays. Lee esto [**Array**](https://es.javascript.info/array)
 
 2. #### **`Importancia de los Arrays`**:
 
@@ -1449,7 +1446,7 @@
 
    - `indexOf()`:
 
-     Devuelve el `index` del primer elemento que coincide con el valor especificado, o -1 si no se encuentra.
+     Devuelve el `index` del primer elemento que coincide con el valor especificado, o -1 si no se encuentra. Recuerda que ste método compara el valor y el tipo en la búsqueda que realiza.
 
      ```javascript
      const indexOfElement = theArray.indexOf(searchElement, startIndex);
@@ -1508,6 +1505,14 @@
      theArray.reverse(); // => Array al revés
      ```
 
+   - `slice()`:
+
+     Asd
+
+     ```javascript
+     // ToDo: explicar el método slice()
+     ```
+
 8. #### **`Encadenamiento de Métodos`**:
 
    Una de las características poderosas de los métodos Array en JavaScript es la capacidad de encadenar múltiples métodos para realizar operaciones complejas en una sola línea de código. Esto mejora la legibilidad y la eficiencia del código.
@@ -1525,7 +1530,7 @@
 
 9. #### **`Consejos y buenas prácticas`**:
 
-   <!-- ToDo: añadir consejos de manipulación de arrays con variables fuera de iteraciones y/o métodos -->
+   <!-- ToDo: Revisar consejos de manipulación de arrays con variables fuera de iteraciones y/o métodos -->
 
    A continuación se aconsejarán formas de uso en lo que respecta las iteraciones sobre arrays, ya sean con bucles o métodos, para facilitar la comprensión y el uso.
 
@@ -1590,6 +1595,8 @@
    Aunque los métodos Array son muy útiles, es importante tener en cuenta que pueden haber situaciones en las que otras estructuras de datos, como los `Sets` o los `Maps`, sean más apropiadas. Además, en entornos más modernos de JavaScript, las funciones flecha (`Arrow Functions`) y las expresiones lambda (`Lambda Expressions`) también ofrecen formas más concisas y expresivas de trabajar con arreglos y matrices.
 
    Recuerda que muchas veces utilizar un `bucle for` para recorrer un Array obtiene más resultados, aunque conlleve más código.
+
+   Si deseas profundizar más [**YouTube video of arrays methods**](https://www.youtube.com/watch?v=LYF4FeJyccc)
 
 11. #### **`Resumen`**:
 
