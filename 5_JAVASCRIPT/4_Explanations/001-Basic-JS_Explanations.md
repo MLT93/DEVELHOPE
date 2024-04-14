@@ -87,6 +87,17 @@
    x = "Hola"; // x ahora es de tipo cadena
    ```
 
+   ```javascript
+   /* Una operación como esta siempre dará como resultado un string */
+   /* La máquina siempre leerá antes el string que el number */
+
+   let a = "1"; // string
+   let b = 1; // number
+   let result = a + b; // => "1" + 1
+   console.log(result); // => "11"
+   console.log(typeof result); // => string
+   ```
+
    Sin embargo, a partir de ES6, se introdujeron las `const` y `let` que permiten la asignación de tipos de datos específicos, pero aún pueden cambiar de valor.
 
 9. #### **`Uso de Variables en Diferentes Contextos`**:
