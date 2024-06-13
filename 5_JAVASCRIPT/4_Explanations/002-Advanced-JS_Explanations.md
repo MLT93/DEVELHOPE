@@ -3589,7 +3589,7 @@ En última instancia, la elección entre `async/await` y `Promise` depende de tu
    ```javascript
    fetch("https://api.example.com/data", {
      headers: {
-       Authorization: "Bearer token123",
+       "Authorization": "Bearer token123",
        "Content-Type": "application/json",
      },
    })

@@ -9,7 +9,7 @@ export const useFetch = (url) => {
     setIsPending(true);
     (async (url) => {
       try {
-        let response = await fetch(url);
+        const response = await fetch(url);
 
         console.log(`useFetch response = ${response.status}`);
 

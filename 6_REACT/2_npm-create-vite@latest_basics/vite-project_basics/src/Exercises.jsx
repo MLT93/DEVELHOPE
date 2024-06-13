@@ -42,7 +42,7 @@ export function Exercises() {
         <hr />
         <OnLogin />
         <hr />
-        <UncontrolledLogin />
+        <ControlledLogin />
         <hr />
         <FocusableInput />
         <hr />
@@ -369,7 +369,7 @@ export function OnLogin() {
   );
 }
 
-export const Login = ({ onLogin }) => {
+export const UncontrolledLogin = ({ onLogin }) => {
   const [nameData, setNameData] = useState({
     username: "",
     password: "",
@@ -379,7 +379,7 @@ export const Login = ({ onLogin }) => {
   const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {
-    // para evitar que se salven espacios equivocados debido a un mal typing por parte de los usuarios, se utiliza el .trim()
+    // para evitar que se salven espacios equivocados al inicio y al final de cada palabra (debido a un mal typing por parte de los usuarios), se utiliza el .trim()
     nameData.username.trim() !== "" && nameData.password.trim() !== ""
       ? setIsDisabled(false)
       : setIsDisabled(true);
@@ -516,7 +516,7 @@ export const Login = ({ onLogin }) => {
   );
 };
 
-export const UncontrolledLogin = () => {
+export const ControlledLogin = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
@@ -531,7 +531,7 @@ export const UncontrolledLogin = () => {
       session,
     }; */
 
-    /* Esta es la API FormData para acceder a los datos del formulario. Ideal para trabajar formularios complejos. */
+    /* Esta es la Class FormData para acceder a los datos del formulario. Ideal para trabajar formularios complejos. */
     const formData = new FormData(event.target);
 
     const data = {
@@ -548,7 +548,7 @@ export const UncontrolledLogin = () => {
       onSubmit={handleFormSubmit}
       style={{ padding: "20px" }}
       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-justify">
-      <h2>Uncontrolled-Form of log in session</h2>
+      <h2>Controlled-Form of log in session</h2>
       <div style={{ display: "flex", gap: "5px" }}>
         <input id="01" name="userID" type="text"></input>
         <input id="02" name="passID" type="password"></input>
