@@ -2259,7 +2259,7 @@
    
    Los eventos en React permiten la interactividad en una aplicación al responder a las acciones del usuario. Las funciones manejadoras se utilizan para manejar estos eventos y actualizar el estado o realizar otras acciones según sea necesario. Comprender cómo funcionan los eventos en React es esencial para construir aplicaciones interactivas y dinámicas.
    
-## **Forms - Controlled Components y Funciones Relacionadas en React: Una Explicación Detallada**
+## **Forms - Controlled Form y Funciones Relacionadas en React: Una Explicación Detallada**
 
 1. #### `Introducción a Controlled Forms`:
 
@@ -2278,7 +2278,7 @@
 
    const ControlledForm = () => {
      // Creamos un objeto para poder pasarle más de una sola propiedad y así modificar más de una variable contemporaneamente sin escribir un nuevo controlador de estado.
-     const [formData, setFormData] = useState({
+     const [user, setUser] = useState({
        username: '',
        email: '',
      });
@@ -2286,15 +2286,15 @@
      const handleInputChange = (event) => {
        // Hacemos un destructuring de las propiedades de event.target (el nodo HTML) así podemos trabajarlas más facilmente
        const { name, value } = event.target;
-       setFormData({
-         ...formData,
+       setUser({
+         ...user,
          [name]: value,
        });
      };
 
      const handleSubmit = (event) => {
        event.preventDefault();
-       console.log('Formulario enviado:', formData);
+       console.log('Formulario enviado:', user);
      };
 
      return (
@@ -2303,13 +2303,13 @@
            type="text"
            name="username"
            // Ahora el valor será el valor proporcionado al objeto
-           value={formData.username}
+           value={user.username}
            onChange={handleInputChange}
          />
          <input
            type="email"
            name="email"
-           value={formData.email}
+           value={user.email}
            onChange={handleInputChange}
          />
          <button type="submit">Enviar</button>
@@ -2320,7 +2320,7 @@
    export default ControlledForm;
    ```
 
-   En este ejemplo, `formData` es un objeto en el estado que contiene las propiedades `username` y `email`. Los campos de entrada están vinculados a estas propiedades del estado, y cualquier cambio en los campos de entrada invoca la función `handleInputChange` que actualiza el estado a través del gestor de eventos `onChange`.
+   En este ejemplo, `user` es un objeto en el estado que contiene las propiedades `username` y `email`. Los campos de entrada están vinculados a estas propiedades del estado, y cualquier cambio en los campos de entrada invoca la función `handleInputChange` que actualiza el estado a través del gestor de eventos `onChange`.
 
 4. #### `Evento onChange y Control de Estado`:
 
@@ -2370,7 +2370,7 @@
 
    Los formularios controlados en React son una técnica poderosa para manejar la entrada de usuario y manipular datos de formularios de manera efectiva. Al comprender y aplicar correctamente esta técnica, puedes crear aplicaciones más interactivas y con una mejor gestión de datos de formulario.
 
-## Forms - Uncontrolled Components y Funciones Relacionadas en React: Una Explicación Detallada
+## Forms - Uncontrolled Form y Funciones Relacionadas en React: Una Explicación Detallada
 
 1. #### `Introducción a Uncontrolled Forms`:
 
@@ -2456,7 +2456,9 @@
 
 1. #### **`FormData`**:
    
-   Es un constructor en JavaScript que se utiliza para crear un objeto de pares clave/valor que representan datos de un formulario HTML. Permite construir fácilmente un conjunto de datos que luego se puede enviar a través de una solicitud HTTP, como una petición de tipo POST, por ejemplo.
+   Es un constructor en JavaScript que se utiliza para crear un objeto de pares clave/valor que representan datos de un formulario HTML. Permite construir fácilmente un conjunto de datos que luego se puede enviar a través de una solicitud HTTP. Por ejemplo, una petición de tipo POST, PUT, etc.
+
+   Esta clase, trabaja con `XMLHttpRequest`.
 
    Aquí tienes unos pasos a seguir:
 
@@ -2482,9 +2484,10 @@
        const formData = new FormData(event.target);
 
        // Accede a los datos del formulario a través de formData
+       // Recuerda que utiliza los atributos HTML `name` para acceder a la información de los inputs
        const data = {
-         userID: formData.get("userID"),
-         passID: formData.get("passID"),
+         user: formData.get("user"),
+         pass: formData.get("pass"),
          session: formData.get("session") === "on" ? true : false,
        };
      }
@@ -2521,7 +2524,7 @@
 
    - **Enviar FormData a través de una solicitud HTTP**:
 
-     Puedes usar `FormData` para enviar datos a través de una solicitud HTTP, como en una petición `fetch` o una petición `AJAX`.
+     Puedes usar `FormData` para enviar datos a través de una solicitud HTTP, como en una petición `fetch`, en una petición `Ajax` o en una petición `Axios`.
 
      ```jsx
      const formulario = document.getElementById('miFormulario');
@@ -2702,8 +2705,8 @@
          
          // El siguiente trozo de código corresponde a un pedazo del código de un hook `useState` para que vean cómo manejar varios campos contemporáneamente y el porqué tenemos `type` y `checked` desestructurados arriba... Si el campo es de `type` checkbox, me devuelve el valor `checked`, si no, me devuelve el valor `value` correspondiente a cada campo. Esto se hace porque checkbox trabaja con el valor `checked` y no con el valor `value`, entonces accedemos a él a través del tipo de input que es con `type`.
          type === "checkbox"
-           ? setFormData({ ...formData, [name]: checked })
-           : setFormData({ ...formData, [name]: value });
+           ? setUser({ ...user, [name]: checked })
+           : setUser({ ...user, [name]: value });
        };
          
        return (
@@ -2711,19 +2714,19 @@
            <input
              type="text"
              name="username"
-             value={formData.username}
+             value={user.username}
              onChange={handleInputChange}
            />
            <input
              type="password"
              name="password"
-             value={formData.password}
+             value={user.password}
              onChange={handleInputChange}
            />
            <input
              type="checkbox"
              name="session"
-             value={formData.session}
+             value={user.session}
              onChange={handleInputChange}
            />
            {/* Otros campos del formulario */}
@@ -2766,7 +2769,7 @@
        };
        
         // Haz lo que necesites con data
-       console.log(data);           
+       console.log(data);
      };
      ```
 
@@ -2882,7 +2885,7 @@
      };
      ```
 
-  - **React Hook Form**:
+  - **React Hook useForm**:
 
      React Hook Form es otra biblioteca popular que proporciona una forma eficiente de trabajar con formularios en React utilizando hooks. Utiliza hooks para un manejo eficiente de los formularios. Permite un control más granular sobre el estado y las validaciones de los formularios. Ofrece una fácil integración con React Native para el desarrollo de aplicaciones móviles.
 
@@ -2917,6 +2920,8 @@
      ```
 
    Ambas bibliotecas proporcionan herramientas poderosas para el manejo de formularios en React y permiten un desarrollo más eficiente y organizado. La elección entre Formik y React Hook Form dependerá de las necesidades específicas de tu proyecto y de tu preferencia personal.
+
+   Puedes considerar el uso de `Ajax` también.
 
 ## Renderización de Listas (Arrays) y Funciones Relacionadas en React: Una Explicación Detallada
 
