@@ -2360,7 +2360,7 @@
 
    - **Librerías de Gestión de Formularios en React**:
    
-     Además de los formularios controlados, hay librerías populares como Formik y React Hook Form que proporcionan herramientas adicionales y simplifican la gestión de formularios en React.
+     Además de los formularios controlados, hay librerías populares como Formik y React Hook useForm que proporcionan herramientas adicionales y simplifican la gestión de formularios en React.
 
    - **Prueba y Práctica**:
    
@@ -2456,7 +2456,7 @@
 
 1. #### **`FormData`**:
    
-   Es un constructor en JavaScript que se utiliza para crear un objeto de pares clave/valor que representan datos de un formulario HTML. Permite construir fácilmente un conjunto de datos que luego se puede enviar a través de una solicitud HTTP. Por ejemplo, una petición de tipo POST, PUT, etc.
+   Es un constructor en JavaScript que se utiliza para crear un objeto de pares clave/valor que representa los datos de un formulario HTML. Permite construir fácilmente un conjunto de datos que luego se puede enviar a través de una solicitud HTTP. Por ejemplo, una petición de tipo POST, PUT, etc.
 
    Esta clase, trabaja con `XMLHttpRequest`.
 
@@ -2484,7 +2484,7 @@
        const formData = new FormData(event.target);
 
        // Accede a los datos del formulario a través de formData
-       // Recuerda que utiliza los atributos HTML `name` para acceder a la información de los inputs
+       // Recuerda que utiliza los atributos HTML `name=""` para acceder a la información de los inputs
        const data = {
          user: formData.get("user"),
          pass: formData.get("pass"),
@@ -2541,7 +2541,7 @@
        .catch(error => console.error('Error:', error));
      ```
 
-   En resumen, el método FormData, es uno de las formas más standard para conseguir datos de los formularios o trabajar con las peticiones HTTP. Necesita más código, pero es útil para formularios complejos o si necesitas enviar archivos adjuntos.
+   En resumen, la class FormData, es uno de las formas más standard para conseguir datos de los formularios o trabajar con las peticiones HTTP. Necesita más código, pero es útil para formularios complejos o si necesitas enviar archivos adjuntos.
 
 2. #### **`useRef`**:
 
@@ -2577,7 +2577,7 @@
 
      Ahora, `inputRef` apunta directamente al elemento `<input>` del formulario.
 
-     Cuando estás utilizando `useRef` en un formulario de React, normalmente quieres asignarlo a elementos individuales dentro del formulario, como los elementos de entrada (<input>), para poder acceder a sus valores de manera más directa.
+     Cuando estás utilizando `useRef` en un formulario de React, normalmente quieres asignarlo a elementos individuales dentro del formulario, como los elementos de entrada (`<input>`), para poder acceder a sus valores de manera más directa.
 
      Por ejemplo, si tienes un formulario con varios campos de entrada y deseas acceder a los valores de cada campo, puedes asignar un `useRef` a cada uno de los elementos de entrada. Esto te permitirá obtener y modificar los valores de manera más eficiente.
 
@@ -2617,7 +2617,7 @@
      };
      ```
 
-     En este ejemplo, inputRef.current te da acceso al elemento <input> del formulario, y value contiene el valor del campo de entrada.
+     En este ejemplo, `inputRef2.current` te da acceso al elemento `<input>` del formulario, y `value` contiene el valor del campo de entrada.
 
    - **Actualizar el Valor del Elemento**:
 
@@ -2768,7 +2768,7 @@
          session: formData.get("session") === "on" ? true : false,
        };
        
-        // Haz lo que necesites con data
+        // Ejecuta petición HTTP con data
        console.log(data);
      };
      ```
@@ -2783,6 +2783,60 @@
          <button type="reset">Reset</button>
        </form>
      );
+     ```
+
+     ```jsx
+     // Uncontrolled Form
+     import React, { useRef } from "react";
+
+     const UncontrolledForm = () => {
+       const inputRef = useRef(null);
+
+       const { detail, setDetail } = useState({
+         detail: "",
+       });
+
+       const handleInputOnChangeText = (evt) => {
+         /**
+          ** 1. evt.target es el elemento que ejecuta el evento y obtiene los valores de los inputs (por eso lo desestructuramos)
+          ** 2. Desestructuro el objeto `evt.target`
+          ** 3. `name` identifica el atributo name del input, `value` describe el valor actual, `type` es el tipo de input y `checked` es el valor booleano que adquieren los checkbox
+          */
+         const { name, value, type, checked } = evt.target;
+
+         /**
+          ** 1. Actualiza el estado del objeto de los inputs
+          ** 2. Reemplaza solo el valor del input que ejecutó el evento (`[name]: value` o `[name]: checked`)
+          ** 3. Sincroniza el estado del nuevo valor usando `setUser`
+          */
+         type === "checkbox"
+           ? setDetail({ ...detail, [name]: checked })
+           : setDetail({ ...detail, [name]: value });
+       };
+
+       const handleSubmit = (event) => {
+         event.preventDefault();
+         const formData = new FormData();
+         formData.append("detail", data.detail);
+
+         // Ejecuta petición HTTP con formData
+         console.log(formData);
+       };
+
+       return (
+         <form onSubmit={handleSubmit}>
+           <input
+             type="text"
+             name="detail"
+             onChange={handleInputOnChangeText}
+             value={detail.detail}
+           />
+           <button type="submit">Enviar</button>
+         </form>
+       );
+     };
+
+     export default UncontrolledForm;
      ```
 
      Esto te da acceso directo a los valores de los campos del formulario.
@@ -2887,7 +2941,7 @@
 
   - **React Hook useForm**:
 
-     React Hook Form es otra biblioteca popular que proporciona una forma eficiente de trabajar con formularios en React utilizando hooks. Utiliza hooks para un manejo eficiente de los formularios. Permite un control más granular sobre el estado y las validaciones de los formularios. Ofrece una fácil integración con React Native para el desarrollo de aplicaciones móviles.
+     React Hook useForm es otra biblioteca popular que proporciona una forma eficiente de trabajar con formularios en React utilizando hooks. Utiliza hooks para un manejo eficiente de los formularios. Permite un control más granular sobre el estado y las validaciones de los formularios. Ofrece una fácil integración con React Native para el desarrollo de aplicaciones móviles.
 
      ```jsx
      import { useForm, Controller } from 'react-hook-form';
@@ -2919,7 +2973,7 @@
      };
      ```
 
-   Ambas bibliotecas proporcionan herramientas poderosas para el manejo de formularios en React y permiten un desarrollo más eficiente y organizado. La elección entre Formik y React Hook Form dependerá de las necesidades específicas de tu proyecto y de tu preferencia personal.
+   Ambas bibliotecas proporcionan herramientas poderosas para el manejo de formularios en React y permiten un desarrollo más eficiente y organizado. La elección entre Formik y React Hook useForm dependerá de las necesidades específicas de tu proyecto y de tu preferencia personal.
 
    Puedes considerar el uso de `Ajax` también.
 
