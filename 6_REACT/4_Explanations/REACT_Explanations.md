@@ -2460,6 +2460,8 @@
 
    Esta clase, trabaja con `XMLHttpRequest`.
 
+   Cuando usas `FormData`, el navegador `configura automáticamente los encabezados` Content-Type adecuados (multipart/form-data para archivos y application/x-www-form-urlencoded para datos de formulario estándar), por lo que no necesitas configurarlos explícitamente a menos que sea necesario.
+
    Aquí tienes unos pasos a seguir:
 
    - **Creación de un objeto FormData**:
