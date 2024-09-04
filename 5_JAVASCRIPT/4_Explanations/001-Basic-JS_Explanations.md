@@ -14,7 +14,7 @@
 
    - **Variables globales o de función**:
 
-     Variables accesibles desde cualquier parte del código sin importar el bloque en el cual hayan sido creadas, a no ser que sea una función. Estas son las famosas `var`. Crean propiedades en el objeto global (en navegadores es `window`) permitiendo al mismo tiempo la mutabilidad. Además, es posible redeclarar la misma variable en el mismo ámbito.
+     Variables accesibles desde cualquier parte del código sin importar el bloque en el cual hayan sido creadas, a no ser que sea una función, en ese caso el alcance queda limitado a la función. Estas son las famosas `var`. Crean propiedades en el objeto global (en navegadores es `window`) permitiendo al mismo tiempo la mutabilidad. Además, es posible redeclarar la misma variable en el mismo ámbito.
 
      Son poco aconsejadas debido a su largo alcance y poco control.
 
