@@ -6,7 +6,7 @@
 
    Una variable es un nombre simbólico que se asocia con un espacio de memoria en la computadora, el cual contiene un valor que puede cambiar durante la ejecución de un programa. En otras palabras, es una forma de etiquetar y referirse a un dato almacenado en la memoria del ordenador.
 
-   Las variables de forma coloquial son contenedores que se utilizan para referenciar valores (espacios de memoria) en un programa. Estos valores pueden ser datos como números, cadenas de texto, objetos, funciones, etc. Se pueden declarar, inicializar y modificar durante la ejecución del programa.
+   Las variables de forma coloquial son "contenedores" que se utilizan para referenciar valores (espacios de memoria) en un programa. Estos valores pueden ser datos como números, cadenas de texto, objetos, funciones, etc. Se pueden declarar, inicializar y modificar durante la ejecución del programa.
 
 2. #### **`Tipos de Variables`**:
 
@@ -16,9 +16,11 @@
 
      Variables accesibles desde cualquier parte del código sin importar el bloque en el cual hayan sido creadas. Estas son las famosas `var`. Crean propiedades en el objeto global (en navegadores `window`) permitiendo al mismo tiempo la mutabilidad. Además, permite redeclarar la misma variable en el mismo ámbito.
 
+     Son poco aconsejadas debido a su largo alcance y poco control.
+
    - **Variables de bloque**:
 
-     Variables con un block-scope limitado por `{}` y sin posibilidad de redeclarar la misma variable dentro del mismo ámbito. Estas son las `let`. Tampoco generan propiedades en el objeto global. Variables idóneas para evitar confusiones y errores. Además, permiten la mutabilidad.
+     Variables con un block-scope limitado por `{}` y sin la posibilidad de redeclarar la misma variable dentro del mismo ámbito. Estas son las `let`. Tampoco generan propiedades en el objeto global. Estas variables idóneas para evitar confusiones y errores en el código. Además, permiten la mutabilidad.
 
    - **Variables constantes**:
 
