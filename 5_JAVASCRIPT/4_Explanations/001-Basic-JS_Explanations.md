@@ -12,15 +12,15 @@
 
    En JavaScript, hay varios tipos de variables:
 
-   - **Variables globales**:
+   - **Variables globales o de función**:
 
-     Variables accesibles desde cualquier parte del código sin importar el bloque en el cual hayan sido creadas. Estas son las famosas `var`. Crean propiedades en el objeto global (en navegadores `window`) permitiendo al mismo tiempo la mutabilidad. Además, permite redeclarar la misma variable en el mismo ámbito.
+     Variables accesibles desde cualquier parte del código sin importar el bloque en el cual hayan sido creadas, a no ser que sea una función. Estas son las famosas `var`. Crean propiedades en el objeto global (en navegadores es `window`) permitiendo al mismo tiempo la mutabilidad. Además, es posible redeclarar la misma variable en el mismo ámbito.
 
      Son poco aconsejadas debido a su largo alcance y poco control.
 
    - **Variables de bloque**:
 
-     Variables con un block-scope limitado por `{}` y sin la posibilidad de redeclarar la misma variable dentro del mismo ámbito. Estas son las `let`. Tampoco generan propiedades en el objeto global. Estas variables idóneas para evitar confusiones y errores en el código. Además, permiten la mutabilidad.
+     Variables con un block-scope limitado por `{}` y sin la posibilidad de redeclarar la misma variable dentro del mismo ámbito. Estas son las queridas `let`. Tampoco generan propiedades en el objeto global. Estas variables idóneas para evitar confusiones y errores en el código. Además, permiten la mutabilidad.
 
    - **Variables constantes**:
 
