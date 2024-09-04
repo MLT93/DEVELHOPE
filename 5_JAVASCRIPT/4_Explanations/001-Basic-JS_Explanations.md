@@ -4,17 +4,25 @@
 
 1. #### **`Introducción a las Variables`**:
 
-   Las variables son contenedores que se utilizan para almacenar valores en un programa. En JavaScript, las variables se utilizan para almacenar datos como números, cadenas de texto, objetos, funciones, etc. Se pueden declarar, inicializar y modificar durante la ejecución del programa.
+   Una variable es un nombre simbólico que se asocia con un espacio de memoria en la computadora, el cual contiene un valor que puede cambiar durante la ejecución de un programa. En otras palabras, es una forma de etiquetar y referirse a un dato almacenado en la memoria del ordenador.
+
+   Las variables de forma coloquial son contenedores que se utilizan para referenciar valores (espacios de memoria) en un programa. Estos valores pueden ser datos como números, cadenas de texto, objetos, funciones, etc. Se pueden declarar, inicializar y modificar durante la ejecución del programa.
 
 2. #### **`Tipos de Variables`**:
 
    En JavaScript, hay varios tipos de variables:
 
-   - **Variables locales**: Declaradas dentro de una función y solo accesibles dentro de esa función.
-   - **Variables globales**: Declaradas fuera de cualquier función y accesibles desde cualquier parte del código.
-   - **Variables de bloque**: Introducidas en ECMAScript 6 (ES6), son variables declaradas dentro de bloques de código delimitados por `{}` y solo accesibles dentro de ese bloque.
-   - **Variables constantes**: Declaradas utilizando la palabra clave `const`, cuyo valor no puede ser cambiado una vez inicializado.
-   - **Variables let**: Introducidas en ES6, similares a `var` pero con un alcance de bloque en lugar de un alcance de función.
+   - **Variables globales**:
+
+     Variables accesibles desde cualquier parte del código sin importar el bloque en el cual hayan sido creadas. Estas son las famosas `var`. Crean propiedades en el objeto global (en navegadores `window`) permitiendo al mismo tiempo la mutabilidad. Además, permite redeclarar la misma variable en el mismo ámbito.
+
+   - **Variables de bloque**:
+
+     Variables con un block-scope limitado por `{}` y sin posibilidad de redeclarar la misma variable dentro del mismo ámbito. Estas son las `let`. Tampoco generan propiedades en el objeto global. Variables idóneas para evitar confusiones y errores. Además, permiten la mutabilidad.
+
+   - **Variables constantes**:
+
+     Declaradas utilizando la palabra clave `const`, cuyo valor no puede ser cambiado una vez inicializado. Ideales para valores fijos e inmutables.
 
 3. #### **`Declaración y Asignación de Variables`**:
 

@@ -259,10 +259,7 @@
       "icon": "terminal-powershell"
     },
     "Command Prompt": {
-      "path": [
-        "${env:windir}\\Sysnative\\cmd.exe",
-        "${env:windir}\\System32\\cmd.exe"
-      ],
+      "path": ["${env:windir}\\Sysnative\\cmd.exe", "${env:windir}\\System32\\cmd.exe"],
       "args": [],
       "icon": "terminal-cmd"
     },
@@ -337,6 +334,7 @@
     "reasignación",
     "Reasignación",
     "Recompilación",
+    "redeclarar",
     "Regístralo",
     "Removible",
     "renderizadas",
