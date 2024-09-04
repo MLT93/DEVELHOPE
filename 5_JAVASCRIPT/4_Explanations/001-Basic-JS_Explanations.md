@@ -14,17 +14,22 @@
 
    - **Variables globales o de función**:
 
-     Variables accesibles desde cualquier parte del código sin importar el bloque en el cual hayan sido creadas, a no ser que sea una función, en ese caso el alcance queda limitado a la función. Estas son las famosas `var`. Crean propiedades en el objeto global (en navegadores es `window`) permitiendo al mismo tiempo la mutabilidad. Además, es posible redeclarar la misma variable en el mismo ámbito.
+     Variables accesibles desde cualquier parte del código sin importar el bloque en el cual hayan sido creadas, a no ser que sea una función. En ese caso, el alcance queda limitado a la función.
+     Estas son las famosas `var`. Crean propiedades en el objeto global (en navegadores es `window`) permitiendo al mismo tiempo la mutabilidad. Además, es posible redeclarar la misma variable en el mismo ámbito.
 
-     Son poco aconsejadas debido a su largo alcance y poco control.
+     Son preferidas para las funciones. Su uso fuera de ellas es poco aconsejado debido a su largo alcance y poco control.
 
    - **Variables de bloque**:
 
-     Variables con un block-scope limitado por `{}` y sin la posibilidad de redeclarar la misma variable dentro del mismo ámbito. Estas son las queridas `let`. Tampoco generan propiedades en el objeto global. Estas variables idóneas para evitar confusiones y errores en el código. Además, permiten la mutabilidad.
+     Variables con un block-scope (alcance) limitado por `{}` y sin la posibilidad de redeclarar la misma variable dentro del mismo ámbito. Estas son las queridas `let`. Tampoco generan propiedades en el objeto global. Estas variables idóneas para evitar confusiones y errores en el código. Además, permiten la mutabilidad.
+
+     Son preferidas en bucles y bloques condicionales porque permiten un mejor control.
 
    - **Variables constantes**:
 
-     Declaradas utilizando la palabra clave `const`, cuyo valor no puede ser cambiado una vez inicializado. Ideales para valores fijos e inmutables.
+     Declaradas utilizando la palabra clave `const`, cuyo valor no puede ser cambiado una vez inicializada. También poseen el mismo block-scope que las variables de bloque. Ideales para mantener referencias en memoria fijas e inmutables.
+
+     Son preferidas para objetos y arrays, donde la referencia es constante, pero sus contenidos pueden ser modificados.
 
 3. #### **`Declaración y Asignación de Variables`**:
 
