@@ -40,6 +40,12 @@ Before you begin, ensure you have met the following requirements:
    npm install
    ```
 
+4. Check run commands scripts in package.json:
+
+   ```bash
+   npm run
+   ```
+
 ## Getting Started
 
 To get the project up and running, follow these steps:
